@@ -1,0 +1,345 @@
+/**********************************************************************
+ * TDRP params for Refract
+ **********************************************************************/
+
+//======================================================================
+//
+// Refract.
+//
+// This program calculates the refractivity fields from the raw polar 
+//   radar data.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// DEBUGGING PARAMETERS.
+//
+// Parameters controlling debug outputs.
+//
+//======================================================================
+ 
+///////////// debug_level /////////////////////////////
+//
+// Debug level.
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_NORM
+//     DEBUG_EXTRA
+//     DEBUG_VERBOSE
+//
+
+debug_level = DEBUG_OFF;
+
+//======================================================================
+//
+// PROCESS PARAMETERS.
+//
+//======================================================================
+ 
+///////////// instance ////////////////////////////////
+//
+// Process instance.
+// Used for registration with procmap.
+// Type: string
+//
+
+instance = "spol";
+
+//======================================================================
+//
+// PROCESS TRIGGERING PARAMETERS.
+//
+// Parameters describing the process triggering.
+//
+//======================================================================
+ 
+///////////// trigger_mode ////////////////////////////
+//
+// Input triggering mode.
+// In LATEST_DATA mode, the program triggers whenever a new input file 
+//   appears.
+// In TIME_LIST mode, the program operates on every input file between 
+//   the start and end times specified on the command line.
+//
+// Type: enum
+// Options:
+//     LATEST_DATA
+//     TIME_LIST
+//
+
+trigger_mode = LATEST_DATA;
+
+///////////// input_url ///////////////////////////////
+//
+// URL for the input files.
+// Type: string
+//
+
+input_url = "mdvp:://localhost::$(project)/mdv/refract/spol_cov";
+
+///////////// output_url //////////////////////////////
+//
+// URL for the output files.
+// Type: string
+//
+
+output_url = "mdvp:://localhost::$(project)/mdv/refract/spol_refr";
+
+//======================================================================
+//
+// INPUT DATA PARAMETERS.
+//
+//======================================================================
+ 
+///////////// max_valid_secs //////////////////////////
+//
+// Number of seconds the input files are valid.
+// Used only if trigger_mode is set to LATEST_DATA.
+// Type: long
+//
+
+max_valid_secs = 300;
+
+///////////// raw_iq_in_input /////////////////////////
+//
+// Flag indicating whether the raw I and Q values are included in the 
+//   input stream.
+// If true, the raw fields will be read from the input stream. If false, 
+//   the raw fields will be calculated from the NIQ/AIQ values which must 
+//   be inluded in the input stream instead.
+// Type: boolean
+//
+
+raw_iq_in_input = FALSE;
+
+///////////// raw_i_field_name ////////////////////////
+//
+// Raw I field name in the input stream.
+// Used only if raw_iq_in_input is set to TRUE.
+// Type: string
+//
+
+raw_i_field_name = "MeanI";
+
+///////////// raw_q_field_name ////////////////////////
+//
+// Raw Q field name in the input stream.
+// Used only if raw_iq_in_input is set to TRUE.
+// Type: string
+//
+
+raw_q_field_name = "MeanQ";
+
+///////////// niq_field_name //////////////////////////
+//
+// NIQ field name in the input stream.
+// Used only if raw_iq_in_input is set to FALSE.
+// Type: string
+//
+
+niq_field_name = "NIQ";
+
+///////////// input_niq_scale /////////////////////////
+//
+// Input NIQ scale value.
+// The NIQ value from the input source is multiplied by this value 
+//   before the data is used. For most radars this value should be 0.1. 
+//   For SPOL this value should be 0.025.
+// Type: double
+//
+
+input_niq_scale = 0.025;
+
+///////////// aiq_field_name //////////////////////////
+//
+// AIQ field name in the input stream.
+// Used only if raw_iq_in_input is set to FALSE.
+// Type: string
+//
+
+aiq_field_name = "AIQ";
+
+///////////// invert_target_angle_sign ////////////////
+//
+// Flag indicating whether to invert the sign of the target angles.
+// This fix should be done upstream, but is added here just in case.
+// Used only if raw_iq_in_input is set to FALSE.
+// Type: boolean
+//
+
+invert_target_angle_sign = FALSE;
+
+///////////// quality_source //////////////////////////
+//
+// Which field to use when calculating the quality value.
+// 	QUALITY_FROM_WIDTH - The quality field is calculated using a 
+//   spectrum width field.
+// 	QUALITY_FROM_CPA - The quality field is calculated using a CPA 
+//   field.
+//
+// Type: enum
+// Options:
+//     QUALITY_FROM_WIDTH
+//     QUALITY_FROM_CPA
+//
+
+quality_source = QUALITY_FROM_CPA;
+
+///////////// quality_field_name //////////////////////
+//
+// Name of field to use in the quality calculations.
+// If quality_source is set to QUALITY_FROM_WIDTH then this should be a 
+//   spectrum width field.
+// If quality_source is set to QUALITY_FROM_CPA then this shoudl be a 
+//   probability of clutter field. The probability of clutter field should 
+//   range from 0.0 to 1.0 with 0.0 indicating the gate definitely doesn't 
+//   contain clutter and 1.0 indicating that the gate definitely is 
+//   clutter.
+// Type: string
+//
+
+quality_field_name = "CPA";
+
+///////////// snr_field_name //////////////////////////
+//
+// Signal-to-noise ratio field name in the input stream.
+// Type: string
+//
+
+snr_field_name = "SNRHC";
+
+///////////// specify_elevation_by_index //////////////
+//
+// Flag indicating whether to specify the desired elevation by index or 
+//   by angle limits.
+// If true, the elevation is specfied by index in the elevation_num 
+//   parameter.
+// If false, the elevation is specified by angle in the elevation_angle 
+//   parameter.
+// Type: boolean
+//
+
+specify_elevation_by_index = FALSE;
+
+///////////// elevation_num ///////////////////////////
+//
+// Elevation number to use from the MDV files.
+// Used only if specify_elevation_by_index is set to true.
+// Type: long
+//
+
+elevation_num = 0;
+
+///////////// elevation_angle /////////////////////////
+//
+// The angle limits for the desired elevation angle. Only sweeps with 
+//   elevation angles between these limits will be used in the 
+//   calibration.
+// Used only if specify_elevation_by_index is set to false.
+//
+// Type: struct
+//   typedef struct {
+//      double min_angle;
+//      double max_angle;
+//   }
+//
+//
+
+elevation_angle = {
+    min_angle = 0.4,
+    max_angle = 0.6
+};
+
+//======================================================================
+//
+// ALGORITHM PARAMETERS.
+//
+//======================================================================
+ 
+///////////// ref_file_name ///////////////////////////
+//
+// Reference file name.
+// With path, file containing calibration information.
+// Type: string
+//
+
+ref_file_name = "$(DATA_DIR)/$(project)/mdv/refract/calib/Refract_calibration.mdv";
+
+///////////// num_azim ////////////////////////////////
+//
+// Number of azimuths used in data processing.
+// Minimum val: 1
+// Type: long
+//
+
+num_azim = 360;
+
+///////////// num_range_bins //////////////////////////
+//
+// Number of range bins.
+// Minimum val: 1
+// Type: long
+//
+
+num_range_bins = 533;
+
+///////////// frequency ///////////////////////////////
+//
+// Frequency in Hz.
+// Minimum val: 5e+08
+// Maximum val: 2e+10
+// Type: double
+//
+
+frequency = 2.809e+09;
+
+///////////// r_min ///////////////////////////////////
+//
+// Min range gate of ground echo.
+// Minimum val: 1
+// Type: long
+//
+
+r_min = 4;
+
+///////////// n_smoothing_side_len ////////////////////
+//
+// N smoothing side length.
+// Smooth N phases with square of 4-km side lengths.
+// Type: double
+//
+
+n_smoothing_side_len = 4000;
+
+///////////// dn_smoothing_side_len ///////////////////
+//
+// DN smoothing side length.
+// Smooth DN dif. phases with square of 4-km side length.
+// Type: double
+//
+
+dn_smoothing_side_len = 4000;
+
+///////////// min_consistency /////////////////////////
+//
+// Minimum consistency.
+// Minimum consistency of phase to accept N (DN) measurement. HIgher 
+//   means smaller coverage of (hopefully) better data.
+// Minimum val: 0
+// Maximum val: 1
+// Type: double
+//
+
+min_consistency = 0.015;
+
+///////////// do_relax ////////////////////////////////
+//
+// Flag indicating whether to do the relaxation stage.
+// Type: boolean
+//
+
+do_relax = FALSE;
+

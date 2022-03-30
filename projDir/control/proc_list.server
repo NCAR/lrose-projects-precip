@@ -1,0 +1,77 @@
+######################################################################
+# RELAMPAGO - server
+#
+######################################################################
+# SYSTEM processes
+#
+#Janitor           logs     start_Janitor.logs        snuff_inst
+Scout             primary  start_Scout               kill_Scout
+DataMapper        primary  start_DataMapper          kill_DataMapper
+#
+######################################################################
+# SERVER processes
+#
+DsServerMgr       primary  start_inst(no-params)     snuff_inst
+DsProxyServer     primary  start_inst(no-params)     snuff_inst
+DsMdvServer       manager  start_inst(no-params)     snuff_inst
+NcMdvServer       manager  start_inst(no-params)     snuff_inst
+DsFmqServer       manager  start_inst(no-params)     snuff_inst
+DsSpdbServer      manager  start_inst(no-params)     snuff_inst
+DsFCopyServer     manager  start_inst(no-params)     snuff_inst
+Metar2Symprod     manager  start_inst(no-params)     snuff_inst
+Rhi2Symprod       manager  start_inst(no-params)     snuff_inst
+AcTrack2Symprod   manager  start_inst(no-params)     snuff_inst
+SunCal2Symprod    manager  start_inst(no-params)     snuff_inst
+Tstorms2Symprod   manager  start_inst(no-params)     snuff_inst
+#
+######################################################################
+# ingesting the RMA1 radar
+InputWatcher      radar_RMA1      start_inst(ingest)    snuff_inst
+RadxBufr          RMA1            start_inst(ingest)    snuff_inst
+RadxPartRain      RMA1.long_range start_inst(alg)       snuff_inst
+######################################################################
+# ingesting the quicklooks from the DOW radars
+InputWatcher      radar_dow6    start_inst(ingest)    snuff_inst
+InputWatcher      radar_dow7    start_inst(ingest)    snuff_inst
+InputWatcher      radar_dow8    start_inst(ingest)    snuff_inst
+InputWatcher      radar_dowc    start_inst(ingest)    snuff_inst
+######################################################################
+# CSU radar
+InputWatcher      csu_chivo     start_inst(ingest)    snuff_inst
+RadxConvert       csu_chivo     start_inst(ingest)    snuff_inst
+Rhi2Spdb          csu_chivo     start_inst(ingest)    snuff_inst
+InputWatcher      csu_raw       start_inst(ingest)    snuff_inst
+RadxConvert       csu_raw       start_inst(ingest)    snuff_inst
+Rhi2Spdb          csu_raw       start_inst(ingest)    snuff_inst
+RadxPartRain      csu_sur       start_inst(alg)       snuff_inst
+RadxPartRain      csu_rhi       start_inst(alg)       snuff_inst
+######################################################################
+######################################################################
+# Catalog images
+LdataWatcher      soundings             start_inst(catalog) snuff_inst
+LdataMultWatcher  catalog.radars        start_inst(catalog) snuff_inst
+LdataWatcher      catalog.radar_images  start_inst(catalog) snuff_inst
+LdataMultWatcher  catalog.dow           start_inst(catalog) snuff_inst
+LdataWatcher      catalog.dow_images    start_inst(catalog) snuff_inst
+######################################################################
+######################################################################
+# Rotating DOW quicklooks
+RadxConvert      rotate_dow6         start_inst(ingest)    snuff_inst
+RadxConvert      rotate_dow7         start_inst(ingest)    snuff_inst
+RadxConvert      rotate_dow8         start_inst(ingest)    snuff_inst
+RadxConvert      rotate_dowc         start_inst(ingest)    snuff_inst
+######################################################################
+######################################################################
+# Cartesian transforms, conv/strat
+Radx2Grid         RMA1.long_range   start_inst(alg)    snuff_inst
+stratiform_filter RMA1              start_inst(alg)    snuff_inst
+######################################################################
+# Lightning rate grid
+LtgSpdb2Mdv       relampago         start_inst(alg)    snuff_inst
+######################################################################
+# model-based soundings for PID
+Mdv2SoundingSpdb  relampago         start_inst(ingest) snuff_inst
+######################################################################
+# hail drone posn
+InputWatcher      hail_drone        start_inst(ingest)    snuff_inst
+AsciiPosn2Spdb    hail_drone        start_inst(ingest)    snuff_inst

@@ -1,0 +1,5 @@
+#! /bin/csh
+
+javaws http://rap.ucar.edu/projects/jazz/app/jazz.jnlp -open http://front.eol.ucar.edu/displayParams/jazz4relampago.xml
+
+

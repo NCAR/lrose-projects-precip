@@ -1,0 +1,78 @@
+#! /bin/csh
+
+#===========================================================================
+#
+# retrieve RUC images
+#
+#===========================================================================
+
+# denver sounding
+
+wget_images.py --debug --url http://weather.rap.ucar.edu/upper --suffix _KDNR.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 12 --nlookback 3 --category upperair --platform DEN-radiosonde --fieldName skewT --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+
+# Surface products
+
+# temperature
+
+wget_images.py --debug --url http://weather.rap.ucar.edu/model --suffix ruc00hr_sfc_tempDEN.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 01 --nlookback 6 --category surface --platform RUC_analysis_DEN --fieldName temperature --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+
+# wind
+
+wget_images.py --debug --url http://weather.rap.ucar.edu/model --suffix ruc00hr_sfc_dewpDEN.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 01 --nlookback 6 --category surface --platform RUC_analysis_DEN --fieldName dewpoint --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+
+# 3-hr pressure tendency
+
+wget_images.py --debug --url http://weather.rap.ucar.edu/model --suffix ruc00hr_sfc_ptndDEN.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 01 --nlookback 6 --category surface --platform RUC_analysis_DEN --fieldName 3-hr_Pressure_Tendency --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+
+# wind
+
+wget_images.py --debug --url http://weather.rap.ucar.edu/model --suffix ruc00hr_sfc_windDEN.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 01 --nlookback 6 --category surface --platform RUC_analysis_DEN --fieldName wind --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+
+# CAPE
+
+wget_images.py --debug --url http://weather.rap.ucar.edu/model --suffix ruc00hr_sfc_capeDEN.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 01 --nlookback 6 --category surface --platform RUC_analysis_DEN --fieldName CAPE --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+
+# mosisture convergence and lifted index
+
+wget_images.py --debug --url http://weather.rap.ucar.edu/model --suffix ruc00hr_sfc_mcliDEN.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 01 --nlookback 6 --category surface --platform RUC_analysis_DEN --fieldName Moisture_Convergence --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+
+# helicity
+
+wget_images.py --debug --url http://weather.rap.ucar.edu/model --suffix ruc00hr_sfc_srehDEN.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 01 --nlookback 6 --category surface --platform RUC_analysis_DEN --fieldName Storm_Relative_Helicity --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+
+# theta-e
+
+wget_images.py --debug --url http://weather.rap.ucar.edu/model --suffix ruc00hr_sfc_thetDEN.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 01 --nlookback 6 --category surface --platform RUC_analysis_DEN --fieldName Theta_E --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+
+# precip amount
+
+#wget_images.py --debug --url http://weather.rap.ucar.edu/model --suffix ruc00hr_sfc_prcpDEN.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 01 --nlookback 6 --category surface --platform RUC_analysis_DEN --fieldName precip --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+
+# precip type
+
+#wget_images.py --debug --url http://weather.rap.ucar.edu/model --suffix ruc00hr_sfc_ptypDEN.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 01 --nlookback 6 --category surface --platform RUC_analysis_DEN --fieldName precip_type --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+
+# vgrp
+
+#wget_images.py --debug --url http://weather.rap.ucar.edu/model --suffix ruc00hr_sfc_vgrpDEN.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 01 --nlookback 6 --category surface --platform RUC_analysis_DEN --fieldName vgrp --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+
+# lcl
+
+wget_images.py --debug --url http://weather.rap.ucar.edu/model --suffix ruc00hr_sfc_lclhDEN.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 01 --nlookback 6 --category surface --platform RUC_analysis_DEN --fieldName LCL_Height --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+
+# supercell/tornado probability
+
+wget_images.py --debug --url http://weather.rap.ucar.edu/model --suffix ruc00hr_sfc_tornDEN.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 01 --nlookback 6 --category surface --platform RUC_analysis_DEN --fieldName Supercell_Probability --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+
+# winds at various pressure levels
+
+foreach height (200 250 300 500 700 850)
+  wget_images.py --debug --url http://weather.rap.ucar.edu/model --suffix ruc00hr_${height}_wnd.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 01 --nlookback 6 --category upperair --platform RUC_analysis --fieldName ${height}hPa_wind --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+end
+
+# temperature at various pressure levels
+
+foreach height (500 700 850)
+  wget_images.py --debug --url http://weather.rap.ucar.edu/model --suffix ruc00hr_${height}_tmp.gif --outdir $DATA_DIR/${project}/raw/images/ral_products --frequency 01 --nlookback 6 --category upperair --platform RUC_analysis --fieldName ${height}hPa_temperature --do_ftp --sleepsecs 1 |& LogFilter -d $ERRORS_LOG_DIR -p wget_images -i ral_products
+end
+

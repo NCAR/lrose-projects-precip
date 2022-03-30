@@ -1,0 +1,10 @@
+#! /bin/csh
+
+# Set up relay tunnel to SPOL for hawkeye at FL
+
+running "ssh -fN -p20022"
+
+if ($status == 1) then
+    ssh -fN -p20022 -L 15443:localhost:5443 spol@spol.dyndns.org |& \
+	LogFilter -d $ERRORS_LOG_DIR -p sshtunnel -i relay.spol >& /dev/null &
+endif

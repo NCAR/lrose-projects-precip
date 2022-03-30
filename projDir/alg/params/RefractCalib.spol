@@ -1,0 +1,430 @@
+/**********************************************************************
+ * TDRP params for RefractCalib
+ **********************************************************************/
+
+//======================================================================
+//
+// RefractCalib.
+//
+// This program creates the calibration file used by Refract.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// DEBUGGING PARAMETERS.
+//
+// Parameters controlling debug outputs.
+//
+//======================================================================
+ 
+///////////// debug_level /////////////////////////////
+//
+// Debug level.
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_NORM
+//     DEBUG_EXTRA
+//     DEBUG_VERBOSE
+//
+
+debug_level = DEBUG_OFF;
+
+///////////// write_debug_mdv_files ///////////////////
+//
+// Flag indicating whether to write debug MDV files.
+// Type: boolean
+//
+
+write_debug_mdv_files = TRUE;
+
+///////////// debug_mdv_url ///////////////////////////
+//
+// Debug MDV file URL.
+// Type: string
+//
+
+debug_mdv_url = "mdvp:://localhost::front/mdv/refract/RefractCalib_debug";
+
+//======================================================================
+//
+// PROCESS PARAMETERS.
+//
+//======================================================================
+ 
+///////////// instance ////////////////////////////////
+//
+// Process instance.
+// Used for registration with procmap.
+// Type: string
+//
+
+instance = "spol";
+
+//======================================================================
+//
+// INPUT DATA PARAMETERS.
+//
+//======================================================================
+ 
+///////////// raw_iq_in_input /////////////////////////
+//
+// Flag indicating whether the raw I and Q values are included in the 
+//   input stream.
+// If true, the raw fields will be read from the input stream. If false, 
+//   the raw fields will be calculated from the NIQ/AIQ values which must 
+//   be inluded in the input stream instead.
+// Type: boolean
+//
+
+raw_iq_in_input = FALSE;
+
+///////////// raw_i_field_name ////////////////////////
+//
+// Raw I field name in the input stream.
+// Used only if raw_iq_in_input is set to TRUE.
+// Type: string
+//
+
+raw_i_field_name = "MeanI";
+
+///////////// raw_q_field_name ////////////////////////
+//
+// Raw Q field name in the input stream.
+// Used only if raw_iq_in_input is set to TRUE.
+// Type: string
+//
+
+raw_q_field_name = "MeanQ";
+
+///////////// niq_field_name //////////////////////////
+//
+// NIQ field name in the input stream.
+// Used only if raw_iq_in_input is set to FALSE.
+// Type: string
+//
+
+niq_field_name = "NIQ";
+
+///////////// input_niq_scale /////////////////////////
+//
+// Input NIQ scale value.
+// The NIQ value from the input source is multiplied by this value 
+//   before the data is used. For most radars this value should be 0.1. 
+//   For SPOL this value should be 0.025.
+// Type: double
+//
+
+input_niq_scale = 0.025;
+
+///////////// invert_target_angle_sign ////////////////
+//
+// Flag indicating whether to invert the sign of the target angles.
+// This fix should be done upstream, but is added here just in case.
+// Used only if raw_iq_in_input is set to FALSE.
+// Type: boolean
+//
+
+invert_target_angle_sign = FALSE;
+
+///////////// aiq_field_name //////////////////////////
+//
+// AIQ field name in the input stream.
+// Used only if raw_iq_in_input is set to FALSE.
+// Type: string
+//
+
+aiq_field_name = "AIQ";
+
+///////////// snr_field_name //////////////////////////
+//
+// Signal-to-noise ratio field name in the input stream.
+// Type: string
+//
+
+snr_field_name = "SNRHC";
+
+///////////// specify_elevation_by_index //////////////
+//
+// Flag indicating whether to specify the desired elevation by index or 
+//   by angle limits.
+// If true, the elevation is specfied by index in the elevation_num 
+//   parameter.
+// If false, the elevation is specified by angle in the elevation_angle 
+//   parameter.
+// Type: boolean
+//
+
+specify_elevation_by_index = FALSE;
+
+///////////// elevation_num ///////////////////////////
+//
+// Elevation number to use from the MDV files.
+// Used only if specify_elevation_by_index is set to true.
+// Type: long
+//
+
+elevation_num = 0;
+
+///////////// elevation_angle /////////////////////////
+//
+// The angle limits for the desired elevation angle. Only sweeps with 
+//   elevation angles between these limits will be used in the 
+//   calibration.
+// Used only if specify_elevation_by_index is set to false.
+//
+// Type: struct
+//   typedef struct {
+//      double min_angle;
+//      double max_angle;
+//   }
+//
+//
+
+elevation_angle = {
+    min_angle = 0.3,
+    max_angle = 0.5
+};
+
+///////////// target_id_file_list /////////////////////
+//
+// List of files to use for target identification.
+// Type: string
+// 1D array - variable length.
+//
+
+target_id_file_list = {
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/170706.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/171014.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/171347.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/171655.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/172027.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/172335.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/172707.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/173015.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/173347.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/173655.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/174027.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/174335.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/174707.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/175015.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/175347.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/175655.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/180450.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/180956.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/181502.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/182008.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/182514.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/183020.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/183526.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/184032.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/184538.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/185044.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/185550.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/190056.mdv"
+};
+
+///////////// calibration_file_list ///////////////////
+//
+// List of files to use for calibration.
+// Type: string
+// 1D array - variable length.
+//
+
+calibration_file_list = {
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/170706.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/171014.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/171347.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/171655.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/172027.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/172335.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/172707.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/173015.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/173347.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/173655.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/174027.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/174335.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/174707.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/175015.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/175347.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/175655.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/180450.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/180956.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/181502.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/182008.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/182514.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/183020.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/183526.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/184032.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/184538.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/185044.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/185550.mdv",
+ "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/190056.mdv"
+};
+
+//======================================================================
+//
+// ALGORITHM PARAMETERS.
+//
+//======================================================================
+ 
+///////////// ref_file_path ///////////////////////////
+//
+// Reference file path.
+// Full path for the file containing calibration information.  This is 
+//   the file that is created by the calibration and used as input to the 
+//   Refract algorithm.
+// Type: string
+//
+
+ref_file_path = "$(DATA_DIR)/front/mdv/refract/calib/Refract_calibration.mdv";
+
+///////////// num_azim ////////////////////////////////
+//
+// Number of azimuths used in data processing.
+// Minimum val: 1
+// Type: long
+//
+
+num_azim = 360;
+
+///////////// num_range_bins //////////////////////////
+//
+// Number of range bins.
+// Minimum val: 1
+// Type: long
+//
+
+num_range_bins = 533;
+
+///////////// beam_width //////////////////////////////
+//
+// Antenna beam width in degrees.
+// Type: double
+//
+
+beam_width = 0.92;
+
+///////////// r_min ///////////////////////////////////
+//
+// Min range gate of ground echo.
+// Minimum val: 1
+// Type: long
+//
+
+r_min = 4;
+
+///////////// side_lobe_pow ///////////////////////////
+//
+// Side lobe power.
+// Echoes below this value of integrated power are considered to be from 
+//   sidelobes.
+// Maximum val: -10
+// Type: double
+//
+
+side_lobe_pow = -50;
+
+///////////// entry_type //////////////////////////////
+//
+// Type of data entry for the calibration calculation.
+// 	ENTER_N - N is entered directly in the calib_n parameter.
+// 	ENTER_P_T_TD - Pressure is entered in the calib_pressure parameter, 
+//   temperature is entered in the calib_temperature parameter and dew 
+//   point temperature is entered in the calib_dewpoint_temperature 
+//   paramtere.
+//
+// Type: enum
+// Options:
+//     ENTER_N
+//     ENTER_P_T_TD
+//
+
+entry_type = ENTER_P_T_TD;
+
+///////////// calib_n /////////////////////////////////
+//
+// N value to use in the calibration.
+// Used only if entry_type is set to ENTER_N.
+// Type: double
+//
+
+calib_n = 1;
+
+///////////// calib_pressure //////////////////////////
+//
+// Pressure value to use in the calibration.
+// This is the station pressure, NOT the sea level pressure. Used only 
+//   if entry_type is set to ENTER_P_T_TD.
+// Type: double
+//
+
+calib_pressure = 828.245;
+
+///////////// calib_temperature ///////////////////////
+//
+// Temperature value to use in the calibration.
+// Used only if entry_type is set to ENTER_P_T_TD.
+// Type: double
+//
+
+calib_temperature = 16.4772;
+
+///////////// calib_dewpoint_temperature //////////////
+//
+// Dewpoint temperature to use in the calibration.
+// Unsed only if entry_type is set to ENTER_P_T_TD.
+// Type: double
+//
+
+calib_dewpoint_temperature = 7.52044;
+
+//======================================================================
+//
+// COLORSCALE PARAMETERS.
+//
+// These colorscale files can be generated as a convenience to the user. 
+//   They are not required for the calculating of the calibration.
+//
+//======================================================================
+ 
+///////////// create_strength_colorscale //////////////
+//
+// Flag indicating whether to create the strength colorscale file.
+// This creates a CIDD colorscale file that matches the colors used by 
+//   Frederic Fabry in his original n_viewcalib program.
+// Type: boolean
+//
+
+create_strength_colorscale = FALSE;
+
+///////////// strength_colorscale_path ////////////////
+//
+// Full path for the strength colorscale file.
+// Used only if create_strength_colorscale is set to true.
+// Type: string
+//
+
+strength_colorscale_path = "colorscales/strength.colors";
+
+///////////// create_quality_colorscale ///////////////
+//
+// Flag indicating whether to create the quality colorscale file.
+// This creates a CIDD colorscale file that matches the colors used by 
+//   Frederic Fabry in his original n_viewcalib program.
+// Type: boolean
+//
+
+create_quality_colorscale = FALSE;
+
+///////////// quality_colorscale_path /////////////////
+//
+// Full path for the quality colorscale file.
+// Used only if create_quality_colorscale is set to true.
+// Type: string
+//
+
+quality_colorscale_path = "colorscales/quality.colors";
+

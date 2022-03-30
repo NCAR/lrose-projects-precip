@@ -1,0 +1,148 @@
+/**********************************************************************
+ * TDRP params for /home/dave/cvs/apps/mdv_utils/src/MdvMergeClosest/MdvMergeClosest
+ **********************************************************************/
+
+//======================================================================
+//
+// MdvMergeClosest.
+//
+// Data from more than one source is read in, and at each point in the 
+//   grid, the source whose origin is closest to the point that has recent 
+//   enough data is used. Many assumptions exist:
+// 1. The inputs must all be the same grid
+// 2. The grids must be two dimensional
+// 3. The inputs must all have the same fields
+// 4. The data cannot be forecast data.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// debugging.
+// Type: boolean
+//
+
+debug = TRUE;
+
+///////////// debug_verbose ///////////////////////////
+//
+// verbose debugging.
+// Type: boolean
+//
+
+debug_verbose = FALSE;
+
+///////////// instance ////////////////////////////////
+//
+// Process instance.
+// Type: string
+//
+
+instance = "qpe";
+
+///////////// register_seconds ////////////////////////
+//
+// Process registration interval seconds.
+// Type: int
+//
+
+register_seconds = 60;
+
+///////////// input ///////////////////////////////////
+//
+// inputs.
+//
+// Type: struct
+//   typedef struct {
+//      string url;
+//      double origin_latitude;
+//      double origin_longitude;
+//   }
+//
+// 1D array - variable length.
+//
+
+input = {
+  { "mdvp:://localhost::front/mdv/spol/qpe",  40.1233, -104.891},
+  { "mdvp:://localhost::front/mdv/chill/qpe", 40.4464, -104.637},
+  { "mdvp:://localhost::front/mdv/kftg/qpe",  39.7866, -104.546},
+  { "mdvp:://localhost::front/mdv/kcys/qpe",  41.1519, -104.806},
+  { "mdvp:://localhost::front/mdv/kpux/qpe", 38.4595, -104.181},
+  { "mdvp:://localhost::front/mdv/kgld/qpe", 39.3669, -101.7},
+  { "mdvp:://localhost::front/mdv/kgjx/qpe", 39.0622, -108.214}
+};
+
+///////////// fields //////////////////////////////////
+//
+// fields to merge.
+// Type: string
+// 1D array - variable length.
+//
+
+fields = { "RATE_ZH", "RATE_Z_ZDR", "RATE_KDP", "RATE_PID", "RATE_HYBRID"};
+
+///////////// time_trigger_interval ///////////////////
+//
+// Interval for TIME_TRIGGER - secs.
+// For TIME_TRIGGER, this is the interval between trigger events. Time 
+//   triggers are synchronized to the hour, and occur at constant 
+//   intervals thereafter.
+// Minimum val: 1
+// Type: int
+//
+
+time_trigger_interval = 300;
+
+///////////// time_trigger_offset /////////////////////
+//
+// Time trigger offset - secs.
+// Time triggers occur on the hour and at constant intervals thereafter 
+//   until the next hour. This parameters allows you to schedule the 
+//   trigger to be offset from the anchored time by the specified number 
+//   of secs. For example, if you set time_trigger_interval to 600 (10 
+//   mins) and time_trigger_offset to 420 (7 minutes), the trigger will 
+//   occur at 7, 17, 27, 37, 47 and 57 mins after the hour.
+// Type: int
+//
+
+time_trigger_offset = 0;
+
+///////////// time_trigger_margin /////////////////////
+//
+// Max time diff for searching for files relative to the trigger time - 
+//   secs.
+// When matching files up with the trigger time, the difference between 
+//   the trigger time and file time must be less than this margin.
+// Type: int
+//
+
+time_trigger_margin = 600;
+
+///////////// past_only ///////////////////////////////
+//
+// Only search in the past when matching files with the trigger time.
+// If TRUE, the search is forced to look for files before the trigger 
+//   time. This is helpful when running in archive mode and you don't want 
+//   to get data that has a future time stamp.
+// Type: boolean
+//
+
+past_only = FALSE;
+
+///////////// timeout_seconds /////////////////////////
+//
+// timeout.
+// data older than this compared to trigger time is not used. 
+//   Units=seconds.
+// Type: double
+//
+
+timeout_seconds = 600;
+
+///////////// output_url //////////////////////////////
+//
+// output url.
+// Type: string
+//
+
+output_url = "mdvp:://localhost::front/mdv/qpe_closest";

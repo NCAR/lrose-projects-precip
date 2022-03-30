@@ -1,0 +1,11 @@
+#! /bin/csh
+
+# Write output in MDV format.
+
+setenv MDV_WRITE_FORMAT FORMAT_MDV
+setenv MDV_WRITE_USING_EXTENDED_PATHS FALSE
+
+cd $PROJ_DIR/alg/params
+
+CalcMoisture -params CalcMoisture.spol -mode TIME_LIST \
+    -start "2014 5 20 0 0 0" -end "2014 12 1 0 0 0" -debug >& CalcMoisture.spol.log &

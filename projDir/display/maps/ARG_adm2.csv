@@ -1,0 +1,504 @@
+"OBJECTID","ID_0","ISO","NAME_0","ID_1","NAME_1","ID_2","NAME_2","TYPE_2","ENGTYPE_2","NL_NAME_2","VARNAME_2"
+1,12,"ARG","Argentina",1,"Buenos Aires",1,"Adolfo Alsina","Partido","Part",NA,"Carhue"
+2,12,"ARG","Argentina",1,"Buenos Aires",2,"Adolfo Gonzales Chaves","Partido","Part",NA,"Adolfo Gonzal"
+3,12,"ARG","Argentina",1,"Buenos Aires",3,"Alberti","Partido","Part",NA,NA
+4,12,"ARG","Argentina",1,"Buenos Aires",4,"Almirante Brown","Partido","Part",NA,NA
+5,12,"ARG","Argentina",1,"Buenos Aires",5,"Ameghino","Partido","Part",NA,NA
+6,12,"ARG","Argentina",1,"Buenos Aires",6,"Arrecifes","Partido","Part",NA,"Bartolome Mitre"
+7,12,"ARG","Argentina",1,"Buenos Aires",7,"Avellaneda","Partido","Part",NA,NA
+8,12,"ARG","Argentina",1,"Buenos Aires",8,"Ayacucho","Partido","Part",NA,NA
+9,12,"ARG","Argentina",1,"Buenos Aires",9,"Azul","Partido","Part",NA,NA
+10,12,"ARG","Argentina",1,"Buenos Aires",10,"Bahía Blanca","Partido","Part",NA,NA
+11,12,"ARG","Argentina",1,"Buenos Aires",11,"Balcarce","Partido","Part",NA,NA
+12,12,"ARG","Argentina",1,"Buenos Aires",12,"Baradero","Partido","Part",NA,NA
+13,12,"ARG","Argentina",1,"Buenos Aires",13,"Benito Juárez","Partido","Part",NA,NA
+14,12,"ARG","Argentina",1,"Buenos Aires",14,"Berazategui","Partido","Part",NA,NA
+15,12,"ARG","Argentina",1,"Buenos Aires",15,"Berisso","Partido","Part",NA,NA
+16,12,"ARG","Argentina",1,"Buenos Aires",16,"Bolívar","Partido","Part",NA,NA
+17,12,"ARG","Argentina",1,"Buenos Aires",17,"Bragado","Partido","Part",NA,NA
+18,12,"ARG","Argentina",1,"Buenos Aires",18,"Brandsen","Partido","Part",NA,NA
+19,12,"ARG","Argentina",1,"Buenos Aires",19,"Cañuelas","Partido","Part",NA,NA
+20,12,"ARG","Argentina",1,"Buenos Aires",20,"Campana","Partido","Part",NA,NA
+21,12,"ARG","Argentina",1,"Buenos Aires",21,"Capitán Sarmiento","Partido","Part",NA,NA
+22,12,"ARG","Argentina",1,"Buenos Aires",22,"Carlos Casares","Partido","Part",NA,NA
+23,12,"ARG","Argentina",1,"Buenos Aires",23,"Carlos Tejedor","Partido","Part",NA,NA
+24,12,"ARG","Argentina",1,"Buenos Aires",24,"Carmen de Areco","Partido","Part",NA,NA
+25,12,"ARG","Argentina",1,"Buenos Aires",25,"Castelli","Partido","Part",NA,NA
+26,12,"ARG","Argentina",1,"Buenos Aires",26,"Chacabuco","Partido","Part",NA,NA
+27,12,"ARG","Argentina",1,"Buenos Aires",27,"Chascomús","Partido","Part",NA,NA
+28,12,"ARG","Argentina",1,"Buenos Aires",28,"Chivilcoy","Partido","Part",NA,NA
+29,12,"ARG","Argentina",1,"Buenos Aires",29,"Colón","Partido","Part",NA,NA
+30,12,"ARG","Argentina",1,"Buenos Aires",30,"Coronel de Marina Leonardo Rosales","Partido","Part",NA,"Punta Alta|Coronel de Mariana Leonar"
+31,12,"ARG","Argentina",1,"Buenos Aires",31,"Coronel Dorrego","Partido","Part",NA,NA
+32,12,"ARG","Argentina",1,"Buenos Aires",32,"Coronel Pringles","Partido","Part",NA,NA
+33,12,"ARG","Argentina",1,"Buenos Aires",33,"Coronel Suárez","Partido","Part",NA,NA
+34,12,"ARG","Argentina",1,"Buenos Aires",34,"Daireaux","Partido","Part",NA,NA
+35,12,"ARG","Argentina",1,"Buenos Aires",35,"Dolores","Partido","Part",NA,NA
+36,12,"ARG","Argentina",1,"Buenos Aires",36,"Ensenada","Partido","Part",NA,NA
+37,12,"ARG","Argentina",1,"Buenos Aires",37,"Escobar","Partido","Part",NA,"Belen de Escobar"
+38,12,"ARG","Argentina",1,"Buenos Aires",38,"Esteban Echeverría","Partido","Part",NA,"Esteban Echeverri"
+39,12,"ARG","Argentina",1,"Buenos Aires",39,"Exaltación de la Cruz","Partido","Part",NA,"Capilla del Señor"
+40,12,"ARG","Argentina",1,"Buenos Aires",40,"Florencio Varela","Partido","Part",NA,NA
+41,12,"ARG","Argentina",1,"Buenos Aires",41,"General Alvarado","Partido","Part",NA,"Miramar"
+42,12,"ARG","Argentina",1,"Buenos Aires",42,"General Alvear","Partido","Part",NA,NA
+43,12,"ARG","Argentina",1,"Buenos Aires",43,"General Arenales","Partido","Part",NA,NA
+44,12,"ARG","Argentina",1,"Buenos Aires",44,"General Belgrano","Partido","Part",NA,NA
+45,12,"ARG","Argentina",1,"Buenos Aires",45,"General Guido","Partido","Part",NA,NA
+46,12,"ARG","Argentina",1,"Buenos Aires",46,"General Juan Madariaga","Partido","Part",NA,"General Juan"
+47,12,"ARG","Argentina",1,"Buenos Aires",47,"General La Madrid","Partido","Part",NA,NA
+48,12,"ARG","Argentina",1,"Buenos Aires",48,"General Las Heras","Partido","Part",NA,NA
+49,12,"ARG","Argentina",1,"Buenos Aires",49,"General Lavalle","Partido","Part",NA,NA
+50,12,"ARG","Argentina",1,"Buenos Aires",50,"General Paz","Partido","Part",NA,NA
+51,12,"ARG","Argentina",1,"Buenos Aires",51,"General Pinto","Partido","Part",NA,NA
+52,12,"ARG","Argentina",1,"Buenos Aires",52,"General Pueyrredón","Partido","Part",NA,"Mar del Plata"
+53,12,"ARG","Argentina",1,"Buenos Aires",53,"General Rodríguez","Partido","Part",NA,NA
+54,12,"ARG","Argentina",1,"Buenos Aires",54,"General San Martín","Partido","Part",NA,"General San Martín"
+55,12,"ARG","Argentina",1,"Buenos Aires",55,"General Sarmiento","Partido","Part",NA,NA
+56,12,"ARG","Argentina",1,"Buenos Aires",56,"General Viamonte","Partido","Part",NA,NA
+57,12,"ARG","Argentina",1,"Buenos Aires",57,"General Villegas","Partido","Part",NA,NA
+58,12,"ARG","Argentina",1,"Buenos Aires",58,"Guaminí","Partido","Part",NA,"Guamin|Guamin"
+59,12,"ARG","Argentina",1,"Buenos Aires",59,"Hipólito Yrigoyen","Partido","Part",NA,"Henderson"
+60,12,"ARG","Argentina",1,"Buenos Aires",60,"Junín","Partido","Part",NA,NA
+61,12,"ARG","Argentina",1,"Buenos Aires",61,"La Costa","Partido","Part",NA,"NN"
+62,12,"ARG","Argentina",1,"Buenos Aires",62,"La Matanza","Partido","Part",NA,NA
+63,12,"ARG","Argentina",1,"Buenos Aires",63,"La Plata","Partido","Part",NA,NA
+64,12,"ARG","Argentina",1,"Buenos Aires",64,"Lanús","Partido","Part",NA,NA
+65,12,"ARG","Argentina",1,"Buenos Aires",65,"Laprida","Partido","Part",NA,NA
+66,12,"ARG","Argentina",1,"Buenos Aires",66,"Las Flores","Partido","Part",NA,NA
+67,12,"ARG","Argentina",1,"Buenos Aires",67,"Leandro N. Alem","Partido","Part",NA,"Vedia|Leonardo N. Alem"
+68,12,"ARG","Argentina",1,"Buenos Aires",68,"Lincoln","Partido","Part",NA,NA
+69,12,"ARG","Argentina",1,"Buenos Aires",69,"Lobería","Partido","Part",NA,NA
+70,12,"ARG","Argentina",1,"Buenos Aires",70,"Lobos","Partido","Part",NA,NA
+71,12,"ARG","Argentina",1,"Buenos Aires",71,"Lomas de Zamora","Partido","Part",NA,NA
+72,12,"ARG","Argentina",1,"Buenos Aires",72,"Luján","Partido","Part",NA,NA
+73,12,"ARG","Argentina",1,"Buenos Aires",73,"Magdalena","Partido","Part",NA,NA
+74,12,"ARG","Argentina",1,"Buenos Aires",74,"Maipú","Partido","Part",NA,NA
+75,12,"ARG","Argentina",1,"Buenos Aires",75,"Mar Chiquita","Partido","Part",NA,"Coronel Vidal"
+76,12,"ARG","Argentina",1,"Buenos Aires",76,"Marcos Paz","Partido","Part",NA,NA
+77,12,"ARG","Argentina",1,"Buenos Aires",77,"Mercedes","Partido","Part",NA,NA
+78,12,"ARG","Argentina",1,"Buenos Aires",78,"Merlo","Partido","Part",NA,NA
+79,12,"ARG","Argentina",1,"Buenos Aires",79,"Monte Hermoso","Partido","Part",NA,"NN"
+80,12,"ARG","Argentina",1,"Buenos Aires",80,"Monte","Partido","Part",NA,"San Miguel del Monte"
+81,12,"ARG","Argentina",1,"Buenos Aires",81,"Morón","Partido","Part",NA,NA
+82,12,"ARG","Argentina",1,"Buenos Aires",82,"Moreno","Partido","Part",NA,"Mariano Moreno"
+83,12,"ARG","Argentina",1,"Buenos Aires",83,"Navarro","Partido","Part",NA,NA
+84,12,"ARG","Argentina",1,"Buenos Aires",84,"Necochea","Partido","Part",NA,NA
+85,12,"ARG","Argentina",1,"Buenos Aires",85,"Nueve de Julio","Partido","Part",NA,"9 de Julio"
+86,12,"ARG","Argentina",1,"Buenos Aires",86,"Olavarría","Partido","Part",NA,NA
+87,12,"ARG","Argentina",1,"Buenos Aires",87,"Patagones","Partido","Part",NA,"Carmen de Patagones"
+88,12,"ARG","Argentina",1,"Buenos Aires",88,"Pehuajó","Partido","Part",NA,NA
+89,12,"ARG","Argentina",1,"Buenos Aires",89,"Pellegrini","Partido","Part",NA,NA
+90,12,"ARG","Argentina",1,"Buenos Aires",90,"Pergamino","Partido","Part",NA,NA
+91,12,"ARG","Argentina",1,"Buenos Aires",91,"Pila","Partido","Part",NA,NA
+92,12,"ARG","Argentina",1,"Buenos Aires",92,"Pilar","Partido","Part",NA,NA
+93,12,"ARG","Argentina",1,"Buenos Aires",93,"Pinamar","Partido","Part",NA,"NN"
+94,12,"ARG","Argentina",1,"Buenos Aires",94,"Puán","Partido","Part",NA,NA
+95,12,"ARG","Argentina",1,"Buenos Aires",95,"Quilmes","Partido","Part",NA,NA
+96,12,"ARG","Argentina",1,"Buenos Aires",96,"Ramallo","Partido","Part",NA,NA
+97,12,"ARG","Argentina",1,"Buenos Aires",97,"Rauch","Partido","Part",NA,NA
+98,12,"ARG","Argentina",1,"Buenos Aires",98,"Rivadavia","Partido","Part",NA,NA
+99,12,"ARG","Argentina",1,"Buenos Aires",99,"Rojas","Partido","Part",NA,NA
+100,12,"ARG","Argentina",1,"Buenos Aires",100,"Roque Pérez","Partido","Part",NA,NA
+101,12,"ARG","Argentina",1,"Buenos Aires",101,"Saavedra","Partido","Part",NA,NA
+102,12,"ARG","Argentina",1,"Buenos Aires",102,"Saladillo","Partido","Part",NA,NA
+103,12,"ARG","Argentina",1,"Buenos Aires",103,"Salliqueló","Partido","Part",NA,"Salliquello|Salliquello"
+104,12,"ARG","Argentina",1,"Buenos Aires",104,"Salto","Partido","Part",NA,NA
+105,12,"ARG","Argentina",1,"Buenos Aires",105,"San Andrés de Giles","Partido","Part",NA,"San Andres de Giles"
+106,12,"ARG","Argentina",1,"Buenos Aires",106,"San Antonio de Areco","Partido","Part",NA,"San Antonio de"
+107,12,"ARG","Argentina",1,"Buenos Aires",107,"San Cayetano","Partido","Part",NA,NA
+108,12,"ARG","Argentina",1,"Buenos Aires",108,"San Fernando (1)","Partido","Part",NA,NA
+109,12,"ARG","Argentina",1,"Buenos Aires",109,"San Fernando (2)","Partido","Part",NA,NA
+110,12,"ARG","Argentina",1,"Buenos Aires",110,"San Isidro","Partido","Part",NA,NA
+111,12,"ARG","Argentina",1,"Buenos Aires",111,"San Nicolás","Partido","Part",NA,"San Nicolás de los Arroyo"
+112,12,"ARG","Argentina",1,"Buenos Aires",112,"San Pedro","Partido","Part",NA,NA
+113,12,"ARG","Argentina",1,"Buenos Aires",113,"San Vicente","Partido","Part",NA,NA
+114,12,"ARG","Argentina",1,"Buenos Aires",114,"Suipacha","Partido","Part",NA,NA
+115,12,"ARG","Argentina",1,"Buenos Aires",115,"Tandil","Partido","Part",NA,NA
+116,12,"ARG","Argentina",1,"Buenos Aires",116,"Tapalqué","Partido","Part",NA,"Taplquen|Taplquen"
+117,12,"ARG","Argentina",1,"Buenos Aires",117,"Tigre","Partido","Part",NA,NA
+118,12,"ARG","Argentina",1,"Buenos Aires",118,"Tordillo","Partido","Part",NA,"General Conesa"
+119,12,"ARG","Argentina",1,"Buenos Aires",119,"Tornquist","Partido","Part",NA,NA
+120,12,"ARG","Argentina",1,"Buenos Aires",120,"Trenque Lauquen","Partido","Part",NA,NA
+121,12,"ARG","Argentina",1,"Buenos Aires",121,"Tres Arroyos","Partido","Part",NA,NA
+122,12,"ARG","Argentina",1,"Buenos Aires",122,"Tres de Febrero","Partido","Part",NA,"Caseros"
+123,12,"ARG","Argentina",1,"Buenos Aires",123,"Tres Lomas","Partido","Part",NA,NA
+124,12,"ARG","Argentina",1,"Buenos Aires",124,"Veinticinco de Mayo","Partido","Part",NA,"25 de Mayo"
+125,12,"ARG","Argentina",1,"Buenos Aires",125,"Vicente López","Partido","Part",NA,"Olivos"
+126,12,"ARG","Argentina",1,"Buenos Aires",126,"Villa Gesell","Partido","Part",NA,NA
+127,12,"ARG","Argentina",1,"Buenos Aires",127,"Villarino","Partido","Part",NA,"Medanos"
+128,12,"ARG","Argentina",1,"Buenos Aires",128,"Zárate","Partido","Part",NA,NA
+129,12,"ARG","Argentina",2,"Córdoba",129,"Calamuchita","Departamento","Department",NA,"San Agustin"
+130,12,"ARG","Argentina",2,"Córdoba",130,"Capital","Departamento","Department",NA,"Cordoba|Capital (Córdoba)"
+131,12,"ARG","Argentina",2,"Córdoba",131,"Colón","Departamento","Department",NA,"Jesus Maria"
+132,12,"ARG","Argentina",2,"Córdoba",132,"Cruz del Eje","Departamento","Department",NA,NA
+133,12,"ARG","Argentina",2,"Córdoba",133,"General Roca","Departamento","Department",NA,"Villa Huidobro"
+134,12,"ARG","Argentina",2,"Córdoba",134,"General San Martín","Departamento","Department",NA,"General San Martín"
+135,12,"ARG","Argentina",2,"Córdoba",135,"Ischilín","Departamento","Department",NA,"Dean Funes"
+136,12,"ARG","Argentina",2,"Córdoba",136,"Juárez Celman","Departamento","Department",NA,"La Carlota"
+137,12,"ARG","Argentina",2,"Córdoba",137,"Marcos Juárez","Departamento","Department",NA,NA
+138,12,"ARG","Argentina",2,"Córdoba",138,"Minas","Departamento","Department",NA,"San Carlos"
+139,12,"ARG","Argentina",2,"Córdoba",139,"Pocho","Departamento","Department",NA,"Salsacate"
+140,12,"ARG","Argentina",2,"Córdoba",140,"Presidente Roque Sáenz Peña","Departamento","Department",NA,"Laboulaye|Presidente Roque S enz Pe"
+141,12,"ARG","Argentina",2,"Córdoba",141,"Punilla","Departamento","Department",NA,"Cosquin"
+142,12,"ARG","Argentina",2,"Córdoba",142,"Rió Cuarto","Departamento","Department",NA,NA
+143,12,"ARG","Argentina",2,"Córdoba",143,"Rió Primero","Departamento","Department",NA,"Santa Rosa del Rio Primer|Rio Primer"
+144,12,"ARG","Argentina",2,"Córdoba",144,"Rió Seco","Departamento","Department",NA,"Villa de Maria"
+145,12,"ARG","Argentina",2,"Córdoba",145,"Rió Segundo","Departamento","Department",NA,"Villa del Rosario"
+146,12,"ARG","Argentina",2,"Córdoba",146,"San Alberto","Departamento","Department",NA,"Villa Cura Brochero"
+147,12,"ARG","Argentina",2,"Córdoba",147,"San Javier","Departamento","Department",NA,"Villa Dolores"
+148,12,"ARG","Argentina",2,"Córdoba",148,"San Justo","Departamento","Department",NA,"San Francisco"
+149,12,"ARG","Argentina",2,"Córdoba",149,"Santa María","Departamento","Department",NA,"Alta Gracia"
+150,12,"ARG","Argentina",2,"Córdoba",150,"Sobremonte","Departamento","Department",NA,"San Francisco del Canar"
+151,12,"ARG","Argentina",2,"Córdoba",151,"Tercero Arriba","Departamento","Department",NA,"Oliva"
+152,12,"ARG","Argentina",2,"Córdoba",152,"Totoral","Departamento","Department",NA,"Villa General Mitre"
+153,12,"ARG","Argentina",2,"Córdoba",153,"Tulumba","Departamento","Department",NA,"Villa Tulumba"
+154,12,"ARG","Argentina",2,"Córdoba",154,"Unión","Departamento","Department",NA,"Bell Ville"
+155,12,"ARG","Argentina",3,"Catamarca",155,"Ambato","Departamento","Department",NA,"La Puerta"
+156,12,"ARG","Argentina",3,"Catamarca",156,"Ancasti","Departamento","Department",NA,NA
+157,12,"ARG","Argentina",3,"Catamarca",157,"Andalgalá","Departamento","Department",NA,NA
+158,12,"ARG","Argentina",3,"Catamarca",158,"Antofagasta de la Sierra","Departamento","Department",NA,"Antofagasta"
+159,12,"ARG","Argentina",3,"Catamarca",159,"Belén","Departamento","Department",NA,NA
+160,12,"ARG","Argentina",3,"Catamarca",160,"Capayán","Departamento","Department",NA,"Huillapima"
+161,12,"ARG","Argentina",3,"Catamarca",161,"Capital","Departamento","Department",NA,"Capital (Catamarca)|Catamarca"
+162,12,"ARG","Argentina",3,"Catamarca",162,"El Alto","Departamento","Department",NA,"Villa El Alto"
+163,12,"ARG","Argentina",3,"Catamarca",163,"Fray Mamerto Esquiú","Departamento","Department",NA,"San Jose"
+164,12,"ARG","Argentina",3,"Catamarca",164,"La Paz","Departamento","Department",NA,"San Antonio"
+165,12,"ARG","Argentina",3,"Catamarca",165,"Paclín","Departamento","Department",NA,"La Merced"
+166,12,"ARG","Argentina",3,"Catamarca",166,"Pomán","Departamento","Department",NA,"Saujil"
+167,12,"ARG","Argentina",3,"Catamarca",167,"Santa María","Departamento","Department",NA,NA
+168,12,"ARG","Argentina",3,"Catamarca",168,"Santa Rosa","Departamento","Department",NA,"Banado de Ovanta"
+169,12,"ARG","Argentina",3,"Catamarca",169,"Tinogasta","Departamento","Department",NA,NA
+170,12,"ARG","Argentina",3,"Catamarca",170,"Valle Viejo","Departamento","Department",NA,"San Isidro"
+171,12,"ARG","Argentina",4,"Chaco",171,"Almirante Brown","Departamento","Department",NA,"Pampa del Infierno"
+172,12,"ARG","Argentina",4,"Chaco",172,"Bermejo","Departamento","Department",NA,"La Leonesa"
+173,12,"ARG","Argentina",4,"Chaco",173,"Chacabuco","Departamento","Department",NA,"Charta"
+174,12,"ARG","Argentina",4,"Chaco",174,"Comandante Fernández","Departamento","Department",NA,"Pcia. Roque Saenz Pena|Comandante Fe"
+175,12,"ARG","Argentina",4,"Chaco",175,"Doce de Octubre","Departamento","Department",NA,"Gral. Pinedo|12 de Octubre"
+176,12,"ARG","Argentina",4,"Chaco",176,"Fray Justo Santa María de Oro","Departamento","Department",NA,"Santa Silvina|Fray Justo Santa Maria"
+177,12,"ARG","Argentina",4,"Chaco",177,"General Belgrano","Departamento","Department",NA,"Corzuela"
+178,12,"ARG","Argentina",4,"Chaco",178,"General Donovan","Departamento","Department",NA,"Makalle"
+179,12,"ARG","Argentina",4,"Chaco",179,"General Güemes","Departamento","Department",NA,"J.J. Castelli"
+180,12,"ARG","Argentina",4,"Chaco",180,"Independencia","Departamento","Department",NA,"Campo Largo"
+181,12,"ARG","Argentina",4,"Chaco",181,"Libertad","Departamento","Department",NA,"Tirol"
+182,12,"ARG","Argentina",4,"Chaco",182,"Libertador General San Martín","Departamento","Department",NA,"Gral. Jose de San Martin|Libertador"
+183,12,"ARG","Argentina",4,"Chaco",183,"Maipú","Departamento","Department",NA,"Tres Isletas"
+184,12,"ARG","Argentina",4,"Chaco",184,"Mayor Luis J. Fontana","Departamento","Department",NA,"Villa Angela|Mayor Luis J. Fonta"
+185,12,"ARG","Argentina",4,"Chaco",185,"Nueve de Julio","Departamento","Department",NA,"Las Brenas|9 de Julio"
+186,12,"ARG","Argentina",4,"Chaco",186,"O'Higgins","Departamento","Department",NA,"San Bernardo|O. Higgins"
+187,12,"ARG","Argentina",4,"Chaco",187,"Presidencia de la Plaza","Departamento","Department",NA,"Presidente d"
+188,12,"ARG","Argentina",4,"Chaco",188,"Primero de Mayo","Departamento","Department",NA,"Margarita Belen|1ro. de Mayo"
+189,12,"ARG","Argentina",4,"Chaco",189,"Quitilipi","Departamento","Department",NA,NA
+190,12,"ARG","Argentina",4,"Chaco",190,"San Fernando","Departamento","Department",NA,"Resistencia"
+191,12,"ARG","Argentina",4,"Chaco",191,"San Lorenzo","Departamento","Department",NA,"Villa Berthet"
+192,12,"ARG","Argentina",4,"Chaco",192,"Sargento Cabral","Departamento","Department",NA,"Colonia Elisa"
+193,12,"ARG","Argentina",4,"Chaco",193,"Tapenagá","Departamento","Department",NA,"Charadai|Tapenag"
+194,12,"ARG","Argentina",4,"Chaco",194,"Veinticinco de Mayo","Departamento","Department",NA,"Machagai|25 de Mayo"
+195,12,"ARG","Argentina",5,"Chubut",195,"Biedma","Departamento","Department",NA,"Puerto Madryn"
+196,12,"ARG","Argentina",5,"Chubut",196,"Cushamen","Departamento","Department",NA,"Leleque"
+197,12,"ARG","Argentina",5,"Chubut",197,"Escalante","Departamento","Department",NA,"Comodoro Rivadavia"
+198,12,"ARG","Argentina",5,"Chubut",198,"Florentino Ameghino","Departamento","Department",NA,"Camarones"
+199,12,"ARG","Argentina",5,"Chubut",199,"Futaleufú","Departamento","Department",NA,"Esquel"
+200,12,"ARG","Argentina",5,"Chubut",200,"Gaiman","Departamento","Department",NA,NA
+201,12,"ARG","Argentina",5,"Chubut",201,"Gastre","Departamento","Department",NA,NA
+202,12,"ARG","Argentina",5,"Chubut",202,"Languiñeo","Departamento","Department",NA,"Tecka"
+203,12,"ARG","Argentina",5,"Chubut",203,"Mártires","Departamento","Department",NA,"Las Plumas|Martines"
+204,12,"ARG","Argentina",5,"Chubut",204,"Paso de Indios","Departamento","Department",NA,NA
+205,12,"ARG","Argentina",5,"Chubut",205,"Rawson","Departamento","Department",NA,NA
+206,12,"ARG","Argentina",5,"Chubut",206,"Rió Senguer","Departamento","Department",NA,"Rio Senguerr|Rio Senguerr"
+207,12,"ARG","Argentina",5,"Chubut",207,"Sarmiento","Departamento","Department",NA,NA
+208,12,"ARG","Argentina",5,"Chubut",208,"Tehuelches","Departamento","Department",NA,"Jose de San Martin"
+209,12,"ARG","Argentina",5,"Chubut",209,"Telsen","Departamento","Department",NA,NA
+210,12,"ARG","Argentina",6,"Ciudad de Buenos Aires",210,"Distrito Federal","Distrito Federal","Federal District",NA,"Distrito Escolar X|Capital Federal"
+211,12,"ARG","Argentina",7,"Corrientes",211,"Bella Vista","Departamento","Department",NA,NA
+212,12,"ARG","Argentina",7,"Corrientes",212,"Berón de Astrada","Departamento","Department",NA,NA
+213,12,"ARG","Argentina",7,"Corrientes",213,"Capital","Departamento","Department",NA,"Corrientes|Capital (Corrientes)"
+214,12,"ARG","Argentina",7,"Corrientes",214,"Concepción","Departamento","Department",NA,NA
+215,12,"ARG","Argentina",7,"Corrientes",215,"Curuzú Cuatiá","Departamento","Department",NA,NA
+216,12,"ARG","Argentina",7,"Corrientes",216,"Empedrado","Departamento","Department",NA,NA
+217,12,"ARG","Argentina",7,"Corrientes",217,"Esquina","Departamento","Department",NA,NA
+218,12,"ARG","Argentina",7,"Corrientes",218,"General Alvear","Departamento","Department",NA,"Alvear"
+219,12,"ARG","Argentina",7,"Corrientes",219,"General Paz","Departamento","Department",NA,"Ganeral Paz"
+220,12,"ARG","Argentina",7,"Corrientes",220,"Goya","Departamento","Department",NA,NA
+221,12,"ARG","Argentina",7,"Corrientes",221,"Itatí","Departamento","Department",NA,NA
+222,12,"ARG","Argentina",7,"Corrientes",222,"Ituzaingó","Departamento","Department",NA,NA
+223,12,"ARG","Argentina",7,"Corrientes",223,"Lavalle","Departamento","Department",NA,NA
+224,12,"ARG","Argentina",7,"Corrientes",224,"Mburucuyá","Departamento","Department",NA,"Mburucuy|Mburucuy"
+225,12,"ARG","Argentina",7,"Corrientes",225,"Mercedes","Departamento","Department",NA,NA
+226,12,"ARG","Argentina",7,"Corrientes",226,"Monte Caseros","Departamento","Department",NA,NA
+227,12,"ARG","Argentina",7,"Corrientes",227,"Paso de los Libres","Departamento","Department",NA,NA
+228,12,"ARG","Argentina",7,"Corrientes",228,"Saladas","Departamento","Department",NA,NA
+229,12,"ARG","Argentina",7,"Corrientes",229,"San Cosme","Departamento","Department",NA,NA
+230,12,"ARG","Argentina",7,"Corrientes",230,"San Luis del Palmar","Departamento","Department",NA,"San Luis del Pal"
+231,12,"ARG","Argentina",7,"Corrientes",231,"San Martín","Departamento","Department",NA,"La Cruz"
+232,12,"ARG","Argentina",7,"Corrientes",232,"San Miguel","Departamento","Department",NA,NA
+233,12,"ARG","Argentina",7,"Corrientes",233,"San Roque","Departamento","Department",NA,NA
+234,12,"ARG","Argentina",7,"Corrientes",234,"Santo Tomé","Departamento","Department",NA,NA
+235,12,"ARG","Argentina",7,"Corrientes",235,"Sauce","Departamento","Department",NA,NA
+236,12,"ARG","Argentina",8,"Entre Ríos",236,"Colón","Departamento","Department",NA,NA
+237,12,"ARG","Argentina",8,"Entre Ríos",237,"Concordia","Departamento","Department",NA,NA
+238,12,"ARG","Argentina",8,"Entre Ríos",238,"Diamante","Departamento","Department",NA,NA
+239,12,"ARG","Argentina",8,"Entre Ríos",239,"Federación","Departamento","Department",NA,NA
+240,12,"ARG","Argentina",8,"Entre Ríos",240,"Federal","Departamento","Department",NA,NA
+241,12,"ARG","Argentina",8,"Entre Ríos",241,"Feliciano","Departamento","Department",NA,"San Jase de Feliciano"
+242,12,"ARG","Argentina",8,"Entre Ríos",242,"Gualeguaychú","Departamento","Department",NA,NA
+243,12,"ARG","Argentina",8,"Entre Ríos",243,"Gualeguay","Departamento","Department",NA,NA
+244,12,"ARG","Argentina",8,"Entre Ríos",244,"Isla","Departamento","Department",NA,NA
+245,12,"ARG","Argentina",8,"Entre Ríos",245,"Islas del Ibicuy","Departamento","Department",NA,"Villa Paranacito"
+246,12,"ARG","Argentina",8,"Entre Ríos",246,"La Paz","Departamento","Department",NA,NA
+247,12,"ARG","Argentina",8,"Entre Ríos",247,"Nogoyá","Departamento","Department",NA,NA
+248,12,"ARG","Argentina",8,"Entre Ríos",248,"Paraná","Departamento","Department",NA,NA
+249,12,"ARG","Argentina",8,"Entre Ríos",249,"Tala","Departamento","Department",NA,"Rosario del Tala"
+250,12,"ARG","Argentina",8,"Entre Ríos",250,"Uruguay","Departamento","Department",NA,"Concepcion del Uruguay"
+251,12,"ARG","Argentina",8,"Entre Ríos",251,"Victoria","Departamento","Department",NA,NA
+252,12,"ARG","Argentina",8,"Entre Ríos",252,"Villaguay","Departamento","Department",NA,NA
+253,12,"ARG","Argentina",9,"Formosa",253,"Bermejo","Departamento","Department",NA,"Laguna Yema"
+254,12,"ARG","Argentina",9,"Formosa",254,"Formosa","Departamento","Department",NA,NA
+255,12,"ARG","Argentina",9,"Formosa",255,"Laishi","Departamento","Department",NA,"Herradura"
+256,12,"ARG","Argentina",9,"Formosa",256,"Matacos","Departamento","Department",NA,"Ingeniero Juarez"
+257,12,"ARG","Argentina",9,"Formosa",257,"Patiño","Departamento","Department",NA,"Comandante Fontana"
+258,12,"ARG","Argentina",9,"Formosa",258,"Pilagás","Departamento","Department",NA,"Espinillo"
+259,12,"ARG","Argentina",9,"Formosa",259,"Pilcomayo","Departamento","Department",NA,"Clorinda"
+260,12,"ARG","Argentina",9,"Formosa",260,"Pirané","Departamento","Department",NA,NA
+261,12,"ARG","Argentina",9,"Formosa",261,"Ramón Lista","Departamento","Department",NA,"El Chorro"
+262,12,"ARG","Argentina",10,"Jujuy",262,"Capital","Departamento","Department",NA,"San Salvador de Jujuy|Doctor Manuel Belgrano|Capital (San Salvador de Jujuy)"
+263,12,"ARG","Argentina",10,"Jujuy",263,"Cochinoca","Departamento","Department",NA,"Abra Pampa"
+264,12,"ARG","Argentina",10,"Jujuy",264,"El Carmen","Departamento","Department",NA,NA
+265,12,"ARG","Argentina",10,"Jujuy",265,"Humahuaca","Departamento","Department",NA,NA
+266,12,"ARG","Argentina",10,"Jujuy",266,"Ledesma","Departamento","Department",NA,"Lib. Gral. San Martin"
+267,12,"ARG","Argentina",10,"Jujuy",267,"Palpalá","Departamento","Department",NA,NA
+268,12,"ARG","Argentina",10,"Jujuy",268,"Rinconada","Departamento","Department",NA,NA
+269,12,"ARG","Argentina",10,"Jujuy",269,"San Antonio","Departamento","Department",NA,NA
+270,12,"ARG","Argentina",10,"Jujuy",270,"San Pedro","Departamento","Department",NA,NA
+271,12,"ARG","Argentina",10,"Jujuy",271,"Santa Bárbara","Departamento","Department",NA,"Santa Clara"
+272,12,"ARG","Argentina",10,"Jujuy",272,"Santa Catalina","Departamento","Department",NA,NA
+273,12,"ARG","Argentina",10,"Jujuy",273,"Susques","Departamento","Department",NA,NA
+274,12,"ARG","Argentina",10,"Jujuy",274,"Tilcara","Departamento","Department",NA,NA
+275,12,"ARG","Argentina",10,"Jujuy",275,"Tumbaya","Departamento","Department",NA,NA
+276,12,"ARG","Argentina",10,"Jujuy",276,"Valle Grande","Departamento","Department",NA,NA
+277,12,"ARG","Argentina",10,"Jujuy",277,"Yavi","Departamento","Department",NA,"La Quiaca"
+278,12,"ARG","Argentina",11,"La Pampa",278,"Atreucó","Departamento","Department",NA,"Macachin"
+279,12,"ARG","Argentina",11,"La Pampa",279,"Caleu Caleu","Departamento","Department",NA,"Rio Colorado"
+280,12,"ARG","Argentina",11,"La Pampa",280,"Capital","Departamento","Department",NA,"Santa Rosa|Capital (Santa Rosa)"
+281,12,"ARG","Argentina",11,"La Pampa",281,"Catriló","Departamento","Department",NA,NA
+282,12,"ARG","Argentina",11,"La Pampa",282,"Chalileo","Departamento","Department",NA,"Santa Isabel"
+283,12,"ARG","Argentina",11,"La Pampa",283,"Chapaleufú","Departamento","Department",NA,"Intendente Alvear"
+284,12,"ARG","Argentina",11,"La Pampa",284,"Chical Có","Departamento","Department",NA,"Puelches"
+285,12,"ARG","Argentina",11,"La Pampa",285,"Conhelo","Departamento","Department",NA,"Eduardo Castex|Conhello"
+286,12,"ARG","Argentina",11,"La Pampa",286,"Curacó","Departamento","Department",NA,"Puelches|Cura Co"
+287,12,"ARG","Argentina",11,"La Pampa",287,"Guatraché","Departamento","Department",NA,NA
+288,12,"ARG","Argentina",11,"La Pampa",288,"Hucal","Departamento","Department",NA,"Bernasconi"
+289,12,"ARG","Argentina",11,"La Pampa",289,"Lihuel Calel","Departamento","Department",NA,"Cuchillo Co"
+290,12,"ARG","Argentina",11,"La Pampa",290,"Limay Mahuida","Departamento","Department",NA,NA
+291,12,"ARG","Argentina",11,"La Pampa",291,"Loventué","Departamento","Department",NA,"Victorica"
+292,12,"ARG","Argentina",11,"La Pampa",292,"Maracó","Departamento","Department",NA,"General Pico"
+293,12,"ARG","Argentina",11,"La Pampa",293,"Puelén","Departamento","Department",NA,"Colonia 25 de Mayo|Pulen"
+294,12,"ARG","Argentina",11,"La Pampa",294,"Quemú Quemú","Departamento","Department",NA,NA
+295,12,"ARG","Argentina",11,"La Pampa",295,"Rancul","Departamento","Department",NA,"Parera"
+296,12,"ARG","Argentina",11,"La Pampa",296,"Realicó","Departamento","Department",NA,"Ralico|Ralico"
+297,12,"ARG","Argentina",11,"La Pampa",297,"Toay","Departamento","Department",NA,NA
+298,12,"ARG","Argentina",11,"La Pampa",298,"Trenel","Departamento","Department",NA,NA
+299,12,"ARG","Argentina",11,"La Pampa",299,"Utracán","Departamento","Department",NA,"General Acha|Ultracan"
+300,12,"ARG","Argentina",12,"La Rioja",300,"Arauco","Departamento","Department",NA,"Aimogasta"
+301,12,"ARG","Argentina",12,"La Rioja",301,"Capital","Departamento","Department",NA,"La Rioja|Capital (La Rioja)"
+302,12,"ARG","Argentina",12,"La Rioja",302,"Castro Barros","Departamento","Department",NA,"Aminga"
+303,12,"ARG","Argentina",12,"La Rioja",303,"Chamical","Departamento","Department",NA,"Gobernador Gordillo"
+304,12,"ARG","Argentina",12,"La Rioja",304,"Chilecito","Departamento","Department",NA,NA
+305,12,"ARG","Argentina",12,"La Rioja",305,"Coronel Felipe Varela","Departamento","Department",NA,"Villa Union|General Lavalle"
+306,12,"ARG","Argentina",12,"La Rioja",306,"Famatina","Departamento","Department",NA,NA
+307,12,"ARG","Argentina",12,"La Rioja",307,"General Angel Vicente Peñaloza","Departamento","Department",NA,"Tama|General Angel V. Pesaloza"
+308,12,"ARG","Argentina",12,"La Rioja",308,"General Belgrano","Departamento","Department",NA,"Olta"
+309,12,"ARG","Argentina",12,"La Rioja",309,"General Juan Facundo Quiroga","Departamento","Department",NA,"Malanzan|General Juan F. Quiroga"
+310,12,"ARG","Argentina",12,"La Rioja",310,"General Lamadrid","Departamento","Department",NA,"Villa Castelli"
+311,12,"ARG","Argentina",12,"La Rioja",311,"General Ocampo","Departamento","Department",NA,"Villa Santa Rita"
+312,12,"ARG","Argentina",12,"La Rioja",312,"General San Martín","Departamento","Department",NA,"Ulapes"
+313,12,"ARG","Argentina",12,"La Rioja",313,"Independencia","Departamento","Department",NA,"Patquia"
+314,12,"ARG","Argentina",12,"La Rioja",314,"Rosario Vera Peñaloza","Departamento","Department",NA,"Chepes"
+315,12,"ARG","Argentina",12,"La Rioja",315,"San Blas de los Sauces","Departamento","Department",NA,"San Blas"
+316,12,"ARG","Argentina",12,"La Rioja",316,"Sanagasta","Departamento","Department",NA,"Villa Bustos"
+317,12,"ARG","Argentina",12,"La Rioja",317,"Vinchina","Departamento","Department",NA,"General Sarmiento"
+318,12,"ARG","Argentina",13,"Mendoza",318,"Capital","Departamento","Department",NA,"Mendoza|Capital (Mendoza)"
+319,12,"ARG","Argentina",13,"Mendoza",319,"General Alvear","Departamento","Department",NA,NA
+320,12,"ARG","Argentina",13,"Mendoza",320,"Godoy Cruz","Departamento","Department",NA,NA
+321,12,"ARG","Argentina",13,"Mendoza",321,"Guaymallén","Departamento","Department",NA,NA
+322,12,"ARG","Argentina",13,"Mendoza",322,"Junín","Departamento","Department",NA,NA
+323,12,"ARG","Argentina",13,"Mendoza",323,"La Paz","Departamento","Department",NA,NA
+324,12,"ARG","Argentina",13,"Mendoza",324,"Las Heras","Departamento","Department",NA,NA
+325,12,"ARG","Argentina",13,"Mendoza",325,"Lavalle","Departamento","Department",NA,"Tulumaya"
+326,12,"ARG","Argentina",13,"Mendoza",326,"Luján de Cuyo","Departamento","Department",NA,"Lujan|Lujan"
+327,12,"ARG","Argentina",13,"Mendoza",327,"Maipú","Departamento","Department",NA,NA
+328,12,"ARG","Argentina",13,"Mendoza",328,"Malargüe","Departamento","Department",NA,"Malarge|Malarge"
+329,12,"ARG","Argentina",13,"Mendoza",329,"Rivadavia","Departamento","Department",NA,NA
+330,12,"ARG","Argentina",13,"Mendoza",330,"San Carlos","Departamento","Department",NA,NA
+331,12,"ARG","Argentina",13,"Mendoza",331,"San Martín","Departamento","Department",NA,NA
+332,12,"ARG","Argentina",13,"Mendoza",332,"San Rafael","Departamento","Department",NA,NA
+333,12,"ARG","Argentina",13,"Mendoza",333,"Santa Rosa","Departamento","Department",NA,NA
+334,12,"ARG","Argentina",13,"Mendoza",334,"Tunuyán","Departamento","Department",NA,NA
+335,12,"ARG","Argentina",13,"Mendoza",335,"Tupungato","Departamento","Department",NA,NA
+336,12,"ARG","Argentina",14,"Misiones",336,"Apóstoles","Departamento","Department",NA,NA
+337,12,"ARG","Argentina",14,"Misiones",337,"Cainguás","Departamento","Department",NA,"Campo Grande"
+338,12,"ARG","Argentina",14,"Misiones",338,"Candelaria","Departamento","Department",NA,"Santa Ana"
+339,12,"ARG","Argentina",14,"Misiones",339,"Capital","Departamento","Department",NA,"Posadas|Capital (Posadas)"
+340,12,"ARG","Argentina",14,"Misiones",340,"Concepción","Departamento","Department",NA,"Concepcion de la Sierra"
+341,12,"ARG","Argentina",14,"Misiones",341,"Eldorado","Departamento","Department",NA,NA
+342,12,"ARG","Argentina",14,"Misiones",342,"General Manuel Belgrano","Departamento","Department",NA,"Bernardo de Irigoyen"
+343,12,"ARG","Argentina",14,"Misiones",343,"Guaraní","Departamento","Department",NA,"El Soberbio"
+344,12,"ARG","Argentina",14,"Misiones",344,"Iguazú","Departamento","Department",NA,"Wanda"
+345,12,"ARG","Argentina",14,"Misiones",345,"Leandro N. Alem","Departamento","Department",NA,NA
+346,12,"ARG","Argentina",14,"Misiones",346,"Libertador General San Martín","Departamento","Department",NA,"Libertador General San Ma|Libertador"
+347,12,"ARG","Argentina",14,"Misiones",347,"Montecarlo","Departamento","Department",NA,NA
+348,12,"ARG","Argentina",14,"Misiones",348,"Oberá","Departamento","Department",NA,NA
+349,12,"ARG","Argentina",14,"Misiones",349,"San Ignacio","Departamento","Department",NA,NA
+350,12,"ARG","Argentina",14,"Misiones",350,"San Javier","Departamento","Department",NA,NA
+351,12,"ARG","Argentina",14,"Misiones",351,"San Pedro","Departamento","Department",NA,NA
+352,12,"ARG","Argentina",14,"Misiones",352,"Veinticinco de Mayo","Departamento","Department",NA,"Alba Pose|25 de Mayo"
+353,12,"ARG","Argentina",15,"Neuquén",353,"Ñorquín","Departamento","Department",NA,"El Huecu|Nroquin"
+354,12,"ARG","Argentina",15,"Neuquén",354,"Añelo","Departamento","Department",NA,NA
+355,12,"ARG","Argentina",15,"Neuquén",355,"Aluminé","Departamento","Department",NA,NA
+356,12,"ARG","Argentina",15,"Neuquén",356,"Catán Lil","Departamento","Department",NA,"Las Coloradas"
+357,12,"ARG","Argentina",15,"Neuquén",357,"Chos Malal","Departamento","Department",NA,NA
+358,12,"ARG","Argentina",15,"Neuquén",358,"Collón Curá","Departamento","Department",NA,"Piedra del Aguila"
+359,12,"ARG","Argentina",15,"Neuquén",359,"Confluencia","Departamento","Department",NA,"Neuquen"
+360,12,"ARG","Argentina",15,"Neuquén",360,"Huiliches","Departamento","Department",NA,"Junin de los Andes"
+361,12,"ARG","Argentina",15,"Neuquén",361,"Lacar","Departamento","Department",NA,"San Martin de los Andes"
+362,12,"ARG","Argentina",15,"Neuquén",362,"Loncopué","Departamento","Department",NA,NA
+363,12,"ARG","Argentina",15,"Neuquén",363,"Los Lagos","Departamento","Department",NA,"Villa la Angostura"
+364,12,"ARG","Argentina",15,"Neuquén",364,"Minas","Departamento","Department",NA,"Andacollo"
+365,12,"ARG","Argentina",15,"Neuquén",365,"Pehuenches","Departamento","Department",NA,"Buta Ranquil"
+366,12,"ARG","Argentina",15,"Neuquén",366,"Picún Leufú","Departamento","Department",NA,NA
+367,12,"ARG","Argentina",15,"Neuquén",367,"Picunches","Departamento","Department",NA,"Las Lajas"
+368,12,"ARG","Argentina",15,"Neuquén",368,"Zapala","Departamento","Department",NA,NA
+369,12,"ARG","Argentina",16,"Río Negro",369,"Ñorquinco","Departamento","Department",NA,NA
+370,12,"ARG","Argentina",16,"Río Negro",370,"Adolfo Alsina","Departamento","Department",NA,"Viedma"
+371,12,"ARG","Argentina",16,"Río Negro",371,"Avellaneda","Departamento","Department",NA,"Choele Choel"
+372,12,"ARG","Argentina",16,"Río Negro",372,"Bariloche","Departamento","Department",NA,"San Carlos de Barioche|Barioche"
+373,12,"ARG","Argentina",16,"Río Negro",373,"Conesa","Departamento","Department",NA,"General Conesa"
+374,12,"ARG","Argentina",16,"Río Negro",374,"El Cuy","Departamento","Department",NA,NA
+375,12,"ARG","Argentina",16,"Río Negro",375,"General Roca","Departamento","Department",NA,NA
+376,12,"ARG","Argentina",16,"Río Negro",376,"Nueve de Julio","Departamento","Department",NA,"Sierra Colorada|9 de Julio"
+377,12,"ARG","Argentina",16,"Río Negro",377,"Pichi Mahuida","Departamento","Department",NA,"Rio Colorado"
+378,12,"ARG","Argentina",16,"Río Negro",378,"Pilcaniyeu","Departamento","Department",NA,NA
+379,12,"ARG","Argentina",16,"Río Negro",379,"San Antonio","Departamento","Department",NA,"San Antonio Oeste"
+380,12,"ARG","Argentina",16,"Río Negro",380,"Valcheta","Departamento","Department",NA,NA
+381,12,"ARG","Argentina",16,"Río Negro",381,"Veinticinco de Mayo","Departamento","Department",NA,"Maquinchao|25 de Mayo"
+382,12,"ARG","Argentina",17,"Salta",382,"Anta","Departamento","Department",NA,NA
+383,12,"ARG","Argentina",17,"Salta",383,"Cachi","Departamento","Department",NA,NA
+384,12,"ARG","Argentina",17,"Salta",384,"Cafayate","Departamento","Department",NA,NA
+385,12,"ARG","Argentina",17,"Salta",385,"Capital","Departamento","Department",NA,"Salta|Capital (Salta)"
+386,12,"ARG","Argentina",17,"Salta",386,"Cerrillos","Departamento","Department",NA,NA
+387,12,"ARG","Argentina",17,"Salta",387,"Chicoana","Departamento","Department",NA,NA
+388,12,"ARG","Argentina",17,"Salta",388,"General Güemes","Departamento","Department",NA,"Gral. Martin M. Güemes"
+389,12,"ARG","Argentina",17,"Salta",389,"General José de San Martín","Departamento","Department",NA,"General Jose de San Marti|General Jo"
+390,12,"ARG","Argentina",17,"Salta",390,"Guachipas","Departamento","Department",NA,NA
+391,12,"ARG","Argentina",17,"Salta",391,"Iruya","Departamento","Department",NA,NA
+392,12,"ARG","Argentina",17,"Salta",392,"La Caldera","Departamento","Department",NA,"Caldera"
+393,12,"ARG","Argentina",17,"Salta",393,"La Candelaria","Departamento","Department",NA,"Candelaria"
+394,12,"ARG","Argentina",17,"Salta",394,"La Poma","Departamento","Department",NA,"Poma"
+395,12,"ARG","Argentina",17,"Salta",395,"La Viña","Departamento","Department",NA,NA
+396,12,"ARG","Argentina",17,"Salta",396,"Los Andes","Departamento","Department",NA,"San Antonio de los Cobres"
+397,12,"ARG","Argentina",17,"Salta",397,"Metán","Departamento","Department",NA,NA
+398,12,"ARG","Argentina",17,"Salta",398,"Molinos","Departamento","Department",NA,NA
+399,12,"ARG","Argentina",17,"Salta",399,"Orán","Departamento","Department",NA,"S. Ramon de la N. Oran"
+400,12,"ARG","Argentina",17,"Salta",400,"Rivadavia","Departamento","Department",NA,NA
+401,12,"ARG","Argentina",17,"Salta",401,"Rosario de la Frontera","Departamento","Department",NA,NA
+402,12,"ARG","Argentina",17,"Salta",402,"Rosario de Lerma","Departamento","Department",NA,NA
+403,12,"ARG","Argentina",17,"Salta",403,"San Carlos","Departamento","Department",NA,NA
+404,12,"ARG","Argentina",17,"Salta",404,"Santa Victoria","Departamento","Department",NA,NA
+405,12,"ARG","Argentina",18,"San Juan",405,"Albardón","Departamento","Department",NA,NA
+406,12,"ARG","Argentina",18,"San Juan",406,"Angaco","Departamento","Department",NA,"Villa del Salvador"
+407,12,"ARG","Argentina",18,"San Juan",407,"Calingasta","Departamento","Department",NA,"Tamberias"
+408,12,"ARG","Argentina",18,"San Juan",408,"Capital","Departamento","Department",NA,"San Juan|Capital (San Juan)"
+409,12,"ARG","Argentina",18,"San Juan",409,"Caucete","Departamento","Department",NA,NA
+410,12,"ARG","Argentina",18,"San Juan",410,"Chimbas","Departamento","Department",NA,NA
+411,12,"ARG","Argentina",18,"San Juan",411,"Iglesia","Departamento","Department",NA,"Rodeo"
+412,12,"ARG","Argentina",18,"San Juan",412,"Jáchal","Departamento","Department",NA,"San Jose de Jachal"
+413,12,"ARG","Argentina",18,"San Juan",413,"Pocito","Departamento","Department",NA,"Villa Alberastain"
+414,12,"ARG","Argentina",18,"San Juan",414,"Rawson","Departamento","Department",NA,"Villa Krause"
+415,12,"ARG","Argentina",18,"San Juan",415,"Rivadavia","Departamento","Department",NA,NA
+416,12,"ARG","Argentina",18,"San Juan",416,"San Martín","Departamento","Department",NA,"Santa Lucia"
+417,12,"ARG","Argentina",18,"San Juan",417,"Santa Lucía","Departamento","Department",NA,NA
+418,12,"ARG","Argentina",18,"San Juan",418,"Sarmiento","Departamento","Department",NA,"Media Agua"
+419,12,"ARG","Argentina",18,"San Juan",419,"Ullum","Departamento","Department",NA,"Ullun|Ullun"
+420,12,"ARG","Argentina",18,"San Juan",420,"Valle Fértil","Departamento","Department",NA,"San Agustin del Valle Fert|Valle Fert"
+421,12,"ARG","Argentina",18,"San Juan",421,"Veinticinco de Mayo","Departamento","Department",NA,"Santa Rosa|25 De Mayo"
+422,12,"ARG","Argentina",18,"San Juan",422,"Zonda","Departamento","Department",NA,NA
+423,12,"ARG","Argentina",19,"San Luis",423,"Ayacucho","Departamento","Department",NA,"San Fco. del Monte de Oro"
+424,12,"ARG","Argentina",19,"San Luis",424,"Belgrano","Departamento","Department",NA,"Villa Generel Roca"
+425,12,"ARG","Argentina",19,"San Luis",425,"Chacabuco","Departamento","Department",NA,"Concaran"
+426,12,"ARG","Argentina",19,"San Luis",426,"Coronel Pringles","Departamento","Department",NA,"La Toma"
+427,12,"ARG","Argentina",19,"San Luis",427,"General Pedernera","Departamento","Department",NA,"Mercedes"
+428,12,"ARG","Argentina",19,"San Luis",428,"Gobernador Dupuy","Departamento","Department",NA,"Buena Esperanza"
+429,12,"ARG","Argentina",19,"San Luis",429,"Junín","Departamento","Department",NA,"Santa Rosa"
+430,12,"ARG","Argentina",19,"San Luis",430,"La Capital","Departamento","Department",NA,"San Luis"
+431,12,"ARG","Argentina",19,"San Luis",431,"Libertador General San Martín","Departamento","Department",NA,"Libertador General San Ma|Libertador"
+432,12,"ARG","Argentina",20,"Santa Cruz",432,"Corpen Aike","Departamento","Department",NA,"Sata Cruz"
+433,12,"ARG","Argentina",20,"Santa Cruz",433,"Deseado","Departamento","Department",NA,"Puerto Deseado"
+434,12,"ARG","Argentina",20,"Santa Cruz",434,"Güer Aike","Departamento","Department",NA,"Rio Gallegos|Ger Aike"
+435,12,"ARG","Argentina",20,"Santa Cruz",435,"Lago Argentino","Departamento","Department",NA,"Calafate"
+436,12,"ARG","Argentina",20,"Santa Cruz",436,"Lago Buenos Aires","Departamento","Department",NA,"Perito Moreno"
+437,12,"ARG","Argentina",20,"Santa Cruz",437,"Magallanes","Departamento","Department",NA,"San Julian"
+438,12,"ARG","Argentina",20,"Santa Cruz",438,"Rió Chico","Departamento","Department",NA,"Gobernador Gregores"
+439,12,"ARG","Argentina",21,"Santa Fe",439,"Belgrano","Departamento","Department",NA,"Las Rosas"
+440,12,"ARG","Argentina",21,"Santa Fe",440,"Caseros","Departamento","Department",NA,"Casilda"
+441,12,"ARG","Argentina",21,"Santa Fe",441,"Castellanos","Departamento","Department",NA,"Rafaela"
+442,12,"ARG","Argentina",21,"Santa Fe",442,"Constitución","Departamento","Department",NA,"Villa Constitucion"
+443,12,"ARG","Argentina",21,"Santa Fe",443,"Garay","Departamento","Department",NA,"Helvencia"
+444,12,"ARG","Argentina",21,"Santa Fe",444,"General López","Departamento","Department",NA,"Melincue"
+445,12,"ARG","Argentina",21,"Santa Fe",445,"General Obligado","Departamento","Department",NA,"Reconquista"
+446,12,"ARG","Argentina",21,"Santa Fe",446,"Iriondo","Departamento","Department",NA,"Cañada de Gomez"
+447,12,"ARG","Argentina",21,"Santa Fe",447,"La Capital","Departamento","Department",NA,"Santa Fe"
+448,12,"ARG","Argentina",21,"Santa Fe",448,"Las Colonias","Departamento","Department",NA,"Esperanza"
+449,12,"ARG","Argentina",21,"Santa Fe",449,"Nueve de Julio","Departamento","Department",NA,"Tostado|9 de Julio"
+450,12,"ARG","Argentina",21,"Santa Fe",450,"Rosario","Departamento","Department",NA,NA
+451,12,"ARG","Argentina",21,"Santa Fe",451,"San Cristóbal","Departamento","Department",NA,NA
+452,12,"ARG","Argentina",21,"Santa Fe",452,"San Javier","Departamento","Department",NA,NA
+453,12,"ARG","Argentina",21,"Santa Fe",453,"San Jerónimo","Departamento","Department",NA,"Coronda"
+454,12,"ARG","Argentina",21,"Santa Fe",454,"San Justo","Departamento","Department",NA,NA
+455,12,"ARG","Argentina",21,"Santa Fe",455,"San Lorenzo","Departamento","Department",NA,"Coronda"
+456,12,"ARG","Argentina",21,"Santa Fe",456,"San Martín","Departamento","Department",NA,"Sastre"
+457,12,"ARG","Argentina",21,"Santa Fe",457,"Vera","Departamento","Department",NA,NA
+458,12,"ARG","Argentina",22,"Santiago del Estero",458,"Aguirre","Departamento","Department",NA,"Pinto"
+459,12,"ARG","Argentina",22,"Santiago del Estero",459,"Alberdi","Departamento","Department",NA,"Campo Gallo"
+460,12,"ARG","Argentina",22,"Santiago del Estero",460,"Atamisqui","Departamento","Department",NA,"Villa Atamisqui"
+461,12,"ARG","Argentina",22,"Santiago del Estero",461,"Avellaneda","Departamento","Department",NA,"Herrera"
+462,12,"ARG","Argentina",22,"Santiago del Estero",462,"Banda","Departamento","Department",NA,"La Banda"
+463,12,"ARG","Argentina",22,"Santiago del Estero",463,"Belgrano","Departamento","Department",NA,"Bandera"
+464,12,"ARG","Argentina",22,"Santiago del Estero",464,"Capital","Departamento","Department",NA,"San del Estero|Capital (Santiago del Estero)"
+465,12,"ARG","Argentina",22,"Santiago del Estero",465,"Choya","Departamento","Department",NA,"Frias"
+466,12,"ARG","Argentina",22,"Santiago del Estero",466,"Copo","Departamento","Department",NA,"Monte Quemado"
+467,12,"ARG","Argentina",22,"Santiago del Estero",467,"Figueroa","Departamento","Department",NA,"La Canada"
+468,12,"ARG","Argentina",22,"Santiago del Estero",468,"General Taboada","Departamento","Department",NA,"Anatuya"
+469,12,"ARG","Argentina",22,"Santiago del Estero",469,"Guasayán","Departamento","Department",NA,"San Pedro"
+470,12,"ARG","Argentina",22,"Santiago del Estero",470,"Jiménez","Departamento","Department",NA,"Pozo Hondo|Jimnez"
+471,12,"ARG","Argentina",22,"Santiago del Estero",471,"Juan Felipe Ibarra","Departamento","Department",NA,"Suncho Corral|Juan F. Ibarra"
+472,12,"ARG","Argentina",22,"Santiago del Estero",472,"Loreto","Departamento","Department",NA,"Va. S. Martin"
+473,12,"ARG","Argentina",22,"Santiago del Estero",473,"Mitre","Departamento","Department",NA,"Villa Union"
+474,12,"ARG","Argentina",22,"Santiago del Estero",474,"Moreno","Departamento","Department",NA,"Quimili"
+475,12,"ARG","Argentina",22,"Santiago del Estero",475,"Ojo de Agua","Departamento","Department",NA,"Villa Ojo de Agua"
+476,12,"ARG","Argentina",22,"Santiago del Estero",476,"Pellegrini","Departamento","Department",NA,"La Fragua"
+477,12,"ARG","Argentina",22,"Santiago del Estero",477,"Quebrachos","Departamento","Department",NA,"Sumampa"
+478,12,"ARG","Argentina",22,"Santiago del Estero",478,"Rió Hondo","Departamento","Department",NA,"Las Termas"
+479,12,"ARG","Argentina",22,"Santiago del Estero",479,"Rivadavia","Departamento","Department",NA,"Selva"
+480,12,"ARG","Argentina",22,"Santiago del Estero",480,"Robles","Departamento","Department",NA,"Fernandez"
+481,12,"ARG","Argentina",22,"Santiago del Estero",481,"Salavina","Departamento","Department",NA,"Los Telares"
+482,12,"ARG","Argentina",22,"Santiago del Estero",482,"San Martín","Departamento","Department",NA,"Bera Pozo"
+483,12,"ARG","Argentina",22,"Santiago del Estero",483,"Sarmiento","Departamento","Department",NA,"Garza"
+484,12,"ARG","Argentina",22,"Santiago del Estero",484,"Silípica","Departamento","Department",NA,"Arraga"
+485,12,"ARG","Argentina",23,"Tierra del Fuego",485,"Rió Grande","Departamento","Department",NA,NA
+486,12,"ARG","Argentina",23,"Tierra del Fuego",486,"Ushuaia","Departamento","Department",NA,NA
+487,12,"ARG","Argentina",24,"Tucumán",487,"Burruyacú","Departamento","Department",NA,NA
+488,12,"ARG","Argentina",24,"Tucumán",488,"Capital","Departamento","Department",NA,"San Miguel de Tucuman|Capital (Tucumán)"
+489,12,"ARG","Argentina",24,"Tucumán",489,"Chicligasta","Departamento","Department",NA,"Concepcion"
+490,12,"ARG","Argentina",24,"Tucumán",490,"Cruz Alta","Departamento","Department",NA,"Banda del R.Sali"
+491,12,"ARG","Argentina",24,"Tucumán",491,"Famaillá","Departamento","Department",NA,NA
+492,12,"ARG","Argentina",24,"Tucumán",492,"Graneros","Departamento","Department",NA,NA
+493,12,"ARG","Argentina",24,"Tucumán",493,"Juan B. Alberdi","Departamento","Department",NA,"Juan B.Alberdi|Alberdi"
+494,12,"ARG","Argentina",24,"Tucumán",494,"La Cocha","Departamento","Department",NA,NA
+495,12,"ARG","Argentina",24,"Tucumán",495,"Leales","Departamento","Department",NA,"Bella Vista"
+496,12,"ARG","Argentina",24,"Tucumán",496,"Lules","Departamento","Department",NA,NA
+497,12,"ARG","Argentina",24,"Tucumán",497,"Monteros","Departamento","Department",NA,NA
+498,12,"ARG","Argentina",24,"Tucumán",498,"Rió Chico","Departamento","Department",NA,"Aquilares"
+499,12,"ARG","Argentina",24,"Tucumán",499,"Simoca","Departamento","Department",NA,NA
+500,12,"ARG","Argentina",24,"Tucumán",500,"Tafí del Valle","Departamento","Department",NA,NA
+501,12,"ARG","Argentina",24,"Tucumán",501,"Tafí Viejo","Departamento","Department",NA,NA
+502,12,"ARG","Argentina",24,"Tucumán",502,"Trancas","Departamento","Department",NA,NA
+503,12,"ARG","Argentina",24,"Tucumán",503,"Yerba Buena","Departamento","Department",NA,NA

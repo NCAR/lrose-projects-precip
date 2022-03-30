@@ -1,0 +1,128 @@
+HOWTO for using CIDD remotely for FRONT
+=======================================
+
+1. Download CIDD binary
+-----------------------
+
+There are 2 binary distributions for LINUX, one for 64-bit hosts and
+one for 32-bit hosts.
+
+You can find these at:
+
+  https://www.eol.ucar.edu/software/cidd-cartesian-interactive-data-display
+
+Download the relevant tar file. For example, for 64-bit hosts, the
+version for 2014/05/13 is:
+
+  cidd-20140513.x86_64.tgz
+
+2. Install CIDD binary
+----------------------
+
+Make yourself a staging directory and copy the file in.
+
+For example:
+
+  mkdir ~/cidd_dist
+  cd cidd_dist
+  cp ~/Downloads/cidd-20140513.x86_64.tgz .
+
+Untar the file:
+
+  tar xvfz cidd-20140513.x86_64.tgz
+
+Go into the directory:
+
+  cd cidd-20140513.x86_64
+
+By default, the binaries will be installed in /usr/local/bin.
+To do this, you will need to use sudo, or be root. For example:
+
+  sudo ./install_bin_release
+
+If you want to put it in your local area, instead of /usr/local,
+choose a target location, for example ~/bin.
+
+Then install the binary as follows:
+
+  ./install_bin_release ~/bin
+
+In this case, make sure ~/bin is in your path.
+
+Check that you can run CIDD, by running the following:
+
+  rehash (if you use csh or tcsh)
+  CIDD -help
+
+and you should see something like the following:
+
+  Usage:CIDD [-p Parameter_file] [-v report_level] [-i Instance string] \[-t YYYYMMDDHHMM(SS - seconds optional)] [-h height,height,height,...  ] [-x http://proxy_host:3128] \ [-print_params] 
+
+       -p: CIDD will look for config files in dir where param file  is located
+       -v: Level 0-7 Verbosity (Bitwise flags)
+       -h: CIDD starts up at the first height
+       -i: CIDD registers with the process mapper using this instance
+       -q: Quiet mode: CIDD outputs no messages 
+       -t: CIDD Starts up in archive mode at this time
+       -u: CIDD runs unmapped (hidden)
+       -x: Use this proxy server for data requests
+       -V: Run in vertical pointing mode - no cosine correction)
+       -print_params: Output a default/example param file
+
+If you do, your installation is successful.
+
+Then hit Ctrl-C to exit CIDD.
+
+3. Set up the X environment for CIDD fonts
+------------------------------------------
+
+Go to:
+
+  https://www.eol.ucar.edu/content/display-tools
+
+Expand the "Files and Brochures' tab at the top.
+
+Download the file:
+
+  XResources4CIDD.txt
+
+move the file to a convenient location, and then set your display font
+resources using the following command:
+
+  mkdir ~/resources
+  cd ~/resources
+  cp ~/Downloads/XResources4CIDD.txt .
+  xrdb ./XResources4CIDD.txt
+
+4. You can run CIDD directy from the command line
+-------------------------------------------------
+
+  CIDD -p http://front.eol.ucar.edu/content/projects/hawk/front/projDir/display/params/CIDD.front
+
+5. Or you can download the start script
+---------------------------------------
+
+Go to:
+
+  https://www.eol.ucar.edu/content/display-tools
+
+Expand the "Files and Brochures' tab at the top.
+
+Download the file:
+
+  start_CIDD.front_.txt
+
+Copy it into a bin directory:
+
+  cd ~/bin
+  cp ~/Downloads/start_CIDD.front_.txt start_CIDD.front
+
+Make is executable:
+
+  chmod +x start_CIDD.front
+
+Run it:
+
+  start_CIDD.front
+
+

@@ -1,0 +1,5 @@
+#! /bin/csh
+#
+
+rsync_to_usb_drive.relampago |& \
+    LogFilter -d $ERRORS_LOG_DIR -p rsync_to_usb_drive -i relampago >& /dev/null &

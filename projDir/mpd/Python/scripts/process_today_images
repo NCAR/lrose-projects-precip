@@ -1,0 +1,20 @@
+#! /usr/bin/tcsh
+
+source ~/.cshrc
+
+start_Xvfb
+set display_num = 1000
+setenv DISPLAY :${display_num}.0
+
+echo "Running process_today_images" >>& /tmp/process_today_images.log
+date -u >>& /tmp/process_today_images.log
+
+# make output dirs
+
+mkdir -p /scr/eldora1/wvdial_1_processed_data >>& /tmp/process_today_images.log
+mkdir -p /scr/eldora1/wvdial_2_processed_data >>& /tmp/process_today_images.log
+
+# run python processing command
+
+ipython ~/projDir/dial/Python/scripts/Process_Images_Today_Settings.py >>& /tmp/process_today_images.log &
+

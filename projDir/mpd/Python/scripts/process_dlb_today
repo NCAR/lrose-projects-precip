@@ -1,0 +1,19 @@
+#! /usr/bin/tcsh
+
+source ~/.cshrc
+
+start_Xvfb
+set display_num = 1000
+setenv DISPLAY :${display_num}.0
+
+echo "Running process_dlb_today" >>& /tmp/process_dlb_today.log
+date -u >>& /tmp/process_dlb_today.log
+
+# make output dirs
+mkdir -p /scr/eldora1/wvdial_1_processed_data >>& /tmp/process_dlb_today.log
+mkdir -p /scr/eldora1/wvdial_2_processed_data >>& /tmp/process_dlb_today.log
+
+# run python processing command
+ipython ~/projDir/dial/Python/scripts/Process_Today_Settings.py >>& /tmp/process_dlb_today.log &
+
+

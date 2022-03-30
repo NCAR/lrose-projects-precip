@@ -1,0 +1,5 @@
+#! /bin/csh
+
+/bin/cp /tmp/pound.cfg /usr/local/etc
+/etc/init.d/pound restart
+

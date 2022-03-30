@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/qpe/params
+
+# foreach radar (kftg kcys kpux kgld kgjx spol chill)
+foreach radar (kftg kcys kpux kgld kgjx )
+
+  RadxQpe -params RadxQpe.${radar}.rerun -start "2014 06 08 13 00 00" -end "2014 06 10 14 00 00" -debug >& $ERRORS_LOG_DIR/today/RadxQpe.rerun.${radar}.log &
+
+end

@@ -1,0 +1,15 @@
+#! /bin/csh
+
+# Get the file path from the command line
+
+set file_path = $1
+
+# Ensure virtual X server is running and set display accordingly. 
+
+start_Xvfb
+set display_num = 1000
+setenv DISPLAY :${display_num}.0
+
+cd $PROJ_DIR/catalog/params
+HawkEye -params HawkEye.catalog.dow7_rhi -f $file_path
+

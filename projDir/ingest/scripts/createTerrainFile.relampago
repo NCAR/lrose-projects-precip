@@ -1,0 +1,7 @@
+#! /bin/csh
+
+# make a 0.01 deg latlon terrain grid for RELAMPAGO area
+
+WorldTerrain /scr/sci/rsfdata/terrain/DEM/compressed -45 -80 2500 2500 0.01 0.01 ~/git/lrose-projects-relampago/data_dirs/data.opscenter/mdv/terrain/relampago_terrain.mdv
+
+

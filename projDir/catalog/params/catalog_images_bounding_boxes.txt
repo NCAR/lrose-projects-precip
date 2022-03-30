@@ -1,0 +1,192 @@
+NEXRAD KFTG
+===========
+
+<GeoImage>
+ <px> 954 </px>
+ <py> 1246 </py>
+ <pdx> 0.627893 </pdx>
+ <pdy> 0.626985 </pdy>
+  <LatLonBox>
+    <north> 42.4806  </north>
+    <south> 37.0926  </south>
+    <east> -101.86  </east>
+    <west> -107.241  </west>
+  </LatLonBox>
+</GeoImage>
+
+NEXRAD KCYS
+===========
+
+<GeoImage>
+ <px> 935 </px>
+ <py> 1246 </py>
+ <pdx> 0.640295 </pdx>
+ <pdy> 0.639896 </pdy>
+  <LatLonBox>
+    <north> 43.8459  </north>
+    <south> 38.4579  </south>
+    <east> -102.123  </east>
+    <west> -107.501  </west>
+  </LatLonBox>
+</GeoImage>
+
+NEXRAD KPUX
+===========
+
+<GeoImage>
+ <px> 972 </px>
+ <py> 1246 </py>
+ <pdx> 0.615922 </pdx>
+ <pdy> 0.615254 </pdy>
+  <LatLonBox>
+    <north> 41.1535  </north>
+    <south> 35.7655  </south>
+    <east> -101.498  </east>
+    <west> -106.876  </west>
+  </LatLonBox>
+</GeoImage>
+
+NEXRAD KGLD
+===========
+
+<GeoImage>
+ <px> 1000 </px>
+ <py> 1246 </py>
+ <pdx> 0.623621 </pdx>
+ <pdy> 0.6232 </pdy>
+  <LatLonBox>
+    <north> 42.0608  </north>
+    <south> 36.6727  </south>
+    <east> -98.7929  </east>
+    <west> -104.395  </west>
+  </LatLonBox>
+</GeoImage>
+
+NEXRAD KGJX
+===========
+
+<GeoImage>
+ <px> 964 </px>
+ <py> 1246 </py>
+ <pdx> 0.621045 </pdx>
+ <pdy> 0.620486 </pdy>
+  <LatLonBox>
+    <north> 41.7562  </north>
+    <south> 36.3682  </south>
+    <east> -105.53  </east>
+    <west> -110.908  </west>
+  </LatLonBox>
+</GeoImage>
+
+NEXRAD MOSAIC
+=============
+
+<GeoImage>
+ <px> 1421 </px>
+ <py> 1446 </py>
+ <pdx> 0.800284 </pdx>
+ <pdy> 0.799689 </pdy>
+  <LatLonBox>
+    <north> 43.5  </north>
+    <south> 35.5  </south>
+    <east> -99.2843  </east>
+    <west> -109.5  </west>
+  </LatLonBox>
+</GeoImage>
+
+SPOL
+====
+
+<GeoImage>
+ <px> 968 </px>
+ <py> 1246 </py>
+ <pdx> 0.420447 </pdx>
+ <pdy> 0.419932 </pdy>
+  <LatLonBox>
+    <north> 41.9197  </north>
+    <south> 38.327  </south>
+    <east> -103.032  </east>
+    <west> -106.688  </west>
+  </LatLonBox>
+</GeoImage>
+
+CHILL
+=====
+
+<GeoImage>
+ <px> 925 </px>
+ <py> 1246 </py>
+ <pdx> 0.422533 </pdx>
+ <pdy> 0.421933 </pdy>
+  <LatLonBox>
+    <north> 42.2426  </north>
+    <south> 38.65  </south>
+    <east> -102.923  </east>
+    <west> -106.434  </west>
+  </LatLonBox>
+</GeoImage>
+
+SURFACE
+=======
+
+<GeoImage>
+ <px> 1421 </px>
+ <py> 1446 </py>
+ <pdx> 0.800284 </pdx>
+ <pdy> 0.799689 </pdy>
+  <LatLonBox>
+    <north> 43.5  </north>
+    <south> 35.5  </south>
+    <east> -99.2843  </east>
+    <west> -109.5  </west>
+  </LatLonBox>
+</GeoImage>
+
+SAT 1KM
+=======
+
+<GeoImage>
+ <px> 1431 </px>
+ <py> 1446 </py>
+ <pdx> 0.800284 </pdx>
+ <pdy> 0.799689 </pdy>
+  <LatLonBox>
+    <north> 43.5  </north>
+    <south> 35.5  </south>
+    <east> -99.2124  </east>
+    <west> -109.5  </west>
+  </LatLonBox>
+</GeoImage>
+
+SAT 4km
+=======
+
+<GeoImage>
+ <px> 1431 </px>
+ <py> 1446 </py>
+ <pdx> 0.800284 </pdx>
+ <pdy> 0.799689 </pdy>
+  <LatLonBox>
+    <north> 43.5  </north>
+    <south> 35.5  </south>
+    <east> -99.2124  </east>
+    <west> -109.5  </west>
+  </LatLonBox>
+</GeoImage>
+
+RUC MODEL
+=========
+
+<GeoImage>
+ <px> 1421 </px>
+ <py> 1446 </py>
+ <pdx> 0.800284 </pdx>
+ <pdy> 0.799689 </pdy>
+  <LatLonBox>
+    <north> 43.5  </north>
+    <south> 35.5  </south>
+    <east> -99.2843  </east>
+    <west> -109.5  </west>
+  </LatLonBox>
+</GeoImage>
+

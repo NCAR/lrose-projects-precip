@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/alg/params
+
+foreach radar (kgld kgjx spol.sur spol.rhi)
+#foreach radar (kftg kcys kpux kgld kgjx spol.sur spol.rhi chill.sur chill.rhi)
+
+  RadxPartRain -params RadxPartRain.${radar} -debug -start "2014 05 20 00 00 00" -end "2014 05 31 23 59 59" >& $ERRORS_LOG_DIR/today/RadxPartRain.rerun.${radar}.log
+
+end

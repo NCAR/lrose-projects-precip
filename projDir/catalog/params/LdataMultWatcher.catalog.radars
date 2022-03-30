@@ -1,0 +1,392 @@
+/**********************************************************************
+ * TDRP params for LdataMultWatcher
+ **********************************************************************/
+
+//======================================================================
+//
+// LdataMultWatcher program.
+//
+// LdataMultWatcher watches for _latest_data_info in multiple 
+//   directories. The application will optionally call scripts when new 
+//   data arrives in each directory, or when data is late.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// DEBUGGING AND PROCESS CONTROL.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// Debug option.
+//
+// If set, debug messages will be printed appropriately.
+//
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_NORM
+//     DEBUG_VERBOSE
+//
+
+debug = DEBUG_NORM;
+
+///////////// instance ////////////////////////////////
+//
+// Process instance.
+//
+// Used for registration with procmap.
+//
+//
+// Type: string
+//
+
+instance = "catalog.radars";
+
+///////////// procmap_register_interval ///////////////
+//
+// Register interval for procmap - secs.
+//
+// If the script takes longer than 60 secs to complete, you will need to 
+//   set this to a higher value to avoid the process being killed and 
+//   restarted by the auto_restarter.
+//
+//
+// Type: int
+//
+
+procmap_register_interval = 60;
+
+//======================================================================
+//
+// DATA SET DETAILS.
+//
+// For each individual data set, you can set whether to call the 
+//   new_data and/or late_data scripts.
+// The new_data_script_name is called as new data arrives. The 
+//   late_data_script is called when it has been data_late_secs since the 
+//   last data arrived.
+// By default, the scripts are called with the following command line 
+//   args, in no particular order:
+//   -debug ?: set if params.debug is not DEBUG_OFF
+//   -valid_utime ?: unix_time
+//   -valid_time ?: yyyy,mm,dd,hh,mm,ss
+//   -is_forecast ?: true/false
+//   -forecast_lead_secs ?: - for forecasts
+//   -gen_utime ?: unix_time - for forecasts
+//   -gen_time ?: yyyy,mm,dd,hh,mm,ss - for forecasts
+//   -rap_data_dir ?: RAP_DATA_DIR environment variable
+//   -abs_dir_path ?: input_dir relative to /
+//   -rel_dir ?: input_dir relative to RAP_DATA_DIR
+//   -rel_data_path ?: input file relative to input_dir
+//   -file_ext ?: extention of input file
+//   -data_type ?: data type of input file - for DataMapper
+//   -user_info1 ?: set by upstream app
+//   -user_info2 ?: set by upstream app
+//   -writer ?: which app wrote the data
+//   -late_data_secs ?: - for late_data_script
+//
+// The arguments included can be controlled using the 'script_args' 
+//   parameter below.
+//
+// These args will be followed by any trailing arguments specified by 
+//   'trailing_args' in the data set details below.
+//
+//======================================================================
+ 
+///////////// data_sets ///////////////////////////////
+//
+// List of data set details.
+//
+
+// For each data set to be watched, set the parameters in this array.
+//
+// To call a script when new data arrives set 'call_new_data_script' to 
+//   TRUE, and specify the 'new_data_script_name'.
+//
+// To call a script when data has not arrived in the last 
+//   'late_data_secs' set 'call_late_data_script' to TRUE and specify the 
+//   'late_data_script_name'.
+//
+// You can also specify a list of extra arguments to be appended to the 
+//   main argument list, using the 'trailing_args' parameter. This is, by 
+//   default, a comma-delimited list. You can change the delimit character 
+//   using 'trailing_args_delimiter' parameter.
+//
+//
+// Type: struct
+//   typedef struct {
+//      string input_dir;
+//      boolean call_new_data_script;
+//      string new_data_script_name;
+//      boolean call_late_data_script;
+//      string late_data_script_name;
+//      int late_data_secs;
+//      string trailing_args;
+//   }
+//
+// 1D array - variable length.
+//
+
+data_sets = {
+  {
+    input_dir = "$(DATA_DIR)/relampago/cfradial/RMA1/long_range",
+    call_new_data_script = TRUE,
+    new_data_script_name = "$(PROJ_DIR)/catalog/scripts/run_CIDD.catalog.RMA1",
+    call_late_data_script = FALSE,
+    late_data_script_name = "test_script",
+    late_data_secs = 3600,
+    trailing_args = ""
+  }
+  ,
+  {
+    input_dir = "$(DATA_DIR)/relampago/cfradial/RMA2/short_range",
+    call_new_data_script = TRUE,
+    new_data_script_name = "$(PROJ_DIR)/catalog/scripts/run_CIDD.catalog.RMA2",
+    call_late_data_script = FALSE,
+    late_data_script_name = "test_script",
+    late_data_secs = 3600,
+    trailing_args = ""
+  }
+  ,
+  {
+    input_dir = "$(DATA_DIR)/relampago/cfradial/ANG",
+    call_new_data_script = TRUE,
+    new_data_script_name = "$(PROJ_DIR)/catalog/scripts/run_CIDD.catalog.ANG",
+    call_late_data_script = FALSE,
+    late_data_script_name = "test_script",
+    late_data_secs = 3600,
+    trailing_args = ""
+  }
+  ,
+  {
+    input_dir = "$(DATA_DIR)/relampago/cfradial/PAR",
+    call_new_data_script = TRUE,
+    new_data_script_name = "$(PROJ_DIR)/catalog/scripts/run_CIDD.catalog.PAR",
+    call_late_data_script = FALSE,
+    late_data_script_name = "test_script",
+    late_data_secs = 3600,
+    trailing_args = ""
+  }
+  ,
+  {
+    input_dir = "$(DATA_DIR)/relampago/cfradial/PER",
+    call_new_data_script = TRUE,
+    new_data_script_name = "$(PROJ_DIR)/catalog/scripts/run_CIDD.catalog.PER",
+    call_late_data_script = FALSE,
+    late_data_script_name = "test_script",
+    late_data_secs = 3600,
+    trailing_args = ""
+  }
+  ,
+  {
+    input_dir = "$(DATA_DIR)/relampago/cfradial/csu_chivo/sur",
+    call_new_data_script = TRUE,
+    new_data_script_name = "$(PROJ_DIR)/catalog/scripts/create_radar_images.py",
+    call_late_data_script = FALSE,
+    late_data_script_name = "test_script",
+    late_data_secs = 3600000,
+    trailing_args = "--radar_name,CSU,--min_fixed_angle,0.0,--max_fixed_angle,90.0,--max_range_km,150.0"
+  }
+};
+
+///////////// trailing_args_delimiter /////////////////
+//
+// Delimiting character for 'trailing_args'.
+//
+// You can use the 'trailing_args' parameter above to specify arguments 
+//   to be appended to the standard list of arguments used to call a 
+//   script. Normally this is a comma-delimited list. Use this parameter 
+//   to override the standard comma-delimiting character.
+//
+//
+// Type: string
+//
+
+trailing_args_delimiter = ",";
+
+///////////// specify_script_args /////////////////////
+//
+// Option to specify the arguments used to call the script.
+//
+// If TRUE, only those arguments specified in the list will be used. If 
+//   FALSE, all args will be used. This does not affect the trailing_args.
+//
+//
+// Type: boolean
+//
+
+specify_script_args = TRUE;
+
+///////////// script_args /////////////////////////////
+//
+// List of options to include on the script command line.
+//
+// Only used if 'specify_script_args is TRUE.
+//
+//
+// Type: enum
+// Options:
+//     ARG_VALID_UTIME
+//     ARG_VALID_TIME
+//     ARG_IS_FORECAST
+//     ARG_FORECAST_LEAD_SECS
+//     ARG_GEN_UTIME
+//     ARG_GEN_TIME
+//     ARG_RAP_DATA_DIR
+//     ARG_ABS_DIR_PATH
+//     ARG_REL_DIR
+//     ARG_REL_DATA_PATH
+//     ARG_FILE_EXT
+//     ARG_DATA_TYPE
+//     ARG_USER_INFO1
+//     ARG_USER_INFO2
+//     ARG_WRITER
+//     ARG_DATA_LATE_SECS
+//     ARG_DEBUG
+//     ARG_VERBOSE
+// 1D array - variable length.
+//
+
+script_args = {
+ ARG_VALID_TIME,
+ ARG_ABS_DIR_PATH,
+ ARG_REL_DATA_PATH,
+ ARG_DEBUG,
+ ARG_VERBOSE
+};
+
+//======================================================================
+//
+// LATEST DATA INFO HANDLING DETAILS.
+//
+//======================================================================
+ 
+///////////// max_realtime_valid_age //////////////////
+//
+// Maximum age for files, realtime mode, seconds.
+//
+// Default is 15 minutes.
+//
+//
+// Type: int
+//
+
+max_realtime_valid_age = 2900;
+
+///////////// read_ldata_fmq_from_start ///////////////
+//
+// Option to read FMQ for latest_data_info from start.
+//
+// If TRUE, the all of the entries in the FMQ will be read, from the 
+//   start. This is useful for archive mode, or for debugging what is in 
+//   an FMQ.
+//
+//
+// Type: boolean
+//
+
+read_ldata_fmq_from_start = FALSE;
+
+///////////// save_read_state /////////////////////////
+//
+// Option to save read state.
+//
+// If TRUE, each time a read is successful, a _latest_read_info XML file 
+//   will be written to a tmp directory, so that read state can be 
+//   maintained in case the application crashes.
+//
+//
+// Type: boolean
+//
+
+save_read_state = FALSE;
+
+//======================================================================
+//
+// SCRIPT EXECUTION DETAILS.
+//
+//======================================================================
+ 
+///////////// generate_double_dash_args ///////////////
+//
+// Generate arguments with '--' prefix instead of '-'.
+//
+// For example, generate '--valid_utime' instead of '-valid_utime'.
+//
+//
+// Type: boolean
+//
+
+generate_double_dash_args = TRUE;
+
+///////////// run_script_in_background ////////////////
+//
+// Option to run script in background.
+//
+// If TRUE, the script will be run in the background. Therefore, the 
+//   system call will return immediately. If FALSE, LdataMultWatcher will 
+//   register with procmap while waiting for the script to complete.
+//
+//
+// Type: boolean
+//
+
+run_script_in_background = FALSE;
+
+///////////// terminate_script_if_hung ////////////////
+//
+// Option to terminate script if it hangs.
+//
+// If TRUE, the script will be killed if it does not return within 
+//   'script_max_run_secs'.
+//
+//
+// Type: boolean
+//
+
+terminate_script_if_hung = TRUE;
+
+///////////// script_max_run_secs /////////////////////
+//
+// Max time allowed for script - secs.
+//
+// If 'terminate_script_if_hung' is TRUE, the script will be killed if 
+//   it does not complete withing this number of secs.
+//
+//
+// Type: int
+//
+
+script_max_run_secs = 3600;
+
+///////////// sleep_after_script //////////////////////
+//
+// Option to have LdataMultWatcher sleep after the script returns.
+//
+// If TRUE, LdataMultWatcher will sleep for script_sleep_time 
+//   milliseconds.  This options is ignored if the script is run in the 
+//   background.
+//
+//
+// Type: boolean
+//
+
+sleep_after_script = TRUE;
+
+///////////// script_sleep_time ///////////////////////
+//
+// Time to sleep after a script run in the foreground completes - 
+//   millisec.
+//
+// Only used if sleep_after_script is TRUE.
+//
+//
+// Type: int
+//
+
+script_sleep_time = 1000;
+

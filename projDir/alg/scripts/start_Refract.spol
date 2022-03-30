@@ -1,0 +1,16 @@
+#! /bin/csh
+
+# Write output in MDV format since this is required by
+# CalcMoisture.
+
+setenv MDV_WRITE_FORMAT FORMAT_MDV
+setenv MDV_WRITE_USING_EXTENDED_PATHS FALSE
+
+cd $PROJ_DIR/alg/params
+
+running "Refract -params Refract.spol"
+
+if ($status == 1) then
+    Refract -params Refract.spol |& \
+        LogFilter -d $ERRORS_LOG_DIR -p Refract -i spol >& /dev/null &
+endif

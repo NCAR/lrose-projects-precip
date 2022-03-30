@@ -1,0 +1,926 @@
+<?xml version="1.0"?>
+
+<!--
+####################################################################################################################################
+
+ Sample Jazz file
+
+ Direct comments to:
+ Nancy Rehak (rehak@ucar.edu)
+
+####################################################################################################################################
+-->
+
+<Jazz version="1.0">
+
+<!--
+####################################################################################################################################
+
+ XML Tips:
+
+ - XML is comprised of Elements and Attributes, as shown below:
+
+   <Element attribute="value">
+     <ChildElement1/>
+     <ChildElement2 attribute1="foo" anotherAttribute="bar"/>
+   </Element>
+
+ - Do NOT use ampersand, apostrophe, greater-than, less-than, dashes, or exclamation characters for your content!
+   These are special XML characters.
+ - Element names begin with a capital letter, attribute names with a lowercase.
+ - Elements must be terminated with a slash, either inline such as "<Element/>" or with a matching tag such as "<Element></Element>"
+ - Attribute values must always be double quoted
+ - Comments are bounded by less-than, exclamation, and 2 dashes at the beginning and 2 dashes followed by a greater-than at the end.
+   2 dashes (and thus comments) cannot appear anywhere within a comment (which is why I can't show them to you here).
+ - Blank lines, whitespace, carriage returns, and comments are completely ignored by the parser.
+
+ Jazz Tips:
+
+ - Configuration elements contain attributes which have meaning to that element (see descriptions of each below).
+ - Most configuration elements can be specified on a single line, but you are free to split them on several lines for readability.
+ - Some elements may appear more than once in a file (e.g., "Layer," "Colorscale," and "Area"). Others should only appear once.
+   The comment for each element will indicate whether that element can be repeated.
+ - Some attributes may be left out or their values left empty. In those cases, the default value for that attribute applies.
+   These are all indicated in the comments.
+
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+
+ <Layer> element (optional, any number of these allowed).
+
+ Required attributes:
+
+ vis        = whether the layer should be on or off when the application starts
+ type       = the datatype of this layer (e.g., MDV, MDVWIND, MDVTOPO, CIDDMAP, SYMPROD)
+              This determines which other configuration options, below, are valid
+ name       = the name shown in the display
+
+
+ Optional attributes:
+
+ menuGroup        = the name of a group to add this layer to, defining where the layer shows up in the menus. By default
+                    layers are added to a default group based on their type (example: MDV layers are added to GRIDS_MENU).
+                    Specifying a different membership or menuGroup="none" overrides the default behavior.
+ menuName         = the name shown in the menu.  By default, the display name is used.
+ visibilityGroups = the name of a group that will control the visibility of the layer. By default layers may be added to
+                    a group based on their type (example: MDV layers are added to the exclusive GRIDS_VISIBILITY group
+                    that maintains a maximum of one visible layer within the group).  Layers are not required to be in a
+                    visibility group.
+
+ Notes:
+  - Layers are rendered in the same order in which they are defined. First layer is on bottom, last layer on top. However,
+    the GUI allows you to change the order by selecting "Configure -> Layer Order" from the menubar.
+
+
+ Layer Descriptions:
+
+   MDV:
+     This is the layer type to use for any MDV grids that don't fall under a more specific category below.
+
+     Attributes:
+       field      = the MDV field name to retrieve (required)
+       is2D       = true or false (default); if 2D = true, then altitude changes do not cause a reloading of data
+       render     = rendering scheme which may be: grid, fillcontours, linecontours, or none (required)
+       colorscale = the colorscale to use. May be the name of a colorscale defined in this file
+                    or a reference to a remote CIDD (*.colors) or JADE (*.xml) colorscale. (required)
+       location   = must be in the form "mdvp::". Mdv files are NOT supported (yet). (required)
+
+     Default menu group is GRIDS_MENU, default visibility group is GRIDS_EXCLUSIVE.
+
+
+   MDVTOPO:
+     This is the layer type to use for MDV topography grids.
+
+     Attributes:
+       field      = the short MDV field name to retrieve (required)
+       colorscale = the colorscale to use. May be the name of a colorscale defined in this file or a reference to a
+                    remote CIDD ("*.colors") or JADE ("*.xml") colorscale (required)
+       location   = must be in the form "mdvp::". (required)
+
+     Default menu group is FEATURES_MENU.
+
+
+   MDVWIND:
+     This is the layer type to use for MDV wind grids that are rendered as gridded layers.  This is not a wind/motion
+     overlay layer which will need to be added some time in the futurel.
+
+     Attributes:
+       isUandV    = true if the following fields will contain U and V vectors or false if speed and direction will be used (required)
+       field      = the short MDV field name containing either the U wind vector or the wind speed in knots, depending on the value of "isUandV" (required)
+       extraField = the short MDV field name containing the V wind vector or the wind direction in degrees, depending on the value of "isUandV" (required)
+       is2D       = true or false (default); if 2D = true, then altitude changes do not cause a reloading of data
+       render     = rendering scheme ("grid" for filled grid, "fillcontours" for color-filled contours, or "linecontours" for line contours) (required)
+       colorscale = the colorscale to use. May be the name of a colorscale defined in this file or a reference to a
+                    remote CIDD (*.colors) or JADE (*.xml) colorscale (required)
+       location   = must be in the form "mdvp::". (required)
+
+     Default menu group is GRIDS_MENU, default visibility group is GRIDS_EXCLUSIVE.
+
+
+   SYMPROD:
+     This is the layer type to use for SPDB data that is being rendered using a Symprod server.
+
+     Attributes:
+       before     = the amount of time before the currently selected time to look for products (e.g. "75mins" or "1hrs"). (required)
+       after      = the amount of time after the currently selected time to look for products (can be "" or "now" to indicate zero offset). (required)
+       textOff    = the spacing factor past which to stop rendering text labels.  Defaults to 0.0.
+       request    = the methodology to use for requesting the data ("closest", "interval", "latest", "valid" or "firstBefore"). (required)
+
+     Default menu group is FEATURES_MENU.
+
+
+   CIDDMAP:
+     This is the layer type to use for maps in the format used by CIDD and Rview.
+
+     Attributes:
+       color                  = the color with which to render the line, as an X11-defined color name, RGB triplet (each value between 0..255)
+                                or hex group ("wheat1", "153,153,153", "#ffffcc"). Defaults to black.
+       width                  = the width of the line in pixels. Defaults to 1.
+
+     Default menu group is MAPS_MENU.
+
+
+   RANGE_RINGS:
+     This layer type creates an overlay of range rings.  The range rings may be centered on a predefined location or may be centered on
+     the origin of the underlying base MDV data layer.  This layer is most useful if the base MDV layer is radar data in a polar or flat
+     projection.
+
+     Attributes:
+       followData             = flag indicating whether the range rings should follow the data origin.
+                                If true, the rings will be centered on the projection origin for the underlying base gridded data field.
+                                Note that the range rings will not be displayed if the origin of the data is set to 0.0, 0.0 (which is
+                                the case for most lat/lon projections).
+                                If false, the rings will always be rendered centered on radarLat, radarLon.
+                                Defaults to false.
+       radarLat               = the latitude of the radar. Defaults to 0.0.
+       radarLon               = the longitude of the radar. Defaults to 0.0.
+       color                  = the color with which to render the line, as an X11-defined color name, RGB triplet (each value between 0..255)
+                                or hex group ("wheat1", "153,153,153", "#ffffcc") (required).
+       width                  = the width of the lines in pixels.  Defaults to 1.
+       radiusIncr             = the radius increment of the rings in kilometers.  Rings will be rendered at all integral multiples of this
+                                value.  Defaults to 100.
+       numRings               = number of rings to render.  Defaults to 4.
+       displayAzLines         = flag indicating whether to display azimuth lines ("true" or "false", defaults to false)
+       startAz                = the azimuth for the first azimuth line in degrees.  This is also the line along which the range labels will be
+                                rendered.  Defaults to 45.0.
+       numAzLines             = the number of azimuth lines to display.  Defaults to 8.
+
+     Default menu group is MAPS_MENU.
+
+####################################################################################################################################
+-->
+
+<!-- MDV Layers -->
+
+<Layer vis="on" type="MDV" name="GOES16-CH13" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/goes16_ch13/?use_http=true"
+       field="GOESR_CH13" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/sat_tempC.colors"
+       menuName="GOES16-CH13" menuGroup="GOES16" />
+
+<Layer vis="off" type="MDV" name="GOES16-CH15" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/goes16_ch15/?use_http=true"
+       field="GOESR_CH15" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/sat_tempC.colors" 
+       menuName="GOES16-CH15" menuGroup="GOES16" />
+
+<Layer vis="off" type="MDV" name="GOES16-SWD" location="mdvp::swd//front.eol.ucar.edu:8080:relampago/mdv/goes16_ch13/?use_http=true"
+       field="GOESR_SWD" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/goesr_swd.colors" 
+       menuName="GOES16-SWD" menuGroup="GOES16" />
+
+<Layer vis="off" type="MDV" name="GOES16-CH10" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/goes16_ch10/?use_http=true"
+       field="GOESR_CH10" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/sat_tempC.colors"
+       menuName="GOES16-CH10" menuGroup="GOES16" />
+
+<Layer vis="off" type="MDV" name="GOES16-CH01" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/goes16_ch01/?use_http=true"
+       field="GOESR_CH01" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/sat_cloud.colors"
+       menuName="GOES16-CH01" menuGroup="GOES16" />
+
+<Layer vis="off" type="MDV" name="GOES16-CH02" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/goes16_ch02/?use_http=true"
+       field="GOESR_CH02" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/sat_cloud.colors"
+       menuName="GOES16-CH02" menuGroup="GOES16" />
+
+<Layer vis="off" type="MDV" name="GOES16-CH03" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/goes16_ch03/?use_http=true"
+       field="GOESR_CH03" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/sat_cloud.colors"
+       menuName="GOES16-CH03" menuGroup="GOES16" />
+
+<!--Layer vis="off" type="MDV" name="GOES16-CH06" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/goes16_ch06/?use_http=true"
+       field="GOESR_CH06" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/sat_cloud.colors"
+       menuName="GOES16-CH06" menuGroup="GOES16" /-->
+
+<Layer vis="off" type="MDV" name="GFS-TMP" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/gfs/relampago?use_http=true"
+       field="TMP" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/temp.colors"
+       menuName="GFS-TMP" menuGroup="GFS-MODEL" />
+
+<Layer vis="off" type="MDV" name="GFS-RH" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/gfs/relampago?use_http=true"
+       field="RH" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/rh.colors"
+       menuName="GFS-RH"  menuGroup="GFS-MODEL" />
+
+<!--Layer vis="off" type="MDV" name="GFS-PRES" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/gfs/relampago?use_http=true"
+       field="Pressure" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/pressure_mb.colors"
+       menuName="GFS-PRES"  menuGroup="GFS-MODEL" /-->
+
+<Layer vis="off" type="MDV" name="Terrain" location="mdvp::terrain//front.eol.ucar.edu:8080:relampago/mdv/terrain?use_http=true"
+       field="Elevation" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/terrain_relampago.colors"
+       menuName="Terrain"  menuGroup="GFS-MODEL" />
+
+<Layer vis="off" type="MDV" name="WRF-Temp" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="Temp" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/temp.colors"
+       menuName="WRF-Temp"  menuGroup="WRF-ILLINOIS" />
+
+<Layer vis="off" type="MDV" name="WRF-THETA" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="THETA" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/theta_e.colors"
+       menuName="WRF-THETA"   menuGroup="WRF-ILLINOIS" />
+
+<Layer vis="off" type="MDV" name="WRF-RH" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="RH" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/rh.colors"
+       menuName="WRF-RH"  menuGroup="WRF-ILLINOIS"  />
+
+<Layer vis="off" type="MDV" name="WRF-W" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="W" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/wvel_new.colors"
+       menuName="WRF-W"   menuGroup="WRF-ILLINOIS" />
+
+<Layer vis="off" type="MDV" name="WRF-QVAPOR" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="QVAPOR" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/mixr_kgpkg.colors"
+       menuName="WRF-QVAPOR"   menuGroup="WRF-ILLINOIS" />
+
+<Layer vis="off" type="MDV" name="WRF-QCLOUD" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="QCLOUD" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/mixr_kgpkg.colors"
+       menuName="WRF-QCLOUD"   menuGroup="WRF-ILLINOIS" />
+
+<Layer vis="off" type="MDV" name="WRF-QRAIN" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="QRAIN" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/mixr_kgpkg.colors"
+       menuName="WRF-QRAIN"   menuGroup="WRF-ILLINOIS" />
+
+<Layer vis="off" type="MDV" name="WRF-QICE" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="QICE" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/mixr_kgpkg.colors"
+       menuName="WRF-QICE"   menuGroup="WRF-ILLINOIS" />
+
+<Layer vis="off" type="MDV" name="WRF-QSNOW" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="QSNOW" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/mixr_kgpkg.colors"
+       menuName="WRF-QSNOW"   menuGroup="WRF-ILLINOIS" />
+
+<Layer vis="off" type="MDV" name="WRF-QGRAUPEL" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="QGRAUPEL" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/mixr_kgpkg.colors"
+       menuName="WRF-QGRAUPEL"   menuGroup="WRF-ILLINOIS" />
+
+<Layer vis="off" type="MDV" name="WRF-DBZ" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="DBZ" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors"
+       menuName="WRF-DBZ"   menuGroup="WRF-ILLINOIS" />
+
+<Layer vis="off" type="MDV" name="WRF-WSPD" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="Wspeed" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/wind_speed.colors"
+       menuName="WRF-WSPD"   menuGroup="WRF-ILLINOIS" />
+
+<Layer vis="off" type="MDV" name="WRF-PPert" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="P" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/press_pert_pa.colors"
+       menuName="WRF-PPert"   menuGroup="WRF-ILLINOIS" />
+
+<Layer vis="off" type="MDV" name="WRF-Temp2m" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="T2C" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/temp.colors"
+       menuName="WRF-Temp2m"   menuGroup="WRF-ILLINOIS" />
+
+<Layer vis="off" type="MDV" name="WRF-Q2" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="Q2" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/mixr_kgpkg.colors"
+       menuName="WRF-Q2"   menuGroup="WRF-ILLINOIS" />
+
+<Layer vis="off" type="MDV" name="WRF-PBLHT" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       field="pbl_hgt" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/pblht_m.colors"
+       menuName="WRF-PBLHT"   menuGroup="WRF-ILLINOIS" />
+
+<Layer vis="off" type="MDV" name="SURF Temp" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/surf_interp?use_http=true"
+       field="Temp" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/temp.colors"
+       menuName="SURF-Temp"   menuGroup="SURFACE-INTERP" />
+
+<Layer vis="off" type="MDV" name="SURF DewPt" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/surf_interp?use_http=true"
+       field="DewPoint" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/temp.colors"
+       menuName="SURF-DewPt"  menuGroup="SURFACE-INTERP" />
+
+<Layer vis="off" type="MDV" name="SURF Conv" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/surf_interp?use_http=true"
+       field="Convergence" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/conv.colors"
+       menuName="SURF-Conv"  menuGroup="SURFACE-INTERP" />
+
+<Layer vis="off" type="MDV" name="CORD DBZH" location="mdvp:://front.eol.ucar.edu:8080:relampago/cfradial/RMA1?use_http=true"
+       field="DBZH" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors"
+       menuName="CORD-DBZH"   menuGroup="RADAR" />
+
+<Layer vis="off" type="MDV" name="SAN MARTIN DBZ" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/radar/SanMartin?use_http=true"
+       field="DBZ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors"
+       menuName="SAN-MARTIN-DBZ" menuGroup="RADAR" />
+
+<Layer vis="off" type="MDV" name="SAN RAFAEL DBZ" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/radar/SanRafael?use_http=true"
+       field="DBZ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors"
+       menuName="SAN-RAFAEL-DBZ"  menuGroup="RADAR" />
+
+<!-- MDVWIND Layers -->
+
+<Layer vis="off" type="MDVWIND" name="WINDS-GFS-3D" menuName="WINDS-GFS-3D" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/gfs/relampago?use_http=true"
+       isUandV="true" field="UGRD" extraField="VGRD" render="grid" renderBarbs="true" color="darkgreen" colorscale="windColors" />
+
+<Layer vis="off" type="MDVWIND" name="WINDS-WRF-3D" menuName="WINDS-WRF-3D" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       isUandV="true" field="U" extraField="V" render="grid" renderBarbs="true" color="blue" colorscale="windColors" />
+
+<Layer vis="off" type="MDVWIND" name="WINDS-WRF-10m" menuName="WINDS-WRF-10m" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+       isUandV="true" field="U10" extraField="V10" render="grid" renderBarbs="true" color="yellow" colorscale="windColors" />
+
+<Layer vis="off" type="MDVWIND" name="WINDS-SurfInterp" menuName="WINDS-SurfInterp" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/surf_interp?use_http=true"
+       isUandV="true" field="Uwind" extraField="Vwind" render="grid" renderBarbs="true" color="orange" colorscale="windColors" />
+
+<!-- SYMPROD Layers -->
+
+<Layer vis="on" type="SYMPROD" name="METARS-simple" location="spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:relampago/spdb/metar?use_http=true"
+       before="90mins" after="0hrs" textOff="0" request="latest" menuName="METARS-simple" />
+
+<Layer vis="off" type="SYMPROD" name="METARS-full" location="spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:relampago/spdb/metar?use_http=true"
+       before="90mins" after="0hrs" textOff="0" request="latest" menuName="METARS-full" />
+
+<Layer vis="off" type="SYMPROD" name="AWS-simple" location="spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:relampago/spdb/aws?use_http=true"
+       before="90mins" after="0hrs" textOff="0" request="latest" menuName="AWS-simple" />
+
+<Layer vis="off" type="SYMPROD" name="AWS-full" location="spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:relampago/spdb/aws?use_http=true"
+       before="90mins" after="0hrs" textOff="0" request="latest" menuName="AWS-full" />
+
+<Layer vis="off" type="SYMPROD" name="GLM" location="spdbp:Ltg2Symprod://front.eol.ucar.edu:8080:relampago/spdb/ltg/glm?use_http=true"
+       before="1hrs" after="0hrs" textOff="0" request="valid" menuName="GLM" />
+
+<Layer vis="off" type="SYMPROD" name="WWLLN" location="spdbp:Ltg2Symprod:wwlln//front.eol.ucar.edu:8080:relampago/spdb/ltg/wwlln?use_http=true"
+       before="1hrs" after="0hrs" textOff="0" request="valid" menuName="WWLLN" />
+
+<!-- CIDDMAP Layers -->
+
+<Layer vis="on" type="CIDDMAP" name="Countries" location="http://front.eol.ucar.edu/maps/world_states.map"
+       color="white" width="2" />
+
+<Layer vis="off" type="CIDDMAP" name="Roads" location="http://front.eol.ucar.edu/maps/ARG_roads.map"
+       color="gray25" width="0" />
+
+<Layer vis="off" type="CIDDMAP" name="Rivers" location="http://front.eol.ucar.edu/maps/ARG_water_lines_dcw.map"
+       color="blue" width="0" />
+
+<Layer vis="off" type="CIDDMAP" name="Lakes" location="http://front.eol.ucar.edu/maps/ARG_water_areas_dcw.map"
+       color="blue" width="0" />
+
+<Layer vis="on" type="CIDDMAP" name="States" location="http://front.eol.ucar.edu/maps/ARG_adm1.map"
+       color="brown" width="1" />
+
+<Layer vis="off" type="CIDDMAP" name="Counties" location="http://front.eol.ucar.edu/maps/ARG_adm2.map"
+       color="pink" width="0" />
+
+<Layer vis="on" type="CIDDMAP" name="CordobaRings" location="http://front.eol.ucar.edu/maps/cordoba_rings.map"
+       color="white" width="1" />
+
+<Layer vis="off" type="CIDDMAP" name="SanMartinRings" location="http://front.eol.ucar.edu/maps/san_martin_rings.map"
+       color="white" width="0" />
+
+<Layer vis="off" type="CIDDMAP" name="SanRafaelRings" location="http://front.eol.ucar.edu/maps/san_rafael_rings.map"
+       color="white" width="0" />
+
+
+<!--
+ ####################################################################################################################################
+
+ Groups
+
+ There are three types of groups:
+ MenuGroups       - Are groups that determine where layers end up in the GUI menus. If a layer is added to a default
+                    group (GRIDS_MENU, FEATURES_MENU, MAPS_MENU) the layer will appear in the corresponding menu in the
+                    GUI. If a layer is added to a MenuGroup that has one of the default groups as a parent, the layer will
+                    be put in a submenu corresponding to that MenuGroup.
+ VisibilityGroups - Are used to control the visibility of layers. There is one default VisibilityGroup called
+                    GRIDS_EXCLUSIVE that ensures no more than one grid is visible at a time. Gridded layers are added to
+                    this group by default. To override, specify visibilityGroups="none" for the layer, and you will be
+                    able to show the layer at the same time as other grids.
+ SpecialGroups    - Are defined in the JAM XML and known to the application code. They enable any sort of custom event
+                    handling within the application. There is one special group available to all apps that have
+                    vertical xsections: XSECT_FEATURES - add feature layers to this group if you want them to show up
+                    in the vertical section display.
+
+ <MenuGroup> element (optional, any number of these allowed).
+ Required attributes:
+
+ name        = the name of the group (has to be unique)
+ label       = the label to be used on the sub-menu in the GUI.
+ parentGroup = the name of a menu group to act as the parent of this group. Use one of the default groups (GRIDS_MENU, FEATURES_MENU, or MAPS_MENU),
+               another MenuGroup defined here, or reference a special group that is used to build special menus in the application code.
+
+
+<VisibilityGroup> element (optional, any number of these allowed).
+ Required attributes:
+ name       = the name of the group (has to be unique)
+ type       = specifies what control the group will exercise on the visibility its members ('exclusive', or 'synchronized')
+
+ -->
+
+  <MenuGroup name="GOES16" label="GOES16" parentGroup="GRIDS_MENU" />
+  <MenuGroup name="GFS-MODEL" label="GFS-MODEL" parentGroup="GRIDS_MENU" />
+  <MenuGroup name="WRF-ILLINOIS" label="WRF-ILLINOIS" parentGroup="GRIDS_MENU" />
+  <MenuGroup name="SURFACE-INTERP" label="SURFACE-INTERP" parentGroup="GRIDS_MENU" />
+  <MenuGroup name="RADAR" label="RADAR" parentGroup="GRIDS_MENU" />
+
+<!--
+####################################################################################################################################
+
+ Time configuration (optional, zero or one):
+
+ mode     = "realtime" or "archive" - determines data refresh and time window marching
+ start    = in realtime mode, start is relative to now (+ or - number of hrs or mins, or "now"), e.g., "-12hrs"
+            in archive mode, start must be an explicit time in the format "yyyy-MM-dd'T'HH:mm" (e.g. 2008-04-30T23:41)
+ end      = in realtime mode, end is relative to now (+ or - number of hrs or mins, or "now"), e.g., "+15mins"
+            in archive mode, end must be an explicit time in the format "yyyy-MM-dd'T'HH:mm" (e.g. 2008-04-30T23:41)
+ interval = time between selectable (and animated) ticks, beginning with the start time and ending at or before the end time
+ update   = time between checks for data updates (in realtime only). For performance reasons, keep this value >= 5mins.
+ timeZone = time zone to use for the interpretation of start/end, and to use for the display. Defaults to UTC if omitted.
+            Abbreviations and full descriptions are ok (eg: MST or America/Denver).  See http://en.wikipedia.org/wiki/Time_zone
+            for a description, and http://www.timezoneconverter.com/ for a listing
+
+####################################################################################################################################
+-->
+
+<Time mode="realtime" start="-6hrs" end="+0hrs" interval="15mins" update="30secs"/>
+
+<!--
+####################################################################################################################################
+
+ Animation configuration (optional, zero or one):
+
+ delay = minimum milliseconds delay between animation frames
+ dwell = minimum milliseconds pause at the end of an animation sequence
+
+####################################################################################################################################
+-->
+
+<Animation delay="75" dwell="3000" />
+
+<!--
+####################################################################################################################################
+
+ Altitude configuration (optional, zero or one):
+
+ units    = the units for the vertical scale (km, m, ft, FL, or mb)
+ bottom   = lowest altitude of range, in the same units defined above (if in mb, may be greater numerically than top)
+ top      = highest altitude of range, in the same units defined above (if in mb, may be lesser numerically than bottom)
+ interval = the interval to use for dividing up the distance between bottom and top
+ default  = optional initial altitude, in the same units defined above (defaults to same value as "bottom")
+
+ or
+
+ dataDrivenProperties = optional. Overrides other attributes. If true, altitude's range and levels will be
+                        dynamically set according to selected/on layer.
+
+####################################################################################################################################
+-->
+
+<!--Altitude units="ft" bottom="0" top="40000" interval="1000" default="6000"/-->
+<!--Altitude units="FL" bottom="0" top="300" interval="10" default="100"/-->
+<!--Altitude units="km" bottom="0" top="16" interval="0.25" default="3"/-->
+<!--Altitude units="mb" bottom="1000" top="0" interval="50" default="700" /-->
+<Altitude dataDrivenProperties="true" />
+
+<!--
+####################################################################################################################################
+
+ View configuration (optional, zero or one):
+
+   projection = the projection in which to view the data. One of the below list.
+
+ Projection-specific configuration:
+
+ LatLon:
+   none, defaults to -180 to +180 longitude and -90 to +90 latitude
+
+ Flat:
+   originLon  = longitude of the origin
+   originLat  = latitude of the origin
+   rotation = rotation of the projection
+
+ LambertConformal:
+   originLat = origin's latitude
+   originLon = origin's longitude
+   stdLat1 = standard latitude 1
+   stdLat2 = standard latitude 2 (optional)
+
+ Stereographic:
+   tangentLon = tangent longitude
+   tangentLat = tangent latitude
+   secantLat = secant latitude, if applicable due to secant plane
+
+ PolarStereographic:
+   tangentLon = tangent longitude
+   poleIsNorth = "true" or "false" (optional - defaults to "true")
+   centralScale = central scale of projection (optional - defaults to 1.0)
+
+ Albers:
+   originLat = origin's latitude
+   originLon = origin's longitude
+   lat1 = standard latitude 1
+   lat2 = standard latitude 2
+
+ AzimEquidist:
+   originLat = origin's latitude
+   originLon = origin's longitude
+   rotation = rotation of the projection (optional - defaults to 0.0)
+
+ LambertAzimuthal:
+   originLat = origin's latitude
+   originLon = origin's longitude
+
+ Mercator:
+   originLat = origin's latitude
+   originLon = origin's longitude
+
+ TransMercator:
+   originLat = origin's latitude
+   originLon = origin's longitude
+   centralScale = central scale of the projection (optional - defaults to 1.0)
+
+ VerticalPerspective:
+   originLat = origin's latitude
+   originLon = origin's longitude
+   perspRadius = the perspective radius of the projection
+
+####################################################################################################################################
+-->
+
+<!--View projection="LambertConformal" originLon="-95.0" originLat="25.0" stdLat1="25.0" /-->
+<!--View projection="Stereographic" tangentLon="-135.0" tangentLat="90.0"/-->
+<!--View projection="LatLon" /-->
+<!--View projection="Flat" originLon="120.433502" originLat="22.526699" rotation="0.0" /-->
+<View projection="LatLon" />
+<!-- View projection="LambertConformal" originLon="-65.0" originLat="-32.5" stdLat1="-20.0" /-->
+
+<!--
+####################################################################################################################################
+
+ Areas of Interest (optional, zero or more):
+
+   name = the name of the Area shown in the display
+ minLon = the minimum longitude of the lat/lon bounding box defining the Area in decimal degrees or degrees, minutes, seconds
+ minLat = the minimum latitude of the lat/lon bounding box defining the Area in decimal degrees or degrees, minutes, seconds
+ maxLon = the maximum longitude of the lat/lon bounding box defining the Area in decimal degrees or degrees, minutes, seconds
+ maxLat = the maximum latitude of the lat/lon bounding box defining the Area in decimal degrees or degrees, minutes, seconds
+ defaultView = (optional) true or false; if true, then the Area will be the default view for the main window
+
+ Note:
+   - If more than one Area has a defaultView of true, then the last one listed will be the default view
+
+    name  defaultView   minLon   minLat maxLon  maxLat
+
+####################################################################################################################################
+-->
+
+<Area name="300km" minLon="-68" maxLon="-62" minLat="-35.0358" maxLat="-29.9642"/>
+<Area name="400km" minLon="-69.1499" maxLon="-60.8501" minLat="-36" maxLat="-29"/>
+<Area name="600km" minLon="-71" maxLon="-59" minLat="-37.5716" maxLat="-27.4284"/>
+<Area name="800km" minLon="-73.8927" maxLon="-56.1073" minLat="-40" maxLat="-25"/>
+<Area name="1500km" minLon="-80" maxLon="-50" minLat="-45.1789" maxLat="-19.8211" defaultView="true"/>
+<Area name="3000km" minLon="-97.6064" maxLon="-32.3936" minLat="-60" maxLat="-5"/>
+<Area name="6000km" minLon="-120" maxLon="-10" minLat="-80.0724" maxLat="15.0724"/>
+
+<!--
+####################################################################################################################################
+
+ Window parameters (optional element, zero or one):
+
+ width = pixel width of the window, if the screen is big enough
+ height = pixel height of the window, if the screen is big enough
+ xOrigin = (optional) pixel x location of the upper left of the window, measured from upper left of the screen
+ yOrigin = (optional) pixel y location of the upper left of the window, measured from upper left of the screen (positive downwards)
+ backgroundColor = (optional) defaults to white
+
+####################################################################################################################################
+-->
+<Window width="950" height="950" xOrigin="0" yOrigin="0" backgroundColor="black"/>
+
+<!--
+####################################################################################################################################
+
+ This section MUST appear *below* the Layer definitions!
+
+ XSections:
+
+ XSections = optional element. Zero or one allowed. If this element is missing, then cross-sections will be disabled.
+ Path = optional element representing a preconfigured xsect path. Zero or more allowed.  Leave this out to enable arbitrary,
+        user-entered cross sections.
+   name = name attribute for the xsection Path element
+   Waypoint = 2 or more elements required for each Path. Ordered waypoints for the path. Requires lat and lon attributes.
+
+####################################################################################################################################
+-->
+
+<!--XSections>
+  <Path name="Test 1">
+    <Waypoint lat="23.147" lon="120.056"/>
+    <Waypoint lat="22.862" lon="120.134"/>
+  </Path>
+  <Path name="Test 2">
+    <Waypoint lat="22.309" lon="119.75"/>
+    <Waypoint lat="22.494" lon="120.244"/>
+  </Path>
+</XSections-->
+
+<XSections>
+</XSections>
+
+<!--
+####################################################################################################################################
+
+ SkewT parameters:
+
+ SkewT            = optional element. Zero or one allowed. If this element is missing, then SkewTs will be disabled.
+ location         = Required. where to get the data eg: mdvp:://yaw:10000:ruc/mdv/lambert
+ temperatureField = Required. Name of the MDV 3-D temperature field.
+ rhField          = either rhField or dewpointField required.  Name of the MDV 3-D relative humidity field. Server side units
+                    must be correct (ie: % means 0..100, whereas unitless means 0..1)
+ dewpointField    = either rhField or dewpointField required. Name of the MDV 3-D dewpoint field.
+ uField           = Required. Name of the MDV 3-D u-wind field. Speed/dir not supported (yet)
+ vField           = Required. Name of the MDV 3-D v-wind field. Speed/dir not supported (yet)
+
+####################################################################################################################################
+-->
+
+<!--SkewT location="mdvp:://yaw:10000:ruc/mdv/lambert"
+       temperatureField="TMP"
+       rhField="R_H"
+       uField="UGRD"
+       vField="VGRD">
+</SkewT-->
+
+<!--SkewT location="mdvp:://yaw:10000:ruc/mdv/lambert"
+       temperatureField="TMP"
+       rhField="R_H"
+       uField="UGRD"
+       vField="VGRD">
+</SkewT-->
+
+<!--
+####################################################################################################################################
+
+ Optional tools.  Each tool will only appear if the associated element is found in this file.
+ You can comment out tools that are not desired.
+
+####################################################################################################################################
+-->
+
+<SwapFieldsTool/>
+
+<!--
+  ####################################################################################################################################
+
+   ColorScale configuration (zero or more):
+
+   id    = the name of the colorscale, used to refer to it from "Layer" defintions
+   Range = one or more Range elements required
+   min   = the minimum value of the bin; attribute of the Range element, required
+   max   = the maximum value of the bin; attribute of the Range element, required
+   color = an X11-defined color name, RGB triplet (0..255 for each value), or hex group ("wheat1", "153,153,153", "#ffffcc");
+           attribute of the Range element, required
+   label = the optional custom label to apply to this bin. Defaults to the numeric values of the bin boundaries.
+           ; attribute of the Range element, optional
+
+   Note:
+      - when a value can be in more than one bin (overlapping) the last matching (descending) bin color is used
+
+  ####################################################################################################################################
+  -->
+<ColorScale id="airColorscale">
+  <Range min="-80" max="-35" color="LightYellow1"      label="-35<" />
+  <Range min="-35" max="-30" color="LightYellow2"      label="" />
+  <Range min="-30" max="-25" color="wheat1"            label="" />
+  <Range min="-25" max="-15" color="LightYellow3"      label="" />
+  <Range min="-15" max="-10" color="RosyBrown3"        label="" />
+  <Range min="-10" max="-5"  color="medium slate blue" label="" />
+  <Range min="-5"  max="0"   color="dark slate blue"   label="" />
+  <Range min="0"   max="5"   color="blue"              label="" />
+  <Range min="5"   max="10"  color="royal blue"        label="" />
+  <Range min="10"  max="14"  color="slate gray"        label="" />
+  <Range min="14"  max="17"  color="dark slate gray"   label="" />
+  <Range min="17"  max="20"  color="dark green"        label="" />
+  <Range min="20"  max="23"  color="forest green"      label="" />
+  <Range min="23"  max="26"  color="lime green"        label="" />
+  <Range min="26"  max="29"  color="lawn green"        label="" />
+  <Range min="29"  max="32"  color="yellow"            label="" />
+  <Range min="32"  max="35"  color="gold1"             label="" />
+  <Range min="35"  max="38"  color="DarkGoldenrod1"    label="" />
+  <Range min="38"  max="41"  color="orange"            label="" />
+  <Range min="41"  max="44"  color="sienna1"           label="" />
+  <Range min="44"  max="47"  color="orange red"        label="" />
+  <Range min="47"  max="50"  color="red1" />
+</ColorScale>
+
+<ColorScale id="tempColorscale">
+  <Range min="-50" max="-45"  color="204,153,255"/>
+  <Range min="-45" max="-40"  color="153,102,255"/>
+  <Range min="-40" max="-35"  color="102,51,153"/>
+  <Range min="-35" max="-30"  color="0,0,204"/>
+  <Range min="-30" max="-25"  color="0,0,255"/>
+  <Range min="-25" max="-20"  color="51,102,255"/>
+  <Range min="-20" max="-15"  color="51,153,255"/>
+  <Range min="-15" max="-10"  color="102,204,255"/>
+  <Range min="-10" max="-5"   color="153,204,255"/>
+  <Range min="-5"  max="0"    color="204,204,255"/>
+  <Range min="0"   max="5"    color="255,255,153"/>
+  <Range min="5"   max="10"   color="255,204,0"/>
+  <Range min="10"  max="15"   color="255,153,0"/>
+  <Range min="15"  max="20"   color="255,102,0"/>
+  <Range min="20"  max="25"   color="255,51,0"/>
+  <Range min="25"  max="30"   color="255,0,0"/>
+  <Range min="30"  max="35"   color="204,0,0"/>
+</ColorScale>
+
+<!--
+ wind.colors
+
+ For the Taiwan system. Winds below 60
+ are cool colours - over 60
+ they are hot colours.
+-->
+<ColorScale id="windColorsTaiwan">
+  <Range min="0"   max="15"  color="75,75,75" />
+  <Range min="15"  max="30"  color="102,102,102" />
+  <Range min="30"  max="45"  color="128,128,128" />
+  <Range min="45"  max="60"  color="153,153,153" />
+  <Range min="60"  max="70"  color="dark slate blue" />
+  <Range min="70"  max="80"  color="RoyalBlue" />
+  <Range min="80"  max="90"  color="SteelBlue1" />
+  <Range min="90"  max="100" color="purple" />
+  <Range min="100" max="110" color="sea green" />
+  <Range min="110" max="120" color="lime green" />
+  <Range min="120" max="150" color="orange" />
+  <Range min="150" max="200" color="chocolate" />
+</ColorScale>
+
+<ColorScale id="windColors">
+  <Range min="0"   max="15"  color="255,255,255"/>
+  <Range min="15"   max="30"  color="204,255,255"/>
+  <Range min="30"   max="45"  color="153,255,255"/>
+  <Range min="45"   max="60"  color="153,255,204"/>
+  <Range min="60"   max="75"  color="153,255,102"/>
+  <Range min="75"   max="90"  color="204,255,102"/>
+  <Range min="90"   max="105"  color="255,255,153"/>
+  <Range min="105"   max="120"  color="255,204,0"/>
+  <Range min="120"   max="135"  color="255,153,0"/>
+  <Range min="135"   max="150"  color="255,102,0"/>
+  <Range min="150"   max="165"  color="255,51,0"/>
+  <Range min="165"   max="180"  color="204,0,0"/>
+</ColorScale>
+
+<ColorScale id="radar_colorscale">
+  <Range min="5.0" max="10.0" color="102,255,255"/>
+  <Range min="10.0" max="15.0" color="51,153,255"/>
+  <Range min="15.0" max="20.0" color="0,0,255"/>
+  <Range min="20.0" max="25.0" color="0,255,0"/>
+  <Range min="25.0" max="30.0" color="0,204,0"/>
+  <Range min="30.0" max="35.0" color="0,153,0"/>
+  <Range min="35.0" max="40.0" color="255,255,0"/>
+  <Range min="40.0" max="45.0" color="255,204,0"/>
+  <Range min="45.0" max="50.0" color="255,102,0"/>
+  <Range min="50.0" max="55.0" color="255,0,0"/>
+  <Range min="55.0" max="60.0" color="204,51,0"/>
+  <Range min="60.0" max="65.0" color="153,0,0"/>
+  <Range min="65.0" max="70.0" color="255,0,255"/>
+  <Range min="70.0" max="75.0" color="153,51,204"/>
+</ColorScale>
+
+<ColorScale id="saudi_dbz_colorscale">
+  <Range min="-10.0" max="-5.0" color="53,53,53"/>
+  <Range min="-5.0" max="0.0" color="117,117,117"/>
+  <Range min="0.0" max="5.0" color="0,90,0"/>
+  <Range min="5.0" max="10.0" color="0,126,0"/>
+  <Range min="10.0" max="15.0" color="28,71,232"/>
+  <Range min="15.0" max="20.0" color="8,127,219"/>
+  <Range min="20.0" max="25.0" color="110,13,198"/>
+  <Range min="25.0" max="30.0" color="200,15,134"/>
+  <Range min="30.0" max="35.0" color="192,100,135"/>
+  <Range min="35.0" max="40.0" color="210,136,59"/>
+  <Range min="40.0" max="45.0" color="250,196,49"/>
+  <Range min="45.0" max="50.0" color="254,250,3"/>
+  <Range min="50.0" max="54.0" color="254,154,88"/>
+  <Range min="54.0" max="58.0" color="254,95,5"/>
+  <Range min="58.0" max="62.0" color="253,52,28"/>
+  <Range min="62.0" max="66.0" color="190,190,190"/>
+  <Range min="66.0" max="70.0" color="211,211,211"/>
+</ColorScale>
+
+<ColorScale id="torp_colorscale">
+  <Range min="-35" max="-30" color="102,255,255"/>
+  <Range min="-30" max="-25" color="51,153,255"/>
+  <Range min="-25" max="-20" color="0,0,255"/>
+  <Range min="-20.0" max="-15.0" color="0,255,0"/>
+  <Range min="-15.0" max="-10.0" color="0,204,0"/>
+  <Range min="-10.0" max="-5.0" color="0,153,0"/>
+  <Range min="-5.0" max="0.0" color="255,255,0"/>
+  <Range min="0.0" max="5.0" color="255,204,0"/>
+  <Range min="5.0" max="10.0" color="255,102,0"/>
+  <Range min="10.0" max="15.0" color="255,0,0"/>
+  <Range min="15.0" max="20.0" color="204,51,0"/>
+  <Range min="20.0" max="25.0" color="153,0,0"/>
+  <Range min="25.0" max="30.0" color="255,0,255"/>
+  <Range min="30.0" max="35.0" color="153,51,204"/>
+</ColorScale>
+
+<ColorScale id="topo_colorscale">
+  <Range min="0" max="315" color="102,51,0"/>
+  <Range min="315" max="630" color="111,60,9"/>
+  <Range min="630" max="945" color="119,68,17"/>
+  <Range min="945" max="1260" color="128,77,26"/>
+  <Range min="1260" max="1575" color="137,86,35"/>
+  <Range min="1575" max="1890" color="145,94,43"/>
+  <Range min="1890" max="2215" color="153,102,51"/>
+  <Range min="2215" max="2530" color="162,111,60"/>
+  <Range min="2530" max="2845" color="170,119,68"/>
+  <Range min="2845" max="3160" color="179,128,77"/>
+  <Range min="3160" max="3475" color="188,137,86"/>
+  <Range min="3475" max="3790" color="196,145,94"/>
+  <Range min="3790" max="4105" color="204,153,102"/>
+  <Range min="4105" max="4420" color="213,162,111"/>
+  <Range min="4420" max="4735" color="221,170,119"/>
+  <Range min="4735" max="5050" color="230,179,128"/>
+  <Range min="5050" max="5365" color="239,188,137"/>
+  <Range min="5365" max="5680" color="247,196,145"/>
+  <Range min="5680" max="6000" color="255,204,153"/>
+</ColorScale>
+
+<!--ColorScale
+      id = "radar_colorscale"
+      className = "edu.ucar.rap.jade.view.legend.ColorScale"
+      axisLabel = "dBZ"
+      unitLabel = "dBZ">
+      <ColorRange minValue = "-15.0" maxValue = "-10.0">
+        <Color  red = "0" green = "100" blue = "0" />
+      </ColorRange>
+      <ColorRange minValue = "-10.0" maxValue = "-6.0">
+        <Color  red = "85" green = "107" blue = "47" />
+      </ColorRange>
+      <ColorRange minValue = "-6.0" maxValue = "-3.0">
+        <Color  red = "34" green = "139" blue = "34" />
+      </ColorRange>
+      <ColorRange minValue = "-3.0" maxValue = "0.0">
+        <Color  red = "0" green = "205" blue = "102" />
+      </ColorRange>
+      <ColorRange minValue = "0.0" maxValue = "3.0">
+        <Color  red = "60" green = "179" blue = "113" />
+      </ColorRange>
+      <ColorRange minValue = "3.0" maxValue = "6.0">
+        <Color  red = "102" green = "205" blue = "170" />
+      </ColorRange>
+      <ColorRange minValue = "6.0" maxValue = "9.0">
+        <Color  red = "123" green = "104" blue = "238" />
+      </ColorRange>
+      <ColorRange minValue = "9.0" maxValue = "12.0">
+        <Color  red = "0" green = "0" blue = "255" />
+      </ColorRange>
+      <ColorRange minValue = "12.0" maxValue = "15.0">
+        <Color  red = "0" green = "0" blue = "139" />
+      </ColorRange>
+      <ColorRange minValue = "15.0" maxValue = "18.0">
+        <Color  red = "104" green = "34" blue = "139" />
+      </ColorRange>
+      <ColorRange minValue = "18.0" maxValue = "21.0">
+        <Color  red = "139" green = "58" blue = "98" />
+      </ColorRange>
+      <ColorRange minValue = "21.0" maxValue = "24.0">
+        <Color  red = "176" green = "48" blue = "96" />
+      </ColorRange>
+      <ColorRange minValue = "24.0" maxValue = "27.0">
+        <Color  red = "139" green = "34" blue = "82" />
+      </ColorRange>
+      <ColorRange minValue = "27.0" maxValue = "31.0">
+        <Color  red = "160" green = "82" blue = "45" />
+      </ColorRange>
+      <ColorRange minValue = "31.0" maxValue = "35.0">
+        <Color  red = "210" green = "105" blue = "30" />
+      </ColorRange>
+      <ColorRange minValue = "35.0" maxValue = "40.0">
+        <Color  red = "218" green = "165" blue = "32" />
+      </ColorRange>
+      <ColorRange minValue = "40.0" maxValue = "45.0">
+        <Color  red = "255" green = "255" blue = "0" />
+      </ColorRange>
+      <ColorRange minValue = "45.0" maxValue = "50.0">
+        <Color  red = "233" green = "150" blue = "122" />
+      </ColorRange>
+      <ColorRange minValue = "50.0" maxValue = "55.0">
+        <Color  red = "250" green = "128" blue = "114" />
+      </ColorRange>
+      <ColorRange minValue = "55.0" maxValue = "60.0">
+        <Color  red = "238" green = "44" blue = "44" />
+      </ColorRange>
+      <ColorRange minValue = "60.0" maxValue = "65.0">
+        <Color  red = "255" green = "20" blue = "147" />
+      </ColorRange>
+      <ColorRange minValue = "65.0" maxValue = "70.0">
+        <Color  red = "211" green = "211" blue = "211" />
+      </ColorRange>
+      <ColorRange minValue = "70.0" maxValue = "80.0">
+        <Color  red = "250" green = "250" blue = "250" />
+      </ColorRange>
+</ColorScale-->
+
+<!--
+####################################################################################################################################
+
+ Other configuration parameters:
+
+####################################################################################################################################
+-->
+
+</Jazz>

@@ -1,0 +1,238 @@
+/**********************************************************************
+ * TDRP params for CalcMoisture
+ **********************************************************************/
+
+//======================================================================
+//
+// CalcMoisture.
+//
+// This program calculates water vapor pressure (e) and dew point 
+//   temperature based on the refractivity N field and the mean 
+//   temperature and pressure values from a group of weather stations.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// DEBUGGING PARAMETERS.
+//
+// Parameters controlling debug outputs.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// debug flag.
+// Debug flag.
+// Type: boolean
+//
+
+debug = FALSE;
+
+//======================================================================
+//
+// PROCESS PARAMETERS.
+//
+//======================================================================
+ 
+///////////// instance ////////////////////////////////
+//
+// Process instance.
+// Used for registration with procmap.
+// Type: string
+//
+
+instance = "spol";
+
+//======================================================================
+//
+// PROCESS TRIGGERING PARAMETERS.
+//
+// Parameters describing the process triggering.
+//
+//======================================================================
+ 
+///////////// trigger_mode ////////////////////////////
+//
+// Input triggering mode.
+// In LATEST_DATA mode, the program waits for N field data before doing 
+//   any processing.
+// In TIME_LIST mode, the program operates on archive data as specified 
+//   in the time_list_trigger parameter.
+//
+// Type: enum
+// Options:
+//     LATEST_DATA
+//     TIME_LIST
+//
+
+trigger_mode = LATEST_DATA;
+
+///////////// time_list_trigger ///////////////////////
+//
+// Trigger information used when using the TIME_LIST trigger.
+// 	start_time specifies the archive start time in any format recognized 
+//   by the DateTime class.
+// 	end_time specifies the archive end time in any format recognized by 
+//   the DateTime class.
+//
+// Type: struct
+//   typedef struct {
+//      string start_time;
+//      string end_time;
+//   }
+//
+//
+
+time_list_trigger = {
+    start_time = "2001/1/1 00:00:00",
+    end_time = "2002/1/2 00:00:00"
+};
+
+//======================================================================
+//
+// PROCESS I/O PARAMETERS.
+//
+// Parameters describing the input and output locations.
+//
+//======================================================================
+ 
+///////////// n_field /////////////////////////////////
+//
+// Field which contains the calculated N values.
+// 	url - URL for the N field.
+// 	use_field_name - Flag indicating whether to use the field name or 
+//   the field number to identify the N field.
+// 	field_name - Field name for the N field in the MDV file. Used only 
+//   if use_field_name is set to true.
+// 	field_num - Field number for the N field in the MDV file. Used only 
+//   if use_field_name is set to false.
+//
+// Type: struct
+//   typedef struct {
+//      string url;
+//      boolean use_field_name;
+//      string field_name;
+//      long field_num;
+//   }
+//
+//
+
+n_field = {
+    url = "mdvp:://localhost:0:$(project)/mdv/refract/spol_refr",
+    use_field_name = TRUE,
+    field_name = "N",
+    field_num = 0
+};
+
+///////////// output_url //////////////////////////////
+//
+// Output URL.
+// Type: string
+//
+
+output_url = "mdvp:://localhost::$(project)/mdv/refract/spol_moisture";
+
+///////////// compress_output_fields //////////////////
+//
+// Flag indicating whether to compress the calculated fields before 
+//   writing them to the output file.
+// Type: boolean
+//
+
+compress_output_fields = TRUE;
+
+//======================================================================
+//
+// ALGORITHM PARAMETERS.
+//
+//======================================================================
+ 
+///////////// station_url /////////////////////////////
+//
+// URL of SPDB database containing station information.
+// Type: string
+//
+
+station_url = "spdbp:://localhost::$(project)/spdb/metar";
+
+///////////// station_list ////////////////////////////
+//
+// List of stations to use for calculating the mean temperature and 
+//   pressure values.
+// 	name is the name of the station as it appears in the database.
+// 	elevation is the elevation of the station in meters. This elevation 
+//   value is only used if get_elevation_from_data is set to false.
+//
+// Type: struct
+//   typedef struct {
+//      string name;
+//      double elevation;
+//   }
+//
+// 1D array - variable length.
+//
+
+station_list = {
+  {
+    name = "KAPA",
+    elevation = 1793
+  }
+  ,
+  {
+    name = "KBJC",
+    elevation = 1724
+  }
+  ,
+  {
+    name = "KBKF",
+    elevation = 1726
+  }
+  ,
+  {
+    name = "KDEN",
+    elevation = 1655
+  }
+  ,
+  {
+    name = "KFNL",
+    elevation = 1529
+  }
+  ,
+  {
+    name = "KFTG",
+    elevation = 1709
+  }
+  ,
+  {
+    name = "KGXY",
+    elevation = 1432
+  }
+};
+
+///////////// get_elevation_from_data /////////////////
+//
+// Flag indicating whether to get the station elevations from the data 
+//   or from the station_list parameter.
+// If set to TRUE, the station elevations are taken from the database. 
+//   If set to FALSE, the station elevations are taken from the 
+//   station_list parameter.
+// This allows you to override the station elevation values in the data 
+//   if they are wrong for some reason.
+// Type: boolean
+//
+
+get_elevation_from_data = FALSE;
+
+///////////// max_station_valid_secs //////////////////
+//
+// Maximum valid time for station information in seconds.
+// If a station hasn't reported temperature and pressure values within 
+//   this number of seconds before the N field time stamp, the station 
+//   will not be included in the mean temperature and pressure 
+//   calculations.
+// Type: long
+//
+
+max_station_valid_secs = 3600;
+

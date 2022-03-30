@@ -1,0 +1,5 @@
+#! /bin/csh
+
+CIDD -p http://front.eol.ucar.edu/content/projects/hawk/front/projDir/display/params/CIDD.front
+
+

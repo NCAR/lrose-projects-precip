@@ -1,0 +1,100 @@
+{
+	"lidar name": "WVDIAL2",
+	"MCS bins": [
+		{"date": "7-Dec-2016, 0:0","value": 280},
+		{"date": "22-Feb-2017, 0:0","value": 1400},
+		{"date": "8-Apr-2017, 0:0","value": 560},
+		{"date": "10-Oct-2017, 0:0","value": 561},
+		{"date": "11-Oct-2017, 17:47","value": 560}
+	],
+	"MCS Type": [
+		{"date": "7-Dec-2016, 0:0","value": "Sigma Space","version":0},
+		{"date": "10-Oct-2017, 0:0","value": "NCAR MCS","version":0}
+	],
+	"Bin Width": [
+		{"date": "7-Dec-2016, 0:0","value": 500e-9, "units":"seconds"},
+		{"date": "22-Feb-2017, 0:0","value": 100e-9, "units":"seconds"},
+		{"date": "8-Apr-2017, 0:0","value": 250e-9, "units":"seconds"}
+	],
+
+	"Molecular Gain": [
+		{"date": "7-Dec-2016, 0:0","value": 2.0, "diff_geo": "unknown", "change type": "abrupt","RB Corrected":"False","notes":""},
+		{"date": "12-Dec-2016, 0:0","value": 2.25, "diff_geo": "diff_geo_DLB_20161212.npz", "change type": "abrupt", "RB Corrected":"False","notes": ""},
+		{"date": "19-Dec-2016, 0:0","value": 1.2, "diff_geo": "diff_geo_DLB_20161219_2.npz", "change type": "abrupt", "RB Corrected":"False","notes": ""},	
+		{"date": "21-Dec-2016, 0:0","value": 1.3982300884955754, "diff_geo": "diff_geo_DLB_20161227.npz", "change type":"gradual", "RB Corrected":"False","notes": "diff geo Provided by Scott"},
+		{"date": "18-Jan-2017, 0:0","value": 1.33, "diff_geo": "diff_geo_DLB_20161227.npz", "change type": "gradual", "RB Corrected":"False","notes": "diff geo Provided by Scott"},
+		{"date": "22-Feb-2017, 0:0","value": 1.33, "diff_geo": "diff_geo_DLB_20170222.npz", "change type": "gradual", "RB Corrected":"False","notes": "diff geo with Update with Zeeman calibration"},
+		{"date": "1-Mar-2017, 0:0","value": 2.8789, "diff_geo": "diff_geo_DLB_20170301.npz", "change type": "gradual", "RB Corrected":"False", "notes": ""},
+
+		{"date": "7-Dec-2016, 0:0","value": 0.34375, "diff_geo": "none", "change type": "abrupt", "RB Corrected":"False","notes": ""},
+		{"date": "19-Dec-2016, 0:0","value": 0.2473021582733813, "diff_geo": "none", "change type": "abrupt", "RB Corrected":"False","notes": ""},
+		{"date": "21-Dec-2016, 0:0","value": 0.32149280575539574, "diff_geo": "none", "change type": "abrupt", "RB Corrected":"False","notes": ""},
+		{"date": "21-Dec-2016, 18:30","value": 1.2821, "diff_geo": "none", "change type": "abrupt", "RB Corrected":"False","notes": ""},
+		{"date": "14-Apr-2017, 0:0","value": 1.33, "diff_geo": "none", "change type": "abrupt", "RB Corrected":"False","notes": ""},
+		{"date": "5-May-2017, 0:0","value": 3.17, "diff_geo": "none", "change type": "abrupt", "RB Corrected":"False","notes": ""},
+		{"date": "24-May-2017, 0:0","value": 3.287, "diff_geo": "none", "change type": "gradual", "RB Corrected":"False","notes": ""},
+		{"date": "29-May-2017, 0:0","value": 3.7236, "diff_geo": "none", "change type": "abrupt", "RB Corrected":"False","notes": ""},
+		{"date": "30-May-2017, 17:10","value": 4.487, "diff_geo": "none", "change type": "abrupt", "RB Corrected":"False","notes": ""},
+		{"date": "31-May-2017, 17:10","value": 2.106899, "diff_geo": "none", "change type": "abrupt", "RB Corrected":"False","notes": ""},
+		{"date": "15-Jun-2017, 00:00","value": 1.462363, "diff_geo": "none", "change type": "gradual", "RB Corrected":"False","notes": ""},
+		{"date": "19-Jul-2017, 17:00","value": 1.920075, "diff_geo": "none", "change type": "abrupt", "RB Corrected":"False","notes": "Post Migration, Aligned Receiver"},
+		{"date": "27-Jul-2017, 00:00","value": 1.920075, "diff_geo": "none", "change type": "abrupt","RB Corrected":"False", "notes": "LAFE start"},
+		{"date": "19-Jul-2017, 17:00","value": 0.3958744140010588, "diff_geo": "none", "change type": "abrupt", "RB Corrected":"True","notes": "Post Migration, Aligned Receiver"},
+		{"date": "19-Aug-2017, 01:00","value": 0.4136887626311065, "diff_geo": "none", "change type": "gradual","RB Corrected":"True" ,"notes": ""},
+		{"date": "29-Aug-2017, 00:00","value": 0.3958744140010588, "diff_geo": "none", "change type": "gradual","RB Corrected":"True" ,"notes": ""},
+		{"date": "10-Oct-2017, 00:00","value": 0.585885536352462, "diff_geo": "none", "change type": "gradual","RB Corrected":"True" ,"notes": "Post LAFE realignment"}
+	],
+
+	"Geo File Record": [
+		{"date": "20-Jan-2017, 0:0","value": 0.0, "filename": "geo_DLB_20170120_0.npz", "change type": "gradual", "notes": ""},
+		{"date": "13-Apr-2017, 0:0","value": 0.0, "filename": "geo_DLB_20170413.npz", "change type": "abrupt", "notes": ""},
+		{"date": "18-Apr-2017, 0:0","value": 0.0, "filename": "geo_DLB_20170418.npz", "change type": "gradual", "notes": ""},
+		{"date": "5-May-2017, 0:0","value": 0.0, "filename": "geo_DLB_20170512.npz", "change type": "abrupt", "notes": ""},
+		{"date": "24-May-2017, 0:0","value": 0.0, "filename": "geo_DLB_20170524.npz", "change type": "gradual", "notes": "Uses outdated sonde data"},
+		{"date": "15-Jun-2017, 0:0","value": 0.0, "filename": "geo_DLB_20170615.npz", "change type": "gradual", "notes": ""},
+		{"date": "27-Jul-2017, 0:0","value": 0.0, "filename": "geo_DLB_20170809.npz", "change type": "abrupt", "notes": "LAFE start"},
+		{"date": "29-Aug-2017, 0:0","value": 0.0, "filename": "geo_DLB_20170829.npz", "change type": "gradual", "notes": ""},
+		{"date": "12-Oct-2017, 0:0","value": 0.0, "filename": "geo_DLB_20171012.npz", "change type": "gradual", "notes": ""}
+	],
+
+	"Data Time Resolution": [
+		{"date": "7-Dec-2016, 0:0","value": 2, "units":"seconds"}
+	],
+
+	"Laser Pulse Width": [
+		{"date": "7-Dec-2016, 0:0","value": 0.9e-6, "units":"seconds"}
+	],
+
+	"Location": [
+		{"date": "7-Dec-2016, 0:0","location": "Boulder","latitude": 40.037865, "longitude": -105.241002, "Project":"none", "description": "Optics Lab","change type": "abrupt"},
+		{"date": "27-Jul-2017, 0:0","location": "DOE Southern Great Plains","latitude": 36.477111, "longitude": -97.421027, "Project":"LAFE", "description": "HSRL Sea Container","change type": "abrupt"}
+	],
+	
+	"Rubidium Cell Temperature": [
+		{"date": "7-Dec-2016, 0:0","value": 324, "units":"K"}
+	],
+	"Rubidium Cell Pressure": [
+		{"date": "7-Dec-2016, 0:0","value": 0, "units":"Pa"}
+	],
+	"Rubidium Cell Length": [
+		{"date": "7-Dec-2016, 0:0","value": 7.2e-2, "units":"m"}
+	],
+	"Rubidium Cell Isotope Purity": [
+		{"date": "7-Dec-2016, 0:0","value": 0.99, "units":"none"}
+	],
+
+	"Comments": [
+		{"date": "21-Dec-2016, 0:0", "value": "Switched to 70/30 beam splitter"},
+		{"date": "20-Jan-2017, 0:0", "value": "Begin including uncertainty in geo calibrations"},
+		{"date": "8-Apr-2017, 0:0", "value": "Date Approximate.  Changed MCS to have 37.5 m resolution"},
+		{"date": "5-May-2017, 0:0","value": "Integrated WV-DIAL with DLB-HSRL"},
+		{"date": "24-May-2017, 22:00","value": "Double Etalon inserted in DLB-HSRL channel"},
+		{"date": "10-Jul-2017, 0:0","value": "Begin Rack Migration for LAFE"},
+		{"date": "14-Jul-2017, 0:0","value": "Begin Rack Migration for LAFE Complete"},
+		{"date": "19-Jul-2017, 0:0","value": "Realign Receiver (all channels)"},
+		{"date": "27-Jul-2017, 0:0","value": "Move to LAFE"},
+		{"date": "8-Aug-2017, 18:00","value": "HSRL Channel Operational (replaced 780 DFB)"},
+		{"date": "5-Sep-2017, 0:0","value": "Return from LAFE"}
+	]
+
+}

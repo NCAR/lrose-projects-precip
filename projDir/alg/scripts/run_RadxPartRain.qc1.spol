@@ -1,0 +1,84 @@
+#! /bin/csh
+
+cd $PROJ_DIR/alg/params
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201405201700_201405220400
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 05 20 12 00 00" -end "2014 05 21 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 05 20 12 00 00" -end "2014 05 21 12 00 00"
+#RadxPartRain -params RadxPartRain.qc.chill.sur -debug -start "2014 05 20 12 00 00" -end "2014 05 21 12 00 00"
+#RadxPartRain -params RadxPartRain.qc.chill.rhi -debug -start "2014 05 20 12 00 00" -end "2014 05 21 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201405201700_201405220400
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 05 21 12 00 00" -end "2014 05 22 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 05 21 12 00 00" -end "2014 05 22 12 00 00"
+#RadxPartRain -params RadxPartRain.qc.chill.sur -debug -start "2014 05 21 23 00 00" -end "2014 05 22 12 00 00"
+#RadxPartRain -params RadxPartRain.qc.chill.rhi -debug -start "2014 05 21 12 00 00" -end "2014 05 22 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201405221400_201405230400
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 05 22 12 00 00" -end "2014 05 23 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 05 22 12 00 00" -end "2014 05 23 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201405231400_201405240900
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 05 23 12 00 00" -end "2014 05 24 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 05 23 12 00 00" -end "2014 05 24 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201405241700_201405260000
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 05 24 12 00 00" -end "2014 05 25 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 05 24 12 00 00" -end "2014 05 25 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201405241700_201405260000
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 05 25 12 00 00" -end "2014 05 26 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 05 25 12 00 00" -end "2014 05 26 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201405291700_201405310300
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 05 29 12 00 00" -end "2014 05 30 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 05 29 12 00 00" -end "2014 05 30 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201405291700_201405310300
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 05 30 12 00 00" -end "2014 05 31 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 05 30 12 00 00" -end "2014 05 31 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201405311700_201406050300
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 05 31 12 00 00" -end "2014 06 01 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 05 31 12 00 00" -end "2014 06 01 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201405311700_201406050300
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 06 04 12 00 00" -end "2014 06 05 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 06 04 12 00 00" -end "2014 06 05 12 00 00"
+    
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201406051700_201406080000
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 06 05 12 00 00" -end "2014 06 06 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 06 05 12 00 00" -end "2014 06 06 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201406051700_201406080000
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 06 06 12 00 00" -end "2014 06 07 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 06 06 12 00 00" -end "2014 06 07 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201406051700_201406080000
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 06 07 12 00 00" -end "2014 06 08 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 06 07 12 00 00" -end "2014 06 08 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201406081700_201406082200
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 06 08 12 00 00" -end "2014 06 08 22 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 06 08 12 00 00" -end "2014 06 08 22 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201406082200_201406090000
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 06 08 22 00 00" -end "2014 06 09 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 06 08 22 00 00" -end "2014 06 09 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201406111700_201406120200
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 06 11 12 00 00" -end "2014 06 12 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 06 11 12 00 00" -end "2014 06 12 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201406121700_201406130200
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 06 12 12 00 00" -end "2014 06 13 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 06 12 12 00 00" -end "2014 06 13 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201406141500_201406150200
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 06 14 12 00 00" -end "2014 06 15 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 06 14 12 00 00" -end "2014 06 15 12 00 00"
+
+setenv PID_THRESHOLDS_FILE_PATH $PROJ_DIR/alg/params/pid_thresholds.qc.front.201406181700_201406190400
+RadxPartRain -params RadxPartRain.qc.spol.sur -debug -start "2014 06 18 12 00 00" -end "2014 06 19 12 00 00"
+RadxPartRain -params RadxPartRain.qc.spol.rhi -debug -start "2014 06 18 12 00 00" -end "2014 06 19 12 00 00"
+

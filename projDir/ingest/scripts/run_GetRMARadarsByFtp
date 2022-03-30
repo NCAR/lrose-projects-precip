@@ -1,0 +1,18 @@
+#! /bin/csh
+
+# get the data from the RMA1 radar, in catchup mode
+
+cd $PROJ_DIR/ingest/scripts
+
+running GetRMARadarsByFtp.py
+
+if ($status == 1) then
+  GetRMARadarsByFtp.py --debug  \
+      --start "2018 11 01 00 00 00" \
+      --end "2018 11 20 00 00 00" \
+      --sourceDir /L2/RMA1 \
+      --targetDir ${DATA_DIR}/relampago/raw/radar/catchup/RMA1 \
+      |& LogFilter -d $ERRORS_LOG_DIR -p GetRMARadarsByFtp -i RMA1 \
+      >& /dev/null &
+endif
+

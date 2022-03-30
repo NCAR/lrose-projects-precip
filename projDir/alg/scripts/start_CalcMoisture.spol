@@ -1,0 +1,18 @@
+#! /bin/csh
+
+# Write output in MDV format.  This shouldn't be required, but
+# I was having trouble displaying the data in Jazz.  I think that
+# CalcMoisture needs to be updated to copy the chunk data from the
+# input file to the output file to fix this problem.
+
+setenv MDV_WRITE_FORMAT FORMAT_MDV
+setenv MDV_WRITE_USING_EXTENDED_PATHS FALSE
+
+cd $PROJ_DIR/alg/params
+
+running "CalcMoisture -params CalcMoisture.spol"
+
+if ($status == 1) then
+    CalcMoisture -params CalcMoisture.spol |& \
+        LogFilter -d $ERRORS_LOG_DIR -p CalcMoisture -i spol >& /dev/null &
+endif

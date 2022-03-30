@@ -1,0 +1,13 @@
+#! /bin/csh
+#
+# rsync the relampago data set to the ftp download area
+# on the relamp server
+
+cd $DATA_DIR
+
+rsync -av relampago /data/ftp/download \
+  |& LogFilter -d $ERRORS_LOG_DIR -p rsync_relamp_data_to_ftp_download -i ops \
+  >& /dev/null &
+
+
+

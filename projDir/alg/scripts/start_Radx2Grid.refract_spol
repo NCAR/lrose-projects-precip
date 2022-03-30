@@ -1,0 +1,16 @@
+#! /bin/csh
+
+# Write output in MDV format since this is required by
+# RefractCalib and Refract
+
+setenv MDV_WRITE_FORMAT FORMAT_MDV
+setenv MDV_WRITE_USING_EXTENDED_PATHS FALSE
+
+cd $PROJ_DIR/alg/params
+
+running "Radx2Grid -params Radx2Grid.refract_spol"
+
+if ($status == 1) then
+    Radx2Grid -params Radx2Grid.refract_spol |& \
+        LogFilter -d $ERRORS_LOG_DIR -p Radx2Grid -i refract_spol >& /dev/null &
+endif

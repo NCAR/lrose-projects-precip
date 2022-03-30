@@ -1,0 +1,17 @@
+#! /bin/csh
+
+# Write output in MDV format since this is required by
+# RefractCalib and Refract
+
+setenv MDV_WRITE_FORMAT FORMAT_MDV
+setenv MDV_WRITE_USING_EXTENDED_PATHS FALSE
+
+# Delete the old calibration file so we don't mistakenly reuse it
+
+ \rm $DATA_DIR/front/mdv/refract/calib/Refract_calibration.mdv
+
+# Now run the algorithm
+
+cd $PROJ_DIR/alg/params
+
+RefractCalib -params RefractCalib.spol

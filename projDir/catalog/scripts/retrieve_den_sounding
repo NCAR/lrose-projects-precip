@@ -1,0 +1,10 @@
+#! /bin/csh
+
+#===========================================================================
+#
+# retrieve DEN sounding images
+#
+#===========================================================================
+
+wget_images.py --debug --url http://weather.rap.ucar.edu/upper --suffix _KDNR.gif --outdir $DATA_DIR/${project}/raw/images/soundings --frequency 12 --nlookback 3 --category upperair --platform DEN-radiosonde --fieldName skewT |& \
+	LogFilter -d $ERRORS_LOG_DIR -p wget_images -i den_sounding >& /dev/null &

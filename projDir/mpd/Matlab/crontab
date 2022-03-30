@@ -1,0 +1,18 @@
+# WVDIAL scheduler cron entries
+# DIAL PROCESS(save_figure, save_data, save_netCDF, save_catalog, channel)
+# save (on=1, off=0), and channel (FF=standard channel, NF= wide field-of-view channel)
+# process and save only images every 15 min
+# */15 * * * * cd /Users/spuler/test && ./DIAL_process 1 0 0 1 FF NCAR  >/dev/null 2>&1
+# */16 * * * * cd /Users/spuler/test && ./DIAL_process 1 0 0 1 NF NCAR  >/dev/null 2>&1
+# */17 * * * * cd /Users/spuler/test && ./DIAL_process 1 0 0 1 FF MSU  >/dev/null 2>&1
+#  process and save data at 6:10PM MST for full day
+# 10 18 * * * cd /Users/spuler/test && ./DIAL_process 0 1 1 0 FF NCAR >/dev/null 2>&1
+# 11 18 * * * cd /Users/spuler/test && ./DIAL_process 0 1 1 0 NF NCAR >/dev/null 2>&1
+# 12 18 * * * cd /Users/spuler/test && ./DIAL_process 0 1 1 0 FF MSU >/dev/null 2>&1
+
+# WVDIAL scheduler cron entries
+# DIAL PROCESS(save_figure, save_data, save_netCDF, save_catalog, node)
+# save (on=1, off=0)
+
+*/15 * * * * cd /Users/spuler/test && ./DIAL_process 1 0 0 1 DIAL01  >/dev/null 2>&1
+*/16 * * * * cd /Users/spuler/test && ./DIAL_process 1 0 0 1 DIAL02  >/dev/null 2>&1

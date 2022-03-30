@@ -1,0 +1,8 @@
+#! /bin/sh
+
+# rsync over the saved time series
+
+cd /export/eldora2/rsfdata/firestone/time_series/sband/save
+
+rsync -av --rsh='ssh -p 20022' spol@spol-gate.front.ucar.edu:/scr/pgen1data1/spol/data.pgen/time_series/sband/save/20\* . |& LogFilter -d $ERRORS_LOG_DIR -p rsync -i time_series.spol &
+

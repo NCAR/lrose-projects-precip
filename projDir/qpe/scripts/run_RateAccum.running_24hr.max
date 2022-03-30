@@ -1,0 +1,10 @@
+#! /bin/csh
+
+setenv project /scr/rain1/rsfdata/projects/pecan
+
+cd $PROJ_DIR/qpe/params
+
+RateAccum -params RateAccum.running_24hr.max -debug -start "2015 06 01 00 00 00" -end "2015 08 17 00 00 00" >& /tmp/RateAccume.running_24hr.max.log &
+
+tail -f /tmp/RateAccume.running_24hr.max.log
+

@@ -1,0 +1,5 @@
+#! /bin/csh
+
+javaws http://rap.ucar.edu/projects/jazz/app/jazz.jnlp 
+
+

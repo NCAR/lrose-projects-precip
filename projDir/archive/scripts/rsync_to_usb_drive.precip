@@ -1,0 +1,13 @@
+#! /bin/csh
+#
+
+cd $PROJ_DIR/data
+
+#rsync -av relampago sci@ops3:/run/media/sci/RSF0001/rsf
+#rsync -av relampago sci@ops3:/run/media/sci/HCR158/rsf
+
+rsync -av relampago /run/media/relamp/RSF0001/rsf
+rsync -av relampago /run/media/relamp/HCR158/rsf
+
+
+

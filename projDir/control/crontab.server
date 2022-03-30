@@ -1,0 +1,29 @@
+######################################################################
+# crontab - RELAMPAGO
+#
+####################################################################
+# SYSTEM
+#
+# Process restarters
+*/1 * * * *  csh -c "start_auto_restart_check_cron" 1> /dev/null 2> /dev/null
+*/1 * * * *  csh -c "start_procmap_check_cron"      1> /dev/null 2> /dev/null
+#
+# Build links to log date subdirs
+*/5 * * * *   csh -c "start_build_logdir_links" 1> /dev/null 2> /dev/null
+#
+######################################################################
+# rsync the data to the ftp download area
+#
+*/1 * * * *   csh -c "rsync_relamp_data_to_ftp_download" 1> /dev/null 2> /dev/null
+######################################################################
+# backup the data to USB drive
+#
+*/5 * * * * csh -c "run_rsync_to_usb_drive.relampago" 1> /dev/null 2> /dev/null
+######################################################################
+# retrieve the RMA1 data via ftp
+#
+*/5 * * * * csh -c "run_GetRMARadarsByFtp" 1> /dev/null 2> /dev/null
+######################################################################
+# ingest hail drone posn
+#
+*/5 * * * * csh -c "getHailDronePosn" 1> /dev/null 2> /dev/null

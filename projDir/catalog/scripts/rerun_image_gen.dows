@@ -1,0 +1,15 @@
+#! /bin/csh
+
+#===========================================================================
+#
+# rerun the image generation for the DOWs
+#
+#===========================================================================
+
+#LdataWriter -refresh -dir ~/data/cfradial/quicklook/rotated_dow6 -startTime 20181110000000 -endTime 20181113000000 -debug -sleepMsecs 5000
+
+LdataWriter -refresh -dir ~/data/cfradial/quicklook/rotated_dow7 -startTime 20181102000000 -endTime 20181113000000 -debug -sleepMsecs 10000
+
+
+
+

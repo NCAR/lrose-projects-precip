@@ -1,0 +1,11 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+
+running "Grib2toMdv -params Grib2toMdv.gfs.conus"
+
+if ($status == 1) then
+    Grib2toMdv -params Grib2toMdv.gfs.conus -debug |& \
+	LogFilter -d $ERRORS_LOG_DIR -p Grib2toMdv -i gfs.conus >& /dev/null &
+endif
+

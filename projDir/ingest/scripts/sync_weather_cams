@@ -1,0 +1,8 @@
+#!/bin/sh
+DEST=/export/eldora2/rsfdata/firestone/images/spol_cams
+for dir in north south east west
+do
+  echo starting $dir
+  rsync -avz -e "ssh -q -o 'BatchMode yes' -i /home/rsfdata/.ssh/id_rsa_camera -p 20022" \
+	  camera@spol-gate.front.ucar.edu:/data/spol/spol_cams/$dir/ $DEST/$dir
+done

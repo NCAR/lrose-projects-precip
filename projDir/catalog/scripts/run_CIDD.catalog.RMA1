@@ -1,0 +1,84 @@
+#! /bin/csh
+
+# Process any command line arguments.  The only allowed argument is a time
+# string to be sent to CIDD for processing archive data.
+
+# Ensure virtual X server is running and set display accordingly. 
+
+start_Xvfb
+set display_num = 1000
+setenv DISPLAY :${display_num}.0
+
+setenv project relampago
+setenv RADAR_NAME RMA1
+setenv PLATFORM_NAME RMA1
+setenv radar_name rma1
+setenv CATEGORY radar
+setenv NUM_MENU_BAR_CELLS 1
+
+# use CIDD to create transparent images
+
+setenv CIDD_LABEL ${project}-image-generation
+setenv CREATING_IMAGES 1
+setenv TRANSPARENT_IMAGES 1
+setenv IS_TRANS -TRANS
+setenv PLOT_MAPS 0
+setenv FOREGROUND_COLOR red
+setenv BACKGROUND_COLOR black
+setenv MISSING_DATA_COLOR gray20
+setenv RANGE_RING_FLAG 0
+setenv SHOW_HEIGHT_SEL 0
+setenv TIME_INTERVAL 10.0
+setenv IMAGE_DIR ${DATA_DIR}/${project}/images/catalog/radar
+setenv OUTPUT_GEO_XML 0
+setenv HORIZ_DEFAULT_HEIGHT 1300
+setenv COLOR_SCALE_WIDTH 0
+
+setenv PROJECTION MERCATOR
+setenv ZOOM_LIMITS_IN_LATLON 1
+
+setenv ORIGIN_LAT 0.0
+setenv ORIGIN_LON -61.9191
+
+setenv MINX -66.9
+setenv MAXX -61.5
+setenv MINY -33.7
+setenv MAXY -29.2
+
+mkdir -p $IMAGE_DIR
+cd $PROJ_DIR/catalog/params
+Prepare4Cidd
+CIDD -p CIDD.catalog.${RADAR_NAME} -i ${RADAR_NAME}.web.transparent -fn fixed
+
+# use CIDD to create normal images
+
+#setenv CIDD_LABEL ${project}-image-generation
+#setenv CREATING_IMAGES 1
+#setenv TRANSPARENT_IMAGES 0
+#setenv IS_TRANS
+#setenv PLOT_MAPS 1
+#setenv FOREGROUND_COLOR white
+#setenv BACKGROUND_COLOR black
+#setenv MISSING_DATA_COLOR gray20
+#setenv RANGE_RING_FLAG 1
+#setenv SHOW_HEIGHT_SEL 0
+#setenv TIME_INTERVAL 10.0
+#setenv IMAGE_DIR ${DATA_DIR}/${project}/raw/images
+#setenv OUTPUT_GEO_XML 0
+#setenv HORIZ_DEFAULT_HEIGHT 900
+#setenv COLOR_SCALE_WIDTH 40
+
+#setenv PROJECTION CARTESIAN
+#setenv ZOOM_LIMITS_IN_LATLON 0
+
+#setenv ORIGIN_LAT 39.7866
+#setenv ORIGIN_LON -104.546
+
+#setenv MINX -230
+#setenv MAXX  230
+#setenv MINY -230
+#setenv MAXY  230
+
+#cd $PROJ_DIR/catalog/params
+#CIDD -p CIDD.catalog.nexrad -i ${RADAR_NAME}.web.normal -fn fixed -v 2
+

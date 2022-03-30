@@ -1,0 +1,411 @@
+/**********************************************************************
+ * TDRP params for Ltg2Symprod
+ **********************************************************************/
+
+//======================================================================
+//
+// DEBUGGING.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// Debug option.
+// If set, debug messages will be printed appropriately.
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_NORM
+//     DEBUG_VERBOSE
+//
+
+debug = DEBUG_OFF;
+
+//======================================================================
+//
+// PROCESS CONTROL.
+//
+//======================================================================
+ 
+///////////// instance ////////////////////////////////
+//
+// Process instance.
+// Used for procmap registration and auto restarting.
+// Type: string
+//
+
+instance = "";
+
+///////////// no_threads //////////////////////////////
+//
+// Option to prevent server from using a thread per client.
+// For debugging purposes it it sometimes useful to suppress the use of 
+//   threads. Set no_threads to TRUE for this type of debugging.
+// Type: boolean
+//
+
+no_threads = FALSE;
+
+//======================================================================
+//
+// Server details for support from ServerMgr.
+//
+//======================================================================
+ 
+///////////// port ////////////////////////////////////
+//
+// Port number.
+// The server listens on this port for client requests.
+// Type: int
+//
+
+port = 5450;
+
+///////////// qmax ////////////////////////////////////
+//
+// Max quiescent period (secs).
+// If the server does not receive requests for this time period, it will 
+//   die gracefully. If set to -1, the server never exits.
+// Type: int
+//
+
+qmax = -1;
+
+///////////// max_clients /////////////////////////////
+//
+// Maximum number of clients.
+// This is the maximum number of threads the application will produce to 
+//   handle client requests.  If the maximum is reached, new clients will 
+//   receive a SERVICE_DENIED error message and will have to request the 
+//   data again.  If set to -1, no maximum is enforced.
+// Type: int
+//
+
+max_clients = 64;
+
+//======================================================================
+//
+// RENDERING PARAMETERS.
+//
+//======================================================================
+ 
+///////////// display_color ///////////////////////////
+//
+// display color.
+// Name of color suggested for using on the display.
+// Type: string
+//
+
+display_color = "orange";
+
+///////////// line_width //////////////////////////////
+//
+// Line thickness of icon lines.
+// Thickness in pixels.
+// Type: int
+//
+
+line_width = 1;
+
+///////////// icon_size ///////////////////////////////
+//
+// Size of icon in pixels.
+// Ltg is represented by a cross. This is the length of each arm of the 
+//   cross in pixels.
+// Type: int
+//
+
+icon_size = 3;
+
+///////////// render_polarity /////////////////////////
+//
+// Option to use a different icon for strikes depending on polarity.
+// If set, negative strikes are rendered with
+// a '-', , positive with '+'.
+// Type: boolean
+//
+
+render_polarity = FALSE;
+
+///////////// use_cc_icons ////////////////////////////
+//
+// Option to use a different icon depending on if it is could-cloud or 
+//   cloud-ground.
+// If set, for cloud-cloud strikes the icons are tilted on their side so 
+//   that '+' becomes, roughly, 'X'.
+// Type: boolean
+//
+
+use_cc_icons = FALSE;
+
+///////////// different_color_for_recent_strikes //////
+//
+// Option to use a different color for the most recent strikes.
+// If set, strikes more recent than recent_strike_age are colored with 
+//   the recent_strike_color.
+// Type: boolean
+//
+
+different_color_for_recent_strikes = TRUE;
+
+///////////// recent_strike_age ///////////////////////
+//
+// Max age of recent strikes - secs.
+// See different_color_for_recent_strikes.
+// Type: int
+//
+
+recent_strike_age = 3600;
+
+///////////// recent_strike_color /////////////////////
+//
+// Color for recent strikes.
+// See different_color_for_recent_strikes.
+// Type: string
+//
+
+recent_strike_color = "orange";
+
+///////////// useWallClockForAge //////////////////////
+//
+// If we are coloring recent strikes differently, this
+// determines how the strike age is calculated.
+// If this is set to TRUE (default) then the age of the strikes
+// is calculated by taking the current (wall clock) time and
+// subtracting the valid time of the strike. This is intuitively
+// obvious, however, it does mean that if archive data are being
+// viewed, then none of them will be considered recent since
+// all strikes will likely be old relative to the current time.
+
+// Setting this parameter to FALSE means that instead of caluculating
+// age relative to the wall clock time, age will be calculated
+// relative to the end of the period for which data was requested.
+
+// If you are working with CIDD, setting short_requests=TRUE; in
+// the CIDD param file means that the ages will be relative to
+// the time of the end of the current frame plus minutes_allow_after.
+// Setting short_requests=FALSE; in the CIDD param file (the
+// default) means that ages will be relative to the end of
+// all the current frames (ie. the end of the movie loop)
+// plus minutes_allow_after.  Niles Oien.
+// Type: boolean
+//
+
+useWallClockForAge = FALSE;
+
+//======================================================================
+//
+// TIME LABELLING PARAMETERS.
+//
+//======================================================================
+ 
+///////////// do_time_labelling ///////////////////////
+//
+// Option to add a text label representing the time
+// of each strike to the display.
+// Useful for WSMR ltg data.
+// Type: boolean
+//
+
+do_time_labelling = FALSE;
+
+///////////// time_format /////////////////////////////
+//
+// Time label format.
+// Only relevant if do_time_labelling is TRUE.
+//
+// Type: enum
+// Options:
+//     TIME_LABEL_HHMM
+//     TIME_LABEL_HHMMSS
+//     TIME_LABEL_YYYYMMDDHHMMSS
+//
+
+time_format = TIME_LABEL_HHMM;
+
+///////////// time_text_offset ////////////////////////
+//
+// Pixel offset values for starting the time labelling text.
+// Only relevant if do_time_labelling is TRUE.
+//
+// Type: struct
+//   typedef struct {
+//      long x;
+//      long y;
+//   }
+//
+//
+
+time_text_offset = { 0, 0 };
+
+///////////// time_label_color ////////////////////////
+//
+// Color for time labels.
+// Only relevant if do_time_labelling is TRUE.
+// Type: string
+//
+
+time_label_color = "gray";
+
+//======================================================================
+//
+// STRIKE TYPE (CLOUD/CLOUD vs. CLOUD/GROUND) PARAMETERS.
+//
+//======================================================================
+ 
+///////////// do_type_labelling ///////////////////////
+//
+// Option to add a text label representing
+// cloud/cloud strikes. Cloud/ground strikes go unlabelled.
+// Useful at ATEC ranges.
+// Type: boolean
+//
+
+do_type_labelling = FALSE;
+
+///////////// type_cloud_cloud_label //////////////////
+//
+// Cloud/cloud label.
+// Only relevant if do_type_labelling is TRUE.
+// Type: string
+//
+
+type_cloud_cloud_label = "C";
+
+///////////// type_text_offset ////////////////////////
+//
+// Pixel offset values for starting cloud/cloud label.
+// Only relevant if do_type_labelling is TRUE.
+//
+// Type: struct
+//   typedef struct {
+//      long x;
+//      long y;
+//   }
+//
+//
+
+type_text_offset = { 0, 0 };
+
+///////////// type_label_color ////////////////////////
+//
+// Color for type labels.
+// Only relevant if do_type_labelling is TRUE.
+// Type: string
+//
+
+type_label_color = "yellow";
+
+//======================================================================
+//
+// FONT OPTIONS.
+//
+//======================================================================
+ 
+///////////// text_vert_align /////////////////////////
+//
+// Vertical alignment for the text.
+//
+// Type: enum
+// Options:
+//     VERT_ALIGN_TOP
+//     VERT_ALIGN_CENTER
+//     VERT_ALIGN_BOTTOM
+//
+
+text_vert_align = VERT_ALIGN_CENTER;
+
+///////////// text_horiz_align ////////////////////////
+//
+// Horizontal alignment for the text.
+//
+// Type: enum
+// Options:
+//     HORIZ_ALIGN_LEFT
+//     HORIZ_ALIGN_CENTER
+//     HORIZ_ALIGN_RIGHT
+//
+
+text_horiz_align = HORIZ_ALIGN_CENTER;
+
+///////////// text_font_style /////////////////////////
+//
+// Font style for the text.
+//
+// Type: enum
+// Options:
+//     TEXT_NORM
+//     TEXT_BOLD
+//     TEXT_ITALICS
+//     TEXT_SUBSCRIPT
+//     TEXT_SUPERSCRIPT
+//     TEXT_UNDERLINE
+//     TEXT_STRIKETHROUGH
+//
+
+text_font_style = TEXT_NORM;
+
+///////////// text_font_size //////////////////////////
+//
+// Size of font to use for text.
+// Type: long
+//
+
+text_font_size = 0;
+
+///////////// text_background_color ///////////////////
+//
+// Text background color.
+// Set to empty string to use display background color.
+// Type: string
+//
+
+text_background_color = "";
+
+///////////// font_name ///////////////////////////////
+//
+// Font name.
+// Type: string
+//
+
+font_name = "";
+
+//======================================================================
+//
+// BOUNDING BOX OPTIONS.
+//
+//======================================================================
+ 
+///////////// useBoundingBox //////////////////////////
+//
+// Set to TRUE to only include stations within the lat-lon bounding box.
+// Only accept stations for which the position is inside the bounding 
+//   box. Note: this will be overridden if the clientspecifies horizontal 
+//   limits.
+// Type: boolean
+//
+
+useBoundingBox = FALSE;
+
+///////////// bounding_box ////////////////////////////
+//
+// If useBoundingBox is true, only stations within this box will be 
+//   included in the product list.
+// To span the international date line, specify a continuous interval 
+//   using positive longitudes which exceed 180 ornegative longitudes 
+//   which are less than -180. For example, min_lon = 80 and max_lon = 240 
+//   will span between 80E and 120W acrossthe Pacific.
+//
+// Type: struct
+//   typedef struct {
+//      float min_lat;
+//      float min_lon;
+//      float max_lat;
+//      float max_lon;
+//   }
+//
+//
+
+bounding_box = { -90, -180, 90, 180 };
+

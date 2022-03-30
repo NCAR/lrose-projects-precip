@@ -1,0 +1,7 @@
+#! /bin/sh
+
+# watch rsync over the saved time series
+
+tail -f $ERRORS_LOG_DIR/today/rsync.time_series.spol.log
+
+

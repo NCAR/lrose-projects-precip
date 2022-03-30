@@ -1,0 +1,12 @@
+#! /bin/csh
+
+# Write output in MDV format.
+
+setenv MDV_WRITE_FORMAT FORMAT_MDV
+setenv MDV_WRITE_USING_EXTENDED_PATHS FALSE
+
+cd $PROJ_DIR/alg/params
+
+Refract -params Refract.spol -mode TIME_LIST \
+    -start "2014 7 9 21 15 4" -end "2014 12 1 0 0 0" -debug >& Refract.spol.log &
+#    -start "2014 5 20 0 0 0" -end "2014 12 1 0 0 0" -debug >& Refract.spol.log &

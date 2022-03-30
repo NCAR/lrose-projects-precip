@@ -1,0 +1,64 @@
+{
+	"lidar name": "WVDIAL1",
+	"MCS_bins": [
+		{"date": "14-May-2012 0:0","value": 1995},
+        {"date": "17-May-2014 0:0","value": 2195},
+        {"date": "13-Jun-2014 0:0","value": 220},
+        {"date": "6-Feb-2015 0:0","value": 280},
+        {"date": "10-Jun-2015 0:0","value": 220},
+        {"date": "17-Jun-2015 0:0","value": 280}
+	],
+	"MCS_Type": [
+		{"date": "14-May-2012 0:0","value": "Sigma Space","version":0}
+    ],
+	"Bin_Width": [
+        {"date": "14-May-2012 0:0","value": 50e-9, "units":"seconds"},	
+        {"date": "13-Jun-2014 0:0","value": 500e-9, "units":"seconds"}
+	],
+	"Molecular_Gain": [
+		{"date": "14-May-2012 0:0","value": 2.0, "diff_geo": "unknown", "change type": "abrupt"}
+	],
+	"Molecular_Gain_Matlab": [
+		{"date": "14-May-2012 0:0","value": 0.45, "diff_geo": 0}
+    ],
+	"Data_Time_Resolution": [
+		{"date": "14-May-2012 0:0","value": 2, "units":"seconds", "notes": "Use MCS accum and acuum_delay to calcuate value"}
+	],
+	"MCS_accum": [
+		{"date": "14-May-2012 0:0","value": 10000, "units":"accumulations"},	
+		{"date": "6-Feb-2015 0:0","value": 30000, "units":"accumulations"},	
+		{"date": "22-Apr-2015 0:0","value": 10000, "units":"accumulations"},	
+        {"date": "03-Nov-2016 0:0","value": 14285, "units":"accumulations"}
+	],
+	"MCS_accum_delay": [
+		{"date": "14-May-2012 0:0","value": 10e-9, "units":"seconds"}
+    ],
+	"switch_ratio": [
+		{"date": "14-May-2012 0:0","value": 0.5},
+		{"date": "17-Sep-2015 0:0","value": 0.75},
+		{"date": "22-sep-2015 0:0","value": 0.5}
+    ],
+	"Laser_Pulse_Width": [
+		{"date": "14-May-2012 0:0","value": 0.9e-6, "units":"seconds"}
+	],
+	"Location": [
+		{"date": "14-May-2012 0:0","location": "Boulder, CO, USA","latitude": 40.038589, "longitude": -105.238968, "Project":"none", "description": "NCAR Parking Lot", "change type": "abrupt"},
+		{"date": "1-Jul-2014 0:0","location": "Erie, CO, USA","latitude": 40.048028, "longitude": -105.005286, "Project":"FRAPPE", "description": "", "change type": "abrupt"},
+		{"date": "20-Aug-2014 0:0","location": "Boulder, CO, USA","latitude": 40.038589, "longitude": -105.238968, "Project":"none","description": "NCAR Parking Lot", "change type": "abrupt"},
+		{"date": "27-May-2015 0:0","location": "Ellis, KA, USA","latitude": 38.930, "longitude": -99.563, "Project":"PECAN","description": "", "change type": "abrupt"},
+		{"date": "16-Jul-2015 0:0","location": "Boulder, CO, USA","latitude": 40.038589, "longitude": -105.238968, "Project":"none","description": "NCAR Parking Lot", "change type": "abrupt"},
+		{"date": "20-Apr-2017 0:0","location": "Vale do Cobrao, Portugal","latitude": 39.686, "longitude": -7.735, "Project":"PERDIGAO","description": "", "change type": "abrupt"},
+		{"date": "1-Sep-2017 0:0","location": "Boulder, CO, USA","latitude": 40.038589, "longitude": -105.238968, "Project":"none","description": "", "change type": "abrupt"}
+	],
+	"Default_P": [
+		{"date": "14-May-2012 0:0","value": 0.83, "units":"atm"},
+		{"date": "27-May-2015 0:0","value": 0.929, "units":"atm"},
+		{"date": "16-Jul-2015 0:0","value": 0.83, "units":"atm"},
+		{"date": "20-Apr-2017 0:0","value": 0.9625, "units":"atm"},
+		{"date": "1-Sep-2017 0:0","value": 0.83, "units":"atm"}
+	],
+	"Comments": [
+		{"date": "14-May-2012 0:0", "value": "Initial data in Boulder"}
+	]
+
+}
