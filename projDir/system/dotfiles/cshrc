@@ -76,7 +76,7 @@ setenv PROJ_DIR $HOME/projDir
 setenv TITAN_HOME $PROJ_DIR
 
 setenv DATA_HOST localhost
-setenv DATA_DIR $PROJ_DIR/data
+setenv DATA_DIR $HOME/data
 setenv RAP_DATA_DIR $DATA_DIR
 
 setenv TMP_DIR $DATA_DIR/tmp
