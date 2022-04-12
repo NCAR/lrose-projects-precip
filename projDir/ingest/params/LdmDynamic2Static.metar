@@ -1,0 +1,144 @@
+/**********************************************************************
+ * TDRP params for LdmDynamic2Static
+ **********************************************************************/
+
+//======================================================================
+//
+// The idea of LdmDynamic2Static is that you can point
+// it at an LDM output directory where LDM output files
+// named InputDir/YYYYMMDD/YYYYMMDDHH.METAR are written
+// (these files may be growing in time, ie. dynamic).
+// The program will periodically write output files
+// to OutDir/metar.YYYYMMDDHHmm and the output files
+// do not grow (static), making them suitable
+// for ingest into an SPDB database. Typical uses would be
+// for METAR and upper air sounding data.
+
+// Niles Oien March 2002.
+//
+//======================================================================
+ 
+///////////// OutDir //////////////////////////////////
+//
+// Output directory.
+// Output metar.YYYYMMDDHHmm files get written here.
+// Type: string
+//
+
+OutDir = "$(DATA_DIR)/$(project)/raw/ldm/metar";
+
+///////////// OutPrecursor ////////////////////////////
+//
+// Output file precursor.
+// By default, output files are named metar.YYYYMMDDHHmm but
+// it may be appropriate to set this to upp to wite files
+// named upp.YYYYMMDDHHmm for upper air sounding.
+// Type: string
+//
+
+OutPrecursor = "metar";
+
+///////////// OutHasDayDir ////////////////////////////
+//
+// Write output files to day directory.
+// If true, the output path will contain a YYYYMMDD day subdirectory.
+// Type: boolean
+//
+
+OutHasDayDir = TRUE;
+
+///////////// WriteLdataFile //////////////////////////
+//
+// Option to write latest_data_info files to output directory.
+// If set, latest_data_info file is written to output dir each time a 
+//   new output file is written. The time in the ldata file refers to the 
+//   time used to name the output file.
+// Type: boolean
+//
+
+WriteLdataFile = TRUE;
+
+///////////// InDir ///////////////////////////////////
+//
+// Input directory.
+// Input YYYYMMDD/YYYYMMDDHH{mm}.METAR files are here.
+// Type: string
+//
+
+InDir = "/net/ldm/data/weather/ddp";
+
+///////////// InExt ///////////////////////////////////
+//
+// Input file extension.
+// By default, input files are named
+// YYYYMMDD/YYYYMMDDHH{mm}.METAR - this parameter controls the
+// extension. Set to UPP to ingest upper-air files named
+// YYYYMMDD/YYYYMMDDHH{mm}.UPP.
+// Type: string
+//
+
+InExt = "METAR";
+
+///////////// InHasDayDir /////////////////////////////
+//
+// Indicated whether the YYYYMMDD day dir exists in the input file path.
+// See InDir and InExt above. Normally we expect the files to be in a 
+//   YYYYMMDD subdirectory. If this is not the case, set InDayDir to 
+//   FALSE.
+// Type: boolean
+//
+
+InHasDayDir = FALSE;
+
+///////////// Instance ////////////////////////////////
+//
+// PMU Instance.
+// Use if more than one running (unlikely).
+// Type: string
+//
+
+Instance = "metar";
+
+///////////// Delay ///////////////////////////////////
+//
+// Delay between checks.
+// In seconds.
+// Type: int
+//
+
+Delay = 300;
+
+///////////// Debug ///////////////////////////////////
+//
+// If set, debugging messages are printed.
+// Type: boolean
+//
+
+Debug = FALSE;
+
+///////////// Verbose /////////////////////////////////
+//
+// If set, verbose debugging messages are printed.
+// Type: boolean
+//
+
+Verbose = FALSE;
+
+///////////// MaxGap //////////////////////////////////
+//
+// Maximum gap in metar files.
+// In Hours.
+// Type: int
+//
+
+MaxGap = 30;
+
+///////////// MaxFails ////////////////////////////////
+//
+// Maximum number of passes with no data before quitting.
+// When this is reached the program re-initializes search.
+// Type: int
+//
+
+MaxFails = 250;
+

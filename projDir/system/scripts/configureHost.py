@@ -2,7 +2,7 @@
 
 # ========================================================================== #
 #
-# Configure the host for a given role
+# Configure the precip host for a given role
 #
 # ========================================================================== #
 
@@ -20,7 +20,7 @@ def main():
     homeDir = os.environ['HOME']
     projDir = os.path.join(homeDir, 'projDir')
     controlDir = os.path.join(projDir, 'control')
-    defaultGitDir = os.path.join(homeDir, "git/lrose-projects-relampago")
+    defaultGitDir = os.path.join(homeDir, "git/lrose-projects-precip")
 
     # parse the command line
 

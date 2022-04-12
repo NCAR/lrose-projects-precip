@@ -53,14 +53,12 @@ setenv CVSROOT :pserver:${CVSUSER}@localhost:/cvs
 
 # --- OTHER BUILD SETTINGS
 
-setenv QTDIR /usr/lib/qt4
-
 setenv FC gfortran
 setenv GCC_WARNINGS -Wall
 
 # --- LD library path --
 
-setenv LD_LIBRARY_PATH $QTDIR/lib:/usr/local/lib:$LROSE_INSTALL_DIR/lib
+setenv LD_LIBRARY_PATH /usr/local/lib:$LROSE_INSTALL_DIR/lib
 
 # --- NCAR GRAPHICS ---
 
@@ -108,12 +106,7 @@ endif
 
 # python
 
-setenv PYTHONPATH ~/anaconda2/pkgs:$HOME/projDir/dial/Python/ptvv1_python/python:$HOME/projDir/dial/Python/NCAR-LidarProcessing/libraries
-
-# HSRL
-
-setenv HSRL_CONFIG ~/hsrl_config
-setenv GRIB_CACHE /scr/eldora1/HSRL_data/GFS_cache
+#setenv PYTHONPATH ~/anaconda2/pkgs:$HOME/projDir/dial/Python/ptvv1_python/python:$HOME/projDir/dial/Python/NCAR-LidarProcessing/libraries
 
 # --- Path ---
 
@@ -133,14 +126,12 @@ endif
 set path = ($path ~/lrose/bin)
 set path = ($path ~/cidd/bin)
 
-set path = ($path ~/bin $QTDIR/bin \
+set path = ($path ~/bin \
         ~/anaconda2/bin \
 	$JAVA_HOME/bin $ANT_HOME/bin \
 	$NCARG_ROOT/bin \
 	/usr/local/bin /usr/local/sbin /usr/bin/X11 \
-        /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin \
-	/opt/gfortran/irun/bin /opt/spol/bin /opt/local/lrose/bin \
-        /usr/sigmet/bin /usr/sigmet/bin/rda $QTDIR/bin )
+        /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin )
 
 # -- core files --
 # unlimit coredumpsize
