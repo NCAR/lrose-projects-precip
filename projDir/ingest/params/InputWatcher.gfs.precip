@@ -66,7 +66,7 @@ instance = "gfs.precip";
 // Type: string
 //
 
-input_dir = "/net/ldm/data/grib/gfs";
+input_dir = "/net/ldm/data/grib/gfs/full";
 
 ///////////// wait_between_checks /////////////////////
 //
@@ -105,7 +105,7 @@ file_quiescence = 30;
 // Type: int
 //
 
-max_valid_age = 43200;
+max_valid_age = 86400;
 
 ///////////// latest_data_info_avail //////////////////
 //
@@ -132,7 +132,7 @@ latest_data_info_avail = FALSE;
 // Type: boolean
 //
 
-latest_file_only = TRUE;
+latest_file_only = FALSE;
 
 ///////////// skip_to_latest_file /////////////////////
 //
@@ -161,7 +161,7 @@ skip_to_latest_file = FALSE;
 // Type: boolean
 //
 
-search_recursively = FALSE;
+search_recursively = TRUE;
 
 ///////////// max_dir_age /////////////////////////////
 //
@@ -174,7 +174,7 @@ search_recursively = FALSE;
 // Type: int
 //
 
-max_dir_age = 900;
+max_dir_age = 9000000;
 
 ///////////// max_recursion_depth /////////////////////
 //
@@ -221,7 +221,8 @@ use_inotify = FALSE;
 //
 // File name extension.
 //
-// If set, only files with this extension will be processed.
+// If not empty, only files with this extension will be processed. This 
+//   can be a comma-delimited list of extensions.
 //
 //
 // Type: string
@@ -233,14 +234,27 @@ search_ext = "grib2";
 //
 // File name sub-string.
 //
-// If set, only files with names containing this sub-string will be 
-//   processed.
+// If not empty, only files with names containing this sub-string will 
+//   be processed.
 //
 //
 // Type: string
 //
 
 search_substr = "gfs";
+
+///////////// ignore_substr ///////////////////////////
+//
+// File name ignore string.
+//
+// If not empty, only files with names NOT containing this sub-string 
+//   will be processed.
+//
+//
+// Type: string
+//
+
+ignore_substr = "";
 
 ///////////// save_latest_read_time ///////////////////
 //
@@ -255,7 +269,22 @@ search_substr = "gfs";
 // Type: boolean
 //
 
-save_latest_read_time = TRUE;
+save_latest_read_time = FALSE;
+
+///////////// ignore_hidden ///////////////////////////
+//
+// Option to ignore hidden files.
+//
+// If TRUE, all hidden files will be ignored. This is useful when 
+//   monitoring directories where files are bring copied using the 
+//   approach of copying as a hidden file, then moving file to is working 
+//   name.
+//
+//
+// Type: boolean
+//
+
+ignore_hidden = FALSE;
 
 //======================================================================
 //
@@ -498,8 +527,9 @@ data_late_secs = 3600;
 // Option to copy to a file with name based on the time.
 //
 // If TRUE, the file will be copied to a file, in the directory 
-//   'output_dir', with the path based on the file modify time. The path 
-//   will be: 'copy_dir/yyyymmdd/hhmmss.copy_ext'.
+//   'copy_dir', with the path based on the file modify time. The path 
+//   will be: 'copy_dir/yyyymmdd/hhmmss.copy_ext'. This option takes 
+//   precedence over copy_using_original_name.
 //
 //
 // Type: boolean
@@ -520,7 +550,20 @@ copy_to_time_stamped_file = FALSE;
 // Type: boolean
 //
 
-copy_using_original_name = TRUE;
+copy_using_original_name = FALSE;
+
+///////////// append_date_time_to_original_name ///////
+//
+// Option to append the date and time to the original name.
+//
+// If TRUE, yyyymmdd_hhmmss will be appended to the original file name. 
+//   This helps to keep forecast data unique, if applicable.
+//
+//
+// Type: boolean
+//
+
+append_date_time_to_original_name = FALSE;
 
 ///////////// without_date_directory //////////////////
 //
@@ -544,7 +587,7 @@ without_date_directory = FALSE;
 // Type: string
 //
 
-copy_dir = "$(DATA_DIR)/precip/raw/gfs";
+copy_dir = "$(DATA_DIR)/$(project)/raw/gfs";
 
 ///////////// copy_prefix /////////////////////////////
 //
@@ -624,7 +667,7 @@ uncompress_after_copy = FALSE;
 // Type: boolean
 //
 
-write_latest_data_info_file = FALSE;
+write_latest_data_info_file = TRUE;
 
 ///////////// data_type ///////////////////////////////
 //
@@ -637,7 +680,7 @@ write_latest_data_info_file = FALSE;
 // Type: string
 //
 
-data_type = "";
+data_type = "raw";
 
 ///////////// write_latest_data_info_to_proxy_dir /////
 //
@@ -653,7 +696,7 @@ data_type = "";
 // Type: boolean
 //
 
-write_latest_data_info_to_proxy_dir = FALSE;
+write_latest_data_info_to_proxy_dir = TRUE;
 
 ///////////// latest_data_info_proxy_dir //////////////
 //
@@ -665,7 +708,7 @@ write_latest_data_info_to_proxy_dir = FALSE;
 // Type: string
 //
 
-latest_data_info_proxy_dir = "./proxy";
+latest_data_info_proxy_dir = "$(DATA_DIR)/$(project)/raw/gfs";
 
 //======================================================================
 //

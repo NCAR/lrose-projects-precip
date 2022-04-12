@@ -38,7 +38,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "ops";
+instance = "precip";
 
 //======================================================================
 //

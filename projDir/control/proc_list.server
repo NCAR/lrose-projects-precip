@@ -14,7 +14,6 @@ DataMapper        primary  start_DataMapper          kill_DataMapper
 DsServerMgr       primary  start_inst(no-params)     snuff_inst
 DsProxyServer     primary  start_inst(no-params)     snuff_inst
 DsMdvServer       manager  start_inst(no-params)     snuff_inst
-NcMdvServer       manager  start_inst(no-params)     snuff_inst
 DsFmqServer       manager  start_inst(no-params)     snuff_inst
 DsSpdbServer      manager  start_inst(no-params)     snuff_inst
 DsFCopyServer     manager  start_inst(no-params)     snuff_inst
@@ -27,8 +26,8 @@ Tstorms2Symprod   manager  start_inst(no-params)     snuff_inst
 ######################################################################
 # GFS MODEL
 #
-#InputWatcher  gfs.precip   start_inst(ingest)   snuff_inst
-#Grib2toMdv    gfs.precip   start_inst(ingest)   snuff_inst
+InputWatcher  gfs.precip   start_inst(ingest)   snuff_inst
+Grib2toMdv    gfs.precip   start_inst(ingest)   snuff_inst
 ######################################################################
 # model-based soundings for PID
 #Mdv2SoundingSpdb  precip        start_inst(ingest) snuff_inst
