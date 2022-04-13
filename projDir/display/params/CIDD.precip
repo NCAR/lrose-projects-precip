@@ -1463,7 +1463,7 @@ dexport_info = {
 //
 //
 
-debug = DEBUG_OFF;
+debug = DEBUG_VERBOSE;
 
 ///////////// short_requests //////////////////////////
 //

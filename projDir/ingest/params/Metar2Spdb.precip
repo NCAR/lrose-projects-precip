@@ -147,8 +147,7 @@ file_match_string = "METAR";
 // Type: string
 //
 
-// st_location_path = "$(PROJ_DIR)/system/params/world_arp.loc";
-st_location_path = "$(PROJ_DIR)/system/params/stations_gthompson.txt";
+st_location_path = "$(PROJ_DIR)/system/params/world_stations.loc";
 
 ///////////// useAcceptedStationsList /////////////////
 //
@@ -218,7 +217,7 @@ checkBoundingBox = TRUE;
 // boundingBox = { 30, 45, -110, -90 };
 
 // CONUS
-boundingBox = { 20, 55, -130, -60 };
+boundingBox = { 0, 60, 80, 160 };
 
 ///////////// altUnits ////////////////////////////////
 //
