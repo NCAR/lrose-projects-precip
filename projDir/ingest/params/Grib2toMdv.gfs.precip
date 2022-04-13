@@ -792,9 +792,9 @@ out_projection_info = {
 
 out_grid_info = {
     nx = 400,
-    ny = 300,
+    ny = 400,
     minx = 100,
-    miny = 10 ,
+    miny = 5,
     dx = 0.1,
     dy = 0.1
 };
