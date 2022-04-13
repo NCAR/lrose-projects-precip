@@ -106,7 +106,7 @@ field_list = {
 GFS-TMP   GFS-TMP  mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true&TMP  temp.colors   C   -5   80  5  dcont   1 0
 GFS-RH    GFS-RH   mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true&RH   rh.colors   %   -5   80  5  dcont   1 0
 GFS-PRES  GFS-PRES mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true&Pressure pressure_mb.colors   m/s   -5   80  5  dcont   1 0
-SURF_Terrain Terrain  mdvp::terrain//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true&Elevation terrain_precip.colors m -5 80 5 dcont 1 0
+SURF_Terrain Terrain  mdvp::static//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true&Elevation terrain_precip.colors m -5 80 5 dcont 1 0
 
 LTG_RATE LTG_RATE  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&Ltg_Strikes ltg_rate.colors /300s -5 80 5 cont 1 0
 LTG_DBZ LTG_DBZ  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&DBZ dbz.colors dBZ -5 80 5 cont 1 0
