@@ -4,4 +4,4 @@
 
 #WorldTerrain /scr/sci/rsfdata/terrain/DEM/compressed 15 110 2500 2500 0.01 0.01 ~/git/lrose-projects-precip/data_dirs/data.server/mdv/terrain/precip_terrain.mdv
 
-WorldTerrain /scr/cirrus1/rsfdata/terrain/DEM/uncompressed 15 110 2500 2500 0.01 0.01 ~/git/lrose-projects-precip/data_dirs/data.server/mdv/terrain/precip_terrain.mdv
+WorldTerrain /scr/cirrus1/rsfdata/terrain/DEM/compressed 10.5 107.5 2500 2500 0.01 0.01 ~/git/lrose-projects-precip/data_dirs/data.server/mdv/terrain/precip_terrain.mdv.nc

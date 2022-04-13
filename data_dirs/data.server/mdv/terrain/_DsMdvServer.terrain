@@ -24,5 +24,5 @@ use_static_file = TRUE;
 // Type: string
 //
 
-static_file_url = "$(DATA_DIR)/relampago/mdv/terrain/relampago_terrain.mdv";
+static_file_url = "$(HOME)/git/lrose-projects-precip/data_dirs/data.server/mdv/terrain/precip_terrain.mdv.nc";
 
