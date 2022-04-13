@@ -147,7 +147,7 @@ file_match_string = "METAR";
 // Type: string
 //
 
-st_location_path = "$(PROJ_DIR)/system/params/world_stations.loc";
+st_location_path = "$(PROJ_DIR)/system/params/stations_gthompson.txt";
 
 ///////////// useAcceptedStationsList /////////////////
 //
