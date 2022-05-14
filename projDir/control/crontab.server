@@ -12,6 +12,10 @@
 */5 * * * *   csh -c "start_build_logdir_links" 1> /dev/null 2> /dev/null
 #
 ######################################################################
+# ingest lightning data
+#
+*/1 * * * * csh -c "run_GetLightningData.precip" 1> /dev/null 2> /dev/null
+######################################################################
 # rsync the data to the ftp download area
 #
 #*/1 * * * *   csh -c "rsync_relamp_data_to_ftp_download" 1> /dev/null 2> /dev/null
@@ -23,7 +27,3 @@
 # retrieve the RMA1 data via ftp
 #
 #*/5 * * * * csh -c "run_GetRMARadarsByFtp" 1> /dev/null 2> /dev/null
-######################################################################
-# ingest hail drone posn
-#
-#*/5 * * * * csh -c "getHailDronePosn" 1> /dev/null 2> /dev/null
