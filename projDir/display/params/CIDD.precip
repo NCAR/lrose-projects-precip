@@ -1568,8 +1568,8 @@ prod_info = {
   }
   ,
   {
-    menu_label = "GLM" ,
-    url = "spdbp:Ltg2Symprod://front.eol.ucar.edu:8080:precip/spdb/ltg/glm?use_http=true",
+    menu_label = "LTG" ,
+    url = "spdbp:Ltg2Symprod://front.eol.ucar.edu:8080:precip/spdb/ltg/cwb?use_http=true",
     data_type = 0,
     render_type = RENDER_ALL_VALID,
     // render_type = RENDER_ALL_BEFORE_DATA_TIME,
