@@ -1,0 +1,24 @@
+#! /bin/csh
+
+# get the data from the Himawari, using AWS
+
+cd $PROJ_DIR/ingest/scripts
+
+running "GetAwsHimawari.py --satBand 13"
+
+if ($status == 1) then
+  GetAwsHimawari.py \
+    --debug \
+    --satBand 13 \
+    --resolution 20 \
+    --ncDirBase $DATA_DIR/netcdf
+    --outputDir $DATA_DIR/raw/satellite/himawari/FullDisk/Channel13 \
+    --tmpDir /tmp/raw/himawari \
+    --dryRun True
+    --realtime \
+    --lookbackSecs 1800 \
+    --sleepSecs 15 \
+      |& LogFilter -d $ERRORS_LOG_DIR -p GetAwsRadar -i $RADAR_NAME \
+      >& /dev/null &
+endif
+

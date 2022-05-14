@@ -1,0 +1,26 @@
+#! /bin/csh
+
+# get the data from the Himawari, using AWS
+
+#cd $PROJ_DIR/ingest/scripts
+
+setenv DATA_DIR '/home/disk/monsoon/precip'
+setenv PROJ_DIR '/home/disk/bob/impacts/git/lrose-impacts/projDir'
+running "GetAwsHimawari.py3 --satBand 03"
+
+#if ($status == 1) then
+  GetAwsHimawari.py3 \
+    --debug \
+    --verbose \
+    --satBand 03 \
+    --resolution 05 \
+    --ncDirBase $DATA_DIR/netcdf \
+    --outputDir $DATA_DIR/raw/satellite/himawari/FullDisk \
+    --tmpDir /tmp/raw/himawari \
+    --realtime \
+    --lookbackSecs 1800 \
+    --sleepSecs 15 
+#      |& LogFilter -d $ERRORS_LOG_DIR -p GetAwsRadar -i $RADAR_NAME \
+#      >& /dev/null &
+#endif
+
