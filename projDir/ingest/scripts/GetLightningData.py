@@ -141,7 +141,7 @@ def getData(thisDay):
                 + " -rpath " + relPath \
                 + " -ltime " + timeStr \
                 + " -writer " + thisScriptName \
-                + " -dtype lit"
+                + " -dtype raw"
             runCommand(cmd)
 
     # close ftp connection
