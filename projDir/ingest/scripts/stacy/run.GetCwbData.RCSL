@@ -1,0 +1,19 @@
+#!/bin/csh
+
+# get RCSL radar data
+
+#cd $PROJ_DIR/ingest/scripts
+
+setenv DATA_DIR '/home/snowband/brodzik/precip'
+#running "GetCwbData.py3"
+
+./GetCwbData.py3 \
+    --verbose \
+    --platform RADAR \
+    --ftpSubDir RCSL/Volume/5A_S3.vol \
+    --localDirBase $DATA_DIR/raw/radar/rcsl \
+    --fileSuffix vol \
+    --realtime \
+    --lookbackSecs 3600 \
+    --realtime \
+    --sleepSecs 60 

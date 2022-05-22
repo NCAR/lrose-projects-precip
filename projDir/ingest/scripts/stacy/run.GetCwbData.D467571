@@ -1,0 +1,19 @@
+#!/bin/csh
+
+# get distrometer 467571 data
+
+#cd $PROJ_DIR/ingest/scripts
+
+setenv DATA_DIR '/home/snowband/brodzik/precip'
+#running "GetCwbData.py3"
+
+./GetCwbData.py3 \
+    --verbose \
+    --platform DISTRO \
+    --ftpSubDir 467571 \
+    --localDirBase $DATA_DIR/raw/distro/467571 \
+    --fileSuffix \
+    --realtime \
+    --lookbackSecs 3600 \
+    --realtime \
+    --sleepSecs 60 

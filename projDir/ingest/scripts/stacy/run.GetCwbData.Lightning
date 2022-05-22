@@ -1,0 +1,18 @@
+#!/bin/csh
+
+# get the lightning data
+
+#cd $PROJ_DIR/ingest/scripts
+
+setenv DATA_DIR '/home/snowband/brodzik/precip'
+#running "GetCwbData.py3"
+
+./GetCwbData.py3 \
+    --verbose \
+    --platform LIGHTNING \
+    --localDirBase $DATA_DIR/raw/lightning \
+    --fileSuffix lit \
+    --realtime \
+    --lookbackSecs 3600 \
+    --realtime \
+    --sleepSecs 60 

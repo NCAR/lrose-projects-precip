@@ -1,0 +1,19 @@
+#!/bin/csh
+
+# get the 15M surface data
+
+#cd $PROJ_DIR/ingest/scripts
+
+setenv DATA_DIR '/home/snowband/brodzik/precip'
+#running "GetCwbData.py3"
+
+./GetCwbData.py3 \
+    --verbose \
+    --platform SURFACE \
+    --ftpSubDir STATION \
+    --localDirBase $DATA_DIR/raw/surface \
+    --fileSuffix 15M.mdf \
+    --realtime \
+    --lookbackSecs 3600 \
+    --realtime \
+    --sleepSecs 60 
