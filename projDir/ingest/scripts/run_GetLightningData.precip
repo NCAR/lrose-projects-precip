@@ -1,0 +1,20 @@
+#! /bin/csh
+
+# get the lightning data from CWB
+
+cd $PROJ_DIR/ingest/scripts
+
+running "GetLightningData.py --project precip"
+
+if ($status == 1) then
+  GetLightningData.py \
+    --project precip \
+    --localDirBase ~/projDir/data/precip/raw/ltg \
+    --lroseBinDir $HOME/lrose/bin \
+    --realtime \
+    --lookbackSecs 3600 \
+    --sleepSecs 60 \
+    --debug \
+      |& LogFilter -d $ERRORS_LOG_DIR -p GetLightningData.py -i primary \
+      >& /dev/null &
+endif

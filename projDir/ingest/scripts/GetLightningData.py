@@ -141,7 +141,7 @@ def getData(thisDay):
                 + " -rpath " + relPath \
                 + " -ltime " + timeStr \
                 + " -writer " + thisScriptName \
-                + " -dtype lit"
+                + " -dtype raw"
             runCommand(cmd)
 
     # close ftp connection
@@ -183,9 +183,13 @@ def parseArgs():
                       dest='platform',
                       default='LIGHTNING',
                       help='directory on ftp server:one of [DISTRO/LIGHTNING/NWP/RADAR/SAT/SOUNDING/SURFACE/WINDPRO]')
+    parser.add_option('--project',
+                      dest='project',
+                      default='precip',
+                      help='name of project')
     parser.add_option('--localDirBase',
                       dest='localDirBase',
-                      default=os.environ['DATA_DIR']+'/raw/lightning',
+                      default=os.environ['DATA_DIR']+'/precip/raw/lightning',
                       help='Path of dir to which the netcdf files are written')
     parser.add_option('--lroseBinDir',
                       dest='lroseBinDir',

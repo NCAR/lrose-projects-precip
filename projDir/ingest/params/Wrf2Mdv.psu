@@ -1,0 +1,1892 @@
+/**********************************************************************
+ * TDRP params for Wrf2Mdv
+ **********************************************************************/
+
+//======================================================================
+//
+// Wrf2Mdv reads output files from the WRF model and writes MDV data. It 
+//   also allows the computation of some derived products.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// DEBUGGING AND PROCESS CONTROL.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// Debug option.
+//
+// If set, debug messages will be printed with the appropriate level of 
+//   detail.
+//
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_WARNINGS
+//     DEBUG_NORM
+//     DEBUG_VERBOSE
+//
+
+debug = DEBUG_OFF;
+
+///////////// alg_debug ///////////////////////////////
+//
+// Detailed debug information about a particular section of code.
+//
+// This can be useful for debugging a particular algorithm - without 
+//   having to turn all lots of debug printing.
+//
+//
+// Type: enum
+// Options:
+//     DEBUG_RH2
+//     DEBUG_SOIL_AM
+//     DEBUG_NONE
+//
+
+alg_debug = DEBUG_NONE;
+
+///////////// instance ////////////////////////////////
+//
+// Process instance.
+//
+// Used for registration with procmap.
+//
+//
+// Type: string
+//
+
+instance = "psu";
+
+///////////// Procmap_reg_interval_secs ///////////////
+//
+// Time between registration with procmap.
+//
+// The default is 60 secs. Set this to a longer value (say 120 secs) if 
+//   you need to scan a large directory structure and there is no 
+//   latest_data_info available.
+//
+//
+// Type: int
+//
+
+Procmap_reg_interval_secs = 60;
+
+//======================================================================
+//
+// PROGRAM MODES OF OPERATION.
+//
+//======================================================================
+ 
+///////////// mode ////////////////////////////////////
+//
+// Operation mode.
+//
+// Program may be run in two modes, archive and realtime. In realtime 
+//   mode, the analysis is performed for each volume scan as it becomes 
+//   available. In archive mode, the file list is obtained from the 
+//   command line.
+//
+//
+// Type: enum
+// Options:
+//     ARCHIVE
+//     REALTIME
+//
+
+mode = ARCHIVE;
+
+//======================================================================
+//
+// INPUT DATA.
+//
+//======================================================================
+ 
+///////////// soilparm_path ///////////////////////////
+//
+// path to SOILPARM.TBL config file that was used when running WRF.
+//
+// Information in this table is neccessary to calculate 
+//   MOIST_AVAIL_FIELD.
+//
+//
+// Type: string
+//
+
+soilparm_path = "./SOILPARM.TBL";
+
+///////////// realtime_input_dir //////////////////////
+//
+// Directory for input WRF data - REALTIME mode.
+//
+// The latest_data_info file in this directory is updated each time the 
+//   model adds a forecast time step to the output file.
+//
+//
+// Type: string
+//
+
+realtime_input_dir = "$(DATA_DIR)/$(project)/raw/wrf/psu";
+
+///////////// File_quiescence_secs ////////////////////
+//
+// Wait for the file to be this many seconds quiescent before processing 
+//   it.
+//
+// Used for Real time mode when use_ldata = FALSE ;.
+//
+//
+// Type: int
+//
+
+File_quiescence_secs = 60;
+
+///////////// Dir_search_depth ////////////////////////
+//
+// Search no more than this level deep in the realtime_input_dir.
+//
+// This can be used to only ingest one domain.
+//
+//
+// Type: int
+//
+
+Dir_search_depth = 3;
+
+///////////// Dir_scan_interval_secs //////////////////
+//
+// Interval at which directory is scanned (secs).
+//
+// The app waits for this time interval between directory scans.
+//
+//
+// Type: int
+//
+
+Dir_scan_interval_secs = 50;
+
+///////////// DomainString ////////////////////////////
+//
+// If set to other than NULL, filenames must contain this string to be 
+//   ingested.
+//
+// This allows you to control which files will be processed. The app 
+//   checks that this substring exists in the file name before processing.
+//
+//
+// Type: string
+//
+
+DomainString = "";
+
+///////////// File_extension //////////////////////////
+//
+// If set to other than NULL, filenames must have this extension to be 
+//   ingested.
+//
+// This can be used to limit the type of files processed.
+//
+//
+// Type: string
+//
+
+File_extension = "";
+
+///////////// use_ldata ///////////////////////////////
+//
+// Set to TRUE if WRF is writing a _latest_data_info file.
+//
+// Realtime mode only.
+//
+//
+// Type: boolean
+//
+
+use_ldata = FALSE;
+
+///////////// get_times_from_filenames ////////////////
+//
+// Set to TRUE if the forecast and generation time and domain should be 
+//   determined from the filename.
+//
+// Otherwise the forecast time is determined via the 'TIMES' variable,  
+//   generation time is determined from the START_TIME attribute, and 
+//   domain is set to the GRID_ID attribute.  The filename must be in the 
+//   format dn.yyyymmddhh.tmHHMM.wrf where n is the domain, yyyymmddhh is 
+//   the gen time and HHMM is the forecast lead time.
+//
+//
+// Type: boolean
+//
+
+get_times_from_filenames = FALSE;
+
+///////////// gen_time_offset /////////////////////////
+//
+// Number of seconds to apply as an offset to the gen time.
+//
+// This is useful if the file name time or the time found in the data 
+//   has an offset error. The default is no offset. Use negative values to 
+//   decrease the time.
+//
+//
+// Type: int
+//
+
+gen_time_offset = 0;
+
+///////////// max_realtime_valid_age //////////////////
+//
+// Max age of input data - REALTIME mode.
+//
+// For realtime only - max age of input data for it to be valid (secs). 
+//   If the latest_data_info file is older than this, the program waits 
+//   for new data.
+//
+// Minimum val: 0
+//
+// Type: int
+//
+
+max_realtime_valid_age = 300;
+
+///////////// min_forecast_dtime //////////////////////
+//
+// The minimum forecast time (secs) relative to model start time.
+//
+// Only forecast times greater than or equal to this dtime are used. 
+//   This allows us to ignore the first n forecasts, which may not be good 
+//   anyway due to model spin-up requirements.
+//
+//
+// Type: int
+//
+
+min_forecast_dtime = 1800;
+
+///////////// max_forecast_dtime //////////////////////
+//
+// The maximum forecast time (secs) relative to model start time.
+//
+// Only forecast times less than or equal to this dtime are used. This 
+//   allows us to ignore the last n forecast.
+//
+//
+// Type: int
+//
+
+max_forecast_dtime = 43200;
+
+///////////// specify_lead_times //////////////////////
+//
+// Option to specify which lead times to process.
+//
+// If FALSE, all lead times are processed. If TRUE, only files with lead 
+//   times in the parameter 'lead_times' will be processed. If this is 
+//   set, it will act together with min_forecast_dtime to limit the output 
+//   times. For a forecast to be accepted it must have a lead time equal 
+//   to or greater than min_forecast_dtime, and must also be in the 
+//   lead_times array.
+//
+//
+// Type: boolean
+//
+
+specify_lead_times = FALSE;
+
+///////////// lead_times //////////////////////////////
+//
+// Array of lead times (secs).
+//
+// If 'specify_lead_times' is TRUE, only the files with lead times 
+//   matching this array will be processed.
+//
+//
+// Type: int
+// 1D array - variable length.
+//
+
+lead_times = {
+};
+
+//======================================================================
+//
+// OUTPUT DATA.
+//
+//======================================================================
+ 
+///////////// output_url //////////////////////////////
+//
+// Output URL.
+//
+// The WRF data is output to URL in MDV format.
+//
+//
+// Type: string
+//
+
+output_url = "$(DATA_DIR)/$(project)/mdv/wrf/psu";
+
+//======================================================================
+//
+// Supported WRF raw and derived fields.
+//
+// ====== raw WRF 3-d fields - on cross (center) points =====
+// 	
+// U_FIELD, V_FIELD, Q_FIELD,
+// CLW_FIELD, RNW_FIELD, ICE_FIELD,
+// SNOW_FIELD, GRAUPEL_FIELD
+// W_FIELD, P_FIELD, PB_FIELD
+// PHB_FIELD, PH_FIELD, DNW_FIELD,
+// MUB_FIELD, MU_FIELD, REFL_10CM_FIELD
+// QNRAIN_FIELD, QNCLOUD_FIELD
+// 	
+// ======= raw WRF 3-d fields - on dot (corner) points =====
+// 	
+// NOTE: only applicable if output_projection is OUTPUT_PROJ_NATIVE
+// 	
+// U_EDGE_FIELD, V_EDGE_FIELD,
+// 	
+// ========== derived 3-d fields ==========
+// 	
+// TK_FIELD, TC_FIELD, WSPD_FIELD, WDIR_FIELD
+// PRESSURE_FIELD, RH_FIELD, SPEC_H_FIELD, DEWPT_FIELD, ICING_FIELD,
+// CLW_G_FIELD, RNW_G_FIELD
+// THETA_FIELD, DBZ_3D_FIELD, HGT_FIELD, Z_AGL_FIELD, ITFADEF_FIELD 
+// 	Q_G_FIELD
+//      =====  CAPE/CIN 3D fields ======
+// CAPE_3D_FIELD, CIN_3D_FIELD, LCL_3D_FIELD, LFC_3D_FIELD, EL_3D_FIELD
+// 	
+// ========== raw WRF 2-d fields ==========
+// 	
+// SOIL_T_1_FIELD, SOIL_T_2_FIELD, SOIL_T_3_FIELD,
+// SOIL_T_4_FIELD, SOIL_T_5_FIELD,
+// SOIL_M_1_FIELD, SOIL_M_2_FIELD, SOIL_M_3_FIELD,
+// SOIL_M_4_FIELD, SOIL_M_5_FIELD
+// SOIL_AM_1_FIELD, SOIL_AM_2_FIELD, SOIL_AM_3_FIELD,
+// SOIL_AM_4_FIELD, SOIL_AM_5_FIELD,
+// LAT_FIELD, LON_FIELD
+// GROUND_T_FIELD, RAINC_FIELD, RAINNC_FIELD,
+// TERRAIN_FIELD
+// LAND_USE_FIELD, SNOWCOVR_FIELD, TSEASFC_FIELD,
+// PBL_HGT_FIELD
+// T2_FIELD, Q2_FIELD, U10_FIELD, V10_FIELD,
+// SNOWH_FIELD
+// SFC_PRES_FIELD, LAND_MASK_FIELD, TH2_FIELD,
+// HFX_FIELD, LH_FIELD, SNOW_WE_FIELD, SOIL_TYPE_FIELD
+// SNOW_NC_FIELD, GRAUPEL_NC_FIELD
+// 	
+// ========== derived 2-d fields ==========
+// 	
+// FZLEVEL_FIELD, RAIN_TOTAL_FIELD,
+// RH2_FIELD, T2C_FIELD
+// WSPD10_FIELD, WDIR10_FIELD,
+// TWP_FIELD, RWP_FIELD, VIL_FIELD
+// DBZ_2D_FIELD, SPEC_H_2M_FIELD 
+//      =====  CAPE/CIN 2D fields ======
+// CAPE_FIELD, CIN_FIELD, LCL_FIELD, LFC_FIELD, EL_FIELD
+// 	
+// ========== raw GEOGRID 2-d fields ==========
+// 	
+// LANDUSEF_1_FIELD (urban),
+// LANDUSEF_2_FIELD (crops/woods),
+// LANDUSEF_6_FIELD (dryland crops and pasture), 
+// LANDUSEF_15_FIELD (mixed forest), 
+// GREENFRAC_7_FIELD (July).
+//
+//======================================================================
+ 
+///////////// output_fields ///////////////////////////
+//
+// Output fields with encoding type.
+//
+// Note: do not use START_2D_FIELDS or TOTAL_FIELD_COUNT - these are 
+//   only delimiters.
+//
+//
+// Type: struct
+//   typedef struct {
+//      output_field_name_t name;
+//        Options:
+//          U_FIELD
+//          V_FIELD
+//          Q_FIELD
+//          CLW_FIELD
+//          RNW_FIELD
+//          ICE_FIELD
+//          SNOW_FIELD
+//          GRAUPEL_FIELD
+//          W_FIELD
+//          P_FIELD
+//          PB_FIELD
+//          PHB_FIELD
+//          PH_FIELD
+//          DNW_FIELD
+//          MUB_FIELD
+//          MU_FIELD
+//          REFL_10CM_FIELD
+//          QNRAIN_FIELD
+//          QNCLOUD_FIELD
+//          U_EDGE_FIELD
+//          V_EDGE_FIELD
+//          TK_FIELD
+//          TC_FIELD
+//          WSPD_FIELD
+//          WDIR_FIELD
+//          PRESSURE_FIELD
+//          RH_FIELD
+//          SPEC_H_FIELD
+//          DEWPT_FIELD
+//          ICING_FIELD
+//          CLW_G_FIELD
+//          RNW_G_FIELD
+//          THETA_FIELD
+//          DBZ_3D_FIELD
+//          HGT_FIELD
+//          Z_AGL_FIELD
+//          ITFADEF_FIELD
+//          GEO_POT_FIELD
+//          Q_G_FIELD
+//          CAPE_3D_FIELD
+//          CIN_3D_FIELD
+//          LCL_3D_FIELD
+//          LFC_3D_FIELD
+//          EL_3D_FIELD
+//          START_2D_FIELDS
+//          SOIL_T_1_FIELD
+//          SOIL_T_2_FIELD
+//          SOIL_T_3_FIELD
+//          SOIL_T_4_FIELD
+//          SOIL_T_5_FIELD
+//          SOIL_M_1_FIELD
+//          SOIL_M_2_FIELD
+//          SOIL_M_3_FIELD
+//          SOIL_M_4_FIELD
+//          SOIL_M_5_FIELD
+//          SOIL_AM_1_FIELD
+//          SOIL_AM_2_FIELD
+//          SOIL_AM_3_FIELD
+//          SOIL_AM_4_FIELD
+//          SOIL_AM_5_FIELD
+//          LAT_FIELD
+//          LON_FIELD
+//          GROUND_T_FIELD
+//          RAINC_FIELD
+//          RAINNC_FIELD
+//          TERRAIN_FIELD
+//          LAND_USE_FIELD
+//          SNOWCOVR_FIELD
+//          TSEASFC_FIELD
+//          PBL_HGT_FIELD
+//          T2_FIELD
+//          Q2_FIELD
+//          U10_FIELD
+//          V10_FIELD
+//          SNOWH_FIELD
+//          SFC_PRES_FIELD
+//          LAND_MASK_FIELD
+//          TH2_FIELD
+//          HFX_FIELD
+//          LH_FIELD
+//          SNOW_WE_FIELD
+//          SNOW_NC_FIELD
+//          GRAUPEL_NC_FIELD
+//          SOIL_TYPE_FIELD
+//          FZLEVEL_FIELD
+//          RAIN_TOTAL_FIELD
+//          RH2_FIELD
+//          T2C_FIELD
+//          WSPD10_FIELD
+//          WDIR10_FIELD
+//          TWP_FIELD
+//          RWP_FIELD
+//          VIL_FIELD
+//          DBZ_2D_FIELD
+//          SPEC_H_2M_FIELD
+//          CAPE_FIELD
+//          CIN_FIELD
+//          LCL_FIELD
+//          LFC_FIELD
+//          EL_FIELD
+//          LANDUSEF_1_FIELD
+//          LANDUSEF_2_FIELD
+//          LANDUSEF_6_FIELD
+//          LANDUSEF_15_FIELD
+//          GREENFRAC_7_FIELD
+//          TOTAL_FIELD_COUNT
+//      output_encoding_t encoding;
+//        Options:
+//          OUT_INT8
+//          OUT_FLOAT32
+//          OUT_FLOAT32
+//   }
+//
+// 1D array - variable length.
+//
+
+output_fields = {
+  {
+    name = U_FIELD,
+    encoding = OUT_INT16
+  }
+  ,
+  {
+    name = V_FIELD,
+    encoding = OUT_INT16
+  }
+  ,
+  {
+    name = W_FIELD,
+    encoding = OUT_INT16
+  }
+  ,
+  {
+    name = Q_FIELD,
+    encoding = OUT_INT16
+  }
+  ,
+  {
+    name = WSPD_FIELD,
+    encoding = OUT_INT16
+  }
+  ,
+  {
+    name = TC_FIELD,
+    encoding = OUT_INT16
+  }
+  ,
+  {
+    name = RH_FIELD,
+    encoding = OUT_INT16
+  }
+  ,
+  {
+    name = CLW_FIELD,
+    encoding = OUT_INT16
+  }
+  ,
+  {
+    name = FZLEVEL_FIELD,
+    encoding = OUT_INT16
+  }
+  ,
+  {
+    name = DBZ_3D_FIELD,
+    encoding = OUT_INT16
+  }
+  ,
+  {
+    name = DBZ_2D_FIELD,
+    encoding = OUT_INT16
+  }
+  ,
+  {
+    name = CAPE_FIELD,
+    encoding = OUT_INT16
+  }
+  ,
+  {
+    name = VIL_FIELD,
+    encoding = OUT_INT16
+  }
+};
+
+///////////// field_name_map //////////////////////////
+//
+// These tuples match a field to a new name and long name.
+//
+// This allows you to rename individual fields to whatever you like.  If 
+//   you define field_name_map you must define it for all fields you are 
+//   using.  If you do not define it, the default names are used for all 
+//   fields.
+//
+//
+// Type: struct
+//   typedef struct {
+//      output_field_name_t original_name;
+//        Options:
+//          U_FIELD
+//          V_FIELD
+//          Q_FIELD
+//          CLW_FIELD
+//          RNW_FIELD
+//          ICE_FIELD
+//          SNOW_FIELD
+//          GRAUPEL_FIELD
+//          W_FIELD
+//          P_FIELD
+//          PB_FIELD
+//          PHB_FIELD
+//          PH_FIELD
+//          DNW_FIELD
+//          MUB_FIELD
+//          MU_FIELD
+//          REFL_10CM_FIELD
+//          QNRAIN_FIELD
+//          QNCLOUD_FIELD
+//          U_EDGE_FIELD
+//          V_EDGE_FIELD
+//          TK_FIELD
+//          TC_FIELD
+//          WSPD_FIELD
+//          WDIR_FIELD
+//          PRESSURE_FIELD
+//          RH_FIELD
+//          SPEC_H_FIELD
+//          DEWPT_FIELD
+//          ICING_FIELD
+//          CLW_G_FIELD
+//          RNW_G_FIELD
+//          THETA_FIELD
+//          DBZ_3D_FIELD
+//          HGT_FIELD
+//          Z_AGL_FIELD
+//          ITFADEF_FIELD
+//          GEO_POT_FIELD
+//          Q_G_FIELD
+//          CAPE_3D_FIELD
+//          CIN_3D_FIELD
+//          LCL_3D_FIELD
+//          LFC_3D_FIELD
+//          EL_3D_FIELD
+//          START_2D_FIELDS
+//          SOIL_T_1_FIELD
+//          SOIL_T_2_FIELD
+//          SOIL_T_3_FIELD
+//          SOIL_T_4_FIELD
+//          SOIL_T_5_FIELD
+//          SOIL_M_1_FIELD
+//          SOIL_M_2_FIELD
+//          SOIL_M_3_FIELD
+//          SOIL_M_4_FIELD
+//          SOIL_M_5_FIELD
+//          SOIL_AM_1_FIELD
+//          SOIL_AM_2_FIELD
+//          SOIL_AM_3_FIELD
+//          SOIL_AM_4_FIELD
+//          SOIL_AM_5_FIELD
+//          LAT_FIELD
+//          LON_FIELD
+//          GROUND_T_FIELD
+//          RAINC_FIELD
+//          RAINNC_FIELD
+//          TERRAIN_FIELD
+//          LAND_USE_FIELD
+//          SNOWCOVR_FIELD
+//          TSEASFC_FIELD
+//          PBL_HGT_FIELD
+//          T2_FIELD
+//          Q2_FIELD
+//          U10_FIELD
+//          V10_FIELD
+//          SNOWH_FIELD
+//          SFC_PRES_FIELD
+//          LAND_MASK_FIELD
+//          TH2_FIELD
+//          HFX_FIELD
+//          LH_FIELD
+//          SNOW_WE_FIELD
+//          SNOW_NC_FIELD
+//          GRAUPEL_NC_FIELD
+//          SOIL_TYPE_FIELD
+//          FZLEVEL_FIELD
+//          RAIN_TOTAL_FIELD
+//          RH2_FIELD
+//          T2C_FIELD
+//          WSPD10_FIELD
+//          WDIR10_FIELD
+//          TWP_FIELD
+//          RWP_FIELD
+//          VIL_FIELD
+//          DBZ_2D_FIELD
+//          SPEC_H_2M_FIELD
+//          CAPE_FIELD
+//          CIN_FIELD
+//          LCL_FIELD
+//          LFC_FIELD
+//          EL_FIELD
+//          LANDUSEF_1_FIELD
+//          LANDUSEF_2_FIELD
+//          LANDUSEF_6_FIELD
+//          LANDUSEF_15_FIELD
+//          GREENFRAC_7_FIELD
+//          TOTAL_FIELD_COUNT
+//      string name;
+//      string long_name;
+//   }
+//
+// 1D array - variable length.
+//
+
+field_name_map = {
+  {
+    original_name = U_FIELD,
+    name = "U",
+    long_name = "u-component of wind"
+  }
+  ,
+  {
+    original_name = V_FIELD,
+    name = "V",
+    long_name = "v-component of wind"
+  }
+  ,
+  {
+    original_name = Q_FIELD,
+    name = "Q",
+    long_name = "Mixing ratio"
+  }
+  ,
+  {
+    original_name = CLW_FIELD,
+    name = "clw",
+    long_name = "Cloud liquid mixing ratio"
+  }
+  ,
+  {
+    original_name = RNW_FIELD,
+    name = "rnw",
+    long_name = "Rain mixing ratio"
+  }
+  ,
+  {
+    original_name = ICE_FIELD,
+    name = "ice",
+    long_name = "Ice mixing ratio"
+  }
+  ,
+  {
+    original_name = SNOW_FIELD,
+    name = "snow",
+    long_name = "Snow mixing ratio"
+  }
+  ,
+  {
+    original_name = GRAUPEL_FIELD,
+    name = "graupel",
+    long_name = "Graupel mixing ratio"
+  }
+  ,
+  {
+    original_name = W_FIELD,
+    name = "W",
+    long_name = "w-component of wind"
+  }
+  ,
+  {
+    original_name = P_FIELD,
+    name = "P",
+    long_name = "pressure perturbation"
+  }
+  ,
+  {
+    original_name = PB_FIELD,
+    name = "PB",
+    long_name = "BASE STATE PRESSURE"
+  }
+  ,
+  {
+    original_name = U_EDGE_FIELD,
+    name = "U_EDGE",
+    long_name = "u wind on edge"
+  }
+  ,
+  {
+    original_name = V_EDGE_FIELD,
+    name = "V_EDGE",
+    long_name = "v wind on edge"
+  }
+  ,
+  {
+    original_name = PHB_FIELD,
+    name = "PHB",
+    long_name = "base-state geopotential"
+  }
+  ,
+  {
+    original_name = PH_FIELD,
+    name = "PH",
+    long_name = "perturbation geopotential"
+  }
+  ,
+  {
+    original_name = DNW_FIELD,
+    name = "DNW",
+    long_name = "d(eta) values between full (w) levels"
+  }
+  ,
+  {
+    original_name = MUB_FIELD,
+    name = "MUB",
+    long_name = "base state dry air mass in column"
+  }
+  ,
+  {
+    original_name = MU_FIELD,
+    name = "MU",
+    long_name = "perturbation dry air mass in column"
+  }
+  ,
+  {
+    original_name = REFL_10CM_FIELD,
+    name = "dbz",
+    long_name = "Radar Reflectivity"
+  }
+  ,
+  {
+    original_name = QNRAIN_FIELD,
+    name = "nRain",
+    long_name = "number concentration of rain"
+  }
+  ,
+  {
+    original_name = QNCLOUD_FIELD,
+    name = "nCloud",
+    long_name = "number concentration of cloud"
+  }
+  ,
+  {
+    original_name = ITFADEF_FIELD,
+    name = "ITFADEF",
+    long_name = "Turbulence severity - ITFA"
+  }
+  ,
+  {
+    original_name = TK_FIELD,
+    name = "TK",
+    long_name = "Temperature"
+  }
+  ,
+  {
+    original_name = TC_FIELD,
+    name = "Temp",
+    long_name = "Temperature"
+  }
+  ,
+  {
+    original_name = WSPD_FIELD,
+    name = "Wspeed",
+    long_name = "Wind speed"
+  }
+  ,
+  {
+    original_name = WDIR_FIELD,
+    name = "Wdir",
+    long_name = "Wind dirn"
+  }
+  ,
+  {
+    original_name = PRESSURE_FIELD,
+    name = "pressure",
+    long_name = "Absolute pressure"
+  }
+  ,
+  {
+    original_name = RH_FIELD,
+    name = "RH",
+    long_name = "Relative humidity"
+  }
+  ,
+  {
+    original_name = SPEC_H_FIELD,
+    name = "SpecH",
+    long_name = "Specific humidity"
+  }
+  ,
+  {
+    original_name = DEWPT_FIELD,
+    name = "DewPt",
+    long_name = "Dew point"
+  }
+  ,
+  {
+    original_name = ICING_FIELD,
+    name = "Icing",
+    long_name = "Icing severity index"
+  }
+  ,
+  {
+    original_name = CLW_G_FIELD,
+    name = "CLW_G",
+    long_name = "Cloud Liquid Mixing Ratio g/kg"
+  }
+  ,
+  {
+    original_name = RNW_G_FIELD,
+    name = "RNW_G",
+    long_name = "Rain Liquid Mixing Ratio g/kg"
+  }
+  ,
+  {
+    original_name = THETA_FIELD,
+    name = "THETA",
+    long_name = "Potential Temperature"
+  }
+  ,
+  {
+    original_name = DBZ_3D_FIELD,
+    name = "dbz_3d",
+    long_name = "dBZ-3D Estimated"
+  }
+  ,
+  {
+    original_name = HGT_FIELD,
+    name = "geo_hgt",
+    long_name = "Geopotential Height"
+  }
+  ,
+  {
+    original_name = GEO_POT_FIELD,
+    name = "geo_pot",
+    long_name = "Geopotential"
+  }
+  ,
+  {
+    original_name = Q_G_FIELD,
+    name = "Q_g",
+    long_name = "Mixing ratio g/kg"
+  }
+  ,
+  {
+    original_name = CAPE_3D_FIELD,
+    name = "CAPE_3D",
+    long_name = "CAPE 3D"
+  }
+  ,
+  {
+    original_name = CIN_3D_FIELD,
+    name = "CIN_3D",
+    long_name = "CIN 3D"
+  }
+  ,
+  {
+    original_name = LCL_3D_FIELD,
+    name = "LCL_3D",
+    long_name = "LCL 3D"
+  }
+  ,
+  {
+    original_name = LFC_3D_FIELD,
+    name = "LFC_3D",
+    long_name = "LFC 3D"
+  }
+  ,
+  {
+    original_name = EL_3D_FIELD,
+    name = "EL_3D",
+    long_name = "EL 3D"
+  }
+  ,
+  {
+    original_name = Z_AGL_FIELD,
+    name = "zz",
+    long_name = "Height above ground"
+  }
+  ,
+  {
+    original_name = SOIL_T_1_FIELD,
+    name = "soil_t_1",
+    long_name = "Soil temperature in layer 1"
+  }
+  ,
+  {
+    original_name = SOIL_T_2_FIELD,
+    name = "soil_t_2",
+    long_name = "Soil temperature in layer 2"
+  }
+  ,
+  {
+    original_name = SOIL_T_3_FIELD,
+    name = "soil_t_3",
+    long_name = "Soil temperature in layer 3"
+  }
+  ,
+  {
+    original_name = SOIL_T_4_FIELD,
+    name = "soil_t_4",
+    long_name = "Soil temperature in layer 4"
+  }
+  ,
+  {
+    original_name = SOIL_T_5_FIELD,
+    name = "soil_t_5",
+    long_name = "Soil temperature in layer 5"
+  }
+  ,
+  {
+    original_name = SOIL_M_1_FIELD,
+    name = "soil_m_1",
+    long_name = "Soil moisture in layer 1"
+  }
+  ,
+  {
+    original_name = SOIL_M_2_FIELD,
+    name = "soil_m_2",
+    long_name = "Soil moisture in layer 2"
+  }
+  ,
+  {
+    original_name = SOIL_M_3_FIELD,
+    name = "soil_m_3",
+    long_name = "Soil moisture in layer 3"
+  }
+  ,
+  {
+    original_name = SOIL_M_4_FIELD,
+    name = "soil_m_4",
+    long_name = "Soil moisture in layer 4"
+  }
+  ,
+  {
+    original_name = SOIL_M_5_FIELD,
+    name = "soil_m_5",
+    long_name = "Soil moisture in layer 5"
+  }
+  ,
+  {
+    original_name = SOIL_AM_1_FIELD,
+    name = "soil_am_1",
+    long_name = "Available Soil moisture in layer 1"
+  }
+  ,
+  {
+    original_name = SOIL_AM_2_FIELD,
+    name = "soil_am_2",
+    long_name = "Available Soil moisture in layer 2"
+  }
+  ,
+  {
+    original_name = SOIL_AM_3_FIELD,
+    name = "soil_am_3",
+    long_name = "Available Soil moisture in layer 3"
+  }
+  ,
+  {
+    original_name = SOIL_AM_4_FIELD,
+    name = "soil_am_4",
+    long_name = "Available Soil moisture in layer 4"
+  }
+  ,
+  {
+    original_name = SOIL_AM_5_FIELD,
+    name = "soil_am_5",
+    long_name = "Available Soil moisture in layer 5"
+  }
+  ,
+  {
+    original_name = LAT_FIELD,
+    name = "latitude",
+    long_name = "Latitude"
+  }
+  ,
+  {
+    original_name = LON_FIELD,
+    name = "longitude",
+    long_name = "Longitude"
+  }
+  ,
+  {
+    original_name = GROUND_T_FIELD,
+    name = "ground_t",
+    long_name = "Ground temperature"
+  }
+  ,
+  {
+    original_name = RAINC_FIELD,
+    name = "rainc",
+    long_name = "Accumulated Total Cumulus Precipitation"
+  }
+  ,
+  {
+    original_name = RAINNC_FIELD,
+    name = "rainnc",
+    long_name = "Accumulated Total Grid Scale Precipitation"
+  }
+  ,
+  {
+    original_name = TERRAIN_FIELD,
+    name = "terrain",
+    long_name = "Terrain height"
+  }
+  ,
+  {
+    original_name = LAND_USE_FIELD,
+    name = "land_use",
+    long_name = "Land use category"
+  }
+  ,
+  {
+    original_name = SNOWCOVR_FIELD,
+    name = "snowcovr",
+    long_name = "Snow cover flags"
+  }
+  ,
+  {
+    original_name = TSEASFC_FIELD,
+    name = "tseasfc",
+    long_name = "Sea surface temperature"
+  }
+  ,
+  {
+    original_name = PBL_HGT_FIELD,
+    name = "pbl_hgt",
+    long_name = "Pbl height"
+  }
+  ,
+  {
+    original_name = T2_FIELD,
+    name = "T2",
+    long_name = "2-meter Temperature"
+  }
+  ,
+  {
+    original_name = Q2_FIELD,
+    name = "Q2",
+    long_name = "2-meter Mixing Ratio"
+  }
+  ,
+  {
+    original_name = U10_FIELD,
+    name = "U10",
+    long_name = "10-meter U Component"
+  }
+  ,
+  {
+    original_name = V10_FIELD,
+    name = "V10",
+    long_name = "10-meter V Component"
+  }
+  ,
+  {
+    original_name = SNOWH_FIELD,
+    name = "snowh",
+    long_name = "Physical snow depth"
+  }
+  ,
+  {
+    original_name = SFC_PRES_FIELD,
+    name = "surfP",
+    long_name = "Surface Pressure"
+  }
+  ,
+  {
+    original_name = LAND_MASK_FIELD,
+    name = "land_mask",
+    long_name = "Land Mask (1-land 0-water)"
+  }
+  ,
+  {
+    original_name = TH2_FIELD,
+    name = "TH2",
+    long_name = "POT TEMP at 2 M"
+  }
+  ,
+  {
+    original_name = HFX_FIELD,
+    name = "HFX",
+    long_name = "UPWARD HEAT FLUX AT THE SURFACE"
+  }
+  ,
+  {
+    original_name = LH_FIELD,
+    name = "LH",
+    long_name = "LATENT HEAT FLUX AT THE SURFACE"
+  }
+  ,
+  {
+    original_name = SNOW_WE_FIELD,
+    name = "SNOW_WE",
+    long_name = "SNOW WATER EQUIVALENT"
+  }
+  ,
+  {
+    original_name = SNOW_NC_FIELD,
+    name = "SNOW_NC",
+    long_name = "ACCUMULATED TOTAL GRID SCALE SNOW AND ICE"
+  }
+  ,
+  {
+    original_name = GRAUPEL_NC_FIELD,
+    name = "GRAUPEL_NC",
+    long_name = "ACCUMULATED TOTAL GRID SCALE GRAUPEL"
+  }
+  ,
+  {
+    original_name = SOIL_TYPE_FIELD,
+    name = "SOIL_TYPE",
+    long_name = "DOMINANT SOIL CATEGORY"
+  }
+  ,
+  {
+    original_name = FZLEVEL_FIELD,
+    name = "FZLevel",
+    long_name = "freezing level"
+  }
+  ,
+  {
+    original_name = RAIN_TOTAL_FIELD,
+    name = "rain_total",
+    long_name = "Rain accumulation - con + non"
+  }
+  ,
+  {
+    original_name = T2C_FIELD,
+    name = "T2C",
+    long_name = "2-meter Temperature in C"
+  }
+  ,
+  {
+    original_name = DBZ_2D_FIELD,
+    name = "dbz_2d",
+    long_name = "dBZ-2D Estimated"
+  }
+  ,
+  {
+    original_name = RH2_FIELD,
+    name = "RH2",
+    long_name = "Relative humidity at 2 meters"
+  }
+  ,
+  {
+    original_name = WSPD10_FIELD,
+    name = "Wspeed10",
+    long_name = "Wind speed at 10 meters"
+  }
+  ,
+  {
+    original_name = WDIR10_FIELD,
+    name = "Wdir10",
+    long_name = "Wind direction at 10 meters"
+  }
+  ,
+  {
+    original_name = LANDUSEF_1_FIELD,
+    name = "Landusef_1",
+    long_name = "Landuse (urban)"
+  }
+  ,
+  {
+    original_name = LANDUSEF_2_FIELD,
+    name = "Landusef_2",
+    long_name = "Landuse (crops/woods)"
+  }
+  ,
+  {
+    original_name = LANDUSEF_6_FIELD,
+    name = "Landusef_6",
+    long_name = "Landuse (dryland crops and pasture)"
+  }
+  ,
+  {
+    original_name = LANDUSEF_15_FIELD,
+    name = "Landusef_15",
+    long_name = "Landuse (mixed forest)"
+  }
+  ,
+  {
+    original_name = GREENFRAC_7_FIELD,
+    name = "Greenfrac_7",
+    long_name = "Green Fraction (July)"
+  }
+  ,
+  {
+    original_name = TWP_FIELD,
+    name = "twp",
+    long_name = "Total Water Path"
+  }
+  ,
+  {
+    original_name = VIL_FIELD,
+    name = "vil",
+    long_name = "digital vil"
+  }
+  ,
+  {
+    original_name = RWP_FIELD,
+    name = "rwp",
+    long_name = "Rain Water Path"
+  }
+  ,
+  {
+    original_name = SPEC_H_2M_FIELD,
+    name = "spec_h2m",
+    long_name = "Specific Humidity at 2 meters"
+  }
+  ,
+  {
+    original_name = CAPE_FIELD,
+    name = "CAPE",
+    long_name = "CAPE"
+  }
+  ,
+  {
+    original_name = CIN_FIELD,
+    name = "CIN",
+    long_name = "CIN"
+  }
+  ,
+  {
+    original_name = LCL_FIELD,
+    name = "LCL",
+    long_name = "LCL"
+  }
+  ,
+  {
+    original_name = LFC_FIELD,
+    name = "LFC",
+    long_name = "LFC"
+  }
+  ,
+  {
+    original_name = EL_FIELD,
+    name = "EL",
+    long_name = "EL"
+  }
+};
+
+///////////// wind_speed_in_knots /////////////////////
+//
+// Set to TRUE to convert wind speed fields to knots.
+//
+//
+// Type: boolean
+//
+
+wind_speed_in_knots = FALSE;
+
+///////////// output_projection ///////////////////////
+//
+// Projection of output grid.
+//
+// 	FLAT - (x,y) Cartesian data in km from a given origin.
+// 	LATLON - lat/lon grid with constant grid spacing.
+// 	LAMBERT - Lambert conformal projection.
+// 	NATIVE - use the native data grid, copy to output. NATIVE only works 
+//   for model data on Lambert and Stereographic projections.
+//
+//
+// Type: enum
+// Options:
+//     OUTPUT_PROJ_FLAT
+//     OUTPUT_PROJ_LATLON
+//     OUTPUT_PROJ_LAMBERT
+//     OUTPUT_PROJ_STEREOGRAPHIC
+//     OUTPUT_PROJ_MERCATOR
+//     OUTPUT_PROJ_NATIVE
+//
+
+output_projection = OUTPUT_PROJ_LATLON;
+
+///////////// output_origin ///////////////////////////
+//
+// Origin of output grid.
+//
+// Used with OUTPUT_PROJ_FLAT, OUTPUT_PROJ_LAMBERT, 
+//   OUTPUT_PROJ_STEREOGRAPHIC.
+//
+//
+// Type: struct
+//   typedef struct {
+//      double lat;
+//      double lon;
+//   }
+//
+//
+
+output_origin = {
+    lat = 40,
+    lon = -104
+};
+
+///////////// lambert_lat1 ////////////////////////////
+//
+// lat 1 value for Lambert conformal projection.
+//
+//
+// Type: double
+//
+
+lambert_lat1 = 10;
+
+///////////// lambert_lat2 ////////////////////////////
+//
+// lat 2 value for Lambert conformal projection.
+//
+//
+// Type: double
+//
+
+lambert_lat2 = 60;
+
+///////////// stereographic_tangent_lat ///////////////
+//
+// Tangent latitude for stereographic projection.
+//
+//
+// Type: double
+//
+
+stereographic_tangent_lat = 60;
+
+///////////// stereographic_tangent_lon ///////////////
+//
+// Tangent longitude for stereographic projection.
+//
+//
+// Type: double
+//
+
+stereographic_tangent_lon = 0;
+
+///////////// output_grid /////////////////////////////
+//
+// Output grid parameters.
+//
+// The grid params for the output grid.
+//
+//
+// Type: struct
+//   typedef struct {
+//      int nx;
+//      int ny;
+//      double minx;
+//      double miny;
+//      double dx;
+//      double dy;
+//   }
+//
+//
+
+output_grid = {
+    nx = 300,
+    ny = 300,
+    minx = -125.0,
+    miny = 20.0,
+    dx = 0.1,
+    dy = 0.1
+};
+
+///////////// output_levels ///////////////////////////
+//
+// Option to choose vertical levels for output file.
+//
+// If FLIGHT_LEVELS, PRESSURE_LEVELS or HEIGHT_LEVELS, vertical levels 
+//   will be interpolated accordingly. If NATIVE_VERTICAL_LEVELS, no 
+//   interpolation is done and the data is output on the original vertical 
+//   levels (i.e. sigma, eta, etc.).
+//
+//
+// Type: enum
+// Options:
+//     FLIGHT_LEVELS
+//     PRESSURE_LEVELS
+//     HEIGHT_LEVELS
+//     NATIVE_VERTICAL_LEVELS
+//
+
+output_levels = HEIGHT_LEVELS;
+
+///////////// flight_levels ///////////////////////////
+//
+// Array of output flight levels.
+//
+// Only used if output_levels is FLIGHT_LEVELS. The output grid has a 
+//   variable Z dimension, in flight levels. The flight levels in the 
+//   output are taken from this array.
+//
+//
+// Type: int
+// 1D array - variable length.
+//
+
+flight_levels = {
+ 10,
+ 20,
+ 30,
+ 40,
+ 50,
+ 60,
+ 70,
+ 80,
+ 90,
+ 100,
+ 110,
+ 120,
+ 130,
+ 140,
+ 150,
+ 160,
+ 170,
+ 180,
+ 190,
+ 200,
+ 210,
+ 230,
+ 250,
+ 270,
+ 290,
+ 310,
+ 330,
+ 350,
+ 370,
+ 390,
+ 410,
+ 430,
+ 450
+};
+
+///////////// pressure_levels /////////////////////////
+//
+// Array of output pressure levels (mb).
+//
+// Only used if output_levels is PRESSURE_LEVELS. The output grid has a 
+//   variable Z dimension, in pressure levels. The pressure levels in the 
+//   output are taken from this array.
+//
+//
+// Type: double
+// 1D array - variable length.
+//
+
+pressure_levels = {
+ 1000,
+ 950,
+ 900,
+ 850,
+ 700,
+ 500,
+ 300,
+ 200,
+ 100
+};
+
+///////////// height_levels ///////////////////////////
+//
+// Array of output height levels (km).
+//
+// Only used if output_levels is HEIGHT_LEVELS. The output grid has a 
+//   variable Z dimension. The height levels in the output are taken from 
+//   this array.
+//
+//
+// Type: double
+// 1D array - variable length.
+//
+
+height_levels = {
+ 0,
+ 0.25,
+ 0.50,
+ 0.75,
+ 1.00,
+ 1.25,
+ 1.50,
+ 1.75,
+ 2.00,
+ 2.25,
+ 2.50,
+ 2.75,
+ 3.00,
+ 3.50,
+ 4.00,
+ 4.50,
+ 5.00,
+ 5.50,
+ 6.50,
+ 7.00,
+ 7.50,
+ 8.00,
+ 8.50,
+ 9.00,
+ 10,
+ 11,
+ 12,
+ 13,
+ 14,
+ 15,
+ 16,
+ 17,
+ 18,
+ 19,
+ 20,
+ 21,
+ 22,
+ 23,
+ 24,
+ 25
+};
+
+///////////// copy_lowest_downwards ///////////////////
+//
+// Option to copy the lowest valid value down to the lowest level.
+//
+// This option is applicable only to FLIGHT_LEVELS. Where terrain is 
+//   encountered, there may be flight levels which have missing data after 
+//   vertical interpolation from sigma levels to flight levels. If this 
+//   option is set to true, the data from the lowest valid flight level 
+//   will be copied down to the levels below.
+//
+//
+// Type: boolean
+//
+
+copy_lowest_downwards = FALSE;
+
+///////////// output_compression //////////////////////
+//
+// Compression type for output files.
+//
+// See <mdv/mdv_macros.h> for the C definitions to which these 
+//   correspond.
+//
+//
+// Type: enum
+// Options:
+//     _MDV_COMPRESSION_NONE
+//     _MDV_COMPRESSION_RLE
+//     _MDV_COMPRESSION_LZO
+//     _MDV_COMPRESSION_ZLIB
+//     _MDV_COMPRESSION_BZIP
+//
+
+output_compression = _MDV_COMPRESSION_ZLIB;
+
+///////////// output_scaling //////////////////////////
+//
+// Applicable for INT8 and INT16 encoding.
+//
+// 	ROUNDED: produces values which are easily readable.
+// 	INTEGRAL: integer output values.
+// 	DYNAMIC: utilizes the full dynamic range.
+//
+//
+// Type: enum
+// Options:
+//     SCALING_ROUNDED
+//     SCALING_DYNAMIC
+//
+
+output_scaling = SCALING_DYNAMIC;
+
+///////////// output_path_in_forecast_format //////////
+//
+// Option to create output path in forecast format.
+//
+// If false, the output path is determined  using the valid time: 
+//   topdir/yyyymmdd/hhmmss.mdv. If true, the output path is determined 
+//   using the model initialization (generate) time and the forecast lead 
+//   time in secs: yyyymmdd/g_hhmmss/f_ssssssss.mdv.
+//
+//
+// Type: boolean
+//
+
+output_path_in_forecast_format = FALSE;
+
+//======================================================================
+//
+// FILE HEADER INFO.
+//
+//======================================================================
+ 
+///////////// data_set_info ///////////////////////////
+//
+// Data set info.
+//
+// This is placed in the MDV master header for documentation purposes.
+//
+//
+// Type: string
+//
+
+data_set_info = "This MDV file was created by Wrf2Mdv.";
+
+///////////// data_set_name ///////////////////////////
+//
+// Data set name.
+//
+// This is placed in the MDV master header for documentation purposes.
+//
+//
+// Type: string
+//
+
+data_set_name = "WRF model output.";
+
+///////////// data_set_source /////////////////////////
+//
+// Data set source details.
+//
+// This is placed in the MDV master header for documentation purposes.
+//
+//
+// Type: string
+//
+
+data_set_source = "WRF PRECIP Taiwan.";
+
+//======================================================================
+//
+// ICING SEVERITY PRODUCT.
+//
+// The icing severity product is normalized between 0 and 1, where 0 
+//   indicates no icing and 1 indicates a high probability of severe 
+//   icing.
+//
+//======================================================================
+ 
+///////////// no_icing_clw ////////////////////////////
+//
+// Cloud liquid water content threshold for trace icing - g/m3.
+//
+//
+// Type: float
+//
+
+no_icing_clw = 0;
+
+///////////// trace_icing_clw /////////////////////////
+//
+// Cloud liquid water content threshold for trace icing - g/m3.
+//
+//
+// Type: float
+//
+
+trace_icing_clw = 0.04;
+
+///////////// trace_severity //////////////////////////
+//
+// Icing severity threshold for trace icing.
+//
+//
+// Type: float
+//
+
+trace_severity = 0.15;
+
+///////////// light_icing_clw /////////////////////////
+//
+// Cloud liquid water content threshold for light icing - g/m3.
+//
+//
+// Type: float
+//
+
+light_icing_clw = 0.08;
+
+///////////// light_severity //////////////////////////
+//
+// Icing severity threshold for light icing.
+//
+//
+// Type: float
+//
+
+light_severity = 0.3;
+
+///////////// moderate_icing_clw //////////////////////
+//
+// Cloud liquid water content threshold for moderate icing - g/m3.
+//
+//
+// Type: float
+//
+
+moderate_icing_clw = 0.2;
+
+///////////// moderate_severity ///////////////////////
+//
+// Icing severity threshold for moderate icing.
+//
+//
+// Type: float
+//
+
+moderate_severity = 0.5;
+
+///////////// severe_icing_clw ////////////////////////
+//
+// Cloud liquid water content threshold for severe icing - g/m3.
+//
+//
+// Type: float
+//
+
+severe_icing_clw = 0.5;
+
+///////////// severe_severity /////////////////////////
+//
+// Icing severity threshold for severe icing.
+//
+//
+// Type: float
+//
+
+severe_severity = 1;
+
+//======================================================================
+//
+// CAPE/CIN parameters.
+//
+// CAPE & CIN are used as inputs to CIP & FIP.
+//
+//======================================================================
+ 
+///////////// adiabat_temp_lookup_filename ////////////
+//
+// File containing the adiabat temperature lookup table.
+//
+// This file originally comes from the MM5 RIP code and must follow that 
+//   format.  The current RIP code file can be found in CVS under:
+// 	libs/physics/data/psadilookup.dat
+// Leave this set to 'null' and CAPE/CIN can't be calculated.
+//
+//
+// Type: string
+//
+
+adiabat_temp_lookup_filename = "null";
+
+///////////// negative_cin ////////////////////////////
+//
+// Should CIN values be negative?.
+//
+// The physics library calculates positive CIN values, but negative 
+//   values are often expected.
+//
+//
+// Type: boolean
+//
+
+negative_cin = TRUE;
+
+///////////// pressure_limits /////////////////////////
+//
+// The minimum and maximum pressure levels to process.
+//
+// All levels of the input fields are read in and used for calculating 
+//   the CAPE/CIN values at these levels.  Currently, all levels of the 
+//   input fields are output in the CAPE/CIN fields, but only the levels 
+//   between these (inclusive) are calculated.  The CAPE/CIN values for 
+//   other levels will be 0.0 (unless the dynamically calculated scale and 
+//   bias make these a little off from 0.0).
+//
+//
+// Type: struct
+//   typedef struct {
+//      double lower_level;
+//      double upper_level;
+//   }
+//
+//
+
+pressure_limits = {
+    lower_level = 1000,
+    upper_level = 700
+};
+
