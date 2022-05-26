@@ -113,7 +113,7 @@ LTG_DBZ LTG_DBZ  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&DBZ dbz.colo
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
-# SPOLDRX MOMENTS
+# SPOL MOMENTS
 
 ==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
@@ -124,65 +124,65 @@ LTG_DBZ LTG_DBZ  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&DBZ dbz.colo
 ==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
-DRX_DBZ_F   DRX_DBZ_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-DRX_DBZ     DRX_DBZ     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-DRX_VEL_F   DRX_VEL_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-DRX_VEL     DRX_VEL     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
-DRX_WIDTH_F DRX_WIDTH_F mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-DRX_WIDTH   DRX_WIDTH   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
-DRX_VEL_F     DRX_VEL_F      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-DRX_VEL       DRX_VEL        mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
+SPOL_DBZ_F   SPOL_DBZ_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+SPOL_DBZ     SPOL_DBZ     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+SPOL_VEL_F   SPOL_VEL_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+SPOL_VEL     SPOL_VEL     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
+SPOL_WIDTH_F SPOL_WIDTH_F mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+SPOL_WIDTH   SPOL_WIDTH   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+SPOL_VEL_F     SPOL_VEL_F      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+SPOL_VEL       SPOL_VEL        mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
 
-DRX_VEL_ALT_F DRX_VEL_ALT_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_ALT_F   vel.colors   m/s -5 80 5 radial 1 0
-DRX_VEL_ALT   DRX_VEL_ALT    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_ALT     vel.colors   m/s -5 80 5 radial 1 0
-DRX_VEL_HV_F  DRX_VEL_HV_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_HV_F   vel.colors   m/s -5 80 5 radial 1 0
-DRX_VEL_HV    DRX_VEL_HV     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_HV     vel.colors   m/s -5 80 5 radial 1 0
-DRX_ZDR_F   DRX_ZDR_F    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-DRX_ZDR     DRX_ZDR      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-DRX_ZDRM_F  DRX_ZDRM_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDRM_F zdr.colors   dB  -5 80 5 radial 1 0
-DRX_ZDRM    DRX_ZDRM     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDRM   zdr.colors   dB  -5 80 5 radial 1 0
+SPOL_VEL_ALT_F SPOL_VEL_ALT_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_ALT_F   vel.colors   m/s -5 80 5 radial 1 0
+SPOL_VEL_ALT   SPOL_VEL_ALT    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_ALT     vel.colors   m/s -5 80 5 radial 1 0
+SPOL_VEL_HV_F  SPOL_VEL_HV_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_HV_F   vel.colors   m/s -5 80 5 radial 1 0
+SPOL_VEL_HV    SPOL_VEL_HV     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_HV     vel.colors   m/s -5 80 5 radial 1 0
+SPOL_ZDR_F   SPOL_ZDR_F    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+SPOL_ZDR     SPOL_ZDR      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+SPOL_ZDRM_F  SPOL_ZDRM_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDRM_F zdr.colors   dB  -5 80 5 radial 1 0
+SPOL_ZDRM    SPOL_ZDRM     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDRM   zdr.colors   dB  -5 80 5 radial 1 0
 
-DRX_LDRH_F  DRX_LDRH_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&LDRH_F ldr.colors   dB  -5 80 5 radial 1 0
-DRX_LDRH    DRX_LDRH     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&LDRH   ldr.colors   dB  -5 80 5 radial 1 0
-DRX_KDP_F    DRX_KDP_F    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-DRX_KDP      DRX_KDP      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-#DRX_LDRV_F  DRX_LDRV_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&LDRV_F ldr.colors   dB  -5 80 5 radial 1 0
-#DRX_LDRV    DRX_LDRV     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&LDRV   ldr.colors   dB  -5 80 5 radial 1 0
-DRX_PHIDP_F DRX_PHIDP_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-DRX_PHIDP   DRX_PHIDP    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&PHIDP   phidp.colors deg -5 80 5 radial 1 0
-DRX_RHOHV_F DRX_RHOHV_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-DRX_RHOHV   DRX_RHOHV    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+SPOL_LDRH_F  SPOL_LDRH_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&LDRH_F ldr.colors   dB  -5 80 5 radial 1 0
+SPOL_LDRH    SPOL_LDRH     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&LDRH   ldr.colors   dB  -5 80 5 radial 1 0
+SPOL_KDP_F    SPOL_KDP_F    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+SPOL_KDP      SPOL_KDP      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+#SPOL_LDRV_F  SPOL_LDRV_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&LDRV_F ldr.colors   dB  -5 80 5 radial 1 0
+#SPOL_LDRV    SPOL_LDRV     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&LDRV   ldr.colors   dB  -5 80 5 radial 1 0
+SPOL_PHIDP_F SPOL_PHIDP_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+SPOL_PHIDP   SPOL_PHIDP    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&PHIDP   phidp.colors deg -5 80 5 radial 1 0
+SPOL_RHOHV_F SPOL_RHOHV_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+SPOL_RHOHV   SPOL_RHOHV    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
 
-DRX_SNRHC_F   DRX_SNRHC_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
-DRX_SNRHC     DRX_SNRHC    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
-DRX_SNRVC_F   DRX_SNRVC_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
-DRX_SNRVC     DRX_SNRVC    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
-DRX_SNRHX_F   DRX_SNRHX_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRHX_F  snr.colors   dB     -5 80 5 radial 1 0
-DRX_SNRHX     DRX_SNRHX    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRHX    snr.colors   dB     -5 80 5 radial 1 0
-DRX_SNRVX_F  DRX_SNRVX_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRVX_F  snr.colors   dB     -5 80 5 radial 1 0
-DRX_SNRVX    DRX_SNRVX    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRVX    snr.colors   dB     -5 80 5 radial 1 0
+SPOL_SNRHC_F   SPOL_SNRHC_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
+SPOL_SNRHC     SPOL_SNRHC    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
+SPOL_SNRVC_F   SPOL_SNRVC_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
+SPOL_SNRVC     SPOL_SNRVC    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
+SPOL_SNRHX_F   SPOL_SNRHX_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRHX_F  snr.colors   dB     -5 80 5 radial 1 0
+SPOL_SNRHX     SPOL_SNRHX    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRHX    snr.colors   dB     -5 80 5 radial 1 0
+SPOL_SNRVX_F  SPOL_SNRVX_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRVX_F  snr.colors   dB     -5 80 5 radial 1 0
+SPOL_SNRVX    SPOL_SNRVX    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SNRVX    snr.colors   dB     -5 80 5 radial 1 0
 
-DRX_DBMHC_F  DRX_DBMHC_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
-DRX_DBMHC    DRX_DBMHC    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
-DRX_DBMVC_F  DRX_DBMVC_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
-DRX_DBMVC    DRX_DBMVC    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
-DRX_DBMHX_F  DRX_DBMHX_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMHX_F  dbmlow.colors dBm -5 80 5 radial 1 0
-DRX_DBMHX    DRX_DBMHX    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMHX    dbmlow.colors dBm -5 80 5 radial 1 0
-DRX_DBMVX_F  DRX_DBMVX_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMVX_F  dbmlow.colors dBm -5 80 5 radial 1 0
-DRX_DBMVX    DRX_DBMVX    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMVX    dbmlow.colors dBm -5 80 5 radial 1 0
+SPOL_DBMHC_F  SPOL_DBMHC_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+SPOL_DBMHC    SPOL_DBMHC    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
+SPOL_DBMVC_F  SPOL_DBMVC_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+SPOL_DBMVC    SPOL_DBMVC    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
+SPOL_DBMHX_F  SPOL_DBMHX_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMHX_F  dbmlow.colors dBm -5 80 5 radial 1 0
+SPOL_DBMHX    SPOL_DBMHX    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMHX    dbmlow.colors dBm -5 80 5 radial 1 0
+SPOL_DBMVX_F  SPOL_DBMVX_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMVX_F  dbmlow.colors dBm -5 80 5 radial 1 0
+SPOL_DBMVX    SPOL_DBMVX    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBMVX    dbmlow.colors dBm -5 80 5 radial 1 0
 
-DRX_CPA      DRX_CPA      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&CPA  cpa.colors  - -5 80 5 radial 1 0
-DRX_NCP      DRX_NCP      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&NCP  ncp.colors  dB   -5   80  5  radial   1 0
-DRX_CMD      DRX_CMD      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&CMD      cmd.colors  none -5 80 5 radial 1 0
-DRX_CMD_FLAG DRX_CMD_FLAG mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-DRX_TDBZ     DRX_TDBZ     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&TDBZ    tdbz.colors  dBZSq -5 80 5 radial 1 0
-DRX_SPIN     DRX_SPIN     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SPIN    spin.colors  dBZSq -5 80 5 radial 1 0
-DRX_ZDR_SDEV   DRX_ZDR_SDEV   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDR_SDEV   sdzdr.colors    dB -5 80 5 radial 1 0
-DRX_PHIDP_SDEV DRX_PHIDP_SDEV mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&PHIDP_SDEV  sdphidp.colors  - -5 80 5 radial 1 0
+SPOL_CPA      SPOL_CPA      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&CPA  cpa.colors  - -5 80 5 radial 1 0
+SPOL_NCP      SPOL_NCP      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+SPOL_CMD      SPOL_CMD      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&CMD      cmd.colors  none -5 80 5 radial 1 0
+SPOL_CMD_FLAG SPOL_CMD_FLAG mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+SPOL_TDBZ     SPOL_TDBZ     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&TDBZ    tdbz.colors  dBZSq -5 80 5 radial 1 0
+SPOL_SPIN     SPOL_SPIN     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&SPIN    spin.colors  dBZSq -5 80 5 radial 1 0
+SPOL_ZDR_SDEV   SPOL_ZDR_SDEV   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDR_SDEV   sdzdr.colors    dB -5 80 5 radial 1 0
+SPOL_PHIDP_SDEV SPOL_PHIDP_SDEV mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&PHIDP_SDEV  sdphidp.colors  - -5 80 5 radial 1 0
 
-DRX_CLUT       DRX_CLUT       mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
-DRX_AIQ        DRX_AIQ        mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&AIQ   phase.colors deg -5 80 5 radial 1 0
-DRX_NIQ        DRX_NIQ        mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&NIQ   niq.colors dBm -5 80 5 radial 1 0
+SPOL_CLUT       SPOL_CLUT       mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
+SPOL_AIQ        SPOL_AIQ        mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&AIQ   phase.colors deg -5 80 5 radial 1 0
+SPOL_NIQ        SPOL_NIQ        mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&NIQ   niq.colors dBm -5 80 5 radial 1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
