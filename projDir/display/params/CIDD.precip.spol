@@ -708,7 +708,7 @@ cidd.print_script: convert_image_print.csh
 # Button, after the last image has output. The arguments will be a list
 # of each output file in the series. CIDD will prepends the cidd.image_dir to each
 # files name which takes the form: cidd_field_name_zoom_name.xwd 
-cidd.series_convert_script: /opt/local/lrose/bin/make_anim.csh
+cidd.series_convert_script: make_anim.csh
 
 # Set to 1 to ask that data be compressed during the MDV Protocol
 # data requests. Default is = 0
@@ -1105,7 +1105,7 @@ cidd.horiz_legends_delta_y:  30
 #
 # WINDOW SIZE PARAMS
 #
-cidd.horiz_default_height:    950
+cidd.horiz_default_height:    890
 cidd.horiz_min_height:        400
 cidd.horiz_min_width:         400
 cidd.horiz_default_x_pos:     0
@@ -1383,8 +1383,8 @@ cidd.menu_bar_funct6: LOOP_ONOFF
 cidd.menu_bar_label7: Now
 cidd.menu_bar_funct7: SET_TO_NOW
 #  
-cidd.menu_bar_label8: Forecast
-cidd.menu_bar_funct8: SHOW_FORECAST_MENU
+cidd.menu_bar_label8: Winds
+cidd.menu_bar_funct8: WINDS_ONOFF
 #
 cidd.menu_bar_label9: Products
 cidd.menu_bar_funct9: SHOW_PRODUCT_MENU
@@ -1407,20 +1407,20 @@ cidd.menu_bar_funct14: SHOW_GRID_PANEL
 cidd.menu_bar_label15: Status
 cidd.menu_bar_funct15: SHOW_STATUS_PANEL
 #
-cidd.menu_bar_label16: Winds
-cidd.menu_bar_funct16: WINDS_ONOFF
+cidd.menu_bar_label16: Value
+cidd.menu_bar_funct16: REPORT_MODE_ONOFF
 #
-cidd.menu_bar_label17: Value
-cidd.menu_bar_funct17: REPORT_MODE_ONOFF
+cidd.menu_bar_label17: Reset
+cidd.menu_bar_funct17: RESET
 #
-cidd.menu_bar_label18: Reset
-cidd.menu_bar_funct18: RESET
-#
-cidd.menu_bar_label19: Exit
-cidd.menu_bar_funct19: EXIT_BUTTON
+cidd.menu_bar_label18: Exit
+cidd.menu_bar_funct18: EXIT_BUTTON
 #
 #cidd.menu_bar_label17: Help
 #cidd.menu_bar_funct17: HELP_BUTTON
+#
+#cidd.menu_bar_label8: Forecast
+#cidd.menu_bar_funct8: SHOW_FORECAST_MENU
 #
 #cidd.menu_bar_label7: URL...
 #cidd.menu_bar_funct7: SHOW_BOOKMARK_MENU
@@ -1667,59 +1667,59 @@ prod_info = {
     request_data_on_zoom = FALSE,
     request_data_on_vert_change = FALSE
   }
-  ,
-  {
-    menu_label = "AWS-simple",
-    url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:precip/spdb/aws?use_http=true",
-    data_type = 0,
-    render_type = RENDER_LATEST_IN_FRAME,
-    on_by_default = FALSE,
-    minutes_allow_before = 90.0,
-    minutes_allow_after = 0.0,
-    text_off_threshold = 0.0,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
-  }
-  ,
-  {
-    menu_label = "AWS-full",
-    url = "spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:precip/spdb/aws?use_http=true",
-    data_type = 0,
-    render_type = RENDER_LATEST_IN_FRAME,
-    on_by_default = FALSE,
-    minutes_allow_before = 90.0,
-    minutes_allow_after = 0.0,
-    text_off_threshold = 0.0,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
-  }
-  ,
-  {
-    menu_label = "LTG" ,
-    url = "spdbp:Ltg2Symprod://front.eol.ucar.edu:8080:precip/spdb/ltg/cwb?use_http=true",
-    data_type = 0,
-    render_type = RENDER_ALL_VALID,
-    // render_type = RENDER_ALL_BEFORE_DATA_TIME,
-    on_by_default = FALSE,
-    minutes_allow_before = 20.0,
-    minutes_allow_after = 0.0,
-    text_off_threshold = 0.0,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
-  }
-  ,                        
-  {
-    menu_label = "G1-5min",
-    url = "spdbp:AcTrack2Symprod:05_min//front.eol.ucar.edu:8080:precip/spdb/ac_posn?use_http=true",
-    data_type = 0,
-    render_type = RENDER_FIRST_BEFORE_FRAME_TIME,
-    on_by_default = FALSE,
-    minutes_allow_before = 15.0,
-    minutes_allow_after = 15.0,
-    text_off_threshold = 0.4,
-    FALSE,
-    FALSE
-  }
+  // ,
+  // {
+  //   menu_label = "AWS-simple",
+  //   url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:precip/spdb/aws?use_http=true",
+  //   data_type = 0,
+  //   render_type = RENDER_LATEST_IN_FRAME,
+  //   on_by_default = FALSE,
+  //   minutes_allow_before = 90.0,
+  //   minutes_allow_after = 0.0,
+  //   text_off_threshold = 0.0,
+  //   request_data_on_zoom = FALSE,
+  //   request_data_on_vert_change = FALSE
+  // }
+  // ,
+  // {
+  //   menu_label = "AWS-full",
+  //   url = "spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:precip/spdb/aws?use_http=true",
+  //   data_type = 0,
+  //   render_type = RENDER_LATEST_IN_FRAME,
+  //   on_by_default = FALSE,
+  //   minutes_allow_before = 90.0,
+  //   minutes_allow_after = 0.0,
+  //   text_off_threshold = 0.0,
+  //   request_data_on_zoom = FALSE,
+  //   request_data_on_vert_change = FALSE
+  // }
+  // ,
+  // {
+  //   menu_label = "LTG" ,
+  //   url = "spdbp:Ltg2Symprod://front.eol.ucar.edu:8080:precip/spdb/ltg/cwb?use_http=true",
+  //   data_type = 0,
+  //   render_type = RENDER_ALL_VALID,
+  //   // render_type = RENDER_ALL_BEFORE_DATA_TIME,
+  //   on_by_default = FALSE,
+  //   minutes_allow_before = 20.0,
+  //   minutes_allow_after = 0.0,
+  //   text_off_threshold = 0.0,
+  //   request_data_on_zoom = FALSE,
+  //   request_data_on_vert_change = FALSE
+  // }
+  // ,                        
+  // {
+  //   menu_label = "G1-5min",
+  //   url = "spdbp:AcTrack2Symprod:05_min//front.eol.ucar.edu:8080:precip/spdb/ac_posn?use_http=true",
+  //   data_type = 0,
+  //   render_type = RENDER_FIRST_BEFORE_FRAME_TIME,
+  //   on_by_default = FALSE,
+  //   minutes_allow_before = 15.0,
+  //   minutes_allow_after = 15.0,
+  //   text_off_threshold = 0.4,
+  //   FALSE,
+  //   FALSE
+  // }
   ,
   {
     menu_label = "RHI-CSU",
