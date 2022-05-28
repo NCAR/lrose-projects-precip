@@ -1,0 +1,21 @@
+#!/bin/csh
+
+# get the 2D radar mosaic
+
+cd $PROJ_DIR/ingest/scripts
+
+running "GetCwbData.py3 --instance mosaic_2d"
+
+if ($status == 1) then
+  GetCwbData.py3 --instance mosaic_2d \
+    --debug \
+    --platform RADAR \
+    --ftpSubDir MOSAIC2D \
+    --localDirBase $DATA_DIR/$project/raw/mosaic_2d \
+    --fileSuffix gz \
+    --realtime \
+    --lookbackSecs 3600 \
+    --sleepSecs 60 \
+      |& LogFilter -d $ERRORS_LOG_DIR -p GetCwbData.py -i mosaic_2d \
+      >& /dev/null &
+endif
