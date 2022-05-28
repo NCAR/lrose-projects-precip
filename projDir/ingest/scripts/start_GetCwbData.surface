@@ -1,0 +1,21 @@
+#!/bin/csh
+
+# get the 15M surface data
+
+cd $PROJ_DIR/ingest/scripts
+
+running "GetCwbData.py3 --instance surface"
+
+if ($status == 1) then
+  GetCwbData.py3 --instance surface \
+    --debug \
+    --platform SURFACE \
+    --ftpSubDir STATION \
+    --localDirBase $DATA_DIR/$project/raw/surface \
+    --fileSuffix 15M.mdf \
+    --realtime \
+    --lookbackSecs 3600 \
+    --sleepSecs 60 \
+      |& LogFilter -d $ERRORS_LOG_DIR -p GetCwbData.py -i surface \
+      >& /dev/null &
+endif

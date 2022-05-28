@@ -12,9 +12,10 @@
 */5 * * * *   csh -c "start_build_logdir_links" 1> /dev/null 2> /dev/null
 #
 ######################################################################
-# ingest lightning data
+# ingest CWB data data
 #
-*/1 * * * * csh -c "run_GetLightningData.precip" 1> /dev/null 2> /dev/null
+*/1 * * * * csh -c "start_GetLightningData.precip" 1> /dev/null 2> /dev/null
+*/1 * * * * csh -c "start_GetCwbData.surface" 1> /dev/null 2> /dev/null
 ######################################################################
 # rsync the data to the ftp download area
 #

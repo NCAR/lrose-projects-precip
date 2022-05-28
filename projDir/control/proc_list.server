@@ -33,6 +33,10 @@ Grib2toMdv    gfs.precip   start_inst(ingest)   snuff_inst
 #
 Ltg2Spdb      cwb          start_inst(ingest)   snuff_inst
 ######################################################################
+# Surface stations
+#
+Ltg2Spdb      cwb          start_inst(ingest)   snuff_inst
+######################################################################
 # model-based soundings for PID
 #Mdv2SoundingSpdb  precip        start_inst(ingest) snuff_inst
 ######################################################################
