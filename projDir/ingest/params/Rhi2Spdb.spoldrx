@@ -71,5 +71,5 @@ input_url = "$(DATA_DIR)/$(project)/cfradial/moments/spoldrx/rhi";
 
 // distribute via DsSpdbServer
 
-output_url = "$(DATA_DIR)/$(project)/spdb/rhi/sband";
+output_url = "$(DATA_DIR)/$(project)/spdb/rhi/spoldrx";
 
