@@ -100,29 +100,16 @@ field_list = {
 # PRECIP
 #
 
-############################
-# GFS Model data
-
-GFS-TMP   GFS-TMP  mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true&TMP  temp.colors   C   -5   80  5  dcont   1 0
-GFS-RH    GFS-RH   mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true&RH   rh.colors   %   -5   80  5  dcont   1 0
-GFS-PRES  GFS-PRES mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true&Pressure pressure_mb.colors   m/s   -5   80  5  dcont   1 0
-SURF_Terrain Terrain  mdvp::static//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true&Elevation terrain_precip.colors m -5 80 5 dcont 1 0
-
-LTG_RATE LTG_RATE  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&Ltg_Strikes ltg_rate.colors /300s -5 80 5 cont 1 0
-LTG_DBZ LTG_DBZ  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&DBZ dbz.colors dBZ -5 80 5 cont 1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-
 # SPOL MOMENTS
 
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
 SPOL_DBZ_F   SPOL_DBZ_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
 SPOL_DBZ     SPOL_DBZ     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
@@ -190,6 +177,28 @@ SPOL_NIQ        SPOL_NIQ        mdvp:://front.eol.ucar.edu:8080:precip/cfradial/
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
 # RADAR_2D RADAR_2D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic2D?use_http=true?use_http=true&MOSA   dbz.colors   dBZ   -5 80 5 radial 1 0
+
+############################
+# GFS Model data
+
+==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+
+GFS-TMP   GFS-TMP  mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true&TMP  temp.colors   C   -5   80  5  dcont   1 0
+GFS-RH    GFS-RH   mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true&RH   rh.colors   %   -5   80  5  dcont   1 0
+GFS-PRES  GFS-PRES mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true&Pressure pressure_mb.colors   m/s   -5   80  5  dcont   1 0
+SURF_Terrain Terrain  mdvp::static//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true&Elevation terrain_precip.colors m -5 80 5 dcont 1 0
+
+LTG_RATE LTG_RATE  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&Ltg_Strikes ltg_rate.colors /300s -5 80 5 cont 1 0
+LTG_DBZ LTG_DBZ  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&DBZ dbz.colors dBZ -5 80 5 cont 1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
 ############################
 # Satellite data
@@ -784,7 +793,7 @@ cidd.xsect_start_page:      1
 #
 # The Outer most domain:
 cidd.num_zoom_levels:       8
-cidd.start_zoom_level:      5
+cidd.start_zoom_level:      4
 
 # The number of Cached images for zooms.
 cidd.num_cache_zooms:       0
@@ -1360,7 +1369,7 @@ not be availible.  For research/ post analysis most of them should be enabled.
 # 
 #
 #####################################################################################
-cidd.num_menu_bar_cells: 19
+cidd.num_menu_bar_cells: 18
 #
 cidd.menu_bar_label1: Fields
 cidd.menu_bar_funct1: SHOW_DPD_MENU
@@ -1643,6 +1652,19 @@ short_requests = TRUE;
 
 prod_info = {
   {
+    menu_label = "RHI-SPOL",
+    url = "spdbp:Rhi2Symprod:ticks//front.eol.ucar.edu:8080:precip/spdb/rhi/spoldrx?use_http=true",
+    data_type = 0,
+    render_type = RENDER_ALL,
+    on_by_default = TRUE,
+    minutes_allow_before = 20,
+    minutes_allow_after = 10,
+    text_off_threshold = 0.4,
+    request_data_on_zoom = FALSE,
+    request_data_on_vert_change = FALSE
+  }
+  ,
+  {
     menu_label = "METARS-simple",
     url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:precip/spdb/metar?use_http=true",
     data_type = 0,
@@ -1720,32 +1742,19 @@ prod_info = {
   //   FALSE,
   //   FALSE
   // }
-  ,
-  {
-    menu_label = "RHI-CSU",
-    url = "spdbp:Rhi2Symprod:ticks//front.eol.ucar.edu:8080:precip/spdb/rhi/csu?use_http=true",
-    data_type = 0,
-    render_type = RENDER_ALL,
-    on_by_default = FALSE,
-    minutes_allow_before = 7.5,
-    minutes_allow_after = 7.5,
-    text_off_threshold = 0.4,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
-  }
-  ,
-  {
-    menu_label = "RHI-SPOL",
-    url = "spdbp:Rhi2Symprod:ticks//front.eol.ucar.edu:8080:precip/spdb/rhi/spol?use_http=true",
-    data_type = 0,
-    render_type = RENDER_ALL,
-    on_by_default = FALSE,
-    minutes_allow_before = 7.5,
-    minutes_allow_after = 7.5,
-    text_off_threshold = 0.4,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
-  }
+  // ,
+  // {
+  //   menu_label = "RHI-CSU",
+  //   url = "spdbp:Rhi2Symprod:ticks//front.eol.ucar.edu:8080:precip/spdb/rhi/csu?use_http=true",
+  //   data_type = 0,
+  //   render_type = RENDER_ALL,
+  //   on_by_default = FALSE,
+  //   minutes_allow_before = 7.5,
+  //   minutes_allow_after = 7.5,
+  //   text_off_threshold = 0.4,
+  //   request_data_on_zoom = FALSE,
+  //   request_data_on_vert_change = FALSE
+  // }
 };
 
 </SYMPRODS> 
