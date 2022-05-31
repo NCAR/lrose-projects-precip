@@ -24,6 +24,10 @@ SunCal2Symprod    manager  start_inst(no-params)     snuff_inst
 Tstorms2Symprod   manager  start_inst(no-params)     snuff_inst
 #
 ######################################################################
+# RHI tick marks
+#
+Rhi2Spdb      spoldrx     start_inst(ingest)   snuff_inst
+######################################################################
 # GFS MODEL
 #
 InputWatcher  gfs.precip   start_inst(ingest)   snuff_inst
