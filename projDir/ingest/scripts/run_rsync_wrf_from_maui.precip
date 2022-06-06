@@ -1,0 +1,12 @@
+#! /bin/csh
+
+# get the data from the RMA1 radar, in catchup mode
+
+cd $PROJ_DIR/ingest/scripts
+
+snuff "rsync --include wrfout"
+
+rsync_wrf_from_maui.precip |& \
+    LogFilter -d $ERRORS_LOG_DIR -p rsync_wrf_from_maui -i precip \
+        >& /dev/null &
+

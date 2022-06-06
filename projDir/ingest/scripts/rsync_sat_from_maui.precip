@@ -1,0 +1,13 @@
+#! /bin/csh
+
+# rsync the Himawari data from Maui
+
+set sourceHost=mdixon@maui.atmos.colostate.edu
+set sourceDir=/bell-scratch2/precip/DATA/operational/satellite/himawari
+set targetDir=/scr/cirrus3/rsfdata/projects/precip/raw/sat
+
+mkdir -p $targetDir
+cd $targetDir
+
+rsync --include himawari -av ${sourceHost}:${sourceDir} ${targetDir}
+
