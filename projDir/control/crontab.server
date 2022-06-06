@@ -16,6 +16,7 @@
 #
 */1 * * * * csh -c "start_GetLightningData.precip" 1> /dev/null 2> /dev/null
 */1 * * * * csh -c "start_GetCwbData.surface" 1> /dev/null 2> /dev/null
+*/1 * * * * csh -c "start_GetCwbData.gauge" 1> /dev/null 2> /dev/null
 */1 * * * * csh -c "start_GetCwbData.mosaic2D" 1> /dev/null 2> /dev/null
 */1 * * * * csh -c "start_GetCwbData.mosaic3D" 1> /dev/null 2> /dev/null
 ######################################################################
