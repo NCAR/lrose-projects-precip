@@ -19,6 +19,10 @@
 */1 * * * * csh -c "start_GetCwbData.mosaic2D" 1> /dev/null 2> /dev/null
 */1 * * * * csh -c "start_GetCwbData.mosaic3D" 1> /dev/null 2> /dev/null
 ######################################################################
+# rsync data from maui at CSU
+#
+*/15 * * * * csh -c "run_rsync_wrf_from_maui.precip"  1> /dev/null 2> /dev/null
+######################################################################
 # rsync the data to the ftp download area
 #
 #*/1 * * * *   csh -c "rsync_relamp_data_to_ftp_download" 1> /dev/null 2> /dev/null
