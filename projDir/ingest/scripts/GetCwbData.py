@@ -353,7 +353,7 @@ def parseArgs():
                       help='Path of dir to which the netcdf files are written')
     parser.add_option('--lroseBinDir',
                       dest='lroseBinDir',
-                      default='/usr/local/lrose/bin',
+                      default=os.environ['HOME']+'/lrose/bin',
                       help='Path of dir of lrose binaries')
     parser.add_option('--fileSuffix',
                       dest='fileSuffix',
