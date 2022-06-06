@@ -1812,7 +1812,7 @@ landuse_url = "";
 // Type: string
 //
 
-landuse_colorscale = "terrain_front.colors";
+landuse_colorscale = "terrain_precip.colors";
 
 ///////////// land_use_render_method //////////////////
 //
