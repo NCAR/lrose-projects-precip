@@ -1688,6 +1688,20 @@ prod_info = {
     text_off_threshold = 0.0,
     request_data_on_zoom = FALSE,
     request_data_on_vert_change = FALSE
+    }
+    ,
+    {
+    menu_label = "LTG" ,
+    url = "spdbp:Ltg2Symprod://front.eol.ucar.edu:8080:precip/spdb/ltg/cwb?use_http=true",
+    data_type = 0,
+    render_type = RENDER_ALL_VALID,
+    // render_type = RENDER_ALL_BEFORE_DATA_TIME,
+    on_by_default = FALSE,
+    minutes_allow_before = 20.0,
+    minutes_allow_after = 0.0,
+    text_off_threshold = 0.0,
+    request_data_on_zoom = FALSE,
+    request_data_on_vert_change = FALSE
   }
   // ,
   // {
@@ -1710,20 +1724,6 @@ prod_info = {
   //   render_type = RENDER_LATEST_IN_FRAME,
   //   on_by_default = FALSE,
   //   minutes_allow_before = 90.0,
-  //   minutes_allow_after = 0.0,
-  //   text_off_threshold = 0.0,
-  //   request_data_on_zoom = FALSE,
-  //   request_data_on_vert_change = FALSE
-  // }
-  // ,
-  // {
-  //   menu_label = "LTG" ,
-  //   url = "spdbp:Ltg2Symprod://front.eol.ucar.edu:8080:precip/spdb/ltg/cwb?use_http=true",
-  //   data_type = 0,
-  //   render_type = RENDER_ALL_VALID,
-  //   // render_type = RENDER_ALL_BEFORE_DATA_TIME,
-  //   on_by_default = FALSE,
-  //   minutes_allow_before = 20.0,
   //   minutes_allow_after = 0.0,
   //   text_off_threshold = 0.0,
   //   request_data_on_zoom = FALSE,
@@ -1754,7 +1754,7 @@ prod_info = {
   //   text_off_threshold = 0.4,
   //   request_data_on_zoom = FALSE,
   //   request_data_on_vert_change = FALSE
-  // }
+  }
 };
 
 </SYMPRODS> 
