@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/export/scripts
+
+running "RsyncSpol2UW.py --subDir sur"
+if ($status == 1) then
+  RsyncSpol2UW.py --subDir sur --realtime |& \
+    LogFilter -d $ERRORS_LOG_DIR -p RsyncSpol2UW -i sur &
+endif
+

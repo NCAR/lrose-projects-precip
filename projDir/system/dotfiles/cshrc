@@ -215,6 +215,7 @@ if ($?prompt) then
   alias smn 'ssh -XY relampago@smn'
   alias csu 'ssh -XY radaruser@csu'
   alias maui 'ssh -a -XY mdixon@maui.atmos.colostate.edu'
+  alias bob 'ssh -a -XY meso@bob.atmos.washington.edu'
 
   alias spol_fmq_tunnel 'ssh -p20022 -L 15443:localhost:5443 spol@spol.dyndns.org'
 
