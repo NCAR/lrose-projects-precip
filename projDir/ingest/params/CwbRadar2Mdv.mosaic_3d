@@ -36,7 +36,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "precip";
+instance = "mosaic_3d";
 
 //======================================================================
 //
@@ -126,7 +126,7 @@ max_realtime_valid_age = 3600;
 // Type: string
 //
 
-output_url = "$(DATA_DIR)/$(project)/mdv/radar/mosaic3D";
+output_url = "$(DATA_DIR)/$(project)/mdv/radar/mosaic_3d";
 
 ///////////// output_short_field_name /////////////////
 //

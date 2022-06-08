@@ -49,9 +49,12 @@ CwbAws2Spdb   gauge         start_inst(ingest)   snuff_inst
 #
 LdmDynamic2Static   metar              start_inst(ingest)  snuff_inst
 Metar2Spdb          precip             start_inst(ingest)  snuff_inst 
-#LdmDynamic2Static   sounding           start_inst(ingest)  snuff_inst
-#NWSsoundingIngest   precip             start_inst(ingest)  snuff_inst 
+#LdmDynamic2Static  sounding           start_inst(ingest)  snuff_inst
+#NWSsoundingIngest  precip             start_inst(ingest)  snuff_inst 
 #
+######################################################################
+# CWB radar
+CwbRadar2Mdv       mosaic_3d           start_inst(ingest)  snuff_inst
 ######################################################################
 # CSU radar
 #InputWatcher      csu_chivo     start_inst(ingest)    snuff_inst

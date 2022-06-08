@@ -1017,7 +1017,7 @@ station_name_label_len = 4;
 //
 
 station_name_label = {
-    do_draw = TRUE,
+    do_draw = FALSE,
     color = "gray",
     background_color = "",
     override_color_from_flight_cat = FALSE,
