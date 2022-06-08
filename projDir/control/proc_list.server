@@ -54,6 +54,7 @@ Metar2Spdb          precip             start_inst(ingest)  snuff_inst
 #
 ######################################################################
 # CWB radar
+InputWatcher       mosaic_3d           start_inst(ingest)  snuff_inst
 CwbRadar2Mdv       mosaic_3d           start_inst(ingest)  snuff_inst
 ######################################################################
 # CSU radar

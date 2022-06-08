@@ -79,7 +79,7 @@ mode = REALTIME;
 // Type: string
 //
 
-realtime_input_dir = "$(DATA_DIR)$(project)/raw/mosaic_3d";
+realtime_input_dir = "$(DATA_DIR)/$(project)/raw/mosaic_3d_uncomp";
 
 ///////////// use_latest_data_info_file ///////////////
 //
