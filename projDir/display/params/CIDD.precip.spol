@@ -100,16 +100,34 @@ field_list = {
 # PRECIP
 #
 
+#==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+#==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+#==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+#==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+#==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+#==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+#==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+#==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+
+MOSAIC_2D MOSAIC_2D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true&DBZ   dbz.colors   dBZ   -5 80 5 cart,comp 1 0
+MOSAIC_3D MOSAIC_3D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true&DBZ   dbz.colors   dBZ   -5 80 5 cart 1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+
 # SPOL MOMENTS
 
-#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-#==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
 SPOL_DBZ_F   SPOL_DBZ_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
 SPOL_DBZ     SPOL_DBZ     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
@@ -176,8 +194,6 @@ SPOL_NIQ        SPOL_NIQ        mdvp:://front.eol.ucar.edu:8080:precip/cfradial/
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
-# RADAR_2D RADAR_2D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic2D?use_http=true?use_http=true&MOSA   dbz.colors   dBZ   -5 80 5 radial 1 0
-
 ############################
 # GFS Model data
 
@@ -197,6 +213,8 @@ SURF_Terrain Terrain  mdvp::static//front.eol.ucar.edu:8080:precip/mdv/terrain?u
 
 LTG_RATE LTG_RATE  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&Ltg_Strikes ltg_rate.colors /300s -5 80 5 cont 1 0
 LTG_DBZ LTG_DBZ  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&DBZ dbz.colors dBZ -5 80 5 cont 1 0
+
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
@@ -1665,32 +1683,6 @@ prod_info = {
   }
   ,
   {
-    menu_label = "METARS-simple",
-    url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:precip/spdb/metar?use_http=true",
-    data_type = 0,
-    render_type = RENDER_LATEST_IN_FRAME,
-    on_by_default = TRUE,
-    minutes_allow_before = 90.0,
-    minutes_allow_after = 0.0,
-    text_off_threshold = 0.0,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
-  }
-  ,
-  {
-    menu_label = "METARS-full",
-    url = "spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:precip/spdb/metar?use_http=true",
-    data_type = 0,
-    render_type = RENDER_LATEST_IN_FRAME,
-    on_by_default = FALSE,
-    minutes_allow_before = 90.0,
-    minutes_allow_after = 0.0,
-    text_off_threshold = 0.0,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
-  }
-  ,
-  {
     menu_label = "SURFACE-simple",
     url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:precip/spdb/surface?use_http=true",
     data_type = 0,
@@ -1715,8 +1707,34 @@ prod_info = {
     request_data_on_zoom = FALSE,
     request_data_on_vert_change = FALSE
     }
-    ,
-    {
+  ,
+  {
+    menu_label = "METARS-simple",
+    url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:precip/spdb/metar?use_http=true",
+    data_type = 0,
+    render_type = RENDER_LATEST_IN_FRAME,
+    on_by_default = FALSE,
+    minutes_allow_before = 90.0,
+    minutes_allow_after = 0.0,
+    text_off_threshold = 0.0,
+    request_data_on_zoom = FALSE,
+    request_data_on_vert_change = FALSE
+  }
+  ,
+  {
+    menu_label = "METARS-full",
+    url = "spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:precip/spdb/metar?use_http=true",
+    data_type = 0,
+    render_type = RENDER_LATEST_IN_FRAME,
+    on_by_default = FALSE,
+    minutes_allow_before = 90.0,
+    minutes_allow_after = 0.0,
+    text_off_threshold = 0.0,
+    request_data_on_zoom = FALSE,
+    request_data_on_vert_change = FALSE
+  }
+  ,
+  {
     menu_label = "LTG" ,
     url = "spdbp:Ltg2Symprod://front.eol.ucar.edu:8080:precip/spdb/ltg/cwb?use_http=true",
     data_type = 0,
@@ -1755,32 +1773,6 @@ prod_info = {
     request_data_on_zoom = FALSE,
     request_data_on_vert_change = FALSE
   }
-  // ,
-  // {
-  //   menu_label = "AWS-simple",
-  //   url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:precip/spdb/aws?use_http=true",
-  //   data_type = 0,
-  //   render_type = RENDER_LATEST_IN_FRAME,
-  //   on_by_default = FALSE,
-  //   minutes_allow_before = 90.0,
-  //   minutes_allow_after = 0.0,
-  //   text_off_threshold = 0.0,
-  //   request_data_on_zoom = FALSE,
-  //   request_data_on_vert_change = FALSE
-  // }
-  // ,
-  // {
-  //   menu_label = "AWS-full",
-  //   url = "spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:precip/spdb/aws?use_http=true",
-  //   data_type = 0,
-  //   render_type = RENDER_LATEST_IN_FRAME,
-  //   on_by_default = FALSE,
-  //   minutes_allow_before = 90.0,
-  //   minutes_allow_after = 0.0,
-  //   text_off_threshold = 0.0,
-  //   request_data_on_zoom = FALSE,
-  //   request_data_on_vert_change = FALSE
-  // }
   // ,                        
   // {
   //   menu_label = "G1-5min",
