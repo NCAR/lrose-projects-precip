@@ -43,7 +43,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "precip";
+instance = "surface";
 
 //======================================================================
 //
@@ -170,10 +170,11 @@ file_match_string = "mdf";
 //
 // Type: enum
 // Options:
-//     PRECIP_STATION
 //     AWS_STATION
 //     MDF_FILE
 //     ONE_MINUTE_AWS
+//     PRECIP_STATION
+//     PRECIP_MDF_FILE
 //
 
 station_type = MDF_FILE;
