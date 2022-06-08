@@ -1689,6 +1689,32 @@ prod_info = {
     request_data_on_zoom = FALSE,
     request_data_on_vert_change = FALSE
     }
+  ,
+  {
+    menu_label = "SURFACE-simple",
+    url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:precip/spdb/surface?use_http=true",
+    data_type = 0,
+    render_type = RENDER_LATEST_IN_FRAME,
+    on_by_default = FALSE,
+    minutes_allow_before = 90.0,
+    minutes_allow_after = 0.0,
+    text_off_threshold = 0.0,
+    request_data_on_zoom = FALSE,
+    request_data_on_vert_change = FALSE
+  }
+  ,
+  {
+    menu_label = "SURFACE-full",
+    url = "spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:precip/spdb/surface?use_http=true",
+    data_type = 0,
+    render_type = RENDER_LATEST_IN_FRAME,
+    on_by_default = FALSE,
+    minutes_allow_before = 90.0,
+    minutes_allow_after = 0.0,
+    text_off_threshold = 0.0,
+    request_data_on_zoom = FALSE,
+    request_data_on_vert_change = FALSE
+    }
     ,
     {
     menu_label = "LTG" ,
