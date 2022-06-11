@@ -1,4 +1,4 @@
-#########################################
+########################################
 # .cshrc file for LROSE EOLBASE project
 #########################################
 
@@ -106,7 +106,7 @@ endif
 
 # python
 
-#setenv PYTHONPATH ~/anaconda2/pkgs:$HOME/projDir/dial/Python/ptvv1_python/python:$HOME/projDir/dial/Python/NCAR-LidarProcessing/libraries
+setenv PYTHONPATH ~/anaconda3/pkgs
 
 # --- Path ---
 
@@ -127,7 +127,7 @@ set path = ($path ~/lrose/bin)
 set path = ($path ~/cidd/bin)
 
 set path = ($path ~/bin \
-        ~/anaconda2/bin \
+        ~/anaconda3/bin \
 	$JAVA_HOME/bin $ANT_HOME/bin \
 	$NCARG_ROOT/bin \
 	/usr/local/bin /usr/local/sbin /usr/bin/X11 \

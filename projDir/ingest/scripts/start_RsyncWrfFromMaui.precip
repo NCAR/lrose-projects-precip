@@ -1,0 +1,17 @@
+#!/bin/csh
+
+# get the WRF data from maui at CSU
+
+cd $PROJ_DIR/ingest/scripts
+
+running "RsyncWrfFromMaui.py --instance precip"
+
+if ($status == 1) then
+  RsyncWrfFromMaui.py --instance precip \
+    --debug \
+    --realtime \
+    --lookbackSecs 86400 \
+    --sleepSecs 120 \
+      |& LogFilter -d $ERRORS_LOG_DIR -p RsyncWrfFromMaui.py \
+      >& /dev/null &
+endif
