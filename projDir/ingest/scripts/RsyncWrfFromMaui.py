@@ -190,6 +190,10 @@ def parseArgs():
                       dest='verbose', default=False,
                       action="store_true",
                       help='Set verbose debugging on')
+    parser.add_option('--instance',
+                      dest='instance',
+                      default='test',
+                      help='Provides uniqueness on the command line')
     parser.add_option('--remoteHost',
                       dest='remoteHost',
                       default='maui.atmos.colostate.edu',
