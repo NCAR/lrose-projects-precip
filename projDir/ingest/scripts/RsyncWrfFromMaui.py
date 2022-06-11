@@ -2,7 +2,7 @@
 
 #=====================================================================
 #
-# rsync the SPOL realtime data to the CWB machine in HsinChu
+# rsync the WRF data from MAUI at CSU
 #
 #=====================================================================
 
@@ -13,7 +13,6 @@ import sys
 import time
 import shutil
 import glob
-from ftplib import FTP
 import datetime
 
 import string
@@ -131,24 +130,44 @@ def manageRsync(startTime, endTime):
 
 def rsyncDay(thisDay, startTime, endTime):
 
-    thisDayStr = thisDay.strftime("%Y%m%d")
+    for genHour in [ 0, 6, 12, 18]:
 
-    print("rsync for day: ", thisDayStr, file=sys.stderr)
+        genTime = datetime.datetime(thisDay.year, 
+                                    thisDay.month,
+                                    thisDay.day,
+                                    genHour, 0, 0)
+        
+        genDir = genTime.strftime("%Y/%m%d%H")
 
-    # go to the source dir
-    
-    os.chdir(options.sourceDir)
+        print("rsync for gen time: ", genDir, file=sys.stderr)
 
-    # create rsync command
+        # make the target dir, go there
 
-    cmd = "rsync -av " + thisDayStr + " " \
-          + options.cwbUser + "@" \
-          + options.cwbServer + ":" \
-          + options.cwbDataDir 
+        targetDir = options.targetDir + "/" + genDir
 
-    # run the command
+        try:
+            os.makedirs(targetDir)
+        except:
+            print("Note: dir exists: ", targetDir, file=sys.stderr)
 
-    runCommand(cmd)
+        os.chdir(targetDir)
+
+        for leadHour in [ '001', '002', '003', '004', '005', \
+                          '006', '007', '008', '009' ]:
+
+            # create rsync command
+
+            cmd = "rsync -av " \
+                  + options.remoteUser + "@" \
+                  + options.remoteHost + ":" \
+                  + options.remoteDir + "/" + genDir + "/" \
+                  + leadHour + " ."
+                  
+            # run the command
+        
+            runCommand(cmd)
+
+    return
 
 ########################################################################
 # Parse the command line
@@ -171,22 +190,22 @@ def parseArgs():
                       dest='verbose', default=False,
                       action="store_true",
                       help='Set verbose debugging on')
-    parser.add_option('--cwbServer',
-                      dest='cwbServer',
-                      default='172.16.197.98',
-                      help='CWB server name - destination')
-    parser.add_option('--cwbUser',
-                      dest='cwbUser',
-                      default='tahope',
-                      help='CWB server username')
-    parser.add_option('--cwbDataDir',
-                      dest='cwbDataDir',
-                      default='data',
-                      help='CWB destination directory')
-    parser.add_option('--sourceDir',
-                      dest='sourceDir',
-                      default=os.environ['DATA_DIR']+'/raw',
-                      help='Path of dir for source files')
+    parser.add_option('--remoteHost',
+                      dest='remoteHost',
+                      default='maui.atmos.colostate.edu',
+                      help='remote server IP address')
+    parser.add_option('--remoteUser',
+                      dest='remoteUser',
+                      default='mdixon',
+                      help='user name on remote server')
+    parser.add_option('--remoteDir',
+                      dest='remoteDir',
+                      default='/bell-scratch2/precip/DATA/model/PSU_enkf',
+                      help='Source dir on remote server')
+    parser.add_option('--targetDir',
+                      dest='targetDir',
+                      default='/scr/cirrus3/rsfdata/projects/precip/raw/wrf/psu',
+                      help='Path of target dir to copy files')
     parser.add_option('--lookbackSecs',
                       dest='lookbackSecs',
                       default=100000,
@@ -228,10 +247,10 @@ def parseArgs():
     if (options.debug):
         print("Options:", file=sys.stderr)
         print("  debug? ", options.debug, file=sys.stderr)
-        print("  cwbServer ", options.cwbServer, file=sys.stderr)
-        print("  cwbUser ", options.cwbUser, file=sys.stderr)
-        print("  cwbDataDir ", options.cwbDataDir, file=sys.stderr)
-        print("  sourceDir: ", options.sourceDir, file=sys.stderr)
+        print("  remoteHost ", options.remoteHost, file=sys.stderr)
+        print("  remoteUser ", options.remoteUser, file=sys.stderr)
+        print("  remoteDir ", options.remoteDir, file=sys.stderr)
+        print("  targetDir: ", options.targetDir, file=sys.stderr)
         print("  lookbackSecs: ", options.lookbackSecs, file=sys.stderr)
         print("  archiveMode? ", archiveMode, file=sys.stderr)
         print("  realtimeMode? ", options.realtimeMode, file=sys.stderr)
