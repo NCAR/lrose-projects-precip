@@ -584,11 +584,11 @@ output_fields = {
     encoding = OUT_INT16
   }
   ,
-  {
-    name = CAPE_FIELD,
-    encoding = OUT_INT16
-  }
-  ,
+  // {
+  //   name = CAPE_FIELD,
+  //   encoding = OUT_INT16
+  // }
+  // ,
   {
     name = VIL_FIELD,
     encoding = OUT_INT16
@@ -1462,12 +1462,12 @@ stereographic_tangent_lon = 0;
 //
 
 output_grid = {
-    nx = 300,
-    ny = 300,
-    minx = -125.0,
-    miny = 20.0,
-    dx = 0.1,
-    dy = 0.1
+    nx = 400,
+    ny = 360,
+    minx = 116.0,
+    miny = 19.0,
+    dx = 0.025,
+    dy = 0.025
 };
 
 ///////////// output_levels ///////////////////////////
