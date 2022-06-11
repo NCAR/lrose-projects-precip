@@ -175,205 +175,312 @@
 
 <!-- MDV Layers -->
 
-<Layer vis="on" type="MDV" name="GOES16-CH13" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/goes16_ch13/?use_http=true"
-       field="GOESR_CH13" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/sat_tempC.colors"
-       menuName="GOES16-CH13" menuGroup="GOES16" />
+<Layer vis="on" type="MDV" name="SPOL DBZ F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="DBZ_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/dbz.colors" menuName="SPOL-DBZ-F" />
 
-<Layer vis="off" type="MDV" name="GOES16-CH15" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/goes16_ch15/?use_http=true"
-       field="GOESR_CH15" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/sat_tempC.colors" 
-       menuName="GOES16-CH15" menuGroup="GOES16" />
+<Layer vis="off" type="MDV" name="SPOL DBZ MAX" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="DBZ_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/dbz.colors" menuName="SPOL-DBZ-MAX" />
 
-<Layer vis="off" type="MDV" name="GOES16-SWD" location="mdvp::swd//front.eol.ucar.edu:8080:relampago/mdv/goes16_ch13/?use_http=true"
-       field="GOESR_SWD" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/goesr_swd.colors" 
-       menuName="GOES16-SWD" menuGroup="GOES16" />
+<Layer vis="off" type="MDV" name="SPOL DBZ" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="DBZ" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/dbz.colors" menuName="SPOL-DBZ" />
 
-<Layer vis="off" type="MDV" name="GOES16-CH10" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/goes16_ch10/?use_http=true"
-       field="GOESR_CH10" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/sat_tempC.colors"
-       menuName="GOES16-CH10" menuGroup="GOES16" />
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
 
-<Layer vis="off" type="MDV" name="GOES16-CH01" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/goes16_ch01/?use_http=true"
-       field="GOESR_CH01" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/sat_cloud.colors"
-       menuName="GOES16-CH01" menuGroup="GOES16" />
+<Layer vis="off" type="MDV" name="SPOL VEL F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="VEL_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/vel.colors" menuName="SPOL-VEL-F" />
 
-<Layer vis="off" type="MDV" name="GOES16-CH02" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/goes16_ch02/?use_http=true"
-       field="GOESR_CH02" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/sat_cloud.colors"
-       menuName="GOES16-CH02" menuGroup="GOES16" />
+<Layer vis="off" type="MDV" name="SPOL VEL" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="VEL" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/vel.colors" menuName="SPOL-VEL" />
 
-<Layer vis="off" type="MDV" name="GOES16-CH03" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/goes16_ch03/?use_http=true"
-       field="GOESR_CH03" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/sat_cloud.colors"
-       menuName="GOES16-CH03" menuGroup="GOES16" />
+<Layer vis="off" type="MDV" name="SPOL WIDTH F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="WIDTH_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/width.colors" menuName="SPOL-WIDTH-F" />
 
-<!--Layer vis="off" type="MDV" name="GOES16-CH06" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/goes16_ch06/?use_http=true"
-       field="GOESR_CH06" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/sat_cloud.colors"
-       menuName="GOES16-CH06" menuGroup="GOES16" /-->
+<Layer vis="off" type="MDV" name="SPOL WIDTH" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="WIDTH" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/width.colors" menuName="SPOL-WIDTH" />
 
-<Layer vis="off" type="MDV" name="GFS-TMP" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/gfs/relampago?use_http=true"
-       field="TMP" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/temp.colors"
-       menuName="GFS-TMP" menuGroup="GFS-MODEL" />
+<Layer vis="off" type="MDV" name="SPOL ZDR F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="ZDR_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/zdr.colors" menuName="SPOL-ZDR-F" />
 
-<Layer vis="off" type="MDV" name="GFS-RH" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/gfs/relampago?use_http=true"
-       field="RH" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/rh.colors"
-       menuName="GFS-RH"  menuGroup="GFS-MODEL" />
+<Layer vis="off" type="MDV" name="SPOL ZDR" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="ZDR" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/zdr.colors" menuName="SPOL-ZDR" />
 
-<!--Layer vis="off" type="MDV" name="GFS-PRES" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/gfs/relampago?use_http=true"
-       field="Pressure" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/pressure_mb.colors"
-       menuName="GFS-PRES"  menuGroup="GFS-MODEL" /-->
+<Layer vis="off" type="MDV" name="SPOL PHIDP F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="PHIDP_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/phidp.colors" menuName="SPOL-PHIDP-F" />
 
-<Layer vis="off" type="MDV" name="Terrain" location="mdvp::terrain//front.eol.ucar.edu:8080:relampago/mdv/terrain?use_http=true"
-       field="Elevation" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/terrain_relampago.colors"
-       menuName="Terrain"  menuGroup="GFS-MODEL" />
+<Layer vis="off" type="MDV" name="SPOL PHIDP" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="PHIDP" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/phidp.colors" menuName="SPOL-PHIDP" />
 
-<Layer vis="off" type="MDV" name="WRF-Temp" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="Temp" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/temp.colors"
-       menuName="WRF-Temp"  menuGroup="WRF-ILLINOIS" />
+<Layer vis="off" type="MDV" name="SPOL KDP F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="KDP_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/kdp_sband.colors" menuName="SPOL-KDP-F" />
 
-<Layer vis="off" type="MDV" name="WRF-THETA" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="THETA" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/theta_e.colors"
-       menuName="WRF-THETA"   menuGroup="WRF-ILLINOIS" />
+<Layer vis="off" type="MDV" name="SPOL KDP" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="KDP" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/kdp_sband.colors" menuName="SPOL-KDP" />
 
-<Layer vis="off" type="MDV" name="WRF-RH" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="RH" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/rh.colors"
-       menuName="WRF-RH"  menuGroup="WRF-ILLINOIS"  />
+<Layer vis="off" type="MDV" name="SPOL RHOHV F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="RHOHV_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/rhohv.colors" menuName="SPOL-RHOHV-F" />
 
-<Layer vis="off" type="MDV" name="WRF-W" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="W" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/wvel_new.colors"
-       menuName="WRF-W"   menuGroup="WRF-ILLINOIS" />
+<Layer vis="off" type="MDV" name="SPOL RHOHV" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="RHOHV" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/rhohv.colors" menuName="SPOL-RHOHV" />
 
-<Layer vis="off" type="MDV" name="WRF-QVAPOR" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="QVAPOR" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/mixr_kgpkg.colors"
-       menuName="WRF-QVAPOR"   menuGroup="WRF-ILLINOIS" />
+<Layer vis="off" type="MDV" name="SPOL LDRH F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="LDRH_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/ldr.colors" menuName="SPOL-LDRH-F" />
 
-<Layer vis="off" type="MDV" name="WRF-QCLOUD" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="QCLOUD" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/mixr_kgpkg.colors"
-       menuName="WRF-QCLOUD"   menuGroup="WRF-ILLINOIS" />
+<Layer vis="off" type="MDV" name="SPOL LDRH" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="LDRH" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/ldr.colors" menuName="SPOL-LDRH" />
 
-<Layer vis="off" type="MDV" name="WRF-QRAIN" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="QRAIN" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/mixr_kgpkg.colors"
-       menuName="WRF-QRAIN"   menuGroup="WRF-ILLINOIS" />
+<Layer vis="off" type="MDV" name="SPOL LDRV F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="LDRV_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/ldr.colors" menuName="SPOL-LDRV-F" />
 
-<Layer vis="off" type="MDV" name="WRF-QICE" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="QICE" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/mixr_kgpkg.colors"
-       menuName="WRF-QICE"   menuGroup="WRF-ILLINOIS" />
+<Layer vis="off" type="MDV" name="SPOL LDRV" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="LDRV" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/ldr.colors" menuName="SPOL-LDRV" />
 
-<Layer vis="off" type="MDV" name="WRF-QSNOW" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="QSNOW" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/mixr_kgpkg.colors"
-       menuName="WRF-QSNOW"   menuGroup="WRF-ILLINOIS" />
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
 
-<Layer vis="off" type="MDV" name="WRF-QGRAUPEL" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="QGRAUPEL" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/mixr_kgpkg.colors"
-       menuName="WRF-QGRAUPEL"   menuGroup="WRF-ILLINOIS" />
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
 
-<Layer vis="off" type="MDV" name="WRF-DBZ" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="DBZ" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors"
-       menuName="WRF-DBZ"   menuGroup="WRF-ILLINOIS" />
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
 
-<Layer vis="off" type="MDV" name="WRF-WSPD" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="Wspeed" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/wind_speed.colors"
-       menuName="WRF-WSPD"   menuGroup="WRF-ILLINOIS" />
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
 
-<Layer vis="off" type="MDV" name="WRF-PPert" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="P" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/press_pert_pa.colors"
-       menuName="WRF-PPert"   menuGroup="WRF-ILLINOIS" />
+<Layer vis="off" type="MDV" name="SPOL SNRHC F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="SNRHC_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/snr.colors" menuName="SPOL-SNRHC-F" />
 
-<Layer vis="off" type="MDV" name="WRF-Temp2m" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="T2C" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/temp.colors"
-       menuName="WRF-Temp2m"   menuGroup="WRF-ILLINOIS" />
+<Layer vis="off" type="MDV" name="SPOL SNRHC" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="SNRHC" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/snr.colors" menuName="SPOL-SNRHC" />
 
-<Layer vis="off" type="MDV" name="WRF-Q2" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="Q2" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/mixr_kgpkg.colors"
-       menuName="WRF-Q2"   menuGroup="WRF-ILLINOIS" />
+<Layer vis="off" type="MDV" name="SPOL SNRVC F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="SNRVC_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/snr.colors" menuName="SPOL-SNRVC-F" />
 
-<Layer vis="off" type="MDV" name="WRF-PBLHT" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
-       field="pbl_hgt" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/pblht_m.colors"
-       menuName="WRF-PBLHT"   menuGroup="WRF-ILLINOIS" />
+<Layer vis="off" type="MDV" name="SPOL SNRVC" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="SNRVC" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/snr.colors" menuName="SPOL-SNRVC" />
 
-<Layer vis="off" type="MDV" name="SURF Temp" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/surf_interp?use_http=true"
-       field="Temp" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/temp.colors"
-       menuName="SURF-Temp"   menuGroup="SURFACE-INTERP" />
+<Layer vis="off" type="MDV" name="SPOL SNRHX F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="SNRHX_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/snr.colors" menuName="SPOL-SNRHX-F" />
 
-<Layer vis="off" type="MDV" name="SURF DewPt" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/surf_interp?use_http=true"
-       field="DewPoint" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/temp.colors"
-       menuName="SURF-DewPt"  menuGroup="SURFACE-INTERP" />
+<Layer vis="off" type="MDV" name="SPOL SNRHX" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="SNRHX" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/snr.colors" menuName="SPOL-SNRHX" />
 
-<Layer vis="off" type="MDV" name="SURF Conv" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/surf_interp?use_http=true"
-       field="Convergence" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/conv.colors"
-       menuName="SURF-Conv"  menuGroup="SURFACE-INTERP" />
+<Layer vis="off" type="MDV" name="SPOL SNRVX F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="SNRVX_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/snr.colors" menuName="SPOL-SNRVX-F" />
 
-<Layer vis="off" type="MDV" name="CORD DBZH" location="mdvp:://front.eol.ucar.edu:8080:relampago/cfradial/RMA1?use_http=true"
-       field="DBZH" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors"
-       menuName="CORD-DBZH"   menuGroup="RADAR" />
+<Layer vis="off" type="MDV" name="SPOL SNRVX" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="SNRVX" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/snr.colors" menuName="SPOL-SNRVX" />
 
-<Layer vis="off" type="MDV" name="SAN MARTIN DBZ" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/radar/SanMartin?use_http=true"
-       field="DBZ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors"
-       menuName="SAN-MARTIN-DBZ" menuGroup="RADAR" />
+<Layer vis="off" type="MDV" name="SPOL DBMHC F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="DBMHC_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/dbmlow.colors" menuName="SPOL-DBMHC-F" />
 
-<Layer vis="off" type="MDV" name="SAN RAFAEL DBZ" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/radar/SanRafael?use_http=true"
-       field="DBZ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors"
-       menuName="SAN-RAFAEL-DBZ"  menuGroup="RADAR" />
+<Layer vis="off" type="MDV" name="SPOL DBMHC" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="DBMHC" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/dbmlow.colors" menuName="SPOL-DBMHC" />
+
+<Layer vis="off" type="MDV" name="SPOL DBMVC F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="DBMVC_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/dbmlow.colors" menuName="SPOL-DBMVC-F" />
+
+<Layer vis="off" type="MDV" name="SPOL DBMVC" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="DBMVC" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/dbmlow.colors" menuName="SPOL-DBMVC" />
+
+<Layer vis="off" type="MDV" name="SPOL DBMHX F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="DBMHX_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/dbmlow.colors" menuName="SPOL-DBMHX-F" />
+
+<Layer vis="off" type="MDV" name="SPOL DBMHX" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="DBMHX" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/dbmlow.colors" menuName="SPOL-DBMHX" />
+
+<Layer vis="off" type="MDV" name="SPOL DBMVX F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="DBMVX_F" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/dbmlow.colors" menuName="SPOL-DBMVX-F" />
+
+<Layer vis="off" type="MDV" name="SPOL DBMVX" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="DBMVX" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/dbmlow.colors" menuName="SPOL-DBMVX" />
+
+<Layer vis="off" type="MDV" name="SPOL CPA" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="CPA" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/cpa.colors" menuName="SPOL-CPA" />
+
+<Layer vis="off" type="MDV" name="SPOL NCP" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="NCP" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/ncp.colors" menuName="SPOL-NCP" />
+
+<Layer vis="off" type="MDV" name="SPOL CMD" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="CMD" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/cmd.colors" menuName="SPOL-CMD" />
+
+<Layer vis="off" type="MDV" name="SPOL CMD FLAG" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="CMD_FLAG" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/cmd_flag.colors" menuName="SPOL-CMD-FLAG" />
+
+<Layer vis="off" type="MDV" name="SPOL TDBZ" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="TDBZ" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/tdbz.colors" menuName="SPOL-TDBZ" />
+
+<Layer vis="off" type="MDV" name="SPOL SPIN" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="SPIN" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/spin.colors" menuName="SPOL-SPIN" />
+
+<Layer vis="off" type="MDV" name="SPOL ZDR SDEV" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="ZDR_SDEV" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/sdzdr.colors" menuName="SPOL-ZDR-SDEV" />
+
+<Layer vis="off" type="MDV" name="SPOL PHIDP SDEV" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="PHIDP_SDEV" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/sdphidp.colors" menuName="SPOL-PHIDP-SDEV" />
+
+<Layer vis="off" type="MDV" name="SPOL CLUT" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="CLUT" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/dbz.colors" menuName="SPOL-CLUT" />
+
+<Layer vis="off" type="MDV" name="SPOL AIQ" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="AIQ" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/phase.colors" menuName="SPOL-AIQ" />
+
+<!-- Layer vis="off" type="MDV" name="SPOL NIQ" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="NIQ" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/niq.colors" menuName="SPOL-NIQ" / -->
+
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
+
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
+
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
+
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
+
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
+
+<Layer vis="off" type="MDV" name="==GFS==" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="==GFS==" />
+
+<Layer vis="off" type="MDV" name="==GFS==" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="==GFS==" />
+
+<Layer vis="off" type="MDV" name="==GFS==" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="==GFS==" />
+
+<Layer vis="off" type="MDV" name="==GFS==" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="==GFS==" />
+
+<Layer vis="off" type="MDV" name="==GFS==" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="==GFS==" />
+
+<Layer vis="off" type="MDV" name="==GFS==" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="==GFS==" />
+
+<Layer vis="off" type="MDV" name="==GFS==" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="==GFS==" />
+
+<Layer vis="off" type="MDV" name="==GFS==" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="==GFS==" />
+
+<Layer vis="off" type="MDV" name="MOSAIC 2D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true"
+       field="DBZ" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/dbz.colors" menuName="MOSAIC-2D" />
+
+<Layer vis="off" type="MDV" name="MOSAIC 3D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true"
+       field="DBZ" render="grid" colorscale="$(PROJ_DIR)/display/color_scales/dbz.colors" menuName="MOSAIC-3D" />
+
+<Layer vis="off" type="MDV" name="Terrain" location="mdvp::static//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/terrain_precip.colors" menuName="Terrain" />
+
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
+
+<Layer vis="off" type="MDV" name="GFS-TMP" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true"
+       field="TMP" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/temp.colors" menuName="GFS-TMP" />
+
+<Layer vis="off" type="MDV" name="GFS-RH" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true"
+       field="RH" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/rh.colors" menuName="GFS-RH" />
+
+<Layer vis="off" type="MDV" name="GFS-PRES" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true"
+       field="Pressure" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/pressure_mb.colors" menuName="GFS-PRES" />
+
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
+
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
+
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
+
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
+
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
+
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
+
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
+
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
+
+<Layer vis="off" type="MDV" name="========" location="mdvp::static//front.eol.ucar.edu:8080:/spacer/moments"
+       field="Elevation" render="fillcontours" colorscale="$(PROJ_DIR)/display/color_scales/none.colors" menuName="========" />
+
+<!-- MDVTOPO Layers -->
+
+<Layer vis="on" type="MDVTOPO" name="Terrain" location="mdvp::terrain//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true"
+       field="Elevation" colorscale="$(PROJ_DIR)/display/color_scales/terrain_precip.colors" menuName="Terrain" />
 
 <!-- MDVWIND Layers -->
 
-<Layer vis="off" type="MDVWIND" name="WINDS-GFS-3D" menuName="WINDS-GFS-3D" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/gfs/relampago?use_http=true"
+<Layer vis="off" type="MDVWIND" name="GFS-3D" menuName="GFS-3D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true"
        isUandV="true" field="UGRD" extraField="VGRD" render="grid" renderBarbs="true" color="darkgreen" colorscale="windColors" />
 
-<Layer vis="off" type="MDVWIND" name="WINDS-WRF-3D" menuName="WINDS-WRF-3D" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+<Layer vis="off" type="MDVWIND" name="WRF-3D" menuName="WRF-3D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/illinois?use_http=true"
        isUandV="true" field="U" extraField="V" render="grid" renderBarbs="true" color="blue" colorscale="windColors" />
 
-<Layer vis="off" type="MDVWIND" name="WINDS-WRF-10m" menuName="WINDS-WRF-10m" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true"
+<Layer vis="off" type="MDVWIND" name="WRF-10m" menuName="WRF-10m" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/illinois?use_http=true"
        isUandV="true" field="U10" extraField="V10" render="grid" renderBarbs="true" color="yellow" colorscale="windColors" />
 
-<Layer vis="off" type="MDVWIND" name="WINDS-SurfInterp" menuName="WINDS-SurfInterp" location="mdvp:://front.eol.ucar.edu:8080:relampago/mdv/surf_interp?use_http=true"
+<Layer vis="off" type="MDVWIND" name="Surf" menuName="Surf" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/surf_interp?use_http=true"
        isUandV="true" field="Uwind" extraField="Vwind" render="grid" renderBarbs="true" color="orange" colorscale="windColors" />
 
 <!-- SYMPROD Layers -->
 
-<Layer vis="on" type="SYMPROD" name="METARS-simple" location="spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:relampago/spdb/metar?use_http=true"
+<Layer vis="on" type="SYMPROD" name="RHI-SPOL" location="spdbp:Rhi2Symprod:ticks//front.eol.ucar.edu:8080:precip/spdb/rhi/spoldrx?use_http=true"
+       before="20mins" after="10mins" textOff="0.4" request="interval" menuName="RHI-SPOL" />
+
+<Layer vis="off" type="SYMPROD" name="SURFACE-simple" location="spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:precip/spdb/surface?use_http=true"
+       before="90mins" after="0hrs" textOff="0" request="latest" menuName="SURFACE-simple" />
+
+<Layer vis="off" type="SYMPROD" name="SURFACE-full" location="spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:precip/spdb/surface?use_http=true"
+       before="90mins" after="0hrs" textOff="0" request="latest" menuName="SURFACE-full" />
+
+<Layer vis="off" type="SYMPROD" name="METARS-simple" location="spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:precip/spdb/metar?use_http=true"
        before="90mins" after="0hrs" textOff="0" request="latest" menuName="METARS-simple" />
 
-<Layer vis="off" type="SYMPROD" name="METARS-full" location="spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:relampago/spdb/metar?use_http=true"
+<Layer vis="off" type="SYMPROD" name="METARS-full" location="spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:precip/spdb/metar?use_http=true"
        before="90mins" after="0hrs" textOff="0" request="latest" menuName="METARS-full" />
 
-<Layer vis="off" type="SYMPROD" name="AWS-simple" location="spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:relampago/spdb/aws?use_http=true"
-       before="90mins" after="0hrs" textOff="0" request="latest" menuName="AWS-simple" />
+<Layer vis="off" type="SYMPROD" name="LTG" location="spdbp:Ltg2Symprod://front.eol.ucar.edu:8080:precip/spdb/ltg/cwb?use_http=true"
+       before="20mins" after="0hrs" textOff="0" request="valid" menuName="LTG" />
 
-<Layer vis="off" type="SYMPROD" name="AWS-full" location="spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:relampago/spdb/aws?use_http=true"
-       before="90mins" after="0hrs" textOff="0" request="latest" menuName="AWS-full" />
+<Layer vis="off" type="SYMPROD" name="PRECIP-rate" location="spdbp:Metar2Symprod:precip_rate//front.eol.ucar.edu:8080:precip/spdb/gauge?use_http=true"
+       before="90mins" after="0hrs" textOff="0" request="latest" menuName="PRECIP-rate" />
 
-<Layer vis="off" type="SYMPROD" name="GLM" location="spdbp:Ltg2Symprod://front.eol.ucar.edu:8080:relampago/spdb/ltg/glm?use_http=true"
-       before="1hrs" after="0hrs" textOff="0" request="valid" menuName="GLM" />
-
-<Layer vis="off" type="SYMPROD" name="WWLLN" location="spdbp:Ltg2Symprod:wwlln//front.eol.ucar.edu:8080:relampago/spdb/ltg/wwlln?use_http=true"
-       before="1hrs" after="0hrs" textOff="0" request="valid" menuName="WWLLN" />
+<Layer vis="off" type="SYMPROD" name="PRECIP-24hr" location="spdbp:Metar2Symprod:precip_24hr//front.eol.ucar.edu:8080:precip/spdb/gauge?use_http=true"
+       before="90mins" after="0hrs" textOff="0" request="latest" menuName="PRECIP-24hr" />
 
 <!-- CIDDMAP Layers -->
 
-<Layer vis="on" type="CIDDMAP" name="Countries" location="http://front.eol.ucar.edu/maps/world_states.map"
-       color="white" width="2" />
-
-<Layer vis="off" type="CIDDMAP" name="Roads" location="http://front.eol.ucar.edu/maps/ARG_roads.map"
-       color="gray25" width="0" />
-
-<Layer vis="off" type="CIDDMAP" name="Rivers" location="http://front.eol.ucar.edu/maps/ARG_water_lines_dcw.map"
-       color="blue" width="0" />
-
-<Layer vis="off" type="CIDDMAP" name="Lakes" location="http://front.eol.ucar.edu/maps/ARG_water_areas_dcw.map"
-       color="blue" width="0" />
-
-<Layer vis="on" type="CIDDMAP" name="States" location="http://front.eol.ucar.edu/maps/ARG_adm1.map"
-       color="brown" width="1" />
-
-<Layer vis="off" type="CIDDMAP" name="Counties" location="http://front.eol.ucar.edu/maps/ARG_adm2.map"
-       color="pink" width="0" />
-
-<Layer vis="on" type="CIDDMAP" name="CordobaRings" location="http://front.eol.ucar.edu/maps/cordoba_rings.map"
+<Layer vis="on" type="CIDDMAP" name="Countries" location="$(PROJ_DIR)/display/map/world_states.map"
        color="white" width="1" />
 
-<Layer vis="off" type="CIDDMAP" name="SanMartinRings" location="http://front.eol.ucar.edu/maps/san_martin_rings.map"
+<Layer vis="on" type="CIDDMAP" name="Taiwan" location="$(PROJ_DIR)/display/map/taiwan_coast.map"
+       color="white" width="1" />
+
+<Layer vis="on" type="CIDDMAP" name="Islands" location="$(PROJ_DIR)/display/map/taiwan_islands.map"
+       color="white" width="1" />
+
+<Layer vis="off" type="CIDDMAP" name="Islands" location="$(PROJ_DIR)/display/map/taiwan_islands.map"
        color="white" width="0" />
 
-<Layer vis="off" type="CIDDMAP" name="SanRafaelRings" location="http://front.eol.ucar.edu/maps/san_rafael_rings.map"
-       color="white" width="0" />
+<!-- RANGE_RING Layers -->
 
+<Layer vis="on" type="RANGE_RINGS" name="Range Rings"
+       followData="false" radarLat="24.8191" radarLon="120.907"
+       color="gray" width="1"
+       numRings="5" radiusIncr="50"
+       displayAzLines="true" />
 
 <!--
  ####################################################################################################################################
@@ -410,11 +517,6 @@
 
  -->
 
-  <MenuGroup name="GOES16" label="GOES16" parentGroup="GRIDS_MENU" />
-  <MenuGroup name="GFS-MODEL" label="GFS-MODEL" parentGroup="GRIDS_MENU" />
-  <MenuGroup name="WRF-ILLINOIS" label="WRF-ILLINOIS" parentGroup="GRIDS_MENU" />
-  <MenuGroup name="SURFACE-INTERP" label="SURFACE-INTERP" parentGroup="GRIDS_MENU" />
-  <MenuGroup name="RADAR" label="RADAR" parentGroup="GRIDS_MENU" />
 
 <!--
 ####################################################################################################################################
@@ -435,7 +537,7 @@
 ####################################################################################################################################
 -->
 
-<Time mode="realtime" start="-6hrs" end="+0hrs" interval="15mins" update="30secs"/>
+<Time mode="realtime" start="-2hrs" end="+0hrs" interval="12mins" update="30secs"/>
 
 <!--
 ####################################################################################################################################
@@ -544,8 +646,7 @@
 <!--View projection="Stereographic" tangentLon="-135.0" tangentLat="90.0"/-->
 <!--View projection="LatLon" /-->
 <!--View projection="Flat" originLon="120.433502" originLat="22.526699" rotation="0.0" /-->
-<View projection="LatLon" />
-<!-- View projection="LambertConformal" originLon="-65.0" originLat="-32.5" stdLat1="-20.0" /-->
+<View projection="Flat" originLon="120.907" originLat="24.8191" rotation="0" />
 
 <!--
 ####################################################################################################################################
@@ -567,13 +668,14 @@
 ####################################################################################################################################
 -->
 
-<Area name="300km" minLon="-68" maxLon="-62" minLat="-35.0358" maxLat="-29.9642"/>
-<Area name="400km" minLon="-69.1499" maxLon="-60.8501" minLat="-36" maxLat="-29"/>
-<Area name="600km" minLon="-71" maxLon="-59" minLat="-37.5716" maxLat="-27.4284"/>
-<Area name="800km" minLon="-73.8927" maxLon="-56.1073" minLat="-40" maxLat="-25"/>
-<Area name="1500km" minLon="-80" maxLon="-50" minLat="-45.1789" maxLat="-19.8211" defaultView="true"/>
-<Area name="3000km" minLon="-97.6064" maxLon="-32.3936" minLat="-60" maxLat="-5"/>
-<Area name="6000km" minLon="-120" maxLon="-10" minLat="-80.0724" maxLat="15.0724"/>
+<Area name="40km" minLon="120.513" maxLon="121.305" minLat="24.4592" maxLat="25.1779"/>
+<Area name="75km" minLon="120.169" maxLon="121.654" minLat="24.1435" maxLat="25.491"/>
+<Area name="150km" minLon="119.439" maxLon="122.409" minLat="23.4645" maxLat="26.159"/>
+<Area name="240km" minLon="118.572" maxLon="123.326" minLat="22.6452" maxLat="26.9554" defaultView="true"/>
+<Area name="300km" minLon="118" maxLon="123.944" minLat="22.0964" maxLat="27.483"/>
+<Area name="500km" minLon="116.124" maxLon="126.05" minLat="20.2533" maxLat="29.2213"/>
+<Area name="1000km" minLon="111.618" maxLon="131.644" minLat="15.5653" maxLat="33.4095"/>
+<Area name="2000km" minLon="103.147" maxLon="144.567" minLat="5.95695" maxLat="40.8837"/>
 
 <!--
 ####################################################################################################################################
@@ -588,7 +690,7 @@
 
 ####################################################################################################################################
 -->
-<Window width="950" height="950" xOrigin="0" yOrigin="0" backgroundColor="black"/>
+<Window width="890" height="890" xOrigin="0" yOrigin="0" backgroundColor="black"/>
 
 <!--
 ####################################################################################################################################
