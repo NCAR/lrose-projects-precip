@@ -190,6 +190,15 @@ GFS-PRES  GFS-PRES mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_htt
 #LTG_RATE LTG_RATE  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&Ltg_Strikes ltg_rate.colors /300s -5 80 5 cont 1 0
 #LTG_DBZ LTG_DBZ  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&DBZ dbz.colors dBZ -5 80 5 cont 1 0
 
+WRF-TMP   WRF-TMP   mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true&Temp    temp.colors       C    -5   80  5  dcont   1 0
+WRF-RH    WRF-RH    mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true&RH      rh.colors         %    -5   80  5  dcont   1 0
+WRF-DBZ3D WRF-DBZ3D mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true&dbz_3d  dbz.colors        dBZ  -5   80  5  dcont   1 0
+WRF-DBZ2D WRF-DBZ2D mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true&dbz_2d  dbz.colors        dBZ  -5   80  5  dcont   1 0
+WRF-WSPD  WRF-WSPD  mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true&Wspeed  wind_speed.colors m/s  -5   80  5  dcont   1 0
+WRF-Q     WRF-Q     mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true&Wspeed  mixr.colors       g/m3 -5   80  5  dcont   1 0
+WRF-CAPE  WRF-CAPE  mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true&CAPE    cape2.colors      -    -5   80  5  dcont   1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
@@ -609,7 +618,7 @@ cidd.check_data_times:  0
 # Sets the allowable time error for data to appear in movie frames
 # (times the time_interval) (6 min * 6 = 36 minutes before or after
 # the beginning or end of the movie frame times
-cidd.stretch_factor:     20.0
+cidd.stretch_factor:     40.0
 
 # Sets whether Cidd request data closest to the midpoint of a movie
 # frame (0) or the end (1). 
