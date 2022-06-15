@@ -101,13 +101,6 @@ field_list = {
 #
 
 #==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-#==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-#==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-#==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-#==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-#==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-#==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-#==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
 MOSAIC_2D MOSAIC_2D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true&DBZ   dbz.colors   dBZ   -5 80 5 cart,comp 1 0
 MOSAIC_3D MOSAIC_3D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true&DBZ   dbz.colors   dBZ   -5 80 5 cart 1 0
@@ -117,6 +110,15 @@ MOSAIC_3D MOSAIC_3D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+
+Part3DComp Part3DComp mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Part3D     Part3D     mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
+Conv3DComp Conv3DComp mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&Convectivity3D      convectivity.colors - -5 80 5 cart,comp 1 0
+Conv3D     Conv3D     mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&Convectivity3D      convectivity.colors - -5 80 5 cart 1 0
+ConvTops   ConvTops   mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&ConvTops            heightkm.colors km -5 80 5 cart 1 0
+ShallowHt  ShallowHt  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&ShallowHt           number.colors km -5 80 5 cart 1 0
+DeepHt     DeepHt     mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&DeepHt              number.colors km -5 80 5 cart 1 0
+Temp       Temp       mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&TMP                 temp.colors C -5 80 5 cart 1 0
 
 # SPOL MOMENTS
 
@@ -1674,7 +1676,7 @@ prod_info = {
     url = "spdbp:Rhi2Symprod:ticks//front.eol.ucar.edu:8080:precip/spdb/rhi/spoldrx?use_http=true",
     data_type = 0,
     render_type = RENDER_ALL,
-    on_by_default = TRUE,
+    on_by_default = FALSE,
     minutes_allow_before = 20,
     minutes_allow_after = 10,
     text_off_threshold = 0.4,
@@ -1825,8 +1827,8 @@ id_label = "Terrain";
 // Type: string
 //
 
-terrain_url = "mdvp::terrain//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true&Elevation";
-// terrain_url = "";
+// terrain_url = "mdvp::terrain//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true&Elevation";
+terrain_url = "";
 
 ///////////// height_scaler ///////////////////////////
 //
