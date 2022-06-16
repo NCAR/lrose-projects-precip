@@ -102,14 +102,9 @@ field_list = {
 
 #==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
-MOSAIC_2D MOSAIC_2D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true&DBZ   dbz.colors   dBZ   -5 80 5 cart,comp 1 0
-MOSAIC_3D MOSAIC_3D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true&DBZ   dbz.colors   dBZ   -5 80 5 cart 1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-
-Part3DMax Part3DMax  mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
-Part3D    Part3D     mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
-Part2D    Part2D     mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
+Ecco3DMax Ecco3DMax  mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Ecco3D    Ecco3D     mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
+Ecco2D    Ecco2D     mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
 Conv3DMax  Conv3DMax  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&Convectivity3D convectivity.colors - -5 80 5 cart,comp 1 0
@@ -132,15 +127,20 @@ DeepHt    DeepHt    mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?
 Temp      Temp      mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&TMP       temp.colors C -5 80 5 cart 1 0
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
-ConvTops   ConvTops  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&ConvTops     heightkm.colors km -5 80 5 cart 1 0
-StratTops  StratTops mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&StratTops    heightkm.colors km -5 80 5 cart 1 0
-EchoTops   EchoTops  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoTops     heightkm.colors km -5 80 5 cart 1 0
-ClumpsCompDbz ClumpsCompDbz  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&ClumpsCompDbz dbz.colors - -5 80 5 cart 1 0
+ConvTops      ConvTops       mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&ConvTops      heightkm.colors km -5 80 5 cart 1 0
+StratTops     StratTops      mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&StratTops     heightkm.colors km -5 80 5 cart 1 0
+EchoTops      EchoTops       mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoTops      heightkm.colors km -5 80 5 cart 1 0
+ClumpsCompDbz ClumpsCompDbz  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&ClumpsCompDbz dbz.colors       - -5 80 5 cart 1 0
 
-LargeClumps LargeClumps    mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&LargeClumps sub_clump.colors - -5 80 5 cart 1 0
-AllSubClumps AllSubClumps  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&AllSubclumps sub_clump.colors - -5 80 5 cart 1 0
-SmallSubclumps SmallSubclumps    mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&SmallSubclumps sub_clump.colors - -5 80 5 cart 1 0
+LargeClumps    LargeClumps     mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&LargeClumps    sub_clump.colors - -5 80 5 cart 1 0
+AllSubClumps   AllSubClumps    mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&AllSubclumps   number.colors - -5 80 5 cart 1 0
+SmallSubclumps SmallSubclumps  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&SmallSubclumps sub_clump.colors - -5 80 5 cart 1 0
 GrownSubclumps GrownSubclumps  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&GrownSubclumps sub_clump.colors - -5 80 5 cart 1 0
+
+MOSAIC_2D MOSAIC_2D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true&DBZ   dbz.colors   dBZ   -5 80 5 cart,comp 1 0
+MOSAIC_3D MOSAIC_3D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true&DBZ   dbz.colors   dBZ   -5 80 5 cart 1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
 
 </GRIDS>
@@ -403,8 +403,8 @@ cidd.request_compressed_data: 1
 #
 # Sets the projection for cidd's plan view - Current valid choices are:
 # CARTESIAN, LAT_LON, LAMBERT,  STEREOGRAPHIC
-cidd.projection_type:    CARTESIAN
-#cidd.projection_type:    LAT_LON
+#cidd.projection_type:    CARTESIAN
+cidd.projection_type:    LAT_LON
 
 # These must be set if using a Lambert conformal projection - Ignored otherwise
 cidd.lambert_lat1: 20.0
@@ -467,8 +467,8 @@ cidd.xsect_start_page:      1
 
 #
 # The Outer most domain:
-cidd.num_zoom_levels:       8
-cidd.start_zoom_level:      4
+cidd.num_zoom_levels:       3
+cidd.start_zoom_level:      2
 
 # The number of Cached images for zooms.
 cidd.num_cache_zooms:       0
@@ -477,108 +477,25 @@ cidd.num_cache_zooms:       0
 # It's suggested that names without spaces be used when running
 # in.
 #
-cidd.level1_label:                  40km
-cidd.level1_min_xkm:                -40.0
-cidd.level1_min_ykm:                -40.0
-cidd.level1_max_xkm:                40.0
-cidd.level1_max_ykm:                40.0
+cidd.level1_label:                  Taiwan
+cidd.level1_min_xkm:                118.75
+cidd.level1_min_ykm:                21.65
+cidd.level1_max_xkm:                123.2
+cidd.level1_max_ykm:                25.75
 #
-cidd.level2_label:                  75km
-cidd.level2_min_xkm:                -75.0
-cidd.level2_min_ykm:                -75.0
-cidd.level2_max_xkm:                75.0
-cidd.level2_max_ykm:                75.0
-#
-#
-cidd.level3_label:                  150km
-cidd.level3_min_xkm:                -150.0
-cidd.level3_min_ykm:                -150.0
-cidd.level3_max_xkm:                150.0
-cidd.level3_max_ykm:                150.0
+cidd.level2_label:                  Mid
+cidd.level2_min_xkm:                118.0
+cidd.level2_min_ykm:                20.0
+cidd.level2_max_xkm:                123.5
+cidd.level2_max_ykm:                26.95
 #
 #
-cidd.level4_label:                  240km
-cidd.level4_min_xkm:                -240.0
-cidd.level4_min_ykm:                -240.0
-cidd.level4_max_xkm:                240.0
-cidd.level4_max_ykm:                240.0
+cidd.level3_label:                  Outer
+cidd.level3_min_xkm:                116.0
+cidd.level3_min_ykm:                19.6
+cidd.level3_max_xkm:                126.0
+cidd.level3_max_ykm:                28.5
 #
-cidd.level5_label:                  300km
-cidd.level5_min_xkm:                -300.0
-cidd.level5_min_ykm:                -300.0
-cidd.level5_max_xkm:                300.0
-cidd.level5_max_ykm:                300.0
-#
-cidd.level6_label:                  500km
-cidd.level6_min_xkm:                -500.0
-cidd.level6_min_ykm:                -500.0
-cidd.level6_max_xkm:                500.0
-cidd.level6_max_ykm:                500.0
-#
-cidd.level7_label:                  1000km
-cidd.level7_min_xkm:                -1000.0
-cidd.level7_min_ykm:                -1000.0
-cidd.level7_max_xkm:                1000.0
-cidd.level7_max_ykm:                1000.0
-#
-cidd.level8_label:                  2000km
-cidd.level8_min_xkm:                -2000.0
-cidd.level8_min_ykm:                -2000.0
-cidd.level8_max_xkm:                2000.0
-cidd.level8_max_ykm:                2000.0
-#
-
-#cidd.level1_label:                  300km
-#cidd.level1_min_xkm:                -68
-#cidd.level1_min_ykm:                -35
-#cidd.level1_max_xkm:                -62
-#cidd.level1_max_ykm:                -30
-#
-#cidd.level2_label:                  400km
-#cidd.level2_min_xkm:                -69
-#cidd.level2_min_ykm:                -36
-#cidd.level2_max_xkm:                -61
-#cidd.level2_max_ykm:                -29
-#
-#
-#cidd.level3_label:                  600km
-#cidd.level3_min_xkm:                -71
-#cidd.level3_min_ykm:                -37.5
-#cidd.level3_max_xkm:                -59
-#cidd.level3_max_ykm:                -27.5
-#
-#
-#cidd.level4_label:                  800km
-#cidd.level4_min_xkm:                -73.5
-#cidd.level4_min_ykm:                -40
-#cidd.level4_max_xkm:                -56.5
-#cidd.level4_max_ykm:                -25
-#
-#
-#cidd.level5_label:                  1500km
-#cidd.level5_min_xkm:                100
-#cidd.level5_min_ykm:                10
-#cidd.level5_max_xkm:                140
-#cidd.level5_max_ykm:                35
-#
-#cidd.level6_label:                  3000km
-#cidd.level6_min_xkm:                80
-#cidd.level6_min_ykm:                0
-#cidd.level6_max_xkm:                160
-#cidd.level6_max_ykm:                40
-#
-#cidd.level7_label:                  6000km
-#cidd.level7_min_xkm:                -120
-#cidd.level7_min_ykm:                -72.5
-#cidd.level7_max_xkm:                -10
-#cidd.level7_max_ykm:                7.5
-#
-#cidd.level8_label:                  World
-#cidd.level8_min_xkm:                -180
-#cidd.level8_min_ykm:                -89
-#cidd.level8_max_xkm:                180
-#cidd.level8_max_ykm:                89
-
 # Vertical Range and Resolution - Establishes a vertical coordinate system
 # for the cross sectional imagery.
 # All data must map into this range for it to be visible. 
