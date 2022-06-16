@@ -195,7 +195,7 @@ min_valid_volume_for_convective = 20;
 // Type: double
 //
 
-min_vert_extent_for_convective = 1;
+min_vert_extent_for_convective = 3;
 
 ///////////// dbz_for_echo_tops ///////////////////////
 //
@@ -639,7 +639,7 @@ min_strat_fraction_for_strat_below = 0.9;
 // Type: string
 //
 
-output_url = "$(DATA_DIR)/$(project)/mdv/ecco/mrms_taiwan";
+output_url = "mdvp:://localhost:0:$(DATA_DIR)/$(project)/mdv/ecco/mrms_taiwan";
 
 ///////////// write_partition /////////////////////////
 //

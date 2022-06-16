@@ -152,20 +152,17 @@ def rsyncDay(thisDay, startTime, endTime):
 
         os.chdir(targetDir)
 
-        for leadHour in [ '001', '002', '003', '004', '005', \
-                          '006', '007', '008', '009' ]:
+        # create rsync command - only copy the ensemble mean
 
-            # create rsync command
-
-            cmd = "rsync -av " \
-                  + options.remoteUser + "@" \
-                  + options.remoteHost + ":" \
-                  + options.remoteDir + "/" + genDir + "/" \
-                  + leadHour + " ."
+        cmd = "rsync -av " \
+            + options.remoteUser + "@" \
+            + options.remoteHost + ":" \
+            + options.remoteDir + "/" + genDir + "/" \
+            + "mean" + " ."
                   
-            # run the command
+        # run the command
         
-            runCommand(cmd)
+        runCommand(cmd)
 
     return
 
