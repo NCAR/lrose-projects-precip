@@ -102,34 +102,37 @@ field_list = {
 
 #==MRMS==   ==MRMS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
-MOSAIC_2D MOSAIC_2D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true&DBZ   dbz.colors   dBZ   -5 80 5 cart,comp 1 0
-MOSAIC_3D MOSAIC_3D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true&DBZ   dbz.colors   dBZ   -5 80 5 cart 1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-
-Part3DComp Part3DComp mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
-Part3D     Part3D     mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
+MOSAIC_2D  MOSAIC_2D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true&DBZ    dbz.colors   dBZ   -5 80 5 cart,comp 1 0
+MOSAIC_3D  MOSAIC_3D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true&DBZ    dbz.colors   dBZ   -5 80 5 cart 1 0
+Ecco3DComp Ecco3DComp mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Ecco3D     Ecco3D     mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
 Conv3DComp Conv3DComp mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&Convectivity3D      convectivity.colors - -5 80 5 cart,comp 1 0
 Conv3D     Conv3D     mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&Convectivity3D      convectivity.colors - -5 80 5 cart 1 0
 ConvTops   ConvTops   mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&ConvTops            heightkm.colors km -5 80 5 cart 1 0
-ShallowHt  ShallowHt  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&ShallowHt           number.colors km -5 80 5 cart 1 0
-DeepHt     DeepHt     mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&DeepHt              number.colors km -5 80 5 cart 1 0
-Temp       Temp       mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&TMP                 temp.colors C -5 80 5 cart 1 0
+StratTops  StratTops  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&StratTops           heightkm.colors km -5 80 5 cart 1 0
+
+############################
+# GFS Model data
+
+WRF-TMP    WRF-TMP    mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true&Temp   temp.colors   C   -5   80  5  dcont   1 0
+WRF-RH     WRF-RH     mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true&RH     rh.colors   %   -5   80  5  dcont   1 0
+WRF-DBZ-3D WRF-DBZ-3D mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true&dbz_3d dbz.colors  dbz   -5   80  5  dcont   1 0
+WRF-DBZ-2D WRF-DBZ-2D mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true&dbz_2d dbz.colors  dbz   -5   80  5  dcont   1 0
+WRF-WSPD   WRF-WSPD   mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true&Wspeed wind_speed.colors m/s   -5   80  5  dcont   1 0
+WRF-CLW    WRF-CLW    mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true&clw    mixr.colors kg/kg   -5   80  5  dcont   1 0
+WRF-VIL    WRF-VIL    mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true&vil    vil.colors  kg/m2   -5   80  5  dcont   1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+
+GFS-TMP   GFS-TMP  mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true&TMP  temp.colors   C   -5   80  5  dcont   1 0
+GFS-RH    GFS-RH   mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true&RH   rh.colors   %   -5   80  5  dcont   1 0
+GFS-PRES  GFS-PRES mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true&Pressure pressure_mb.colors   m/s   -5   80  5  dcont   1 0
+SURF_Terrain Terrain  mdvp::static//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true&Elevation terrain_precip.colors m -5 80 5 dcont 1 0
+LTG_RATE LTG_RATE  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&Ltg_Strikes ltg_rate.colors /300s -5 80 5 cont 1 0
+LTG_DBZ LTG_DBZ  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&DBZ dbz.colors dBZ -5 80 5 cont 1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
 # SPOL MOMENTS
-
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==SPOL==   ==SPOL==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
 SPOL_DBZ_F   SPOL_DBZ_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
 SPOL_DBZ     SPOL_DBZ     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
@@ -137,17 +140,17 @@ SPOL_VEL_F   SPOL_VEL_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moment
 SPOL_VEL     SPOL_VEL     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
 SPOL_WIDTH_F SPOL_WIDTH_F mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
 SPOL_WIDTH   SPOL_WIDTH   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
-SPOL_VEL_F     SPOL_VEL_F      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-SPOL_VEL       SPOL_VEL        mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
+SPOL_VEL_F   SPOL_VEL_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+SPOL_VEL     SPOL_VEL     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
 
-SPOL_VEL_ALT_F SPOL_VEL_ALT_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_ALT_F   vel.colors   m/s -5 80 5 radial 1 0
-SPOL_VEL_ALT   SPOL_VEL_ALT    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_ALT     vel.colors   m/s -5 80 5 radial 1 0
-SPOL_VEL_HV_F  SPOL_VEL_HV_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_HV_F   vel.colors   m/s -5 80 5 radial 1 0
-SPOL_VEL_HV    SPOL_VEL_HV     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_HV     vel.colors   m/s -5 80 5 radial 1 0
-SPOL_ZDR_F   SPOL_ZDR_F    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-SPOL_ZDR     SPOL_ZDR      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-SPOL_ZDRM_F  SPOL_ZDRM_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDRM_F zdr.colors   dB  -5 80 5 radial 1 0
-SPOL_ZDRM    SPOL_ZDRM     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDRM   zdr.colors   dB  -5 80 5 radial 1 0
+SPOL_VEL_ALT_F SPOL_VEL_ALT_F mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_ALT_F   vel.colors   m/s -5 80 5 radial 1 0
+SPOL_VEL_ALT   SPOL_VEL_ALT   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_ALT     vel.colors   m/s -5 80 5 radial 1 0
+SPOL_VEL_HV_F  SPOL_VEL_HV_F  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_HV_F   vel.colors   m/s -5 80 5 radial 1 0
+SPOL_VEL_HV    SPOL_VEL_HV    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&VEL_HV     vel.colors   m/s -5 80 5 radial 1 0
+SPOL_ZDR_F     SPOL_ZDR_F     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+SPOL_ZDR       SPOL_ZDR       mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+SPOL_ZDRM_F    SPOL_ZDRM_F    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDRM_F zdr.colors   dB  -5 80 5 radial 1 0
+SPOL_ZDRM      SPOL_ZDRM      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&ZDRM   zdr.colors   dB  -5 80 5 radial 1 0
 
 SPOL_LDRH_F  SPOL_LDRH_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&LDRH_F ldr.colors   dB  -5 80 5 radial 1 0
 SPOL_LDRH    SPOL_LDRH     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&LDRH   ldr.colors   dB  -5 80 5 radial 1 0
@@ -195,30 +198,6 @@ SPOL_NIQ        SPOL_NIQ        mdvp:://front.eol.ucar.edu:8080:precip/cfradial/
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
-
-############################
-# GFS Model data
-
-==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-==GFS==   ==GFS==    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-
-GFS-TMP   GFS-TMP  mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true&TMP  temp.colors   C   -5   80  5  dcont   1 0
-GFS-RH    GFS-RH   mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true&RH   rh.colors   %   -5   80  5  dcont   1 0
-GFS-PRES  GFS-PRES mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true&Pressure pressure_mb.colors   m/s   -5   80  5  dcont   1 0
-SURF_Terrain Terrain  mdvp::static//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true&Elevation terrain_precip.colors m -5 80 5 dcont 1 0
-
-LTG_RATE LTG_RATE  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&Ltg_Strikes ltg_rate.colors /300s -5 80 5 cont 1 0
-LTG_DBZ LTG_DBZ  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ltg/glm&DBZ dbz.colors dBZ -5 80 5 cont 1 0
-
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
 ############################
 # Satellite data
@@ -555,9 +534,7 @@ Islands        Islands        taiwan_islands.map           1  0.0 1000000.0  whi
 # Legend_label  URL U V W_fieldnames units  Style [Color]
 #----------------------------------------------------------------------------
 
-GFS-3D    mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true& UGRD  VGRD  None m/s -1 darkgreen
-WRF-3D    mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/illinois?use_http=true&  U     V     None m/s 1  blue
-WRF-10m   mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/illinois?use_http=true&  U10   V10   None m/s -1 yellow
+WRF       mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true&  U     V     None m/s 1  cyan
 Surf      mdvp:://front.eol.ucar.edu:8080:precip/mdv/surf_interp?use_http=true&   Uwind Vwind None m/s -1 orange
 
 </WINDS>
@@ -748,8 +725,8 @@ cidd.request_compressed_data: 1
 #
 # Sets the projection for cidd's plan view - Current valid choices are:
 # CARTESIAN, LAT_LON, LAMBERT,  STEREOGRAPHIC
-cidd.projection_type:    CARTESIAN
-#cidd.projection_type:    LAT_LON
+#cidd.projection_type:    CARTESIAN
+cidd.projection_type:    LAT_LON
 
 # These must be set if using a Lambert conformal projection - Ignored otherwise
 cidd.lambert_lat1: 20.0
@@ -810,9 +787,8 @@ cidd.planview_start_page:   1
 cidd.xsect_start_page:      1
 #
 
-#
 # The Outer most domain:
-cidd.num_zoom_levels:       8
+cidd.num_zoom_levels:       7
 cidd.start_zoom_level:      4
 
 # The number of Cached images for zooms.
@@ -822,107 +798,49 @@ cidd.num_cache_zooms:       0
 # It's suggested that names without spaces be used when running
 # in.
 #
-cidd.level1_label:                  40km
-cidd.level1_min_xkm:                -40.0
-cidd.level1_min_ykm:                -40.0
-cidd.level1_max_xkm:                40.0
-cidd.level1_max_ykm:                40.0
+cidd.level1_label:                  Taiwan
+cidd.level1_min_xkm:                118.75
+cidd.level1_min_ykm:                21.65
+cidd.level1_max_xkm:                123.2
+cidd.level1_max_ykm:                25.75
 #
-cidd.level2_label:                  75km
-cidd.level2_min_xkm:                -75.0
-cidd.level2_min_ykm:                -75.0
-cidd.level2_max_xkm:                75.0
-cidd.level2_max_ykm:                75.0
+cidd.level2_label:                  Spol
+cidd.level2_min_xkm:                118.33
+cidd.level2_min_ykm:                22.47
+cidd.level2_max_xkm:                123.47
+cidd.level2_max_ykm:                27.16
 #
-#
-cidd.level3_label:                  150km
-cidd.level3_min_xkm:                -150.0
-cidd.level3_min_ykm:                -150.0
-cidd.level3_max_xkm:                150.0
-cidd.level3_max_ykm:                150.0
-#
-#
-cidd.level4_label:                  240km
-cidd.level4_min_xkm:                -240.0
-cidd.level4_min_ykm:                -240.0
-cidd.level4_max_xkm:                240.0
-cidd.level4_max_ykm:                240.0
-#
-cidd.level5_label:                  300km
-cidd.level5_min_xkm:                -300.0
-cidd.level5_min_ykm:                -300.0
-cidd.level5_max_xkm:                300.0
-cidd.level5_max_ykm:                300.0
-#
-cidd.level6_label:                  500km
-cidd.level6_min_xkm:                -500.0
-cidd.level6_min_ykm:                -500.0
-cidd.level6_max_xkm:                500.0
-cidd.level6_max_ykm:                500.0
-#
-cidd.level7_label:                  1000km
-cidd.level7_min_xkm:                -1000.0
-cidd.level7_min_ykm:                -1000.0
-cidd.level7_max_xkm:                1000.0
-cidd.level7_max_ykm:                1000.0
-#
-cidd.level8_label:                  2000km
-cidd.level8_min_xkm:                -2000.0
-cidd.level8_min_ykm:                -2000.0
-cidd.level8_max_xkm:                2000.0
-cidd.level8_max_ykm:                2000.0
-#
-
-#cidd.level1_label:                  300km
-#cidd.level1_min_xkm:                -68
-#cidd.level1_min_ykm:                -35
-#cidd.level1_max_xkm:                -62
-#cidd.level1_max_ykm:                -30
-#
-#cidd.level2_label:                  400km
-#cidd.level2_min_xkm:                -69
-#cidd.level2_min_ykm:                -36
-#cidd.level2_max_xkm:                -61
-#cidd.level2_max_ykm:                -29
+cidd.level3_label:                  Mosaic
+cidd.level3_min_xkm:                117.0
+cidd.level3_min_ykm:                20.0
+cidd.level3_max_xkm:                124.0
+cidd.level3_max_ykm:                27.0
 #
 #
-#cidd.level3_label:                  600km
-#cidd.level3_min_xkm:                -71
-#cidd.level3_min_ykm:                -37.5
-#cidd.level3_max_xkm:                -59
-#cidd.level3_max_ykm:                -27.5
+cidd.level4_label:                  MRF
+cidd.level4_min_xkm:                115.5
+cidd.level4_min_ykm:                19.0
+cidd.level4_max_xkm:                126
+cidd.level4_max_ykm:                28.0
 #
+cidd.level5_label:                  Wide
+cidd.level5_min_xkm:                111
+cidd.level5_min_ykm:                13
+cidd.level5_max_xkm:                131
+cidd.level5_max_ykm:                33
 #
-#cidd.level4_label:                  800km
-#cidd.level4_min_xkm:                -73.5
-#cidd.level4_min_ykm:                -40
-#cidd.level4_max_xkm:                -56.5
-#cidd.level4_max_ykm:                -25
+cidd.level6_label:                  SE-Asia
+cidd.level6_min_xkm:                96.5
+cidd.level6_min_ykm:                4.0
+cidd.level6_max_xkm:                142.5
+cidd.level6_max_ykm:                45.5
 #
+cidd.level7_label:                  World
+cidd.level7_min_xkm:                0
+cidd.level7_min_ykm:                -90
+cidd.level7_max_xkm:                360
+cidd.level7_max_ykm:                90
 #
-#cidd.level5_label:                  1500km
-#cidd.level5_min_xkm:                100
-#cidd.level5_min_ykm:                10
-#cidd.level5_max_xkm:                140
-#cidd.level5_max_ykm:                35
-#
-#cidd.level6_label:                  3000km
-#cidd.level6_min_xkm:                80
-#cidd.level6_min_ykm:                0
-#cidd.level6_max_xkm:                160
-#cidd.level6_max_ykm:                40
-#
-#cidd.level7_label:                  6000km
-#cidd.level7_min_xkm:                -120
-#cidd.level7_min_ykm:                -72.5
-#cidd.level7_max_xkm:                -10
-#cidd.level7_max_ykm:                7.5
-#
-#cidd.level8_label:                  World
-#cidd.level8_min_xkm:                -180
-#cidd.level8_min_ykm:                -89
-#cidd.level8_max_xkm:                180
-#cidd.level8_max_ykm:                89
 
 # Vertical Range and Resolution - Establishes a vertical coordinate system
 # for the cross sectional imagery.

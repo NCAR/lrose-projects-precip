@@ -465,10 +465,9 @@ cidd.planview_start_page:   1
 cidd.xsect_start_page:      1
 #
 
-#
 # The Outer most domain:
-cidd.num_zoom_levels:       3
-cidd.start_zoom_level:      2
+cidd.num_zoom_levels:       7
+cidd.start_zoom_level:      4
 
 # The number of Cached images for zooms.
 cidd.num_cache_zooms:       0
@@ -483,18 +482,44 @@ cidd.level1_min_ykm:                21.65
 cidd.level1_max_xkm:                123.2
 cidd.level1_max_ykm:                25.75
 #
-cidd.level2_label:                  Mid
-cidd.level2_min_xkm:                118.0
-cidd.level2_min_ykm:                20.0
-cidd.level2_max_xkm:                123.5
-cidd.level2_max_ykm:                26.95
+cidd.level2_label:                  Spol
+cidd.level2_min_xkm:                118.33
+cidd.level2_min_ykm:                22.47
+cidd.level2_max_xkm:                123.47
+cidd.level2_max_ykm:                27.16
+#
+cidd.level3_label:                  Mosaic
+cidd.level3_min_xkm:                117.0
+cidd.level3_min_ykm:                20.0
+cidd.level3_max_xkm:                124.0
+cidd.level3_max_ykm:                27.0
 #
 #
-cidd.level3_label:                  Outer
-cidd.level3_min_xkm:                116.0
-cidd.level3_min_ykm:                19.6
-cidd.level3_max_xkm:                126.0
-cidd.level3_max_ykm:                28.5
+cidd.level4_label:                  MRF
+cidd.level4_min_xkm:                115.5
+cidd.level4_min_ykm:                19.0
+cidd.level4_max_xkm:                126
+cidd.level4_max_ykm:                28.0
+#
+cidd.level5_label:                  Wide
+cidd.level5_min_xkm:                111
+cidd.level5_min_ykm:                13
+cidd.level5_max_xkm:                131
+cidd.level5_max_ykm:                33
+#
+cidd.level6_label:                  SE-Asia
+cidd.level6_min_xkm:                96.5
+cidd.level6_min_ykm:                4.0
+cidd.level6_max_xkm:                142.5
+cidd.level6_max_ykm:                45.5
+#
+cidd.level7_label:                  World
+cidd.level7_min_xkm:                0
+cidd.level7_min_ykm:                -90
+cidd.level7_max_xkm:                360
+cidd.level7_max_ykm:                90
+#
+
 #
 # Vertical Range and Resolution - Establishes a vertical coordinate system
 # for the cross sectional imagery.
