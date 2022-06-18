@@ -23,7 +23,6 @@
 # rsync data from maui at CSU to cirrus at NCAR
 #
 */15 * * * * csh -c "run_rsync_sat_from_maui.precip"  1> /dev/null 2> /dev/null
-#*/15 * * * * csh -c "run_rsync_wrf_from_maui.precip"  1> /dev/null 2> /dev/null
 */15 * * * * csh -c "start_RsyncWrfFromMaui.precip"  1> /dev/null 2> /dev/null
 ######################################################################
 # rsync spoldrx data to bob at UW

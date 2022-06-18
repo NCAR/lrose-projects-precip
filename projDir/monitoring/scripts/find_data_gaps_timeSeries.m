@@ -129,7 +129,7 @@ for ii=1:length(dayList)
 
     %% Plot
 
-    disp('Plotting ...');
+    disp(['Plotting ',dateString]);
 
     close all
     ylimits=[-1.5 12];
