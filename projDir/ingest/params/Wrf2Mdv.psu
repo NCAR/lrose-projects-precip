@@ -206,7 +206,7 @@ File_extension = "";
 // Type: boolean
 //
 
-use_ldata = FALSE;
+use_ldata = TRUE;
 
 ///////////// get_times_from_filenames ////////////////
 //

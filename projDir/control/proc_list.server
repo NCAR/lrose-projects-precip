@@ -33,6 +33,11 @@ Rhi2Spdb      spoldrx     start_inst(ingest)   snuff_inst
 InputWatcher  gfs.precip   start_inst(ingest)   snuff_inst
 Grib2toMdv    gfs.precip   start_inst(ingest)   snuff_inst
 ######################################################################
+# WRF MODEL
+#
+InputWatcher  wrf_psu      start_inst(ingest)   snuff_inst
+Wrf2Mdv       psu          start_inst(ingest)   snuff_inst
+######################################################################
 # LIGHTING
 #
 Ltg2Spdb      cwb          start_inst(ingest)   snuff_inst
