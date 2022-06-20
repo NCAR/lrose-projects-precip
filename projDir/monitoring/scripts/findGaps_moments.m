@@ -19,7 +19,7 @@ saveTimeDiff=etime(datevec(saveTimes(2:end)),datevec(saveTimes(1:end-1)));
 
 if ~isempty(saveTimes)
     goodTimes=zeros(size(saveTimeDiff));
-    goodTimes(saveTimeDiff<60)=1;
+    goodTimes(saveTimeDiff<120)=1;
     diffGoodTimes=diff(goodTimes);
 
     startGoodInds=find(diffGoodTimes==1)+1;
@@ -31,7 +31,7 @@ if ~isempty(saveTimes)
     endGoodTimes=cat(1,endGoodTimes,saveTimes(end));
 
     for kk=1:length(startGoodTimes)
-        noDataTimeNan(noDataTime>startGoodTimes(kk) & noDataTime<endGoodTimes(kk))=nan;
+        noDataTimeNan(noDataTime>=startGoodTimes(kk) & noDataTime<=endGoodTimes(kk))=nan;
     end
 end
 end

@@ -28,7 +28,7 @@ if ~isempty(saveTimes)
     endGoodTimes=cat(1,endGoodTimes,saveTimes(end));
 
     for kk=1:length(startGoodTimes)
-        noDataTimeNan(noDataTime>startGoodTimes(kk) & noDataTime<endGoodTimes(kk))=nan;
+        noDataTimeNan(noDataTime>=startGoodTimes(kk) & noDataTime<=endGoodTimes(kk))=nan;
     end
 end
 end

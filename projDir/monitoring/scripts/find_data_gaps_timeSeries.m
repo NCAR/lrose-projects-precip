@@ -24,7 +24,7 @@ for ii=1:length(dayList)
     thisDay=dayList(ii);
     dateString=datestr(thisDay,'yyyymmdd');
 
-    noDataTime=thisDay:minutes(1):thisDay+hours(24);
+    noDataTime=thisDay:seconds(1):thisDay+hours(24);
     noDataTimeNan=ones(size(noDataTime));
     noDataTimeNan=-noDataTimeNan;
 

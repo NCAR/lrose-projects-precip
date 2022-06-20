@@ -3,7 +3,7 @@
 clear all
 close all
 
-dataType='spoldrx';
+dataType='sband';
 
 startDate=datetime(2022,5,23);
 endDate=datetime(2022,6,4); % This day is included
@@ -84,7 +84,6 @@ for ii=1:length(dayList)
     yticks=-0:5;
     yticklabels({'missing','sur','rhi','sunscan','vert','sec'})
     xlim([thisDay+hours(6),thisDay+hours(12)]);
-    title(datestr(thisDay,'yyyy mm dd'));
     grid on
     box on
 
@@ -100,7 +99,6 @@ for ii=1:length(dayList)
     yticks=-0:5;
     yticklabels({'missing','sur','rhi','sunscan','vert','sec'})
     xlim([thisDay+hours(12),thisDay+hours(18)]);
-    title(datestr(thisDay,'yyyy mm dd'));
     grid on
     box on
 
@@ -116,7 +114,6 @@ for ii=1:length(dayList)
     yticks=-0:5;
     yticklabels({'missing','sur','rhi','sunscan','vert','sec'})
     xlim([thisDay+hours(18),thisDay+hours(24)]);
-    title(datestr(thisDay,'yyyy mm dd'));
     grid on
     box on
 
