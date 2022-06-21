@@ -1,8 +1,0 @@
-#! /bin/csh
-
-cd $PROJ_DIR/monitoring/scripts
-
-./call_monitorSpol_automatic |& \
-	LogFilter -d $ERRORS_LOG_DIR -p call_monitorSpol_automatic -i hourly >& /dev/null &
-endif
-

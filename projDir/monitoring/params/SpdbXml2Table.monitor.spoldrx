@@ -53,8 +53,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-// input_url = "spdbp:://hail:0:$(project)/spdb/spol/suncal/sband/";
-input_url = "$(DATA_DIR)/$(project)/spdb/spol/suncal/sband/";
+input_url = "/scr/cirrus3/rsfdata/projects/precip/spolField/spdb/monitor/spoldrx";
 
 ///////////// start_time //////////////////////////////
 //
@@ -76,9 +75,9 @@ input_url = "$(DATA_DIR)/$(project)/spdb/spol/suncal/sband/";
 //
 
 start_time = {
-    year = 2015,
-    month = 5,
-    day = 24,
+    year = 2011,
+    month = 10,
+    day = 1,
     hour = 0,
     min = 0,
     sec = 0
@@ -104,9 +103,9 @@ start_time = {
 //
 
 end_time = {
-    year = 2015,
-    month = 7,
-    day = 17,
+    year = 2012,
+    month = 1,
+    day = 16,
     hour = 0,
     min = 0,
     sec = 0
@@ -167,303 +166,184 @@ data_type_2 = 0;
 
 xml_entries = {
   {
-    xml_tag_list = "<RadarSunCal><CalTime>",
+    xml_tag_list = "<SBandTestPulse><TestPulsePowerDbHc>",
     specify_label = TRUE,
-    label = "CalTime",
+    label = "TestPulsePowerDbHc",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SBandTestPulse><TestPulsePowerDbVc>",
+    specify_label = TRUE,
+    label = "TestPulsePowerDbVc",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SBandTestPulse><TestPulsePowerDbHx>",
+    specify_label = TRUE,
+    label = "TestPulsePowerDbHx",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><radarName>",
+    xml_tag_list = "<SBandTestPulse><TestPulsePowerDbVx>",
     specify_label = TRUE,
-    label = "radarName",
+    label = "TestPulsePowerDbVx",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><radarSite>",
+    xml_tag_list = "<SpolTemperatures><Klystron>",
     specify_label = TRUE,
-    label = "radarSite",
+    label = "Temp_Klystron",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><radarLatitude>",
+    xml_tag_list = "<SpolTemperatures><Rear_Wall>",
     specify_label = TRUE,
-    label = "radarLatitude",
+    label = "Temp_Rear_Wall",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><radarLongitude>",
+    xml_tag_list = "<SpolTemperatures><CIRC_V>",
     specify_label = TRUE,
-    label = "radarLongitude",
+    label = "Temp_CIRC_V",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><radarAltitudeKm>",
+    xml_tag_list = "<SpolTemperatures><CIRC_H>",
     specify_label = TRUE,
-    label = "radarAltitudeKm",
+    label = "Temp_CIRC_H",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><VolumeNumber>",
+    xml_tag_list = "<SpolTemperatures><LNA_V>",
     specify_label = TRUE,
-    label = "VolumeNumber",
+    label = "Temp_LNA_V",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><validCentroid>",
+    xml_tag_list = "<SpolTemperatures><LNA_H>",
     specify_label = TRUE,
-    label = "validCentroid",
+    label = "Temp_LNA_H",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><meanSunEl>",
+    xml_tag_list = "<SpolTemperatures><RX_enclosure>",
     specify_label = TRUE,
-    label = "meanSunEl",
+    label = "Temp_RX_enclosure",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><meanSunAz>",
+    xml_tag_list = "<SpolTemperatures><TP_enclosure>",
     specify_label = TRUE,
-    label = "meanSunAz",
+    label = "Temp_TP_enclosure",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><nBeamsNoise>",
+    xml_tag_list = "<SpolTemperatures><RX_plate>",
     specify_label = TRUE,
-    label = "nBeamsNoise",
+    label = "Temp_RX_plate",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><noiseDbmHc>",
+    xml_tag_list = "<SpolTemperatures><TX_coupler_H>",
     specify_label = TRUE,
-    label = "noiseDbmHc",
+    label = "Temp_TX_coupler_H",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><noiseDbmHx>",
+    xml_tag_list = "<SpolTemperatures><DUMMY_H>",
     specify_label = TRUE,
-    label = "noiseDbmHx",
+    label = "Temp_DUMMY_H",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><noiseDbmVc>",
+    xml_tag_list = "<SpolTemperatures><DUMMY_V>",
     specify_label = TRUE,
-    label = "noiseDbmVc",
+    label = "Temp_DUMMY_V",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><noiseDbmVx>",
+    xml_tag_list = "<SpolTemperatures><MITCH_SWITCH>",
     specify_label = TRUE,
-    label = "noiseDbmVx",
+    label = "Temp_MITCH_SWITCH",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><maxPowerDbm>",
+    xml_tag_list = "<SpolTemperatures><SCC>",
     specify_label = TRUE,
-    label = "maxPowerDbm",
+    label = "Temp_SCC",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><quadPowerDbm>",
+    xml_tag_list = "<SpolTemperatures><Annex>",
     specify_label = TRUE,
-    label = "quadPowerDbm",
+    label = "Temp_Annex",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><maxPowerDbmHc>",
+    xml_tag_list = "<SpolTemperatures><UPS_Container>",
     specify_label = TRUE,
-    label = "maxPowerDbmHc",
+    label = "Temp_UPS_Container",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><quadPowerDbmHc>",
+    xml_tag_list = "<AntennaFaults><Oil_Pressure_Fault>",
     specify_label = TRUE,
-    label = "quadPowerDbmHc",
+    label = "Oil_Pressure_Fault",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><maxPowerDbmVc>",
+    xml_tag_list = "<AntennaFaults><Azimuth_Brakes_Fault>",
     specify_label = TRUE,
-    label = "maxPowerDbmVc",
+    label = "Azimuth_Brakes_Fault",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><quadPowerDbmVc>",
+    xml_tag_list = "<SpolTransmitStatus><HighVoltsOn>",
     specify_label = TRUE,
-    label = "quadPowerDbmVc",
+    label = "HighVoltsOn",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><centroidAzOffset>",
+    xml_tag_list = "<SBandXmitPower><XmitPowerDbmTxTop>",
     specify_label = TRUE,
-    label = "centroidAzOffset",
+    label = "XmitPowerDbmTxTop",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><centroidElOffset>",
+    xml_tag_list = "<SBandXmitPower><XmitPowerDbmH>",
     specify_label = TRUE,
-    label = "centroidElOffset",
+    label = "XmitPowerDbmH",
     required = FALSE
   }
   ,
   {
-    xml_tag_list = "<RadarSunCal><centroidAzOffsetHc>",
+    xml_tag_list = "<SBandXmitPower><XmitPowerDbmV>",
     specify_label = TRUE,
-    label = "centroidAzOffsetHc",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><centroidElOffsetHc>",
-    specify_label = TRUE,
-    label = "centroidElOffsetHc",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><centroidAzOffsetVc>",
-    specify_label = TRUE,
-    label = "centroidAzOffsetVc",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><centroidElOffsetVc>",
-    specify_label = TRUE,
-    label = "centroidElOffsetVc",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><nXpolPoints>",
-    specify_label = TRUE,
-    label = "nXpolPoints",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><meanXpolRatioDb>",
-    specify_label = TRUE,
-    label = "meanXpolRatioDb",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><S1S2>",
-    specify_label = TRUE,
-    label = "S1S2",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><zdrCorr>",
-    specify_label = TRUE,
-    label = "zdrCorr",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><meanXmitPowerHDbm>",
-    specify_label = TRUE,
-    label = "meanXmitPowerHDbm",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><meanXmitPowerVDbm>",
-    specify_label = TRUE,
-    label = "meanXmitPowerVDbm",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><widthRatioElAzHc>",
-    specify_label = TRUE,
-    label = "widthRatioElAzHc",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><widthRatioElAzVc>",
-    specify_label = TRUE,
-    label = "widthRatioElAzVc",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><widthRatioElAzDiffHV>",
-    specify_label = TRUE,
-    label = "widthRatioElAzDiffHV",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><zdrDiffElAz>",
-    specify_label = TRUE,
-    label = "zdrDiffElAz",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><testPulseDbmHx>",
-    specify_label = TRUE,
-    label = "testPulseDbmHx",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><testPulseDbmVc>",
-    specify_label = TRUE,
-    label = "testPulseDbmVc",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><testPulseDbmVx>",
-    specify_label = TRUE,
-    label = "testPulseDbmVx",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><testPulseDbmHc>",
-    specify_label = TRUE,
-    label = "testPulseDbmHc",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><siteTempC>",
-    specify_label = TRUE,
-    label = "siteTempC",
-    required = FALSE
-  }
-  ,
-  {
-    xml_tag_list = "<RadarSunCal><timeForSiteTemp>",
-    specify_label = TRUE,
-    label = "timeForSiteTemp",
+    label = "XmitPowerDbmV",
     required = FALSE
   }
 };
@@ -519,23 +399,13 @@ convert_boolean_to_integer = TRUE;
 
 ///////////// ignore_if_all_nans //////////////////////
 //
-// Do not print a line if all values are 'nan'.
+// Do not print a line if all string values are 'nan'.
 //
 //
 // Type: boolean
 //
 
 ignore_if_all_nans = TRUE;
-
-///////////// ignore_if_any_nans //////////////////////
-//
-// Do not print a line if any values are 'nan'.
-//
-//
-// Type: boolean
-//
-
-ignore_if_any_nans = FALSE;
 
 ///////////// replace_string_in_output ////////////////
 //
@@ -549,7 +419,7 @@ ignore_if_any_nans = FALSE;
 // Type: boolean
 //
 
-replace_string_in_output = TRUE;
+replace_string_in_output = FALSE;
 
 ///////////// old_string //////////////////////////////
 //
