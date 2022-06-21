@@ -46,7 +46,7 @@ def main():
                       help='Set verbose debugging on')
     parser.add_option('--monFile',
                       dest='monFile',
-                      default='/scr/hail1/rsfdata/eolbase/tables/spolMon/spolMon_20190501_000000_to_20190531_235959.txt',
+                      default='/scr/cirrus3/rsfdata/projects/precip/spolField/tables/spolMon/spoldrx/spolMon_20220601_000000_to_20220630_235959.txt',
                       help='File with monitoring data')
     parser.add_option('--widthMain',
                       dest='mainWidthMm',
@@ -59,16 +59,16 @@ def main():
     parser.add_option('--start',
                       dest='startTime',
                       #default='1970 01 01 00 00 00',
-                      default='2019 05 01 00 00 00',
+                      default='2022 06 01 00 00 00',
                       help='Start time for XY plot')
     parser.add_option('--end',
                       dest='endTime',
                       #default='1970 01 01 00 00 00',
-                      default='2019 05 31 23 59 59',
+                      default='2022 06 30 23 59 59',
                       help='End time for XY plot')
     parser.add_option('--figDir',
                       dest='figureDir',
-                      default='/scr/sci/romatsch/spolPlots/timeSeriesPy/test/',
+                      default='/scr/cirrus3/rsfdata/projects/precip/spolField/monitorPlots/spol_mon/spoldrx/',
                       help='Directory for output figures')
     parser.add_option('--plotHours',
                       dest='plotHours',
@@ -201,7 +201,7 @@ def main():
             
     # If you want to show the plots, uncomment the following line
     # Showing the plots will stop the script so it does not work when run as script
-    #plt.show()
+    # plt.show()
     
     if int(options.printTable)==1:
         # Count time of operation
@@ -334,11 +334,13 @@ def doPlotTestTempFaults(outFilePath,data,firstTime,timeSpan):
     
     allMeds=[medTHc, medTHx, medTVc, medTVx]
     allMeds[:] = [np.nan if x<-8888 else x for x in allMeds]
-    if np.count_nonzero(~np.isnan(allMeds))==0:
-        bottomVal=-1000
-    else:
-        bottomVal=np.floor(np.nanmean(allMeds)/10)*10
-    topVal=bottomVal+10    
+    #if np.count_nonzero(~np.isnan(allMeds))==0:
+    #    bottomVal=-1000
+    #else:
+    #    bottomVal=np.floor(np.nanmean(allMeds)/10)*10
+    #topVal=bottomVal+10    
+    bottomVal=-43
+    topVal=-53
     configTimeAxis(ax1, bottomVal, topVal, 'Power (dB)', 'upper left',firstTime,lastTime,fontSize)
     
     medians=[data.TestPulseRatioVcHc2.median(),data.TestPulseRatioVxHx2.median(),
