@@ -49,7 +49,7 @@ def main():
                       help='Set verbose debugging on')
     parser.add_option('--suncalFile',
                       dest='suncalFile',
-                      default='/scr/sleet1/rsfdata/projects/eolbase/tables/spolSunCal/spolSunCal_20210801_000000_to_20210831_235959.txt',
+                      default='/scr/cirrus3/rsfdata/projects/precip/spolField/tables/spolSunCal/sband/spolSunCal_20220501_000000_to_20220531_235959.txt',
                       help='File with suncal data')
     parser.add_option('--widthMain',
                       dest='mainWidthMm',
@@ -65,17 +65,17 @@ def main():
 #                      help='Len of moving mean filter')
     parser.add_option('--start',
                       dest='startTime',
-                      default='1970 01 01 00 00 00',
+                      default='2022 05 01 00 00 00',
                       #default='2019 01 29 17 00 00',
                       help='Start time for XY plot')
     parser.add_option('--end',
                       dest='endTime',
-                      default='1970 01 01 00 00 00',
+                      default='2022 05 31 23 59 59',
                       #default='2019 01 29 22 00 00',
                       help='End time for XY plot')
     parser.add_option('--figDir',
                       dest='figureDir',
-                      default='/scr/sleet1/rsfdata/projects/eolbase/catalog/images/spol_sunCal/2021/',
+                      default='/scr/cirrus3/rsfdata/projects/precip/spolField/monitorPlots/spol_sunCal/sband/',
                       help='Directory for output figures')
 
     
@@ -232,7 +232,7 @@ def main():
             
     # If you want to show the plots, uncomment the following line
     # Showing the plots will stop the script so it does not work when run as script
-    #plt.show()
+    # plt.show()
    
     exit
        
@@ -423,7 +423,7 @@ def doPlotSunVars(outFilePath,data):
     fontSize=12
     
     global figNum
-    fig = plt.figure(figNum, (widthIn, htIn))
+    fig = plt.figure(figNum, figsize=((widthIn, htIn)))
     figNum = figNum + 1
     
     colorsA = ['blue', 'red', 'green','black','cyan','magenta']
