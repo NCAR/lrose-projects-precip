@@ -389,14 +389,14 @@ def doPlotPowersNoise(outFilePath,data):
     data.plot('datetime',['maxPowerDbm','quadPowerDbm','maxPowerDbmHc','quadPowerDbmHc',
                               'maxPowerDbmVc','quadPowerDbmVc'],ax=ax1,color=colorsA[0:6],fontsize=fontSize)
     ax1.set_title('Max power and quad power '+str(firstTime)+' to '+str(lastTime), fontsize=fontSize, fontweight='bold')
-    configTimeAxisMinMax(ax1, -63, -60, 'Power (dBm)', 'upper left',firstTime,lastTime,fontSize)
+    configTimeAxisMinMax(ax1, -60, -55, 'Power (dBm)', 'upper left',firstTime,lastTime,fontSize)
         
 # Plot mean Xmit powers
     ax1 = fig.add_subplot(4,1,4,xmargin=0.0)
     
     data.plot(x='datetime',y=['meanXmitPowerHDbm','meanXmitPowerVDbm'],ax=ax1,color=colorsA[0:2],fontsize=fontSize)
     ax1.set_title('Xmit power '+str(firstTime)+' to '+str(lastTime), fontsize=fontSize, fontweight='bold')
-    configTimeAxisMinMax(ax1, 87.0, 88.0, 'Power (dBm)', 'upper left',firstTime,lastTime,fontSize)
+    configTimeAxisMinMax(ax1, 84.0, 85.0, 'Power (dBm)', 'upper left',firstTime,lastTime,fontSize)
        
     fig.autofmt_xdate()
     fig.tight_layout()
@@ -439,13 +439,13 @@ def doPlotSunVars(outFilePath,data):
         
     data.plot(x='datetime',y=['S1S2','meanXpolRatioDb','meanXmitPowerRatio'],ax=ax1,color=colorsA[0:3],fontsize=fontSize)
     ax1.set_title('S1S2, Xpol ratio, transmit power ratio, site temperature '+str(firstTime)+' to '+str(lastTime), fontsize=fontSize, fontweight='bold')
-    med1=data.S1S2.median()
-    med2=data.meanXpolRatioDb.median()
-    med3=data.meanXmitPowerRatio.median()
-    configTimeAxisMedSpread(ax1, np.mean([med1,med2,med3]), 0.7, '(dB)', 'upper left',firstTime,lastTime,fontSize)
+    # med1=data.S1S2.median()
+    # med2=data.meanXpolRatioDb.median()
+    # med3=data.meanXmitPowerRatio.median()
+    configTimeAxisMedSpread(ax1, 0, 0.7, '(dB)', 'upper left',firstTime,lastTime,fontSize)
     
     data.plot(x='timeForSiteTemp',y='siteTempC',ax=ax2,fontsize=fontSize,color=colorsA[4])    
-    configTimeAxisMedSpread(ax2, data.siteTempC.median(), 15, 'Temperature (C)', 'upper right',firstTime,lastTime,fontSize)
+    configTimeAxisMedSpread(ax2, data.siteTempC.median(), 10, 'Temperature (C)', 'upper right',firstTime,lastTime,fontSize)
     
 # Plot coco xx testpulses, S1S2, and site temperature
     ax1 = fig.add_subplot(4,1,2,xmargin=0.0)
@@ -453,9 +453,9 @@ def doPlotSunVars(outFilePath,data):
               
     data.plot(x='datetime',y=['S1S2','zdrCorr'],ax=ax1,color=colorsA[0:2],fontsize=fontSize)
     ax1.set_title('S1S2, zdrCorr, test pulse ratios, '+str(firstTime)+' to '+str(lastTime), fontsize=fontSize, fontweight='bold')
-    med1=data.S1S2.median()
-    med2=data.zdrCorr.median()
-    configTimeAxisMedSpread(ax1, np.mean([med1,med2]), 0.6, 'S1S2, zdrCorr (dB)', 'upper left',firstTime,lastTime,fontSize)
+    # med1=data.S1S2.median()
+    # med2=data.zdrCorr.median()
+    configTimeAxisMedSpread(ax1, 0, 0.7, 'S1S2, zdrCorr (dB)', 'upper left',firstTime,lastTime,fontSize)
     
     data.plot(x='datetime',y=['testPulseRatioVcHc2','testPulseRatioVxHx2'],ax=ax2,color=colorsA[3:5],fontsize=fontSize)
     medians=[data.testPulseRatioVcHc2.median(),data.testPulseRatioVxHx2.median()]
@@ -475,7 +475,7 @@ def doPlotSunVars(outFilePath,data):
     data.plot(x='datetime',y=['widthRatioElAzHcSub','widthRatioElAzVcSub',
                               'zdrDiffElAz'],ax=ax1,color=colorsA[0:4],fontsize=fontSize)
     ax1.set_title('Width Ratio and zdf diff el az '+str(firstTime)+' to '+str(lastTime), fontsize=fontSize, fontweight='bold')
-    configTimeAxisMinMax(ax1, -1.5, 0.5, ' ', 'upper left',firstTime,lastTime,fontSize)
+    configTimeAxisMinMax(ax1, -1, 1, ' ', 'upper left',firstTime,lastTime,fontSize)
            
 # Plot cox testpulses and number of xpol points
     ax1 = fig.add_subplot(4,1,4,xmargin=0.0)
