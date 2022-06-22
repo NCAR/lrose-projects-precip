@@ -817,7 +817,7 @@ cidd.level3_max_xkm:                124.0
 cidd.level3_max_ykm:                27.0
 #
 #
-cidd.level4_label:                  MRF
+cidd.level4_label:                  WRF
 cidd.level4_min_xkm:                115.5
 cidd.level4_min_ykm:                19.0
 cidd.level4_max_xkm:                126
@@ -1245,7 +1245,7 @@ cidd.show_clock:       0
 # Set to 0 to draw the analogue clock using GMT, 1 = local time.
 cidd.draw_clock_local: 0
 
-cidd.one_click_rhi: 1
+cidd.one_click_rhi: 0
 cidd.click_posn_rel_to_origin: 1
 
 #####################################################################################
