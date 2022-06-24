@@ -321,11 +321,11 @@ def parseArgs():
                       help='CWB ftp server name')
     parser.add_option('--ftpUser',
                       dest='ftpUser',
-                      default='thpwgt',
+                      default=os.environ['CWB_FTP_USER'],
                       help='CWB ftp server username')
     parser.add_option('--ftpPassword',
                       dest='ftpPassword',
-                      default='TAHOPE#tw2022',
+                      default=os.environ['CWB_FTP_PWD'],
                       help='CWB ftp server password')
     parser.add_option('--ftpSubDir',
                       dest='ftpSubDir',
