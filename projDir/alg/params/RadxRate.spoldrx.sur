@@ -90,7 +90,7 @@ n_compute_threads = 12;
 //     FILELIST
 //
 
-mode = ARCHIVE;
+mode = REALTIME;
 
 ///////////// input_dir ///////////////////////////////
 //
@@ -102,7 +102,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/cfradial/spol/moments/sband/sur";
+input_dir = "$(DATA_DIR)/$(project)/cfradial/spol/moments/spoldrx/sur";
 
 ///////////// input_file_search_ext ///////////////////
 //
@@ -252,7 +252,7 @@ RHOHV_field_name = "RHOHV_F";
 // Type: boolean
 //
 
-LDR_available = TRUE;
+LDR_available = FALSE;
 
 ///////////// LDR_field_name //////////////////////////
 //
@@ -315,7 +315,7 @@ PID_params_file_path = "$(PROJ_DIR)/alg/params/pid_params.spol";
 // Type: boolean
 //
 
-PID_use_KDP_self_consistency = FALSE;
+PID_use_KDP_self_consistency = TRUE;
 
 ///////////// PID_use_attenuation_corrected_fields ////
 //
@@ -362,7 +362,7 @@ RATE_params_file_path = "$(PROJ_DIR)/alg/params/rate_params.spol";
 // Type: boolean
 //
 
-RATE_use_KDP_self_consistency = FALSE;
+RATE_use_KDP_self_consistency = TRUE;
 
 ///////////// RATE_use_attenuation_corrected_fields ///
 //
@@ -623,12 +623,12 @@ copy_fields = {
     output_name = "ZDR",
     censor_non_weather = FALSE
   }
-  ,
-  {
-    input_name = "LDRH_F",
-    output_name = "LDR",
-    censor_non_weather = FALSE
-  }
+  // ,
+  // {
+  //   input_name = "LDRH_F",
+  //   output_name = "LDR",
+  //   censor_non_weather = FALSE
+  // }
   ,
   {
     input_name = "PHIDP_F",
@@ -702,7 +702,7 @@ PID_write_debug_fields = FALSE;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/eolbase/cfradial/spol/rate/sband/sur";
+output_dir = "$(DATA_DIR)/$(project)/cfradial/spoldrx/rate/sband/sur";
 
 ///////////// output_filename_mode ////////////////////
 //
@@ -812,7 +812,7 @@ pseudo_earth_radius_ratio = 1.33333;
 // Type: string
 //
 
-instance = "spol.sur";
+instance = "spoldrx.sur";
 
 ///////////// procmap_register_interval ///////////////
 //
