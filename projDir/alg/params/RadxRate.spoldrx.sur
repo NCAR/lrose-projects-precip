@@ -102,7 +102,7 @@ mode = REALTIME;
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/cfradial/spol/moments/spoldrx/sur";
+input_dir = "$(DATA_DIR)/$(project)/cfradial/moments/spoldrx/sur";
 
 ///////////// input_file_search_ext ///////////////////
 //
@@ -601,56 +601,92 @@ copy_selected_input_fields_to_output = TRUE;
 
 copy_fields = {
   {
-    input_name = "DBZ_F",
+    input_name = "DBZ",
     output_name = "DBZ",
     censor_non_weather = FALSE
   }
   ,
   {
-    input_name = "VEL_F",
+    input_name = "DBZ_F",
+    output_name = "DBZ_F",
+    censor_non_weather = FALSE
+  }
+  ,
+  {
+    input_name = "VEL",
     output_name = "VEL",
     censor_non_weather = FALSE
   }
   ,
   {
+    input_name = "VEL_F",
+    output_name = "VEL_F",
+    censor_non_weather = FALSE
+  }
+  ,
+  {
     input_name = "WIDTH_F",
-    output_name = "WIDTH",
+    output_name = "WIDTH_F",
     censor_non_weather = FALSE
   }
   ,
   {
     input_name = "ZDR_F",
-    output_name = "ZDR",
+    output_name = "ZDR_F",
     censor_non_weather = FALSE
   }
   // ,
   // {
   //   input_name = "LDRH_F",
-  //   output_name = "LDR",
+  //   output_name = "LDRH_F",
   //   censor_non_weather = FALSE
   // }
   ,
   {
     input_name = "PHIDP_F",
-    output_name = "PHIDP",
+    output_name = "PHIDP_F",
     censor_non_weather = FALSE
   }
   ,
   {
     input_name = "RHOHV_F",
-    output_name = "RHOHV",
+    output_name = "RHOHV_F",
     censor_non_weather = FALSE
   }
   ,
   {
     input_name = "SNRHC_F",
-    output_name = "SNR",
+    output_name = "SNRHC_F",
+    censor_non_weather = FALSE
+  }
+  ,
+  {
+    input_name = "SNRVC_F",
+    output_name = "SNRVC_F",
     censor_non_weather = FALSE
   }
   ,
   {
     input_name = "NCP_F",
-    output_name = "NCP",
+    output_name = "NCP_F",
+    censor_non_weather = FALSE
+  }
+  ,
+  {
+    input_name = "CLUT",
+    output_name = "CLUT",
+    censor_non_weather = FALSE
+  }
+  ,
+  {
+    input_name = "CMD",
+    output_name = "CMD",
+    censor_non_weather = FALSE
+  }
+  ,
+  {
+    input_name = "CMD_FLAG",
+    output_name = "CMD_FLAG",
     censor_non_weather = FALSE
   }
 };
@@ -702,7 +738,7 @@ PID_write_debug_fields = FALSE;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/cfradial/spoldrx/rate/sband/sur";
+output_dir = "$(DATA_DIR)/$(project)/cfradial/rate/spoldrx/sur";
 
 ///////////// output_filename_mode ////////////////////
 //

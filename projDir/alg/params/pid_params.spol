@@ -310,7 +310,7 @@ PID_use_soundings_from_spdb = TRUE;
 // Type: string
 //
 
-PID_sounding_spdb_url = "$(DATA_DIR)/eolbase/spdb/sounding/eolbase";
+PID_sounding_spdb_url = "$(DATA_DIR)/$(project)/spdb/sounding/gfs";
 
 ///////////// PID_sounding_search_time_margin_secs ////
 //
