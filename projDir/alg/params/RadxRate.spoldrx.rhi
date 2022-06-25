@@ -300,7 +300,8 @@ KDP_params_file_path = "$(PROJ_DIR)/alg/params/kdp_params.spol";
 // Type: string
 //
 
-PID_params_file_path = "$(PROJ_DIR)/alg/params/pid_params.spol";
+// PID_params_file_path = "$(PROJ_DIR)/alg/params/pid_params.spol";
+PID_params_file_path = "$(PROJ_DIR)/alg/params/pid_params.nexrad";
 
 ///////////// PID_use_KDP_self_consistency ////////////
 //
