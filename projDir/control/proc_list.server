@@ -63,6 +63,10 @@ CwbRadar2Mdv       mosaic_3d           start_inst(ingest)  snuff_inst
 # ECCO
 Ecco               mrms_taiwan         start_inst(alg)     snuff_inst
 ######################################################################
+# PID, Precip rate
+RadxRate           spoldrx.sur         start_inst(alg)     snuff_inst
+RadxRate           spoldrx.rhi         start_inst(alg)     snuff_inst
+######################################################################
 # CSU radar
 #InputWatcher      csu_chivo     start_inst(ingest)    snuff_inst
 #RadxConvert       csu_chivo     start_inst(ingest)    snuff_inst

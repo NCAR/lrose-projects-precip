@@ -126,7 +126,7 @@ max_realtime_valid_age = 3600;
 // Type: string
 //
 
-output_url = "mdvp:://localhost:10000:$(DATA_DIR)/$(project)/mdv/radar/mosaic_3d";
+output_url = "mdvp:://localhost:0:$(DATA_DIR)/$(project)/mdv/radar/mosaic_3d";
 
 ///////////// output_short_field_name /////////////////
 //
