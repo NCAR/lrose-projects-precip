@@ -202,15 +202,16 @@ SPOL_NIQ        SPOL_NIQ        mdvp:://front.eol.ucar.edu:8080:precip/cfradial/
 ############################
 # Satellite data
 
-#GOES16_CH13  GOES16_CH13  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch13/?use_http=true&GOESR_CH13 sat_tempC.colors C  -5   80  5  cart   1 0
-#GOES16_CH15  GOES16_CH15  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch15/?use_http=true&GOESR_CH15 sat_tempC.colors C  -5   80  5  cart   1 0
-#GOES16_SWD  GOES16_SWD  mdvp::swd//front.eol.ucar.edu:8080:precip/mdv/goes16_ch13/?use_http=true&GOESR_SWD goesr_swd.colors C  -5   80  5  cart   1 0
-#GOES16_CH10  GOES16_CH10  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch10/?use_http=true&GOESR_CH10 sat_tempC.colors C  -5   80  5  cart   1 0
+SAT_CH13  SAT_CH13  /tmp/mdv/from_netcdf&tbb sat_tempK.colors C  -5   80  5  cart   1 0
+#SAT_CH13  SAT_CH13  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch13/?use_http=true&GOESR_CH13 sat_tempC.colors C  -5   80  5  cart   1 0
+#SAT_CH15  SAT_CH15  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch15/?use_http=true&GOESR_CH15 sat_tempC.colors C  -5   80  5  cart   1 0
+#SAT_SWD  SAT_SWD  mdvp::swd//front.eol.ucar.edu:8080:precip/mdv/goes16_ch13/?use_http=true&GOESR_SWD goesr_swd.colors C  -5   80  5  cart   1 0
+#SAT_CH10  SAT_CH10  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch10/?use_http=true&GOESR_CH10 sat_tempC.colors C  -5   80  5  cart   1 0
 
-#GOES16_CH01  GOES16_CH01  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch01/?use_http=true&GOESR_CH01 sat_cloud.colors  %   -5   80  5  cart   1 0
-#GOES16_CH02  GOES16_CH02  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch02/?use_http=true&GOESR_CH02 sat_cloud.colors  %   -5   80  5  cart   1 0
-#GOES16_CH03  GOES16_CH03  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch03/?use_http=true&GOESR_CH03 sat_cloud.colors  %   -5   80  5  cart   1 0
-#GOES16_CH06  GOES16_CH06  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch06/?use_http=true&GOESR_CH06 sat_cloud.colors  %   -5   80  5  cart   1 0
+#SAT_CH01  SAT_CH01  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch01/?use_http=true&GOESR_CH01 sat_cloud.colors  %   -5   80  5  cart   1 0
+#SAT_CH02  SAT_CH02  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch02/?use_http=true&GOESR_CH02 sat_cloud.colors  %   -5   80  5  cart   1 0
+#SAT_CH03  SAT_CH03  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch03/?use_http=true&GOESR_CH03 sat_cloud.colors  %   -5   80  5  cart   1 0
+#SAT_CH06  SAT_CH06  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch06/?use_http=true&GOESR_CH06 sat_cloud.colors  %   -5   80  5  cart   1 0
 
 ############################
 # WRF Model data
