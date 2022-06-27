@@ -202,7 +202,14 @@ SPOL_NIQ        SPOL_NIQ        mdvp:://front.eol.ucar.edu:8080:precip/cfradial/
 ############################
 # Satellite data
 
-SAT_CH13  SAT_CH13  /tmp/mdv/from_netcdf&tbb sat_tempK.colors C  -5   80  5  cart   1 0
+SAT_CH03  SAT_CH03  mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch03?use_http=true&albedo sat_albedo.colors %  -5   80  5  cart   1 0
+SAT_CH09  SAT_CH09  mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch09?use_http=true&tempC sat_tempC.colors C  -5   80  5  cart   1 0
+SAT_CH10  SAT_CH10  mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch10?use_http=true&tempC sat_tempC.colors C  -5   80  5  cart   1 0
+SAT_CH13  SAT_CH13  mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch13?use_http=true&tempC sat_tempC.colors C  -5   80  5  cart   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 #SAT_CH13  SAT_CH13  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch13/?use_http=true&GOESR_CH13 sat_tempC.colors C  -5   80  5  cart   1 0
 #SAT_CH15  SAT_CH15  mdvp:://front.eol.ucar.edu:8080:precip/mdv/goes16_ch15/?use_http=true&GOESR_CH15 sat_tempC.colors C  -5   80  5  cart   1 0
 #SAT_SWD  SAT_SWD  mdvp::swd//front.eol.ucar.edu:8080:precip/mdv/goes16_ch13/?use_http=true&GOESR_SWD goesr_swd.colors C  -5   80  5  cart   1 0
