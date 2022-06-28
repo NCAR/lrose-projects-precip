@@ -42,7 +42,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "himawari_ch09";
+instance = "himawari_ch13";
 
 ///////////// register_with_procmap ///////////////////
 //
@@ -106,7 +106,7 @@ mode = REALTIME;
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/raw/sat/himawari/himawari_ch09";
+input_dir = "$(DATA_DIR)/$(project)/raw/sat/himawari/himawari_ch13";
 
 ///////////// use_ldata_info_file /////////////////////
 //
@@ -927,7 +927,7 @@ corrected_field_max_value = 1e+12;
 // Type: string
 //
 
-output_url = "mdvp:://localhost:0:$(DATA_DIR)/$(project)/mdv/sat/himawari_ch09";
+output_url = "mdvp:://localhost:0:$(DATA_DIR)/$(project)/mdv/sat/himawari_ch13";
 
 //======================================================================
 //
