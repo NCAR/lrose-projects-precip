@@ -444,7 +444,7 @@
 
 <!-- CIDDMAP Layers -->
 
-<Layer vis="off" type="CIDDMAP" name="Countries" location="$http://front.eol.ucar.edu/maps/world_states.map"
+<Layer vis="on" type="CIDDMAP" name="Countries" location="$http://front.eol.ucar.edu/maps/world_states.map"
        color="white" width="1" />
 
 <Layer vis="on" type="CIDDMAP" name="ChinaCoast" location="http://front.eol.ucar.edu/maps/taiwan_china_coast.map"
@@ -461,7 +461,7 @@
 
 <!-- RANGE_RING Layers -->
 
-<Layer vis="off" type="RANGE_RINGS" name="Range Rings"
+<Layer vis="on" type="RANGE_RINGS" name="Range Rings"
        followData="false" radarLat="24.8191" radarLon="120.907"
        color="gray" width="1"
        numRings="5" radiusIncr="50"
@@ -631,8 +631,7 @@
 <!--View projection="Stereographic" tangentLon="-135.0" tangentLat="90.0"/-->
 <!--View projection="LatLon" /-->
 <!--View projection="Flat" originLon="120.433502" originLat="22.526699" rotation="0.0" /-->
-<!-- <View projection="Flat" originLon="120.907" originLat="24.8191" rotation="0" /> /-->
-<View projection="LatLon" />
+<View projection="Flat" originLon="120.907" originLat="24.8191" rotation="0" />
 
 <!--
 ####################################################################################################################################
@@ -654,24 +653,14 @@
 ####################################################################################################################################
 -->
 
-<Area name="WRF" minLon="115.5" maxLon="126" minLat="18.657" maxLat="28.343" defaultView="true"/>
-<Area name="Taiwan" minLon="118.736" maxLon="123.214" minLat="21.65" maxLat="25.75"/>
-<Area name="Spol" minLon="118.316" maxLon="123.484" minLat="22.47" maxLat="27.16"/>
-<Area name="Mosaic" minLon="116.683" maxLon="124.317" minLat="20" maxLat="27"/>
-<Area name="Wide" minLon="110.136" maxLon="131.864" minLat="13" maxLat="33"/>
-<Area name="SE-Asia" minLon="96.5" maxLon="142.5" minLat="3.84882" maxLat="45.6512"/>
-<Area name="World" minLon="0" maxLon="360" minLat="-180" maxLat="180"/>
-
-<!--
+<Area name="240km" minLon="118.572" maxLon="123.326" minLat="22.6452" maxLat="26.9554" defaultView="true"/>
 <Area name="40km" minLon="120.513" maxLon="121.305" minLat="24.4592" maxLat="25.1779"/>
 <Area name="75km" minLon="120.169" maxLon="121.654" minLat="24.1435" maxLat="25.491"/>
 <Area name="150km" minLon="119.439" maxLon="122.409" minLat="23.4645" maxLat="26.159"/>
-<Area name="240km" minLon="118.572" maxLon="123.326" minLat="22.6452" maxLat="26.9554" defaultView="true"/>
 <Area name="300km" minLon="118" maxLon="123.944" minLat="22.0964" maxLat="27.483"/>
 <Area name="500km" minLon="116.124" maxLon="126.05" minLat="20.2533" maxLat="29.2213"/>
 <Area name="1000km" minLon="111.618" maxLon="131.644" minLat="15.5653" maxLat="33.4095"/>
 <Area name="2000km" minLon="103.147" maxLon="144.567" minLat="5.95695" maxLat="40.8837"/>
--->
 
 <!--
 ####################################################################################################################################
