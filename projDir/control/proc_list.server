@@ -38,6 +38,13 @@ Grib2toMdv    gfs.precip   start_inst(ingest)   snuff_inst
 InputWatcher  wrf_psu      start_inst(ingest)   snuff_inst
 Wrf2Mdv       psu          start_inst(ingest)   snuff_inst
 ######################################################################
+# HIMAWARO Satellite
+#
+NcGeneric2Mdv himawari_ch03  start_inst(ingest)   snuff_inst
+NcGeneric2Mdv himawari_ch09  start_inst(ingest)   snuff_inst
+NcGeneric2Mdv himawari_ch10  start_inst(ingest)   snuff_inst
+NcGeneric2Mdv himawari_ch13  start_inst(ingest)   snuff_inst
+######################################################################
 # LIGHTING
 #
 Ltg2Spdb      cwb          start_inst(ingest)   snuff_inst
