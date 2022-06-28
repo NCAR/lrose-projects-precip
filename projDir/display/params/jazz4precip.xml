@@ -175,14 +175,86 @@
 
 <!-- MDV Layers -->
 
-<Layer vis="on" type="MDV" name="SPOL DBZ F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+<Layer vis="on" type="MDV" name="MOSAIC 2D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true"
+       field="DBZ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="MOSAIC-2D" />
+
+<Layer vis="off" type="MDV" name="MOSAIC 3D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true"
+       field="DBZ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="MOSAIC-3D" />
+
+<Layer vis="off" type="MDV" name="Ecco3DComp" location="mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true"
+       field="EchoType3D" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/conv_strat5.colors" menuName="Ecco3DComp" />
+
+<Layer vis="off" type="MDV" name="Ecco3D" location="mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true"
+       field="EchoType3D" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/conv_strat5.colors" menuName="Ecco3D" />
+
+<Layer vis="off" type="MDV" name="Conv3DComp" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true"
+       field="Convectivity3D" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/convectivity.colors" menuName="Conv3DComp" />
+
+<Layer vis="off" type="MDV" name="Conv3D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true"
+       field="Convectivity3D" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/convectivity.colors" menuName="Conv3D" />
+
+<Layer vis="off" type="MDV" name="ConvTops" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true"
+       field="ConvTops" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/heightkm.colors" menuName="ConvTops" />
+
+<Layer vis="off" type="MDV" name="StratTops" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true"
+       field="StratTops" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/heightkm.colors" menuName="StratTops" />
+
+<Layer vis="off" type="MDV" name="SAT CH03" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch03?use_http=true"
+       field="albedo" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/sat_albedo.colors" menuName="SAT-CH03" />
+
+<Layer vis="off" type="MDV" name="SAT CH09" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch09?use_http=true"
+       field="tempC" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/sat_tempC.colors" menuName="SAT-CH09" />
+
+<Layer vis="off" type="MDV" name="SAT CH10" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch10?use_http=true"
+       field="tempC" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/sat_tempC.colors" menuName="SAT-CH10" />
+
+<Layer vis="off" type="MDV" name="SAT CH13" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch13?use_http=true"
+       field="tempC" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/sat_tempC.colors" menuName="SAT-CH13" />
+
+<Layer vis="off" type="MDV" name="WRF-TMP" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true"
+       field="Temp" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/temp.colors" menuName="WRF-TMP" />
+
+<Layer vis="off" type="MDV" name="WRF-RH" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true"
+       field="RH" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/rh.colors" menuName="WRF-RH" />
+
+<Layer vis="off" type="MDV" name="WRF-DBZ-3D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true"
+       field="dbz_3d" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="WRF-DBZ-3D" />
+
+<Layer vis="off" type="MDV" name="WRF-DBZ-2D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true"
+       field="dbz_2d" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="WRF-DBZ-2D" />
+
+<Layer vis="off" type="MDV" name="WRF-WSPD" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true"
+       field="Wspeed" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/wind_speed.colors" menuName="WRF-WSPD" />
+
+<Layer vis="off" type="MDV" name="WRF-CLW" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true"
+       field="clw" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/mixr.colors" menuName="WRF-CLW" />
+
+<Layer vis="off" type="MDV" name="WRF-VIL" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true"
+       field="vil" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/vil.colors" menuName="WRF-VIL" />
+
+<Layer vis="off" type="MDV" name="GFS-TMP" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true"
+       field="TMP" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/temp.colors" menuName="GFS-TMP" />
+
+<Layer vis="off" type="MDV" name="GFS-RH" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true"
+       field="RH" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/rh.colors" menuName="GFS-RH" />
+
+<Layer vis="off" type="MDV" name="GFS-PRES" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true"
+       field="Pressure" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/pressure_mb.colors" menuName="GFS-PRES" />
+
+<Layer vis="off" type="MDV" name="SURF Terrain" location="mdvp::static//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true"
+       field="Elevation" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/terrain_precip.colors" menuName="Terrain" />
+
+<Layer vis="off" type="MDV" name="SPOL DBZ F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
        field="DBZ_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="SPOL-DBZ-F" />
 
-<Layer vis="off" type="MDV" name="SPOL DBZ MAX" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
-       field="DBZ_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="SPOL-DBZ-MAX" />
+<Layer vis="off" type="MDV" name="SPOL DBZ F MAX" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="DBZ_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="SPOL-DBZ-F-MAX" />
 
 <Layer vis="off" type="MDV" name="SPOL DBZ" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
        field="DBZ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="SPOL-DBZ" />
+
+<Layer vis="off" type="MDV" name="SPOL DBZ MAX" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="DBZ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="SPOL-DBZ-MAX" />
 
 <Layer vis="off" type="MDV" name="SPOL VEL F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
        field="VEL_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/vel.colors" menuName="SPOL-VEL-F" />
@@ -202,23 +274,11 @@
 <Layer vis="off" type="MDV" name="SPOL ZDR" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
        field="ZDR" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/zdr.colors" menuName="SPOL-ZDR" />
 
-<Layer vis="off" type="MDV" name="SPOL PHIDP F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
-       field="PHIDP_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/phidp.colors" menuName="SPOL-PHIDP-F" />
+<Layer vis="off" type="MDV" name="SPOL ZDRM F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="ZDRM_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/zdr.colors" menuName="SPOL-ZDRM-F" />
 
-<Layer vis="off" type="MDV" name="SPOL PHIDP" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
-       field="PHIDP" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/phidp.colors" menuName="SPOL-PHIDP" />
-
-<Layer vis="off" type="MDV" name="SPOL KDP F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
-       field="KDP_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/kdp_sband.colors" menuName="SPOL-KDP-F" />
-
-<Layer vis="off" type="MDV" name="SPOL KDP" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
-       field="KDP" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/kdp_sband.colors" menuName="SPOL-KDP" />
-
-<Layer vis="off" type="MDV" name="SPOL RHOHV F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
-       field="RHOHV_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/rhohv.colors" menuName="SPOL-RHOHV-F" />
-
-<Layer vis="off" type="MDV" name="SPOL RHOHV" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
-       field="RHOHV" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/rhohv.colors" menuName="SPOL-RHOHV" />
+<Layer vis="off" type="MDV" name="SPOL ZDRM" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="ZDRM" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/zdr.colors" menuName="SPOL-ZDRM" />
 
 <Layer vis="off" type="MDV" name="SPOL LDRH F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
        field="LDRH_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/ldr.colors" menuName="SPOL-LDRH-F" />
@@ -231,6 +291,30 @@
 
 <Layer vis="off" type="MDV" name="SPOL LDRV" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
        field="LDRV" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/ldr.colors" menuName="SPOL-LDRV" />
+
+<Layer vis="off" type="MDV" name="SPOL KDP F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="KDP_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/kdp_sband.colors" menuName="SPOL-KDP-F" />
+
+<Layer vis="off" type="MDV" name="SPOL KDP" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="KDP" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/kdp_sband.colors" menuName="SPOL-KDP" />
+
+<Layer vis="off" type="MDV" name="SPOL PHIDP F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="PHIDP_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/phidp.colors" menuName="SPOL-PHIDP-F" />
+
+<Layer vis="off" type="MDV" name="SPOL PHIDP" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="PHIDP" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/phidp.colors" menuName="SPOL-PHIDP" />
+
+<Layer vis="off" type="MDV" name="SPOL RHOHV F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="RHOHV_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/rhohv.colors" menuName="SPOL-RHOHV-F" />
+
+<Layer vis="off" type="MDV" name="SPOL RHOHV" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="RHOHV" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/rhohv.colors" menuName="SPOL-RHOHV" />
+
+<Layer vis="off" type="MDV" name="SPOL RHOHV NNC F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="RHOHV_NNC_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/rhohv.colors" menuName="SPOL-RHOHV-NNC-F" />
+
+<Layer vis="off" type="MDV" name="SPOL RHOHV NNC" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="RHOHV_NNC" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/rhohv.colors" menuName="SPOL-RHOHV-NNC" />
 
 <Layer vis="off" type="MDV" name="SPOL SNRHC F" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
        field="SNRHC_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/snr.colors" menuName="SPOL-SNRHC-F" />
@@ -304,32 +388,20 @@
 <Layer vis="off" type="MDV" name="SPOL PHIDP SDEV" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
        field="PHIDP_SDEV" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/sdphidp.colors" menuName="SPOL-PHIDP-SDEV" />
 
+<Layer vis="off" type="MDV" name="SPOL PID" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/rate/spoldrx/sur?use_http=true"
+       field="PID" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/pid.colors" menuName="SPOL-PID" />
+
+<Layer vis="off" type="MDV" name="SPOL RATE HYBRID" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/rate/spoldrx/sur?use_http=true"
+       field="RATE_HYBRID" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/precip.colors" menuName="SPOL-RATE-HYBRID" />
+
 <Layer vis="off" type="MDV" name="SPOL CLUT" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
        field="CLUT" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="SPOL-CLUT" />
 
 <Layer vis="off" type="MDV" name="SPOL AIQ" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
        field="AIQ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/phase.colors" menuName="SPOL-AIQ" />
 
-<!-- Layer vis="off" type="MDV" name="SPOL NIQ" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
-       field="NIQ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/niq.colors" menuName="SPOL-NIQ" / -->
-
-<Layer vis="off" type="MDV" name="MOSAIC 2D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true"
-       field="DBZ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="MOSAIC-2D" />
-
-<Layer vis="off" type="MDV" name="MOSAIC 3D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true"
-       field="DBZ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="MOSAIC-3D" />
-
-<Layer vis="off" type="MDV" name="Terrain" location="mdvp::static//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true"
-       field="Elevation" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/terrain_precip.colors" menuName="Terrain" />
-
-<Layer vis="off" type="MDV" name="GFS-TMP" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true"
-       field="TMP" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/temp.colors" menuName="GFS-TMP" />
-
-<Layer vis="off" type="MDV" name="GFS-RH" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true"
-       field="RH" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/rh.colors" menuName="GFS-RH" />
-
-<Layer vis="off" type="MDV" name="GFS-PRES" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true"
-       field="Pressure" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/pressure_mb.colors" menuName="GFS-PRES" />
+<Layer vis="off" type="MDV" name="SPOL NIQ" location="mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="NIQ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbm.colors" menuName="SPOL-NIQ" />
 
 <!-- MDVTOPO Layers -->
 
@@ -338,14 +410,8 @@
 
 <!-- MDVWIND Layers -->
 
-<Layer vis="off" type="MDVWIND" name="GFS-3D" menuName="GFS-3D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true"
-       isUandV="true" field="UGRD" extraField="VGRD" render="grid" renderBarbs="true" color="darkgreen" colorscale="windColors" />
-
-<Layer vis="off" type="MDVWIND" name="WRF-3D" menuName="WRF-3D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/illinois?use_http=true"
+<Layer vis="off" type="MDVWIND" name="WRF" menuName="WRF" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/psu?use_http=true"
        isUandV="true" field="U" extraField="V" render="grid" renderBarbs="true" color="blue" colorscale="windColors" />
-
-<Layer vis="off" type="MDVWIND" name="WRF-10m" menuName="WRF-10m" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/wrf/illinois?use_http=true"
-       isUandV="true" field="U10" extraField="V10" render="grid" renderBarbs="true" color="yellow" colorscale="windColors" />
 
 <Layer vis="off" type="MDVWIND" name="Surf" menuName="Surf" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/surf_interp?use_http=true"
        isUandV="true" field="Uwind" extraField="Vwind" render="grid" renderBarbs="true" color="orange" colorscale="windColors" />
@@ -379,16 +445,19 @@
 <!-- CIDDMAP Layers -->
 
 <Layer vis="on" type="CIDDMAP" name="Countries" location="$http://front.eol.ucar.edu/maps/world_states.map"
-       color="white" width="2" />
+       color="white" width="1" />
+
+<Layer vis="on" type="CIDDMAP" name="ChinaCoast" location="http://front.eol.ucar.edu/maps/taiwan_china_coast.map"
+       color="white" width="1" />
 
 <Layer vis="on" type="CIDDMAP" name="Taiwan" location="http://front.eol.ucar.edu/maps/taiwan_coast.map"
-       color="white" width="2" />
+       color="white" width="1" />
 
 <Layer vis="on" type="CIDDMAP" name="Islands" location="http://front.eol.ucar.edu/maps/taiwan_islands.map"
-       color="white" width="2" />
+       color="white" width="1" />
 
 <Layer vis="off" type="CIDDMAP" name="Islands" location="http://front.eol.ucar.edu/maps/taiwan_islands.map"
-       color="white" width="0" />
+       color="white" width="1" />
 
 <!-- RANGE_RING Layers -->
 
@@ -562,7 +631,8 @@
 <!--View projection="Stereographic" tangentLon="-135.0" tangentLat="90.0"/-->
 <!--View projection="LatLon" /-->
 <!--View projection="Flat" originLon="120.433502" originLat="22.526699" rotation="0.0" /-->
-<View projection="Flat" originLon="120.907" originLat="24.8191" rotation="0" />
+<!-- <View projection="Flat" originLon="120.907" originLat="24.8191" rotation="0" /> /-->
+<View projection="LatLon" />
 
 <!--
 ####################################################################################################################################
@@ -584,6 +654,15 @@
 ####################################################################################################################################
 -->
 
+<Area name="Taiwan" minLon="118.736" maxLon="123.214" minLat="21.65" maxLat="25.75"/>
+<Area name="Spol" minLon="118.316" maxLon="123.484" minLat="22.47" maxLat="27.16"/>
+<Area name="Mosaic" minLon="116.683" maxLon="124.317" minLat="20" maxLat="27"/>
+<Area name="WRF" minLon="115.5" maxLon="126" minLat="18.657" maxLat="28.343" defaultView="true"/>
+<Area name="Wide" minLon="110.136" maxLon="131.864" minLat="13" maxLat="33"/>
+<Area name="SE-Asia" minLon="96.5" maxLon="142.5" minLat="3.84882" maxLat="45.6512"/>
+<Area name="World" minLon="0" maxLon="360" minLat="-180" maxLat="180"/>
+
+<!--
 <Area name="40km" minLon="120.513" maxLon="121.305" minLat="24.4592" maxLat="25.1779"/>
 <Area name="75km" minLon="120.169" maxLon="121.654" minLat="24.1435" maxLat="25.491"/>
 <Area name="150km" minLon="119.439" maxLon="122.409" minLat="23.4645" maxLat="26.159"/>
@@ -592,6 +671,7 @@
 <Area name="500km" minLon="116.124" maxLon="126.05" minLat="20.2533" maxLat="29.2213"/>
 <Area name="1000km" minLon="111.618" maxLon="131.644" minLat="15.5653" maxLat="33.4095"/>
 <Area name="2000km" minLon="103.147" maxLon="144.567" minLat="5.95695" maxLat="40.8837"/>
+-->
 
 <!--
 ####################################################################################################################################
