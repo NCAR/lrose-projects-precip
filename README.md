@@ -6,7 +6,8 @@ Run-time scripts and parameters for the NCAR/EOL/RSF PRECIP project in Taiwan.
 
 For details on running CIDD and Jazz, see:
 
-* [Running the PRECIP displays](./docs/running_precip_displays.md)
+* [Running the CIDD display](./docs/RunningCIDD.md)
+* [Running the Jazz display](./docs/RunningJazz.md)
 
 ## Server
 
