@@ -884,7 +884,7 @@ perform_sun_angle_correction = TRUE;
 //
 
 sun_correction_fields = {
- "VIS"
+ "albedo"
 };
 
 ///////////// corrected_field_min_value ///////////////

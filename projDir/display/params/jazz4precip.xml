@@ -175,16 +175,16 @@
 
 <!-- MDV Layers -->
 
-<Layer vis="on" type="MDV" name="SAT CH09" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch09?use_http=true"
+<Layer vis="on" type="MDV" name="SAT WV CH09" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch09?use_http=true"
        field="tempC" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/sat_tempC.colors" menuName="SAT-CH09" />
 
-<Layer vis="off" type="MDV" name="SAT CH10" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch10?use_http=true"
+<Layer vis="off" type="MDV" name="SAT WV CH10" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch10?use_http=true"
        field="tempC" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/sat_tempC.colors" menuName="SAT-CH10" />
 
-<Layer vis="off" type="MDV" name="SAT CH13" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch13?use_http=true"
+<Layer vis="off" type="MDV" name="SAT IR CH13" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch13?use_http=true"
        field="tempC" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/sat_tempC.colors" menuName="SAT-CH13" />
 
-<Layer vis="off" type="MDV" name="SAT CH03" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch03?use_http=true"
+<Layer vis="off" type="MDV" name="SAT VIS" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/sat/himawari_ch03?use_http=true"
        field="albedo" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/sat_albedo.colors" menuName="SAT-CH03" />
 
 <Layer vis="off" type="MDV" name="MOSAIC 2D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true"
