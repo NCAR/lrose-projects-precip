@@ -20,11 +20,71 @@ Open JDK vesion 18 is available from:
 
 * [https://jdk.java.net/18/](https://jdk.java.net/18/)
 
-The Oracle download page is [here](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+### Instralling OpenJDK on Windows:
 
-The OpenJdk download page is [here](https://openjdk.java.net/install/).
+The following video shows how to install OpenJDK 18 on Windows:
+
+* [https://www.youtube.com/watch?v=DSwGFXjB8U8](https://www.youtube.com/watch?v=DSwGFXjB8U8)
+
+### Installing OpenJDK on Linux or Mac
+
+Download the ```tar.gz``` file from:
+
+* [https://jdk.java.net/18/](https://jdk.java.net/18/)
+
+Untar this in a ```java``` subdirectory of your home directory.
+
+In this example we are downloading ```openjdk-18.0.1.1```.
+
+```
+  mkdir ~/java
+  cd ~/java
+  tar xvfz ~/Downloads/openjdk-18.0.1.1_linux-x64_bin.tar.gz
+```  
+
+Then, in your environment, set JAVA_HOME:
+
+```
+  setenv JAVA_HOME ~/java/jdk-18.0.1.1
+```
+
+or:
+
+```
+  export JAVA_HOME=$HOME/java/jdk-18.0.1.1
+```
+
+And add ```$JAVA_HOME/bin``` to your path.
+
+Then you should be able to run:
+
+```
+  which java
+```
+
+and get the response:
+
+```
+  /home/user/java/jdk-18.0.1.1/bin/java
+
+```
 
 ## Running Jazz
+
+From the Jazz web page:
+
+* [https://projects.ral.ucar.edu/jazz/](https://projects.ral.ucar.edu/jazz/)
+
+download ```jazz.zip```, and follow the instructions on unzipping it.
+
+Then download the Jazz .xml parameter files from:
+
+
+
+```
+
+```
+
 
 1. Make sure you have java installed. Check this with:
 
