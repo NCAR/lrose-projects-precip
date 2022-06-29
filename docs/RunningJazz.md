@@ -6,13 +6,13 @@ The NCAR-based data for the PRECIP displays resides on a server at EOL in Boulde
 
 You can access that data for display purposes, using either CIDD or Jazz.
 
-## Preparation - Jazz
-
 Jazz is a Java-based display supported by the Research Applications Laboratory (RAL) at NCAR.
 
 See the Jazz main page at:
 
 * [https://projects.ral.ucar.edu/jazz/](https://projects.ral.ucar.edu/jazz/)
+
+## Installing Java
 
 You will need to install the latest OpenJdk version to run Jazz.
 
@@ -20,7 +20,7 @@ Open JDK vesion 18 is available from:
 
 * [https://jdk.java.net/18/](https://jdk.java.net/18/)
 
-### Instralling OpenJDK on Windows:
+### Installing OpenJDK on Windows:
 
 The following video shows how to install OpenJDK 18 on Windows:
 
@@ -66,10 +66,11 @@ and get the response:
 
 ```
   /home/user/java/jdk-18.0.1.1/bin/java
-
 ```
 
-## Running Jazz
+## Downloading jazz and the jazz .xml parameter files
+
+Put these in ```~/jazz```.
 
 From the Jazz web page:
 
@@ -77,44 +78,33 @@ From the Jazz web page:
 
 download ```jazz.zip```, and follow the instructions on unzipping it.
 
+```
+  mkdir ~/jazz
+  cd ~/jazz
+  unzip ~/Downloads/jazz.zip
+```
+
 Then download the Jazz .xml parameter files from:
 
+* [jazz4precip.xml](https://github.com/NCAR/lrose-projects-precip/blob/main/projDir/display/params/jazz4precip.xml)
+* [jazz4spol.xml](https://github.com/NCAR/lrose-projects-precip/blob/main/projDir/display/params/jazz4spol.xml)
 
+## Running jazz
 
-```
-
-```
-
-
-1. Make sure you have java installed. Check this with:
+Run the start script. On Linux or Mac, this will be:
 
 ```
-  which java
-  which javaws
+  cd ~/jazz
+  chmod +x runJazz.sh
+  ./runJazz.sh
 ```
 
-2. Download the start script:
+Jazz will start, and request that you select a parameter file.
 
-You can either go to the GitHub site:
+The following 2 setups are available:
 
-```
-```
-
-```
-  wget https://raw.githubusercontent.com/NCAR/lrose-projects-eolbase/master/projDir/display/scripts/start_Jazz.precip
-```
-
-3. Make the start script executable:
-
-```
-  chmod +x start_Jazz.precip
-```
-
-4. Run it:
-
-```
-  ./start_Jazz.precip
-```
+* ```jazz4precip.xml```: integrated data sets including satellite, models, radar
+* ```jazz4spol.xml```: S-Pol-centric display in km coords
 
 BTW - if you go to 'Realtime' - i.e. the current time - using the time controller at the bottom, you will need to click on a time in the time slider to get the data to retrieve and display correctly.
 
