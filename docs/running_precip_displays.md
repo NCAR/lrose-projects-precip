@@ -1,8 +1,8 @@
-# Running the CIDD and Jazz displays for RELAMPAGO
+# Running the CIDD and Jazz displays for PRECIP
 
 ## Introduction
 
-The NCAR-based data for relampago resides on a server at EOL in Boulder.
+The NCAR-based data for the PRECIP displays resides on a server at EOL in Boulder.
 
 You can access that data for display purposes, using either CIDD or Jazz.
 
@@ -14,11 +14,17 @@ See the [CIDD installation instructions](https://github.com/NCAR/lrose-core/blob
 
 ## Preparation - Jazz
 
-Jazz is a Java-based display so you will need to install Java 8 (sometimes referred to as 1.8, just be be confusing).
+Jazz is a Java-based display supported by the Research Applications Laboratory (RAL) at NCAR.
 
-You can either download the java 8 runtime environment from Oracle, or use OpenJdk.
+See the Jazz main page at:
 
-On Linux systems, OpenJdk is sometimes installed automatically.
+* [https://projects.ral.ucar.edu/jazz/](https://projects.ral.ucar.edu/jazz/)
+
+You will need to install the latest OpenJdk version to run Jazz.
+
+Open JDK vesion 18 is available from:
+
+* [https://jdk.java.net/18/](https://jdk.java.net/18/)
 
 The Oracle download page is [here](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 
@@ -35,19 +41,19 @@ The OpenJdk download page is [here](https://openjdk.java.net/install/).
 2. Download the start script:
 
 ```
-  wget https://raw.githubusercontent.com/NCAR/lrose-projects-eolbase/master/projDir/display/scripts/start_CIDD.relampago
+  wget https://raw.githubusercontent.com/NCAR/lrose-projects-eolbase/master/projDir/display/scripts/start_CIDD.precip
 ```
 
 3. Make the start script executable:
 
 ```
-  chmod +x start_CIDD.relampago
+  chmod +x start_CIDD.precip
 ```
 
 4. Run it:
 
 ```
-  ./start_CIDD.relampago
+  ./start_CIDD.precip
 ```
 
 ## Running Jazz
@@ -67,19 +73,19 @@ You can either go to the GitHub site:
 ```
 
 ```
-  wget https://raw.githubusercontent.com/NCAR/lrose-projects-eolbase/master/projDir/display/scripts/start_Jazz.relampago
+  wget https://raw.githubusercontent.com/NCAR/lrose-projects-eolbase/master/projDir/display/scripts/start_Jazz.precip
 ```
 
 3. Make the start script executable:
 
 ```
-  chmod +x start_Jazz.relampago
+  chmod +x start_Jazz.precip
 ```
 
 4. Run it:
 
 ```
-  ./start_Jazz.relampago
+  ./start_Jazz.precip
 ```
 
 BTW - if you go to 'Realtime' - i.e. the current time - using the time controller at the bottom, you will need to click on a time in the time slider to get the data to retrieve and display correctly.
