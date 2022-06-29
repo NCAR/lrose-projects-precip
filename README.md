@@ -2,6 +2,12 @@
 
 Run-time scripts and parameters for the NCAR/EOL/RSF PRECIP project in Taiwan.
 
+## Running the PRECIP displays
+
+For details on running CIDD and Jazz, see:
+
+* [Running the PRECIP displays](./docs/running_precip_displays.md)
+
 ## Server
 
 The EOL component of this will run on the ```cirrus``` server.
