@@ -1557,8 +1557,8 @@ id_label = "Terrain11";
 // Type: string
 //
 
-// terrain_url = "mdvp::terrain//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true&Elevation";
-terrain_url = "";
+terrain_url = "mdvp::terrain//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true&Elevation";
+// terrain_url = "";
 
 ///////////// height_scaler ///////////////////////////
 //
