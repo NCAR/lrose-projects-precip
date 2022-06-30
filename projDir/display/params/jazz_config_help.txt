@@ -1,0 +1,751 @@
+<!--
+####################################################################################################################################
+ XML Tips:
+
+    - XML is comprised of Elements and Attributes, as shown below:
+
+      <Element attribute="value">
+        <ChildElement1/>
+        <ChildElement2 attribute1="foo" anotherAttribute="bar"/>
+      </Element>
+
+    - Do NOT use ampersand, apostrophe, greater-than, less-than, dashes, or exclamation characters for your content!
+      These are special XML characters.
+    - Element and Attribute names are case-sensitive.
+    - The standard convention is to begin Element names with a capital letter and begin Attribute names with a lowercase letter.
+    - Elements MUST be terminated with a slash, either inline such as "<Element/>" or with a matching tag such as "<Element></Element>"
+    - Attribute values must always be double quoted
+    - Comments are bounded by less-than, exclamation, and 2 dashes at the beginning and 2 dashes followed by a greater-than at the end.
+      2 dashes (and thus comments) cannot appear anywhere within a comment (which is why we can't show them to you here).
+    - Blank lines, whitespace, carriage returns, and comments are completely ignored by the parser.
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<ColorScale> element (any number of these allowed):
+
+   id                = the name of the colorscale, used to refer to it from "Layer" defintions (required)
+   unitLabel         = the label to display under the colorscale (optional)
+   title             = the label to display for the colorscale title (optional)
+   missingValueColor = the color to use for missing data values (optional)
+   badValueColor     = the color to use for bad data values (optional)
+   drawBins          = the method to use for sizing bins along the value scale (optional) 
+        log              = bins are sized to fit a log value scale 
+        linear           = bins are sized to fit a linear value scale 
+        equal            = (default) bins are all drawn the same size, and the value scale is adjusted accordingly 
+        pinned           = (not implemented) bin boundaries are pinned to specific positions on color scale 
+   searchFirstToLast = true if the bins are searched from first-to-last. Last-to-first is the default (optional) 
+   renderReversed    = true if the colorscale should render in reverse order. False is the default (optional) 
+   alpha             = a number from 0.0 (invisible) to 1.0 (opaque, default) representing the colorscale alpha value (optional)
+   Bin               = one or more <Bin> elements (required)
+        min               = the minimum value of the Bin; attribute of the Bin element, or 'auto' to allow auto-scaling (required)
+        max               = the maximum value of the Bin; attribute of the Bin element, or 'auto' to allow auto-scaling (required)
+        color             = color for this Bin; attribute of the Bin element (required)
+                            Use a string with 3 or 4 color components. Alpha defaults to opaque. Examples: 
+                            color='0, 0, 175' (red, green, blue) 
+                            color='0, 0, 175, 255' (red, green, blue, alpha) 
+                            color='0, 0.5, 0.75' (red, green, blue) 
+                            color='0, 0.5, 0.75, 1.0' (red, green, blue, alpha) 
+        minLabel          = the optional custom label to apply to the min boundary of this bin (optional). 
+        label             = the optional custom label to apply to the center of this bin (optional). 
+        maxLabel          = the optional custom label to apply to the max boundary of this bin (optional). 
+        isGradient        = true if a group of auto-scaled Bins are to be rendered as a gradient (optional)
+                              Specify this on the first of a series of auto-scaled Bins. If not specified on
+                               the first Bin, or specified multiple times in a group of auto-scaled Bins, the
+                              first-encountered value in a group of auto-scaled Bins will be used.
+        scalingMode       = 'linear' (default), or 'log' to specify the scaling mode (optional)
+                              This determines how colors, values, and positions are calculated within the
+                              color Bin. It is most relevant for auto-scaled Bins, but will have subtle effects
+                              for Bins with 'min' and 'max' specified explicitly.
+                              Specify this on the first of a series of auto-scaled Bins. If not specified on
+                              the first Bin, or specified multiple times in a group of auto-scaled Bins, the
+                              first-encountered value in a group of auto-scaled Bins will be used.
+
+   Label             = zero or more <Label> elements (optional)
+                       This overrides any individual Bin labels defined in the Bin elements
+        value              The numerical value that determines where on the color scale to place the label 
+        text               The text to use for the label 
+   CategoryLabel     = zero or more <CategoryLabel> elements (optional)
+                       CategoryLabels are used to label ranges on the color scale (eg: Rain, Snow, Mix)
+                       in addition to Labels, which apply to a single value
+        text               = the text to use for the category label; attribute of the Category element (required)
+        minValue           = the minimum value of the category; attribute of the Category element (required)
+        maxValue           = the maximum value of the category; attribute of the Category element (required)
+
+   Notes:
+      - Bins must be continuous and contiguous, monotonically increasing.
+      - colors are defined using X11-defined color name, RGB triplet (0.0 - 1.- or 0..255 for each value),
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<MenuGroup> element (optional, any number of these allowed.)
+
+  Required attributes:
+
+   name        = the name of the group (has to be unique)
+   label       = the label to be used on the sub-menu in the GUI.
+   parentGroup = the name of a menu group to act as the parent of this group. Use one of the default groups (GRIDS_MENU, FEATURES_MENU, or MAPS_MENU),
+                 another MenuGroup defined here, or reference a special group that is used to build special menus in the application code.
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<VisibilityGroup> element (optional, any number of these allowed.)
+
+  Required attributes:
+
+   name       = the name of the group (has to be unique)
+   type       = specifies what control the group will exercise on the visibility its members
+                ('exclusive', 'synchronized', 'slaveSynchronized', or 'componentSynchronized')
+     exclusive             - only one Layer of this group will be displayed at a time
+     synchronized          - turning on/off any layer in this group will turn on/off all other
+                             layers in the group
+     slaveSynchronized     - turning on/off a 'master' layer in this group will turn on/off all 'slaves'
+                             in the group. Each layer in this group is designated a master or slave by appending
+                             '_masters' or '_slaves' to the VisibilityGroup name when specified in the layer's
+                             visibilityGroups attribute. Note that if multiple master layers are designated, turning on
+                             any one 'master' will turn on the slave(s), but ALL masters must be turned off to turn
+                             off the slave(s)
+     componentSynchronized - turning on the 'all' layer in this group will turn off all 'component' layers
+                             in the group, and turning on any 'component' layer will turn off the 'all' layer.
+                             The layers are specified by appending '_all' or '_component' to the VisibilityGroup
+                             name when specified in the layer's visibilityGroups attribute
+                             NOTE there can be only one 'all' layer specified per group.
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<Layer> element (optional, any number of "type" definitions allowed, as described below).
+
+  Required attributes:
+   vis        = whether the layer should be on or off when the application starts
+   type       = the datatype of this layer (e.g., MDV, MDVWIND, MDVTOPO, CIDDMAP, SYMPROD)
+                This determines which other configuration attributes are valid, as documented below.
+   name       = the name shown in the display
+
+ Optional attributes:
+   menuGroup        = the name of a group to add this layer to, defining where the layer shows up in the menus. By default
+                      layers are added to a default group based on their type (example: MDV layers are added to GRIDS_MENU).
+                      Specifying a different membership or menuGroup="none" overrides the default behavior.
+   menuName         = the name shown in the menu.  By default, the display name is used.
+   visibilityGroups = the name of a group or groups that will control the visibility of the layer. By default layers may be added to
+                      a group based on their type (example: MDV layers are added to the exclusive GRIDS_EXCLUSIVE visibility group
+                      that maintains a maximum of one visible layer within the group). Layers are not required to be in a
+                      visibility group. Multiple visibility groups may be specified by separating the list of names with commas.
+   opacity          = the level of opacity (0.0 to 1.0) for the layer. (defaults to 1.0 - completely opaque)
+
+ Notes:
+  - Layers are rendered in the same order in which they are defined. First layer is on bottom, last layer on top
+
+Allowable values of the "type" attribute and associated additional attributes:
+
+
+   "MDV":
+     This is the layer "type" to use for any MDV grids that don't fall under a more specific category below.
+
+     Attributes:
+       field      = the MDV field short name to retrieve (required)
+       is2D       = true or false (default); if 2D = true, then altitude changes do not cause a reloading of data
+       render     = rendering scheme which may be: grid, fillcontours, linecontours, or none (required)
+       colorscale = the colorscale to use. May be the name of a colorscale defined in this file
+                    or a reference to a remote CIDD (*.colors) or JADE (*.xml) colorscale.
+                    (required for all rendering schemes except 'none')
+       location   = must be in the form "mdvp::". Mdv files are supported for fixed time, using "file:". (required)
+                    Use port:0 to contact the DsServerMgr before each request, to ensure the Mdv server is running.       request    = the methodology to use for requesting the data ("closest", "latest", "firstBefore",
+                    "firstAfter", or "bestForecast"). (optional)
+                    (See "Notes:" below about using this for configuring static data layers such as terrain)
+       encoding   = the data value encoding to request from the MDV server ("ASIS", "INT8", "INT16", or "FLOAT32")
+                    (optional, default is "ASIS")
+       margin     = the margin in which to search for data based on the request mode
+                    required only if request attribute is set. Examples: "2seconds", "15mins", "1hrs", "1days".
+                    (See "Notes:" below about using this for configuring static data layers such as terrain)
+       timeSearch = the time selection strategy ("validOnly", "genOnly", or "latestGenForValid") (optional)
+
+     Additional attributes for line contour rendering:
+       contourMinValue             = (optional, default is 0)
+       contourMaxValue             = (optional, default is 10)
+       contourDelta                = (optional, default is 1)
+       contourLabels               = true to show contour line labels (optional, default is true)
+       contourThickness            = thickness of contour lines - pixels (optional, default is 1)
+       contourLabelDensity         = density of labels (optional, default is 15)
+       useColorScaleForContourBins = Use a colorscale for rendering contours instead of the min/max/delta. (optional,
+                                     default is false)
+       contourColor                = color to use for contour lines and labels (required if not using a colorscale for rendering)
+
+     Additional attributes for filled contour rendering:
+       contourCellThreshold        = Threshold (nx*ny) above which coutours are rendered as gridpoints (optional)
+
+     Notes:
+      - Default menu group is GRIDS_MENU, default visibility group is GRIDS_EXCLUSIVE
+      - If configuring static MDV layers for terrain, etc, specify request="closest" with a margin="1seconds". 
+        This changes the finder MDV query from a TIME_LIST_MULTI_GEN which does not work with static data.
+      - colors are defined using X11-defined color name, RGB triplet (0..255 for each value),
+        or hex group ("wheat1", "153,153,153", "#ffffcc")
+
+   "MDVWIND":
+     This is the layer "type" to use for MDV wind grids that are rendered as an overlay layer
+
+     Attributes:
+       isUandV     = true if the following fields will contain U and V vectors or false if speed and direction will be used (required)
+       field       = the short MDV field name containing either the U wind vector or the wind speed in knots, depending on the value of "isUandV" (required)
+       extraField  = the short MDV field name containing the V wind vector or the wind direction in degrees, depending on the value of "isUandV" (required)
+       is2D        = true or false (default); if 2D = true, then altitude changes do not cause a reloading of data
+       location    = must be in the form "mdvp::". (required)
+       renderBarbs = true if wind barbs should be displayed (required)
+       request    = the methodology to use for requesting the data ("closest", "latest", "firstBefore",
+                    "firstAfter", or "bestForecast"). (optional)
+       encoding   = the data value encoding to request from the MDV server ("ASIS", "INT8", "INT16", or "FLOAT32")
+                    (optional, default is "ASIS")
+       margin     = the margin in which to search for data based on the request mode
+                    required only if request attribute is set.
+       units      = the unit of the wind speed data (optional, default is 'mph')
+       spacing    = the grid spacing of the wind barbs (optional, default is 11)
+       color      = the color to use for the wind barbs (optional, default is black)
+       thickness  = the thickness of the wind barb - pixels (optional, default is 1)
+       showLabels = if true, show labels on wind barb (optional, default is false)
+
+     Default menu group is FEATURES_MENU.
+
+   "MDVTOPO":
+     This is the layer "type" to use for MDV topography grids.
+
+     Attributes:
+       field      = the short MDV field name to retrieve (required)
+       colorscale = the colorscale to use. May be the name of a colorscale defined in this file or a reference to a
+                    remote CIDD ("*.colors") or JADE ("*.xml") colorscale (required)
+       location   = must be in the form "mdvp::". (required)
+
+     Default menu group is FEATURES_MENU.
+
+   "SYMPROD":
+     This is the layer type to use for SPDB data that is being rendered using a Symprod server.
+
+     Attributes:
+       location        = must be in the form "spdbp::". (required)
+                         Use port:0 to contact the DsServerMgr before each request, to ensure the symprod server is running.       request         = the methodology to use for requesting the data ("closest", "interval", "latest", "valid" or "firstBefore"). (required)
+       before          = the amount of time before the currently selected time to look for products (e.g. "75mins" or "1hrs").
+                         (Required for "interval" requests. Optional for others. Both 'before' and 'after' must be specified together or not at all)
+       after           = the amount of time after the currently selected time to look for products (can be "" or "now" to indicate zero offset).
+                         (Required for "interval" requests. Optional for others. Both 'before' and 'after' must be specified together or not at all)
+       margin          = the margin around the request time in which to search for data.
+                         Used with "closest", "latest", or "firstBefore" requests when "before/after" not set (optional, defaults to 60 minutes)
+       textOff         = the spacing factor past which to stop rendering text labels.  (Optional, defaults to 0.0.)
+       dataType        = A numeric data type identifier used with some datasets (optional)
+       dataType2       = A second numeric data type identifier used with some datasets (optional, ignored unless dataType is also set)
+       pruneDuplicates = If true, filter out duplicate Symprod data after it was returned by the server (optional, defaults to false)
+       uniqeMode       = The mode to use for filtering Symprod products by data type (performed by the server).  Either "latest",
+                             "earliest", or "off". (optional, default is "off")
+     Default menu group is FEATURES_MENU.
+
+   "NETCDF":
+     This is the layer "type" to use for CF-convention compliant NetCDF grids.
+     The "location" attribute should point to a local file or "http:" file which uses the CDM format
+       (NetCDF, GRIB, GRIB2 or other formats listed at: http://www.unidata.ucar.edu/software/thredds/current/netcdf-java/reference/formats/FileTypes.html)
+
+     Attributes:
+       field          = the NetCDF field name to retrieve (required)
+       extraField     = the NetCDF field name of a second field, used for wind vector data (optional)
+       is2D           = true or false (default); if 2D = true, then altitude changes do not cause a reloading of data
+       location       = the resource locator for the NetCDF file, including the optional protocol and port. (required)
+       render         = rendering scheme which may be: grid, gradient, fillcontours, linecontours, barbs, or none (required)
+       colorscale     = the colorscale to use. May be the name of a colorscale defined in this file,
+                        or a reference to a remote CIDD (*.colors) or JADE (*.xml) colorscale,
+                        or 'AUTO_SCALE' for an automatically-generated colorsafe scale.
+                        (required for all rendering schemes except 'none')
+
+   "CIDDMAP":
+     This is the layer "type" to use for maps in the format used by CIDD and Rview.
+
+     Attributes:
+       location               = must be in the form "mdvp::". (required)
+       color                  = the color with which to render the line, as an X11-defined color name, RGB triplet (each value between 0..255)
+                                or hex group ("wheat1", "153,153,153", "#ffffcc"). Defaults to black.
+       width                  = the width of the line in pixels. Defaults to 1.
+       minKmScreenSpan        = map will only be displayed if the current screen zoom is larger than this (optional)
+       maxKmScreenSpan        = map will only be displayed if the current screen zoom is smaller than this (optional)
+
+     Default menu group is MAPS_MENU.
+
+   "SHAPEFILE":
+     This is the layer "type" to use for displaying the content in an ESRI Shapefile.
+
+     Attributes:
+       location   = the directory where the Shapefile subfiles are located, as an absolute
+                    path or a Java location, such as "file:", "http:", or "ftp:".
+       filePrefix = the shapefiles' prefix (the name of the file up to, but not including
+                    the '.shp', '.dbf', and '.xml' suffixes.
+       colorscale = the colorscale to use. May be the name of a colorscale defined in this file
+                    or a reference to a remote CIDD (*.colors) or JADE (*.xml) colorscale.
+                    (required for all rendering schemes except 'none')
+
+   "WMS":
+     This is the layer "type" to use for displaying the imagery from a Web Map Service.
+
+     Attributes:
+       location          = the address of the web service that will return the image, as a
+                           Java path of the form "http:" or "https:" (required).
+       serviceAttributes = a string containing the required service attribute name and value,
+                           and any additional attribute name/value pairs to pass in the request.
+       mapType           = an optional "Map" attribute value, required by some WMS servers.
+       srs               = an optional "SRS" (Spacial Reference System) value, defaults to "EPSG:none".
+       imageFormat       = an optional value specifying the image format returned from the WMS service, defaults to "image/gif".
+
+     There is a publicly-accessible WMS basemap server hosted at NCAR's Earth Observing Laboratory, which can be invoked using:
+     <Layer vis="on" type="WMS" name="Shaded Relief" location="http://hail.eol.ucar.edu/cgi-bin/mapserv.fcgi"
+            srs="EPSG:90000" mapType="/scr/hail1/rsfdata/mapserv/maps/baseRelief.map"/> or baseColoredTopo.map
+
+   "WFS":
+     This is the layer "type" to use for WFS layers.
+     The "location" attribute should point to a WFS server URL.
+
+     Attributes:
+       location           = the URL of the WFS server. (required)
+       encoding           = the request encoding, either "KVP" or "XML" for SOAP. (Required)
+       featureType        = the WFS feature type, including Namespace. (Required)
+       featureName        = the name of the WFS feature subtype, to filter by. (Required)
+       timeValueReference = the name or XPath of the element containing the time to filter by. (Optional)
+       before             = The amount of time before the currently selected time to look for products
+                            (e.g. "75mins" or "1hrs"). Optional. Defaults to one time selector interval.
+       after              = The amount of time after the currently selected time to look for products
+                            (can be "" or "now" to indicate zero offset). Optional. Default is "now".
+       colorscale         = the colorscale to use. May be the name of a colorscale defined in this file,
+                            or a reference to a remote CIDD (*.colors) or JADE (*.xml) colorscale,
+                            or 'AUTO_SCALE' for an automatically-generated colorsafe scale. (Required)
+       valueName          = The Element name who's value to use in conjunction with the colorscale
+                            to decide what color to draw the feature and label with. (Required)
+
+   "RANGE_RINGS":
+     This is the layer "type" to use for displaying a set of range rings around a point.
+
+     Attributes:
+       radarLat       = the latitude of the center of the range rings (Defaults to 0.0).
+       radarLon       = the longitude of the center of the range rings (Defaults to 0.0).
+       color          = the color used to draw the rings (Required). Can be expressed as
+                        an RGB ("127,127,127"), a Hex ("#AA33FF"), or an X11 name ("black").
+       width          = the width in pixels of the line showing the rings (Defaults to 1)
+       followData     = whether to periodically update the data (Defaults to false).
+       radiusIncr     = the increment of radial distance (Defaults to 100.0)
+       numRings       = the number of rings to display (Defaults to 4)
+       displayAzLines = whether to display azimuth lines (Defaults to false)
+       startAz        = the angle of the first azimuth line (Defaults to 45)
+       numAzLines     = the number of azimuth lines to display (Defaults to 8)
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<View> element (optional, only one of these allowed):
+
+   projection = the name of the projection in which to view the data. See below.
+
+ Projection names and their projection-specific attributes to specify:
+
+ Stereographic:
+   tangentLon = tangent longitude
+   tangentLat = tangent latitude
+   centralScale = central scale of the projection (optional)
+
+ TransMercator:
+   originLat = origin's latitude
+   originLon = origin's longitude
+   centralScale = central scale of the projection (optional - defaults to 1.0)
+
+ LatLon:
+   none, defaults to -180 to +180 longitude and -90 to +90 latitude
+
+ LambertConformal:
+   originLat = origin's latitude
+   originLon = origin's longitude
+   stdLat1 = standard latitude 1
+   stdLat2 = standard latitude 2 (optional)
+
+ Albers:
+   originLat = origin's latitude
+   originLon = origin's longitude
+   lat1 = standard latitude 1
+   lat2 = standard latitude 2
+
+ VerticalPerspective:
+   originLat = origin's latitude
+   originLon = origin's longitude
+   perspRadius = the perspective radius of the projection
+
+ Mercator:
+   originLat = origin's latitude
+   originLon = origin's longitude
+
+ Flat (alias of AzimuthalEquidistant):
+   originLon  = longitude of the origin
+   originLat  = latitude of the origin
+   rotation = rotation of the projection
+
+ LambertAzimuthal:
+   originLat = origin's latitude
+   originLon = origin's longitude
+
+ AzimEquidist:
+   originLat = origin's latitude
+   originLon = origin's longitude
+   rotation = rotation of the projection (optional - defaults to 0.0)
+
+ PolarStereographic:
+   tangentLon = tangent longitude
+   poleIsNorth = "true" or "false" (optional - defaults to "true")
+   centralScale = central scale of projection (optional - defaults to 1.0)
+
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<Time> element (optional, only one of these allowed):
+
+   mode      = "realtime" or "archive" - determines data refresh and time window marching
+   start     = in realtime mode, start is relative to now (+ or - number of hrs or mins, or "now"), e.g., "-12hrs"
+               in archive mode, start must be an explicit time in the format "yyyy-MM-dd'T'HH:mm (e.g. 2008-04-30T23:41)
+   end       = in realtime mode, end is relative to now (+ or - number of hrs or mins, or "now"), e.g., "+15mins"
+               in archive mode, end must be an explicit time in the format "yyyy-MM-dd'T'HH:mm (e.g. 2008-04-30T23:41)
+   interval  = time between selectable (and animated) ticks, beginning with the start time and ending at or before the end time
+   update    = time between checks for data updates (in realtime only). For performance reasons, keep this value >= 5mins.
+   timeZone  = time zone to use for the interpretation of start/end, and to use for the display. Defaults to UTC if omitted.
+               Abbreviations and full descriptions are ok (eg: MST or America/Denver).  See http://en.wikipedia.org/wiki/Time_zone
+   snapToNow = include this attribute to snap back to now at every update (realtime only). 
+               Only the value "true" (case insensitive) will enable this feature.
+   roundTics = include this attribute to round tic times to the specified "interval" times, starting at the top of the hour (realtime only).
+               The purpose of this feature is to maintain the tics at the same times on successive realtime updates, rather than walking
+               the tic times forward at each update. For example, use this feature with an "interval=10mins" setting if you want
+               tics at :00, :10, :20, :30, :40, and :50 after the hour. NOT specifying this attribute will result in tics at 
+               :02, :12, :22, etc if the "Now" time is :22 after the hour with "interval=10mins" and "start=20mins", for example.
+               Only use "interval" length that is a factor of 60 minutes, or results are undefined.
+               Only the value "true" (case insensitive) will enable this feature.
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<Animation> element (optional, only one of these allowed):
+
+   delay = minimum milliseconds delay between animation frames
+   dwell = minimum milliseconds pause at the end of an animation sequence
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<Altitude> element (optional, only one of these allowed):
+
+   units    = the units for the vertical scale (km, m, ft, FL, or mb)
+   bottom   = lowest altitude of range, in the same units defined above (if in mb, may be greater numerically than top)
+   top      = highest altitude of range, in the same units defined above (if in mb, may be lesser numerically than bottom)
+   interval = the interval to use for dividing up the distance between bottom and top
+   default  = optional initial altitude, in the same units defined above (defaults to same value as "bottom")
+
+   or
+
+   dataDrivenProperties = optional. Overrides other attributes. If true, altitude's range and levels will be
+                          dynamically set according to selected/on layer.
+   evenTicks = optional. When using dataDrivenProperties, setting to true will render altitude tick marks evenly-spaced, even if the
+               vertical intervals have varying sizes (such as pressure levels). The default lays ticks out based on the their values,
+               so pressure levels would be more tightly spaced near the ground than higher in the atmosphere.
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<Area> element (optional, any number of these allowed):
+
+   name        = the name of the Area shown in the display. If this is omitted, the Area will be automatically used as the default area on startup.
+   minLon      = the minimum longitude of the lat/lon bounding box defining the Area in decimal degrees or degrees, minutes, seconds
+   minLat      = the minimum latitude of the lat/lon bounding box defining the Area in decimal degrees or degrees, minutes, seconds
+   maxLon      = the maximum longitude of the lat/lon bounding box defining the Area in decimal degrees or degrees, minutes, seconds
+   maxLat      = the maximum latitude of the lat/lon bounding box defining the Area in decimal degrees or degrees, minutes, seconds
+   defaultView = (optional) true or false; if true, then the Area will be the default view for the main window
+
+ Notes:
+   - If more than one Area has a defaultView of true, then the last one listed will be the default view
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<Window> element (optional, only one of these allowed):
+
+   width = pixel width of the window, if the screen is big enough
+   height = pixel height of the window, if the screen is big enough
+   xOrigin = (optional) pixel x location of the upper left of the window, measured from upper left of the screen
+   yOrigin = (optional) pixel y location of the upper left of the window, measured from upper left of the screen (positive downwards)
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<ColorScaleDisplay> element (optional, only one of these allowed):
+                    Used to configure the orientation and behaviour of the ColorScale GUI on the Jazz map.
+                    Default is: <ColorScaleDisplay orientation="horizontal" mode="single" fixedSizePx="0"/>
+                    The fixedSizePx=0 lets the width of the colorscale expand and contract according to what colorscales are contained.
+                    To set the vertical colorscale to a specific size, copy the above line and 
+                    include it in your config with the desired width specified.
+
+   orientation    = "vertical" or "horizontal" - display the colorscale on the left or bottom of the Jazz map
+                    Required.
+   mode           = "multi" or "single" - make all colorscales visible, or a single, selectable, colorscale visible when
+                    more than one grid is visible on the map.
+                    Required.
+   fixedSizePx    = specify a fixed size in pixels for the colorscale (width for vertical orientation, height for horizontal).
+                    Default is zero, which disables the fixed size - colorscale will resize to fit largest contained colorscale.
+                    Optional.
+                    Note: this only applies when mode="single", because a "multi" config must change size
+                    as the number of visible colorscales changes.
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+Generic Tool Handler:
+
+   If any of the elements listed below are included in the Jazz XML configuration file,
+   the corresponding tool will be created and a button will be added to the toolbar.
+   This is a convenient shorthand for adding simple tools to the display, even if those tools
+   do not have a Jazz "Handler" class.   Additional tool configuration may be specified as attributes, using this convention:
+      <ToolName attributeName="attributeValue" />
+     where:
+      attributeName  = the name of a configuration method to call, once prepended with "set"
+      attributeValue = the string argument to pass to the configuration method specified by the attributeName
+     example:
+      <SuperCoolTool someSpecialSetting="mySpecificValue" />
+      would result in a call to the SuperCoolTool's method: setSomeSpecialSetting( mySpecificValue ) at initialization.
+
+   See the java tool classes specified below for additional available configuration methods.
+
+   <ModelRunSelectorTool>:
+       Creates a selector dialog which filters forecast datasets by:
+    model run ("Gen") time - the time at which the model was run
+    model forecast ("Valid") time - the time at which the field values are forecasted to occur
+    model forecast length ("Lead") time - the length of time in the future which was forecasted
+  The dataset to filter is selected from currently visible MDV datasets.
+
+   <SwapFieldsTool>:
+     Creates a button on the tool bar to switch between the current and last gridded field. Optional and only one of these allowed.
+The DataLayerViewGroup who's layers to switch between can be specified by ID in a "DLVGroupId" attribute.
+If not specified, the first DataLayerViewGroup with a name containing "exclusive" is used.
+
+   <DistanceAndAzimuthTool>:
+     Enables a tool which can be used to measure distance and azimuth on the horizontal map.
+The units of the distance can be specified by naming the desired unit in a "DistanceUnit" attribute. 
+Valid strings for the "DistanceUnit" attribute: 
+ "mile" - Miles 
+ "nm"   - Nautical Miles 
+ "NM"   - Nautical Miles 
+ "ft"   - Feet 
+ "in"   - Inches 
+ "km"   - Kilometers 
+ "m"    - Meters 
+ "mm"   - Millimeters 
+
+
+   <SavedViewsTool>:
+     Creates items in the "Tool" menu to manage captured views. Optional and only one of these allowed.
+The following attributes may be used to configure the tool in the Jade or Jadeite XML file:
+"allowSaveViews" attribute: 'true' to allow the user to save view files, otherwise 'false' (default)
+"favoritesDotFile" attribute: the dotfile name in the users home directory to store views. REQUIRED if allowSavedViews==true.
+"favoritesRemoteUrl" attribute: a URL to a remote views file, to be loaded on app initialization.
+"defaultView" attribute: the name of the view to show on app initialization. Must exist in the favoritesDotFile or favoritesRemoteUrl.
+"addSeparatorBeforeMenuItems" attribute: 'true' to show a separator in the menu above the view management menu items. Default is 'false'.
+"addSeparatorAfterMenuItems" attribute: 'true' to show a separator in the menu below the view management menu items. Default is 'false'.
+"numDotfileBackups" attribute: the number of backups to make of the user's 'saved views' dotfile. Default is 10.
+
+
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<TimeHeightTool> element (optional, only one allowed)
+
+   visible          = Optional.  If true, the window is displayed on start-up. Default is false
+   windowLocation   = Optional.  The x,y screen coordinate where the window should be displayed
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<XSections> element (optional, only one of these allowed):
+This section MUST appear *below* the Layer definitions!
+
+   visible              = Optional.  If true, the window is displayed on start-up. Default is false
+   windowLocation       = Optional.  The x,y screen coordinate where the window should be displayed
+   windowSize           = Optional.  The size of the window (length,height)
+   defaultPath          = Optional.  Name of Path to display on startup
+   dataDrivenProperties = Optional.  If true, altitude's range and levels will be dynamically
+                          set according to selected/on layer's cross section vertical units,
+                          which may differ from the vertical units of the main map. Defaults to false.
+   enableZoom           = Optional.  Set to 'none,' 'rubberband,' or 'doubleclick' to enable zooming in the XSect.
+   showGridLines        = Optional. If true, draws horizontal and vertical grid lines matching the axes.
+   minAlt               = Optional. If true, limits the extent of the default altitude shown to be no less than the given altitude.
+                          If the given value is followed by a unit name, conversion will be done to the current dataset's units.
+   maxAlt               = Optional. If true, limits the extent of the default altitude shown to be no more than the given altitude.
+                          If the given value is followed by a unit name, conversion will be done to the current dataset's units.
+
+ <Path> element (optional, represents a preconfigured xsect path. Zero or more allowed.  Leave this out to enable arbitrary,
+                 user-entered cross sections.)
+   name             = name attribute for the xsection Path element
+
+ <Waypoint> element (2 or more elements required for each <Path>. Ordered waypoints for the path.)
+   lat              = Latitude of Waypoint (required).
+   lon              = Longitude of Waypoint (required).
+   name             = Name of Waypoint (optional).
+
+  Use nested form:
+
+    <XSections>
+      <Path name="pathName">
+         <Waypoint lat="23.45" lon="123.45" name="waypointName1" />
+         <Waypoint lat="12.34" lon="123.45" name="waypointName2" />
+      </Path>
+    </XSections>
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<SkewT> element (optional, only one of these allowed):
+
+   location         = Required. where to get the data eg: mdvp:://yaw:10000:ruc/mdv/lambert
+   temperatureField = Required. Name of the MDV 3-D temperature field.
+   rhField          = either rhField or dewpointField required.  Name of the MDV 3-D relative humidity field. Server side units
+                      must be correct (ie: % means 0..100, whereas unitless means 0..1)
+   dewpointField    = either rhField or dewpointField required. Name of the MDV 3-D dewpoint field.
+   uField           = Required. Name of the MDV 3-D u-wind field. Speed/dir not supported (yet)
+   vField           = Required. Name of the MDV 3-D v-wind field. Speed/dir not supported (yet)
+   visible          = Optional.  If true, the window is displayed on start-up. Default is false
+   windowLocation   = Optional.  The x,y screen coordinate where the window should be displayed
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<TimeAndAnimationTool> element (optional, only one of these allowed):
+
+   Creates a button which can be clicked to bring up the time and animation configuration window.
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<LatLonReferenceLines> element (optional):
+
+  If present, latitude/longitude reference lines are rendered around the edge of the plan view.
+   foregroundColor              = optional.  The foreground color for the reference lines.  Default: 'black'
+   backgroundColor              = optional.  The background color for the reference lines.  Default: 'white'
+   fontSize                     = optional.  The font point size for the reference line labels.  Default: 10
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<Image> element (optional, any number allowed).
+    These elements are used to run Jazz in image generation mode. The application will cycle through the views
+    configured in this section, and generate snapshot images suitable for putting on a webpage, printing, etc.
+
+  Required attributes:
+
+    outputFilename  = The path and filename where the image will be written.
+                        Note that the requested times (in ISO fmt) will be in GMT, but the output times will be in your computer's time zone.
+        The output path and filename can use wildcards, which will be filled in with the image specifications:
+          %Y   Four digit year
+          %m   Two digit month (01-12)
+          %d   Two digit date
+          %H   Two digit hour (00-23)
+          %M   Two digit minute (00-59)
+          %s   Two digit second (00-59
+          %a   Area of Interest (AOI) - planview images only
+          %l   Layer name
+          %x   Cross Section path name
+          %v   Vertical level (altitude, including any specified units)
+          %V   Vertical level (altitude, as an integer value only)
+          %D   Image dimensions (e.g. 800x600)
+          %t   Latitude
+          %o   Longitude
+          Example:
+               %Y%m%d/%A/radar_cwb_%Y%m%d_%H%M.png
+
+  Optional attributes:
+
+    source       = The window from which the images will be generated.
+                   Choose from: PLANVIEW, SKEWT, DECODEDMETARS, SOUNDINGTEXT, and XSECTION. Defaults to PLANVIEW.
+    imageType    = The type of image file to generate.
+                   Choose from: png, jpg, gif, bmp. Defaults to png.
+    imageSizes   = A list of image sizes to produce, for example "1024x2048,800x600,400x400"
+    times        = A comma-separated list of times for image generation. Defaults to the currently selected time.
+                   ValidTimes are formatted as ISO8601, such as:
+                     YYYY-MM-DDTHH:MMZ or YYYY-MM-DDTHH:MM:SS.SSSZ
+                     Example: times="2018-11-12T06:00Z,2018-11-12T06:30Z"                    GenTimes are formatted:
+                     YYYY-MM-DDTHH:MM:SSZ+SSS  or  YYYY-MM-DDTHH:MM:SS.SSSZ+SSS
+                     Example: "2012-08-01T14:15:00.000Z+3600" indicates a gentime of 14:15:00z with a lead time of 3600 seconds (1 hour)
+    timerange    = A comma-separated time range for image generation between <start> time, <end> time,
+                   with an interval of <interval> seconds. Cannot specify both a timerange and times (above).
+                     Example: timerange="2018-11-12T06:00Z,2018-11-12T12:00Z,3600"     LdataInfoURL = A path to an LdataInfo to be updated when an image file is written
+                     Example: ldatap:://localhost::/path/to/ldataInfo
+                   NOTE: a DsLdataServer is required for this feature.
+
+ Separate images are created for each combination of times and additional attributes specified (altitude, Area of Interest, etc).
+Additional attributes which depend on the "source" attribute:
+
+    PLANVIEW:
+      This is the source for images generated from the main plan view window
+
+      Required attributes:
+        layers          = A list of Layers to display in the image
+
+      Optional attributes:
+        areasOfInterest    = A list of the names of the Areas to display. Defaults to the jazz config's default view.
+        altitudes          = A list of altitudes to display. Defaults to the jazz config's default altitude for the layer(s).
+        flightPath         = Display this flight path in the image
+        showColorScale     = If true, add a colorscale to the image (default=true)
+
+      Notes:
+        - lists are comprised of Layer or Area names, separated by commas.
+        - the layers list should include dynamic (data) layers as well as static (map) layers
+        - an image will be generated for EACH Area defined
+
+    SKEWT:
+      This is the source for images generated from the Skew T window
+
+      Attributes:
+        clickPoint   =  A lat/lon ordered pair where the skew T should be taken from
+             Example:  "25.44,121.6"
+
+    XSECTION:
+      This is the source for images generated from the XSection window
+
+      Attributes:
+        layers         =  A list of Layer names to display in the image (required)
+        paths          =  A list of XSection Path names (required)
+        altitudes      =  A list of altitudes to display.
+        showColorScale =  If true, add a colorscale to the image (default=true)
+####################################################################################################################################
+-->
+
+<!--
+####################################################################################################################################
+<ImageServer> element (optional).
+    This element is used to specify that Jazz should be run in image generation mode.
+    The application will look in the specified directory for new files containing Jazz <Image> directives.
+    For each directive found, it will generate an image and write it to the specified output directory.
+
+  Required attributes:
+
+    requestDir      = the directory to watch for new files containing <Image> requests
+
+  Optional attributes:
+
+    Note: The procmapInstance attribute has been removed
+            Specify '-instance my_instance' as the last arguments on the command line to activate procmap registration
+####################################################################################################################################
+-->
+
