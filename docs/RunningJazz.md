@@ -86,8 +86,8 @@ download ```jazz.zip```, and follow the instructions on unzipping it.
 
 Then download the Jazz .xml parameter files from:
 
-* [jazz4precip.xml](https://github.com/NCAR/lrose-projects-precip/blob/main/projDir/display/params/jazz4precip.xml)
-* [jazz4spol.xml](https://github.com/NCAR/lrose-projects-precip/blob/main/projDir/display/params/jazz4spol.xml)
+* [jazz4precip.xml](https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/display/params/jazz4precip.xml)
+* [jazz4spol.xml](https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/display/params/jazz4spol.xml)
 
 ## Running jazz
 
