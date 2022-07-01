@@ -16,7 +16,7 @@ There are 2 main schedules for PRECIP:
 * Schedule -> Select PrecipIOP
 * Set Start At to next 12 minute boundary (hit Enter)
 * Click Apply
-* Click Save
+* File -> Save
 * Run Scan
 
 ### Switching from IOP to Unattended
