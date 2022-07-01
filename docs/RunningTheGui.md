@@ -14,7 +14,7 @@ There are 2 main schedules for PRECIP:
 * File -> Read -> scan-you-want.json
 * File -> Save As -> default.json
 * Schedule -> Select PrecipIOP
-* Set Start At to next 12 minute boundary
+* Set Start At to next 12 minute boundary (hit Enter)
 * Click Apply
 * Click Save
 * Run Scan
@@ -24,7 +24,7 @@ There are 2 main schedules for PRECIP:
 * Wait until you are in PrecipRhiUser
 * Stop Scan
 * Schedule -> Select PrecipUnattended
-* Set Start At to next 12 minute boundary
+* Set Start At to next 12 minute boundary (hit Enter)
 * Click Apply
 * File -> Save
 * Run Scan
@@ -32,7 +32,7 @@ There are 2 main schedules for PRECIP:
 ## Recovering from SYS_IDLE insertion
 
 * Stop Scan
-* Set Start At to next 12 minute boundary
+* Set Start At to next 12 minute boundary (hit Enter)
 * Click Apply
 * File -> Save
 * Run Scan
