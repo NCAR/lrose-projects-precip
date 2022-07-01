@@ -44,8 +44,11 @@ If you do not want to change the RHI angles, then DO NOT double-click on PrecipR
 If a SYS_IDLE does appear, stop the scan and restart as follows:
 
 * Stop Scan
+* Select Schedule you want
 * Set Start At to next 12 minute boundary (hit Enter)
 * Click Apply
 * File -> Save
 * Run Scan
+
+The scan will start immediately, and then interrupt at the next 12 minute boundary.
 
