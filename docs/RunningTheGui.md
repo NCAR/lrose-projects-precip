@@ -162,6 +162,8 @@ RHIs at the following azimuths:
 
 [RHIs in the normal initiation zones:](../images/ScanStrategies/initiation.png)
 
+<img align="center" width="600" height="600" src="./images/ScanStrategies/Initiation.png">
+
 ### File ```east.json```
 
 RHIs at the following azimuths:
