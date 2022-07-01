@@ -166,7 +166,7 @@ RHI azimuth angles:
   211, 203, 195, 189, 177, 171, 125, 113, 107, 95, 80, 67.5
 ```
 
-### north.json
+### File ```north.json```
 
 RHIs covering the quadrants to the North:
 
@@ -178,7 +178,7 @@ RHI azimuth angles:
   290, 300, 310, 320, 330, 340, 350, 10, 20, 37, 52, 67
 ```
 
-### northeast.json
+### File ```northeast.json```
 
 RHIs covering the quadrants to the North-East:
 
@@ -202,7 +202,7 @@ RHI azimuth angles:
   10, 20, 37, 52, 67, 110, 120, 130, 145, 155, 165, 175
 ```
 
-### southeast.json
+### File ```southeast.json```
 
 RHIs covering the quadrants to the South-East:
 
@@ -214,7 +214,7 @@ RHI azimuth angles:
   215, 205, 195, 175, 165, 155, 145, 130, 120, 110, 67, 52
 ```
 
-### south.json
+### File ```south.json```
 
 RHIs covering the quadrants to the South:
 
@@ -226,7 +226,7 @@ RHI azimuth angles:
   255, 240, 215, 205, 195, 175, 165, 155, 145, 130, 120, 110
 ```
 
-### southwest.json
+### File ```southwest.json```
 
 RHIs covering the quadrants to the South-West:
 
@@ -238,7 +238,7 @@ RHI azimuth angles:
   310, 300, 290, 255, 240, 215, 205, 195, 175, 165, 155, 145
 ```
 
-### west.json
+### File ```west.json```
 
 RHIs covering the quadrants to the West:
 
@@ -250,7 +250,7 @@ RHI azimuth angles:
   350, 340, 330, 320, 310, 300, 290, 255, 240, 215, 205, 195
 ```
 
-### northwest.json
+### File ```northwest.json```
 
 RHIs covering the quadrants to the North-West:
 
