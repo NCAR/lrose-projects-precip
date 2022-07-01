@@ -11,7 +11,7 @@ There are 2 main schedules for PRECIP:
 
 * Wait until you are in PrecipSur2
 * Stop Scan
-* File -> Read -> scan-you-want.json
+* File -> Open -> scan-you-want.json
 * File -> Save As -> default.json
 * Schedule -> Select PrecipIOP
 * Set Start At to next 12 minute boundary (hit Enter)
@@ -62,10 +62,10 @@ The scan will start immediately, and then interrupt at the next 12 minute bounda
 * In the RHI list box (left), select PrecipRhiUser
 * In the AngleList box (right), double click on PrecipRhiUser
 * A window with the current angles will pop up
-* Set the angles you want
+* Set the angles you want. You can either type them in, or use the Fill with Equal Angle option.
+* You should enter 12 RHI angles.
 * If you make a mistake, click on Cancel
 * If you are happy, click OK (DON'T do this if you have not made any changes)
-
 
 The new angle list will take effect the next time PrecipRhiUser runs.
 
@@ -73,7 +73,7 @@ The new angle list will take effect the next time PrecipRhiUser runs.
 
 * Ensure you are in the PrecipIOP schedule (see above)
 * Do not do this while PrecipRhiUser is running. Best to do this in PrecipSur1 since that allows plenty of time
-* File -> Read -> scan-you-want.json
+* File -> Open -> scan-you-want.json
 * File -> Save As -> default.json
 
 The new angle list will take effect the next time PrecipRhiUser runs.
