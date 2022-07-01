@@ -144,35 +144,39 @@ Have 10-25 seconds remaining depending on the user-selected strategy, which allo
 
 ### File ```full360.json```
 
-RHIs at the following azimuths:
+RHIs distributed around the full 360:
+
+<img align="center" width="600" height="600" src="./images/ScanStrategies/360.png">
+
+RHI azimuth angles:
 
 ```
   15, 345, 330, 298, 255, 240, 211, 197, 168, 153, 125, 113
 ```
 
-[RHIs around the full 360](../images/ScanStrategies/360.png)
-
 ### File ```initiation.json```
 
-RHIs at the following azimuths:
+RHIs in the normal initiation zones:
+
+<img align="center" width="600" height="600" src="./images/ScanStrategies/Initiation.png">
+
+RHI azimuth angles:
 
 ```
   211, 203, 195, 189, 177, 171, 125, 113, 107, 95, 80, 67.5
 ```
 
-[RHIs in the normal initiation zones:](../images/ScanStrategies/initiation.png)
-
-<img align="center" width="600" height="600" src="./images/ScanStrategies/Initiation.png">
-
 ### File ```east.json```
 
-RHIs at the following azimuths:
+RHIs covering the quadrants to the East:
+
+<img align="center" width="600" height="600" src="./images/ScanStrategies/East.png">
+
+RHI azimuth angles:
 
 ```
   10, 20, 37, 52, 67, 110, 120, 130, 145, 155, 165, 175
 ```
-
-[RHIs to the east](../images/ScanStrategies/East.png)
 
 ### north.json
 
