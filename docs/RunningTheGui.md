@@ -39,7 +39,7 @@ Sometimes a SYS_IDLE becomes inserted in the current schedule, and the scan will
 
 This occurs if you inspect the RHI angle list and hit OK instead of Cancel.
 
-If you do not want to change the RHI angles, then do not double-click on PrecipRhiUser. Rather, hover the mouse over ```PrecipRhiUser``` in the ```AngleList``` - the list of active angles will show.
+If you do not want to change the RHI angles, then DO NOT double-click on PrecipRhiUser. Rather, hover the mouse over ```PrecipRhiUser``` in the ```AngleList``` - the list of active angles will show.
 
 If a SYS_IDLE does appear, stop the scan and restart as follows:
 
