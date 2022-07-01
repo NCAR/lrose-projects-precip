@@ -144,7 +144,7 @@ Have 10-25 seconds remaining depending on the user-selected strategy, which allo
 
 ### File ```full360.json```
 
-RHIs distributed around the full 360:
+RHIs distributed approximately evenly around the full 360:
 
 <img align="center" width="600" height="600" src="./images/ScanStrategies/360.png">
 
@@ -156,7 +156,7 @@ RHI azimuth angles:
 
 ### File ```initiation.json```
 
-RHIs in the common initiation zones:
+RHIs targeting the common initiation zones:
 
 <img align="center" width="600" height="600" src="./images/ScanStrategies/Initiation.png">
 
