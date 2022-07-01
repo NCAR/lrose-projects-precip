@@ -147,7 +147,8 @@ Have 10-25 seconds remaining depending on the user-selected strategy, which allo
 ```
   10, 20, 37, 52, 67, 110, 120, 130, 145, 155, 165, 175
 ```
-<img align="left" width="600" height="600" src="./images/ScanStrategies/East.png">
+
+[RHIs to the east](../images/ScanStrategies/East.png)
 
 ### full360.json
 
