@@ -142,29 +142,35 @@ Have 10-25 seconds remaining depending on the user-selected strategy, which allo
 
 ## Angle lists for PrecipRhiUser, by file name:
 
-### east.json:
+### File ```full360.json```
+
+RHIs at the following azimuths:
+
+```
+  15, 345, 330, 298, 255, 240, 211, 197, 168, 153, 125, 113
+```
+
+[RHIs around the full 360](../images/ScanStrategies/360.png)
+
+### File ```initiation.json```
+
+RHIs at the following azimuths:
+
+```
+  211, 203, 195, 189, 177, 171, 125, 113, 107, 95, 80, 67.5
+```
+
+[RHIs in the normal initiation zones:](../images/ScanStrategies/initiation.png)
+
+### File ```east.json```
+
+RHIs at the following azimuths:
 
 ```
   10, 20, 37, 52, 67, 110, 120, 130, 145, 155, 165, 175
 ```
 
 [RHIs to the east](../images/ScanStrategies/East.png)
-
-### full360.json
-
-```
-  15, 345, 330, 298, 255, 240, 211, 197, 168, 153, 125, 113
-```
-
-<img align="left" width="600" height="600" src="./images/ScanStrategies/360.png">
-
-### initiation.json
-
-```
-  211, 203, 195, 189, 177, 171, 125, 113, 107, 95, 80, 67.5
-```
-
-<img align="left" width="600" height="600" src="./images/ScanStrategies/Initiation.png">
 
 ### north.json
 
