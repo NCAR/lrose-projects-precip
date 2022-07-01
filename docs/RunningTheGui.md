@@ -11,7 +11,7 @@ Note that it is critical to sync up on the 12 minute mark for coordination with 
 
 ### (a) Switching from Unattended to IOP
 
-* Wait until you are in PrecipSur2
+* Wait until you are in **PrecipSur2**
 * Stop Scan
 * File -> Open -> scan-you-want.json
 * File -> Save As -> default.json
