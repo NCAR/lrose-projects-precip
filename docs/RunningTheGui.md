@@ -25,7 +25,7 @@ The scan will start immediately, and then interrupt at the next 12 minute bounda
 
 ### (b) Switching from IOP to Unattended
 
-* Wait until you are in PrecipRhiUser
+* Wait until you are in **PrecipRhiUser**
 * Stop Scan
 * Schedule -> Select PrecipUnattended
 * Set Start At to next 12 minute boundary (hit Enter)
@@ -54,12 +54,12 @@ If a SYS_IDLE does appear, stop the scan and restart as follows:
 
 The scan will start immediately, and then interrupt at the next 12 minute boundary.
 
-## Changing the list of RHI angles in the PrecipIOP schedule
+## Changing the list of RHI angles in the **PrecipIOP** schedule
 
 ### (a) Enter angles manually
 
-* Ensure you are in the PrecipIOP schedule (see above)
-* Do not do this while PrecipRhiUser is running - best to do this in PrecipSur1 since that allows plenty of time
+* Ensure you are in the **PrecipIOP** schedule (see above)
+* **Do not** do this while **PrecipRhiUser** is running - best to do this in PrecipSur1 since that allows plenty of time
 * Click on the main RHI tab
 * In the RHI list box (left), select PrecipRhiUser
 * In the AngleList box (right), double click on PrecipRhiUser
@@ -69,7 +69,7 @@ The scan will start immediately, and then interrupt at the next 12 minute bounda
 * If you make a mistake, click on Cancel
 * If you are happy, click OK (DON'T do this if you have not made any changes)
 
-The new angle list will take effect the next time PrecipRhiUser runs.
+The new angle list will take effect the next time **PrecipRhiUser** runs.
 
 ### (b) Read in a file with the desired angles
 
@@ -78,11 +78,11 @@ The new angle list will take effect the next time PrecipRhiUser runs.
 * File -> Open -> scan-you-want.json
 * File -> Save As -> default.json
 
-The new angle list will take effect the next time PrecipRhiUser runs.
+The new angle list will take effect the next time **PrecipRhiUser** runs.
 
 ## Mandatory scans used in the schedules - (9 min 17 sec)
 
-### (1) PrecipRhi1 ***MUST START ON 12-MIN MARK TO SYNC WITH SEA-POL***
+### (1) PrecipRhi1 ***Must start on 12-min mark to sync with SEA-POL***
 
 * S-Pol scheduler task name/angle list: PrecipRhi1
 * Number of RHIs: 2
@@ -93,7 +93,7 @@ The new angle list will take effect the next time PrecipRhiUser runs.
 
 ### (2) PrecipSur1 (surveillance, QPE, TEAM-R dual-Doppler)
 
-* S-Pol scheduler task name/angle list: PrecipSur1
+* S-Pol scheduler task name/angle list: **PrecipSur1**
 * Number of elevation angles: 10
 * Scan rate: 10.5°/s (max comfortable PPI scan rate for S-Pol)
 * Total scan time: 6 min 3 sec (363 seconds)
@@ -102,7 +102,7 @@ The new angle list will take effect the next time PrecipRhiUser runs.
 
 ### (3) PrecipRhi2 - cardinal directions and important sites with modifications for reflection/clutter issues
 
-* S-Pol scheduler task name/angle list: PrecipRhi2
+* S-Pol scheduler task name/angle list: **PrecipRhi2**
 * Number of RHIs: 12
 * Scan rate: 6°/s
 * Total scan time: 2 min 17 sec (137 seconds)
@@ -113,7 +113,7 @@ The new angle list will take effect the next time PrecipRhiUser runs.
 
 ### PrecipRhiUser (in schedule PrecipIOP)
 
-* S-Pol scheduler task name/angle list: PrecipRhiUser
+* S-Pol scheduler task name/angle list: **PrecipRhiUser**
 * Number of RHIs: 12 
 * Scan rate: 6°/s
 * Total scan time: 2 min 9 sec (129 seconds); time estimate for 3° azimuthal spacing
@@ -128,7 +128,7 @@ The new angle list will take effect the next time PrecipRhiUser runs.
 
 ### PrecipSur2 (in schedule PrecipUnattended)
 
-* S-Pol scheduler task name: PrecipSur2
+* S-Pol scheduler task name: **PrecipSur2**
 * Number of elevation angles: 4
 * Scan rate: 10.5°/s 
 * Total scan time: 2 min 21 sec (181 seconds)
