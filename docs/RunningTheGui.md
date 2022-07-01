@@ -7,7 +7,7 @@ There are 2 main schedules for PRECIP:
 * PrecipIOP
 * PrecipUnattended
 
-### Switching from Unattended to IOP
+### (a) Switching from Unattended to IOP
 
 * Wait until you are in PrecipSur2
 * Stop Scan
@@ -21,7 +21,7 @@ There are 2 main schedules for PRECIP:
 
 The scan will start immediately, and then interrupt at the next 12 minute boundary.
 
-### Switching from IOP to Unattended
+### (b) Switching from IOP to Unattended
 
 * Wait until you are in PrecipRhiUser
 * Stop Scan
@@ -54,7 +54,7 @@ The scan will start immediately, and then interrupt at the next 12 minute bounda
 
 ## Changing the list of RHI angles in the PrecipIOP schedule
 
-### Enter angles manually
+### (a) Enter angles manually
 
 * Ensure you are in the PrecipIOP schedule (see above)
 * Do not do this while PrecipRhiUser is running. Best to do this in PrecipSur1 since that allows plenty of time
@@ -66,6 +66,15 @@ The scan will start immediately, and then interrupt at the next 12 minute bounda
 * If you make a mistake, click on Cancel
 * If you are happy, click OK (DON'T do this if you have not made any changes)
 
+
+The new angle list will take effect the next time PrecipRhiUser runs.
+
+### (b) Read in a file with the desired angles
+
+* Ensure you are in the PrecipIOP schedule (see above)
+* Do not do this while PrecipRhiUser is running. Best to do this in PrecipSur1 since that allows plenty of time
+* File -> Read -> scan-you-want.json
+* File -> Save As -> default.json
 
 The new angle list will take effect the next time PrecipRhiUser runs.
 
