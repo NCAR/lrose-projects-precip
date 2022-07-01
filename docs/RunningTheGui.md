@@ -52,3 +52,22 @@ If a SYS_IDLE does appear, stop the scan and restart as follows:
 
 The scan will start immediately, and then interrupt at the next 12 minute boundary.
 
+## Changing the list of RHI angles in the PrecipIOP schedule
+
+### Enter angles manually
+
+* Ensure you are in the PrecipIOP schedule (see above)
+* Do not do this while PrecipRhiUser is running. Best to do this in PrecipSur1 since that allows plenty of time
+* Click on the main RHI tab
+* In the RHI list box (left), select PrecipRhiUser
+* In the AngleList box (right), double click on PrecipRhiUser
+* A window with the current angles will pop up
+* Set the angles you want
+* If you make a mistake, click on Cancel
+* If you are happy, click OK (DON'T do this if you have not made any changes)
+
+
+The new angle list will take effect the next time PrecipRhiUser runs.
+
+
+
