@@ -155,11 +155,15 @@ Have 10-25 seconds remaining depending on the user-selected strategy, which allo
   15, 345, 330, 298, 255, 240, 211, 197, 168, 153, 125, 113
 ```
 
+<img align="left" width="600" height="600" src="./images/ScanStrategies/360.png">
+
 ### initiation.json
 
 ```
   211, 203, 195, 189, 177, 171, 125, 113, 107, 95, 80, 67.5
 ```
+
+<img align="left" width="600" height="600" src="./images/ScanStrategies/Initiation.png">
 
 ### north.json
 
