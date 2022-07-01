@@ -156,7 +156,7 @@ RHI azimuth angles:
 
 ### File ```initiation.json```
 
-RHIs in the normal initiation zones:
+RHIs in the common initiation zones:
 
 <img align="center" width="600" height="600" src="./images/ScanStrategies/Initiation.png">
 
@@ -164,6 +164,30 @@ RHI azimuth angles:
 
 ```
   211, 203, 195, 189, 177, 171, 125, 113, 107, 95, 80, 67.5
+```
+
+### north.json
+
+RHIs covering the quadrants to the North:
+
+<img align="center" width="600" height="600" src="./images/ScanStrategies/North.png">
+
+RHI azimuth angles:
+
+```
+  290, 300, 310, 320, 330, 340, 350, 10, 20, 37, 52, 67
+```
+
+### northeast.json
+
+RHIs covering the quadrants to the North-East:
+
+<img align="center" width="600" height="600" src="./images/ScanStrategies/Northeast.png">
+
+RHI azimuth angles:
+
+```
+  320, 330, 340, 350, 10, 20, 37, 52, 67, 110, 120, 130
 ```
 
 ### File ```east.json```
@@ -178,37 +202,37 @@ RHI azimuth angles:
   10, 20, 37, 52, 67, 110, 120, 130, 145, 155, 165, 175
 ```
 
-### north.json
-
-```
-  290, 300, 310, 320, 330, 340, 350, 10, 20, 37, 52, 67
-```
-
-### northeast.json
-
-```
-  320, 330, 340, 350, 10, 20, 37, 52, 67, 110, 120, 130
-```
-
-### northwest.json
-
-```
-  240, 255, 290, 300, 310, 320, 330, 340, 350, 010, 020, 037
-```
-
-### south.json
-
-```
-  255, 240, 215, 205, 195, 175, 165, 155, 145, 130, 120, 110
-```
-
 ### southeast.json
+
+RHIs covering the quadrants to the South-East:
+
+<img align="center" width="600" height="600" src="./images/ScanStrategies/Southeast.png">
+
+RHI azimuth angles:
 
 ```
   215, 205, 195, 175, 165, 155, 145, 130, 120, 110, 67, 52
 ```
 
+### south.json
+
+RHIs covering the quadrants to the South:
+
+<img align="center" width="600" height="600" src="./images/ScanStrategies/South.png">
+
+RHI azimuth angles:
+
+```
+  255, 240, 215, 205, 195, 175, 165, 155, 145, 130, 120, 110
+```
+
 ### southwest.json
+
+RHIs covering the quadrants to the South-West:
+
+<img align="center" width="600" height="600" src="./images/ScanStrategies/Southwest.png">
+
+RHI azimuth angles:
 
 ```
   310, 300, 290, 255, 240, 215, 205, 195, 175, 165, 155, 145
@@ -216,6 +240,25 @@ RHI azimuth angles:
 
 ### west.json
 
+RHIs covering the quadrants to the West:
+
+<img align="center" width="600" height="600" src="./images/ScanStrategies/West.png">
+
+RHI azimuth angles:
+
 ```
   350, 340, 330, 320, 310, 300, 290, 255, 240, 215, 205, 195
 ```
+
+### northwest.json
+
+RHIs covering the quadrants to the North-West:
+
+<img align="center" width="600" height="600" src="./images/ScanStrategies/Northwest.png">
+
+RHI azimuth angles:
+
+```
+  240, 255, 290, 300, 310, 320, 330, 340, 350, 010, 020, 037
+```
+
