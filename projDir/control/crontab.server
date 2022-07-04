@@ -12,9 +12,23 @@
 */5 * * * *   csh -c "start_build_logdir_links" 1> /dev/null 2> /dev/null
 #
 ######################################################################
-# ingest lightning data
+# ingest CWB data data
 #
-*/1 * * * * csh -c "run_GetLightningData.precip" 1> /dev/null 2> /dev/null
+*/1 * * * * csh -c "start_GetLightningData.precip" 1> /dev/null 2> /dev/null
+*/1 * * * * csh -c "start_GetCwbData.surface" 1> /dev/null 2> /dev/null
+*/1 * * * * csh -c "start_GetCwbData.gauge" 1> /dev/null 2> /dev/null
+*/1 * * * * csh -c "start_GetCwbData.mosaic2D" 1> /dev/null 2> /dev/null
+*/1 * * * * csh -c "start_GetCwbData.mosaic3D" 1> /dev/null 2> /dev/null
+######################################################################
+# rsync data from maui at CSU to cirrus at NCAR
+#
+*/15 * * * * csh -c "run_rsync_sat_from_maui.precip"  1> /dev/null 2> /dev/null
+*/15 * * * * csh -c "start_RsyncWrfFromMaui.precip"  1> /dev/null 2> /dev/null
+######################################################################
+# rsync spoldrx data to bob at UW
+#
+*/15 * * * * csh -c "start_RsyncSpol2UW.cfradial.sur"  1> /dev/null 2> /dev/null
+*/15 * * * * csh -c "start_RsyncSpol2UW.cfradial.rhi"  1> /dev/null 2> /dev/null
 ######################################################################
 # rsync the data to the ftp download area
 #

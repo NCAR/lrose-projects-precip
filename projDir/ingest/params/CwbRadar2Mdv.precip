@@ -79,7 +79,7 @@ mode = REALTIME;
 // Type: string
 //
 
-realtime_input_dir = "./input";
+realtime_input_dir = "$(DATA_DIR)$(project)/raw/mosaic_3d";
 
 ///////////// use_latest_data_info_file ///////////////
 //
@@ -93,7 +93,7 @@ realtime_input_dir = "./input";
 // Type: boolean
 //
 
-use_latest_data_info_file = FALSE;
+use_latest_data_info_file = TRUE;
 
 ///////////// max_realtime_valid_age //////////////////
 //
@@ -108,7 +108,7 @@ use_latest_data_info_file = FALSE;
 // Type: int
 //
 
-max_realtime_valid_age = 300;
+max_realtime_valid_age = 3600;
 
 //======================================================================
 //
@@ -126,7 +126,7 @@ max_realtime_valid_age = 300;
 // Type: string
 //
 
-output_url = "/tmp/precip/mdv/radar/mosaic";
+output_url = "$(DATA_DIR)/$(project)/mdv/radar/mosaic3D";
 
 ///////////// output_short_field_name /////////////////
 //
@@ -140,7 +140,7 @@ output_url = "/tmp/precip/mdv/radar/mosaic";
 // Type: string
 //
 
-output_short_field_name = "MOSA";
+output_short_field_name = "DBZ";
 
 ///////////// reflectivity_min_value //////////////////
 //
@@ -164,7 +164,7 @@ reflectivity_min_value = -32;
 //     OUT_FLOAT32
 //
 
-output_encoding = OUT_INT8;
+output_encoding = OUT_INT16;
 
 ///////////// output_projection ///////////////////////
 //
@@ -199,7 +199,7 @@ output_projection = OUTPUT_PROJ_NATIVE;
 //     VLEVEL_FL
 //
 
-vlevel_units = VLEVEL_FL;
+vlevel_units = VLEVEL_KM;
 
 ///////////// output_origin ///////////////////////////
 //
@@ -297,5 +297,5 @@ data_set_info = "This MDV file was created by CwbRadar2Mdv.";
 // Type: string
 //
 
-data_set_name = "Radar data mosaic from Taiwan CWB.";
+data_set_name = "3D radar data mosaic from Taiwan CWB.";
 

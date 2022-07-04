@@ -1,0 +1,8 @@
+#! /bin/csh
+
+running "RsyncCWBFromHsinchu.csh"
+if ($status == 1) then
+  RsyncCWBFromHsinchu.csh |& \
+    LogFilter -d $ERRORS_LOG_DIR -p RsyncCWBFromHsinchu -i csh &
+endif
+

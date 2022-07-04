@@ -1,0 +1,21 @@
+#!/bin/csh
+
+# get the precip gauge data
+
+cd $PROJ_DIR/ingest/scripts
+
+running "GetCwbData.py --instance gauge"
+
+if ($status == 1) then
+  GetCwbData.py --instance gauge \
+    --debug \
+    --platform SURFACE \
+    --ftpSubDir GAUGE \
+    --localDirBase $DATA_DIR/$project/raw/gauge \
+    --fileSuffix 10M.mdf \
+    --realtime \
+    --lookbackSecs 3600 \
+    --sleepSecs 60 \
+      |& LogFilter -d $ERRORS_LOG_DIR -p GetCwbData.py -i gauge \
+      >& /dev/null &
+endif

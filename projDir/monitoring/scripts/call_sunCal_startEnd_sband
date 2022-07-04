@@ -1,0 +1,22 @@
+#! /bin/csh -f
+
+#get sun cal data
+# script needs to be called with start and end date
+#"2019 01 01 00 00 00" "2019 01 31 23 59 59"
+
+set PLOT_DIR="/scr/cirrus3/rsfdata/projects/precip/spolField/monitorPlots/spol_sunCal/sband/"
+
+set START_TIME="$1"
+set END_TIME="$2"
+
+set START_NOSPACE=`echo $START_TIME | sed 's/ //g'`
+set START1=`echo $START_NOSPACE | awk '{print substr($0,0,8)}'`
+set START2=`echo $START_NOSPACE | awk '{print substr($0,9,6)}'`
+
+set END_NOSPACE=`echo $END_TIME | sed 's/ //g'`
+set END1=`echo $END_NOSPACE | awk '{print substr($0,0,8)}'`
+set END2=`echo $END_NOSPACE | awk '{print substr($0,9,6)}'`
+
+SpdbXml2Table -params ~/git/lrose-projects-precip/projDir/monitoring/params/SpdbXml2Table.suncal.sband -start "$START_TIME" -end "$END_TIME" > "/scr/cirrus3/rsfdata/projects/precip/spolField/tables/spolSunCal/sband/spolSunCal_"$START1"_"$START2"_to_"$END1"_"$END2".txt"
+
+~/git/lrose-projects-precip/projDir/monitoring/scripts/monitorSunCal.py --start "$START_TIME" --end "$END_TIME" --figDir $PLOT_DIR --suncalFile "/scr/cirrus3/rsfdata/projects/precip/spolField/tables/spolSunCal/sband/spolSunCal_"$START1"_"$START2"_to_"$END1"_"$END2".txt"

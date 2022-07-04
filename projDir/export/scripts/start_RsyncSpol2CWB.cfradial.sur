@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/export/scripts
+
+running "RsyncSpol2CWB.py --sourceDir /home/spol/projDir/data/cfradial/moments/spoldrx/sur"
+if ($status == 1) then
+  RsyncSpol2CWB.py --sourceDir /home/spol/projDir/data/cfradial/moments/spoldrx/sur --realtime |& \
+    LogFilter -d $ERRORS_LOG_DIR -p RsyncSpol2CWB -i sur &
+endif
+

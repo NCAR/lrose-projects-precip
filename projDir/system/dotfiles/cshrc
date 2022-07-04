@@ -1,4 +1,4 @@
-#########################################
+########################################
 # .cshrc file for LROSE EOLBASE project
 #########################################
 
@@ -100,13 +100,17 @@ setenv MDV2NETCDF_WRITE_LATLON_ARRAYS FALSE
 
 # --- project info --- 
 
+if (-f $HOME/ftp/ftp_info) then
+  source $HOME/ftp/ftp_info
+endif
+
 if (-f $PROJ_DIR/system/params/project_info) then
   source $PROJ_DIR/system/params/project_info
 endif
 
 # python
 
-#setenv PYTHONPATH ~/anaconda2/pkgs:$HOME/projDir/dial/Python/ptvv1_python/python:$HOME/projDir/dial/Python/NCAR-LidarProcessing/libraries
+setenv PYTHONPATH ~/anaconda3/pkgs
 
 # --- Path ---
 
@@ -127,7 +131,7 @@ set path = ($path ~/lrose/bin)
 set path = ($path ~/cidd/bin)
 
 set path = ($path ~/bin \
-        ~/anaconda2/bin \
+        ~/anaconda3/bin \
 	$JAVA_HOME/bin $ANT_HOME/bin \
 	$NCARG_ROOT/bin \
 	/usr/local/bin /usr/local/sbin /usr/bin/X11 \
@@ -214,6 +218,8 @@ if ($?prompt) then
   alias updraft 'ssh -XY meso@updraft'
   alias smn 'ssh -XY relampago@smn'
   alias csu 'ssh -XY radaruser@csu'
+  alias maui 'ssh -a -XY mdixon@maui.atmos.colostate.edu'
+  alias bob 'ssh -a -XY meso@bob.atmos.washington.edu'
 
   alias spol_fmq_tunnel 'ssh -p20022 -L 15443:localhost:5443 spol@spol.dyndns.org'
 

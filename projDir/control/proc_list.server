@@ -24,25 +24,55 @@ SunCal2Symprod    manager  start_inst(no-params)     snuff_inst
 Tstorms2Symprod   manager  start_inst(no-params)     snuff_inst
 #
 ######################################################################
+# RHI tick marks
+#
+Rhi2Spdb      spoldrx     start_inst(ingest)   snuff_inst
+######################################################################
 # GFS MODEL
 #
 InputWatcher  gfs.precip   start_inst(ingest)   snuff_inst
 Grib2toMdv    gfs.precip   start_inst(ingest)   snuff_inst
 ######################################################################
+# WRF MODEL
+#
+InputWatcher  wrf_psu      start_inst(ingest)   snuff_inst
+Wrf2Mdv       psu          start_inst(ingest)   snuff_inst
+######################################################################
+# HIMAWARO Satellite
+#
+NcGeneric2Mdv himawari_ch03  start_inst(ingest)   snuff_inst
+NcGeneric2Mdv himawari_ch09  start_inst(ingest)   snuff_inst
+NcGeneric2Mdv himawari_ch10  start_inst(ingest)   snuff_inst
+NcGeneric2Mdv himawari_ch13  start_inst(ingest)   snuff_inst
+######################################################################
 # LIGHTING
 #
 Ltg2Spdb      cwb          start_inst(ingest)   snuff_inst
 ######################################################################
-# model-based soundings for PID
-#Mdv2SoundingSpdb  precip        start_inst(ingest) snuff_inst
+# Surface stations
+#
+CwbAws2Spdb   surface       start_inst(ingest)   snuff_inst
+CwbAws2Spdb   gauge         start_inst(ingest)   snuff_inst
 ######################################################################
 # Base observations ingest - from LDM
 #
 LdmDynamic2Static   metar              start_inst(ingest)  snuff_inst
 Metar2Spdb          precip             start_inst(ingest)  snuff_inst 
-#LdmDynamic2Static   sounding           start_inst(ingest)  snuff_inst
-#NWSsoundingIngest   precip             start_inst(ingest)  snuff_inst 
+######################################################################
+# model-based soundings for PID
+Mdv2SoundingSpdb    precip             start_inst(ingest) snuff_inst
 #
+######################################################################
+# CWB radar
+InputWatcher       mosaic_3d           start_inst(ingest)  snuff_inst
+CwbRadar2Mdv       mosaic_3d           start_inst(ingest)  snuff_inst
+######################################################################
+# ECCO
+Ecco               mrms_taiwan         start_inst(alg)     snuff_inst
+######################################################################
+# PID, Precip rate
+RadxRate           spoldrx.sur         start_inst(alg)     snuff_inst
+RadxRate           spoldrx.rhi         start_inst(alg)     snuff_inst
 ######################################################################
 # CSU radar
 #InputWatcher      csu_chivo     start_inst(ingest)    snuff_inst
