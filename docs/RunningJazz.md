@@ -22,6 +22,10 @@ Open JDK vesion 18 is available from:
 
 ### Installing OpenJDK on Windows:
 
+The following is a tutorial from PRECIP participants on how to install openJDK 18 on Windows:
+
+* [JazzInstallOnWindows.pdf](./JazzInstallOnWindows.pdf)
+
 The following video shows how to install OpenJDK 18 on Windows:
 
 * [https://www.youtube.com/watch?v=DSwGFXjB8U8](https://www.youtube.com/watch?v=DSwGFXjB8U8)
