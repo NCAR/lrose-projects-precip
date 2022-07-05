@@ -1,0 +1,20 @@
+//======================================================================
+//
+// CREATE COMPOSITE - READ OPERATIONS ONLY.
+//
+// Option to create a composite - max at any height.
+//
+//======================================================================
+ 
+///////////// create_composite_on_read ////////////////
+//
+// Option to create composite on read.
+//
+// If true, compute the max-in-column on the fly during the read.
+//
+//
+// Type: boolean
+//
+
+create_composite_on_read = TRUE;
+
