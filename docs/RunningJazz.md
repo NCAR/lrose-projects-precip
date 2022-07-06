@@ -154,15 +154,19 @@ Turn on and off the overlay features you wish to see drawn on top of the selecte
 
 <img align="center" src="./images/Jazz/features_menu2.png">
 
+### Turning the maps on and off
+
+<img align="center" src="./images/Jazz/maps_menu2.png">
+
 ### Zooming
 
-Select the **+** magnifiying glass at the left of the tool bar.
+Select the ```+``` magnifiying glass at the left of the tool bar.
 
 The drag with the left mouse button to describe the zoom rectangle.
 
 <img align="center" src="./images/Jazz/zoom.png">
 
-The left and right arrows are ```Go back``` and ```Go forward through the zooms.
+The left and right arrows are ```Go back``` and ```Go forward``` through the zooms.
 
 If you select the ```Hand``` tool, you can pan the zoomed view to fine-tune the location.
 
@@ -199,10 +203,6 @@ Then double click on an end point aligned with one set of yellow tick marks. If 
 If you are not accurate with your click points you will get a reconstructed RHI:
 
 <img align="center" src="./images/Jazz/reconstructed_rhi.png">
-
-### Turning the maps on and off
-
-<img align="center" src="./images/Jazz/maps_menu2.png">
 
 ### Tools menu
 
