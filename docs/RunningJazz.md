@@ -90,10 +90,11 @@ download ```jazz.zip```, and follow the instructions on unzipping it.
 
 Then download the Jazz .xml parameter files from:
 
-* [jazz4precip.xml](https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/display/params/jazz4precip.xml)
 * [jazz4spol.xml](https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/display/params/jazz4spol.xml)
+* [jazz4precip.xml](https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/display/params/jazz4precip.xml)
 
-## Running jazz
+
+## Starting jazz
 
 Run the start script. On Linux or Mac, this will be:
 
@@ -105,14 +106,31 @@ Run the start script. On Linux or Mac, this will be:
 
 Jazz will start, and request that you select a parameter file.
 
+The file loader dialog is as follows:
+
+<img align="center" src="./images/Jazz/file_loader.png">
+
+Click the checkbox to Automatically reload the previous configuration on startup.
+
+Then cut and paste one of the following URLs into the file chooser:
+
+* S-Pol-centric configuration (km coords):
+
+```
+https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/display/params/jazz4spol.xml
+```
+
+Wider display configuration, including satellite, models etc. (latlon coords):
+
+```
+https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/display/params/jazz4precip.xml
+```
+
 The following 2 setups are available:
 
-* ```jazz4precip.xml```: integrated data sets including satellite, models, radar
 * ```jazz4spol.xml```: S-Pol-centric display in km coords
+* ```jazz4precip.xml```: integrated data sets including satellite, models, radar
 
-BTW - if you go to 'Realtime' - i.e. the current time - using the time controller at the bottom, you will need to click on a time in the time slider to get the data to retrieve and display correctly.
-
-      
 ## Using the Jazz GUI
 
 ### main_window.png
@@ -264,3 +282,6 @@ BTW - if you go to 'Realtime' - i.e. the current time - using the time controlle
 <img align="center" src="./images/Jazz/inspect.png">
 
 
+BTW - if you go to 'Realtime' - i.e. the current time - using the time controller at the bottom, you will need to click on a time in the time slider to get the data to retrieve and display correctly.
+
+      
