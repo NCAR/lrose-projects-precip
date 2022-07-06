@@ -88,12 +88,6 @@ download ```jazz.zip```, and follow the instructions on unzipping it.
   unzip ~/Downloads/jazz.zip
 ```
 
-Then download the Jazz .xml parameter files from:
-
-* [jazz4spol.xml](https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/display/params/jazz4spol.xml)
-* [jazz4precip.xml](https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/display/params/jazz4precip.xml)
-
-
 ## Starting jazz
 
 Run the start script. On Linux or Mac, this will be:
@@ -116,6 +110,7 @@ Then cut and paste one of the following URLs into the file chooser:
 
 **S-Pol-centric configuration (km coords)**
 
+Parameter file:
 ```
 https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/display/params/jazz4spol.xml
 ```
@@ -123,6 +118,7 @@ https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/displa
 
 **Wider display configuration, including satellite, models etc. (latlon coords)**
 
+Parameter file:
 ```
 https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/display/params/jazz4precip.xml
 ```
@@ -138,7 +134,7 @@ You can:
 * Load Configuration File - see above
 * Export images - make images from existing plots
 
-<img align="center" src="./images/Jazz/file_menu.png">
+<img align="center" src="./images/Jazz/main_menu.png">
 
 ### Grid table pin-up
 
