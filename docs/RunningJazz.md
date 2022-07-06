@@ -114,22 +114,19 @@ Click the checkbox to Automatically reload the previous configuration on startup
 
 Then cut and paste one of the following URLs into the file chooser:
 
-* S-Pol-centric configuration (km coords):
+*** S-Pol-centric configuration (km coords) ***
 
 ```
 https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/display/params/jazz4spol.xml
 ```
+<img align="center" src="./images/Jazz/spol_view.png">
 
-Wider display configuration, including satellite, models etc. (latlon coords):
+*** Wider display configuration, including satellite, models etc. (latlon coords) ***
 
 ```
 https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/display/params/jazz4precip.xml
 ```
-
-The following 2 setups are available:
-
-* ```jazz4spol.xml```: S-Pol-centric display in km coords
-* ```jazz4precip.xml```: integrated data sets including satellite, models, radar
+<img align="center" src="./images/Jazz/sat_wide_view.png">
 
 ## Using the Jazz GUI
 
