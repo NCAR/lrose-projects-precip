@@ -117,152 +117,150 @@ BTW - if you go to 'Realtime' - i.e. the current time - using the time controlle
 
 ### main_window.png
 
-* [main_window.png](./images/Jazz/main_window.png)
-
 <img align="center" src="./images/Jazz/main_window.png">
-<img align="center" width="600" height="600" src="./images/Jazz/main_window.png">
 
 ### archive_main_window.png
 
-* [archive_main_window.png](./images/Jazz/archive_main_window.png)
+<img align="center" src="./images/Jazz/archive_main_window.png">
 
 
 ### archive_main_window2.png
 
-* [archive_main_window2.png](./images/Jazz/archive_main_window2.png)
+<img align="center" src="./images/Jazz/archive_main_window2.png">
 
 
 
 ### main_menu.png
 
-* [main_menu.png](./images/Jazz/main_menu.png)
+<img align="center" src="./images/Jazz/main_menu.png">
+
 
 ### file_menu.png
 
-* [file_menu.png](./images/Jazz/file_menu.png)
+<img align="center" src="./images/Jazz/file_menu.png">
 
 ### load_config.png
 
-* [load_config.png](./images/Jazz/load_config.png)
+<img align="center" src="./images/Jazz/load_config.png">
 
 
 
 
 ### grid_menu.png
 
-* [grid_menu.png](./images/Jazz/grid_menu.png)
+<img align="center" src="./images/Jazz/grid_menu.png">
 
 
 ### grid_table.png
 
-* [grid_table.png](./images/Jazz/grid_table.png)
+<img align="center" src="./images/Jazz/grid_table.png">
 
 
 ### grids_menu.png
 
-* [grids_menu.png](./images/Jazz/grids_menu.png)
+<img align="center" src="./images/Jazz/grids_menu.png">
 
 
 ### features_menu.png
 
-* [features_menu.png](./images/Jazz/features_menu.png)
+<img align="center" src="./images/Jazz/features_menu.png">
 
 
 ### features_menu2.png
 
-* [features_menu2.png](./images/Jazz/features_menu2.png)
+<img align="center" src="./images/Jazz/features_menu2.png">
 
 
 ### draw_rhi.png
 
-* [draw_rhi.png](./images/Jazz/draw_rhi.png)
+<img align="center" src="./images/Jazz/draw_rhi.png">
 
 ### measured_rhi.png
 
-* [measured_rhi.png](./images/Jazz/measured_rhi.png)
+<img align="center" src="./images/Jazz/measured_rhi.png">
 
 
 ### reconstructed_rhi.png
 
-* [reconstructed_rhi.png](./images/Jazz/reconstructed_rhi.png)
+<img align="center" src="./images/Jazz/reconstructed_rhi.png">
 
 ### maps_menu.png
 
-* [maps_menu.png](./images/Jazz/maps_menu.png)
+<img align="center" src="./images/Jazz/maps_menu.png">
 
 
 ### maps_menu2.png
 
-* [maps_menu2.png](./images/Jazz/maps_menu2.png)
+<img align="center" src="./images/Jazz/maps_menu2.png">
 
 
 ### tools_menu.png
 
-* [tools_menu.png](./images/Jazz/tools_menu.png)
+<img align="center" src="./images/Jazz/tools_menu.png">
 
 
 ### tools_menu2.png
 
-* [tools_menu2.png](./images/Jazz/tools_menu2.png)
+<img align="center" src="./images/Jazz/tools_menu2.png">
 
 
 ### tools_grids.png
 
-* [tools_grids.png](./images/Jazz/tools_grids.png)
+<img align="center" src="./images/Jazz/tools_grids.png">
 
 
 ### vel_field.png
 
-* [vel_field.png](./images/Jazz/vel_field.png)
+<img align="center" src="./images/Jazz/vel_field.png">
 
 
 ### vel_field_and_menu.png
 
-* [vel_field_and_menu.png](./images/Jazz/vel_field_and_menu.png)
+<img align="center" src="./images/Jazz/vel_field_and_menu.png">
 
 
 ### views_menu.png
 
-* [views_menu.png](./images/Jazz/views_menu.png)
+<img align="center" src="./images/Jazz/views_menu.png">
 
 
 ### views_menu2.png
 
-* [views_menu2.png](./images/Jazz/views_menu2.png)
+<img align="center" src="./images/Jazz/views_menu2.png">
 
 
 ### time_and_anim.png
 
-* [time_and_anim.png](./images/Jazz/time_and_anim.png)
+<img align="center" src="./images/Jazz/time_and_anim.png">
 
 
 ### zoom.png
 
-* [zoom.png](./images/Jazz/zoom.png)
+<img align="center" src="./images/Jazz/zoom.png">
 
 
 ### color_scale_menu.png
 
-* [color_scale_menu.png](./images/Jazz/color_scale_menu.png)
+<img align="center" src="./images/Jazz/color_scale_menu.png">
 
 
 ### color_scale_editor.png
 
-* [color_scale_editor.png](./images/Jazz/color_scale_editor.png)
+<img align="center" src="./images/Jazz/color_scale_editor.png">
 
 
 ### customize_features.png
 
-* [customize_features.png](./images/Jazz/customize_features.png)
+<img align="center" src="./images/Jazz/customize_features.png">
 
 
 ### customize_maps.png
 
-* [customize_maps.png](./images/Jazz/customize_maps.png)
+<img align="center" src="./images/Jazz/customize_maps.pngcustomize_maps.png">
 
 
 ### inspect.png
 
-* [inspect.png](./images/Jazz/inspect.png)
+<img align="center" src="./images/Jazz/inspect.pnginspect.png">
 
 
