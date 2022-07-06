@@ -1,0 +1,66 @@
+/**********************************************************************
+ * TDRP params for DsMdvServer
+ **********************************************************************/
+
+//======================================================================
+//
+// CREATE COMPOSITE - READ OPERATIONS ONLY.
+//
+// Option to create a composite - max at any height.
+//
+//======================================================================
+ 
+///////////// create_composite_on_read ////////////////
+//
+// Option to create composite on read.
+//
+// If true, compute the max-in-column on the fly during the read.
+//
+//
+// Type: boolean
+//
+
+create_composite_on_read = TRUE;
+
+//======================================================================
+//
+// VERTICAL SECTIONS - READ OPERATIONS ONLY.
+//
+//======================================================================
+ 
+///////////// vsection_set_nsamples ///////////////////
+//
+// Option to disable interpolation in vertical sections.
+//
+// Some data is not amenable to interpolation. Setting this to TRUE will 
+//   disable interpolation when vertical sections are computed.
+//
+//
+// Type: boolean
+//
+
+vsection_set_nsamples = FALSE;
+
+///////////// vsection_nsamples ///////////////////////
+//
+// Number of samples in the vertical section.
+//
+//
+// Type: int
+//
+
+vsection_nsamples = 500;
+
+///////////// vsection_disable_interp /////////////////
+//
+// Option to disable interpolation in vertical sections.
+//
+// Some data is not amenable to interpolation. Setting this to TRUE will 
+//   disable interpolation when vertical sections are computed.
+//
+//
+// Type: boolean
+//
+
+vsection_disable_interp = TRUE;
+

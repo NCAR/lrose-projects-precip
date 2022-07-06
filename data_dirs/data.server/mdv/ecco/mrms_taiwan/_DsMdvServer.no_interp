@@ -1,0 +1,46 @@
+/**********************************************************************
+ * TDRP params for DsMdvServer
+ **********************************************************************/
+
+//======================================================================
+//
+// VERTICAL SECTIONS - READ OPERATIONS ONLY.
+//
+//======================================================================
+ 
+///////////// vsection_set_nsamples ///////////////////
+//
+// Option to disable interpolation in vertical sections.
+//
+// Some data is not amenable to interpolation. Setting this to TRUE will 
+//   disable interpolation when vertical sections are computed.
+//
+//
+// Type: boolean
+//
+
+vsection_set_nsamples = FALSE;
+
+///////////// vsection_nsamples ///////////////////////
+//
+// Number of samples in the vertical section.
+//
+//
+// Type: int
+//
+
+vsection_nsamples = 500;
+
+///////////// vsection_disable_interp /////////////////
+//
+// Option to disable interpolation in vertical sections.
+//
+// Some data is not amenable to interpolation. Setting this to TRUE will 
+//   disable interpolation when vertical sections are computed.
+//
+//
+// Type: boolean
+//
+
+vsection_disable_interp = TRUE;
+
