@@ -228,7 +228,7 @@ If you go to 'Realtime' - i.e. the current time - using the time controller at t
 
 The most useful is the ```Grid Table```.
 
-<img align="center" src="./images/Jazz/tools_menu2.png"
+<img align="center" src="./images/Jazz/tools_menu2.png">
 
 ### Customizing
 
