@@ -132,71 +132,89 @@ https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/displa
 
 ### File menu
 
-<img align="center" src="./images/Jazz/file_menu.png">
-
 You can:
 
 * Reset Application - go back to starting configuration
 * Load Configuration File - see above
 * Export images - make images from existing plots
 
-### grid_table.png
+<img align="center" src="./images/Jazz/file_menu.png">
+
+### Grid table pin-up
 
 This is the most useful way to pin up the list of available fields:
 
 <img align="center" src="./images/Jazz/grid_table.png">
 
-### grids_menu.png
+### Grid menu pop-up
 
 This is an alternative to the grid table - pop up the menu and pick the field you want:
 
 <img align="center" src="./images/Jazz/grids_menu.png">
 
+### Features menu
 
-### features_menu.png
-
-<img align="center" src="./images/Jazz/features_menu.png">
-
-
-### features_menu2.png
+Turn on and off the overlay features you wish to see drawn on top of the selected field:
 
 <img align="center" src="./images/Jazz/features_menu2.png">
 
+### Zooming
 
-### draw_rhi.png
+Select the **+** magnifiying glass at the left of the tool bar.
+
+The drag with the left mouse button to describe the zoom rectangle.
+
+<img align="center" src="./images/Jazz/zoom.png">
+
+The left and right arrows are ```Go back``` and ```Go forward through the zooms.
+
+If you select the ```Hand``` tool, you can pan the zoomed view to fine-tune the location.
+
+### Inspecting data values
+
+Click on the ```i``` information tool. Then move the mouse over the data, to inspect the data value at the selected (x,y) location.
+
+<img align="center" src="./images/Jazz/inspect.png">
+
+### Vertical sections
+
+To create a vertical section, select the vertical section tool (second from the right).
+
+Click the start point for your vertical section, followed by one or more way points.
+
+End by double clicking.
+
+The vertical section window will appear.
+
+### RHIs
+
+RHIs are a special case of a vertical section.
+
+The RHI locations are shown by the yellow tick marks radiating from the radar.
+
+Click on the radar location to start the RHI.
 
 <img align="center" src="./images/Jazz/draw_rhi.png">
 
-### measured_rhi.png
+Then double click on an end point aligned with one set of yellow tick marks. If you click close to the actual RHI azimuth you will get a measured RHI:
 
 <img align="center" src="./images/Jazz/measured_rhi.png">
 
-
-### reconstructed_rhi.png
+If you are not accurate with your click points you will get a reconstructed RHI:
 
 <img align="center" src="./images/Jazz/reconstructed_rhi.png">
 
-### maps_menu.png
-
-<img align="center" src="./images/Jazz/maps_menu.png">
-
-
-### maps_menu2.png
+### Turning the maps on and off
 
 <img align="center" src="./images/Jazz/maps_menu2.png">
 
+### Tools menu
 
-### tools_menu.png
+The most useful is the ```Grid Table```.
 
-<img align="center" src="./images/Jazz/tools_menu.png">
+<img align="center" src="./images/Jazz/tools_menu2.png"
 
-
-### tools_menu2.png
-
-<img align="center" src="./images/Jazz/tools_menu2.png">
-
-
-### tools_grids.png
+### Customizing
 
 <img align="center" src="./images/Jazz/tools_grids.png">
 
@@ -226,10 +244,6 @@ This is an alternative to the grid table - pop up the menu and pick the field yo
 <img align="center" src="./images/Jazz/time_and_anim.png">
 
 
-### zoom.png
-
-<img align="center" src="./images/Jazz/zoom.png">
-
 
 ### color_scale_menu.png
 
@@ -250,10 +264,6 @@ This is an alternative to the grid table - pop up the menu and pick the field yo
 
 <img align="center" src="./images/Jazz/customize_maps.png">
 
-
-### inspect.png
-
-<img align="center" src="./images/Jazz/inspect.png">
 
 
 BTW - if you go to 'Realtime' - i.e. the current time - using the time controller at the bottom, you will need to click on a time in the time slider to get the data to retrieve and display correctly.
