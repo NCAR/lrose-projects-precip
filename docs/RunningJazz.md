@@ -166,7 +166,7 @@ Turn on and off the overlay features you wish to see drawn on top of the selecte
 
 You can select from a series of pre-defined zoom states:
 
-<img align="center" src="./images/Jazz/views_menu.png">
+<img align="center" src="./images/Jazz/views_menu2.png">
 
 ### Interactive zooming
 
@@ -222,6 +222,8 @@ If you are not accurate with your click points you will get a reconstructed RHI:
 
 <img align="center" src="./images/Jazz/time_and_anim.png">
 
+If you go to 'Realtime' - i.e. the current time - using the time controller at the bottom, you will need to click on a time in the time slider to get the data to retrieve and display correctly.
+
 ### Tools menu
 
 The most useful is the ```Grid Table```.
@@ -230,37 +232,24 @@ The most useful is the ```Grid Table```.
 
 ### Customizing
 
-You can customize some of the settings for the features and grids.
+You can customize various aspects of the display.
 
-<img align="center" src="./images/Jazz/tools_grids.png">
+For example, you can customize the features:
 
-### views_menu2.png
+<img align="center" src="./images/Jazz/customize_features.png">
 
-<img align="center" src="./images/Jazz/views_menu2.png">
+or the maps:
 
+<img align="center" src="./images/Jazz/customize_maps.png">
 
-
-### color_scale_menu.png
+You can also customize the color scales interactively:
 
 <img align="center" src="./images/Jazz/color_scale_menu.png">
 
-
-### color_scale_editor.png
+using the color scale editor:
 
 <img align="center" src="./images/Jazz/color_scale_editor.png">
 
 
-### customize_features.png
-
-<img align="center" src="./images/Jazz/customize_features.png">
-
-
-### customize_maps.png
-
-<img align="center" src="./images/Jazz/customize_maps.png">
-
-
-
-BTW - if you go to 'Realtime' - i.e. the current time - using the time controller at the bottom, you will need to click on a time in the time slider to get the data to retrieve and display correctly.
 
       
