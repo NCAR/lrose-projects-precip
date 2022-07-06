@@ -142,6 +142,10 @@ This is the most useful way to pin up the list of available fields:
 
 <img align="center" src="./images/Jazz/grid_table.png">
 
+The following is an example - selecting the VEL_F (filtered velocity) field:
+
+<img align="center" src="./images/Jazz/vel_field_and_menu.png">
+
 ### Grid menu pop-up
 
 This is an alternative to the grid table - pop up the menu and pick the field you want:
@@ -158,7 +162,13 @@ Turn on and off the overlay features you wish to see drawn on top of the selecte
 
 <img align="center" src="./images/Jazz/maps_menu2.png">
 
-### Zooming
+### Pre-defined views
+
+You can select from a series of pre-defined zoom states:
+
+<img align="center" src="./images/Jazz/views_menu.png">
+
+### Interactive zooming
 
 Select the ```+``` magnifiying glass at the left of the tool bar.
 
@@ -198,13 +208,19 @@ Click on the radar location to start the RHI.
 
 <img align="center" src="./images/Jazz/draw_rhi.png">
 
-Then double click on an end point aligned with one set of yellow tick marks. If you click close to the actual RHI azimuth you will get a measured RHI:
+Then double click on an end point aligned with one set of yellow tick marks.
+
+If you click close to the actual RHI azimuth you will get a measured RHI:
 
 <img align="center" src="./images/Jazz/measured_rhi.png">
 
 If you are not accurate with your click points you will get a reconstructed RHI:
 
 <img align="center" src="./images/Jazz/reconstructed_rhi.png">
+
+### Setting the time, and the movie loops
+
+<img align="center" src="./images/Jazz/time_and_anim.png">
 
 ### Tools menu
 
@@ -214,32 +230,13 @@ The most useful is the ```Grid Table```.
 
 ### Customizing
 
+You can customize some of the settings for the features and grids.
+
 <img align="center" src="./images/Jazz/tools_grids.png">
-
-
-### vel_field.png
-
-<img align="center" src="./images/Jazz/vel_field.png">
-
-
-### vel_field_and_menu.png
-
-<img align="center" src="./images/Jazz/vel_field_and_menu.png">
-
-
-### views_menu.png
-
-<img align="center" src="./images/Jazz/views_menu.png">
-
 
 ### views_menu2.png
 
 <img align="center" src="./images/Jazz/views_menu2.png">
-
-
-### time_and_anim.png
-
-<img align="center" src="./images/Jazz/time_and_anim.png">
 
 
 
