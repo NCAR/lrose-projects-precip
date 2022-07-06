@@ -130,48 +130,25 @@ https://raw.githubusercontent.com/NCAR/lrose-projects-precip/main/projDir/displa
 
 ## Using the Jazz GUI
 
-### main_window.png
-
-<img align="center" src="./images/Jazz/main_window.png">
-
-### archive_main_window.png
-
-<img align="center" src="./images/Jazz/archive_main_window.png">
-
-
-### archive_main_window2.png
-
-<img align="center" src="./images/Jazz/archive_main_window2.png">
-
-
-
-### main_menu.png
-
-<img align="center" src="./images/Jazz/main_menu.png">
-
-
-### file_menu.png
+### File menu
 
 <img align="center" src="./images/Jazz/file_menu.png">
 
-### load_config.png
+You can:
 
-<img align="center" src="./images/Jazz/load_config.png">
-
-
-
-
-### grid_menu.png
-
-<img align="center" src="./images/Jazz/grid_menu.png">
-
+* Reset Application - go back to starting configuration
+* Load Configuration File - see above
+* Export images - make images from existing plots
 
 ### grid_table.png
 
+This is the most useful way to pin up the list of available fields:
+
 <img align="center" src="./images/Jazz/grid_table.png">
 
-
 ### grids_menu.png
+
+This is an alternative to the grid table - pop up the menu and pick the field you want:
 
 <img align="center" src="./images/Jazz/grids_menu.png">
 
