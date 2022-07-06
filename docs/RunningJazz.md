@@ -119,6 +119,8 @@ BTW - if you go to 'Realtime' - i.e. the current time - using the time controlle
 
 * [main_window.png](./images/Jazz/main_window.png)
 
+<img align="center" width="600" height="600" src="./images/Jazz/main_window.png">
+
 ### archive_main_window.png
 
 * [archive_main_window.png](./images/Jazz/archive_main_window.png)
