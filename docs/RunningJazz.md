@@ -186,6 +186,8 @@ End by double clicking.
 
 The vertical section window will appear.
 
+<img align="center" src="./images/Jazz/wrf_vert_section.png">
+
 ### RHIs
 
 RHIs are a special case of a vertical section.
