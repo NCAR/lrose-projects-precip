@@ -256,11 +256,11 @@ BTW - if you go to 'Realtime' - i.e. the current time - using the time controlle
 
 ### customize_maps.png
 
-<img align="center" src="./images/Jazz/customize_maps.pngcustomize_maps.png">
+<img align="center" src="./images/Jazz/customize_maps.png">
 
 
 ### inspect.png
 
-<img align="center" src="./images/Jazz/inspect.pnginspect.png">
+<img align="center" src="./images/Jazz/inspect.png">
 
 
