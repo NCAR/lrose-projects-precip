@@ -1,4 +1,4 @@
-# Running the Jazz display for PRECIP
+# Installing and running the Jazz display for PRECIP
 
 ## Introduction
 
