@@ -1,0 +1,23 @@
+#! /bin/csh
+
+# rsync the Himawari data from Maui
+
+set sourceHost=mdixon@maui.atmos.colostate.edu
+set sourceDir=/bell-scratch2/precip/DATA/raw/radar
+set targetDir=/scr/cirrus3/rsfdata/projects/precip/raw/radar
+
+mkdir -p $targetDir
+cd $targetDir
+
+rsync -av ${sourceHost}:${sourceDir}/rccg ${targetDir}
+rsync -av ${sourceHost}:${sourceDir}/rchl ${targetDir}
+rsync -av ${sourceHost}:${sourceDir}/rcsl ${targetDir}
+rsync -av ${sourceHost}:${sourceDir}/rcgi ${targetDir}
+rsync -av ${sourceHost}:${sourceDir}/rcly ${targetDir}
+rsync -av ${sourceHost}:${sourceDir}/rcmk ${targetDir}
+rsync -av ${sourceHost}:${sourceDir}/rcwf ${targetDir}
+rsync -av ${sourceHost}:${sourceDir}/rcck ${targetDir}
+rsync -av ${sourceHost}:${sourceDir}/rckt ${targetDir}
+rsync -av ${sourceHost}:${sourceDir}/rcmd ${targetDir}
+rsync -av ${sourceHost}:${sourceDir}/rcnt ${targetDir}
+

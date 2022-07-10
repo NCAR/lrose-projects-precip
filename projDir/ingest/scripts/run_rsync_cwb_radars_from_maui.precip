@@ -1,0 +1,12 @@
+#! /bin/csh
+
+# get the himawari sat data from maui at CSU
+
+cd $PROJ_DIR/ingest/scripts
+
+snuff rsync_cwb_radars_from_maui.precip
+
+rsync_cwb_radars_from_maui.precip |& \
+    LogFilter -d $ERRORS_LOG_DIR -p rsync_cwb_radars_from_maui -i precip \
+        >& /dev/null &
+
