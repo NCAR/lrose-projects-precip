@@ -178,6 +178,9 @@
 <Layer vis="on" type="MDV" name="SPOL DBZ F" location="mdvp::cart_rhi//front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
        field="DBZ_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="SPOL-DBZ-F" />
 
+<Layer vis="off" type="MDV" name="SPOL DBZ MAX" location="mdvp::composite_cart_rhi//front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
+       field="DBZ_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="SPOL-DBZ-MAX" />
+
 <Layer vis="off" type="MDV" name="SPOL VEL F" location="mdvp::cart_rhi//front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
        field="VEL_F" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/vel.colors" menuName="SPOL-VEL-F" />
 
@@ -345,19 +348,19 @@
 <Layer vis="off" type="MDV" name="SPOL NIQ" location="mdvp::cart_rhi//front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true"
        field="NIQ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbm.colors" menuName="SPOL-NIQ" />
 
-<Layer vis="off" type="MDV" name="MOSAIC 2D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true"
+<Layer vis="off" type="MDV" name="MOSAIC 2D" location="mdvp::composite//front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true"
        field="DBZ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="MOSAIC-2D" />
 
 <Layer vis="off" type="MDV" name="MOSAIC 3D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true"
        field="DBZ" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/dbz.colors" menuName="MOSAIC-3D" />
 
-<Layer vis="off" type="MDV" name="Ecco3DComp" location="mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true"
+<Layer vis="off" type="MDV" name="Ecco3DComp" location="mdvp::composite_no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true"
        field="EchoType3D" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/conv_strat5.colors" menuName="Ecco3DComp" />
 
 <Layer vis="off" type="MDV" name="Ecco3D" location="mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true"
        field="EchoType3D" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/conv_strat5.colors" menuName="Ecco3D" />
 
-<Layer vis="off" type="MDV" name="Conv3DComp" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true"
+<Layer vis="off" type="MDV" name="Conv3DComp" location="mdvp::composite//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true"
        field="Convectivity3D" render="grid" colorscale="http://front.eol.ucar.edu/color_scales/convectivity.colors" menuName="Conv3DComp" />
 
 <Layer vis="off" type="MDV" name="Conv3D" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true"
