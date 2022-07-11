@@ -1,0 +1,36 @@
+#! /bin/csh
+
+# get the data from the RMA1 radar, in catchup mode
+
+cd $PROJ_DIR/ingest/params
+
+foreach radar_name (rccg rcck rcgi rchl rckt rcly rcmd rcmk rcnt rcsl)
+
+echo Working on radar $radar_name
+
+cd $DATA_DIR/$project/raw/radar/$radar_name
+
+foreach dir (2022*)
+
+RadxConvert -params ~/projDir/ingest/params/RadxConvert.gematronik -f $dir/*dBZ.vol -debug
+
+end
+
+end
+
+foreach radar_name (rcwf)
+
+echo Working on radar $radar_name
+
+cd $DATA_DIR/$project/raw/radar/$radar_name
+
+foreach dir (2022*)
+
+gunzip $dir/*gz
+
+RadxConvert -params ~/projDir/ingest/params/RadxConvert.nexrad -f $dir/*RCWF* -debug
+
+end
+
+end
+
