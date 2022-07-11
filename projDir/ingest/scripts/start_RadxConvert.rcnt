@@ -1,0 +1,13 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+
+setenv radar_name rcnt
+setenv RADAR_NAME RCNT
+
+running "RadxConvert -instance $radar_name"
+
+if ($status == 1) then
+    RadxConvert -instance $radar_name -params RadxConvert.gematronik -debug |& \
+        LogFilter -d $ERRORS_LOG_DIR -p RadxConvert -i $radar_name >& /dev/null &
+endif
