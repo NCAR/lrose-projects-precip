@@ -22,6 +22,7 @@
 ######################################################################
 # rsync data from maui at CSU to cirrus at NCAR
 #
+*/15 * * * * csh -c "run_rsync_cwb_radars_from_maui.precip"  1> /dev/null 2> /dev/null
 */15 * * * * csh -c "run_rsync_sat_from_maui.precip"  1> /dev/null 2> /dev/null
 */15 * * * * csh -c "start_RsyncWrfFromMaui.precip"  1> /dev/null 2> /dev/null
 ######################################################################
@@ -29,6 +30,8 @@
 #
 */15 * * * * csh -c "start_RsyncSpol2UW.cfradial.sur"  1> /dev/null 2> /dev/null
 */15 * * * * csh -c "start_RsyncSpol2UW.cfradial.rhi"  1> /dev/null 2> /dev/null
+*/15 * * * * csh -c "start_RsyncSpol2UW.rate.sur"      1> /dev/null 2> /dev/null
+*/15 * * * * csh -c "start_RsyncSpol2UW.rate.rhi"      1> /dev/null 2> /dev/null
 ######################################################################
 # rsync the data to the ftp download area
 #
