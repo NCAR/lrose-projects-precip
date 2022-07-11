@@ -1,0 +1,30 @@
+#! /bin/csh
+#
+
+cd /export/cirrus3/rsfdata/projects
+
+rsync -av precip --exclude time_series rsfdata@rain:/export/rain2/rsfdata/projects
+
+cd /export/cirrus1/rsfdata/projects
+
+foreach project ( \
+    bomb_snowstorm \
+    chill \
+    cp2_queensland \
+    dynamo \
+    firestone \
+    front \
+    ihop \
+    improve \
+    improveII \
+    name \
+    pecan \
+    relampago \
+    rico \
+    timrex \
+    trmm_climo )
+  echo "rsyncing project $project"
+  rsync -av $project rsfdata@snow:/export/snow1/rsfdata/projects
+end
+
+

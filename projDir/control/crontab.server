@@ -32,6 +32,9 @@
 */15 * * * * csh -c "start_RsyncSpol2UW.cfradial.rhi"  1> /dev/null 2> /dev/null
 */15 * * * * csh -c "start_RsyncSpol2UW.rate.sur"      1> /dev/null 2> /dev/null
 */15 * * * * csh -c "start_RsyncSpol2UW.rate.rhi"      1> /dev/null 2> /dev/null
+######################  SYNC DATA RAIDS ######################################
+#
+#20 */1 * * * csh -c run_rsync_cirrus_to_secondary 1> /dev/null 2> /dev/null
 ######################################################################
 # rsync the data to the ftp download area
 #
@@ -40,7 +43,3 @@
 # backup the data to USB drive
 #
 #*/5 * * * * csh -c "run_rsync_to_usb_drive.relampago" 1> /dev/null 2> /dev/null
-######################################################################
-# retrieve the RMA1 data via ftp
-#
-#*/5 * * * * csh -c "run_GetRMARadarsByFtp" 1> /dev/null 2> /dev/null

@@ -76,7 +76,8 @@ RadxConvert        rcmd           start_RadxConvert.rcmd   snuff_inst
 RadxConvert        rcmk           start_RadxConvert.rcmk   snuff_inst
 RadxConvert        rcnt           start_RadxConvert.rcnt   snuff_inst
 RadxConvert        rcsl           start_RadxConvert.rcsl   snuff_inst
-RadxConvert        rcwf           start_RadxConvert.rcwf   snuff_inst
+InputWatcher       radar_rcwf     start_inst(ingest)       snuff_inst
+RadxConvert        rcwf           start_inst(ingest)       snuff_inst
 ######################################################################
 # ECCO
 Ecco               mrms_taiwan         start_inst(alg)     snuff_inst

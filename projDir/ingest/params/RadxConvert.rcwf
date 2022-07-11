@@ -37,7 +37,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "$(radar_name)";
+instance = "rcwf";
 
 //======================================================================
 //
@@ -52,7 +52,7 @@ instance = "$(radar_name)";
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/raw/radar/$(radar_name)";
+input_dir = "$(DATA_DIR)/$(project)/raw/radar/rcwf_uncompressed";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -1147,7 +1147,7 @@ compression_level = 4;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/cfradial/$(radar_name)/moments";
+output_dir = "$(DATA_DIR)/$(project)/cfradial/rcwf/moments";
 
 ///////////// output_filename_mode ////////////////////
 //

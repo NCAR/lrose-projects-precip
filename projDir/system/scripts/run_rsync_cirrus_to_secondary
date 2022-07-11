@@ -1,0 +1,8 @@
+#! /bin/csh
+
+cd $PROJ_DIR/system/scripts
+
+./rsync_cirrus_to_secondary |& \
+	LogFilter -d $ERRORS_LOG_DIR -p rsync_cirrus_to_secondary -i daily >& /dev/null &
+endif
+
