@@ -1,0 +1,13 @@
+#! /bin/csh
+
+cd $PROJ_DIR/export/scripts
+
+running "RsyncSpol2UW.py --subDir rhi"
+if ($status == 1) then
+  RsyncSpol2UW.py \
+    --sourceDir /scr/cirrus3/rsfdata/projects/precip/cfradial/rate/spoldrx \
+    --uwDataDir /home/disk/monsoon/precip/cfradial/spol_ncar/cfradial/rate \
+    --subDir rhi --realtime |& \
+    LogFilter -d $ERRORS_LOG_DIR -p RsyncSpol2UW -i rhi &
+endif
+
