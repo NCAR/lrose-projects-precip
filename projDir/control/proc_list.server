@@ -64,8 +64,19 @@ Mdv2SoundingSpdb    precip             start_inst(ingest) snuff_inst
 #
 ######################################################################
 # CWB radar
-InputWatcher       mosaic_3d           start_inst(ingest)  snuff_inst
-CwbRadar2Mdv       mosaic_3d           start_inst(ingest)  snuff_inst
+InputWatcher       mosaic_3d          start_inst(ingest)   snuff_inst
+CwbRadar2Mdv       mosaic_3d          start_inst(ingest)   snuff_inst
+RadxConvert        rccg           start_RadxConvert.rccg   snuff_inst
+RadxConvert        rcck           start_RadxConvert.rcck   snuff_inst
+RadxConvert        rcgi           start_RadxConvert.rcgi   snuff_inst
+RadxConvert        rchl           start_RadxConvert.rchl   snuff_inst
+RadxConvert        rckt           start_RadxConvert.rckt   snuff_inst
+RadxConvert        rcly           start_RadxConvert.rcly   snuff_inst
+RadxConvert        rcmd           start_RadxConvert.rcmd   snuff_inst
+RadxConvert        rcmk           start_RadxConvert.rcmk   snuff_inst
+RadxConvert        rcnt           start_RadxConvert.rcnt   snuff_inst
+RadxConvert        rcsl           start_RadxConvert.rcsl   snuff_inst
+RadxConvert        rcwf           start_RadxConvert.rcwf   snuff_inst
 ######################################################################
 # ECCO
 Ecco               mrms_taiwan         start_inst(alg)     snuff_inst
