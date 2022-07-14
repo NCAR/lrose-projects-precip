@@ -1147,7 +1147,7 @@ compression_level = 4;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/cfradial/rcwf/moments";
+output_dir = "$(DATA_DIR)/$(project)/cfradial/moments/rcwf";
 
 ///////////// output_filename_mode ////////////////////
 //

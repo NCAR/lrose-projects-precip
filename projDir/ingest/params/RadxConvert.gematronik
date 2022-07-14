@@ -1183,7 +1183,7 @@ compression_level = 4;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/cfradial/$(radar_name)/moments";
+output_dir = "$(DATA_DIR)/$(project)/cfradial/moments/$(radar_name)";
 
 ///////////// output_filename_mode ////////////////////
 //

@@ -4,33 +4,37 @@
 
 cd $PROJ_DIR/ingest/params
 
-foreach radar_name (rccg rcck rcgi rchl rckt rcly rcmd rcmk rcnt rcsl)
+foreach radar (rccg rcck rcgi rchl rckt rcly rcmd rcmk rcnt rcsl)
+#foreach radar_name (rcck)
 
-echo Working on radar $radar_name
+echo Working on radar $radar
 
-cd $DATA_DIR/$project/raw/radar/$radar_name
+cd $DATA_DIR/$project/raw/radar/$radar
 
-foreach dir (2022*)
-
-RadxConvert -params ~/projDir/ingest/params/RadxConvert.gematronik -f $dir/*dBZ.vol -debug
-
-end
-
-end
-
-foreach radar_name (rcwf)
-
-echo Working on radar $radar_name
-
-cd $DATA_DIR/$project/raw/radar/$radar_name
+setenv radar_name $radar
 
 foreach dir (2022*)
 
-gunzip $dir/*gz
+#RadxConvert -params ~/projDir/ingest/params/RadxConvert.gematronik -start "2022 05 25 00 00 00" -end "2022 07 15 00 00 00" -debug
+  RadxConvert -params ~/projDir/ingest/params/RadxConvert.gematronik -f $dir/*.vol -debug
 
-RadxConvert -params ~/projDir/ingest/params/RadxConvert.nexrad -f $dir/*RCWF* -debug
+end
 
 end
 
-end
+#foreach radar_name (rcwf)
+
+#echo Working on radar $radar_name
+
+#cd $DATA_DIR/$project/raw/radar/$radar_name
+
+#foreach dir (2022*)
+
+#gunzip $dir/*gz
+
+#RadxConvert -params ~/projDir/ingest/params/RadxConvert.nexrad -f $dir/*RCWF* -debug
+
+#end
+
+#end
 

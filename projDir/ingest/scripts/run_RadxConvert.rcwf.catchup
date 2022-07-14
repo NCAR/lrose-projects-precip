@@ -1,0 +1,14 @@
+#! /bin/csh
+
+setenv radar_name rcwf
+
+cd $DATA_DIR/$project/raw/radar/rcwf_uncompressed
+
+foreach dir (2022*)
+
+
+    RadxConvert -params ~/projDir/ingest/params/RadxConvert.rcwf -f $dir/*RCWF* -debug
+
+end
+
+
