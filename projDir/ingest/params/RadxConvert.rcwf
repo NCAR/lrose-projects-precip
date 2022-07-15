@@ -52,7 +52,7 @@ instance = "rcwf";
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/raw/radar/rcwf_uncompressed";
+input_dir = "$(DATA_DIR)/$(project)/raw/radar/rcwf_uncomp";
 
 ///////////// mode ////////////////////////////////////
 //
