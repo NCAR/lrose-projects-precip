@@ -1,0 +1,16 @@
+#! /bin/csh
+
+# rsync the WRF data from Maui
+
+set sourceHost=mdixon@maui.atmos.colostate.edu
+set sourceDir=/bell-scratch2/precip/DATA/raw/radar/SEAPOL
+set targetDir=/scr/cirrus3/rsfdata/projects/precip/raw/SEAPOL
+
+mkdir -p $targetDir
+cd $targetDir
+
+rsync --include SEA -av ${sourceHost}:${sourceDir}/2022\* .
+
+
+
+
