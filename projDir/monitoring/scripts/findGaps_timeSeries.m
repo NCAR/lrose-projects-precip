@@ -17,10 +17,16 @@ saveDataRate=saveBytes(1:end-1)./saveTimeDiff;
 if ~isempty(saveTimes)
     goodTimes=zeros(size(saveTimeDiff));
     goodTimes(saveTimeDiff<120)=1;
+    if goodTimes(1)==0 & goodTimes(2)==1
+        goodTimes(1)=1;
+    end
     diffGoodTimes=diff(goodTimes);
 
     startGoodInds=find(diffGoodTimes==1)+1;
     endGoodInds=find(diffGoodTimes==-1)+1;
+
+%     if length(endGoodInds)<length(startGoodInds) & endGoodInds(end)<startGoodInds(end)
+%         endGoodInds=cat(1,endGoodInds,length())
 
     startGoodTimes=saveTimes(startGoodInds);
     startGoodTimes=cat(1,saveTimes(1),startGoodTimes);
