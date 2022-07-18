@@ -1,0 +1,13 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+
+setenv radar_name rcly
+setenv RADAR_NAME RCLY
+
+running "RadxRate -instance $radar_name"
+
+if ($status == 1) then
+    RadxRate -instance $radar_name -params RadxRate.cwb -debug |& \
+        LogFilter -d $ERRORS_LOG_DIR -p RadxRate -i $radar_name >& /dev/null &
+endif
