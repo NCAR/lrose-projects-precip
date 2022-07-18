@@ -83,8 +83,14 @@ RadxConvert        rcwf           start_inst(ingest)       snuff_inst
 Ecco               mrms_taiwan         start_inst(alg)     snuff_inst
 ######################################################################
 # PID, Precip rate
-RadxRate           spoldrx.sur         start_inst(alg)     snuff_inst
-RadxRate           spoldrx.rhi         start_inst(alg)     snuff_inst
+RadxRate           spoldrx.sur     start_inst(alg)       snuff_inst
+RadxRate           spoldrx.rhi     start_inst(alg)       snuff_inst
+RadxRate           rcck            start_RadxRate.rcck   snuff_inst
+RadxRate           rcgi            start_RadxRate.rcgi   snuff_inst
+RadxRate           rcly            start_RadxRate.rcly   snuff_inst
+RadxRate           rcmd            start_RadxRate.rcmd   snuff_inst
+RadxRate           rcmk            start_RadxRate.rcmk   snuff_inst
+RadxRate           rcwf            start_RadxRate.rcwf   snuff_inst
 ######################################################################
 # CSU radar
 #InputWatcher      csu_chivo     start_inst(ingest)    snuff_inst
