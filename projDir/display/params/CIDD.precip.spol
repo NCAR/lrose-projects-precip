@@ -282,15 +282,6 @@ RCLY_RHOHV    RCLY_RHOHV    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/mome
 RCLY_PHIDP    RCLY_PHIDP    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcly?use_http=true&PHIDP  phidp.colors deg    -5 80 5 radial 1 0
 RCLY_KDP      RCLY_KDP      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcly?use_http=true&KDP     kdp.colors   deg/km  -5 80 5 radial 1 0
 
-RCSL_DBZ      RCSL_DBZ      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&DBZ    dbz.colors   dBZ    -5 80 5 radial 1 0
-RCSL_DBZ_MAX  RCSL_DBZ_MAX  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&DBZ   dbz.colors   dBZ    -5 80 5 comp 1 0
-RCSL_VEL      RCSL_VEL      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&VEL    vel.colors   m/s    -5 80 5 radial 1 0
-RCSL_WIDTH    RCSL_WIDTH    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&WIDTH  width.colors m/s    -5 80 5 radial 1 0
-RCSL_ZDR      RCSL_ZDR      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&ZDR    zdr.colors   dB     -5 80 5 radial 1 0
-RCSL_RHOHV    RCSL_RHOHV    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&RHOHV  rhohv.colors -      -5 80 5 radial 1 0
-RCSL_PHIDP    RCSL_PHIDP    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&PHIDP  phidp.colors deg    -5 80 5 radial 1 0
-RCSL_KDP      RCSL_KDP      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&KDP     kdp.colors   deg/km  -5 80 5 radial 1 0
-
 RCGI_DBZ      RCGI_DBZ      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcgi?use_http=true&DBZ    dbz.colors   dBZ    -5 80 5 radial 1 0
 RCGI_DBZ_MAX  RCGI_DBZ_MAX  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcgi?use_http=true&DBZ   dbz.colors   dBZ    -5 80 5 comp 1 0
 RCGI_VEL      RCGI_VEL      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcgi?use_http=true&VEL    vel.colors   m/s    -5 80 5 radial 1 0
@@ -309,6 +300,15 @@ RCMK_RHOHV    RCMK_RHOHV    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/mome
 RCMK_PHIDP    RCMK_PHIDP    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcmk?use_http=true&PHIDP  phidp.colors deg    -5 80 5 radial 1 0
 RCMK_KDP      RCMK_KDP      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcmk?use_http=true&KDP     kdp.colors   deg/km  -5 80 5 radial 1 0
 
+RCCK_DBZ      RCCK_DBZ      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&DBZ    dbz.colors   dBZ    -5 80 5 radial 1 0
+RCCK_DBZ_MAX  RCCK_DBZ_MAX  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&DBZ   dbz.colors   dBZ    -5 80 5 comp 1 0
+RCCK_VEL      RCCK_VEL      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&VEL    vel.colors   m/s    -5 80 5 radial 1 0
+RCCK_WIDTH    RCCK_WIDTH    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&WIDTH  width.colors m/s    -5 80 5 radial 1 0
+RCCK_ZDR      RCCK_ZDR      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&ZDR    zdr.colors   dB     -5 80 5 radial 1 0
+RCCK_RHOHV    RCCK_RHOHV    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&RHOHV  rhohv.colors -      -5 80 5 radial 1 0
+RCCK_PHIDP    RCCK_PHIDP    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&PHIDP  phidp.colors deg    -5 80 5 radial 1 0
+RCCK_KDP      RCCK_KDP      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&KDP     kdp.colors   deg/km  -5 80 5 radial 1 0
+
 RCNT_DBZ      RCNT_DBZ      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcnt?use_http=true&DBZ    dbz.colors   dBZ    -5 80 5 radial 1 0
 RCNT_DBZ_MAX  RCNT_DBZ_MAX  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcnt?use_http=true&DBZ   dbz.colors   dBZ    -5 80 5 comp 1 0
 RCNT_VEL      RCNT_VEL      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcnt?use_http=true&VEL    vel.colors   m/s    -5 80 5 radial 1 0
@@ -317,6 +317,15 @@ RCNT_ZDR      RCNT_ZDR      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/mome
 RCNT_RHOHV    RCNT_RHOHV    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcnt?use_http=true&RHOHV  rhohv.colors -      -5 80 5 radial 1 0
 RCNT_PHIDP    RCNT_PHIDP    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcnt?use_http=true&PHIDP  phidp.colors deg    -5 80 5 radial 1 0
 RCNT_KDP      RCNT_KDP      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcnt?use_http=true&KDP     kdp.colors   deg/km  -5 80 5 radial 1 0
+
+RCSL_DBZ      RCSL_DBZ      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&DBZ    dbz.colors   dBZ    -5 80 5 radial 1 0
+RCSL_DBZ_MAX  RCSL_DBZ_MAX  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&DBZ   dbz.colors   dBZ    -5 80 5 comp 1 0
+RCSL_VEL      RCSL_VEL      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&VEL    vel.colors   m/s    -5 80 5 radial 1 0
+RCSL_WIDTH    RCSL_WIDTH    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&WIDTH  width.colors m/s    -5 80 5 radial 1 0
+RCSL_ZDR      RCSL_ZDR      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&ZDR    zdr.colors   dB     -5 80 5 radial 1 0
+RCSL_RHOHV    RCSL_RHOHV    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&RHOHV  rhohv.colors -      -5 80 5 radial 1 0
+RCSL_PHIDP    RCSL_PHIDP    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&PHIDP  phidp.colors deg    -5 80 5 radial 1 0
+RCSL_KDP      RCSL_KDP      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcsl?use_http=true&KDP     kdp.colors   deg/km  -5 80 5 radial 1 0
 
 RCHL_DBZ      RCHL_DBZ      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rchl?use_http=true&DBZ    dbz.colors   dBZ    -5 80 5 radial 1 0
 RCHL_DBZ_MAX  RCHL_DBZ_MAX  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rchl?use_http=true&DBZ   dbz.colors   dBZ    -5 80 5 comp 1 0
@@ -328,15 +337,38 @@ RCCG_DBZ_MAX  RCCG_DBZ_MAX  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/mome
 RCCG_VEL      RCCG_VEL      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rccg?use_http=true&VEL    vel.colors   m/s    -5 80 5 radial 1 0
 RCCG_WIDTH    RCCG_WIDTH    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rccg?use_http=true&WIDTH  width.colors m/s    -5 80 5 radial 1 0
 
-RCCK_DBZ      RCCK_DBZ      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&DBZ    dbz.colors   dBZ    -5 80 5 radial 1 0
-RCCK_DBZ_MAX  RCCK_DBZ_MAX  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&DBZ   dbz.colors   dBZ    -5 80 5 comp 1 0
-RCCK_VEL      RCCK_VEL      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&VEL    vel.colors   m/s    -5 80 5 radial 1 0
-RCCK_WIDTH    RCCK_WIDTH    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&WIDTH  width.colors m/s    -5 80 5 radial 1 0
+#RCCK_DBZ      RCCK_DBZ      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&DBZ    dbz.colors   dBZ    -5 80 5 radial 1 0
+#RCCK_DBZ_MAX  RCCK_DBZ_MAX  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&DBZ   dbz.colors   dBZ    -5 80 5 comp 1 0
+#RCCK_VEL      RCCK_VEL      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&VEL    vel.colors   m/s    -5 80 5 radial 1 0
+#RCCK_WIDTH    RCCK_WIDTH    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rcck?use_http=true&WIDTH  width.colors m/s    -5 80 5 radial 1 0
 
 RCKT_DBZ      RCKT_DBZ      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rckt?use_http=true&DBZ    dbz.colors   dBZ    -5 80 5 radial 1 0
 RCKT_DBZ_MAX  RCKT_DBZ_MAX  mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rckt?use_http=true&DBZ   dbz.colors   dBZ    -5 80 5 comp 1 0
 RCKT_VEL      RCKT_VEL      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rckt?use_http=true&VEL    vel.colors   m/s    -5 80 5 radial 1 0
 RCKT_WIDTH    RCKT_WIDTH    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/rckt?use_http=true&WIDTH  width.colors m/s    -5 80 5 radial 1 0
+
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+
+RCWF_PID      RCWF_PID      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/rate/rcwf?use_http=true&PID    pid.colors      dBZ    -5 80 5 radial 1 0
+RCWF_RATE     RCWF_RATE     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/rate/rcwf?use_http=true&RATE_HYBRID   precip.colors   mm/hr  -5 80 5 comp 1 0
+RCGI_PID      RCGI_PID      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/rate/rcgi?use_http=true&PID    pid.colors      dBZ    -5 80 5 radial 1 0
+RCGI_RATE     RCGI_RATE     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/rate/rcgi?use_http=true&RATE_HYBRID   precip.colors   mm/hr  -5 80 5 comp 1 0
+RCLY_PID      RCLY_PID      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/rate/rcly?use_http=true&PID    pid.colors      dBZ    -5 80 5 radial 1 0
+RCLY_RATE     RCLY_RATE     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/rate/rcly?use_http=true&RATE_HYBRID   precip.colors   mm/hr  -5 80 5 comp 1 0
+RCMD_PID      RCMD_PID      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/rate/rcmd?use_http=true&PID    pid.colors      dBZ    -5 80 5 radial 1 0
+RCMD_RATE     RCMD_RATE     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/rate/rcmd?use_http=true&RATE_HYBRID   precip.colors   mm/hr  -5 80 5 comp 1 0
+
+RCMK_PID      RCMK_PID      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/rate/rcmk?use_http=true&PID    pid.colors      dBZ    -5 80 5 radial 1 0
+RCMK_RATE     RCMK_RATE     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/rate/rcmk?use_http=true&RATE_HYBRID   precip.colors   mm/hr  -5 80 5 comp 1 0
+RCCK_PID      RCCK_PID      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/rate/rcck?use_http=true&PID    pid.colors      dBZ    -5 80 5 radial 1 0
+RCCK_RATE     RCCK_RATE     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/rate/rcck?use_http=true&RATE_HYBRID   precip.colors   mm/hr  -5 80 5 comp 1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
 </GRIDS>
 
