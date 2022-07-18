@@ -1,9 +1,9 @@
 #! /bin/csh
 
-cd $PROJ_DIR/ingest/params
+cd $PROJ_DIR/alg/params
 
 setenv radar_name rcwf
-!setenv RADAR_NAME RCWF
+setenv RADAR_NAME RCWF
 
 running "RadxRate -instance $radar_name"
 

@@ -1,6 +1,6 @@
 #! /bin/csh
 
-cd $PROJ_DIR/ingest/params
+cd $PROJ_DIR/alg/params
 
 setenv radar_name rcly
 setenv RADAR_NAME RCLY
