@@ -1,0 +1,34 @@
+#! /bin/csh
+
+cd $PROJ_DIR/alg/params
+
+setenv radar_name rcck
+setenv RADAR_NAME RCCK
+
+RadxRate -instance ${radar_name} -params RadxRate.cwb -debug -start "2022 05 25 00 00 00" -end "2022 07 19 00 00 00" >& /tmp/RadxRate.${radar_name}.log &
+
+setenv radar_name rcgi
+setenv RADAR_NAME RCGI
+
+RadxRate -instance ${radar_name} -params RadxRate.cwb -debug -start "2022 05 25 00 00 00" -end "2022 07 19 00 00 00" >& /tmp/RadxRate.${radar_name}.log &
+
+setenv radar_name rcly
+setenv RADAR_NAME RCLY
+
+RadxRate -instance ${radar_name} -params RadxRate.cwb -debug -start "2022 05 25 00 00 00" -end "2022 07 19 00 00 00" >& /tmp/RadxRate.${radar_name}.log &
+
+setenv radar_name rcmd
+setenv RADAR_NAME RCMD
+
+RadxRate -instance ${radar_name} -params RadxRate.cwb -debug -start "2022 05 25 00 00 00" -end "2022 07 19 00 00 00" >& /tmp/RadxRate.${radar_name}.log &
+
+setenv radar_name rcmk
+setenv RADAR_NAME RCMK
+
+RadxRate -instance ${radar_name} -params RadxRate.cwb -debug -start "2022 05 25 00 00 00" -end "2022 07 19 00 00 00" >& /tmp/RadxRate.${radar_name}.log &
+
+setenv radar_name rcwf
+setenv RADAR_NAME RCWF
+
+RadxRate -instance ${radar_name} -params RadxRate.cwb -debug -start "2022 05 25 00 00 00" -end "2022 07 19 00 00 00" >& /tmp/RadxRate.${radar_name}.log &
+
