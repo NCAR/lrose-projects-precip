@@ -103,7 +103,7 @@ mode = ARCHIVE;
 //
 
 input_dir = "/scr/cirrus3/rsfdata/projects/precip/spolField/cfradial/moments/merged/rhi";
-  
+
 ///////////// input_file_search_ext ///////////////////
 //
 // File name extension.
@@ -268,8 +268,33 @@ LDR_field_name = "LDRH_F";
 //
 // COMPUTING KDP.
 //
+// KDP will be computed if KDP_available is FALSE.
+//
 //======================================================================
  
+///////////// KDP_available ///////////////////////////
+//
+// Is KDP data available?.
+//
+// If KDP is available, then it is not computed. Instead KDP_field_name 
+//   will be read in.
+//
+//
+// Type: boolean
+//
+
+KDP_available = FALSE;
+
+///////////// KDP_field_name //////////////////////////
+//
+// Field name for KDP.
+//
+//
+// Type: string
+//
+
+KDP_field_name = "KDP";
+
 ///////////// KDP_params_file_path ////////////////////
 //
 // Path for parameters for computing KDP.
@@ -301,7 +326,6 @@ KDP_params_file_path = "$(PROJ_DIR)/alg/params/kdp_params.spol";
 //
 
 PID_params_file_path = "$(PROJ_DIR)/alg/params/pid_params.nexrad";
-// PID_params_file_path = "$(PROJ_DIR)/alg/params/pid_params.spol";
 
 ///////////// PID_use_KDP_self_consistency ////////////
 //
@@ -591,12 +615,6 @@ copy_fields = {
     output_name = "ZDR_F",
     censor_non_weather = FALSE
   }
-  // ,
-  // {
-  //   input_name = "LDRH_F",
-  //   output_name = "LDRH_F",
-  //   censor_non_weather = FALSE
-  // }
   ,
   {
     input_name = "PHIDP_F",
