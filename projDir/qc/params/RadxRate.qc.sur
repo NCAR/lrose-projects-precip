@@ -283,7 +283,7 @@ LDR_field_name = "LDRH_F";
 // Type: boolean
 //
 
-KDP_available = FALSE;
+KDP_available = TRUE;
 
 ///////////// KDP_field_name //////////////////////////
 //
@@ -293,7 +293,7 @@ KDP_available = FALSE;
 // Type: string
 //
 
-KDP_field_name = "KDP";
+KDP_field_name = "KDP_F";
 
 ///////////// KDP_params_file_path ////////////////////
 //
@@ -506,24 +506,6 @@ output_fields = {
     units = "C",
     do_write = FALSE
   }
-  ,
-  {
-    id = KDP,
-    name = "KDP",
-    long_name = "specific_differential_phase",
-    standard_name = "specific_differential_phase_hv",
-    units = "deg/km",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = KDP_SC,
-    name = "KDP_SC",
-    long_name = "kdp_conditioned_using_ZZDR_self_consistency",
-    standard_name = "specific_differential_phase_hv",
-    units = "deg/km",
-    do_write = FALSE
-  }
 };
 
 ///////////// output_encoding /////////////////////////
@@ -619,6 +601,12 @@ copy_fields = {
   {
     input_name = "PHIDP_F",
     output_name = "PHIDP_F",
+    censor_non_weather = FALSE
+  }
+  ,
+  {
+    input_name = "KDP_F",
+    output_name = "KDP_F",
     censor_non_weather = FALSE
   }
   ,
