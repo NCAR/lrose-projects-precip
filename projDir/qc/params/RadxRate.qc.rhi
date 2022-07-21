@@ -155,6 +155,36 @@ end_time = "2019 12 01 00 00 00";
 
 //======================================================================
 //
+// SET MAX RANGE - OPTIONAL.
+//
+// If set, all rays will be truncated at this range.
+//
+//======================================================================
+ 
+///////////// set_max_range ///////////////////////////
+//
+// Option to set the max range for any ray.
+//
+//
+// Type: boolean
+//
+
+set_max_range = TRUE;
+
+///////////// max_range_km ////////////////////////////
+//
+// Specified maximim range - km.
+//
+// Gates beyond this range are removed.
+//
+//
+// Type: double
+//
+
+max_range_km = 137.5;
+
+//======================================================================
+//
 // INPUT FIELD INFORMATION.
 //
 // Names of fields in the input file. The following fields are required: 

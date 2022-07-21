@@ -35,4 +35,5 @@
 */15 * * * * csh -c "start_RsyncSpol2UW.rate.rhi"      1> /dev/null 2> /dev/null
 ###################### SYNC DATA RAIDS ######################################
 #
-#20 */1 * * * csh -c run_rsync_cirrus_to_secondary 1> /dev/null 2> /dev/null
+20 */1 * * * csh -c run_rsync_cirrus_to_secondary 1> /dev/null 2> /dev/null
+#*/10 * * * * csh -c run_rsync_cirrus_to_secondary 1> /dev/null 2> /dev/null
