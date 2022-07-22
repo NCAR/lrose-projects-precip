@@ -1,15 +1,17 @@
 /**********************************************************************
- * TDRP params for RadxRate
+ * TDRP params for RadxPid
  **********************************************************************/
 
 //======================================================================
 //
-// RadxRate reads moments from Radx-type files, computes precip rate 
-//   (and optionally PID and KDP) and writes out the results to CfRadial 
-//   files.
+// RadxPid reads moments from Radx-type files, computes PID (and 
+//   optionally KDP) and writes out the results to CfRadial files.
 //
-// A number of precipitation rate methods are available, based on Z, 
-//   ZZDR and KDP, and various hybrids.
+// The NCAR PID method is based on a fuzzy logic approach. This is 
+//   documented in the following reference: Cloud Microphysics Retrieval 
+//   Using S-Band Dual-Polarization Radar Measurements: J. Vivekanandan, 
+//   D. S. Zrnic, S. M. Ellis, R. Oye, A. V. Ryzhkov, and J. Straka. 
+//   Bulletin of the American Meteorological Society, 1999.
 //
 //======================================================================
  
@@ -90,7 +92,7 @@ n_compute_threads = 12;
 //     FILELIST
 //
 
-mode = ARCHIVE;
+mode = REALTIME;
 
 ///////////// input_dir ///////////////////////////////
 //
@@ -102,7 +104,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_dir = "/scr/cirrus3/rsfdata/projects/precip/spolField/cfradial/moments/merged/sur";
+input_dir = "$(DATA_DIR)/$(project)/cfradial/moments/spoldrx/sur";
 
 ///////////// input_file_search_ext ///////////////////
 //
@@ -268,8 +270,6 @@ LDR_field_name = "LDRH_F";
 //
 // COMPUTING KDP.
 //
-// KDP will be computed if KDP_available is FALSE.
-//
 //======================================================================
  
 ///////////// KDP_available ///////////////////////////
@@ -353,54 +353,7 @@ PID_use_KDP_self_consistency = TRUE;
 // Type: boolean
 //
 
-PID_use_attenuation_corrected_fields = FALSE;
-
-//======================================================================
-//
-// COMPUTING PRECIP RATE.
-//
-//======================================================================
- 
-///////////// RATE_params_file_path ///////////////////
-//
-// Path for parameters for computing PRECIP.
-//
-// If set to use-defaults, no parameter file will be read in, and the 
-//   default parameters will be used.
-//
-//
-// Type: string
-//
-
-RATE_params_file_path = "$(PROJ_DIR)/alg/params/rate_params.spol";
-
-///////////// RATE_use_KDP_self_consistency ///////////
-//
-// When computing PRECIP, using KDP conditioned for self-consistency.
-//
-// When KDP is computed, we compute both a standard result, and a 
-//   conditioned result based on the self-consistency method. If this 
-//   parameter is set to TRUE, the self-consistency result will be used 
-//   instead of the standard result.
-//
-//
-// Type: boolean
-//
-
-RATE_use_KDP_self_consistency = TRUE;
-
-///////////// RATE_use_attenuation_corrected_fields ///
-//
-// Option to use Z and ZDR fields that are corrected for attenuation.
-//
-// If TRUE, the attenuation-corrected Z and ZDR fields will be used for 
-//   computing PRECIP.
-//
-//
-// Type: boolean
-//
-
-RATE_use_attenuation_corrected_fields = FALSE;
+PID_use_attenuation_corrected_fields = TRUE;
 
 //======================================================================
 //
@@ -418,15 +371,6 @@ RATE_use_attenuation_corrected_fields = FALSE;
 //
 // The output_encoding apply to CfRadial output only. 
 //
-// 	RATE_ZH: Precip rate from ZH
-// 	RATE_ZH_SNOW: Precip rate from ZH in dry snow
-// 	RATE_Z_ZDR: Precip rate from Z and ZDR
-// 	RATE_KDP: Precip rate from KDP
-// 	RATE_KDP_ZDR: Precip rate from KDP and ZDR
-// 	RATE_HYBRID: Precip rate from NCAR hybrid
-// 	RATE_PID: Precip rate using PID to select the appropriate rate
-// 	RATE_HIDRO: Precip rate using CSU HIDRO hybrid
-// 	RATE_BRINGI: Precip rate using Bringi hybrid
 // 	PID: NCAR Particle ID
 // 	PID_INTEREST: final interest map for NCAR Particle ID values
 // 	TEMP_FOR_PID: temperature field for PID (C)
@@ -442,15 +386,6 @@ RATE_use_attenuation_corrected_fields = FALSE;
 //   typedef struct {
 //      output_field_id_t id;
 //        Options:
-//          RATE_ZH
-//          RATE_ZH_SNOW
-//          RATE_Z_ZDR
-//          RATE_KDP
-//          RATE_KDP_ZDR
-//          RATE_HYBRID
-//          RATE_PID
-//          RATE_HIDRO
-//          RATE_BRINGI
 //          PID
 //          PID_INTEREST
 //          TEMP_FOR_PID
@@ -472,24 +407,6 @@ RATE_use_attenuation_corrected_fields = FALSE;
 
 output_fields = {
   {
-    id = RATE_ZH,
-    name = "RATE_ZH",
-    long_name = "precip_rate_from_z",
-    standard_name = "precip_rate_from_z",
-    units = "mm/hr",
-    do_write = TRUE
-  }
-  ,
-  {
-    id = RATE_HYBRID,
-    name = "RATE_HYBRID",
-    long_name = "precip_rate_hybrid_of_zh_zzdr_kdp_and_kdpzdr",
-    standard_name = "precip_rate_hybrid_of_zh_zzdr_kdp_and_kdpzdr",
-    units = "mm/hr",
-    do_write = TRUE
-  }
-  ,
-  {
     id = PID,
     name = "PID",
     long_name = "particle_id",
@@ -504,6 +421,24 @@ output_fields = {
     long_name = "temperature_for_computing_pid",
     standard_name = "temperature",
     units = "C",
+    do_write = FALSE
+  }
+  ,
+  {
+    id = KDP,
+    name = "KDP",
+    long_name = "specific_differential_phase",
+    standard_name = "specific_differential_phase_hv",
+    units = "deg/km",
+    do_write = TRUE
+  }
+  ,
+  {
+    id = KDP_SC,
+    name = "KDP_SC",
+    long_name = "kdp_conditioned_using_ZZDR_self_consistency",
+    standard_name = "specific_differential_phase_hv",
+    units = "deg/km",
     do_write = FALSE
   }
 };
@@ -605,12 +540,6 @@ copy_fields = {
   }
   ,
   {
-    input_name = "KDP_F",
-    output_name = "KDP_F",
-    censor_non_weather = FALSE
-  }
-  ,
-  {
     input_name = "RHOHV_F",
     output_name = "RHOHV_F",
     censor_non_weather = FALSE
@@ -649,42 +578,6 @@ copy_fields = {
   {
     input_name = "CMD_FLAG",
     output_name = "CMD_FLAG",
-    censor_non_weather = FALSE
-  }
-  ,
-  {
-    input_name = "DBMHC",
-    output_name = "DBMHC",
-    censor_non_weather = FALSE
-  }
-  ,
-  {
-    input_name = "DBMHC_F",
-    output_name = "DBMHC_F",
-    censor_non_weather = FALSE
-  }
-  ,
-  {
-    input_name = "DBMVC",
-    output_name = "DBMVC",
-    censor_non_weather = FALSE
-  }
-  ,
-  {
-    input_name = "DBMVC_F",
-    output_name = "DBMVC_F",
-    censor_non_weather = FALSE
-  }
-  ,
-  {
-    input_name = "AIQ",
-    output_name = "AIQ",
-    censor_non_weather = FALSE
-  }
-  ,
-  {
-    input_name = "NIQ",
-    output_name = "NIQ",
     censor_non_weather = FALSE
   }
 };
@@ -736,7 +629,7 @@ PID_write_debug_fields = FALSE;
 // Type: string
 //
 
-output_dir = "/tmp/cfradial/moments/v0.1/sur";
+output_dir = "/tmp/cfradial/pid/spoldrx/sur";
 
 ///////////// output_filename_mode ////////////////////
 //
@@ -876,7 +769,7 @@ pseudo_earth_radius_ratio = 1.33333;
 // Type: string
 //
 
-instance = "spoldrxQC.sur";
+instance = "spoldrx.sur";
 
 ///////////// procmap_register_interval ///////////////
 //
