@@ -3,7 +3,7 @@
 
 cd /export/cirrus3/rsfdata/projects
 
-rsync -av precip --exclude time_series rsfdata@rain:/export/rain2/rsfdata/projects
+rsync -av precip --exclude time_series --exclude .tar rsfdata@rain:/export/rain2/rsfdata/projects
 
 cd /export/cirrus1/rsfdata/projects
 

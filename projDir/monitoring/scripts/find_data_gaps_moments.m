@@ -5,8 +5,8 @@ close all
 
 dataType='spoldrx';
 
-startDate=datetime(2022,5,31);
-endDate=datetime(2022,5,31); % This day is included
+startDate=datetime(2022,7,4);
+endDate=datetime(2022,7,14); % This day is included
 
 baseDir=['/scr/cirrus3/rsfdata/projects/precip/spolField/cfradial/moments/',dataType,'/'];
 
@@ -54,7 +54,7 @@ for ii=1:length(dayList)
 
     close all
     
-    f1=figure('DefaultAxesFontSize',12,'Position',[0 300 1500 1200],'renderer','painters','visible','on');
+    f1=figure('DefaultAxesFontSize',12,'Position',[0 300 1500 1200],'renderer','painters','visible','off');
 
     s1=subplot(4,1,1);
     hold on
@@ -65,7 +65,7 @@ for ii=1:length(dayList)
     scatter(secTimes,secPlot,'filled','black');
     scatter(noDataTime,noDataTimeNan,'+','red');
     ylim([-0.5,5.5]);
-    yticks=-0:5;
+    yticks(0:5);
     yticklabels({'missing','sur','rhi','sunscan','vert','sec'})
     xlim([thisDay,thisDay+hours(6)]);
     title(datestr(thisDay,'yyyy mm dd'));
@@ -81,7 +81,7 @@ for ii=1:length(dayList)
     scatter(secTimes,secPlot,'filled','black');
     scatter(noDataTime,noDataTimeNan,'+','red');
     ylim([-0.5,5.5]);
-    yticks=-0:5;
+    yticks(0:5);
     yticklabels({'missing','sur','rhi','sunscan','vert','sec'})
     xlim([thisDay+hours(6),thisDay+hours(12)]);
     grid on
@@ -96,7 +96,7 @@ for ii=1:length(dayList)
     scatter(secTimes,secPlot,'filled','black');
     scatter(noDataTime,noDataTimeNan,'+','red');
     ylim([-0.5,5.5]);
-    yticks=-0:5;
+    yticks(0:5);
     yticklabels({'missing','sur','rhi','sunscan','vert','sec'})
     xlim([thisDay+hours(12),thisDay+hours(18)]);
     grid on
@@ -111,13 +111,13 @@ for ii=1:length(dayList)
     scatter(secTimes,secPlot,'filled','black');
     scatter(noDataTime,noDataTimeNan,'+','red');
     ylim([-0.5,5.5]);
-    yticks=-0:5;
+    yticks(0:5);
     yticklabels({'missing','sur','rhi','sunscan','vert','sec'})
     xlim([thisDay+hours(18),thisDay+hours(24)]);
     grid on
     box on
 
     set(gcf,'PaperPositionMode','auto')
-    print(f1,[figdir,'dataGaps_timeSeries_',datestr(thisDay,'yyyymmdd'),'.png'],'-dpng','-r0');
+    print(f1,[figdir,'dataGaps_moments_',datestr(thisDay,'yyyymmdd'),'.png'],'-dpng','-r0');
 
 end

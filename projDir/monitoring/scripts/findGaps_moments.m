@@ -2,7 +2,6 @@ function [saveTimes,noDataTimeNan]=findGaps_moments(inType,baseDir,dateString,no
 
 saveFiles=dir([baseDir,inType,'/',dateString,'/*.nc']);
 saveTimes=[];
-saveDBZ=[];
 
 for jj=1:size(saveFiles,1)    
     inName=saveFiles(jj).name;
