@@ -14,7 +14,7 @@
 // Type: string
 //
 
-display_color = "yellow";
+display_color = "magenta";
 
 ///////////// line_width //////////////////////////////
 //
