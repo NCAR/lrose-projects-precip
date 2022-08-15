@@ -118,7 +118,9 @@ SPOL_ZDRM      SPOL_ZDRM      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/mo
 SPOL_LDRH_F  SPOL_LDRH_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&LDRH_F ldr.colors   dB  -5 80 5 radial 1 0
 SPOL_LDRH    SPOL_LDRH     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&LDRH   ldr.colors   dB  -5 80 5 radial 1 0
 SPOL_LDRV_F  SPOL_LDRV_F   mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&LDRV_F ldr.colors   dB  -5 80 5 radial 1 0
-SPOL_LDRV    SPOL_LDRV     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&LDRV   ldr.colors   dB  -5 80 5 radial 1 0
+#SPOL_LDRV    SPOL_LDRV     mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&LDRV   ldr.colors   dB  -5 80 5 radial 1 0
+
+SPOL_KDP_MAX    SPOL_KDP_MAX    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial,comp 1 0    
 
 SPOL_KDP_F    SPOL_KDP_F    mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
 SPOL_KDP      SPOL_KDP      mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/sur?use_http=true&KDP    kdp_sband.colors   deg/km -5 80 5 radial 1 0     
