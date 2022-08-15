@@ -1,0 +1,12 @@
+#! /bin/csh
+#
+
+
+cd /scr/cirrus3/rsfdata/projects/precip/spolField/cfradial/moments
+
+rsync -av v0.1 mdixon@maui.atmos.colostate.edu:/bell-scratch2/precip/DATA/qc/radar/level_1/SPOL/spolField/cfradial/moments >& /tmp/rsync_field_data_to_maui.log &
+
+
+
+
+
