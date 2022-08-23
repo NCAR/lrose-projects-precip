@@ -5,8 +5,8 @@ close all
 
 dataType='sband';
 
-startDate=datetime(2022,7,15);
-endDate=datetime(2022,7,26); % This day is included
+startDate=datetime(2022,8,8);
+endDate=datetime(2022,8,11); % This day is included
 
 baseDir=['/scr/cirrus3/rsfdata/projects/precip/spolField/cfradial/moments/',dataType,'/'];
 

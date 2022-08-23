@@ -3,10 +3,10 @@
 clear all
 close all
 
-dataType='sband';
+dataType='spoldrx';
 
-startDate=datetime(2022,7,10);
-endDate=datetime(2022,7,14); % This day is included
+startDate=datetime(2022,8,1);
+endDate=datetime(2022,8,11); % This day is included
 
 if strcmp(dataType,'spoldrx')
     baseDir='/scr/cirrus3/rsfdata/projects/precip/spolField/time_series/spoldrx/';
