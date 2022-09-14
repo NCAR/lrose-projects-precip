@@ -1,0 +1,13 @@
+# colorscale for cmd in spectra
+
+0.00	0.20	DarkSlateBlue
+0.20 	0.30 	NavyBlue
+0.30	0.40 	Blue
+0.40 	0.50	MediumBlue
+0.50	0.60	ForestGreen
+0.60	0.70 	Gold
+0.70	0.75	Coral
+0.75	0.80	Orange
+0.80	0.90    MediumVioletRed
+0.90	0.95	OrangeRed
+0.95	1.01	Red
