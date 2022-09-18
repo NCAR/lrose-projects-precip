@@ -81,7 +81,6 @@ register_with_procmap = FALSE;
 //     TS_FMQ_INPUT
 //
 
-// input_mode = RADX_MOMENTS_INPUT;
 input_mode = TS_FILE_INPUT;
 
 //======================================================================
@@ -440,7 +439,7 @@ start_height = 0.5;
  
 ///////////// cumulative_azimuth_moved_for_stats //////
 //
-// Cumulative delta az for stats (deg).
+// Cumulative delta az for computing stats (deg).
 //
 // We only compute stats after the antenna has scanned this number of 
 //   degrees.
@@ -449,7 +448,17 @@ start_height = 0.5;
 // Type: double
 //
 
-cumulative_azimuth_moved_for_stats = 1080;
+cumulative_azimuth_moved_for_stats = 900;
+
+///////////// cumulative_azimuth_moved_for_debug_print 
+//
+// Cumulative delta az for printing debug stats (deg).
+//
+//
+// Type: double
+//
+
+cumulative_azimuth_moved_for_debug_print = 360;
 
 ///////////// max_time_gap_for_stats //////////////////
 //
