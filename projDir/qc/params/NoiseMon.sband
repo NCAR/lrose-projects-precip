@@ -240,7 +240,7 @@ cal_xml_file_path = "./sband_cal.xml";
 //     DP_SIM_HV_SWITCHED_HV
 //
 
-xmit_rcv_mode = DP_ALT_HV_CO_CROSS;
+xmit_rcv_mode = DP_SIM_HV_FIXED_HV;
 
 //======================================================================
 //
@@ -376,7 +376,7 @@ input_fields = {
 // Type: int
 //
 
-stats_interval_secs = 300;
+stats_interval_secs = 360;
 
 ///////////// min_elevation_deg ///////////////////////
 //
