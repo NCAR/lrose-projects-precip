@@ -376,7 +376,7 @@ input_fields = {
 // Type: int
 //
 
-stats_interval_secs = 360;
+stats_interval_secs = 720;
 
 ///////////// min_elevation_deg ///////////////////////
 //
@@ -389,7 +389,7 @@ stats_interval_secs = 360;
 // Type: double
 //
 
-min_elevation_deg = 5;
+min_elevation_deg = 6;
 
 ///////////// min_height_km ///////////////////////////
 //
@@ -401,7 +401,7 @@ min_elevation_deg = 5;
 // Type: double
 //
 
-min_height_km = 25;
+min_height_km = 40;
 
 ///////////// min_range_km ////////////////////////////
 //
