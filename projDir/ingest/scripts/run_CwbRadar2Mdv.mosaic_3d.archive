@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd /scr/cirrus3/rsfdata/projects/precip/external/cwb_full
+
+foreach day (2022*)
+  gunzip ${day}/RADAR/MOSAIC3D/*.gz
+  CwbRadar2Mdv -params ${PROJ_DIR}/ingest/params/CwbRadar2Mdv.mosaic_3d.archive -debug -mode ARCHIVE \
+    -f ${day}/RADAR/MOSAIC3D/MREF*
+end
+
