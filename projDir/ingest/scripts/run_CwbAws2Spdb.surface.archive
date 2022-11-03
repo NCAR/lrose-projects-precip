@@ -1,0 +1,9 @@
+#! /bin/csh
+
+cd /scr/cirrus3/rsfdata/projects/precip/external/cwb_full
+
+foreach day (2022*)
+  CwbAws2Spdb -params ${PROJ_DIR}/ingest/params/CwbAws2Spdb.surface.archive -debug -mode ARCHIVE \
+    -f ${day}/SURFACE/STATION/*mdf
+end
+
