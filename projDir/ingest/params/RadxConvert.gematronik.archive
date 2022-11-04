@@ -37,7 +37,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "rcwf";
+instance = "$(radar_name)";
 
 //======================================================================
 //
@@ -52,7 +52,7 @@ instance = "rcwf";
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/raw/radar/rcwf_uncomp";
+input_dir = "$(DATA_DIR)/$(project)/raw/radar/$(radar_name)";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -81,7 +81,7 @@ mode = ARCHIVE;
 // Type: int
 //
 
-max_realtime_data_age_secs = 300;
+max_realtime_data_age_secs = 3600;
 
 ///////////// latest_data_info_avail //////////////////
 //
@@ -146,7 +146,7 @@ file_quiescence = 60;
 // Type: string
 //
 
-search_ext = "";
+search_ext = "vol";
 
 ///////////// gematronik_realtime_mode ////////////////
 //
@@ -160,7 +160,7 @@ search_ext = "";
 // Type: boolean
 //
 
-gematronik_realtime_mode = FALSE;
+gematronik_realtime_mode = TRUE;
 
 ///////////// gematronik_realtime_wait_secs ///////////
 //
@@ -170,7 +170,7 @@ gematronik_realtime_mode = FALSE;
 // Type: int
 //
 
-gematronik_realtime_wait_secs = 5;
+gematronik_realtime_wait_secs = 15;
 
 //======================================================================
 //
@@ -302,7 +302,7 @@ aggregate_all_files_on_read = FALSE;
 // Type: boolean
 //
 
-ignore_idle_scan_mode_on_read = TRUE;
+ignore_idle_scan_mode_on_read = FALSE;
 
 ///////////// remove_rays_with_all_data_missing ///////
 //
@@ -708,7 +708,7 @@ set_output_fields = TRUE;
 
 output_fields = {
   {
-    input_field_name = "REF",
+    input_field_name = "dBZ",
     output_field_name = "DBZ",
     long_name = "radar_reflectivity",
     standard_name = "equivalent_reflectivity_factor",
@@ -720,7 +720,7 @@ output_fields = {
   }
   ,
   {
-    input_field_name = "VEL",
+    input_field_name = "V",
     output_field_name = "VEL",
     long_name = "radial_velocity",
     standard_name = "radial_velocity_of_scatterers_away_from_instrument",
@@ -732,7 +732,7 @@ output_fields = {
   }
   ,
   {
-    input_field_name = "SW",
+    input_field_name = "W",
     output_field_name = "WIDTH",
     long_name = "spectrum_width",
     standard_name = "doppler_spectrum_width",
@@ -756,7 +756,7 @@ output_fields = {
   }
   ,
   {
-    input_field_name = "PHI",
+    input_field_name = "PhiDP",
     output_field_name = "PHIDP",
     long_name = "differential_phase",
     standard_name = "differential_phase_hv",
@@ -768,10 +768,46 @@ output_fields = {
   }
   ,
   {
-    input_field_name = "RHO",
+    input_field_name = "RhoHV",
     output_field_name = "RHOHV",
     long_name = "cross_correlation",
     standard_name = "cross_correlation_ratio_hv",
+    output_units = "",
+    encoding = OUTPUT_ENCODING_INT16,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "SNR",
+    output_field_name = "SNR",
+    long_name = "signal_to_noise_ratio",
+    standard_name = "signal_to_noise_ratio",
+    output_units = "dB",
+    encoding = OUTPUT_ENCODING_INT16,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "KDP",
+    output_field_name = "KDP",
+    long_name = "specific_differential_phase",
+    standard_name = "specific_differential_phase",
+    output_units = "deg/km",
+    encoding = OUTPUT_ENCODING_INT16,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "SQI",
+    output_field_name = "NCP",
+    long_name = "normalized_coherent_power",
+    standard_name = "normalized_coherent_power",
     output_units = "",
     encoding = OUTPUT_ENCODING_INT16,
     output_scaling = SCALING_DYNAMIC,
@@ -1147,8 +1183,7 @@ compression_level = 4;
 // Type: string
 //
 
-// output_dir = "$(DATA_DIR)/$(project)/cfradial/moments/rcwf";
-output_dir = "/scr/cirrus3/rsfdata/projects/precip/external/cfradial/moments/rcwf";
+output_dir = "/scr/cirrus3/rsfdata/projects/precip/external/cfradial/moments/$(radar_name)";
 
 ///////////// output_filename_mode ////////////////////
 //

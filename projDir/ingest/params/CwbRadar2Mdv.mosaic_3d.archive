@@ -60,7 +60,7 @@ instance = "mosaic_3d";
 //     REALTIME
 //
 
-mode = REALTIME;
+mode = ARCHIVE;
 
 //======================================================================
 //
