@@ -6,90 +6,80 @@ setenv radar_name rccg
 setenv RADAR_NAME RCCG
 
 foreach day (2022*)
-  gunzip ${day}/RADAR/${RADAR_NAME}/*.gz
   RadxConvert -params ${PROJ_DIR}/ingest/params/RadxConvert.gematronik.archive -debug -mode ARCHIVE \
-    -f ${day}/RADAR/${RADAR_NAME}/*_VOL* >& /tmp/RadxConvert.${radar_name}.log &
+    -f ${day}/RADAR/${RADAR_NAME}/Volume/2A_CDD.vol/*dBZ.vol >& /tmp/RadxConvert.${radar_name}.log &
 end
 
 setenv radar_name rcck
 setenv RADAR_NAME RCCK
 
 foreach day (2022*)
-  gunzip ${day}/RADAR/${RADAR_NAME}/*.gz
   RadxConvert -params ${PROJ_DIR}/ingest/params/RadxConvert.gematronik.archive -debug -mode ARCHIVE \
-    -f ${day}/RADAR/${RADAR_NAME}/*_VOL* >& /tmp/RadxConvert.${radar_name}.log &
+    -f ${day}/RADAR/${RADAR_NAME}/ROCAF_CDD.vol/*dBZ.vol >& /tmp/RadxConvert.${radar_name}.log &
 end
 
 setenv radar_name rcgi
 setenv RADAR_NAME RCGI
 
 foreach day (2022*)
-  gunzip ${day}/RADAR/${RADAR_NAME}/*.gz
   RadxConvert -params ${PROJ_DIR}/ingest/params/RadxConvert.gematronik.archive -debug -mode ARCHIVE \
-    -f ${day}/RADAR/${RADAR_NAME}/*_VOL* >& /tmp/RadxConvert.${radar_name}.log &
+    -f ${day}/RADAR/${RADAR_NAME}/ROCAF_CDD.vol/*dBZ.vol >& /tmp/RadxConvert.${radar_name}.log &
 end
 
 setenv radar_name rchl
 setenv RADAR_NAME RCHL
 
 foreach day (2022*)
-  gunzip ${day}/RADAR/${RADAR_NAME}/*.gz
   RadxConvert -params ${PROJ_DIR}/ingest/params/RadxConvert.gematronik.archive -debug -mode ARCHIVE \
-    -f ${day}/RADAR/${RADAR_NAME}/*_VOL* >& /tmp/RadxConvert.${radar_name}.log &
+    -f ${day}/RADAR/${RADAR_NAME}/Volume/2A_CDD.vol/*dBZ.vol >& /tmp/RadxConvert.${radar_name}.log &
 end
 
 setenv radar_name rckt
 setenv RADAR_NAME RCKT
 
 foreach day (2022*)
-  gunzip ${day}/RADAR/${RADAR_NAME}/*.gz
   RadxConvert -params ${PROJ_DIR}/ingest/params/RadxConvert.gematronik.archive -debug -mode ARCHIVE \
-    -f ${day}/RADAR/${RADAR_NAME}/*_VOL* >& /tmp/RadxConvert.${radar_name}.log &
+    -f ${day}/RADAR/${RADAR_NAME}/Volume/2A_CDD.vol/*dBZ.vol >& /tmp/RadxConvert.${radar_name}.log &
 end
 
 setenv radar_name rcly
 setenv RADAR_NAME RCLY
 
 foreach day (2022*)
-  gunzip ${day}/RADAR/${RADAR_NAME}/*.gz
   RadxConvert -params ${PROJ_DIR}/ingest/params/RadxConvert.gematronik.archive -debug -mode ARCHIVE \
-    -f ${day}/RADAR/${RADAR_NAME}/*_VOL* >& /tmp/RadxConvert.${radar_name}.log &
+    -f ${day}/RADAR/${RADAR_NAME}/Volume/5A_S3.vol/*dBZ.vol >& /tmp/RadxConvert.${radar_name}.log &
 end
 
 setenv radar_name rcmd
 setenv RADAR_NAME RCMD
 
 foreach day (2022*)
-  gunzip ${day}/RADAR/${RADAR_NAME}/*.gz
   RadxConvert -params ${PROJ_DIR}/ingest/params/RadxConvert.gematronik.archive -debug -mode ARCHIVE \
-    -f ${day}/RADAR/${RADAR_NAME}/*_VOL* >& /tmp/RadxConvert.${radar_name}.log &
+    -f ${day}/RADAR/${RADAR_NAME}/5A_CDD.vol/*dBZ.vol >& /tmp/RadxConvert.${radar_name}.log &
 end
 
 setenv radar_name rcmk
 setenv RADAR_NAME RCMK
 
 foreach day (2022*)
-  gunzip ${day}/RADAR/${RADAR_NAME}/*.gz
   RadxConvert -params ${PROJ_DIR}/ingest/params/RadxConvert.gematronik.archive -debug -mode ARCHIVE \
-    -f ${day}/RADAR/${RADAR_NAME}/*_VOL* >& /tmp/RadxConvert.${radar_name}.log &
+    -f ${day}/RADAR/${RADAR_NAME}/ROCAF_CDD.vol/*dBZ.vol >& /tmp/RadxConvert.${radar_name}.log &
 end
 
 setenv radar_name rcnt
 setenv RADAR_NAME RCNT
 
 foreach day (2022*)
-  gunzip ${day}/RADAR/${RADAR_NAME}/*.gz
   RadxConvert -params ${PROJ_DIR}/ingest/params/RadxConvert.gematronik.archive -debug -mode ARCHIVE \
-    -f ${day}/RADAR/${RADAR_NAME}/*_VOL* >& /tmp/RadxConvert.${radar_name}.log &
+    -f ${day}/RADAR/${RADAR_NAME}/Volume/5A_S3.vol/*dBZ.vol >& /tmp/RadxConvert.${radar_name}.log &
 end
 
 setenv radar_name rcsl
 setenv RADAR_NAME RCSL
 
 foreach day (2022*)
-  gunzip ${day}/RADAR/${RADAR_NAME}/*.gz
   RadxConvert -params ${PROJ_DIR}/ingest/params/RadxConvert.gematronik.archive -debug -mode ARCHIVE \
-    -f ${day}/RADAR/${RADAR_NAME}/*_VOL* >& /tmp/RadxConvert.${radar_name}.log &
+    -f ${day}/RADAR/${RADAR_NAME}/Volume/5A_S3.vol/*dBZ.vol >& /tmp/RadxConvert.${radar_name}.log &
 end
 
 
