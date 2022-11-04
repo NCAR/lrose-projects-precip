@@ -1,6 +1,6 @@
 #! /bin/csh
 
-cd /scr/cirrus3/rsfdata/projects/precip/external/cwb_full
+cd /scr/cirrus3/rsfdata/projects/precip/cwb/ftp_server
 
 setenv radar_name rccg
 setenv RADAR_NAME RCCG

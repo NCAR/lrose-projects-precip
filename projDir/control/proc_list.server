@@ -1,5 +1,5 @@
 ######################################################################
-# RELAMPAGO - server
+# PRECIP - server
 #
 ######################################################################
 # SYSTEM processes
@@ -26,71 +26,71 @@ Tstorms2Symprod   manager  start_inst(no-params)     snuff_inst
 ######################################################################
 # RHI tick marks
 #
-Rhi2Spdb      spoldrx     start_inst(ingest)   snuff_inst
+#Rhi2Spdb      spoldrx     start_inst(ingest)   snuff_inst
 ######################################################################
 # GFS MODEL
 #
-InputWatcher  gfs.precip   start_inst(ingest)   snuff_inst
-Grib2toMdv    gfs.precip   start_inst(ingest)   snuff_inst
+#InputWatcher  gfs.precip   start_inst(ingest)   snuff_inst
+#Grib2toMdv    gfs.precip   start_inst(ingest)   snuff_inst
 ######################################################################
 # WRF MODEL
 #
-InputWatcher  wrf_psu      start_inst(ingest)   snuff_inst
-Wrf2Mdv       psu          start_inst(ingest)   snuff_inst
+#InputWatcher  wrf_psu      start_inst(ingest)   snuff_inst
+#Wrf2Mdv       psu          start_inst(ingest)   snuff_inst
 ######################################################################
 # HIMAWARO Satellite
 #
-NcGeneric2Mdv himawari_ch03  start_inst(ingest)   snuff_inst
-NcGeneric2Mdv himawari_ch09  start_inst(ingest)   snuff_inst
-NcGeneric2Mdv himawari_ch10  start_inst(ingest)   snuff_inst
-NcGeneric2Mdv himawari_ch13  start_inst(ingest)   snuff_inst
+#NcGeneric2Mdv himawari_ch03  start_inst(ingest)   snuff_inst
+#NcGeneric2Mdv himawari_ch09  start_inst(ingest)   snuff_inst
+#NcGeneric2Mdv himawari_ch10  start_inst(ingest)   snuff_inst
+#NcGeneric2Mdv himawari_ch13  start_inst(ingest)   snuff_inst
 ######################################################################
 # LIGHTING
 #
-Ltg2Spdb      cwb          start_inst(ingest)   snuff_inst
+#Ltg2Spdb      cwb          start_inst(ingest)   snuff_inst
 ######################################################################
 # Surface stations
 #
-CwbAws2Spdb   surface       start_inst(ingest)   snuff_inst
-CwbAws2Spdb   gauge         start_inst(ingest)   snuff_inst
+#CwbAws2Spdb   surface       start_inst(ingest)   snuff_inst
+#CwbAws2Spdb   gauge         start_inst(ingest)   snuff_inst
 ######################################################################
 # Base observations ingest - from LDM
 #
-LdmDynamic2Static   metar              start_inst(ingest)  snuff_inst
-Metar2Spdb          precip             start_inst(ingest)  snuff_inst 
+#LdmDynamic2Static   metar              start_inst(ingest)  snuff_inst
+#Metar2Spdb          precip             start_inst(ingest)  snuff_inst 
 ######################################################################
 # model-based soundings for PID
-Mdv2SoundingSpdb    precip             start_inst(ingest) snuff_inst
+#Mdv2SoundingSpdb    precip             start_inst(ingest) snuff_inst
 #
 ######################################################################
 # CWB radar
-InputWatcher       mosaic_3d          start_inst(ingest)   snuff_inst
-CwbRadar2Mdv       mosaic_3d          start_inst(ingest)   snuff_inst
-RadxConvert        rccg           start_RadxConvert.rccg   snuff_inst
-RadxConvert        rcck           start_RadxConvert.rcck   snuff_inst
-RadxConvert        rcgi           start_RadxConvert.rcgi   snuff_inst
-RadxConvert        rchl           start_RadxConvert.rchl   snuff_inst
-RadxConvert        rckt           start_RadxConvert.rckt   snuff_inst
-RadxConvert        rcly           start_RadxConvert.rcly   snuff_inst
-RadxConvert        rcmd           start_RadxConvert.rcmd   snuff_inst
-RadxConvert        rcmk           start_RadxConvert.rcmk   snuff_inst
-RadxConvert        rcnt           start_RadxConvert.rcnt   snuff_inst
-RadxConvert        rcsl           start_RadxConvert.rcsl   snuff_inst
-InputWatcher       radar_rcwf     start_inst(ingest)       snuff_inst
-RadxConvert        rcwf           start_inst(ingest)       snuff_inst
+#InputWatcher       mosaic_3d          start_inst(ingest)   snuff_inst
+#CwbRadar2Mdv       mosaic_3d          start_inst(ingest)   snuff_inst
+#RadxConvert        rccg           start_RadxConvert.rccg   snuff_inst
+#RadxConvert        rcck           start_RadxConvert.rcck   snuff_inst
+#RadxConvert        rcgi           start_RadxConvert.rcgi   snuff_inst
+#RadxConvert        rchl           start_RadxConvert.rchl   snuff_inst
+#RadxConvert        rckt           start_RadxConvert.rckt   snuff_inst
+#RadxConvert        rcly           start_RadxConvert.rcly   snuff_inst
+#RadxConvert        rcmd           start_RadxConvert.rcmd   snuff_inst
+#RadxConvert        rcmk           start_RadxConvert.rcmk   snuff_inst
+#RadxConvert        rcnt           start_RadxConvert.rcnt   snuff_inst
+#RadxConvert        rcsl           start_RadxConvert.rcsl   snuff_inst
+#InputWatcher       radar_rcwf     start_inst(ingest)       snuff_inst
+#RadxConvert        rcwf           start_inst(ingest)       snuff_inst
 ######################################################################
 # ECCO
-Ecco               mrms_taiwan         start_inst(alg)     snuff_inst
+#Ecco               mrms_taiwan         start_inst(alg)     snuff_inst
 ######################################################################
 # PID, Precip rate
-RadxRate           spoldrx.sur     start_inst(alg)       snuff_inst
-RadxRate           spoldrx.rhi     start_inst(alg)       snuff_inst
-RadxRate           rcck            start_RadxRate.rcck   snuff_inst
-RadxRate           rcgi            start_RadxRate.rcgi   snuff_inst
-RadxRate           rcly            start_RadxRate.rcly   snuff_inst
-RadxRate           rcmd            start_RadxRate.rcmd   snuff_inst
-RadxRate           rcmk            start_RadxRate.rcmk   snuff_inst
-RadxRate           rcwf            start_RadxRate.rcwf   snuff_inst
+#RadxRate           spoldrx.sur     start_inst(alg)       snuff_inst
+#RadxRate           spoldrx.rhi     start_inst(alg)       snuff_inst
+#RadxRate           rcck            start_RadxRate.rcck   snuff_inst
+#RadxRate           rcgi            start_RadxRate.rcgi   snuff_inst
+#RadxRate           rcly            start_RadxRate.rcly   snuff_inst
+#RadxRate           rcmd            start_RadxRate.rcmd   snuff_inst
+#RadxRate           rcmk            start_RadxRate.rcmk   snuff_inst
+#RadxRate           rcwf            start_RadxRate.rcwf   snuff_inst
 ######################################################################
 # CSU radar
 #InputWatcher      csu_chivo     start_inst(ingest)    snuff_inst

@@ -91,7 +91,7 @@ mode = ARCHIVE;
 //
 
 // input_dir = "$(DATA_DIR)/$(project)/raw/ltg";
-input_dir = "/scr/cirrus3/rsfdata/projects/precip/external/cwb_full";
+input_dir = "/scr/cirrus3/rsfdata/projects/precip/external/ftp_server";
 
 ///////////// latest_data_info_avail //////////////////
 //
@@ -368,7 +368,7 @@ input_format = UALF_LF_1;
 //
 
 // output_url = "$(DATA_DIR)/$(project)/spdb/ltg/cwb";
-output_url = "/scr/cirrus3/rsfdata/projects/precip/external/spdb/ltg/cwb";
+output_url = "/scr/cirrus3/rsfdata/projects/precip/cwb/spdb/ltg/cwb";
 
 ///////////// expire_seconds //////////////////////////
 //

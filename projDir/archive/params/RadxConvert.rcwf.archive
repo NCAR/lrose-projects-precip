@@ -1148,7 +1148,7 @@ compression_level = 4;
 //
 
 // output_dir = "$(DATA_DIR)/$(project)/cfradial/moments/rcwf";
-output_dir = "/scr/cirrus3/rsfdata/projects/precip/external/cfradial/moments/rcwf";
+output_dir = "/scr/cirrus3/rsfdata/projects/precip/cwb/cfradial/moments/rcwf";
 
 ///////////// output_filename_mode ////////////////////
 //

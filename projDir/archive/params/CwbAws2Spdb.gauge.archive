@@ -90,7 +90,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_dir = "/scr/cirrus3/rsfdata/projects/precip/external/cwb_full";
+input_dir = "/scr/cirrus3/rsfdata/projects/precip/external/ftp_server";
 
 ///////////// latest_data_info_avail //////////////////
 //
@@ -189,7 +189,7 @@ station_type = PRECIP_MDF_FILE;
 // Type: string
 //
 
-output_url = "/scr/cirrus3/rsfdata/projects/precip/external/spdb/gauge";
+output_url = "/scr/cirrus3/rsfdata/projects/precip/cwb/spdb/gauge";
 
 ///////////// expire_seconds //////////////////////////
 //
