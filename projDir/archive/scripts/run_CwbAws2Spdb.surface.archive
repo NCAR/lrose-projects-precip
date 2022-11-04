@@ -3,7 +3,7 @@
 cd /scr/cirrus3/rsfdata/projects/precip/cwb/ftp_server
 
 foreach day (2022*)
-  CwbAws2Spdb -params ${PROJ_DIR}/ingest/params/CwbAws2Spdb.surface.archive -debug -mode ARCHIVE \
+  CwbAws2Spdb -params ${PROJ_DIR}/archive/params/CwbAws2Spdb.surface.archive -debug -mode ARCHIVE \
     -f ${day}/SURFACE/STATION/*mdf
 end
 

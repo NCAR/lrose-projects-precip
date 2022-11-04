@@ -3,7 +3,7 @@
 cd /scr/cirrus3/rsfdata/projects/precip/cwb/ftp_server
 
 foreach day (2022*)
-  Ltg2Spdb -params ${PROJ_DIR}/ingest/params/Ltg2Spdb.cwb.archive -debug -mode ARCHIVE \
+  Ltg2Spdb -params ${PROJ_DIR}/archive/params/Ltg2Spdb.cwb.archive -debug -mode ARCHIVE \
     -f ${day}/LIGHTNING/*lit
 end
 
