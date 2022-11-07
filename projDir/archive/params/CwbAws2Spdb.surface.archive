@@ -189,7 +189,7 @@ station_type = MDF_FILE;
 // Type: string
 //
 
-output_url = "/scr/cirrus3/rsfdata/projects/precip/cwb/spdb/surface";
+output_url = "/scr/cirrus3/rsfdata/projects/precip/cwb/surface";
 
 ///////////// expire_seconds //////////////////////////
 //

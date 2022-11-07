@@ -368,7 +368,7 @@ input_format = UALF_LF_1;
 //
 
 // output_url = "$(DATA_DIR)/$(project)/spdb/ltg/cwb";
-output_url = "/scr/cirrus3/rsfdata/projects/precip/cwb/spdb/ltg/cwb";
+output_url = "/scr/cirrus3/rsfdata/projects/precip/cwb/ltg";
 
 ///////////// expire_seconds //////////////////////////
 //

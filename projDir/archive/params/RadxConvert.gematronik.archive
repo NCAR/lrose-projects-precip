@@ -1183,7 +1183,7 @@ compression_level = 4;
 // Type: string
 //
 
-output_dir = "/scr/cirrus3/rsfdata/projects/precip/cwb/cfradial/moments/$(radar_name)";
+output_dir = "/scr/cirrus3/rsfdata/projects/precip/cwb/radarPolar/moments/$(radar_name)";
 
 ///////////// output_filename_mode ////////////////////
 //

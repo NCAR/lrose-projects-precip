@@ -189,7 +189,7 @@ station_type = PRECIP_MDF_FILE;
 // Type: string
 //
 
-output_url = "/scr/cirrus3/rsfdata/projects/precip/cwb/spdb/gauge";
+output_url = "/scr/cirrus3/rsfdata/projects/precip/cwb/gauge";
 
 ///////////// expire_seconds //////////////////////////
 //
