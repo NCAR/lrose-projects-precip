@@ -1,6 +1,6 @@
 #! /bin/csh
 
-cd /scr/cirrus3/rsfdata/projects/precip/cwb/ftp_server
+cd /scr/cirrus3/rsfdata/projects/precip/cwb/raw
 
 foreach day (2022*)
   Ltg2Spdb -params ${PROJ_DIR}/archive/params/Ltg2Spdb.cwb.archive -debug -mode ARCHIVE \

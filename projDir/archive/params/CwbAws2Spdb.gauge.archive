@@ -90,7 +90,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_dir = "/scr/cirrus3/rsfdata/projects/precip/external/ftp_server";
+input_dir = "/scr/cirrus3/rsfdata/projects/precip/cwb/raw";
 
 ///////////// latest_data_info_avail //////////////////
 //
