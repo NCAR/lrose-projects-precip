@@ -14,26 +14,26 @@
 ######################################################################
 # ingest CWB data data
 #
-*/1 * * * * csh -c "start_GetLightningData.precip" 1> /dev/null 2> /dev/null
-*/1 * * * * csh -c "start_GetCwbData.surface" 1> /dev/null 2> /dev/null
-*/1 * * * * csh -c "start_GetCwbData.gauge" 1> /dev/null 2> /dev/null
-*/1 * * * * csh -c "start_GetCwbData.mosaic2D" 1> /dev/null 2> /dev/null
-*/1 * * * * csh -c "start_GetCwbData.mosaic3D" 1> /dev/null 2> /dev/null
+#*/1 * * * * csh -c "start_GetLightningData.precip" 1> /dev/null 2> /dev/null
+#*/1 * * * * csh -c "start_GetCwbData.surface" 1> /dev/null 2> /dev/null
+#*/1 * * * * csh -c "start_GetCwbData.gauge" 1> /dev/null 2> /dev/null
+#*/1 * * * * csh -c "start_GetCwbData.mosaic2D" 1> /dev/null 2> /dev/null
+#*/1 * * * * csh -c "start_GetCwbData.mosaic3D" 1> /dev/null 2> /dev/null
 ######################################################################
 # rsync data from maui at CSU to cirrus at NCAR
 #
-*/15 * * * * csh -c "run_rsync_cwb_radars_from_maui.precip"  1> /dev/null 2> /dev/null
-*/15 * * * * csh -c "run_rsync_sat_from_maui.precip"  1> /dev/null 2> /dev/null
-*/15 * * * * csh -c "run_rsync_seapol_from_maui.precip"  1> /dev/null 2> /dev/null
-*/15 * * * * csh -c "start_RsyncWrfFromMaui.precip"  1> /dev/null 2> /dev/null
+#*/15 * * * * csh -c "run_rsync_cwb_radars_from_maui.precip"  1> /dev/null 2> /dev/null
+#*/15 * * * * csh -c "run_rsync_sat_from_maui.precip"  1> /dev/null 2> /dev/null
+#*/15 * * * * csh -c "run_rsync_seapol_from_maui.precip"  1> /dev/null 2> /dev/null
+#*/15 * * * * csh -c "start_RsyncWrfFromMaui.precip"  1> /dev/null 2> /dev/null
 ######################################################################
 # rsync spoldrx data to bob at UW
 #
-*/15 * * * * csh -c "start_RsyncSpol2UW.cfradial.sur"  1> /dev/null 2> /dev/null
-*/15 * * * * csh -c "start_RsyncSpol2UW.cfradial.rhi"  1> /dev/null 2> /dev/null
-*/15 * * * * csh -c "start_RsyncSpol2UW.rate.sur"      1> /dev/null 2> /dev/null
-*/15 * * * * csh -c "start_RsyncSpol2UW.rate.rhi"      1> /dev/null 2> /dev/null
+#*/15 * * * * csh -c "start_RsyncSpol2UW.cfradial.sur"  1> /dev/null 2> /dev/null
+#*/15 * * * * csh -c "start_RsyncSpol2UW.cfradial.rhi"  1> /dev/null 2> /dev/null
+#*/15 * * * * csh -c "start_RsyncSpol2UW.rate.sur"      1> /dev/null 2> /dev/null
+#*/15 * * * * csh -c "start_RsyncSpol2UW.rate.rhi"      1> /dev/null 2> /dev/null
 ###################### SYNC DATA RAIDS ######################################
 #
-20 */1 * * * csh -c run_rsync_cirrus_to_secondary 1> /dev/null 2> /dev/null
+#20 */1 * * * csh -c run_rsync_cirrus_to_secondary 1> /dev/null 2> /dev/null
 #*/10 * * * * csh -c run_rsync_cirrus_to_secondary 1> /dev/null 2> /dev/null

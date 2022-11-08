@@ -100,14 +100,14 @@ field_list = {
 # PRECIP
 #
 
-MOSAIC_2D  MOSAIC_2D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true&DBZ    dbz.colors   dBZ   -5 80 5 cart,comp 1 0
-MOSAIC_3D  MOSAIC_3D  mdvp:://front.eol.ucar.edu:8080:precip/mdv/radar/mosaic_3d?use_http=true?use_http=true&DBZ    dbz.colors   dBZ   -5 80 5 cart 1 0
-Ecco3DComp Ecco3DComp mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
-Ecco3D     Ecco3D     mdvp::no_interp//front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
-Conv3DComp Conv3DComp mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&Convectivity3D      convectivity.colors - -5 80 5 cart,comp 1 0
-Conv3D     Conv3D     mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&Convectivity3D      convectivity.colors - -5 80 5 cart 1 0
-ConvTops   ConvTops   mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&ConvTops            heightkm.colors km -5 80 5 cart 1 0
-StratTops  StratTops  mdvp:://front.eol.ucar.edu:8080:precip/mdv/ecco/mrms_taiwan?use_http=true&StratTops           heightkm.colors km -5 80 5 cart 1 0
+MOSAIC_2D  MOSAIC_2D  mdvp:://front.eol.ucar.edu:8080:precip/cwb/radarCart/mdv/mosaic_3d?use_http=true?use_http=true&DBZ    dbz.colors   dBZ   -5 80 5 cart,comp 1 0
+MOSAIC_3D  MOSAIC_3D  mdvp:://front.eol.ucar.edu:8080:precip/cwb/radarCart/mdv/mosaic_3d?use_http=true?use_http=true&DBZ    dbz.colors   dBZ   -5 80 5 cart 1 0
+Ecco3DComp Ecco3DComp mdvp::no_interp//front.eol.ucar.edu:8080:precip/cwb/radarCart/mdv/ecco/mrms_taiwan?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Ecco3D     Ecco3D     mdvp::no_interp//front.eol.ucar.edu:8080:precip/cwb/radarCart/mdv/ecco/mrms_taiwan?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
+Conv3DComp Conv3DComp mdvp:://front.eol.ucar.edu:8080:precip/cwb/radarCart/mdv/ecco/mrms_taiwan?use_http=true&Convectivity3D      convectivity.colors - -5 80 5 cart,comp 1 0
+Conv3D     Conv3D     mdvp:://front.eol.ucar.edu:8080:precip/cwb/radarCart/mdv/ecco/mrms_taiwan?use_http=true&Convectivity3D      convectivity.colors - -5 80 5 cart 1 0
+ConvTops   ConvTops   mdvp:://front.eol.ucar.edu:8080:precip/cwb/radarCart/mdv/ecco/mrms_taiwan?use_http=true&ConvTops            heightkm.colors km -5 80 5 cart 1 0
+StratTops  StratTops  mdvp:://front.eol.ucar.edu:8080:precip/cwb/radarCart/mdv/ecco/mrms_taiwan?use_http=true&StratTops           heightkm.colors km -5 80 5 cart 1 0
 
 ############################
 # Satellite data
@@ -496,7 +496,7 @@ cidd.debug2_flag:           0
 #  System will startup using field 0, requesting data closest to the
 # demo time. The movie frame will be centered on the time after applying
 # temporal rounding. 
-#cidd.demo_time:  03:00 11/12/2018
+cidd.demo_time:  00:00 06/08/2022
 
 # Set times to the nearest value divisible by the number of seconds
 cidd.temporal_rounding:    1
