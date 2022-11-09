@@ -22,7 +22,7 @@ serve_rhi_data = TRUE;
 // Type: string
 //
 
-rhi_url = "mdvp:://localhost::$(project)/cfradial/moments/spoldrx/rhi";
+rhi_url = "mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/field/moments/spoldrx?use_http=true";
 
 ///////////// polar_rhi ///////////////////////////////
 //

@@ -27,8 +27,9 @@ serve_rhi_data = TRUE;
 // Type: string
 //
 
-// rhi_url = "mdvp:://181.30.169.202:0:relampago/cfradial/csu_chivo/rhi";
-rhi_url = "mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/rhi?use_http=true";
+rhi_url = "mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/field/moments/spoldrx?use_http=true";
+// rhi_url = "mdvp:://front.eol.ucar.edu:8080:precip/cfradial/moments/spoldrx/rhi?use_http=true";
+// rhi_url = "mdvp:://localhost::$(project)/cfradial/moments/spoldrx/rhi";
 
 ///////////// polar_rhi ///////////////////////////////
 //
