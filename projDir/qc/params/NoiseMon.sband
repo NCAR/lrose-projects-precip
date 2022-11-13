@@ -495,7 +495,7 @@ write_stats_to_spdb = TRUE;
 // Type: string
 //
 
-spdb_output_url = "$(DATA_DIR)/$(project)/cal/noise_mon/sband/spdb";
+spdb_output_url = "$(DATA_DIR)/$(project)/calibration/spol/noise_mon/sband/spdb";
 
 ///////////// radar_name //////////////////////////////
 //

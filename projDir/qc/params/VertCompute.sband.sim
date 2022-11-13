@@ -665,7 +665,7 @@ write_stats_to_spdb = TRUE;
 // Type: string
 //
 
-spdb_output_url = "$(DATA_DIR)/$(project)/cal/vert/sband/spdb";
+spdb_output_url = "$(DATA_DIR)/$(project)/calibration/spol/vert/sband/spdb";
 
 ///////////// radar_name_for_spdb /////////////////////
 //
