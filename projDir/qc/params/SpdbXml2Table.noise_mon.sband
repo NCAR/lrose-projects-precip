@@ -167,36 +167,36 @@ data_type_2 = 0;
 xml_entries = {
   {
     xml_tag_list = "<NoiseMonitoring><countCoPol>",
-    specify_label = FALSE,
-    label = "",
+    specify_label = TRUE,
+    label = "countCoPol",
     required = TRUE
   }
   ,
   {
     xml_tag_list = "<NoiseMonitoring><meanHtKm>",
-    specify_label = FALSE,
-    label = "",
+    specify_label = TRUE,
+    label = "meanHtKm",
     required = TRUE
   }
   ,
   {
     xml_tag_list = "<NoiseMonitoring><meanNoiseZdr>",
-    specify_label = FALSE,
-    label = "",
+    specify_label = TRUE,
+    label = "meanNoiseZdr",
     required = TRUE
   }
   ,
   {
     xml_tag_list = "<NoiseMonitoring><meanDbmhc>",
-    specify_label = FALSE,
-    label = "",
+    specify_label = TRUE,
+    label = "meanDbmhc",
     required = TRUE
   }
   ,
   {
     xml_tag_list = "<NoiseMonitoring><meanDbmvc>",
-    specify_label = FALSE,
-    label = "",
+    specify_label = TRUE,
+    label = "meanDbmvc",
     required = TRUE
   }
 };
