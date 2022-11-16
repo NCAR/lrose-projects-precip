@@ -209,38 +209,7 @@ invert_hv_flag = FALSE;
 // Type: string
 //
 
-cal_xml_file_path = "./sband_cal.xml";
-
-///////////// xmit_rcv_mode ///////////////////////////
-//
-// Transmit/Receive mode for radar.
-//
-// Mode for xmit and receive for polarization diversity
-// DP_ALT_HV_CO_ONLY: Dual pol, alternating transmission, copolar 
-//   receiver only (e.g. CP2 S-band)
-//  DP_ALT_HV_CO_CROSS: Dual pol, alternating transmission, co-polar and 
-//   cross-polar receivers (e.g. SPOL with Mitch Switch and receiver in 
-//   switching mode, CHILL)
-//  DP_ALT_HV_FIXED_HV: Dual pol, alternating transmission, fixed H and 
-//   V receivers (e.g. SPOL with Mitch Switch and receivers in fixed mode)
-//  DP_SIM_HV_FIXED_HV: Dual pol, simultaneous transmission, fixed H and 
-//   V receivers (e.g. NEXRAD upgrade, SPOL with T and receivers in fixed 
-//   mode)
-//  DP_SIM_HV_SWITCHED_HV: Dual pol, simultaneous transmission, 
-//   switching H and V receivers (e.g. SPOL with T and receivers in 
-//   switching mode).
-//
-//
-// Type: enum
-// Options:
-//     DP_ALT_HV_CO_ONLY
-//     DP_ALT_HV_CO_CROSS
-//     DP_ALT_HV_FIXED_HV
-//     DP_SIM_HV_FIXED_HV
-//     DP_SIM_HV_SWITCHED_HV
-//
-
-xmit_rcv_mode = DP_SIM_HV_FIXED_HV;
+cal_xml_file_path = "$(PROJ_DIR)/qc/params/sband_cal.xml";
 
 //======================================================================
 //
@@ -264,7 +233,7 @@ min_elevation = 88;
 
 ///////////// input_fields ////////////////////////////
 //
-// List of input fields for moments.
+// Lookup table for field names in moments.
 //
 // Applies to RADX_MOMENTS_INPUT and DSR_MOMENTS_INPUT.
 //
@@ -273,19 +242,11 @@ min_elevation = 88;
 //   typedef struct {
 //      moments_id_t id;
 //        Options:
-//          SNRHC
-//          SNRVC
-//          SNRHX
-//          SNRVX
 //          DBMHC
 //          DBMVC
 //          DBMHX
 //          DBMVX
 //          DBZ
-//          VEL
-//          WIDTH
-//          PHIDP
-//          RHOHV
 //      string moments_name;
 //   }
 //
@@ -293,26 +254,6 @@ min_elevation = 88;
 //
 
 input_fields = {
-  {
-    id = SNRHC,
-    moments_name = "SNRHC"
-  }
-  ,
-  {
-    id = SNRVC,
-    moments_name = "SNRVC"
-  }
-  ,
-  {
-    id = SNRHX,
-    moments_name = "missing"
-  }
-  ,
-  {
-    id = SNRVX,
-    moments_name = "missing"
-  }
-  ,
   {
     id = DBMHC,
     moments_name = "DBMHC"
@@ -337,27 +278,90 @@ input_fields = {
     id = DBZ,
     moments_name = "DBZ"
   }
-  ,
-  {
-    id = VEL,
-    moments_name = "VEL"
-  }
-  ,
-  {
-    id = WIDTH,
-    moments_name = "WIDTH"
-  }
-  ,
-  {
-    id = PHIDP,
-    moments_name = "PHIDP"
-  }
-  ,
-  {
-    id = RHOHV,
-    moments_name = "RHOHV"
-  }
 };
+
+//======================================================================
+//
+// AVOIDING THE SUN.
+//
+// We want to avoid rays with angles close to the sun, since these will 
+//   have elevated white noise.
+//
+//======================================================================
+ 
+///////////// avoid_the_sun ///////////////////////////
+//
+// Option to avoid rays close to the sun.
+//
+// If true we will not include angles within 
+//   'sun_avoidance_angle_margin_deg' of the sun.
+//
+//
+// Type: boolean
+//
+
+avoid_the_sun = TRUE;
+
+///////////// sun_avoidance_angle_margin_deg //////////
+//
+// Angular margin for avoiding the sun (deg).
+//
+// We only consider rays that are outside this margin relative to the 
+//   sun.
+//
+//
+// Type: double
+//
+
+sun_avoidance_angle_margin_deg = 3;
+
+//======================================================================
+//
+// AVOIDING STRONG ECHO.
+//
+// We want to avoid rays with strong echo, since this raises the noise 
+//   floor with thermal emissions.
+//
+//======================================================================
+ 
+///////////// avoid_strong_echo ///////////////////////
+//
+// Option to avoid rays with strong echo.
+//
+// If true we will not include rays with strong echo.
+//
+//
+// Type: boolean
+//
+
+avoid_strong_echo = TRUE;
+
+///////////// strong_echo_dbz_threshold ///////////////
+//
+// Threshold for considering echo at a gate as strong (dBZ).
+//
+// In computing the strong echo sum, we only include gates with 
+//   reflectivity in excess of this threshold.
+//
+//
+// Type: double
+//
+
+strong_echo_dbz_threshold = 35;
+
+///////////// strong_echo_dbz_sum_max /////////////////
+//
+// Upper limit of reflectivity sum (dBZ).
+//
+// We add up the reflectivity at all gates with values in excess of 
+//   'strong_echo_dbz_threshold'. If the sum exceeds this max, we discard 
+//   the ray.
+//
+//
+// Type: double
+//
+
+strong_echo_dbz_sum_max = 250;
 
 //======================================================================
 //
