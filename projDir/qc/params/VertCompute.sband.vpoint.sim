@@ -42,7 +42,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "sband.sim";
+instance = "sband.vpoint.sim";
 
 ///////////// register_with_procmap ///////////////////
 //
@@ -137,7 +137,7 @@ seek_to_start_of_input = FALSE;
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/time_series/sband/save";
+input_dir = "$(DATA_DIR)/$(project)/time_series/sband/vert";
 
 ///////////// start_time //////////////////////////////
 //
@@ -613,7 +613,7 @@ write_stats_to_text_file = TRUE;
 // Type: string
 //
 
-text_output_dir = "$(DATA_DIR)/$(project)/calibration/vert/sband/text";
+text_output_dir = "$(DATA_DIR)/$(project)/calibration/vpoint/sband/text";
 
 ///////////// write_zdr_point_values_to_text_file /////
 //
@@ -639,7 +639,7 @@ write_zdr_point_values_to_text_file = FALSE;
 // Type: string
 //
 
-zdr_points_output_dir = "$(DATA_DIR)/$(project)/calibration/vert/sband/zdr_points";
+zdr_points_output_dir = "$(DATA_DIR)/$(project)/calibratoin/vpoint/sband/zdr_points";
 
 ///////////// write_stats_to_spdb /////////////////////
 //
@@ -665,7 +665,7 @@ write_stats_to_spdb = TRUE;
 // Type: string
 //
 
-spdb_output_url = "$(DATA_DIR)/$(project)/calibration/spol/vert/sband/spdb";
+spdb_output_url = "$(DATA_DIR)/$(project)/calibration/spol/vpoint/sband/spdb";
 
 ///////////// radar_name_for_spdb /////////////////////
 //

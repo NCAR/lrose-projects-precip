@@ -278,7 +278,7 @@ def doPlot(noiseData, noiseTimes, vertData, vertTimes):
     validMeanDbmvcVals = meanDbmvc[validMeanDbmvc]
     
     vertZdrm = np.array(vertData["meanZdrmVol"]).astype(np.double)
-    # vertZdrm = movingAverage(vertZdrm, lenMeanFilter)
+    vertZdrm = movingAverage(vertZdrm, lenMeanFilter)
     validVertZdrm = np.isfinite(vertZdrm)
     validVertZdrmNtimes = vtimes[validVertZdrm]
     validVertZdrmVals = vertZdrm[validVertZdrm]
@@ -313,9 +313,9 @@ def doPlot(noiseData, noiseTimes, vertData, vertTimes):
     ax1a.plot(validVertZdrmNtimes, validVertZdrmVals, \
               "^", label = 'Vert ZDRm', color='green')
     ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals, \
-              label = 'Mean Noise ZDRm', linewidth=1, color='blue')
+              label = 'Mean Noise ZDRm', linewidth=1, color='black')
     ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals + 1.15, \
-              label = 'NoiseZdr+1.15', linewidth=1, color='red')
+              label = 'NoiseZdr+1.15', linewidth=1, color='brown')
     #ax1a.plot(validVertZdrmNtimes, validVertZdrmVals, \
     #          label = 'Vert ZDRm', linewidth=1, color='green')
     
