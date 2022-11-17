@@ -46,13 +46,13 @@ def main():
                       dest='noiseFilePath',
                       default='/scr/cirrus3/rsfdata/projects/precip/calibration/spol/noise_mon/sband/tables/noise_mon.sband.txt',
                       help='File path for noise monitoring')
-    parser.add_option('--cp_file',
-                      dest='cpFilePath',
-                      default='../data/pecan/spol_pecan_CP_analysis_20150528_000553.txt',
-                      help='CP results file path')
+    parser.add_option('--vert_file',
+                      dest='vertFilePath',
+                      default='/scr/cirrus3/rsfdata/projects/precip/calibration/spol/vert/sband/tables/vert.sband.txt',
+                      help='VertCompute results file path')
     parser.add_option('--title',
                       dest='title',
-                      default='ZDR BIAS FROM ICE AND BRAGG',
+                      default='ZDR BIAS FROM NOISE and VERT POINTING',
                       help='Title for plot')
     parser.add_option('--width',
                       dest='figWidthMm',
@@ -91,6 +91,7 @@ def main():
     if (options.debug):
         print("Running %prog", file=sys.stderr)
         print("  noiseFilePath: ", options.noiseFilePath, file=sys.stderr)
+        print("  vertFilePath: ", options.vertFilePath, file=sys.stderr)
         print("  startTime: ", startTime, file=sys.stderr)
         print("  endTime: ", endTime, file=sys.stderr)
 
@@ -104,18 +105,19 @@ def main():
 
     noiseData, noiseTimes = readInputData(options.noiseFilePath, noiseHdrs, noiseData)
 
-    # read in column headers for CP results
+    # read in column headers for vert results
 
-    #iret, cpHdrs, cpData = readColumnHeaders(options.cpFilePath)
-    #if (iret != 0):
-    #    sys.exit(-1)
-    # read in data for CP results
-    # cpData, cpTimes = readInputData(options.cpFilePath, cpHdrs, cpData)
+    iret, vertHdrs, vertData = readColumnHeaders(options.vertFilePath)
+    if (iret != 0):
+        sys.exit(-1)
+
+    # read in data for VERT results
+
+    vertData, vertTimes = readInputData(options.vertFilePath, vertHdrs, vertData)
 
     # render the plot
     
-    #doPlot(noiseData, noiseTimes, cpData, cpTimes)
-    doPlot(noiseData, noiseTimes)
+    doPlot(noiseData, noiseTimes, vertData, vertTimes)
 
     sys.exit(0)
     
@@ -227,7 +229,7 @@ def movingAverage(values, window):
 ########################################################################
 # Plot
 
-def doPlot(noiseData, noiseTimes):
+def doPlot(noiseData, noiseTimes, vertData, vertTimes):
 
     fileName = options.noiseFilePath
     titleStr = "File: " + fileName
@@ -238,6 +240,7 @@ def doPlot(noiseData, noiseTimes):
     # set up arrays for ZDR noise
 
     ntimes = np.array(noiseTimes).astype(datetime.datetime)
+    vtimes = np.array(vertTimes).astype(datetime.datetime)
     
     countCoPol = np.array(noiseData["countCoPol"]).astype(np.double)
     countCoPol = movingAverage(countCoPol, lenMeanFilter)
@@ -274,6 +277,12 @@ def doPlot(noiseData, noiseTimes):
     validMeanDbmvcNtimes = ntimes[validMeanDbmvc]
     validMeanDbmvcVals = meanDbmvc[validMeanDbmvc]
     
+    vertZdrm = np.array(vertData["meanZdrmVol"]).astype(np.double)
+    # vertZdrm = movingAverage(vertZdrm, lenMeanFilter)
+    validVertZdrm = np.isfinite(vertZdrm)
+    validVertZdrmNtimes = vtimes[validVertZdrm]
+    validVertZdrmVals = vertZdrm[validVertZdrm] - 1.15
+
     # daily values
     
     (dailyTimeMeanNoiseZdr, dailyValMeanNoiseZdr) = computeDailyStats(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals)
@@ -301,8 +310,12 @@ def doPlot(noiseData, noiseTimes):
 
     #ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals, \
     #          "o", label = 'Mean Noise ZDR', color='blue')
+    ax1a.plot(validVertZdrmNtimes, validVertZdrmVals, \
+              "^", label = 'Vert ZDRm', color='green')
     ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals, \
               label = 'Mean Noise ZDR', linewidth=1, color='blue')
+    #ax1a.plot(validVertZdrmNtimes, validVertZdrmVals, \
+    #          label = 'Vert ZDRm', linewidth=1, color='green')
     
 #    ax1b.plot(dailyTimeBragg, dailyValBragg, \
 #              label = 'Daily Noise Bragg', linewidth=1, color='blue')
@@ -319,7 +332,8 @@ def doPlot(noiseData, noiseTimes):
     ax1b.plot(validMeanDbmvcNtimes, validMeanDbmvcVals, \
               label = 'Mean Noise Dbmvc', linewidth=1, color='blue')
     
-    configDateAxis(ax1a, -9999, -9999, "Noise ZDR (dB)", 'upper right')
+    #configDateAxis(ax1a, -9999, -9999, "Noise ZDR (dB)", 'upper right')
+    configDateAxis(ax1a, -3, 1, "Noise ZDR (dB)", 'upper right')
     #configDateAxis(ax1b, -9999, -9999, "Noise Power (dBm)", 'upper right')
     configDateAxis(ax1b, -117, -113, "Noise Power (dBm)", 'upper right')
 
@@ -331,7 +345,7 @@ def doPlot(noiseData, noiseTimes):
 ########################################################################
 # Plot - backup
 
-def doPlot0(noiseData, noiseTimes, cpData, cpTimes):
+def doPlot0(noiseData, noiseTimes, vertData, vertTimes):
 
     fileName = options.noiseFilePath
     titleStr = "File: " + fileName
@@ -387,15 +401,15 @@ def doPlot0(noiseData, noiseTimes, cpData, cpTimes):
 
     # site temp, vert pointing and sun scan results
 
-    ctimes = np.array(cpTimes).astype(datetime.datetime)
-    ZdrmVert = np.array(cpData["ZdrmVert"]).astype(np.double)
+    ctimes = np.array(vertTimes).astype(datetime.datetime)
+    ZdrmVert = np.array(vertData["ZdrmVert"]).astype(np.double)
     validZdrmVert = np.isfinite(ZdrmVert)
     
-    SunscanZdrm = np.array(cpData["SunscanZdrm"]).astype(np.double)
+    SunscanZdrm = np.array(vertData["SunscanZdrm"]).astype(np.double)
     validSunscanZdrm = np.isfinite(SunscanZdrm)
 
-    cptimes = np.array(cpTimes).astype(datetime.datetime)
-    tempSite = np.array(cpData["TempSite"]).astype(np.double)
+    verttimes = np.array(vertTimes).astype(datetime.datetime)
+    tempSite = np.array(vertData["TempSite"]).astype(np.double)
     validTempSite = np.isfinite(tempSite)
 
     tempIceVals = []
@@ -404,7 +418,7 @@ def doPlot0(noiseData, noiseTimes, cpData, cpTimes):
     for ii, noiseVal in enumerate(validIceVals, start=0):
         btime = validIceBtimes[ii]
         if (btime >= startTime and btime <= endTime):
-            tempTime, tempVal = getClosestTemp(btime, cptimes, tempSite)
+            tempTime, tempVal = getClosestTemp(btime, verttimes, tempSite)
             if (np.isfinite(tempVal)):
                 tempIceVals.append(tempVal)
                 noiseIceVals.append(noiseVal)
@@ -455,7 +469,7 @@ def doPlot0(noiseData, noiseTimes, cpData, cpTimes):
 
     oneDay = datetime.timedelta(1.0)
     ax1a.set_xlim([btimes[0] - oneDay, btimes[-1] + oneDay])
-    ax1a.set_title("Residual ZDR noise in ice and Bragg, compared with VERT and CP results (dB)")
+    ax1a.set_title("Residual ZDR noise in ice and Bragg, compared with VERT and VERT results (dB)")
     ax1b.set_xlim([btimes[0] - oneDay, btimes[-1] + oneDay])
     ax1b.set_title("Daily mean ZDR noise in ice and Bragg (dB)")
     #ax1c.set_xlim([btimes[0] - oneDay, btimes[-1] + oneDay])
@@ -482,7 +496,7 @@ def doPlot0(noiseData, noiseTimes, cpData, cpTimes):
               label = 'ZDRM Noise In Ice', linewidth=1, color='red')
     
     #ax1a.plot(ctimes[validSunscanZdrm], SunscanZdrm[validSunscanZdrm], \
-    #          linewidth=2, label = 'Zdrm Sun/CP (dB)', color = 'green')
+    #          linewidth=2, label = 'Zdrm Sun/VERT (dB)', color = 'green')
     
     ax1a.plot(ctimes[validZdrmVert], ZdrmVert[validZdrmVert], \
               "^", markersize=10, linewidth=1, label = 'Zdrm Vert (dB)', color = 'yellow')
@@ -499,7 +513,7 @@ def doPlot0(noiseData, noiseTimes, cpData, cpTimes):
     ax1b.plot(ctimes[validZdrmVert], ZdrmVert[validZdrmVert], \
               "^", markersize=10, linewidth=1, label = 'Zdrm Vert (dB)', color = 'yellow')
 
-    #ax1c.plot(cptimes[validTempSite], tempSite[validTempSite], \
+    #ax1c.plot(vert times[validTempSite], tempSite[validTempSite], \
     #          linewidth=1, label = 'Site Temp', color = 'blue')
     
     #configDateAxis(ax1a, -9999, 9999, "ZDR Noise (dB)", 'upper right')
