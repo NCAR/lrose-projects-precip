@@ -281,7 +281,7 @@ def doPlot(noiseData, noiseTimes, vertData, vertTimes):
     # vertZdrm = movingAverage(vertZdrm, lenMeanFilter)
     validVertZdrm = np.isfinite(vertZdrm)
     validVertZdrmNtimes = vtimes[validVertZdrm]
-    validVertZdrmVals = vertZdrm[validVertZdrm] - 1.15
+    validVertZdrmVals = vertZdrm[validVertZdrm]
 
     # daily values
     
@@ -302,7 +302,7 @@ def doPlot(noiseData, noiseTimes, vertData, vertTimes):
 
     oneDay = datetime.timedelta(1.0)
     ax1a.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
-    ax1a.set_title("Noise ZDR (dB)")
+    ax1a.set_title("ZDRm (dB)")
     ax1b.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
     ax1b.set_title("Mean Noise Power (dBm)")
     #ax1c.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
@@ -313,7 +313,9 @@ def doPlot(noiseData, noiseTimes, vertData, vertTimes):
     ax1a.plot(validVertZdrmNtimes, validVertZdrmVals, \
               "^", label = 'Vert ZDRm', color='green')
     ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals, \
-              label = 'Mean Noise ZDR', linewidth=1, color='blue')
+              label = 'Mean Noise ZDRm', linewidth=1, color='blue')
+    ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals + 1.15, \
+              label = 'NoiseZdr+1.15', linewidth=1, color='red')
     #ax1a.plot(validVertZdrmNtimes, validVertZdrmVals, \
     #          label = 'Vert ZDRm', linewidth=1, color='green')
     
@@ -333,13 +335,15 @@ def doPlot(noiseData, noiseTimes, vertData, vertTimes):
               label = 'Mean Noise Dbmvc', linewidth=1, color='blue')
     
     #configDateAxis(ax1a, -9999, -9999, "Noise ZDR (dB)", 'upper right')
-    configDateAxis(ax1a, -3, 1, "Noise ZDR (dB)", 'upper right')
+    configDateAxis(ax1a, -2, 2, "ZDRm (dB)", 'upper right')
     #configDateAxis(ax1b, -9999, -9999, "Noise Power (dBm)", 'upper right')
     configDateAxis(ax1b, -117, -113, "Noise Power (dBm)", 'upper right')
 
     fig1.autofmt_xdate()
     fig1.tight_layout()
-    fig1.subplots_adjust(bottom=0.08, left=0.06, right=0.97, top=0.96)
+    fig1.subplots_adjust(bottom=0.08, left=0.06, right=0.97, top=0.90)
+
+    fig1.suptitle(options.title)
     plt.show()
 
 ########################################################################
