@@ -1,0 +1,16 @@
+#!/bin/csh
+#
+# Rsync cal data from control to mgen
+#
+
+# go to cal data on control
+
+cd $DATA_DIR/cal
+
+# rsync to correct locations on mgen1
+
+rsync -av sband_1.0us.alt/ mgen1:projDir/mgen/params/cal_alt/1.0us
+rsync -av sband_1.0us.shv/ mgen1:projDir/mgen/params/cal_sim/1.0us
+rsync -av sband_1.5us.alt/ mgen1:projDir/mgen/params/cal_alt/1.5us
+rsync -av sband_1.5us.shv/ mgen1:projDir/mgen/params/cal_sim/1.5us
+

@@ -1,0 +1,10 @@
+#! /bin/csh
+
+cd $PROJ_DIR/calibration/params
+
+running "SunCal -params SunCal.kband"
+if ($status == 1) then
+  SunCal -params SunCal.kband |& \
+    LogFilter -d $ERRORS_LOG_DIR -p SunCal -i kband &
+endif
+

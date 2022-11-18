@@ -1,0 +1,8 @@
+#! /bin/csh
+
+cd $PROJ_DIR/calibration/params
+
+set Today=`date -u '+%Y%m%d'`
+
+VertCompute -params VertCompute.sband -debug -f ~/projDir/data/time_series/sband/save/$Today/*vert*
+

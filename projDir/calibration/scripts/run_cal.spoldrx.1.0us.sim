@@ -1,0 +1,6 @@
+#! /bin/csh
+
+cd $PROJ_DIR/calibration/params
+
+TsCalAuto -params TsCalAuto.spoldrx_1.0us.sim -debug
+
