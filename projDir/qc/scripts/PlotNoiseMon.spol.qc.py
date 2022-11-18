@@ -311,10 +311,10 @@ def doPlot(noiseData, noiseTimes, vertData, vertTimes):
     #ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals, \
     #          "o", label = 'Mean Noise ZDR', color='blue')
     ax1a.plot(validVertZdrmNtimes, validVertZdrmVals, \
-              "^", label = 'Vert ZDRm', color='green')
+              ".", label = 'Vert ZDRm', color='green')
     ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals, \
               label = 'Mean Noise ZDRm', linewidth=1, color='black')
-    ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals + 1.15, \
+    ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals + 0.5, \
               label = 'NoiseZdr+1.15', linewidth=1, color='brown')
     #ax1a.plot(validVertZdrmNtimes, validVertZdrmVals, \
     #          label = 'Vert ZDRm', linewidth=1, color='green')
@@ -335,9 +335,10 @@ def doPlot(noiseData, noiseTimes, vertData, vertTimes):
               label = 'Mean Noise Dbmvc', linewidth=1, color='blue')
     
     #configDateAxis(ax1a, -9999, -9999, "Noise ZDR (dB)", 'upper right')
-    configDateAxis(ax1a, -2, 2, "ZDRm (dB)", 'upper right')
-    #configDateAxis(ax1b, -9999, -9999, "Noise Power (dBm)", 'upper right')
-    configDateAxis(ax1b, -117, -113, "Noise Power (dBm)", 'upper right')
+    configDateAxis(ax1a, -1.5, 1.5, "ZDRm (dB)", 'upper right')
+    # configDateAxis(ax1b, -9999, -9999, "Noise Power (dBm)", 'upper right')
+    #configDateAxis(ax1b, -117, -113, "Noise Power (dBm)", 'upper right')
+    configDateAxis(ax1b, -76.6, -74, "Noise Power (dBm)", 'upper right')
 
     fig1.autofmt_xdate()
     fig1.tight_layout()
