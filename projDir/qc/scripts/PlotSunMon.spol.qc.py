@@ -250,7 +250,8 @@ def doPlot():
     measuredDbmVc = np.array(sunData["measuredDbmVc"]).astype(np.double)
     measuredDbmVc = movingAverage(measuredDbmVc, lenMeanFilter)
 
-    validMeasuredDbm = np.logical_and(np.isfinite(measuredDbmHc), np.isfinite(measuredDbmVc))
+    validMeasuredDbm = np.logical_and(np.isfinite(measuredDbmHc),
+                                      np.isfinite(measuredDbmVc))
 
     validMeasuredDbmNtimes = ntimes[validMeasuredDbm]
     validMeasuredDbmHcVals = measuredDbmHc[validMeasuredDbm]
@@ -259,7 +260,7 @@ def doPlot():
     sunZdrVals = validMeasuredDbmHcVals - validMeasuredDbmVcVals
 
     vertZdrm = np.array(vertData["meanZdrmVol"]).astype(np.double)
-    vertZdrm = movingAverage(vertZdrm, lenMeanFilter)
+    # vertZdrm = movingAverage(vertZdrm, lenMeanFilter)
     validVertZdrm = np.isfinite(vertZdrm)
     validVertZdrmNtimes = vtimes[validVertZdrm]
     validVertZdrmVals = vertZdrm[validVertZdrm]
@@ -295,10 +296,10 @@ def doPlot():
               label = 'Mean Sun DbmVc', linewidth=1, color='blue')
     
     #configDateAxis(ax1a, -9999, -9999, "Sun ZDR (dB)", 'upper right')
-    configDateAxis(ax1a, -1.0, 2.0, "ZDRm (dB)", 'upper right')
-    configDateAxis(ax1b, -9999, -9999, "Sun Power (dBm)", 'upper right')
+    configDateAxis(ax1a, -2.0, 2.0, "ZDRm (dB)", 'upper right')
+    # configDateAxis(ax1b, -9999, -9999, "Sun Power (dBm)", 'upper right')
     #configDateAxis(ax1b, -117, -113, "Sun Power (dBm)", 'upper right')
-    #configDateAxis(ax1b, -76.6, -74, "Sun Power (dBm)", 'upper right')
+    configDateAxis(ax1b, -72, -64, "Sun Power (dBm)", 'upper right')
 
     fig1.autofmt_xdate()
     fig1.tight_layout()
