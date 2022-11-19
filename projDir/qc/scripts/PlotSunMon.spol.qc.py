@@ -2,7 +2,7 @@
 
 #===========================================================================
 #
-# Produce plots for noise mon data by time
+# Produce plots for sun mon data by time
 #
 #===========================================================================
 
@@ -42,17 +42,17 @@ def main():
                       dest='verbose', default=False,
                       action="store_true",
                       help='Set verbose debugging on')
-    parser.add_option('--noise_file',
-                      dest='noiseFilePath',
-                      default='/scr/cirrus3/rsfdata/projects/precip/calibration/spol/noise_mon/sband/tables/noise_mon.sband.txt',
-                      help='File path for noise monitoring')
+    parser.add_option('--sun_file',
+                      dest='sunFilePath',
+                      default='/scr/cirrus3/rsfdata/projects/precip/calibration/spol/sun_mon/sband/tables/sun_mon.sband.txt',
+                      help='File path for sun monitoring')
     parser.add_option('--vert_file',
                       dest='vertFilePath',
                       default='/scr/cirrus3/rsfdata/projects/precip/calibration/spol/vert/sband/tables/vert.sband.txt',
                       help='VertCompute results file path')
     parser.add_option('--title',
                       dest='title',
-                      default='ZDR BIAS FROM NOISE and VERT POINTING',
+                      default='ZDR BIAS FROM SUN and VERT POINTING',
                       help='Title for plot')
     parser.add_option('--width',
                       dest='figWidthMm',
@@ -90,21 +90,21 @@ def main():
 
     if (options.debug):
         print("Running %prog", file=sys.stderr)
-        print("  noiseFilePath: ", options.noiseFilePath, file=sys.stderr)
+        print("  sunFilePath: ", options.sunFilePath, file=sys.stderr)
         print("  vertFilePath: ", options.vertFilePath, file=sys.stderr)
         print("  startTime: ", startTime, file=sys.stderr)
         print("  endTime: ", endTime, file=sys.stderr)
 
-    # read in column headers for noise results
+    # read in column headers for sun results
 
-    global noiseHdrs, noiseData, noiseTimes
-    iret, noiseHdrs, noiseData = readColumnHeaders(options.noiseFilePath)
+    global sunHdrs, sunData, sunTimes
+    iret, sunHdrs, sunData = readColumnHeaders(options.sunFilePath)
     if (iret != 0):
         sys.exit(-1)
 
-    # read in data for noise results
+    # read in data for sun results
 
-    noiseData, noiseTimes = readInputData(options.noiseFilePath, noiseHdrs, noiseData)
+    sunData, sunTimes = readInputData(options.sunFilePath, sunHdrs, sunData)
 
     # read in column headers for vert results
 
@@ -233,63 +233,36 @@ def movingAverage(values, window):
 
 def doPlot():
 
-    fileName = options.noiseFilePath
+    fileName = options.sunFilePath
     titleStr = "File: " + fileName
     hfmt = dates.DateFormatter('%y/%m/%d')
 
     lenMeanFilter = int(options.lenMean)
 
-    # set up arrays for ZDR noise
+    # set up arrays for ZDR sun
 
-    ntimes = np.array(noiseTimes).astype(datetime.datetime)
+    ntimes = np.array(sunTimes).astype(datetime.datetime)
     vtimes = np.array(vertTimes).astype(datetime.datetime)
     
-    countCoPol = np.array(noiseData["countCoPol"]).astype(np.double)
-    countCoPol = movingAverage(countCoPol, lenMeanFilter)
-    validCountCoPol = np.isfinite(countCoPol)
-    
-    meanHtKm = np.array(noiseData["meanHtKm"]).astype(np.double)
-    meanHtKm = movingAverage(meanHtKm, lenMeanFilter)
-    validMeanHtKm = np.isfinite(meanHtKm)
-    
-    meanNoiseZdr = np.array(noiseData["meanNoiseZdr"]).astype(np.double)
-    meanNoiseZdr = movingAverage(meanNoiseZdr, lenMeanFilter)
-    validMeanNoiseZdr = np.isfinite(meanNoiseZdr)
+    measuredDbmHc = np.array(sunData["measuredDbmHc"]).astype(np.double)
+    measuredDbmHc = movingAverage(measuredDbmHc, lenMeanFilter)
 
-    meanDbmhc = np.array(noiseData["meanDbmhc"]).astype(np.double)
-    meanDbmhc = movingAverage(meanDbmhc, lenMeanFilter)
-    validMeanDbmhc = np.isfinite(meanDbmhc)
+    measuredDbmVc = np.array(sunData["measuredDbmVc"]).astype(np.double)
+    measuredDbmVc = movingAverage(measuredDbmVc, lenMeanFilter)
 
-    meanDbmvc = np.array(noiseData["meanDbmvc"]).astype(np.double)
-    meanDbmvc = movingAverage(meanDbmvc, lenMeanFilter)
-    validMeanDbmvc = np.isfinite(meanDbmvc)
+    validMeasuredDbm = np.logical_and(np.isfinite(measuredDbmHc), np.isfinite(measuredDbmVc))
 
-    validCountCoPolNtimes = ntimes[validCountCoPol]
-    validCountCoPolVals = countCoPol[validCountCoPol]
+    validMeasuredDbmNtimes = ntimes[validMeasuredDbm]
+    validMeasuredDbmHcVals = measuredDbmHc[validMeasuredDbm]
+    validMeasuredDbmVcVals = measuredDbmVc[validMeasuredDbm]
     
-    validMeanHtKmNtimes = ntimes[validMeanHtKm]
-    validMeanHtKmVals = meanHtKm[validMeanHtKm]
-    
-    validMeanNoiseZdrNtimes = ntimes[validMeanNoiseZdr]
-    validMeanNoiseZdrVals = meanNoiseZdr[validMeanNoiseZdr]
-    
-    validMeanDbmhcNtimes = ntimes[validMeanDbmhc]
-    validMeanDbmhcVals = meanDbmhc[validMeanDbmhc]
-    
-    validMeanDbmvcNtimes = ntimes[validMeanDbmvc]
-    validMeanDbmvcVals = meanDbmvc[validMeanDbmvc]
-    
+    sunZdrVals = validMeasuredDbmHcVals - validMeasuredDbmVcVals
+
     vertZdrm = np.array(vertData["meanZdrmVol"]).astype(np.double)
     vertZdrm = movingAverage(vertZdrm, lenMeanFilter)
     validVertZdrm = np.isfinite(vertZdrm)
     validVertZdrmNtimes = vtimes[validVertZdrm]
     validVertZdrmVals = vertZdrm[validVertZdrm]
-
-    # daily values
-    
-    (dailyTimeMeanNoiseZdr, dailyValMeanNoiseZdr) = computeDailyStats(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals)
-    (dailyTimeMeanDbmhc, dailyValMeanDbmhc) = computeDailyStats(validMeanDbmhcNtimes, validMeanDbmhcVals)
-    (dailyTimeMeanDbmvc, dailyValMeanDbmvc) = computeDailyStats(validMeanDbmvcNtimes, validMeanDbmvcVals)
 
     # set up plots
 
@@ -306,26 +279,26 @@ def doPlot():
     ax1a.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
     ax1a.set_title("ZDRm (dB)")
     ax1b.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
-    ax1b.set_title("Mean Noise Power (dBm)")
+    ax1b.set_title("Sun Power (dBm)")
 
     ax1a.plot(validVertZdrmNtimes, validVertZdrmVals, \
               ".", label = 'Vert ZDRm', color='green')
-    ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals, \
-              label = 'Mean Noise ZDRm', linewidth=1, color='black')
-    ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals + 0.5, \
-              label = 'NoiseZdr+1.15', linewidth=1, color='brown')
+    ax1a.plot(validMeasuredDbmNtimes, sunZdrVals, \
+              label = 'Sun ZDRm', linewidth=1, color='black')
+    ax1a.plot(validMeasuredDbmNtimes, sunZdrVals + 0.5, \
+              label = 'Sun ZDRm', linewidth=1, color='brown')
 
-    ax1b.plot(validMeanDbmhcNtimes, validMeanDbmhcVals, \
-              label = 'Mean Noise Dbmhc', linewidth=1, color='red')
+    ax1b.plot(validMeasuredDbmNtimes, validMeasuredDbmHcVals, \
+              label = 'Mean Sun DbmHc', linewidth=1, color='red')
     
-    ax1b.plot(validMeanDbmvcNtimes, validMeanDbmvcVals, \
-              label = 'Mean Noise Dbmvc', linewidth=1, color='blue')
+    ax1b.plot(validMeasuredDbmNtimes, validMeasuredDbmVcVals, \
+              label = 'Mean Sun DbmVc', linewidth=1, color='blue')
     
-    #configDateAxis(ax1a, -9999, -9999, "Noise ZDR (dB)", 'upper right')
-    configDateAxis(ax1a, -1.5, 1.5, "ZDRm (dB)", 'upper right')
-    # configDateAxis(ax1b, -9999, -9999, "Noise Power (dBm)", 'upper right')
-    #configDateAxis(ax1b, -117, -113, "Noise Power (dBm)", 'upper right')
-    configDateAxis(ax1b, -76.6, -74, "Noise Power (dBm)", 'upper right')
+    #configDateAxis(ax1a, -9999, -9999, "Sun ZDR (dB)", 'upper right')
+    configDateAxis(ax1a, -1.0, 2.0, "ZDRm (dB)", 'upper right')
+    configDateAxis(ax1b, -9999, -9999, "Sun Power (dBm)", 'upper right')
+    #configDateAxis(ax1b, -117, -113, "Sun Power (dBm)", 'upper right')
+    #configDateAxis(ax1b, -76.6, -74, "Sun Power (dBm)", 'upper right')
 
     fig1.autofmt_xdate()
     fig1.tight_layout()
