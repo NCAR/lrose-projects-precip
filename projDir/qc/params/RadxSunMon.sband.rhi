@@ -42,7 +42,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "sband";
+instance = "sband.rhi";
 
 //======================================================================
 //
@@ -84,7 +84,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-moments_input_dir = "./cfradial/moments";
+moments_input_dir = "/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/field/moments/sband/rhi";
 
 ///////////// max_realtime_data_age_secs //////////////
 //
@@ -215,7 +215,7 @@ dbz_field_name = "DBZ";
 // Type: double
 //
 
-radar_constant_db = -67;
+radar_constant_db = -72.6259;
 
 ///////////// vel_field_name //////////////////////////
 //
@@ -446,7 +446,7 @@ azimuth_search_margin_deg = 2;
 // Type: double
 //
 
-sun_analysis_min_elevation_deg = 1.25;
+sun_analysis_min_elevation_deg = 2.5;
 
 ///////////// power_correction_curve //////////////////
 //
@@ -989,5 +989,5 @@ write_results_to_spdb = TRUE;
 // Type: string
 //
 
-spdb_output_url = "/tmp/spdb/radx_sun_mon";
+spdb_output_url = "$(DATA_DIR)/$(project)/calibration/spol/sun_mon/sband/spdb";
 
