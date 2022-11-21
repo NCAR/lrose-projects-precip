@@ -29,6 +29,8 @@ def main():
     global debug
     global startTime
     global endTime
+    global zdrStatsStartTime
+    global zdrStatsEndTime
 
 # parse the command line
 
@@ -74,6 +76,14 @@ def main():
                       dest='endTime',
                       default='2022 08 12 00 00 00',
                       help='End time for XY plot')
+    parser.add_option('--zdrStatsStartTime',
+                      dest='zdrStatsStartTime',
+                      default='2022 05 25 00 00 00',
+                      help='Start time for computing ZDR stats')
+    parser.add_option('--zdrStatsEndTime',
+                      dest='zdrStatsEndTime',
+                      default='2022 07 09 00 00 00',
+                      help='End time for computing ZDR stats')
     
     (options, args) = parser.parse_args()
     
@@ -88,12 +98,22 @@ def main():
     endTime = datetime.datetime(int(year), int(month), int(day),
                                 int(hour), int(minute), int(sec))
 
+    year, month, day, hour, minute, sec = options.zdrStatsStartTime.split()
+    zdrStatsStartTime = datetime.datetime(int(year), int(month), int(day),
+                                          int(hour), int(minute), int(sec))
+
+    year, month, day, hour, minute, sec = options.zdrStatsEndTime.split()
+    zdrStatsEndTime = datetime.datetime(int(year), int(month), int(day),
+                                        int(hour), int(minute), int(sec))
+
     if (options.debug):
         print("Running %prog", file=sys.stderr)
         print("  sunFilePath: ", options.sunFilePath, file=sys.stderr)
         print("  vertFilePath: ", options.vertFilePath, file=sys.stderr)
         print("  startTime: ", startTime, file=sys.stderr)
         print("  endTime: ", endTime, file=sys.stderr)
+        print("  zdrStatsStartTime: ", zdrStatsStartTime, file=sys.stderr)
+        print("  zdrStatsEndTime: ", zdrStatsEndTime, file=sys.stderr)
 
     # read in column headers for sun results
 
@@ -245,25 +265,45 @@ def doPlot():
     vtimes = np.array(vertTimes).astype(datetime.datetime)
     
     measuredDbmHc = np.array(sunData["measuredDbmHc"]).astype(np.double)
-    measuredDbmHc = movingAverage(measuredDbmHc, lenMeanFilter)
+    measuredDbmHcAv = movingAverage(measuredDbmHc, lenMeanFilter)
 
     measuredDbmVc = np.array(sunData["measuredDbmVc"]).astype(np.double)
-    measuredDbmVc = movingAverage(measuredDbmVc, lenMeanFilter)
+    measuredDbmVcAv = movingAverage(measuredDbmVc, lenMeanFilter)
 
-    validMeasuredDbm = np.logical_and(np.isfinite(measuredDbmHc),
-                                      np.isfinite(measuredDbmVc))
+    validMeasuredDbm = np.logical_and(np.isfinite(measuredDbmHcAv),
+                                      np.isfinite(measuredDbmVcAv))
 
     validMeasuredDbmNtimes = ntimes[validMeasuredDbm]
-    validMeasuredDbmHcVals = measuredDbmHc[validMeasuredDbm]
-    validMeasuredDbmVcVals = measuredDbmVc[validMeasuredDbm]
+    validMeasuredDbmHcVals = measuredDbmHcAv[validMeasuredDbm]
+    validMeasuredDbmVcVals = measuredDbmVcAv[validMeasuredDbm]
     
     sunZdrVals = validMeasuredDbmHcVals - validMeasuredDbmVcVals
 
     vertZdrm = np.array(vertData["meanZdrmVol"]).astype(np.double)
-    # vertZdrm = movingAverage(vertZdrm, lenMeanFilter)
-    validVertZdrm = np.isfinite(vertZdrm)
+    vertZdrmAv = movingAverage(vertZdrm, lenMeanFilter)
+    validVertZdrm = np.isfinite(vertZdrmAv)
     validVertZdrmNtimes = vtimes[validVertZdrm]
-    validVertZdrmVals = vertZdrm[validVertZdrm]
+    validVertZdrmVals = vertZdrmAv[validVertZdrm]
+
+    # compute the mean sun zdr and vert zdr for the stats time period
+
+    statsDbmHc = measuredDbmHc[np.logical_and(ntimes >= zdrStatsStartTime,
+                                              ntimes <= zdrStatsEndTime)]
+    statsDbmVc = measuredDbmVc[np.logical_and(ntimes >= zdrStatsStartTime,
+                                              ntimes <= zdrStatsEndTime)]
+    statsSunZdr = statsDbmHc - statsDbmVc
+
+    statsVertZdrm = vertZdrm[np.logical_and(vtimes >= zdrStatsStartTime,
+                                            vtimes <= zdrStatsEndTime)]
+    sunZdrStatsMean = np.mean(statsSunZdr)
+    vertZdrmStatsMean = np.mean(statsVertZdrm)
+    zdrCorr = vertZdrmStatsMean - sunZdrStatsMean
+    sunZdrValsCorr = sunZdrVals + zdrCorr
+    
+    if (options.debug):
+        print("  ==>> sunZdrStatsMean: ", sunZdrStatsMean, file=sys.stderr)
+        print("  ==>> vertZdrmStatsMean: ", vertZdrmStatsMean, file=sys.stderr)
+        print("  ==>>           zdrCorr: ", zdrCorr, file=sys.stderr)
 
     # set up plots
 
@@ -286,7 +326,7 @@ def doPlot():
               ".", label = 'Vert ZDRm', color='green')
     ax1a.plot(validMeasuredDbmNtimes, sunZdrVals, \
               label = 'Sun ZDRm', linewidth=1, color='black')
-    ax1a.plot(validMeasuredDbmNtimes, sunZdrVals + 0.5, \
+    ax1a.plot(validMeasuredDbmNtimes, sunZdrValsCorr, \
               label = 'Sun ZDRm', linewidth=1, color='brown')
 
     ax1b.plot(validMeasuredDbmNtimes, validMeasuredDbmHcVals, \
@@ -297,9 +337,9 @@ def doPlot():
     
     #configDateAxis(ax1a, -9999, -9999, "Sun ZDR (dB)", 'upper right')
     configDateAxis(ax1a, -2.0, 2.0, "ZDRm (dB)", 'upper right')
-    # configDateAxis(ax1b, -9999, -9999, "Sun Power (dBm)", 'upper right')
+    #configDateAxis(ax1b, -9999, -9999, "Sun Power (dBm)", 'upper right')
     #configDateAxis(ax1b, -117, -113, "Sun Power (dBm)", 'upper right')
-    configDateAxis(ax1b, -72, -64, "Sun Power (dBm)", 'upper right')
+    configDateAxis(ax1b, -75, -60, "Sun Power (dBm)", 'upper right')
 
     fig1.autofmt_xdate()
     fig1.tight_layout()

@@ -29,6 +29,8 @@ def main():
     global debug
     global startTime
     global endTime
+    global zdrStatsStartTime
+    global zdrStatsEndTime
 
 # parse the command line
 
@@ -74,6 +76,14 @@ def main():
                       dest='endTime',
                       default='2022 08 12 00 00 00',
                       help='End time for XY plot')
+    parser.add_option('--zdrStatsStartTime',
+                      dest='zdrStatsStartTime',
+                      default='2022 05 25 00 00 00',
+                      help='Start time for computing ZDR stats')
+    parser.add_option('--zdrStatsEndTime',
+                      dest='zdrStatsEndTime',
+                      default='2022 07 09 00 00 00',
+                      help='End time for computing ZDR stats')
     
     (options, args) = parser.parse_args()
     
@@ -88,12 +98,22 @@ def main():
     endTime = datetime.datetime(int(year), int(month), int(day),
                                 int(hour), int(minute), int(sec))
 
+    year, month, day, hour, minute, sec = options.zdrStatsStartTime.split()
+    zdrStatsStartTime = datetime.datetime(int(year), int(month), int(day),
+                                          int(hour), int(minute), int(sec))
+
+    year, month, day, hour, minute, sec = options.zdrStatsEndTime.split()
+    zdrStatsEndTime = datetime.datetime(int(year), int(month), int(day),
+                                        int(hour), int(minute), int(sec))
+
     if (options.debug):
         print("Running %prog", file=sys.stderr)
         print("  noiseFilePath: ", options.noiseFilePath, file=sys.stderr)
         print("  vertFilePath: ", options.vertFilePath, file=sys.stderr)
         print("  startTime: ", startTime, file=sys.stderr)
         print("  endTime: ", endTime, file=sys.stderr)
+        print("  zdrStatsStartTime: ", zdrStatsStartTime, file=sys.stderr)
+        print("  zdrStatsEndTime: ", zdrStatsEndTime, file=sys.stderr)
 
     # read in column headers for noise results
 
@@ -244,46 +264,48 @@ def doPlot():
     ntimes = np.array(noiseTimes).astype(datetime.datetime)
     vtimes = np.array(vertTimes).astype(datetime.datetime)
     
-    countCoPol = np.array(noiseData["countCoPol"]).astype(np.double)
-    countCoPol = movingAverage(countCoPol, lenMeanFilter)
-    validCountCoPol = np.isfinite(countCoPol)
-    
-    meanHtKm = np.array(noiseData["meanHtKm"]).astype(np.double)
-    meanHtKm = movingAverage(meanHtKm, lenMeanFilter)
-    validMeanHtKm = np.isfinite(meanHtKm)
-    
     meanNoiseZdr = np.array(noiseData["meanNoiseZdr"]).astype(np.double)
-    meanNoiseZdr = movingAverage(meanNoiseZdr, lenMeanFilter)
-    validMeanNoiseZdr = np.isfinite(meanNoiseZdr)
+    meanNoiseZdrAv = movingAverage(meanNoiseZdr, lenMeanFilter)
+    validMeanNoiseZdr = np.isfinite(meanNoiseZdrAv)
 
     meanDbmhc = np.array(noiseData["meanDbmhc"]).astype(np.double)
-    meanDbmhc = movingAverage(meanDbmhc, lenMeanFilter)
-    validMeanDbmhc = np.isfinite(meanDbmhc)
+    meanDbmhcAv = movingAverage(meanDbmhc, lenMeanFilter)
+    validMeanDbmhc = np.isfinite(meanDbmhcAv)
 
     meanDbmvc = np.array(noiseData["meanDbmvc"]).astype(np.double)
-    meanDbmvc = movingAverage(meanDbmvc, lenMeanFilter)
-    validMeanDbmvc = np.isfinite(meanDbmvc)
+    meanDbmvcAv = movingAverage(meanDbmvc, lenMeanFilter)
+    validMeanDbmvc = np.isfinite(meanDbmvcAv)
 
-    validCountCoPolNtimes = ntimes[validCountCoPol]
-    validCountCoPolVals = countCoPol[validCountCoPol]
-    
-    validMeanHtKmNtimes = ntimes[validMeanHtKm]
-    validMeanHtKmVals = meanHtKm[validMeanHtKm]
-    
     validMeanNoiseZdrNtimes = ntimes[validMeanNoiseZdr]
-    validMeanNoiseZdrVals = meanNoiseZdr[validMeanNoiseZdr]
+    validMeanNoiseZdrVals = meanNoiseZdrAv[validMeanNoiseZdr]
     
     validMeanDbmhcNtimes = ntimes[validMeanDbmhc]
-    validMeanDbmhcVals = meanDbmhc[validMeanDbmhc]
+    validMeanDbmhcVals = meanDbmhcAv[validMeanDbmhc]
     
     validMeanDbmvcNtimes = ntimes[validMeanDbmvc]
-    validMeanDbmvcVals = meanDbmvc[validMeanDbmvc]
+    validMeanDbmvcVals = meanDbmvcAv[validMeanDbmvc]
     
     vertZdrm = np.array(vertData["meanZdrmVol"]).astype(np.double)
-    vertZdrm = movingAverage(vertZdrm, lenMeanFilter)
-    validVertZdrm = np.isfinite(vertZdrm)
-    validVertZdrmNtimes = vtimes[validVertZdrm]
-    validVertZdrmVals = vertZdrm[validVertZdrm]
+    vertZdrmAv = movingAverage(vertZdrm, lenMeanFilter)
+    validVertZdrm = np.isfinite(vertZdrmAv)
+    validVertZdrmVtimes = vtimes[validVertZdrm]
+    validVertZdrmVals = vertZdrmAv[validVertZdrm]
+
+    # compute the mean noise zdr and vert zdr for the stats time period
+
+    statsNoiseZdr = meanNoiseZdr[np.logical_and(ntimes >= zdrStatsStartTime,
+                                                ntimes <= zdrStatsEndTime)]
+    statsVertZdrm = vertZdrm[np.logical_and(vtimes >= zdrStatsStartTime,
+                                            vtimes <= zdrStatsEndTime)]
+    noiseZdrStatsMean = np.mean(statsNoiseZdr)
+    vertZdrmStatsMean = np.mean(statsVertZdrm)
+    zdrCorr = vertZdrmStatsMean - noiseZdrStatsMean
+    noiseZdrValsCorr = meanNoiseZdrAv[validMeanNoiseZdr] + zdrCorr
+    
+    if (options.debug):
+        print("  ==>> noiseZdrStatsMean: ", noiseZdrStatsMean, file=sys.stderr)
+        print("  ==>> vertZdrmStatsMean: ", vertZdrmStatsMean, file=sys.stderr)
+        print("  ==>>           zdrCorr: ", zdrCorr, file=sys.stderr)
 
     # daily values
     
@@ -308,11 +330,11 @@ def doPlot():
     ax1b.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
     ax1b.set_title("Mean Noise Power (dBm)")
 
-    ax1a.plot(validVertZdrmNtimes, validVertZdrmVals, \
+    ax1a.plot(validVertZdrmVtimes, validVertZdrmVals, \
               ".", label = 'Vert ZDRm', color='green')
     ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals, \
               label = 'Mean Noise ZDRm', linewidth=1, color='black')
-    ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals + 0.5, \
+    ax1a.plot(validMeanNoiseZdrNtimes, noiseZdrValsCorr, \
               label = 'NoiseZdr+1.15', linewidth=1, color='brown')
 
     ax1b.plot(validMeanDbmhcNtimes, validMeanDbmhcVals, \
@@ -322,7 +344,7 @@ def doPlot():
               label = 'Mean Noise Dbmvc', linewidth=1, color='blue')
     
     #configDateAxis(ax1a, -9999, -9999, "Noise ZDR (dB)", 'upper right')
-    configDateAxis(ax1a, -1.5, 1.5, "ZDRm (dB)", 'upper right')
+    configDateAxis(ax1a, -2.0, 2.0, "ZDRm (dB)", 'upper right')
     # configDateAxis(ax1b, -9999, -9999, "Noise Power (dBm)", 'upper right')
     #configDateAxis(ax1b, -117, -113, "Noise Power (dBm)", 'upper right')
     configDateAxis(ax1b, -76.6, -74, "Noise Power (dBm)", 'upper right')
