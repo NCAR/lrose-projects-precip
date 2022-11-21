@@ -299,13 +299,13 @@ def doPlot():
                                             vtimes <= zdrStatsEndTime)]
     noiseZdrStatsMean = np.mean(statsNoiseZdr)
     vertZdrmStatsMean = np.mean(statsVertZdrm)
-    zdrCorr = vertZdrmStatsMean - noiseZdrStatsMean
-    noiseZdrValsCorr = meanNoiseZdrAv[validMeanNoiseZdr] + zdrCorr
+    noiseToZdrCorr = vertZdrmStatsMean - noiseZdrStatsMean
+    noiseZdrValsCorr = meanNoiseZdrAv[validMeanNoiseZdr] + noiseToZdrCorr
     
     if (options.debug):
         print("  ==>> noiseZdrStatsMean: ", noiseZdrStatsMean, file=sys.stderr)
         print("  ==>> vertZdrmStatsMean: ", vertZdrmStatsMean, file=sys.stderr)
-        print("  ==>>           zdrCorr: ", zdrCorr, file=sys.stderr)
+        print("  ==>>    noiseToZdrCorr: ", noiseToZdrCorr, file=sys.stderr)
 
     # daily values
     
@@ -335,7 +335,7 @@ def doPlot():
     ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals, \
               label = 'Mean Noise ZDRm', linewidth=1, color='black')
     ax1a.plot(validMeanNoiseZdrNtimes, noiseZdrValsCorr, \
-              label = 'NoiseZdr+1.15', linewidth=1, color='brown')
+              label = 'NoiseZdr+noiseToZdrCorr', linewidth=1, color='brown')
 
     ax1b.plot(validMeanDbmhcNtimes, validMeanDbmhcVals, \
               label = 'Mean Noise Dbmhc', linewidth=1, color='red')
@@ -346,8 +346,25 @@ def doPlot():
     #configDateAxis(ax1a, -9999, -9999, "Noise ZDR (dB)", 'upper right')
     configDateAxis(ax1a, -2.0, 2.0, "ZDRm (dB)", 'upper right')
     # configDateAxis(ax1b, -9999, -9999, "Noise Power (dBm)", 'upper right')
-    #configDateAxis(ax1b, -117, -113, "Noise Power (dBm)", 'upper right')
     configDateAxis(ax1b, -76.6, -74, "Noise Power (dBm)", 'upper right')
+
+    # add text labels
+
+    label1 = "Stats start: " + zdrStatsStartTime.strftime('%Y-%m-%d')    
+    label2 = "Stats end: " + zdrStatsEndTime.strftime('%Y-%m-%d')    
+    label3 = "Ntimes smooth: " + str(options.lenMean)
+
+    label4 = "noiseZdrMean: " + ("%.2f" % noiseZdrStatsMean)
+    label5 = "vertZdrmMean: " + ("%.2f" % vertZdrmStatsMean)
+    label6 = "noiseToZdrCorr: " + ("%.2f" % noiseToZdrCorr)
+
+    plt.figtext(0.06, 0.95, label1)
+    plt.figtext(0.06, 0.93, label2)
+    plt.figtext(0.06, 0.91, label3)
+
+    plt.figtext(0.2, 0.95, label4)
+    plt.figtext(0.2, 0.93, label5)
+    plt.figtext(0.2, 0.91, label6)
 
     fig1.autofmt_xdate()
     fig1.tight_layout()
@@ -571,7 +588,8 @@ def configDateAxis(ax, miny, maxy, ylabel, legendLoc):
     if (miny > -9990 and maxy > -9990):
         ax.set_ylim([miny, maxy])
     hfmt = dates.DateFormatter('%y/%m/%d')
-    ax.xaxis.set_major_locator(dates.DayLocator())
+    ax.xaxis.set_major_locator(dates.DayLocator(interval = 2))
+    ax.xaxis.set_minor_locator(dates.DayLocator(interval = 1))
     ax.xaxis.set_major_formatter(hfmt)
     for tick in ax.xaxis.get_major_ticks():
         tick.label.set_fontsize(8) 

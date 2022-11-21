@@ -297,13 +297,13 @@ def doPlot():
                                             vtimes <= zdrStatsEndTime)]
     sunZdrStatsMean = np.mean(statsSunZdr)
     vertZdrmStatsMean = np.mean(statsVertZdrm)
-    zdrCorr = vertZdrmStatsMean - sunZdrStatsMean
-    sunZdrValsCorr = sunZdrVals + zdrCorr
+    sunToZdrCorr = vertZdrmStatsMean - sunZdrStatsMean
+    sunZdrValsCorr = sunZdrVals + sunToZdrCorr
     
     if (options.debug):
         print("  ==>> sunZdrStatsMean: ", sunZdrStatsMean, file=sys.stderr)
         print("  ==>> vertZdrmStatsMean: ", vertZdrmStatsMean, file=sys.stderr)
-        print("  ==>>           zdrCorr: ", zdrCorr, file=sys.stderr)
+        print("  ==>> sunToZdrCorr: ", sunToZdrCorr, file=sys.stderr)
 
     # set up plots
 
@@ -327,7 +327,7 @@ def doPlot():
     ax1a.plot(validMeasuredDbmNtimes, sunZdrVals, \
               label = 'Sun ZDRm', linewidth=1, color='black')
     ax1a.plot(validMeasuredDbmNtimes, sunZdrValsCorr, \
-              label = 'Sun ZDRm', linewidth=1, color='brown')
+              label = 'Sun ZDRm + sunToZdrCorr', linewidth=1, color='brown')
 
     ax1b.plot(validMeasuredDbmNtimes, validMeasuredDbmHcVals, \
               label = 'Mean Sun DbmHc', linewidth=1, color='red')
@@ -338,8 +338,25 @@ def doPlot():
     #configDateAxis(ax1a, -9999, -9999, "Sun ZDR (dB)", 'upper right')
     configDateAxis(ax1a, -2.0, 2.0, "ZDRm (dB)", 'upper right')
     #configDateAxis(ax1b, -9999, -9999, "Sun Power (dBm)", 'upper right')
-    #configDateAxis(ax1b, -117, -113, "Sun Power (dBm)", 'upper right')
     configDateAxis(ax1b, -75, -60, "Sun Power (dBm)", 'upper right')
+
+    # add text labels
+
+    label1 = "Stats start: " + zdrStatsStartTime.strftime('%Y-%m-%d')    
+    label2 = "Stats end: " + zdrStatsEndTime.strftime('%Y-%m-%d')    
+    label3 = "Ntimes smooth: " + str(options.lenMean)
+
+    label4 = "sunZdrMean: " + ("%.2f" % sunZdrStatsMean)
+    label5 = "vertZdrMean: " + ("%.2f" % vertZdrmStatsMean)
+    label6 = "sunToZdrCorr: " + ("%.2f" % sunToZdrCorr)
+
+    plt.figtext(0.06, 0.95, label1)
+    plt.figtext(0.06, 0.93, label2)
+    plt.figtext(0.06, 0.91, label3)
+
+    plt.figtext(0.2, 0.95, label4)
+    plt.figtext(0.2, 0.93, label5)
+    plt.figtext(0.2, 0.91, label6)
 
     fig1.autofmt_xdate()
     fig1.tight_layout()
@@ -563,7 +580,8 @@ def configDateAxis(ax, miny, maxy, ylabel, legendLoc):
     if (miny > -9990 and maxy > -9990):
         ax.set_ylim([miny, maxy])
     hfmt = dates.DateFormatter('%y/%m/%d')
-    ax.xaxis.set_major_locator(dates.DayLocator())
+    ax.xaxis.set_major_locator(dates.DayLocator(interval = 2))
+    ax.xaxis.set_minor_locator(dates.DayLocator(interval = 1))
     ax.xaxis.set_major_formatter(hfmt)
     for tick in ax.xaxis.get_major_ticks():
         tick.label.set_fontsize(8) 
