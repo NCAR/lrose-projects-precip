@@ -22,7 +22,7 @@ serve_rhi_data = TRUE;
 // Type: string
 //
 
-rhi_url = "mdvp:://localhost::$(project)/cfradial/moments/sband/rhi";
+rhi_url = "mdvp:://localhost::$(project)/grids/spol/radarPolar/field/moments/sband/rhi";
 
 ///////////// polar_rhi ///////////////////////////////
 //

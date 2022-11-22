@@ -1208,7 +1208,7 @@ cidd.show_clock:       0
 # Set to 0 to draw the analogue clock using GMT, 1 = local time.
 cidd.draw_clock_local: 0
 
-cidd.one_click_rhi: 0
+cidd.one_click_rhi: 1
 cidd.click_posn_rel_to_origin: 1
 
 #####################################################################################
@@ -1557,7 +1557,7 @@ prod_info = {
     url = "spdbp:Rhi2Symprod:ticks//front.eol.ucar.edu:8080:precip/features/spol/rhi/spoldrx?use_http=true",
     data_type = 0,
     render_type = RENDER_ALL,
-    on_by_default = FALSE,
+    on_by_default = TRUE,
     minutes_allow_before = 20,
     minutes_allow_after = 10,
     text_off_threshold = 0.4,
@@ -1682,7 +1682,7 @@ id_label = "Terrain";
 // Type: string
 //
 
-terrain_url = "mdvp::terrain//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true&Elevation";
+terrain_url = "mdvp::terrain//front.eol.ucar.edu:8080:precip/grids/terrain?use_http=true&Elevation";
 // terrain_url = "";
 
 ///////////// height_scaler ///////////////////////////
