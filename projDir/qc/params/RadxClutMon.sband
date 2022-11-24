@@ -1,0 +1,653 @@
+/**********************************************************************
+ * TDRP params for RadxClutMon
+ **********************************************************************/
+
+//======================================================================
+//
+// Performs clutter analysis.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// DEBUGGING.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// Debug option.
+//
+// If set, debug messages will be printed appropriately.
+//
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_NORM
+//     DEBUG_VERBOSE
+//     DEBUG_EXTRA
+//
+
+debug = DEBUG_OFF;
+
+///////////// instance ////////////////////////////////
+//
+// Program instance for process registration.
+//
+// This application registers with procmap. This is the instance used 
+//   for registration.
+//
+//
+// Type: string
+//
+
+instance = "pecan";
+
+//======================================================================
+//
+// READING CLUTTER MAP DATA.
+//
+// The clutter map is a CfRadial file created using the 
+//   RadxPersistenceClutter app.
+//
+//======================================================================
+ 
+///////////// clutter_map_input_dir ///////////////////
+//
+// Input directory for clutter map files.
+//
+// The clutter map files are created using the RadxPersistenceClutter 
+//   app.
+//
+//
+// Type: string
+//
+
+clutter_map_input_dir = "$(DATA_DIR)/$(project)/cfradial/spol/clutter/sband/sur";
+
+///////////// clutter_map_search_time /////////////////
+//
+// Time of clutter map file.
+//
+// We will retrieve the file closest to this time.
+//
+//
+// Type: struct
+//   typedef struct {
+//      int year;
+//      int month;
+//      int day;
+//      int hour;
+//      int min;
+//      int sec;
+//   }
+//
+//
+
+clutter_map_search_time = {
+    year = 2015,
+    month = 7,
+    day = 7,
+    hour = 5,
+    min = 0,
+    sec = 0
+};
+
+///////////// clutter_map_search_margin_secs //////////
+//
+// Time margin when searching for clutter map file (secs).
+//
+// We will search by this margin on either side of clutmap_file_time.
+//
+//
+// Type: int
+//
+
+clutter_map_search_margin_secs = 600;
+
+///////////// clutter_power_field_name ////////////////
+//
+// Field name for clutter power.
+//
+// We generally use a power field in dBm, that has not been noise 
+//   corrected.
+//
+//
+// Type: string
+//
+
+clutter_power_field_name = "DBMVC";
+
+///////////// clutter_time_fraction_field_name ////////
+//
+// Field name for fraction of time clutter is identified at each gate.
+//
+// This is a normalized value between 0 and 1, with 1 indicating clutter 
+//   is detected 100% ot the time.
+//
+//
+// Type: string
+//
+
+clutter_time_fraction_field_name = "NormFreqCount";
+
+//======================================================================
+//
+// READING THE MOMENTS DATA.
+//
+//======================================================================
+ 
+///////////// mode ////////////////////////////////////
+//
+// Operating mode.
+//
+// In REALTIME mode, we wait for a new input file.  It is assumed that 
+//   latest_data_info will be availble in realtime mode. In ARCHIVE mode, 
+//   we move through the data between the start and end times set on the 
+//   command line. In FILELIST mode, we move through the list of file 
+//   names specified on the command line. Paths (in ARCHIVE mode, at 
+//   least) MUST contain a day-directory above the data file -- 
+//   ./data_file.ext will not work as a file path, but 
+//   ./yyyymmdd/data_file.ext will.
+//
+//
+// Type: enum
+// Options:
+//     REALTIME
+//     ARCHIVE
+//     FILELIST
+//
+
+mode = ARCHIVE;
+
+///////////// moments_input_dir ///////////////////////
+//
+// Input directory for moments files.
+//
+// These are the files we are analyzing for changes in the clutter 
+//   field.
+//
+//
+// Type: string
+//
+
+moments_input_dir = "$(DATA_DIR)/$(project)/cfradial/spol/moments/sband/sur";
+
+///////////// max_realtime_data_age_secs //////////////
+//
+// Maximum age of realtime data (secs).
+//
+// Only data less old than this will be used.
+//
+//
+// Type: int
+//
+
+max_realtime_data_age_secs = 300;
+
+///////////// search_ext //////////////////////////////
+//
+// File name extension.
+//
+// If set, only files with this extension will be processed.
+//
+//
+// Type: string
+//
+
+search_ext = "";
+
+///////////// dbz_field_name //////////////////////////
+//
+// Field name for reflectivity.
+//
+// This field is required.
+//
+//
+// Type: string
+//
+
+dbz_field_name = "DBZ";
+
+///////////// vel_field_name //////////////////////////
+//
+// Field name for Doppler velocity.
+//
+// If not available, leave empty.
+//
+//
+// Type: string
+//
+
+vel_field_name = "VEL";
+
+///////////// cpa_field_name //////////////////////////
+//
+// Field name for Clutter Phase Alignment (CPA).
+//
+// If not available, leave empty.
+//
+//
+// Type: string
+//
+
+cpa_field_name = "CPA";
+
+///////////// dbmhc_field_name ////////////////////////
+//
+// Field name for power in H co-polar channel.
+//
+// If not available, leave empty.
+//
+//
+// Type: string
+//
+
+dbmhc_field_name = "DBMHC";
+
+///////////// dbmvc_field_name ////////////////////////
+//
+// Field name for power in V co-polar channel.
+//
+// If not available, leave empty.
+//
+//
+// Type: string
+//
+
+dbmvc_field_name = "DBMVC";
+
+///////////// dbmhx_field_name ////////////////////////
+//
+// Field name for power in H cross-polar channel.
+//
+// If not available, leave empty.
+//
+//
+// Type: string
+//
+
+dbmhx_field_name = "DBMHX";
+
+///////////// dbmvx_field_name ////////////////////////
+//
+// Field name for power in V cross-polar channel.
+//
+// If not available, leave empty.
+//
+//
+// Type: string
+//
+
+dbmvx_field_name = "DBMVX";
+
+//======================================================================
+//
+// OPTIONAL FIXED ANGLE LIMITS.
+//
+//======================================================================
+ 
+///////////// set_fixed_angle_limits //////////////////
+//
+// Option to set fixed angle limits.
+//
+// Only use sweeps within the specified fixed angle limits.
+//
+//
+// Type: boolean
+//
+
+set_fixed_angle_limits = TRUE;
+
+///////////// lower_fixed_angle_limit /////////////////
+//
+// Lower fixed angle limit - degrees.
+//
+//
+// Type: double
+//
+
+lower_fixed_angle_limit = 0.25;
+
+///////////// upper_fixed_angle_limit /////////////////
+//
+// Upper fixed angle limit - degrees.
+//
+//
+// Type: double
+//
+
+upper_fixed_angle_limit = 0.75;
+
+///////////// apply_strict_angle_limits ///////////////
+//
+// Option to apply strict checking for angle or sweep number limits on 
+//   read.
+//
+// If true, an error will occur if the fixed angle limits or sweep num 
+//   limits are outside the bounds of the data. If false, a read is 
+//   guaranteed to return at least 1 sweep - if no sweep lies within the 
+//   angle limits set, the nearest sweep will be returned.
+//
+//
+// Type: boolean
+//
+
+apply_strict_angle_limits = FALSE;
+
+//======================================================================
+//
+// READ OPTIONS.
+//
+//======================================================================
+ 
+///////////// remove_rays_with_antenna_transitions ////
+//
+// Option to remove rays taken while the antenna was in transition.
+//
+// If true, rays with the transition flag set will not be used. The 
+//   transiton flag is set when the antenna is in transtion between one 
+//   sweep and the next.
+//
+//
+// Type: boolean
+//
+
+remove_rays_with_antenna_transitions = TRUE;
+
+///////////// trim_surveillance_sweeps_to_360deg //////
+//
+// Option to trip surveillance sweeps so that they only cover 360 
+//   degrees.
+//
+// Some sweeps will have rays which cover more than a 360-degree 
+//   rotation. Often these include antenna transitions. If this is set to 
+//   true, rays are trimmed off either end of the sweep to limit the 
+//   coverage to 360 degrees. The median elevation angle is computed and 
+//   the end ray which deviates from the median in elevation is trimmed 
+//   first.
+//
+//
+// Type: boolean
+//
+
+trim_surveillance_sweeps_to_360deg = TRUE;
+
+//======================================================================
+//
+// OPTION TO CORRECT ANTENNA ANGLES.
+//
+//======================================================================
+ 
+///////////// apply_azimuth_offset ////////////////////
+//
+// Option to apply an offset to the azimuth values.
+//
+// If TRUE, this offset will be ADDED to the measured azimuth angles. 
+//   This is useful, for example, in the case of a mobile platform which 
+//   is not set up oriented to true north. Suppose you have a truck (like 
+//   the DOWs) which is oriented off true north. Then if you add in the 
+//   truck HEADING relative to true north, the measured azimuth angles 
+//   will be adjusted by the heading, to give azimuth relative to TRUE 
+//   north.
+//
+//
+// Type: boolean
+//
+
+apply_azimuth_offset = FALSE;
+
+///////////// azimuth_offset //////////////////////////
+//
+// Azimuth offset (degrees).
+//
+// See 'apply_azimuth_offset'. This value will be ADDED to the measured 
+//   azimuths.
+//
+//
+// Type: double
+//
+
+azimuth_offset = 0;
+
+///////////// apply_elevation_offset //////////////////
+//
+// Option to apply an offset to the elevation values.
+//
+// If TRUE, this offset will be ADDED to the measured elevation angles. 
+//   This is useful to correct for a systematic bias in measured elevation 
+//   angles.
+//
+//
+// Type: boolean
+//
+
+apply_elevation_offset = FALSE;
+
+///////////// elevation_offset ////////////////////////
+//
+// Elevation offset (degrees).
+//
+// See 'apply_elevation_offset'. This value will be ADDED to the 
+//   measured elevations.
+//
+//
+// Type: double
+//
+
+elevation_offset = 0;
+
+//======================================================================
+//
+// CLUTTER ANALYSIS.
+//
+// We use 'strong' clutter to montitor the clutter power change over 
+//   time, and 'weak' clutter to detect the presence of weather echoes in 
+//   the clutter field.
+//
+//======================================================================
+ 
+///////////// clutter_min_range_km ////////////////////
+//
+// Specified minimum range for clutter (km).
+//
+// Gates closer than this range are ignored.
+//
+//
+// Type: double
+//
+
+clutter_min_range_km = 10;
+
+///////////// clutter_max_range_km ////////////////////
+//
+// Specified maximim range (km).
+//
+// Gates beyond this range are ignored.
+//
+//
+// Type: double
+//
+
+clutter_max_range_km = 25;
+
+///////////// clutter_min_time_fraction ///////////////
+//
+// Minimum fraction of time clutter detected at a gate.
+//
+// In the clutter map, we only use gates where the time fraction exceeds 
+//   this value. This means we are only using gates where clutter 
+//   predominates when weather is not present.
+//
+//
+// Type: double
+//
+
+clutter_min_time_fraction = 0.99;
+
+///////////// strong_clutter_min_power_dbm ////////////
+//
+// Minimum power for strong clutter (dBm).
+//
+// We identify strong clutter in the clutter map, and then use that to 
+//   monitor the clutter power over time in the moments data.
+//
+//
+// Type: double
+//
+
+strong_clutter_min_power_dbm = -55;
+
+///////////// strong_clutter_max_power_dbm ////////////
+//
+// Maximum power for strong clutter (dBm).
+//
+// We need to ensure that we do not include gates where the receiver is 
+//   saturated. So set this to a value 5 dB or more below saturation.
+//
+//
+// Type: double
+//
+
+strong_clutter_max_power_dbm = -40;
+
+///////////// weak_clutter_min_power_dbm //////////////
+//
+// Minimum power for weak clutter (dBm).
+//
+// We use weak clutter gates to monitor for the presence of weather in 
+//   the clutter region.
+//
+//
+// Type: double
+//
+
+weak_clutter_min_power_dbm = -85;
+
+///////////// weak_clutter_max_power_dbm //////////////
+//
+// Maximum power for weak clutter (dBm).
+//
+// Set these values so that we have good SNR, but that the powers are 
+//   low enough to ensure that we can detect the presence of weather.
+//
+//
+// Type: double
+//
+
+weak_clutter_max_power_dbm = -75;
+
+///////////// power_margin_for_wx_contamination ///////
+//
+// Power increase to indicate weather contamination (dB).
+//
+// If weather exists in the clutter area, it will raise the power in the 
+//   weak gates before the strong gates. This is the increase in power 
+//   (above the background clutter value) used to indicate that weather is 
+//   contaminating a gate.
+//
+//
+// Type: double
+//
+
+power_margin_for_wx_contamination = 10;
+
+///////////// min_fraction_for_wx_contamination ///////
+//
+// This is the fraction of weak gates with weather to indicate weather 
+//   contamination.
+//
+// If more than this fraction of weak gates has as power increase in 
+//   excess of 'weak_power_margin_for_wx_contamination', the weather 
+//   contamination flag will be set.
+//
+//
+// Type: double
+//
+
+min_fraction_for_wx_contamination = 0.1;
+
+///////////// ray_azimuth_tolerance_deg ///////////////
+//
+// Tolerance for matching rays in azimuth (deg).
+//
+// We need to match up rays between the clutter map and moments files.
+//
+//
+// Type: double
+//
+
+ray_azimuth_tolerance_deg = 0.1;
+
+///////////// ray_elevation_tolerance_deg /////////////
+//
+// Tolerance for matching rays in elevation (deg).
+//
+// We need to match up rays between the clutter map and moments files.
+//
+//
+// Type: double
+//
+
+ray_elevation_tolerance_deg = 0.1;
+
+///////////// clutter_max_abs_vel /////////////////////
+//
+// Maximum absolute velocity in clutter (m/s).
+//
+// In choosing clutter values, we only use gates at which the velocity 
+//   is below this value.
+//
+//
+// Type: double
+//
+
+clutter_max_abs_vel = 0.5;
+
+///////////// clutter_min_cpa /////////////////////////
+//
+// Minimum clutter phase alignment in clutter.
+//
+// In choosing clutter values, we only use gates at which the CPA 
+//   exceeds this value. CPA, if available, is a strong indicator of 
+//   clutter.
+//
+//
+// Type: double
+//
+
+clutter_min_cpa = 0.9;
+
+//======================================================================
+//
+// WRITE RESULTS.
+//
+//======================================================================
+ 
+///////////// write_results_to_spdb ///////////////////
+//
+// Option to write out analysis results to SPDB.
+//
+// The results will be written in XML, stored in SPDB. The data can then 
+//   be retrieved for plotting or other purposes.
+//
+//
+// Type: boolean
+//
+
+write_results_to_spdb = TRUE;
+
+///////////// spdb_output_url /////////////////////////
+//
+// URL for writing results to SPDB XML.
+//
+// For local writes, specify the directory. For remote writes, specify 
+//   the full url: spdbp:://host::dir.
+//
+//
+// Type: string
+//
+
+spdb_output_url = "spdbp:://hail:0:$(project)/spdb/spol/clut_mon";
+

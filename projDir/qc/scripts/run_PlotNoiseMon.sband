@@ -1,0 +1,8 @@
+#! /bin/csh
+#
+
+cd $PROJ_DIR/qc/scripts
+
+PlotNoiseMon.spol.qc.py --lenMean 21 --noiseFile /scr/cirrus3/rsfdata/projects/precip/calibration/spol/noise_mon/sband/tables/noise_mon.sband.txt --zdrMin -2.0 --zdrMax 2.0 --noiseMin -76.5 --noiseMax -74.0
+
+

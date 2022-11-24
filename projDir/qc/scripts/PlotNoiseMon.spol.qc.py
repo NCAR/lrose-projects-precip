@@ -44,11 +44,11 @@ def main():
                       dest='verbose', default=False,
                       action="store_true",
                       help='Set verbose debugging on')
-    parser.add_option('--noise_file',
+    parser.add_option('--noiseFile',
                       dest='noiseFilePath',
                       default='/scr/cirrus3/rsfdata/projects/precip/calibration/spol/noise_mon/sband/tables/noise_mon.sband.txt',
                       help='File path for noise monitoring')
-    parser.add_option('--vert_file',
+    parser.add_option('--vertFile',
                       dest='vertFilePath',
                       default='/scr/cirrus3/rsfdata/projects/precip/calibration/spol/vert/sband/tables/vert.sband.txt',
                       help='VertCompute results file path')
@@ -68,11 +68,11 @@ def main():
                       dest='lenMean',
                       default=1,
                       help='Len of moving mean filter')
-    parser.add_option('--start',
+    parser.add_option('--startTime',
                       dest='startTime',
                       default='2022 05 25 00 00 00',
                       help='Start time for XY plot')
-    parser.add_option('--end',
+    parser.add_option('--endTime',
                       dest='endTime',
                       default='2022 08 12 00 00 00',
                       help='End time for XY plot')
@@ -84,7 +84,23 @@ def main():
                       dest='zdrStatsEndTime',
                       default='2022 07 09 00 00 00',
                       help='End time for computing ZDR stats')
-    
+    parser.add_option('--zdrMin',
+                      dest='zdrMin',
+                      default=-2.0,
+                      help='Min zdr in upper plot')
+    parser.add_option('--zdrMax',
+                      dest='zdrMax',
+                      default=2.0,
+                      help='Max zdr in upper plot')
+    parser.add_option('--noiseMin',
+                      dest='noiseMin',
+                      default=-77.0,
+                      help='Min noise dbm in lower plot')
+    parser.add_option('--noiseMax',
+                      dest='noiseMax',
+                      default=-74.0,
+                      help='Max noise dbm in lower plot')
+
     (options, args) = parser.parse_args()
     
     if (options.verbose):
@@ -344,9 +360,11 @@ def doPlot():
               label = 'Mean Noise Dbmvc', linewidth=1, color='blue')
     
     #configDateAxis(ax1a, -9999, -9999, "Noise ZDR (dB)", 'upper right')
-    configDateAxis(ax1a, -2.0, 2.0, "ZDRm (dB)", 'upper right')
-    configDateAxis(ax1b, -9999, -9999, "Noise Power (dBm)", 'upper right')
-    #configDateAxis(ax1b, -76.6, -74, "Noise Power (dBm)", 'upper right')
+    configDateAxis(ax1a, float(options.zdrMin), float(options.zdrMax),
+                   "ZDRm (dB)", 'upper right')
+    #configDateAxis(ax1b, -9999, -9999, "Noise Power (dBm)", 'upper right')
+    configDateAxis(ax1b, float(options.noiseMin), float(options.noiseMax),
+                   "Noise Power (dBm)", 'upper right')
 
     # add text labels
 
