@@ -44,7 +44,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "sband";
+instance = "spoldrx";
 
 ///////////// register_with_procmap ///////////////////
 //
@@ -139,7 +139,7 @@ seek_to_start_of_input = FALSE;
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/time_series/sband/save";
+input_dir = "$(DATA_DIR)/$(project)/time_series/spoldrx/save";
 
 ///////////// start_time //////////////////////////////
 //
@@ -209,7 +209,7 @@ invert_hv_flag = FALSE;
 // Type: string
 //
 
-cal_xml_file_path = "$(PROJ_DIR)/qc/params/sband_cal.xml";
+cal_xml_file_path = "$(PROJ_DIR)/qc/params/spoldrx_cal_1.5.xml";
 
 //======================================================================
 //
@@ -473,7 +473,7 @@ write_stats_to_text_file = TRUE;
 // Type: string
 //
 
-text_output_dir = "$(DATA_DIR)/$(project)/calibration/spol/noise_mon/sband/text";
+text_output_dir = "$(DATA_DIR)/$(project)/calibration/spol/noise_mon/spoldrx/text";
 
 ///////////// write_stats_to_spdb /////////////////////
 //
@@ -499,7 +499,7 @@ write_stats_to_spdb = TRUE;
 // Type: string
 //
 
-spdb_output_url = "$(DATA_DIR)/$(project)/calibration/spol/noise_mon/sband/spdb";
+spdb_output_url = "$(DATA_DIR)/$(project)/calibration/spol/noise_mon/spoldrx/spdb";
 
 ///////////// radar_name //////////////////////////////
 //

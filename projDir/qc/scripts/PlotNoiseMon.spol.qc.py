@@ -345,8 +345,8 @@ def doPlot():
     
     #configDateAxis(ax1a, -9999, -9999, "Noise ZDR (dB)", 'upper right')
     configDateAxis(ax1a, -2.0, 2.0, "ZDRm (dB)", 'upper right')
-    # configDateAxis(ax1b, -9999, -9999, "Noise Power (dBm)", 'upper right')
-    configDateAxis(ax1b, -76.6, -74, "Noise Power (dBm)", 'upper right')
+    configDateAxis(ax1b, -9999, -9999, "Noise Power (dBm)", 'upper right')
+    #configDateAxis(ax1b, -76.6, -74, "Noise Power (dBm)", 'upper right')
 
     # add text labels
 
