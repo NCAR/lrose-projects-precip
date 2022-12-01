@@ -403,23 +403,23 @@ def doPlot():
 #    ax1c.set_title("XmitPower Power (dBm)")
 
     ax1a.set_xlim([startTime - oneDay, endTime + oneDay])
-    ax1a.set_title("ZDR (dB)")
+    ax1a.set_title("Clutter ZDR (dB)")
     ax1b.set_xlim([startTime - oneDay, endTime + oneDay])
-    ax1b.set_title("Clut Power (dBZ)")
+    ax1b.set_title("Clutter Power (dBZ)")
     ax1c.set_xlim([startTime - oneDay, endTime + oneDay])
     ax1c.set_title("XmitPower Power (dBm)")
 
     ax1a.plot(validMeanZdrStrongNtimes, validMeanZdrStrongVals, \
-              linewidth=1, label = 'ZDR Strong (dB)', color='blue')
+              linewidth=1, label = 'ZDR Strong Clutter (dB)', color='blue')
 
     #ax1a.plot(validMeanZdrWeakNtimes, validMeanZdrWeakVals, \
     #          linewidth=1, label = 'ZDR Weak (dB)', color='red')
     
     ax1b.plot(validMeanDbmhcStrongNtimes, validMeanDbmhcStrongVals, \
-              '.', label = 'Mean Dbmhc Strong (dBm)', color='blue')
+              'o', label = 'Mean Dbmhc Clut (dBm)', color='red')
 
     ax1b.plot(validMeanDbmvcStrongNtimes, validMeanDbmvcStrongVals, \
-              label = 'Mean Dbmvc Strong (dBm)', linewidth=2, color='green')
+              label = 'Mean Dbmvc Clut (dBm)', linewidth=2, color='blue')
 
     #ax1b.plot(validMeanDbmhcWeakNtimes, validMeanDbmhcWeakVals, \
     #          label = 'Mean Dbmhc Weak (dBm)', linewidth=1, color='red')
@@ -428,10 +428,10 @@ def doPlot():
 
     ax1c.plot(validXmitPowerDbmBothNtimes, validXmitPowerDbmBothVals, \
               label = 'Xmit Power Both (dBm)', linewidth=1, color='black')
-    ax1c.plot(validXmitPowerDbmVNtimes, validXmitPowerDbmVVals, \
-              '.', label = 'Xmit Power V (dBm)', color='red')
     ax1c.plot(validXmitPowerDbmHNtimes, validXmitPowerDbmHVals, \
-              label = 'Xmit Power H (dBm)', linewidth=1, color='blue')
+              'o', label = 'Xmit Power H (dBm)', color='red')
+    ax1c.plot(validXmitPowerDbmVNtimes, validXmitPowerDbmVVals, \
+              label = 'Xmit Power V (dBm)', linewidth=2, color='blue')
 
     #configDateAxis(ax1a, -9999, -9999, "Clut ZDR (dB)", 'upper right')
     configDateAxis(ax1a, float(options.zdrMin), float(options.zdrMax),

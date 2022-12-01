@@ -44,17 +44,17 @@ def main():
                       dest='verbose', default=False,
                       action="store_true",
                       help='Set verbose debugging on')
-    parser.add_option('--sun_file',
+    parser.add_option('--sunFile',
                       dest='sunFilePath',
                       default='/scr/cirrus3/rsfdata/projects/precip/calibration/spol/sun_mon/sband/tables/sun_mon.sband.txt',
                       help='File path for sun monitoring')
-    parser.add_option('--vert_file',
+    parser.add_option('--vertFile',
                       dest='vertFilePath',
                       default='/scr/cirrus3/rsfdata/projects/precip/calibration/spol/vert/sband/tables/vert.sband.txt',
                       help='VertCompute results file path')
     parser.add_option('--title',
                       dest='title',
-                      default='ZDR BIAS FROM SUN and VERT POINTING',
+                      default='ZDR BIAS FROM SUN and VERT POINTING - RVP8',
                       help='Title for plot')
     parser.add_option('--width',
                       dest='figWidthMm',
@@ -84,6 +84,22 @@ def main():
                       dest='zdrStatsEndTime',
                       default='2022 07 09 00 00 00',
                       help='End time for computing ZDR stats')
+    parser.add_option('--zdrMin',
+                      dest='zdrMin',
+                      default=-2.0,
+                      help='Min zdr in upper plot')
+    parser.add_option('--zdrMax',
+                      dest='zdrMax',
+                      default=2.0,
+                      help='Max zdr in upper plot')
+    parser.add_option('--sunMin',
+                      dest='sunMin',
+                      default=-75.0,
+                      help='Min sun dbm in lower plot')
+    parser.add_option('--sunMax',
+                      dest='sunMax',
+                      default=-60.0,
+                      help='Max sun dbm in lower plot')
     
     (options, args) = parser.parse_args()
     
@@ -336,9 +352,9 @@ def doPlot():
               label = 'Mean Sun DbmVc', linewidth=1, color='blue')
     
     #configDateAxis(ax1a, -9999, -9999, "Sun ZDR (dB)", 'upper right')
-    configDateAxis(ax1a, -2.0, 2.0, "ZDRm (dB)", 'upper right')
+    configDateAxis(ax1a, float(options.zdrMin), float(options.zdrMax), "ZDRm (dB)", 'upper right')
     #configDateAxis(ax1b, -9999, -9999, "Sun Power (dBm)", 'upper right')
-    configDateAxis(ax1b, -75, -60, "Sun Power (dBm)", 'upper right')
+    configDateAxis(ax1b, float(options.sunMin), float(options.sunMax), "Sun Power (dBm)", 'upper right')
 
     # add text labels
 
