@@ -4,8 +4,7 @@ cd $PROJ_DIR/qc/params
 
 mkdir -p /scr/cirrus3/rsfdata/projects/precip/calibration/spol/vert/sband/tables
 
-SpdbXml2Table -params SpdbXml2Table.vert.sband -start "2022 05 25 00 00 00" -end "2022 08 12 00 00 00" > /scr/cirrus3/rsfdata/projects/precip/calibration/spol/vert/sband/tables/vert.sband.txt &
+SpdbXml2Table -params SpdbXml2Table.vert.sband -start "2022 05 25 00 00 00" -end "2022 08 12 00 00 00" > /scr/cirrus3/rsfdata/projects/precip/calibration/spol/vert/sband/tables/vert.sband.txt
 
-tail -f /scr/cirrus3/rsfdata/projects/precip/calibration/spol/vert/sband/tables/vert.sband.txt
 
 

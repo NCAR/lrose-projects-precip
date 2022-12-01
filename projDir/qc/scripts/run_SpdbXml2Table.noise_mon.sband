@@ -4,8 +4,6 @@ cd $PROJ_DIR/qc/params
 
 mkdir -p /scr/cirrus3/rsfdata/projects/precip/calibration/spol/noise_mon/sband/tables
 
-SpdbXml2Table -params SpdbXml2Table.noise_mon.sband -start "2022 05 25 00 00 00" -end "2022 08 12 00 00 00" > /scr/cirrus3/rsfdata/projects/precip/calibration/spol/noise_mon/sband/tables/noise_mon.sband.txt &
-
-tail -f /scr/cirrus3/rsfdata/projects/precip/calibration/spol/noise_mon/sband/tables/noise_mon.sband.txt
+SpdbXml2Table -params SpdbXml2Table.noise_mon.sband -start "2022 05 25 00 00 00" -end "2022 08 12 00 00 00" > /scr/cirrus3/rsfdata/projects/precip/calibration/spol/noise_mon/sband/tables/noise_mon.sband.txt
 
 
