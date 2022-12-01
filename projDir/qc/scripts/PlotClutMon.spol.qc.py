@@ -74,7 +74,7 @@ def main():
                       help='Start time for XY plot')
     parser.add_option('--endTime',
                       dest='endTime',
-                      default='2022 08 12 00 00 00',
+                      default='2022 08 11 04 00 00',
                       help='End time for XY plot')
     parser.add_option('--zdrStatsStartTime',
                       dest='zdrStatsStartTime',
@@ -395,28 +395,36 @@ def doPlot():
 
     oneDay = datetime.timedelta(1.0)
 
-    ax1a.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
+#    ax1a.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
+#    ax1a.set_title("ZDR (dB)")
+#    ax1b.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
+#    ax1b.set_title("Clut Power (dBZ)")
+#    ax1c.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
+#    ax1c.set_title("XmitPower Power (dBm)")
+
+    ax1a.set_xlim([startTime - oneDay, endTime + oneDay])
     ax1a.set_title("ZDR (dB)")
-    ax1b.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
+    ax1b.set_xlim([startTime - oneDay, endTime + oneDay])
     ax1b.set_title("Clut Power (dBZ)")
-    ax1c.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
+    ax1c.set_xlim([startTime - oneDay, endTime + oneDay])
     ax1c.set_title("XmitPower Power (dBm)")
 
     ax1a.plot(validMeanZdrStrongNtimes, validMeanZdrStrongVals, \
               linewidth=1, label = 'ZDR Strong (dB)', color='blue')
 
-    ax1a.plot(validMeanZdrWeakNtimes, validMeanZdrWeakVals, \
-              linewidth=1, label = 'ZDR Weak (dB)', color='red')
+    #ax1a.plot(validMeanZdrWeakNtimes, validMeanZdrWeakVals, \
+    #          linewidth=1, label = 'ZDR Weak (dB)', color='red')
     
     ax1b.plot(validMeanDbmhcStrongNtimes, validMeanDbmhcStrongVals, \
               '.', label = 'Mean Dbmhc Strong (dBm)', color='blue')
-    ax1b.plot(validMeanDbmvcStrongNtimes, validMeanDbmvcStrongVals, \
-              label = 'Mean Dbmvc Strong (dBm)', linewidth=1, color='green')
 
-    ax1b.plot(validMeanDbmhcWeakNtimes, validMeanDbmhcWeakVals, \
-              label = 'Mean Dbmhc Weak (dBm)', linewidth=1, color='red')
-    ax1b.plot(validMeanDbmvcWeakNtimes, validMeanDbmvcWeakVals, \
-              label = 'Mean Dbmvc Weak (dBm)', linewidth=1, color='brown')
+    ax1b.plot(validMeanDbmvcStrongNtimes, validMeanDbmvcStrongVals, \
+              label = 'Mean Dbmvc Strong (dBm)', linewidth=2, color='green')
+
+    #ax1b.plot(validMeanDbmhcWeakNtimes, validMeanDbmhcWeakVals, \
+    #          label = 'Mean Dbmhc Weak (dBm)', linewidth=1, color='red')
+    #ax1b.plot(validMeanDbmvcWeakNtimes, validMeanDbmvcWeakVals, \
+    #          label = 'Mean Dbmvc Weak (dBm)', linewidth=1, color='brown')
 
     ax1c.plot(validXmitPowerDbmBothNtimes, validXmitPowerDbmBothVals, \
               label = 'Xmit Power Both (dBm)', linewidth=1, color='black')
