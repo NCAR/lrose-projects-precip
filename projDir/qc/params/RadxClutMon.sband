@@ -42,7 +42,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "pecan";
+instance = "sband";
 
 //======================================================================
 //
@@ -64,7 +64,7 @@ instance = "pecan";
 // Type: string
 //
 
-clutter_map_input_dir = "$(DATA_DIR)/$(project)/cfradial/spol/clutter/sband/sur";
+clutter_map_input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/clutter_stats/sband/diag";
 
 ///////////// clutter_map_search_time /////////////////
 //
@@ -86,12 +86,12 @@ clutter_map_input_dir = "$(DATA_DIR)/$(project)/cfradial/spol/clutter/sband/sur"
 //
 
 clutter_map_search_time = {
-    year = 2015,
-    month = 7,
-    day = 7,
-    hour = 5,
-    min = 0,
-    sec = 0
+    year = 2022,
+    month = 6,
+    day = 3,
+    hour = 20,
+    min = 14,
+    sec = 2
 };
 
 ///////////// clutter_map_search_margin_secs //////////
@@ -104,7 +104,7 @@ clutter_map_search_time = {
 // Type: int
 //
 
-clutter_map_search_margin_secs = 600;
+clutter_map_search_margin_secs = 60;
 
 ///////////// clutter_power_field_name ////////////////
 //
@@ -117,7 +117,7 @@ clutter_map_search_margin_secs = 600;
 // Type: string
 //
 
-clutter_power_field_name = "DBMVC";
+clutter_power_field_name = "DBZ";
 
 ///////////// clutter_time_fraction_field_name ////////
 //
@@ -172,7 +172,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-moments_input_dir = "$(DATA_DIR)/$(project)/cfradial/spol/moments/sband/sur";
+moments_input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/field/moments/sband/sur";
 
 ///////////// max_realtime_data_age_secs //////////////
 //
@@ -308,7 +308,7 @@ set_fixed_angle_limits = TRUE;
 // Type: double
 //
 
-lower_fixed_angle_limit = 0.25;
+lower_fixed_angle_limit = 1.25;
 
 ///////////// upper_fixed_angle_limit /////////////////
 //
@@ -318,7 +318,7 @@ lower_fixed_angle_limit = 0.25;
 // Type: double
 //
 
-upper_fixed_angle_limit = 0.75;
+upper_fixed_angle_limit = 1.75;
 
 ///////////// apply_strict_angle_limits ///////////////
 //
@@ -335,6 +335,44 @@ upper_fixed_angle_limit = 0.75;
 //
 
 apply_strict_angle_limits = FALSE;
+
+//======================================================================
+//
+// OPTIONAL AZIMUTH LIMITS.
+//
+//======================================================================
+ 
+///////////// set_azimuth_limits //////////////////////
+//
+// Option to limits on azimuth range used.
+//
+// Only use rays between these azimuths.
+//
+//
+// Type: boolean
+//
+
+set_azimuth_limits = TRUE;
+
+///////////// lower_azimuth_limit /////////////////////
+//
+// Lower azimuth limit - degrees.
+//
+//
+// Type: double
+//
+
+lower_azimuth_limit = 60;
+
+///////////// upper_azimuth_limit /////////////////////
+//
+// Upper azimuth limit - degrees.
+//
+//
+// Type: double
+//
+
+upper_azimuth_limit = 180;
 
 //======================================================================
 //
@@ -470,7 +508,7 @@ clutter_min_range_km = 10;
 // Type: double
 //
 
-clutter_max_range_km = 25;
+clutter_max_range_km = 60;
 
 ///////////// clutter_min_time_fraction ///////////////
 //
@@ -497,7 +535,7 @@ clutter_min_time_fraction = 0.99;
 // Type: double
 //
 
-strong_clutter_min_power_dbm = -55;
+strong_clutter_min_power_dbm = 40;
 
 ///////////// strong_clutter_max_power_dbm ////////////
 //
@@ -510,7 +548,7 @@ strong_clutter_min_power_dbm = -55;
 // Type: double
 //
 
-strong_clutter_max_power_dbm = -40;
+strong_clutter_max_power_dbm = 65;
 
 ///////////// weak_clutter_min_power_dbm //////////////
 //
@@ -523,7 +561,7 @@ strong_clutter_max_power_dbm = -40;
 // Type: double
 //
 
-weak_clutter_min_power_dbm = -85;
+weak_clutter_min_power_dbm = 0;
 
 ///////////// weak_clutter_max_power_dbm //////////////
 //
@@ -536,7 +574,7 @@ weak_clutter_min_power_dbm = -85;
 // Type: double
 //
 
-weak_clutter_max_power_dbm = -75;
+weak_clutter_max_power_dbm = 20;
 
 ///////////// power_margin_for_wx_contamination ///////
 //
@@ -621,6 +659,64 @@ clutter_min_cpa = 0.9;
 
 //======================================================================
 //
+// OPTION TO MONITOR TRANSMIT POWER.
+//
+//======================================================================
+ 
+///////////// monitor_transmit_power //////////////////
+//
+// Option to monitor the transmit power in the CfRadial files.
+//
+// If true, we will read the transmit power in the status XML of the 
+//   CfRadial file, and write these out as part of the SPDB data results.
+//
+//
+// Type: boolean
+//
+
+monitor_transmit_power = TRUE;
+
+///////////// xmit_power_key_both /////////////////////
+//
+// XML key for both channels combined.
+//
+// This XML key is used to extract the transmit power for both channels 
+//   from the CfRadial status XML.
+//
+//
+// Type: string
+//
+
+xmit_power_key_both = "XmitPowerDbmTxTop";
+
+///////////// xmit_power_key_h ////////////////////////
+//
+// XML key for H channel.
+//
+// This XML key is used to extract the H transmit power from the 
+//   CfRadial status XML.
+//
+//
+// Type: string
+//
+
+xmit_power_key_h = "XmitPowerDbmH";
+
+///////////// xmit_power_key_v ////////////////////////
+//
+// XML key for V channel.
+//
+// This XML key is used to extract the V transmit power from the 
+//   CfRadial status XML.
+//
+//
+// Type: string
+//
+
+xmit_power_key_v = "XmitPowerDbmH";
+
+//======================================================================
+//
 // WRITE RESULTS.
 //
 //======================================================================
@@ -649,5 +745,5 @@ write_results_to_spdb = TRUE;
 // Type: string
 //
 
-spdb_output_url = "spdbp:://hail:0:$(project)/spdb/spol/clut_mon";
+spdb_output_url = "$(DATA_DIR)/$(project)/monitoring/clut_mon/spol/sur/spdb";
 
