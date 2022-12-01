@@ -1,0 +1,9 @@
+#! /bin/csh
+
+cd $PROJ_DIR/qc/params
+
+mkdir -p /scr/cirrus3/rsfdata/projects/precip/calibration/spol/tables/sband
+
+RcalXml2Table -params RcalXml2Table.sband > /scr/cirrus3/rsfdata/projects/precip/calibration/spol/tables/sband/sband_cals.txt
+
+
