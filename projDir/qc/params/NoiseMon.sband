@@ -444,6 +444,18 @@ max_range_km = 220;
 
 min_valid_count = 2000;
 
+///////////// max_valid_noise_power_dbm ///////////////
+//
+// Maximum valid noise power (dBm).
+//
+// If either H or V noise power exceeds this, the point is discarded.
+//
+//
+// Type: double
+//
+
+max_valid_noise_power_dbm = -70;
+
 //======================================================================
 //
 // OUTPUT STATISTICS.

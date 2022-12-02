@@ -70,15 +70,15 @@ def main():
                       help='Len of moving mean filter')
     parser.add_option('--start',
                       dest='startTime',
-                      default='2022 05 25 00 00 00',
+                      default='2022 05 25 03 00 00',
                       help='Start time for XY plot')
     parser.add_option('--end',
                       dest='endTime',
-                      default='2022 08 12 00 00 00',
+                      default='2022 08 11 00 00 00',
                       help='End time for XY plot')
     parser.add_option('--zdrStatsStartTime',
                       dest='zdrStatsStartTime',
-                      default='2022 05 25 00 00 00',
+                      default='2022 05 25 03 00 00',
                       help='Start time for computing ZDR stats')
     parser.add_option('--zdrStatsEndTime',
                       dest='zdrStatsEndTime',
@@ -262,6 +262,9 @@ def movingAverage(values, window):
 
     weights = np.repeat(1.0, window)/window
     sma = np.convolve(values, weights, 'same')
+    half = int(window/2)
+    sma[0:half] = values[0:half]
+    sma[-half:] = values[-half:]
     return sma
 
 ########################################################################

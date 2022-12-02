@@ -53,7 +53,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-input_url = "$(DATA_DIR)/$(project)/monitoring/clut_mon/spol/sur/spdb";
+input_url = "$(DATA_DIR)/$(project)/calibration/spol/clut_mon/spol/sur/spdb";
 
 ///////////// start_time //////////////////////////////
 //
@@ -239,6 +239,41 @@ xml_entries = {
     xml_tag_list = "<ClutterStats><XmitPowerDbmV>",
     specify_label = TRUE,
     label = "XmitPowerDbmV",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<ClutterStats><pulseWidthUsec>",
+    specify_label = TRUE,
+    label = "pulseWidthUsec",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<ClutterStats><receiverGainDbHc>",
+    specify_label = TRUE,
+    label = "receiverGainDbHc",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<ClutterStats><receiverGainDbVc>",
+    specify_label = TRUE,
+    label = "receiverGainDbVc",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<ClutterStats><receiverGainDbHx>",
+    specify_label = TRUE,
+    label = "receiverGainDbHx",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<ClutterStats><receiverGainDbVx>",
+    specify_label = TRUE,
+    label = "receiverGainDbVx",
     required = TRUE
   }
 };

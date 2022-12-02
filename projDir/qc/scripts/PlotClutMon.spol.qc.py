@@ -70,15 +70,15 @@ def main():
                       help='Len of moving mean filter')
     parser.add_option('--startTime',
                       dest='startTime',
-                      default='2022 05 25 00 00 00',
+                      default='2022 05 25 03 00 00',
                       help='Start time for XY plot')
     parser.add_option('--endTime',
                       dest='endTime',
-                      default='2022 08 11 04 00 00',
+                      default='2022 08 11 00 00 00',
                       help='End time for XY plot')
     parser.add_option('--zdrStatsStartTime',
                       dest='zdrStatsStartTime',
-                      default='2022 05 25 00 00 00',
+                      default='2022 05 25 03 00 00',
                       help='Start time for computing ZDR stats')
     parser.add_option('--zdrStatsEndTime',
                       dest='zdrStatsEndTime',
@@ -270,6 +270,9 @@ def movingAverage(values, window):
 
     weights = np.repeat(1.0, window)/window
     sma = np.convolve(values, weights, 'same')
+    half = int(window/2)
+    sma[0:half] = values[0:half]
+    sma[-half:] = values[-half:]
     return sma
 
 ########################################################################
@@ -354,6 +357,24 @@ def doPlot():
     validXmitPowerDbmVNtimes = ntimes[validXmitPowerDbmV]
     validXmitPowerDbmVVals = XmitPowerDbmVAv[validXmitPowerDbmV]
 
+    PulseWidthUs = np.array(clutData["pulseWidthUsec"]).astype(np.double)
+    PulseWidthUsAv = movingAverage(PulseWidthUs, lenMeanFilter)
+    validPulseWidthUs = np.isfinite(PulseWidthUsAv)
+    validPulseWidthUsNtimes = ntimes[validPulseWidthUs]
+    validPulseWidthUsVals = PulseWidthUsAv[validPulseWidthUs]
+
+    meanDbmhc = meanDbmhcStrong - 10.0 * np.log10(PulseWidthUs)
+    meanDbmhcAv = movingAverage(meanDbmhc, lenMeanFilter)
+    validMeanDbmhc = np.isfinite(meanDbmhcAv)
+    validMeanDbmhcNtimes = ntimes[validMeanDbmhc]
+    validMeanDbmhcVals = meanDbmhcAv[validMeanDbmhc]
+
+    meanDbmvc = meanDbmvcStrong - 10.0 * np.log10(PulseWidthUs)
+    meanDbmvcAv = movingAverage(meanDbmvc, lenMeanFilter)
+    validMeanDbmvc = np.isfinite(meanDbmvcAv)
+    validMeanDbmvcNtimes = ntimes[validMeanDbmvc]
+    validMeanDbmvcVals = meanDbmvcAv[validMeanDbmhc]
+
     vertZdrm = np.array(vertData["meanZdrmVol"]).astype(np.double)
     vertZdrmAv = movingAverage(vertZdrm, lenMeanFilter)
     validVertZdrm = np.isfinite(vertZdrmAv)
@@ -403,11 +424,11 @@ def doPlot():
 #    ax1c.set_title("XmitPower Power (dBm)")
 
     ax1a.set_xlim([startTime - oneDay, endTime + oneDay])
-    ax1a.set_title("Clutter ZDR (dB)")
+    ax1a.set_title("Received clutter ZDR (dB)")
     ax1b.set_xlim([startTime - oneDay, endTime + oneDay])
-    ax1b.set_title("Clutter Power (dBZ)")
+    ax1b.set_title("Received clutter power corrected for pulse width (dBm)")
     ax1c.set_xlim([startTime - oneDay, endTime + oneDay])
-    ax1c.set_title("XmitPower Power (dBm)")
+    ax1c.set_title("Measured XmitPower power (dBm)")
 
     ax1a.plot(validMeanZdrStrongNtimes, validMeanZdrStrongVals, \
               linewidth=1, label = 'ZDR Strong Clutter (dB)', color='blue')
@@ -415,11 +436,17 @@ def doPlot():
     #ax1a.plot(validMeanZdrWeakNtimes, validMeanZdrWeakVals, \
     #          linewidth=1, label = 'ZDR Weak (dB)', color='red')
     
-    ax1b.plot(validMeanDbmhcStrongNtimes, validMeanDbmhcStrongVals, \
-              'o', label = 'Mean Dbmhc Clut (dBm)', color='red')
+    #ax1b.plot(validMeanDbmhcStrongNtimes, validMeanDbmhcStrongVals, \
+    #          '.', label = 'Mean Dbmhc Clut (dBm)', color='red')
 
-    ax1b.plot(validMeanDbmvcStrongNtimes, validMeanDbmvcStrongVals, \
-              label = 'Mean Dbmvc Clut (dBm)', linewidth=2, color='blue')
+    #ax1b.plot(validMeanDbmvcStrongNtimes, validMeanDbmvcStrongVals, \
+    #          label = 'Mean Dbmvc Clut (dBm)', linewidth=2, color='blue')
+
+    ax1b.plot(validMeanDbmhcNtimes, validMeanDbmhcVals, \
+              '.', label = 'Dbmhc Corr (dBm)', color='red')
+
+    ax1b.plot(validMeanDbmvcNtimes, validMeanDbmvcVals, \
+              label = 'Dbmvc Corr (dBm)', linewidth=2, color='blue')
 
     #ax1b.plot(validMeanDbmhcWeakNtimes, validMeanDbmhcWeakVals, \
     #          label = 'Mean Dbmhc Weak (dBm)', linewidth=1, color='red')
@@ -429,7 +456,7 @@ def doPlot():
     ax1c.plot(validXmitPowerDbmBothNtimes, validXmitPowerDbmBothVals, \
               label = 'Xmit Power Both (dBm)', linewidth=1, color='black')
     ax1c.plot(validXmitPowerDbmHNtimes, validXmitPowerDbmHVals, \
-              'o', label = 'Xmit Power H (dBm)', color='red')
+              '.', label = 'Xmit Power H (dBm)', color='red')
     ax1c.plot(validXmitPowerDbmVNtimes, validXmitPowerDbmVVals, \
               label = 'Xmit Power V (dBm)', linewidth=2, color='blue')
 
