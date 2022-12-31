@@ -1,0 +1,724 @@
+/**********************************************************************
+ * TDRP params for RadxClutter
+ **********************************************************************/
+
+//======================================================================
+//
+// RadxClutter identifies persistent clutter in polar radar data, flags 
+//   it, and writes out the statistics to a CfRadial file. This is the 
+//   'first pass'. Those statistics can then be used to censor clutter 
+//   gates in a subsequent 'second pass'.
+//
+// This method is partially based on the following paper: Lakshmanan V., 
+//   J. Zhang, K. Hondl and C. Langston. A Statistical Approach to 
+//   Mitigating Persistent Clutter in Radar Reflectivity Data. IEEE 
+//   Journal of Selected Topics in Applied Earth Observations and Remote 
+//   Sensing, Vol. 5, No. 2, April 2012.
+//
+// RadxTimeStats computes time-based statistics, gate-by-gate, on a time 
+//   series of Radx files. It stores those statistics as extra fields 
+//   added to the CfRadial output file.
+//
+// Since we are computing statistics over a time period, we need to 
+//   ensure that the ray geometry is consistent from one time to the next. 
+//   Therefore in this parameter file you will need to specify the scan 
+//   strategy that you expect to find consistently in the measured data.
+//
+// Generally the reflectivity (DBZ) field will be used for the clutter 
+//   identification. You are asked to select a reflectivty threshold that 
+//   will be consistently exceeded by the presence of clutter. Reading 
+//   data from a time period of a number of hours (at least) we compute 
+//   the fraction of time that the reflectivity at each gate, in each ray, 
+//   exceeds that threshold. Since non-AP clutter is a persistent 
+//   phenomenon, the presence of clutter will yield a high time fraction 
+//   for clutter gates.
+//
+// To perform this analysis, you should choose a period of a number of 
+//   hours, say at least 6, during which there is not significant weather 
+//   activity. It does not matter if there are some weather echoes, but 
+//   generally it should be reasonably clear most of the time.
+//
+// The technique described in the paper referenced above allows us to 
+//   automatically determine a minimum fraction of the time that echo 
+//   should be present for the identification of clutter gates. Experience 
+//   shows that this fraction is normally around 0.5. However, this tends 
+//   to include gates that have only marginal clutter, leading to holes in 
+//   the data if you use those results for clutter removal. Therefore you 
+//   have the option, in this parameter file, to override this automatic 
+//   threshold and specify the threshold you want to use instead. A value 
+//   of 0.95 or higher seems to work quite well.
+//
+// In addition the time fraction field, we also compute and store the 
+//   mean and standard deviation of the input field (probably 
+//   reflectivity) and a flag that indicates that the algorithm has 
+//   identified clutter at a gate. Each field is computed and written out 
+//   for every gate for every ray, given the specified scan strategy.
+//
+// The input field for the latest time period will also be copied to the 
+//   output file.
+//
+// The default behavior is to write a single file, containing the 
+//   statistics fields, at the end of the processing. As an option you can 
+//   write an output file for each input file that is processed. In this 
+//   latter mode the statistics will improved as each input data file is 
+//   added.
+//
+// The identification step is the 'first pass' of this procedure. This 
+//   will save out the clutter statistics as a CfRadial file to the output 
+//   directory.
+//
+// In the optional 'second pass', you can read the clutter statistics, 
+//   and then use those to censor clutter from any series of CfRadial 
+//   files that have a matching scan strategy. The rule for censoring is 
+//   as follows: If a gate is flagged as having clutter in the statistics 
+//   volume, the reflectivity in the measured volume will be compared to 
+//   the statitics. If the measured reflectivity exceeds the mean 
+//   reflectivity, plus a specified multiple of the standard deviation, 
+//   weather is likely to be present at that gate and it will not be 
+//   censored. If the reflectivity does not pass this test it will be 
+//   censored - i.e. it will be set to a specified low value. The use of X 
+//   times the standard deviation above the mean allows us to account for 
+//   variability in the clutter reflectivity from one time to the next. 
+//   'X' is the parameter 'n_sdev_for_clut_threshold'.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// Debugging and process control.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// Debug option.
+//
+// If set, debug messages will be printed appropriately.
+//
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_NORM
+//     DEBUG_VERBOSE
+//     DEBUG_EXTRA
+//
+
+debug = DEBUG_OFF;
+
+///////////// instance ////////////////////////////////
+//
+// Program instance for process registration.
+//
+// This application registers with procmap. This is the instance used 
+//   for registration.
+//
+//
+// Type: string
+//
+
+instance = "sband";
+
+//======================================================================
+//
+// DATA INPUT.
+//
+//======================================================================
+ 
+///////////// mode ////////////////////////////////////
+//
+// Operating mode.
+//
+// In REALTIME mode, the program waits for a new input file.
+//
+// In ARCHIVE mode, it moves through the data between the start and end 
+//   times set on the command line.
+//
+// In FILELIST mode, it moves through the list of file names specified 
+//   on the command line.
+//
+//
+// Type: enum
+// Options:
+//     REALTIME
+//     ARCHIVE
+//     FILELIST
+//
+
+mode = ARCHIVE;
+
+///////////// max_realtime_data_age_secs //////////////
+//
+// Maximum age of realtime data (secs).
+//
+// Only data less old than this will be used.
+//
+//
+// Type: int
+//
+
+max_realtime_data_age_secs = 120;
+
+///////////// input_dir ///////////////////////////////
+//
+// Input directory for searching for files.
+//
+// Files will be searched for in this directory.
+//
+//
+// Type: string
+//
+
+input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/field/moments/sband/sur";
+
+///////////// input_file_search_ext ///////////////////
+//
+// File name extension.
+//
+// If set, only files with this extension will be processed.
+//
+//
+// Type: string
+//
+
+input_file_search_ext = "";
+
+///////////// input_file_search_substr ////////////////
+//
+// File name sub-string.
+//
+// If set, only files with names containing this sub-string will be 
+//   processed.
+//
+//
+// Type: string
+//
+
+input_file_search_substr = "Sur1";
+
+///////////// start_time //////////////////////////////
+//
+// Set the start time for ARCHIVE mode analysis.
+//
+// Format is 'yyyy mm dd hh mm ss'.
+//
+//
+// Type: string
+//
+
+start_time = "2022 06 05 00 00 00";
+
+///////////// end_time ////////////////////////////////
+//
+// Set the end time for ARCHIVE mode analysis.
+//
+// Format is 'yyyy mm dd hh mm ss'.
+//
+//
+// Type: string
+//
+
+end_time = "2022 06 05 20 00 00";
+
+//======================================================================
+//
+// ACTION - first or second pass.
+//
+// There are 2 possible actions:
+//
+// (1) first pass - analyze the clutter from a number of volumes, and 
+//   store the results in a CfRadial file; or
+//
+// (2) use the clutter statistics file in the analysis step to remove 
+//   clutter from files containing clutter.
+//
+//======================================================================
+ 
+///////////// action //////////////////////////////////
+//
+// Action to be performed.
+//
+// ANALYZE_CLUTTER: given a series of volumes containing clutter, 
+//   analyze the clutter and store the clutter statistics in 
+//   CfRadialFiles.
+//
+// FILTER_CLUTTER: using the clutter statistics analyzed in the first 
+//   step, filter reflectivity power from those clutter gates that are not 
+//   overridden by weather. If the weather echo is stronger that the mean 
+//   clutter, it is left unchanged.
+//
+//
+// Type: enum
+// Options:
+//     ANALYZE_CLUTTER
+//     FILTER_CLUTTER
+//
+
+action = ANALYZE_CLUTTER;
+
+//======================================================================
+//
+// SCAN DETAILS.
+//
+// We need to make sure that the geometry of the scan does not change 
+//   through the analysis period. Therefore we specify the scan angles for 
+//   which the clutter will be analyzed. This is the 'ideal'. The actual 
+//   measurements are mapped onto this ideal scan.
+//
+//======================================================================
+ 
+///////////// scan_mode ///////////////////////////////
+//
+// Scan mode. PPI - horizontal scanning, e.g. surveillance. RHI - 
+//   vertical scanning.
+//
+// We need to specify the scan mode to make sure the geometry does not 
+//   change through the analysis.
+//
+//
+// Type: enum
+// Options:
+//     PPI
+//     RHI
+//
+
+scan_mode = PPI;
+
+///////////// sweep_fixed_angles //////////////////////
+//
+// List of fixed angles for desired sweeps (deg).
+//
+// PPI mode: elevations. RHIs: azimuths.
+//
+//
+// Type: double
+// 1D array - variable length.
+//
+
+sweep_fixed_angles = {
+ 0.5,
+ 1,
+ 1.5,
+ 2
+};
+
+///////////// first_ray_angle /////////////////////////
+//
+// Starting scan angle for rays (deg).
+//
+// In PPI mode, this is the first azimuth in a clockwise sweep. In RHI 
+//   mode, this is the lowest elevation in a sweep.
+//
+//
+// Type: double
+//
+
+first_ray_angle = 0;
+
+///////////// last_ray_angle //////////////////////////
+//
+// Ending scan angle for rays (deg).
+//
+// In PPI mode, this is the last azimuth in a clockwise sweep. In RHI 
+//   mode, this is the highest elevation in a sweep.
+//
+//
+// Type: double
+//
+
+last_ray_angle = 359.99;
+
+///////////// ray_angle_resolution ////////////////////
+//
+// Delta scan angle between consecutive rays (deg).
+//
+// In PPI mode, this is the azimuth difference between rays. In PPI mode 
+//   the delta should be positive, i.e. for a clockwise sweep. In RHI 
+//   mode, this is the elevation difference between rays. If your radar 
+//   data is not saved on a regular grid, you should set the resolution to 
+//   a value finer than the measured angular resolution, so as to 
+//   over-sample the input data.
+//
+//
+// Type: double
+//
+
+ray_angle_resolution = 0.75;
+
+///////////// az_tolerance_deg ////////////////////////
+//
+// Azimumth tolerance.
+//
+// We search for rays, in the measured volumes, that match the specified 
+//   scan stategy for the statistics. This is the allowed difference for 
+//   azimuth values to match.
+//
+//
+// Type: double
+//
+
+az_tolerance_deg = 0.1;
+
+///////////// elev_tolerance_deg //////////////////////
+//
+// Elevation tolerance.
+//
+// We search for rays, in the measured volumes, that match the specified 
+//   scan stategy for the statistics. This is the allowed difference for 
+//   elevation values to match.
+//
+//
+// Type: double
+//
+
+elev_tolerance_deg = 0.1;
+
+///////////// max_range_km ////////////////////////////
+//
+// Specified maximim range - km.
+//
+// Gates beyond this range are removed.
+//
+//
+// Type: double
+//
+
+max_range_km = 60;
+
+//======================================================================
+//
+// ALGORITHM DETAILS.
+//
+//======================================================================
+ 
+///////////// dbz_field_name //////////////////////////
+//
+// Reflectivity field name.
+//
+// Name of field on which clutter will be based. This does not have to 
+//   be the reflectivity field - for example SNR could be used. But since 
+//   DBZ is the most common field used we label it as such.
+//
+//
+// Type: string
+//
+
+dbz_field_name = "DBZ";
+
+///////////// clutter_dbz_threshold ///////////////////
+//
+// DBZ threshold for clutter at a gate.
+//
+// If data is persistently above this value then the gate is a clutter 
+//   location.
+//
+//
+// Type: double
+//
+
+clutter_dbz_threshold = 10;
+
+///////////// use_vel_field ///////////////////////////
+//
+// Option to make use of the velocity field to confirm the 
+//   identification of clutter.
+//
+// Since persistent clutter does not move, the radial velocity will be 
+//   close to 0. This is a useful quality control field for clutter. If 
+//   this parameter is set to true, we check the absolute value of 
+//   velocity. If it is outside the limit we discard the gate as having 
+//   clutter.
+//
+//
+// Type: boolean
+//
+
+use_vel_field = TRUE;
+
+///////////// vel_field_name //////////////////////////
+//
+// Velocity field name.
+//
+//
+// Type: string
+//
+
+vel_field_name = "VEL";
+
+///////////// max_abs_vel /////////////////////////////
+//
+// Maximimum absolute radial velocity for clutter (m/s).
+//
+// If the absolute velocity at a gate exceeds this, the point cannot be 
+//   clutter.
+//
+//
+// Type: double
+//
+
+max_abs_vel = 1;
+
+///////////// specify_clutter_frequency_threshold /////
+//
+// Option to specify the clutter frequency threshold.
+//
+// In the algorithm, we compute the fraction of time that reflectivity 
+//   at a gate exceeds the 'clutter_dbz_threshold'. Based on the frequency 
+//   distribition of these fractions we can compute, in an automated 
+//   manner, a theoretical optimum threshold for separating clutter from 
+//   weather. This is the default option. However, if you are going to use 
+//   a second pass to censor the clutter, this tends to over-identify the 
+//   number of gates at which clutter is present. If you set this 
+//   parameter to true, you can use the parameter 
+//   'clutter_frequency_threshold' to override the algorithm. If false, 
+//   the algorithm will determine the optimum frequency threshold for 
+//   separating clutter from non-clutter.
+//
+//
+// Type: boolean
+//
+
+specify_clutter_frequency_threshold = FALSE;
+
+///////////// clutter_frequency_threshold /////////////
+//
+// Clutter frequency threshold.
+//
+// If activated, gates with a clutter frequency fraction in excess of 
+//   this number will be flagged as clutter. See 
+//   'specify_clutter_frequency_threshold'.
+//
+//
+// Type: double
+//
+
+clutter_frequency_threshold = 0.95;
+
+//======================================================================
+//
+// Clutter statistics output.
+//
+// Writing out the results of identifying clutter.
+//
+//======================================================================
+ 
+///////////// clutter_stats_output_dir ////////////////
+//
+// Location for clutter statistics.
+//
+// Final output is only written at the end of a processing phase, with 
+//   the output time equal to the time of the first volume processed.
+//
+//
+// Type: string
+//
+
+clutter_stats_output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/clutter/sband/sur";
+
+///////////// dbz_mean_field_name /////////////////////
+//
+// Field name for mean dbz.
+//
+// This is the mean of the reflectivity at each gate.
+//
+//
+// Type: string
+//
+
+dbz_mean_field_name = "dbzMean";
+
+///////////// dbz_sdev_field_name /////////////////////
+//
+// Field name for standard deviation of dbz.
+//
+// This is the standard deviation of the reflectivity at each gate.
+//
+//
+// Type: string
+//
+
+dbz_sdev_field_name = "dbzSdev";
+
+///////////// clut_freq_field_name ////////////////////
+//
+// Field name for clutter frequency.
+//
+// This is the fraction of time that a gate has dbz above the 
+//   'clutter_dbz_threshold'.
+//
+//
+// Type: string
+//
+
+clut_freq_field_name = "clutFreq";
+
+///////////// clut_flag_field_name ////////////////////
+//
+// Field name for clutter flag.
+//
+// This flag indicates that the gate has persistent clutter.
+//
+//
+// Type: string
+//
+
+clut_flag_field_name = "clutFlag";
+
+///////////// write_intermediate_files ////////////////
+//
+// Option to write stats files for each time step.
+//
+// Normally only one stats file is written - at the end of the data set. 
+//   If this is set to true, intermediate files will be written for each 
+//   data time. In REALTIME mode, intermediate files are always written.
+//
+//
+// Type: boolean
+//
+
+write_intermediate_files = FALSE;
+
+//======================================================================
+//
+// FILTERED OUTPUT.
+//
+// Writing out volumes with clutter filtered.
+//
+//======================================================================
+ 
+///////////// dbz_filt_field_name /////////////////////
+//
+// Field name for filtered dbz.
+//
+// The filtered dbz field is censored if the measured reflectivity does 
+//   not exceed the mean reflectivity at a gate by 
+//   'n_sdev_for_clut_threshold' time the standard deviation.
+//
+//
+// Type: string
+//
+
+dbz_filt_field_name = "dbzFilt";
+
+///////////// clutter_stats_path //////////////////////
+//
+// Path to volume containing the clutter statistics.
+//
+// This volume is created by this app in the ANALYZE_CLUTTER 'first 
+//   pass' action. It is best to select the volume at end of the analysis 
+//   sequence.
+//
+//
+// Type: string
+//
+
+clutter_stats_path = "unknown";
+
+///////////// n_sdev_for_clut_threshold ///////////////
+//
+// The number of standard deviations above the mean for the clutter 
+//   threshold.
+//
+// For each gate we compare the measured dbz with the clutter dbz. The 
+//   clutter threshold is computed as the mean dbz plus the dbz sdev 
+//   multipled by this parameter. If the measured dbz exceeds this 
+//   threshold it is preserved. Otherwise the reflectivity at the gate is 
+//   set to 'dbz_filt'.
+//
+//
+// Type: double
+//
+
+n_sdev_for_clut_threshold = 1;
+
+///////////// specify_filter_frequency_threshold //////
+//
+// Option to specify the clutter frequency threshold for filtering.
+//
+// If true, the 'filter_frequency_threshold' will be used. If false, the 
+//   clutter flag field in the clutter statistics will be used.
+//
+//
+// Type: boolean
+//
+
+specify_filter_frequency_threshold = FALSE;
+
+///////////// filter_frequency_threshold //////////////
+//
+// Filter frequency threshold.
+//
+// Optionally gates with a filter frequency fraction in excess of this 
+//   number will be filtered. See 'specify_filter_frequency_threshold'.
+//
+//
+// Type: double
+//
+
+filter_frequency_threshold = 0.95;
+
+///////////// dbz_filt ////////////////////////////////
+//
+// The dbz value used to store filtered reflectivity.
+//
+// For filtered gates, we store this value in place of the original 
+//   measured value.
+//
+//
+// Type: double
+//
+
+dbz_filt = -20;
+
+///////////// filt_output_dir /////////////////////////
+//
+// Directory for filtered output volumes.
+//
+// These volumes have a filtered reflectivity field, with the clutter in 
+//   the stats volume removed.
+//
+//
+// Type: string
+//
+
+filt_output_dir = "unknown";
+
+///////////// specify_output_fields ///////////////////
+//
+// Option to specify the fields to be written out with the filtered 
+//   data.
+//
+// If false all fields will be copied through. If true, only the 
+//   specified fields will be copied through.
+//
+//
+// Type: boolean
+//
+
+specify_output_fields = FALSE;
+
+///////////// output_fields ///////////////////////////
+//
+// Output fields to be copied through.
+//
+// These fields will be copied, along with the unfiltered and filtered 
+//   reflectivity.
+//
+//
+// Type: string
+// 1D array - variable length.
+//
+
+output_fields = {
+};
+
+///////////// output_comment //////////////////////////
+//
+// Comment in the NetCDF global attributes.
+//
+//
+// Type: string
+//
+
+output_comment = "The statistics in this file are computed over a series of CfRadial files.";
+
