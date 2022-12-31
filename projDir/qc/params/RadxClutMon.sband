@@ -64,7 +64,7 @@ instance = "sband";
 // Type: string
 //
 
-clutter_map_input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/clutter_stats/sband/diag";
+clutter_map_input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/clutter/sband/sur";
 
 ///////////// clutter_map_search_time /////////////////
 //
@@ -88,10 +88,10 @@ clutter_map_input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/clutter_st
 clutter_map_search_time = {
     year = 2022,
     month = 6,
-    day = 3,
-    hour = 20,
-    min = 14,
-    sec = 2
+    day = 5,
+    hour = 19,
+    min = 48,
+    sec = 50
 };
 
 ///////////// clutter_map_search_margin_secs //////////
@@ -104,7 +104,7 @@ clutter_map_search_time = {
 // Type: int
 //
 
-clutter_map_search_margin_secs = 60;
+clutter_map_search_margin_secs = 600;
 
 ///////////// clutter_power_field_name ////////////////
 //
@@ -130,7 +130,7 @@ clutter_power_field_name = "DBZ";
 // Type: string
 //
 
-clutter_time_fraction_field_name = "NormFreqCount";
+clutter_time_fraction_field_name = "clutFreq";
 
 //======================================================================
 //
