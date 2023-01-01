@@ -525,3 +525,15 @@ spdb_output_url = "$(DATA_DIR)/$(project)/calibration/spol/noise_mon/sband/spdb"
 
 radar_name = "SPOL";
 
+///////////// add_status_xml_to_spdb_output ///////////
+//
+// Option to add the status XML to the output.
+//
+// If true, the status xml string will be appended to the output.
+//
+//
+// Type: boolean
+//
+
+add_status_xml_to_spdb_output = TRUE;
+
