@@ -341,12 +341,12 @@ def doPlot():
     ax1b.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
     ax1b.set_title("Sun Power (dBm)")
 
-    ax1a.plot(validVertZdrmNtimes, validVertZdrmVals, \
-              ".", label = 'Vert ZDRm', color='green')
     ax1a.plot(validMeasuredDbmNtimes, sunZdrVals, \
               label = 'Sun ZDRm', linewidth=1, color='black')
     ax1a.plot(validMeasuredDbmNtimes, sunZdrValsCorr, \
               label = 'Sun ZDRm + sunToZdrCorr', linewidth=1, color='brown')
+    ax1a.plot(validVertZdrmNtimes, validVertZdrmVals, \
+              ".", label = 'Vert ZDRm', color='green')
 
     ax1b.plot(validMeasuredDbmNtimes, validMeasuredDbmHcVals, \
               label = 'Mean Sun DbmHc', linewidth=1, color='red')
