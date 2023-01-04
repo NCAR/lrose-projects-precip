@@ -62,7 +62,7 @@ def main():
                       help='Width of figure in mm')
     parser.add_option('--height',
                       dest='figHeightMm',
-                      default=200,
+                      default=300,
                       help='Height of figure in mm')
     parser.add_option('--lenMean',
                       dest='lenMean',
@@ -100,6 +100,14 @@ def main():
                       dest='noiseMax',
                       default=-74.0,
                       help='Max noise dbm in lower plot')
+    parser.add_option('--tempMin',
+                      dest='tempMin',
+                      default=20.0,
+                      help='Min temperature in plot')
+    parser.add_option('--tempMax',
+                      dest='tempMax',
+                      default=35,
+                      help='Max temperature in plot')
 
     (options, args) = parser.parse_args()
     
@@ -310,6 +318,36 @@ def doPlot():
     validVertZdrmVtimes = vtimes[validVertZdrm]
     validVertZdrmVals = vertZdrmAv[validVertZdrm]
 
+    tempSite = np.array(noiseData["WxStationTempC"]).astype(np.double)
+    tempSiteAv = movingAverage(tempSite, lenMeanFilter)
+    validTempSite = np.isfinite(tempSiteAv)
+    validTempSiteNtimes = ntimes[validTempSite]
+    validTempSiteVals = tempSiteAv[validTempSite]
+
+    tempKlystron = np.array(noiseData["TempKlystronC"]).astype(np.double)
+    tempKlystronAv = movingAverage(tempKlystron, lenMeanFilter)
+    validTempKlystron = np.isfinite(tempKlystronAv)
+    validTempKlystronNtimes = ntimes[validTempKlystron]
+    validTempKlystronVals = tempKlystronAv[validTempKlystron]
+
+    tempRx = np.array(noiseData["TempRxEnclosureC"]).astype(np.double)
+    tempRxAv = movingAverage(tempRx, lenMeanFilter)
+    validTempRx = np.isfinite(tempRxAv)
+    validTempRxNtimes = ntimes[validTempRx]
+    validTempRxVals = tempRxAv[validTempRx]
+
+    tempLnaH = np.array(noiseData["TempLnaHC"]).astype(np.double)
+    tempLnaHAv = movingAverage(tempLnaH, lenMeanFilter)
+    validTempLnaH = np.isfinite(tempLnaHAv)
+    validTempLnaHNtimes = ntimes[validTempLnaH]
+    validTempLnaHVals = tempLnaHAv[validTempLnaH]
+
+    tempLnaV = np.array(noiseData["TempLnaVC"]).astype(np.double)
+    tempLnaVAv = movingAverage(tempLnaV, lenMeanFilter)
+    validTempLnaV = np.isfinite(tempLnaVAv)
+    validTempLnaVNtimes = ntimes[validTempLnaV]
+    validTempLnaVVals = tempLnaVAv[validTempLnaV]
+
     # compute the mean noise zdr and vert zdr for the stats time period
 
     statsNoiseZdr = meanNoiseZdr[np.logical_and(ntimes >= zdrStatsStartTime,
@@ -326,12 +364,6 @@ def doPlot():
         print("  ==>> vertZdrmStatsMean: ", vertZdrmStatsMean, file=sys.stderr)
         print("  ==>>    noiseToZdrCorr: ", noiseToZdrCorr, file=sys.stderr)
 
-    # daily values
-    
-    (dailyTimeMeanNoiseZdr, dailyValMeanNoiseZdr) = computeDailyStats(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals)
-    (dailyTimeMeanDbmhc, dailyValMeanDbmhc) = computeDailyStats(validMeanDbmhcNtimes, validMeanDbmhcVals)
-    (dailyTimeMeanDbmvc, dailyValMeanDbmvc) = computeDailyStats(validMeanDbmvcNtimes, validMeanDbmvcVals)
-
     # set up plots
 
     widthIn = float(options.figWidthMm) / 25.4
@@ -339,8 +371,9 @@ def doPlot():
 
     fig1 = plt.figure(1, (widthIn, htIn))
 
-    ax1a = fig1.add_subplot(2,1,1,xmargin=0.0)
-    ax1b = fig1.add_subplot(2,1,2,xmargin=0.0)
+    ax1a = fig1.add_subplot(3,1,1,xmargin=0.0)
+    ax1b = fig1.add_subplot(3,1,2,xmargin=0.0)
+    ax1c = fig1.add_subplot(3,1,3,xmargin=0.0)
 
     oneDay = datetime.timedelta(1.0)
 
@@ -348,6 +381,8 @@ def doPlot():
     ax1a.set_title("ZDRm (dB)")
     ax1b.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
     ax1b.set_title("Mean Noise Power (dBm)")
+    ax1c.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
+    ax1c.set_title("Temperatures (C)")
 
     ax1a.plot(validVertZdrmVtimes, validVertZdrmVals, \
               ".", label = 'Vert ZDRm', color='green')
@@ -358,16 +393,31 @@ def doPlot():
 
     ax1b.plot(validMeanDbmhcNtimes, validMeanDbmhcVals, \
               label = 'Mean Noise Dbmhc', linewidth=1, color='red')
-    
     ax1b.plot(validMeanDbmvcNtimes, validMeanDbmvcVals, \
               label = 'Mean Noise Dbmvc', linewidth=1, color='blue')
     
+    ax1c.plot(validTempKlystronNtimes, validTempKlystronVals, \
+              label = 'Temp Klystron (C)', linewidth=1, color= 'orange')
+    ax1c.plot(validTempLnaHNtimes, validTempLnaHVals, \
+              label = 'Temp Lna H (C)', linewidth=1, color='darkgreen')
+    ax1c.plot(validTempLnaVNtimes, validTempLnaVVals, \
+              label = 'Temp Lna V (C)', linewidth=1, color= 'seagreen')
+    ax1c.plot(validTempRxNtimes, validTempRxVals, \
+              label = 'Temp Rx (C)', linewidth=1, color='blue')
+    ax1c.plot(validTempSiteNtimes, validTempSiteVals, \
+              label = 'Temp site (C)', linewidth=1, color='red')
+    
     #configDateAxis(ax1a, -9999, -9999, "Noise ZDR (dB)", 'upper right')
-    configDateAxis(ax1a, float(options.zdrMin), float(options.zdrMax),
+    configDateAxis(ax1a,
+                   float(options.zdrMin), float(options.zdrMax),
                    "ZDRm (dB)", 'upper right')
     #configDateAxis(ax1b, -9999, -9999, "Noise Power (dBm)", 'upper right')
-    configDateAxis(ax1b, float(options.noiseMin), float(options.noiseMax),
+    configDateAxis(ax1b,
+                   float(options.noiseMin), float(options.noiseMax),
                    "Noise Power (dBm)", 'upper right')
+    configDateAxis(ax1c,
+                   float(options.tempMin), float(options.tempMax),
+                   "Temperatures (C)", 'upper right')
 
     # add text labels
 

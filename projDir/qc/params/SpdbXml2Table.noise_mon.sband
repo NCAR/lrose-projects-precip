@@ -199,6 +199,146 @@ xml_entries = {
     label = "meanDbmvc",
     required = TRUE
   }
+  ,
+  {
+    xml_tag_list = "<WxStation><windSpeedMps>",
+    specify_label = TRUE,
+    label = "WxStationWindSpeedMps",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<WxStation><windDirnDeg>",
+    specify_label = TRUE,
+    label = "WxStationWindDirnDeg",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<WxStation><tempC>",
+    specify_label = TRUE,
+    label = "WxStationTempC",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<WxStation><RH>",
+    specify_label = TRUE,
+    label = "WxStationRH",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SBandXmitPower><XmitPowerDbmH>",
+    specify_label = TRUE,
+    label = "XmitPowerDbmH",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SBandXmitPower><XmitPowerDbmV>",
+    specify_label = TRUE,
+    label = "XmitPowerDbmV",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SBandXmitPower><XmitPowerDbmTxTop>",
+    specify_label = TRUE,
+    label = "XmitPowerDbmTxTop",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SpolTemperatures><Klystron>",
+    specify_label = TRUE,
+    label = "TempKlystronC",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SpolTemperatures><Klystron_Exhaust>",
+    specify_label = TRUE,
+    label = "TempKlystronExhaustC",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SpolTemperatures><Klystron_Body>",
+    specify_label = TRUE,
+    label = "TempKlystronBodyC",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SpolTemperatures><CIRC_V>",
+    specify_label = TRUE,
+    label = "TempCircVC",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SpolTemperatures><CIRC_H>",
+    specify_label = TRUE,
+    label = "TempCircHC",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SpolTemperatures><LNA_V>",
+    specify_label = TRUE,
+    label = "TempLnaVC",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SpolTemperatures><LNA_H>",
+    specify_label = TRUE,
+    label = "TempLnaHC",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SpolTemperatures><RX_enclosure>",
+    specify_label = TRUE,
+    label = "TempRxEnclosureC",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SpolTemperatures><RX_plate>",
+    specify_label = TRUE,
+    label = "TempRxPlateC",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SpolTemperatures><TX_coupler_H>",
+    specify_label = TRUE,
+    label = "TempTXCouplerH_C",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<SbandAntennaTemperature><DishTempMean>",
+    specify_label = TRUE,
+    label = "DishTempMeanC",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<Vibration><AzTransmissionsMeanTempC>",
+    specify_label = TRUE,
+    label = "AzTransTempC",
+    required = TRUE
+  }
+  ,
+  {
+    xml_tag_list = "<PedestalOilPressure><PressureNow>",
+    specify_label = TRUE,
+    label = "PedestalOilPressurePsi",
+    required = TRUE
+  }
 };
 
 //======================================================================
