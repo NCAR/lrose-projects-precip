@@ -324,6 +324,18 @@ def doPlot():
     validTempSiteNtimes = ntimes[validTempSite]
     validTempSiteVals = tempSiteAv[validTempSite]
 
+    tempDish = np.array(noiseData["DishTempMeanC"]).astype(np.double)
+    tempDishAv = movingAverage(tempDish, lenMeanFilter)
+    validTempDish = np.isfinite(tempDishAv)
+    validTempDishNtimes = ntimes[validTempDish]
+    validTempDishVals = tempDishAv[validTempDish]
+
+    tempTrans = np.array(noiseData["AzTransTempC"]).astype(np.double)
+    tempTransAv = movingAverage(tempTrans, lenMeanFilter)
+    validTempTrans = np.isfinite(tempTransAv)
+    validTempTransNtimes = ntimes[validTempTrans]
+    validTempTransVals = tempTransAv[validTempTrans]
+
     tempKlystron = np.array(noiseData["TempKlystronC"]).astype(np.double)
     tempKlystronAv = movingAverage(tempKlystron, lenMeanFilter)
     validTempKlystron = np.isfinite(tempKlystronAv)
@@ -396,12 +408,16 @@ def doPlot():
     ax1b.plot(validMeanDbmvcNtimes, validMeanDbmvcVals, \
               label = 'Mean Noise Dbmvc', linewidth=1, color='blue')
     
+    #ax1c.plot(validTempDishNtimes, validTempDishVals, \
+    #          label = 'Temp dish (C)', linewidth=1, color='brown')
+    #ax1c.plot(validTempTransNtimes, validTempTransVals, \
+    #          label = 'Temp trans (C)', linewidth=1, color='pink')
     ax1c.plot(validTempKlystronNtimes, validTempKlystronVals, \
               label = 'Temp Klystron (C)', linewidth=1, color= 'orange')
+    ax1c.plot(validTempLnaVNtimes, validTempLnaVVals, \
+              label = 'Temp Lna V (C)', linewidth=1, color= 'cyan')
     ax1c.plot(validTempLnaHNtimes, validTempLnaHVals, \
               label = 'Temp Lna H (C)', linewidth=1, color='darkgreen')
-    ax1c.plot(validTempLnaVNtimes, validTempLnaVVals, \
-              label = 'Temp Lna V (C)', linewidth=1, color= 'seagreen')
     ax1c.plot(validTempRxNtimes, validTempRxVals, \
               label = 'Temp Rx (C)', linewidth=1, color='blue')
     ax1c.plot(validTempSiteNtimes, validTempSiteVals, \
@@ -428,6 +444,10 @@ def doPlot():
     label4 = "noiseZdrMean: " + ("%.2f" % noiseZdrStatsMean)
     label5 = "vertZdrmMean: " + ("%.2f" % vertZdrmStatsMean)
     label6 = "noiseToZdrCorr: " + ("%.2f" % noiseToZdrCorr)
+
+    ax1a.set_facecolor("lightgrey")
+    ax1b.set_facecolor("lightgrey")
+    ax1c.set_facecolor("lightgrey")
 
     plt.figtext(0.06, 0.95, label1)
     plt.figtext(0.06, 0.93, label2)
