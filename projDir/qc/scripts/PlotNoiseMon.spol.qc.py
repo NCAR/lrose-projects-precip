@@ -413,7 +413,7 @@ def doPlot():
     #ax1c.plot(validTempTransNtimes, validTempTransVals, \
     #          label = 'Temp trans (C)', linewidth=1, color='pink')
     ax1c.plot(validTempKlystronNtimes, validTempKlystronVals, \
-              label = 'Temp Klystron (C)', linewidth=1, color= 'orange')
+              label = 'Temp Klystron (C)', linewidth=1, color= 'yellow')
     ax1c.plot(validTempLnaVNtimes, validTempLnaVVals, \
               label = 'Temp Lna V (C)', linewidth=1, color= 'cyan')
     ax1c.plot(validTempLnaHNtimes, validTempLnaHVals, \
