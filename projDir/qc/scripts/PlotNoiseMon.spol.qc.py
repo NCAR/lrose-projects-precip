@@ -79,12 +79,12 @@ def main():
                       dest='noiseMax',
                       default=-74.0,
                       help='Max noise dbm in lower plot')
-    parser.add_option('--zdrStatsStartTime',
-                      dest='zdrStatsStartTime',
+    parser.add_option('--statsStartTime',
+                      dest='statsStartTime',
                       default='2022 05 25 03 00 00',
                       help='Start time for computing ZDR stats')
-    parser.add_option('--zdrStatsEndTime',
-                      dest='zdrStatsEndTime',
+    parser.add_option('--statsEndTime',
+                      dest='statsEndTime',
                       default='2022 07 09 00 00 00',
                       help='End time for computing ZDR stats')
     parser.add_option('--zdrMin',
@@ -95,14 +95,6 @@ def main():
                       dest='zdrMax',
                       default=2.0,
                       help='Max zdr in upper plot')
-    parser.add_option('--vertStatsStartTime',
-                      dest='vertStatsStartTime',
-                      default='2022 05 25 03 00 00',
-                      help='Start time for computing VERT stats')
-    parser.add_option('--vertStatsEndTime',
-                      dest='vertStatsEndTime',
-                      default='2022 07 11 00 00 00',
-                      help='End time for computing VERT stats')
     parser.add_option('--tempMin',
                       dest='tempMin',
                       default=20.0,
@@ -128,38 +120,25 @@ def main():
     endTime = datetime.datetime(int(year), int(month), int(day),
                                 int(hour), int(minute), int(sec))
 
-    global zdrStatsStartTime
-    global zdrStatsEndTime
+    global statsStartTime
+    global statsEndTime
 
-    year, month, day, hour, minute, sec = options.zdrStatsStartTime.split()
-    zdrStatsStartTime = datetime.datetime(int(year), int(month), int(day),
+    year, month, day, hour, minute, sec = options.statsStartTime.split()
+    statsStartTime = datetime.datetime(int(year), int(month), int(day),
                                           int(hour), int(minute), int(sec))
 
-    year, month, day, hour, minute, sec = options.zdrStatsEndTime.split()
-    zdrStatsEndTime = datetime.datetime(int(year), int(month), int(day),
+    year, month, day, hour, minute, sec = options.statsEndTime.split()
+    statsEndTime = datetime.datetime(int(year), int(month), int(day),
                                         int(hour), int(minute), int(sec))
 
-    global vertStatsStartTime
-    global vertStatsEndTime
-    
-    year, month, day, hour, minute, sec = options.vertStatsStartTime.split()
-    vertStatsStartTime = datetime.datetime(int(year), int(month), int(day),
-                                           int(hour), int(minute), int(sec))
-    
-    year, month, day, hour, minute, sec = options.vertStatsEndTime.split()
-    vertStatsEndTime = datetime.datetime(int(year), int(month), int(day),
-                                         int(hour), int(minute), int(sec))
-    
     if (options.debug):
         print("Running %prog", file=sys.stderr)
         print("  noiseFilePath: ", options.noiseFilePath, file=sys.stderr)
         print("  vertFilePath: ", options.vertFilePath, file=sys.stderr)
         print("  startTime: ", startTime, file=sys.stderr)
         print("  endTime: ", endTime, file=sys.stderr)
-        print("  zdrStatsStartTime: ", zdrStatsStartTime, file=sys.stderr)
-        print("  zdrStatsEndTime: ", zdrStatsEndTime, file=sys.stderr)
-        print("  vertStatsStartTime: ", vertStatsStartTime, file=sys.stderr)
-        print("  vertStatsEndTime: ", vertStatsEndTime, file=sys.stderr)
+        print("  statsStartTime: ", statsStartTime, file=sys.stderr)
+        print("  statsEndTime: ", statsEndTime, file=sys.stderr)
 
     # read in column headers for noise results
 
@@ -337,54 +316,61 @@ def doPlot():
     validVertZdrmVtimes = vtimes[validVertZdrm]
     validVertZdrmVals = vertZdrmAv[validVertZdrm]
 
-    tempSite = np.array(noiseData["WxStationTempC"]).astype(np.double)
-    tempSiteAv = movingAverage(tempSite, lenMeanFilter)
-    validTempSite = np.isfinite(tempSiteAv)
-    validTempSiteNtimes = ntimes[validTempSite]
-    validTempSiteVals = tempSiteAv[validTempSite]
+    global tempsAvail
+    tempsAvail = True
+    try:
+        
+        tempSite = np.array(noiseData["WxStationTempC"]).astype(np.double)
+        tempSiteAv = movingAverage(tempSite, lenMeanFilter)
+        validTempSite = np.isfinite(tempSiteAv)
+        validTempSiteNtimes = ntimes[validTempSite]
+        validTempSiteVals = tempSiteAv[validTempSite]
 
-    tempDish = np.array(noiseData["DishTempMeanC"]).astype(np.double)
-    tempDishAv = movingAverage(tempDish, lenMeanFilter)
-    validTempDish = np.isfinite(tempDishAv)
-    validTempDishNtimes = ntimes[validTempDish]
-    validTempDishVals = tempDishAv[validTempDish]
+        tempDish = np.array(noiseData["DishTempMeanC"]).astype(np.double)
+        tempDishAv = movingAverage(tempDish, lenMeanFilter)
+        validTempDish = np.isfinite(tempDishAv)
+        validTempDishNtimes = ntimes[validTempDish]
+        validTempDishVals = tempDishAv[validTempDish]
 
-    tempTrans = np.array(noiseData["AzTransTempC"]).astype(np.double)
-    tempTransAv = movingAverage(tempTrans, lenMeanFilter)
-    validTempTrans = np.isfinite(tempTransAv)
-    validTempTransNtimes = ntimes[validTempTrans]
-    validTempTransVals = tempTransAv[validTempTrans]
+        tempTrans = np.array(noiseData["AzTransTempC"]).astype(np.double)
+        tempTransAv = movingAverage(tempTrans, lenMeanFilter)
+        validTempTrans = np.isfinite(tempTransAv)
+        validTempTransNtimes = ntimes[validTempTrans]
+        validTempTransVals = tempTransAv[validTempTrans]
 
-    tempKlystron = np.array(noiseData["TempKlystronC"]).astype(np.double)
-    tempKlystronAv = movingAverage(tempKlystron, lenMeanFilter)
-    validTempKlystron = np.isfinite(tempKlystronAv)
-    validTempKlystronNtimes = ntimes[validTempKlystron]
-    validTempKlystronVals = tempKlystronAv[validTempKlystron]
+        tempKlystron = np.array(noiseData["TempKlystronC"]).astype(np.double)
+        tempKlystronAv = movingAverage(tempKlystron, lenMeanFilter)
+        validTempKlystron = np.isfinite(tempKlystronAv)
+        validTempKlystronNtimes = ntimes[validTempKlystron]
+        validTempKlystronVals = tempKlystronAv[validTempKlystron]
 
-    tempRx = np.array(noiseData["TempRxEnclosureC"]).astype(np.double)
-    tempRxAv = movingAverage(tempRx, lenMeanFilter)
-    validTempRx = np.isfinite(tempRxAv)
-    validTempRxNtimes = ntimes[validTempRx]
-    validTempRxVals = tempRxAv[validTempRx]
+        tempRx = np.array(noiseData["TempRxEnclosureC"]).astype(np.double)
+        tempRxAv = movingAverage(tempRx, lenMeanFilter)
+        validTempRx = np.isfinite(tempRxAv)
+        validTempRxNtimes = ntimes[validTempRx]
+        validTempRxVals = tempRxAv[validTempRx]
 
-    tempLnaH = np.array(noiseData["TempLnaHC"]).astype(np.double)
-    tempLnaHAv = movingAverage(tempLnaH, lenMeanFilter)
-    validTempLnaH = np.isfinite(tempLnaHAv)
-    validTempLnaHNtimes = ntimes[validTempLnaH]
-    validTempLnaHVals = tempLnaHAv[validTempLnaH]
+        tempLnaH = np.array(noiseData["TempLnaHC"]).astype(np.double)
+        tempLnaHAv = movingAverage(tempLnaH, lenMeanFilter)
+        validTempLnaH = np.isfinite(tempLnaHAv)
+        validTempLnaHNtimes = ntimes[validTempLnaH]
+        validTempLnaHVals = tempLnaHAv[validTempLnaH]
 
-    tempLnaV = np.array(noiseData["TempLnaVC"]).astype(np.double)
-    tempLnaVAv = movingAverage(tempLnaV, lenMeanFilter)
-    validTempLnaV = np.isfinite(tempLnaVAv)
-    validTempLnaVNtimes = ntimes[validTempLnaV]
-    validTempLnaVVals = tempLnaVAv[validTempLnaV]
+        tempLnaV = np.array(noiseData["TempLnaVC"]).astype(np.double)
+        tempLnaVAv = movingAverage(tempLnaV, lenMeanFilter)
+        validTempLnaV = np.isfinite(tempLnaVAv)
+        validTempLnaVNtimes = ntimes[validTempLnaV]
+        validTempLnaVVals = tempLnaVAv[validTempLnaV]
+
+    except KeyError as e:
+        tempsAvail = False
 
     # compute the mean noise zdr and vert zdr for the stats time period
 
-    statsNoiseZdr = meanNoiseZdr[np.logical_and(ntimes >= zdrStatsStartTime,
-                                                ntimes <= zdrStatsEndTime)]
-    statsVertZdrm = vertZdrm[np.logical_and(vtimes >= zdrStatsStartTime,
-                                            vtimes <= zdrStatsEndTime)]
+    statsNoiseZdr = meanNoiseZdr[np.logical_and(ntimes >= statsStartTime,
+                                                ntimes <= statsEndTime)]
+    statsVertZdrm = vertZdrm[np.logical_and(vtimes >= statsStartTime,
+                                            vtimes <= statsEndTime)]
     noiseZdrStatsMean = np.mean(statsNoiseZdr)
     vertZdrmStatsMean = np.mean(statsVertZdrm)
     noiseToZdrCorr = vertZdrmStatsMean - noiseZdrStatsMean
@@ -401,14 +387,21 @@ def doPlot():
     htIn = float(options.figHeightMm) / 25.4
 
     fig1 = plt.figure(1, (widthIn, htIn))
-    fig2 = plt.figure(2, (widthIn/2, htIn/2))
-    fig3 = plt.figure(3, (widthIn/2, htIn/2))
+    if (tempsAvail):
+        fig2 = plt.figure(2, (widthIn/2, htIn/2))
+        fig3 = plt.figure(3, (widthIn/2, htIn/2))
 
-    ax1a = fig1.add_subplot(3,1,1,xmargin=0.0)
-    ax1b = fig1.add_subplot(3,1,2,xmargin=0.0)
-    ax1c = fig1.add_subplot(3,1,3,xmargin=0.0)
-    ax2a = fig2.add_subplot(1,1,1,xmargin=1.0, ymargin=1.0)
-    ax3a = fig3.add_subplot(1,1,1,xmargin=1.0, ymargin=1.0)
+    if (tempsAvail):
+        ax1a = fig1.add_subplot(3,1,1,xmargin=0.0)
+        ax1b = fig1.add_subplot(3,1,2,xmargin=0.0)
+        ax1c = fig1.add_subplot(3,1,3,xmargin=0.0)
+    else:
+        ax1a = fig1.add_subplot(2,1,1,xmargin=0.0)
+        ax1b = fig1.add_subplot(2,1,2,xmargin=0.0)
+
+    if (tempsAvail):
+        ax2a = fig2.add_subplot(1,1,1,xmargin=1.0, ymargin=1.0)
+        ax3a = fig3.add_subplot(1,1,1,xmargin=1.0, ymargin=1.0)
 
     oneDay = datetime.timedelta(1.0)
 
@@ -416,8 +409,10 @@ def doPlot():
     ax1a.set_title("ZDRm (dB)")
     ax1b.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
     ax1b.set_title("Mean Noise Power (dBm)")
-    ax1c.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
-    ax1c.set_title("Temperatures (C)")
+
+    if (tempsAvail):
+        ax1c.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
+        ax1c.set_title("Temperatures (C)")
 
     ax1a.plot(validVertZdrmVtimes, validVertZdrmVals, \
               ".", label = 'Vert ZDRm', color='green')
@@ -435,16 +430,18 @@ def doPlot():
     #          label = 'Temp dish (C)', linewidth=1, color='brown')
     #ax1c.plot(validTempTransNtimes, validTempTransVals, \
     #          label = 'Temp trans (C)', linewidth=1, color='pink')
-    ax1c.plot(validTempKlystronNtimes, validTempKlystronVals, \
-              label = 'Temp Klystron (C)', linewidth=1, color= 'yellow')
-    ax1c.plot(validTempLnaVNtimes, validTempLnaVVals, \
-              label = 'Temp Lna V (C)', linewidth=1, color= 'cyan')
-    ax1c.plot(validTempLnaHNtimes, validTempLnaHVals, \
-              label = 'Temp Lna H (C)', linewidth=1, color='darkgreen')
-    ax1c.plot(validTempRxNtimes, validTempRxVals, \
-              label = 'Temp Rx (C)', linewidth=1, color='blue')
-    ax1c.plot(validTempSiteNtimes, validTempSiteVals, \
-              label = 'Temp site (C)', linewidth=1, color='red')
+
+    if (tempsAvail):
+        ax1c.plot(validTempKlystronNtimes, validTempKlystronVals, \
+                  label = 'Temp Klystron (C)', linewidth=1, color= 'yellow')
+        ax1c.plot(validTempLnaVNtimes, validTempLnaVVals, \
+                  label = 'Temp Lna V (C)', linewidth=1, color= 'cyan')
+        ax1c.plot(validTempLnaHNtimes, validTempLnaHVals, \
+                  label = 'Temp Lna H (C)', linewidth=1, color='darkgreen')
+        ax1c.plot(validTempRxNtimes, validTempRxVals, \
+                  label = 'Temp Rx (C)', linewidth=1, color='blue')
+        ax1c.plot(validTempSiteNtimes, validTempSiteVals, \
+                  label = 'Temp site (C)', linewidth=1, color='red')
     
     #configDateAxis(ax1a, -9999, -9999, "Noise ZDR (dB)", 'upper right')
     configDateAxis(ax1a,
@@ -454,14 +451,15 @@ def doPlot():
     configDateAxis(ax1b,
                    float(options.noiseMin), float(options.noiseMax),
                    "Noise Power (dBm)", 'upper right')
-    configDateAxis(ax1c,
-                   float(options.tempMin), float(options.tempMax),
-                   "Temperatures (C)", 'upper right')
+    if (tempsAvail):
+        configDateAxis(ax1c,
+                       float(options.tempMin), float(options.tempMax),
+                       "Temperatures (C)", 'upper right')
 
     # add text labels
 
-    label1 = "Stats start: " + zdrStatsStartTime.strftime('%Y-%m-%d')    
-    label2 = "Stats end: " + zdrStatsEndTime.strftime('%Y-%m-%d')    
+    label1 = "Stats start: " + statsStartTime.strftime('%Y-%m-%d')    
+    label2 = "Stats end: " + statsEndTime.strftime('%Y-%m-%d')    
     label3 = "Ntimes smooth: " + str(options.lenMean)
 
     label4 = "noiseZdrMean: " + ("%.2f" % noiseZdrStatsMean)
@@ -470,7 +468,8 @@ def doPlot():
 
     ax1a.set_facecolor("lightgrey")
     ax1b.set_facecolor("lightgrey")
-    ax1c.set_facecolor("lightgrey")
+    if (tempsAvail):
+        ax1c.set_facecolor("lightgrey")
 
     # text on upper plot
     
@@ -488,17 +487,19 @@ def doPlot():
 
     fig1.suptitle(options.title)
 
-    # add linear regression plot of ZDR bias vs temp
+    if (tempsAvail):
 
-    addVertZdrmTempRegrPlot(ax2a,
-                            ntimes, validVertZdrmVtimes,
-                            validVertZdrmVals, tempSite)
+        # add linear regression plot of ZDR bias vs temp
+        
+        addVertZdrmTempRegrPlot(ax2a,
+                                ntimes, validVertZdrmVtimes,
+                                validVertZdrmVals, tempSite)
 
-    # add linear regression plot of measured noise vs rx temp
+        # add linear regression plot of measured noise vs rx temp
 
-    addMeasNoisRxTempRegrPlot(ax3a,
-                              ntimes, validTempRxNtimes,
-                              validMeanDbmvcVals, tempRx)
+        addMeasNoisRxTempRegrPlot(ax3a,
+                                  ntimes, validTempRxNtimes,
+                                  validMeanDbmvcVals, tempRx)
 
     # show
     
@@ -519,7 +520,7 @@ def addVertZdrmTempRegrPlot(ax,
 
     for ii, zdrmVal in enumerate(validVertZdrmVals, start=0):
         zdrmTime = validVertZdrmVtimes[ii]
-        if (zdrmTime >= vertStatsStartTime and zdrmTime <= vertStatsEndTime):
+        if (zdrmTime >= statsStartTime and zdrmTime <= statsEndTime):
             tempTime, tempVal = getClosestTemp(zdrmTime, ntimes, tempSite)
             if (np.isfinite(tempVal)):
                 tempVals.append(tempVal)
@@ -529,7 +530,8 @@ def addVertZdrmTempRegrPlot(ax,
                           zdrmTime, zdrmVal, tempTime, tempVal, file=sys.stderr)
 
     A = array([tempVals, ones(len(tempVals))])
-    ww = linalg.lstsq(A.T, zdrmVals)[0] # obtaining the fit, ww[0] is slope, ww[1] is intercept
+    # obtaining the fit, ww[0] is slope, ww[1] is intercept
+    ww = linalg.lstsq(A.T, zdrmVals, rcond=None)[0]
     regrX = []
     regrY = []
     minTemp = min(tempVals)
@@ -554,7 +556,7 @@ def addVertZdrmTempRegrPlot(ax,
     ax.grid(True)
     ax.set_ylim([0.5, 1.15])
     ax.set_xlim([minTemp - 1, maxTemp + 1])
-    title = "ZDRM bias Vs Site temp: " + str(vertStatsStartTime) + " - " + str(vertStatsEndTime)
+    title = "ZDRM bias Vs Site temp: " + str(statsStartTime) + " - " + str(statsEndTime)
     ax.set_title(title)
 
 ########################################################################
@@ -571,7 +573,7 @@ def addMeasNoisRxTempRegrPlot(ax,
 
     for ii, rxVal in enumerate(validMeanDbmvcVals, start=0):
         rxTime = validTempRxNtimes[ii]
-        if (rxTime >= vertStatsStartTime and rxTime <= vertStatsEndTime):
+        if (rxTime >= statsStartTime and rxTime <= statsEndTime):
             tempTime, tempVal = getClosestTemp(rxTime, ntimes, tempRx)
             if (np.isfinite(tempVal)):
                 tempVals.append(tempVal)
@@ -581,7 +583,8 @@ def addMeasNoisRxTempRegrPlot(ax,
                           rxTime, rxVal, tempTime, tempVal, file=sys.stderr)
 
     A = array([tempVals, ones(len(tempVals))])
-    ww = linalg.lstsq(A.T, rxNoiseVals)[0] # obtaining the fit, ww[0] is slope, ww[1] is intercept
+    # obtaining the fit, ww[0] is slope, ww[1] is intercept
+    ww = linalg.lstsq(A.T, rxNoiseVals, rcond=None)[0]
     regrX = []
     regrY = []
     minTemp = min(tempVals)
@@ -606,7 +609,7 @@ def addMeasNoisRxTempRegrPlot(ax,
     ax.grid(True)
     #ax.set_ylim([0.5, 1.15])
     ax.set_xlim([minTemp - 1, maxTemp + 1])
-    title = "RxNoiseV vs Rx temp: " + str(vertStatsStartTime) + " - " + str(vertStatsEndTime)
+    title = "RxNoiseV vs Rx temp: " + str(statsStartTime) + " - " + str(statsEndTime)
     ax.set_title(title)
 
 ########################################################################
