@@ -101,7 +101,7 @@ def main():
                       help='Start time for computing VERT stats')
     parser.add_option('--vertStatsEndTime',
                       dest='vertStatsEndTime',
-                      default='2022 07 09 00 00 00',
+                      default='2022 07 11 00 00 00',
                       help='End time for computing VERT stats')
     parser.add_option('--tempMin',
                       dest='tempMin',
@@ -395,51 +395,6 @@ def doPlot():
         print("  ==>> vertZdrmStatsMean: ", vertZdrmStatsMean, file=sys.stderr)
         print("  ==>>    noiseToZdrCorr: ", noiseToZdrCorr, file=sys.stderr)
 
-    # linear regression of ZDR bias vs temp
-
-    vertZdrm = np.array(vertData["meanZdrmVol"]).astype(np.double)
-    vertZdrmAv = movingAverage(vertZdrm, lenMeanFilter)
-    validVertZdrm = np.isfinite(vertZdrmAv)
-    validVertZdrmVtimes = vtimes[validVertZdrm]
-    validVertZdrmVals = vertZdrmAv[validVertZdrm]
-
-    meanNoiseZdr = np.array(noiseData["meanNoiseZdr"]).astype(np.double)
-    meanNoiseZdrAv = movingAverage(meanNoiseZdr, lenMeanFilter)
-    validMeanNoiseZdr = np.isfinite(meanNoiseZdrAv)
-    validMeanNoiseZdrNtimes = ntimes[validMeanNoiseZdr]
-    validMeanNoiseZdrVals = meanNoiseZdrAv[validMeanNoiseZdr]
-
-    tempSite = np.array(noiseData["WxStationTempC"]).astype(np.double)
-    tempSiteAv = movingAverage(tempSite, lenMeanFilter)
-    validTempSite = np.isfinite(tempSiteAv)
-    validTempSiteNtimes = ntimes[validTempSite]
-    validTempSiteVals = tempSiteAv[validTempSite]
-
-    tempVals = []
-    zdrmVals = []
-
-    for ii, zdrmVal in enumerate(validVertZdrmVals, start=0):
-        zdrmTime = validVertZdrmVtimes[ii]
-        if (zdrmTime >= vertStatsStartTime and zdrmTime <= vertStatsEndTime):
-            tempTime, tempVal = getClosestTemp(zdrmTime, ntimes, tempSite)
-            if (np.isfinite(tempVal)):
-                tempVals.append(tempVal)
-                zdrmVals.append(zdrmVal)
-                if (options.verbose):
-                    print("==>> zdrmTime, zdrmVal, tempTime, tempVal:", \
-                          zdrmTime, zdrmVal, tempTime, tempVal, file=sys.stderr)
-
-    A = array([tempVals, ones(len(tempVals))])
-    ww = linalg.lstsq(A.T, zdrmVals)[0] # obtaining the fit, ww[0] is slope, ww[1] is intercept
-    regrX = []
-    regrY = []
-    minTemp = min(tempVals)
-    maxTemp = max(tempVals)
-    regrX.append(minTemp)
-    regrX.append(maxTemp)
-    regrY.append(ww[0] * minTemp + ww[1])
-    regrY.append(ww[0] * maxTemp + ww[1])
-    
     # set up plots
 
     widthIn = float(options.figWidthMm) / 25.4
@@ -531,26 +486,66 @@ def doPlot():
 
     fig1.suptitle(options.title)
 
+    # add linear regression plot of ZDR bias vs temp
+
+    addVertZdrmTempRegrPlot(fig2, ax2a, ntimes,
+                            validVertZdrmVals, validVertZdrmVtimes, tempSite)
+
+    # show
+    
+    plt.show()
+
+
+########################################################################
+# add regression plot
+
+def addVertZdrmTempRegrPlot(fig2, ax2a, ntimes,
+                            validVertZdrmVals, validVertZdrmVtimes, tempSite):
+
+    # linear regression of ZDR bias vs temp
+
+    tempVals = []
+    zdrmVals = []
+
+    for ii, zdrmVal in enumerate(validVertZdrmVals, start=0):
+        zdrmTime = validVertZdrmVtimes[ii]
+        if (zdrmTime >= vertStatsStartTime and zdrmTime <= vertStatsEndTime):
+            tempTime, tempVal = getClosestTemp(zdrmTime, ntimes, tempSite)
+            if (np.isfinite(tempVal)):
+                tempVals.append(tempVal)
+                zdrmVals.append(zdrmVal)
+                if (options.verbose):
+                    print("==>> zdrmTime, zdrmVal, tempTime, tempVal:", \
+                          zdrmTime, zdrmVal, tempTime, tempVal, file=sys.stderr)
+
+    A = array([tempVals, ones(len(tempVals))])
+    ww = linalg.lstsq(A.T, zdrmVals)[0] # obtaining the fit, ww[0] is slope, ww[1] is intercept
+    regrX = []
+    regrY = []
+    minTemp = min(tempVals)
+    maxTemp = max(tempVals)
+    regrX.append(minTemp)
+    regrX.append(maxTemp)
+    regrY.append(ww[0] * minTemp + ww[1])
+    regrY.append(ww[0] * maxTemp + ww[1])
+    
     # temperature-based regression
     
-    label2 = "ZDRM = " + ("%.5f" % ww[0]) + " * temp + " + ("%.3f" % ww[1])
+    label = "ZDRM = " + ("%.5f" % ww[0]) + " * temp + " + ("%.3f" % ww[1])
     ax2a.plot(tempVals, zdrmVals, 
-              "x", label = label2, color = 'blue')
+              ".", label = label, color = 'lightblue')
     ax2a.plot(regrX, regrY, linewidth=3, color = 'blue')
     
-    legend2 = ax2a.legend(loc="upper left", ncol=2)
-    for label2 in legend2.get_texts():
-        label2.set_fontsize(12)
+    legend = ax2a.legend(loc="upper left", ncol=2)
+    for label in legend.get_texts():
+        label.set_fontsize(12)
     ax2a.set_xlabel("Site temperature (C)")
     ax2a.set_ylabel("ZDRM Bias (dB)")
     ax2a.grid(True)
-    ax2a.set_ylim([0, 1.25])
+    ax2a.set_ylim([0.5, 1.15])
     ax2a.set_xlim([minTemp - 1, maxTemp + 1])
-    title2 = "ZDRM bias Vs Temp: " + str(vertStatsStartTime) + " - " + str(vertStatsEndTime)
-    ax2a.set_title(title2)
-
-    plt.show()
-
+    title = "ZDRM bias Vs Site temp: " + str(vertStatsStartTime) + " - " + str(vertStatsEndTime)
+    ax2a.set_title(title)
 
 ########################################################################
 # Plot - backup
