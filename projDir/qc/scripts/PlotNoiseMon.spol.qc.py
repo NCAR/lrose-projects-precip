@@ -402,11 +402,13 @@ def doPlot():
 
     fig1 = plt.figure(1, (widthIn, htIn))
     fig2 = plt.figure(2, (widthIn/2, htIn/2))
+    fig3 = plt.figure(3, (widthIn/2, htIn/2))
 
     ax1a = fig1.add_subplot(3,1,1,xmargin=0.0)
     ax1b = fig1.add_subplot(3,1,2,xmargin=0.0)
     ax1c = fig1.add_subplot(3,1,3,xmargin=0.0)
     ax2a = fig2.add_subplot(1,1,1,xmargin=1.0, ymargin=1.0)
+    ax3a = fig3.add_subplot(1,1,1,xmargin=1.0, ymargin=1.0)
 
     oneDay = datetime.timedelta(1.0)
 
@@ -488,8 +490,15 @@ def doPlot():
 
     # add linear regression plot of ZDR bias vs temp
 
-    addVertZdrmTempRegrPlot(fig2, ax2a, ntimes,
-                            validVertZdrmVals, validVertZdrmVtimes, tempSite)
+    addVertZdrmTempRegrPlot(ax2a,
+                            ntimes, validVertZdrmVtimes,
+                            validVertZdrmVals, tempSite)
+
+    # add linear regression plot of measured noise vs rx temp
+
+    addMeasNoisRxTempRegrPlot(ax3a,
+                              ntimes, validTempRxNtimes,
+                              validMeanDbmvcVals, tempRx)
 
     # show
     
@@ -497,10 +506,11 @@ def doPlot():
 
 
 ########################################################################
-# add regression plot
+# add regression plot of vert-based zdrm vs site temp
 
-def addVertZdrmTempRegrPlot(fig2, ax2a, ntimes,
-                            validVertZdrmVals, validVertZdrmVtimes, tempSite):
+def addVertZdrmTempRegrPlot(ax,
+                            ntimes, validVertZdrmVtimes,
+                            validVertZdrmVals, tempSite):
 
     # linear regression of ZDR bias vs temp
 
@@ -532,221 +542,72 @@ def addVertZdrmTempRegrPlot(fig2, ax2a, ntimes,
     # temperature-based regression
     
     label = "ZDRM = " + ("%.5f" % ww[0]) + " * temp + " + ("%.3f" % ww[1])
-    ax2a.plot(tempVals, zdrmVals, 
+    ax.plot(tempVals, zdrmVals, 
               ".", label = label, color = 'lightblue')
-    ax2a.plot(regrX, regrY, linewidth=3, color = 'blue')
+    ax.plot(regrX, regrY, linewidth=3, color = 'blue')
     
-    legend = ax2a.legend(loc="upper left", ncol=2)
+    legend = ax.legend(loc="upper left", ncol=2)
     for label in legend.get_texts():
         label.set_fontsize(12)
-    ax2a.set_xlabel("Site temperature (C)")
-    ax2a.set_ylabel("ZDRM Bias (dB)")
-    ax2a.grid(True)
-    ax2a.set_ylim([0.5, 1.15])
-    ax2a.set_xlim([minTemp - 1, maxTemp + 1])
+    ax.set_xlabel("Site temperature (C)")
+    ax.set_ylabel("ZDRM Bias (dB)")
+    ax.grid(True)
+    ax.set_ylim([0.5, 1.15])
+    ax.set_xlim([minTemp - 1, maxTemp + 1])
     title = "ZDRM bias Vs Site temp: " + str(vertStatsStartTime) + " - " + str(vertStatsEndTime)
-    ax2a.set_title(title)
+    ax.set_title(title)
 
 ########################################################################
-# Plot - backup
+# add regression plot of measured noise vs rx temp
 
-def doPlot0(noiseData, noiseTimes, vertData, vertTimes):
-
-    fileName = options.noiseFilePath
-    titleStr = "File: " + fileName
-    hfmt = dates.DateFormatter('%y/%m/%d')
-
-    lenMeanFilter = int(options.lenMean)
-
-    # set up arrays for ZDR noise
-
-    btimes = np.array(noiseTimes).astype(datetime.datetime)
+def addMeasNoisRxTempRegrPlot(ax,
+                              ntimes, validTempRxNtimes,
+                              validMeanDbmvcVals, tempRx):
     
-    # noiseIce = np.array(noiseData["ZdrInIceMean"]).astype(np.double)
-    # noiseIce = movingAverage(noiseIce, lenMeanFilter)
-
-    noiseIce = np.array(noiseData["ZdrInIcePerc25.00"]).astype(np.double)
-    noiseIce = movingAverage(noiseIce, lenMeanFilter)
-    validIce = np.isfinite(noiseIce)
+    # linear regression of V channel noise vs rx temp
     
-    noiseIceM = np.array(noiseData["ZdrmInIcePerc25.00"]).astype(np.double)
-    noiseIceM = movingAverage(noiseIceM, lenMeanFilter)
-    validIceM = np.isfinite(noiseIceM)
-    
-    # noiseBragg = np.array(noiseData["ZdrInBraggMean"]).astype(np.double)
-    # noiseBragg = movingAverage(noiseBragg, lenMeanFilter)
+    tempVals = []
+    rxNoiseVals = []
 
-    noiseBragg = np.array(noiseData["ZdrInBraggPerc32.00"]).astype(np.double)
-    noiseBragg = movingAverage(noiseBragg, lenMeanFilter)
-    validBragg = np.isfinite(noiseBragg)
-
-    noiseBraggM = np.array(noiseData["ZdrmInBraggPerc25.00"]).astype(np.double)
-    noiseBraggM = movingAverage(noiseBraggM, lenMeanFilter)
-    validBraggM = np.isfinite(noiseBraggM)
-    
-    validIceBtimes = btimes[validIce]
-    validIceVals = noiseIce[validIce]
-    
-    validIceMBtimes = btimes[validIceM]
-    validIceMVals = noiseIce[validIceM]
-    
-    validBraggBtimes = btimes[validBragg]
-    validBraggVals = noiseBragg[validBragg]
-    
-    validBraggMBtimes = btimes[validBraggM]
-    validBraggMVals = noiseBragg[validBraggM]
-    
-    # load up receiver gain etc - axis 4
-    
-    (dailyTimeIce, dailyValIce) = computeDailyStats(validIceBtimes, validIceVals)
-    (dailyTimeBragg, dailyValBragg) = computeDailyStats(validBraggBtimes, validBraggVals)
-
-    (dailyTimeIceM, dailyValIceM) = computeDailyStats(validIceMBtimes, validIceMVals)
-    (dailyTimeBraggM, dailyValBraggM) = computeDailyStats(validBraggMBtimes, validBraggMVals)
-
-    # site temp, vert pointing and sun scan results
-
-    ctimes = np.array(vertTimes).astype(datetime.datetime)
-    ZdrmVert = np.array(vertData["ZdrmVert"]).astype(np.double)
-    validZdrmVert = np.isfinite(ZdrmVert)
-    
-    SunscanZdrm = np.array(vertData["SunscanZdrm"]).astype(np.double)
-    validSunscanZdrm = np.isfinite(SunscanZdrm)
-
-    verttimes = np.array(vertTimes).astype(datetime.datetime)
-    tempSite = np.array(vertData["TempSite"]).astype(np.double)
-    validTempSite = np.isfinite(tempSite)
-
-    tempIceVals = []
-    noiseIceVals = []
-
-    for ii, noiseVal in enumerate(validIceVals, start=0):
-        btime = validIceBtimes[ii]
-        if (btime >= startTime and btime <= endTime):
-            tempTime, tempVal = getClosestTemp(btime, verttimes, tempSite)
+    for ii, rxVal in enumerate(validMeanDbmvcVals, start=0):
+        rxTime = validTempRxNtimes[ii]
+        if (rxTime >= vertStatsStartTime and rxTime <= vertStatsEndTime):
+            tempTime, tempVal = getClosestTemp(rxTime, ntimes, tempRx)
             if (np.isfinite(tempVal)):
-                tempIceVals.append(tempVal)
-                noiseIceVals.append(noiseVal)
+                tempVals.append(tempVal)
+                rxNoiseVals.append(rxVal)
                 if (options.verbose):
-                    print("==>> noiseTime, noiseVal, tempTime, tempVal:", \
-                        btime, noiseVal, tempTime, tempVal, file=sys.stderr)
+                    print("==>> rxTime, rxVal, tempTime, tempVal:", \
+                          rxTime, rxVal, tempTime, tempVal, file=sys.stderr)
 
-    # linear regression for noise vs temp
-
-    A = array([tempIceVals, ones(len(tempIceVals))])
-
-    if (len(tempIceVals) > 1):
-        # obtain the fit, ww[0] is slope, ww[1] is intercept
-        ww = linalg.lstsq(A.T, noiseIceVals)[0]
-        minTemp = min(tempIceVals)
-        maxTemp = max(tempIceVals)
-        haveTemps = True
-    else:
-        ww = (1.0, 0.0)
-        minTemp = 0.0
-        maxTemp = 40.0
-        haveTemps = False
-        print("NOTE - no valid temp vs ZDR data for period", file=sys.stderr)
-        print("  startTime: ", startTime, file=sys.stderr)
-        print("  endTime  : ", endTime, file=sys.stderr)
-        
+    A = array([tempVals, ones(len(tempVals))])
+    ww = linalg.lstsq(A.T, rxNoiseVals)[0] # obtaining the fit, ww[0] is slope, ww[1] is intercept
     regrX = []
     regrY = []
+    minTemp = min(tempVals)
+    maxTemp = max(tempVals)
     regrX.append(minTemp)
     regrX.append(maxTemp)
     regrY.append(ww[0] * minTemp + ww[1])
     regrY.append(ww[0] * maxTemp + ww[1])
     
-    # set up plots
-
-    widthIn = float(options.figWidthMm) / 25.4
-    htIn = float(options.figHeightMm) / 25.4
-
-    fig1 = plt.figure(1, (widthIn, htIn))
-
-    ax1a = fig1.add_subplot(2,1,1,xmargin=0.0)
-    ax1b = fig1.add_subplot(2,1,2,xmargin=0.0)
-    #ax1c = fig1.add_subplot(3,1,3,xmargin=0.0)
-
-    if (haveTemps):
-        fig2 = plt.figure(2, (widthIn/2, htIn/2))
-        ax2a = fig2.add_subplot(1,1,1,xmargin=1.0, ymargin=1.0)
-
-    oneDay = datetime.timedelta(1.0)
-    ax1a.set_xlim([btimes[0] - oneDay, btimes[-1] + oneDay])
-    ax1a.set_title("Residual ZDR noise in ice and Bragg, compared with VERT and VERT results (dB)")
-    ax1b.set_xlim([btimes[0] - oneDay, btimes[-1] + oneDay])
-    ax1b.set_title("Daily mean ZDR noise in ice and Bragg (dB)")
-    #ax1c.set_xlim([btimes[0] - oneDay, btimes[-1] + oneDay])
-    #ax1c.set_title("Site temperature (C)")
-
-    ax1a.plot(validBraggBtimes, validBraggVals, \
-              "o", label = 'ZDR Noise In Bragg', color='blue')
-    ax1a.plot(validBraggBtimes, validBraggVals, \
-              label = 'ZDR Noise In Bragg', linewidth=1, color='blue')
+    # temperature-based regression
     
-    ax1a.plot(validIceBtimes, validIceVals, \
-              "o", label = 'ZDR Noise In Ice', color='red')
-    ax1a.plot(validIceBtimes, validIceVals, \
-              label = 'ZDR Noise In Ice', linewidth=1, color='red')
-
-    ax1a.plot(validBraggMBtimes, validBraggMVals, \
-              "o", label = 'ZDRM Noise In Bragg', color='blue')
-    ax1a.plot(validBraggMBtimes, validBraggMVals, \
-              label = 'ZDRM Noise In Bragg', linewidth=1, color='blue')
+    label = "RxNoiseV = " + ("%.5f" % ww[0]) + " * temp + " + ("%.3f" % ww[1])
+    ax.plot(tempVals, rxNoiseVals, 
+              ".", label = label, color = 'lightblue')
+    ax.plot(regrX, regrY, linewidth=3, color = 'blue')
     
-    ax1a.plot(validIceMBtimes, validIceMVals, \
-              "o", label = 'ZDRM Noise In Ice', color='red')
-    ax1a.plot(validIceMBtimes, validIceMVals, \
-              label = 'ZDRM Noise In Ice', linewidth=1, color='red')
-    
-    #ax1a.plot(ctimes[validSunscanZdrm], SunscanZdrm[validSunscanZdrm], \
-    #          linewidth=2, label = 'Zdrm Sun/VERT (dB)', color = 'green')
-    
-    ax1a.plot(ctimes[validZdrmVert], ZdrmVert[validZdrmVert], \
-              "^", markersize=10, linewidth=1, label = 'Zdrm Vert (dB)', color = 'yellow')
-
-    ax1b.plot(dailyTimeBragg, dailyValBragg, \
-              label = 'Daily Noise Bragg', linewidth=1, color='blue')
-    ax1b.plot(dailyTimeBragg, dailyValBragg, \
-              "^", label = 'Daily Noise Bragg', color='blue', markersize=10)
-
-    ax1b.plot(dailyTimeIce, dailyValIce, \
-              label = 'Daily Noise Ice', linewidth=1, color='red')
-    ax1b.plot(dailyTimeIce, dailyValIce, \
-              "^", label = 'Daily Noise Ice', color='red', markersize=10)
-    ax1b.plot(ctimes[validZdrmVert], ZdrmVert[validZdrmVert], \
-              "^", markersize=10, linewidth=1, label = 'Zdrm Vert (dB)', color = 'yellow')
-
-    #ax1c.plot(vert times[validTempSite], tempSite[validTempSite], \
-    #          linewidth=1, label = 'Site Temp', color = 'blue')
-    
-    #configDateAxis(ax1a, -9999, 9999, "ZDR Noise (dB)", 'upper right')
-    configDateAxis(ax1a, -0.3, 0.7, "ZDR Noise (dB)", 'upper right')
-    configDateAxis(ax1b, -0.5, 0.5, "ZDR Noise (dB)", 'upper right')
-    #configDateAxis(ax1c, -9999, 9999, "Temp (C)", 'upper right')
-
-    if (haveTemps):
-        label3 = "ZDR Noise In Ice = " + ("%.5f" % ww[0]) + " * temp + " + ("%.3f" % ww[1])
-        ax2a.plot(tempIceVals, noiseIceVals, 
-                 "x", label = label3, color = 'blue')
-        ax2a.plot(regrX, regrY, linewidth=3, color = 'blue')
-    
-        legend3 = ax2a.legend(loc="upper left", ncol=2)
-        for label3 in legend3.get_texts():
-            label3.set_fontsize(12)
-            ax2a.set_xlabel("Site temperature (C)")
-            ax2a.set_ylabel("ZDR Noise (dB)")
-            ax2a.grid(True)
-            ax2a.set_ylim([-0.5, 0.5])
-            ax2a.set_xlim([minTemp - 1, maxTemp + 1])
-            title3 = "ZDR Noise In Ice Vs Temp: " + str(startTime) + " - " + str(endTime)
-            ax2a.set_title(title3)
-
-    fig1.autofmt_xdate()
-    fig1.tight_layout()
-    fig1.subplots_adjust(bottom=0.08, left=0.06, right=0.97, top=0.96)
-    plt.show()
+    legend = ax.legend(loc="upper left", ncol=2)
+    for label in legend.get_texts():
+        label.set_fontsize(12)
+    ax.set_xlabel("Rx temperature (C)")
+    ax.set_ylabel("Rx V Noise (dBm)")
+    ax.grid(True)
+    #ax.set_ylim([0.5, 1.15])
+    ax.set_xlim([minTemp - 1, maxTemp + 1])
+    title = "RxNoiseV vs Rx temp: " + str(vertStatsStartTime) + " - " + str(vertStatsEndTime)
+    ax.set_title(title)
 
 ########################################################################
 # initialize legends etc
