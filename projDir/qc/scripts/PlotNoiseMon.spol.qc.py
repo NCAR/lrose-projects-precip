@@ -474,12 +474,13 @@ def doPlot():
     # text on upper plot
     
     fig1.text(0.06, 0.95, label1)
-    fig1.text(0.06, 0.93, label2)
-    fig1.text(0.06, 0.91, label3)
+    fig1.text(0.20, 0.95, label2)
 
-    fig1.text(0.2, 0.95, label4)
-    fig1.text(0.2, 0.93, label5)
-    fig1.text(0.2, 0.91, label6)
+    fig1.text(0.06, 0.93, label3)
+    fig1.text(0.20, 0.93, label6)
+
+    fig1.text(0.06, 0.91, label5)
+    fig1.text(0.20, 0.91, label4)
 
     fig1.autofmt_xdate()
     fig1.tight_layout()

@@ -369,6 +369,9 @@ def doPlot():
     label5 = "vertZdrMean: " + ("%.2f" % vertZdrmStatsMean)
     label6 = "sunToZdrCorr: " + ("%.2f" % sunToZdrCorr)
 
+    ax1a.set_facecolor("lightgrey")
+    ax1b.set_facecolor("lightgrey")
+
     plt.figtext(0.06, 0.95, label1)
     plt.figtext(0.06, 0.93, label2)
     plt.figtext(0.06, 0.91, label3)

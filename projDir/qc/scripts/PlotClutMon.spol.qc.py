@@ -62,7 +62,7 @@ def main():
                       help='Width of figure in mm')
     parser.add_option('--height',
                       dest='figHeightMm',
-                      default=200,
+                      default=300,
                       help='Height of figure in mm')
     parser.add_option('--lenMean',
                       dest='lenMean',
@@ -488,7 +488,12 @@ def doPlot():
     # plt.figtext(0.2, 0.93, label5)
     # plt.figtext(0.2, 0.91, label6)
 
+    ax1a.set_facecolor("lightgrey")
+    ax1b.set_facecolor("lightgrey")
+    ax1c.set_facecolor("lightgrey")
+
     fig1.autofmt_xdate()
+    
     fig1.tight_layout()
     fig1.subplots_adjust(bottom=0.08, left=0.06, right=0.97, top=0.90)
 
