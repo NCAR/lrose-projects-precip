@@ -535,8 +535,12 @@ def addVertZdrmTempRegrPlot(ax,
     ww = linalg.lstsq(A.T, zdrmVals, rcond=None)[0]
     regrX = []
     regrY = []
+
     minTemp = min(tempVals)
     maxTemp = max(tempVals)
+    minZdrm = min(zdrmVals)
+    maxZdrm = max(zdrmVals)
+
     regrX.append(minTemp)
     regrX.append(maxTemp)
     regrY.append(ww[0] * minTemp + ww[1])
@@ -555,7 +559,7 @@ def addVertZdrmTempRegrPlot(ax,
     ax.set_xlabel("Site temperature (C)")
     ax.set_ylabel("ZDRM Bias (dB)")
     ax.grid(True)
-    ax.set_ylim([0.5, 1.15])
+    ax.set_ylim([minZdrm - 0.1, maxZdrm + 0.1])
     ax.set_xlim([minTemp - 1, maxTemp + 1])
     title = "ZDRM bias Vs Site temp: " + str(statsStartTime) + " - " + str(statsEndTime)
     ax.set_title(title)
@@ -590,6 +594,8 @@ def addMeasNoisRxTempRegrPlot(ax,
     regrY = []
     minTemp = min(tempVals)
     maxTemp = max(tempVals)
+    minNoise = min(rxNoiseVals)
+    maxNoise = max(rxNoiseVals)
     regrX.append(minTemp)
     regrX.append(maxTemp)
     regrY.append(ww[0] * minTemp + ww[1])
@@ -608,7 +614,7 @@ def addMeasNoisRxTempRegrPlot(ax,
     ax.set_xlabel("Rx temperature (C)")
     ax.set_ylabel("Rx V Noise (dBm)")
     ax.grid(True)
-    #ax.set_ylim([0.5, 1.15])
+    ax.set_ylim([minNoise - 0.1, maxNoise + 0.1])
     ax.set_xlim([minTemp - 1, maxTemp + 1])
     title = "RxNoiseV vs Rx temp: " + str(statsStartTime) + " - " + str(statsEndTime)
     ax.set_title(title)
