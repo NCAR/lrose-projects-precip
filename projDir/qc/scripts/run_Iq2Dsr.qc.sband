@@ -1,0 +1,13 @@
+#! /bin/csh -f
+
+# QC time series processing for sband
+#
+# Run Iq2Dsr, writing moments data to fmq
+
+source ~/git/lrose-projects-precip/projDir/system/params/project_info.precip_qc
+
+cd $PROJ_DIR/qc/params
+
+Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220601/*iwrf_ts
+
+#Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220601/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz
