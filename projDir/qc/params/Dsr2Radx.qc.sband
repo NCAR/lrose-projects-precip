@@ -44,7 +44,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "moments.qc.sband";
+instance = "qc.sband";
 
 ///////////// procmap_register_interval ///////////////
 //

@@ -12,10 +12,12 @@ cd $PROJ_DIR/qc/params
 
 snuff "Dsr2Radx -params Dsr2Radx.qc.sband"
 
-Dsr2Radx -params Dsr2Radx.qc.sband -debug >& \
-    $LOG_DIR/Dsr2Radx.qc.sband.log &
+Dsr2Radx -params Dsr2Radx.qc.sband -debug
 
-tail -f $LOG_DIR/Dsr2Radx.qc.sband.log
+#Dsr2Radx -params Dsr2Radx.qc.sband -debug >& \
+#    $LOG_DIR/Dsr2Radx.qc.sband.log &
+
+#tail -f $LOG_DIR/Dsr2Radx.qc.sband.log
 
 
 

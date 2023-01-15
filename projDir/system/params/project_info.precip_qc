@@ -10,7 +10,7 @@ setenv PROJECT_NAME "precip"
 
 # directories etc
 
-setenv PROJ_DIR ~/git/spol-configuration/projDir
+setenv PROJ_DIR ~/git/lrose-projects-precip/projDir
 
 setenv DATA_DIR /scr/cirrus3/rsfdata/projects/precip/
 setenv LOG_DIR $HOME/logs

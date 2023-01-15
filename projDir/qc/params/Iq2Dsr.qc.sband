@@ -102,15 +102,18 @@ n_compute_threads = 16;
 // Operating mode.
 //
 // In REALTIME mode, the program waits for a new input file. In ARCHIVE 
-//   mode, it moves through the list of file names specified on the 
-//   command line. In SIMULATE mode, the program moves repeatedly through 
-//   the file list, creating output files with times set to now. This is 
-//   useful for simulating an operational radar. In FMQ mode, the program 
-//   opens the input_fmq, and reads time series data from the queue.
+//   mode, it moves through the files between the start and end times 
+//   specified on the command line. In FILELIST mode, it moves through the 
+//   list of file names specified on the command line. In SIMULATE mode, 
+//   the program moves repeatedly through the file list, creating output 
+//   files with times set to now. This is useful for simulating an 
+//   operational radar. In FMQ mode, the program opens the input_fmq, and 
+//   reads time series data from the queue.
 //
 //
 // Type: enum
 // Options:
+//     FILELIST
 //     ARCHIVE
 //     REALTIME
 //     SIMULATE
@@ -150,8 +153,8 @@ position_fmq_at_start = FALSE;
 //
 // Dir for input data files.
 //
-// This is used in REALTIME mode only. In ARCHIVE and SIMULATE modes, 
-//   the file paths are specified on the command line.
+// This is used in REALTIME and ARCHIVE modes. In FILELIST and SIMULATE 
+//   modes, the file paths are specified on the command line.
 //
 //
 // Type: string
@@ -332,6 +335,20 @@ primary_prt_secs = 0.001;
 //
 
 georef_time_margin_secs = 1;
+
+///////////// use_secondary_georeference //////////////
+//
+// If true, use the secondary georeference packet.
+//
+// By default, we use the primary georeference packet. And most mobile 
+//   radars only have one georeference. For those radars that have 2 
+//   georef devices, set this to true to use the secondary reference.
+//
+//
+// Type: boolean
+//
+
+use_secondary_georeference = FALSE;
 
 ///////////// check_radar_id //////////////////////////
 //
@@ -676,6 +693,43 @@ apply_elevation_offset = FALSE;
 
 elevation_offset = 0;
 
+///////////// override_scan_mode //////////////////////
+//
+// Option to override the scan mode in the time series data.
+//
+// Set this to TRUE if the scan_mode is incorrect in the time series, 
+//   and you can override to a constant scan mode.
+//
+//
+// Type: boolean
+//
+
+override_scan_mode = FALSE;
+
+///////////// scan_mode_for_override //////////////////
+//
+// Select the scan mode for override.
+//
+// See 'override_scan_mode'.
+//
+//
+// Type: enum
+// Options:
+//     SCAN_MODE_UNKNOWN
+//     SCAN_MODE_SECTOR
+//     SCAN_MODE_COPLANE
+//     SCAN_MODE_RHI
+//     SCAN_MODE_VERTICAL_POINTING
+//     SCAN_MODE_IDLE
+//     SCAN_MODE_SURVEILLANCE
+//     SCAN_MODE_SUNSCAN
+//     SCAN_MODE_POINTING
+//     SCAN_MODE_MANUAL_PPI
+//     SCAN_MODE_MANUAL_RHI
+//
+
+scan_mode_for_override = SCAN_MODE_UNKNOWN;
+
 //======================================================================
 //
 // MOMENTS COMPUTATIONS.
@@ -711,7 +765,9 @@ elevation_offset = 0;
 //   power in the central part of the time series. The adjustment corrects 
 //   beam_n_samples by computing the fraction of the window in which 90% 
 //   of the power occurs. For the VONHANN window this factor is just below 
-//   2.0, and for the BLACKMAN window it is just above 2.0.
+//   2.0, and for the BLACKMAN window it is just above 2.0. TUKEY_10 
+//   refers to a Tukey window with alpha of 0.1. Similarly TUKEY_20 means 
+//   alpha is 0.2, etc.
 // (f) switching_receiver: DEPRECATED (NO LONGER USED), we assuming a 
 //   switching receiver for the following modes: DP_ALT_HV_CO_ONLY, 
 //   DP_ALT_HV_CO_CROSS, DP_SIM_HV_SWITCHED_HV.
@@ -722,7 +778,8 @@ elevation_offset = 0;
 //   parameter file.
 //
 // xmit_rcv_mode options:
-//  SP: Single polarization
+//  SINGLE_POL: single polarization, H channel.
+//  SINGLE_POL_V: single polarization, V channel.
 //  DP_ALT_HV_CO_ONLY: Dual pol, alternating transmission, copolar 
 //   receiver only (e.g. CP2 S-band)
 //  DP_ALT_HV_CO_CROSS: Dual pol, alternating transmission, co-polar and 
@@ -746,6 +803,19 @@ elevation_offset = 0;
 //   velocity sign is incorrect. Set this flag to TRUE to change the sign.
 //
 // proc_flags: special processing options, not active yet.
+//
+// beam_method:
+// SPECIFY_N_SAMPLES:
+//   take the next N samples to form the beam;
+// SPECIFY_ANGLE:
+//   check the scanning angles, use those pulses that traverse the 
+//   specified angular arc;
+// CONSTANT_STEERING_ANGLE:
+//   process all pulses with a constant azimuth and elevation - this 
+//   applies to some electronically-steered radars, where the beam is 
+//   steered to a fixed angle for a while, and then jumps to a different 
+//   pointing direction. We use all of the pulses with a constant steering 
+//   angle to form the beam.
 //
 //
 // Type: struct
@@ -774,6 +844,7 @@ elevation_offset = 0;
 //        Options:
 //          BEAM_SPECIFY_N_SAMPLES
 //          BEAM_SPECIFY_ANGLE
+//          BEAM_CONSTANT_STEERING_ANGLE
 //      int beam_n_samples;
 //      double beam_angle_deg;
 //      boolean index_the_beams;
@@ -785,6 +856,10 @@ elevation_offset = 0;
 //          WINDOW_VONHANN
 //          WINDOW_BLACKMAN
 //          WINDOW_BLACKMAN_NUTTALL
+//          WINDOW_TUKEY_10
+//          WINDOW_TUKEY_20
+//          WINDOW_TUKEY_30
+//          WINDOW_TUKEY_50
 //      boolean switching_receiver;
 //      xmit_rcv_mode_t xmit_rcv_mode;
 //        Options:
@@ -796,6 +871,7 @@ elevation_offset = 0;
 //          DP_SIM_HV_SWITCHED_HV
 //          DP_H_ONLY_FIXED_HV
 //          DP_V_ONLY_FIXED_HV
+//          SINGLE_POL_V
 //      boolean apply_clutter_filter;
 //      boolean apply_sz;
 //      boolean change_velocity_sign;
@@ -1166,14 +1242,46 @@ staggered_prt_median_filter_len = 1;
 //
 // Option to compute velocity corrected for platform motion.
 //
-// If true, we use georeference to account for platform motion, and 
-//   corrected for velocity accordingly.
+// Measured vel can be influenced both by vertical and horizontal 
+//   platform motinos. If this parameter is true, we use the georeference 
+//   data to account for platform motion, and correct for velocity 
+//   accordingly. We compute the correction first for vertical velocity, 
+//   and then correct for the effects of horizontal veocity.
 //
 //
 // Type: boolean
 //
 
 compute_velocity_corrected_for_platform_motion = FALSE;
+
+///////////// compute_width_corrected_for_platform_motion 
+//
+// Option to compute width corrected for platform motion.
+//
+// For a platform in motion, spectrum width is increased because 
+//   different parts of the beam observe the platform velocity 
+//   differently. If this parameter is true, we use the georeference data 
+//   to correct the spectrum width for platform motion effects. We specify 
+//   the beam width to be used for this correction, since this may differ 
+//   somewhat from the nominal beam width.
+//
+//
+// Type: boolean
+//
+
+compute_width_corrected_for_platform_motion = FALSE;
+
+///////////// width_correction_beamwidth_deg //////////
+//
+// Beam width to be used for correcting spectrum width for motion (deg).
+//
+// This may differ from the nominal radar spectrum width.
+//
+//
+// Type: double
+//
+
+width_correction_beamwidth_deg = 0.69;
 
 ///////////// spectrum_width_method ///////////////////
 //
@@ -1265,6 +1373,7 @@ set_cal_by_pulse_width = TRUE;
 //          DP_SIM_HV_SWITCHED_HV
 //          DP_H_ONLY_FIXED_HV
 //          DP_V_ONLY_FIXED_HV
+//          SINGLE_POL_V
 //      double zdr_correction_db;
 //      double system_phidp_deg;
 //   }
@@ -1278,7 +1387,7 @@ pulse_width_cals = {
     cal_dir = "$(PROJ_DIR)/qc/calibration/cal.sband.1.0us.sim",
     check_xmit_rcv_mode = TRUE,
     xmit_rcv_mode = DP_SIM_HV_FIXED_HV,
-    zdr_correction_db = 0.0,
+    zdr_correction_db = 0,
     system_phidp_deg = 37
   }
   ,
@@ -1287,7 +1396,7 @@ pulse_width_cals = {
     cal_dir = "$(PROJ_DIR)/qc/calibration/cal.sband.1.5us.sim",
     check_xmit_rcv_mode = TRUE,
     xmit_rcv_mode = DP_SIM_HV_FIXED_HV,
-    zdr_correction_db = 0.0,
+    zdr_correction_db = 0,
     system_phidp_deg = 37
   }
 };
@@ -1366,10 +1475,33 @@ override_cal_zdr_correction = FALSE;
 // Type: double
 //
 
-// zdr_correction_db = -0.075;
-// zdr_correction_db = 0.70;
-// zdr_correction_db = -0.40;
 zdr_correction_db = 0.06;
+
+///////////// threshold_zdr_using_snr /////////////////
+//
+// Option to threshold ZDR using SNR.
+//
+// If true, we will only compute ZDR if the SNR in both the H and V 
+//   co-polar channels exceeds this value. See 'min_snr_db_for_zdr'.
+//
+//
+// Type: boolean
+//
+
+threshold_zdr_using_snr = FALSE;
+
+///////////// min_snr_db_for_zdr //////////////////////
+//
+// Min SNR for computing ZDR (dB).
+//
+// If the SNR is below this threshold for either the H or V co-polar 
+//   channels, ZDR will be set to missing. See 'threshold_zdr_using_snr'.
+//
+//
+// Type: double
+//
+
+min_snr_db_for_zdr = -7;
 
 ///////////// override_cal_ldr_corrections ////////////
 //
@@ -1407,6 +1539,36 @@ ldr_correction_db_h = 0.3753;
 //
 
 ldr_correction_db_v = 0.3945;
+
+///////////// threshold_ldr_using_snr /////////////////
+//
+// Option to threshold LDR using SNR.
+//
+// If true, we will only compute LDR if the SNR in both the co- and 
+//   cross-polar channels exceeds this value. Since the cross-polar 
+//   channel is generally the weaker channel, it is the SNR on the 
+//   cross-polar channel that will be limiting. See 'min_snr_db_for_ldr'.
+//
+//
+// Type: boolean
+//
+
+threshold_ldr_using_snr = FALSE;
+
+///////////// min_snr_db_for_ldr //////////////////////
+//
+// Min SNR for computing LDR (dB).
+//
+// For LDR, the cross polar channel is the weaker return. Therefore 
+//   effectively this threshold will be applied to the cross channel. If 
+//   the SNR is below this threshold for either the co- or cross-polar 
+//   channels, LDR will be set to missing. See 'threshold_ldr_using_snr'.
+//
+//
+// Type: double
+//
+
+min_snr_db_for_ldr = -7;
 
 ///////////// override_cal_system_phidp ///////////////
 //
@@ -1447,11 +1609,11 @@ change_phidp_sign = FALSE;
 
 //======================================================================
 //
-// CORRECT RECEIVER GAINS BASED ON MEASURED TEMPERATURE.
+// CORRECT RECEIVER GAINS BASED ON MEASURED TEMPERATURE IN STATUS XML.
 //
 //======================================================================
  
-///////////// correct_receiver_gains_for_temperature //
+///////////// correct_rx_gains_for_temperature ////////
 //
 // Option to correct the calibration receiver gains based on 
 //   temperature.
@@ -1466,62 +1628,21 @@ change_phidp_sign = FALSE;
 // Type: boolean
 //
 
-correct_receiver_gains_for_temperature = FALSE;
+correct_rx_gains_for_temperature = FALSE;
 
-///////////// rx_gain_correction //////////////////////
+///////////// rx_temp_gain_corrections ////////////////
 //
 // Correction to be applied to the gain in each receiver channel.
 //
+
+//
 // The correction is computed as:
 //
-//     correction = intercept + temperature * slope.
+//     correction = intercept + temperature * slope. 
 //
-//
-// Type: struct
-//   typedef struct {
-//      rx_channel_t rx_channel;
-//        Options:
-//          RX_CHANNEL_HC
-//          RX_CHANNEL_VC
-//          RX_CHANNEL_HX
-//          RX_CHANNEL_VX
-//      double slope;
-//      double intercept;
-//   }
-//
-// 1D array - variable length.
-//
-
-rx_gain_correction = {
-  {
-    rx_channel = RX_CHANNEL_HC,
-    slope = -0.0776,
-    intercept = 1.5564
-  }
-  ,
-  {
-    rx_channel = RX_CHANNEL_VC,
-    slope = -0.0776,
-    intercept = 1.5564
-  }
-  ,
-  {
-    rx_channel = RX_CHANNEL_HX,
-    slope = -0.0776,
-    intercept = 1.5564
-  }
-  ,
-  {
-    rx_channel = RX_CHANNEL_VX,
-    slope = -0.0776,
-    intercept = 1.5564
-  }
-};
-
-///////////// temperature_tags_in_status_xml //////////
-//
-// Specify the tag list for locating the temperature. These should be 
-//   delimited in xml format, using '<' and '>'.
+//  The tag list allows us to find the temperature in the status xml 
+//   block in the time series. These should be delimited in xml format, 
+//   using '<' and '>'. 
 //
 // The temperature will be searched for in the status_xml section of the 
 //   time series data. These tags specify how to find the temperature 
@@ -1544,10 +1665,139 @@ rx_gain_correction = {
 //   <HcrStatus><HcrReceiverStatus><EikTemp>.
 //
 //
+// Type: struct
+//   typedef struct {
+//      rx_channel_t rx_channel;
+//        Options:
+//          RX_CHANNEL_HC
+//          RX_CHANNEL_VC
+//          RX_CHANNEL_HX
+//          RX_CHANNEL_VX
+//      double slope;
+//      double intercept;
+//      string temp_tag_list_in_status_xml;
+//   }
+//
+// 1D array - variable length.
+//
+
+rx_temp_gain_corrections = {
+  {
+    rx_channel = RX_CHANNEL_HC,
+    slope = -0.0776,
+    intercept = 1.5564,
+    temp_tag_list_in_status_xml = "<HcrStatus><HcrReceiverStatus><EikTemp>"
+  }
+  ,
+  {
+    rx_channel = RX_CHANNEL_VC,
+    slope = -0.0776,
+    intercept = 1.5564,
+    temp_tag_list_in_status_xml = "<HcrStatus><HcrReceiverStatus><EikTemp>"
+  }
+  ,
+  {
+    rx_channel = RX_CHANNEL_HX,
+    slope = -0.0776,
+    intercept = 1.5564,
+    temp_tag_list_in_status_xml = "<HcrStatus><HcrReceiverStatus><EikTemp>"
+  }
+  ,
+  {
+    rx_channel = RX_CHANNEL_VX,
+    slope = -0.0776,
+    intercept = 1.5564,
+    temp_tag_list_in_status_xml = "<HcrStatus><HcrReceiverStatus><EikTemp>"
+  }
+};
+
+//======================================================================
+//
+// FOR HCR, CORRECT RECEIVER GAIN FOR TEMPERATURE USING VALUES FROM SPDB.
+//
+// Also, optionally correct georeference height.
+//
+//======================================================================
+ 
+///////////// correct_hcr_v_rx_gain_for_temperature ///
+//
+// Option to correct the HCR V-channel receiver gain for temperature.
+//
+// Computing the HCR receiver gain correction is complicated. Therefore 
+//   this is done offline, using the application HcrTempRxGain, and the 
+//   results are stored as XML in SPDB. Here we retrieve the values from 
+//   SPDB and apply them to correct the receiver gain.
+//
+//
+// Type: boolean
+//
+
+correct_hcr_v_rx_gain_for_temperature = FALSE;
+
+///////////// hcr_delta_gain_spdb_url /////////////////
+//
+// URL for HCR gain correction from SPDB.
+//
+//
 // Type: string
 //
 
-temperature_tags_in_status_xml = "<HcrStatus><HcrReceiverStatus><EikTemp>";
+hcr_delta_gain_spdb_url = "/scr/rain1/rsfdata/projects/socrates/hcr/qc/data/socrates/spdb/tempVsGain";
+
+///////////// hcr_delta_gain_search_margin_secs ///////
+//
+// Search margin when finding gain correction data (secs).
+//
+// We search for the value closest in time to the beam time. This is the 
+//   search margin on either side of the search time.
+//
+//
+// Type: int
+//
+
+hcr_delta_gain_search_margin_secs = 3600;
+
+///////////// hcr_v_rx_delta_gain_tag_list ////////////
+//
+// URL for HCR gain correction from SPDB.
+//
+//
+// Type: string
+//
+
+hcr_v_rx_delta_gain_tag_list = "<HcrTempGainCorrection><v_delta_gain>";
+
+///////////// correct_altitude_for_egm ////////////////
+//
+// Option to correct the altitude for the geoid.
+//
+// This only applies for moving platforms. Altitude from some GPS units 
+//   is based on the WGS84 ellipsoid. To get altitude relative to MSL, a 
+//   correction for the geoid based on gravitation strength is required. 
+//   We use the EGM-2008 geoid table. See: 
+//   https://earth-info.nga.mil/GandG/wgs84/gravitymod/egm2008/egm08_wgs84.
+//   html.
+//
+//
+// Type: boolean
+//
+
+correct_altitude_for_egm = FALSE;
+
+///////////// egm_2008_geoid_file /////////////////////
+//
+// Path to geoid table file.
+//
+// Downloads available from 
+//   https://earth-info.nga.mil/GandG/wgs84/gravitymod. NetCDF file is on 
+//   the shared drive at HCR->dataProcessing->AltitudeCorrection. The app 
+//   Egm2Mdv will convert the downloadable file to a netCDF format file.
+//
+//
+// Type: string
+//
+
+egm_2008_geoid_file = "./EGM_2008_WGS84_2.5minx2.5min.nc";
 
 //======================================================================
 //
@@ -1684,6 +1934,33 @@ atmos_atten_db_per_km = 0.012;
 //
 //======================================================================
  
+///////////// clutter_model_width_in_adaptive_filter //
+//
+// Width of clutter, in model used by adaptive filter (m/s).
+//
+// The adaptive filter computes a clutter model with the specified 
+//   width, and uses that model to determing the width of the initial 
+//   notch.
+//
+//
+// Type: double
+//
+
+clutter_model_width_in_adaptive_filter = 0.75;
+
+///////////// init_notch_width_in_adaptive_filter /////
+//
+// Width of initial notch in adaptive filter (m/s).
+//
+// This is the initial notch width used if the clutter model does not 
+//   succeed in providing the notch width.
+//
+//
+// Type: double
+//
+
+init_notch_width_in_adaptive_filter = 1.5;
+
 ///////////// apply_residue_correction_in_adaptive_filter 
 //
 // Option to apply residue correction to adaptive filter.
@@ -1738,6 +2015,53 @@ use_polynomial_regression_clutter_filter = FALSE;
 
 regression_filter_polynomial_order = 5;
 
+///////////// regression_filter_determine_order_from_CSR 
+//
+// Option to determine the polynomial order from the 
+//   Clutter-to-Signal-Ratio (CSR).
+//
+// If TRUE, we compute the CSR from the 3 central spectral points. Then, 
+//   using a lookup-table based on CSR, we determine the appropriate order 
+//   of the polynomial fit.
+//
+//
+// Type: boolean
+//
+
+regression_filter_determine_order_from_CSR = FALSE;
+
+///////////// regression_filter_notch_edge_power_ratio_threshold_db 
+//
+// Power ratio threshold to determine the edge of the filtered notch 
+//   (dB).
+//
+// After the initial application of the regression filter, a notch is 
+//   formed around 0. In order to determine the width of this notch, we 
+//   compute the ratio of the filtered power to the original unfiltered 
+//   power. This is the threshold used to determine where the edge of the 
+//   notch occurs.
+//
+//
+// Type: double
+//
+
+regression_filter_notch_edge_power_ratio_threshold_db = -45;
+
+///////////// regression_filter_min_csr_db ////////////
+//
+// Min valid CSR - Clutter-to-Signal-Ratio - for applying the filter 
+//   (dB).
+//
+// As a first step, we compute the CSR using a 3rd order regression fit. 
+//   If the CSR is below this threshold, we do not apply the filter at 
+//   all, and simply return the unfiltered spectrum.
+//
+//
+// Type: double
+//
+
+regression_filter_min_csr_db = -5;
+
 ///////////// regression_filter_interp_across_notch ///
 //
 // For the regression filter, option to interpolate power across the 
@@ -1782,7 +2106,7 @@ simple_notch_filter_width_mps = 3;
 ///////////// use_h_only_for_alt_mode_clutter_vel /////
 //
 // Option to use H only pulses for computing clutter velocity in 
-//   alternation dual pol mode.
+//   alternating dual pol mode.
 //
 // If false, the normal phidp-based method is used everywhere in 
 //   alternating dual pol mode. If true, the H-only pulses are used to 
@@ -1793,6 +2117,21 @@ simple_notch_filter_width_mps = 3;
 //
 
 use_h_only_for_alt_mode_clutter_vel = TRUE;
+
+///////////// write_alt_mode_vel_debug_fields /////////
+//
+// Option to write out debug fields for alternating mode velocity.
+//
+// If true the following fields are written out: test2=meanConfidence, 
+//   test3=minVelRun, test4=maxVelRun, test5=unfolded, vel=velAlt, 
+//   vel_alt_fold_interval, vel_alt_fold_confidence, vel_diff, 
+//   vel_unfold_interval.
+//
+//
+// Type: boolean
+//
+
+write_alt_mode_vel_debug_fields = FALSE;
 
 //======================================================================
 //
@@ -2157,6 +2496,22 @@ KDP_HB_rhohv_threshold = 0.75;
 //
 
 use_estimated_noise_for_noise_subtraction = FALSE;
+
+///////////// max_valid_noise_bias_db /////////////////
+//
+// Max valid value for noise bias (dB).
+//
+// The estimated noise is only used if the estimated noise bias does not 
+//   exceed this value. For example, if you do not want to suppress sun 
+//   spikes, you can set this value to something like 3dB, since sun 
+//   spikes generally cause a noise increase of 10 dB or more, depending 
+//   on the wavelength.
+//
+//
+// Type: double
+//
+
+max_valid_noise_bias_db = 20;
 
 ///////////// noise_ngates_kernel /////////////////////
 //
@@ -3338,6 +3693,70 @@ phidp_sdev_interest_weight = 1;
 
 //======================================================================
 //
+// RHOHV TEST to AUGMENT CMD.
+//
+// If clutter is present the RHOHV value should increase after 
+//   application of the clutter filter. We can use a RHOHV test to locate 
+//   gates at which CMD fails to identify weak clutter. This allows us to 
+//   improve clutter identification in cases with low CSR.
+//
+//======================================================================
+ 
+///////////// apply_rhohv_test_after_cmd //////////////
+//
+// Apply the RHOHV test after filtering based on CMD.
+//
+// This allows us to identify areas of weak clutter contamination that 
+//   CMD missed.
+//
+//
+// Type: boolean
+//
+
+apply_rhohv_test_after_cmd = FALSE;
+
+///////////// rhohv_test_min_rhohv ////////////////////
+//
+// Min RHOHV for application of the RHOHV test.
+//
+// If RHOHV is less than this, no weather is likely to be present. 
+//   Therefore do not apply the test to this gate.
+//
+//
+// Type: double
+//
+
+rhohv_test_min_rhohv = 0.5;
+
+///////////// rhohv_test_max_rhohv ////////////////////
+//
+// Max RHOHV for application of the RHOHV test.
+//
+// If RHOHV is greater than this, the weather return is highly coherent, 
+//   so clutter contamination is unlikely.
+//
+//
+// Type: double
+//
+
+rhohv_test_max_rhohv = 0.98;
+
+///////////// rhohv_improvement_factor_threshold //////
+//
+// The RHOHV improvment factor is a measure of the change in RHOHV 
+//   towards 1.0.
+//
+// The RHOHV test identifies clutter if the improvement factor exceeds 
+//   this value.
+//
+//
+// Type: double
+//
+
+rhohv_improvement_factor_threshold = 4;
+
+//======================================================================
+//
 // OUTPUT TO DSRADAR FMQ.
 //
 //======================================================================
@@ -3363,7 +3782,7 @@ output_fmq_url = "/tmp/fmq/moments/sband/shmem_20000";
 // Type: int
 //
 
-output_fmq_size = 1000000000;
+output_fmq_size = 100000000;
 
 ///////////// output_fmq_nslots ///////////////////////
 //
@@ -3377,7 +3796,7 @@ output_fmq_size = 1000000000;
 // Type: int
 //
 
-output_fmq_nslots = 7200;
+output_fmq_nslots = 10;
 
 ///////////// output_fmq_compress /////////////////////
 //
@@ -3424,7 +3843,7 @@ write_blocking = TRUE;
 //
 // Wait per beam (milli-secs).
 //
-// ARCHIVE and SIMULATE modes only.
+// FILELIST, ARCHIVE and SIMULATE modes only.
 //
 //
 // Type: int
@@ -3460,7 +3879,8 @@ beam_wait_msecs = 0;
 //          VEL_V_ONLY
 //          VEL_ALT_FOLD_INTERVAL
 //          VEL_ALT_FOLD_CONFIDENCE
-//          VEL_CORRECTED
+//          VEL_CORR_VERT
+//          VEL_CORR_MOTION
 //          VEL_PRT_SHORT
 //          VEL_PRT_LONG
 //          VEL_DIFF
@@ -3474,6 +3894,7 @@ beam_wait_msecs = 0;
 //          WIDTH_V_ONLY
 //          WIDTH_PRT_LONG
 //          WIDTH_PRT_SHORT
+//          WIDTH_CORR_MOTION
 //          NCP
 //          NCP_H_ONLY
 //          NCP_V_ONLY
@@ -3555,6 +3976,8 @@ beam_wait_msecs = 0;
 //          CLUT_2_WX_RATIO
 //          SPECTRAL_NOISE
 //          SPECTRAL_SNR
+//          NOISE_FLAG
+//          SIGNAL_FLAG
 //          AIQ_HC
 //          NIQ_HC
 //          AIQ_VC
