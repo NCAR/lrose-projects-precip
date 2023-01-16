@@ -55,7 +55,7 @@ beam_count_for_debug_print = 30;
 // Type: string
 //
 
-instance = "sband";
+instance = "qc.sband";
 
 //======================================================================
 //
