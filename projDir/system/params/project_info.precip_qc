@@ -7,6 +7,7 @@
 # project details - PRECIP
 
 setenv PROJECT_NAME "precip"
+setenv project "precip"
 
 # directories etc
 
