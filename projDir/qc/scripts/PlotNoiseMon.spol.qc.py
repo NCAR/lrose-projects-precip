@@ -376,10 +376,17 @@ def doPlot():
     noiseToZdrCorr = vertZdrmStatsMean - noiseZdrStatsMean
     noiseZdrValsCorr = meanNoiseZdrAv[validMeanNoiseZdr] + noiseToZdrCorr
     
+    if (tempsAvail):
+        statsTempSite = tempSite[np.logical_and(ntimes >= statsStartTime,
+                                                ntimes <= statsEndTime)]
+        tempSiteMean = np.mean(statsTempSite)
+
     if (options.debug):
         print("  ==>> noiseZdrStatsMean: ", noiseZdrStatsMean, file=sys.stderr)
         print("  ==>> vertZdrmStatsMean: ", vertZdrmStatsMean, file=sys.stderr)
         print("  ==>>    noiseToZdrCorr: ", noiseToZdrCorr, file=sys.stderr)
+        if (tempsAvail):
+            print("  ==>>    tempSiteMean: ", tempSiteMean, file=sys.stderr)
 
     # set up plots
 
@@ -389,7 +396,7 @@ def doPlot():
     fig1 = plt.figure(1, (widthIn, htIn))
     if (tempsAvail):
         fig2 = plt.figure(2, (widthIn/2, htIn/2))
-        fig3 = plt.figure(3, (widthIn/2, htIn/2))
+        # fig3 = plt.figure(3, (widthIn/2, htIn/2))
 
     if (tempsAvail):
         ax1a = fig1.add_subplot(3,1,1,xmargin=0.0)
@@ -401,7 +408,7 @@ def doPlot():
 
     if (tempsAvail):
         ax2a = fig2.add_subplot(1,1,1,xmargin=1.0, ymargin=1.0)
-        ax3a = fig3.add_subplot(1,1,1,xmargin=1.0, ymargin=1.0)
+        # ax3a = fig3.add_subplot(1,1,1,xmargin=1.0, ymargin=1.0)
 
     oneDay = datetime.timedelta(1.0)
 
@@ -414,10 +421,28 @@ def doPlot():
         ax1c.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
         ax1c.set_title("Temperatures (C)")
 
+    if (tempsAvail):
+        # add linear regression plot of ZDR bias vs temp
+        (zdrmSlope, zdrmIntercept) = \
+            addVertZdrmTempRegrPlot(ax2a,
+                                    ntimes, validVertZdrmVtimes,
+                                    validVertZdrmVals, tempSite)
+        if (options.debug):
+            print("  ==>> zdrmSlope, zdrmIntercept: ",
+                  zdrmSlope, zdrmIntercept, file=sys.stderr)
+        # add linear regression plot of measured noise vs rx temp
+        #addMeasNoisRxTempRegrPlot(ax3a,
+        #                          ntimes, validTempRxNtimes,
+        #                          validMeanDbmvcVals, tempRx)
+
+        noiseZdrValsCorr2 = noiseZdrValsCorr + (tempSite - tempSiteMean) * zdrmSlope
+
     ax1a.plot(validVertZdrmVtimes, validVertZdrmVals, \
               ".", label = 'Vert ZDRm', color='green')
     ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals, \
               label = 'Mean Noise ZDRm', linewidth=1, color='black')
+    ax1a.plot(validMeanNoiseZdrNtimes, noiseZdrValsCorr2, \
+              label = 'ZdrmTempCorr', linewidth=1, color='orange')
     ax1a.plot(validMeanNoiseZdrNtimes, noiseZdrValsCorr, \
               label = 'NoiseZdr+noiseToZdrCorr', linewidth=1, color='brown')
 
@@ -466,6 +491,10 @@ def doPlot():
     label5 = "vertZdrmMean: " + ("%.2f" % vertZdrmStatsMean)
     label6 = "noiseToZdrCorr: " + ("%.2f" % noiseToZdrCorr)
 
+    label7 = ""
+    if (tempsAvail):
+        label7 = "tempSiteMean: " + ("%.2f" % tempSiteMean)
+
     ax1a.set_facecolor("lightgrey")
     ax1b.set_facecolor("lightgrey")
     if (tempsAvail):
@@ -473,34 +502,23 @@ def doPlot():
 
     # text on upper plot
     
-    fig1.text(0.06, 0.95, label1)
-    fig1.text(0.20, 0.95, label2)
+    fig1.text(0.06, 0.97, label1)
+    fig1.text(0.20, 0.97, label2)
 
-    fig1.text(0.06, 0.93, label3)
-    fig1.text(0.20, 0.93, label6)
+    fig1.text(0.06, 0.95, label3)
+    fig1.text(0.20, 0.95, label6)
 
-    fig1.text(0.06, 0.91, label5)
-    fig1.text(0.20, 0.91, label4)
+    fig1.text(0.06, 0.93, label5)
+    fig1.text(0.20, 0.93, label4)
+
+    if (tempsAvail):
+        fig1.text(0.20, 0.91, label7)
 
     fig1.autofmt_xdate()
     fig1.tight_layout()
     fig1.subplots_adjust(bottom=0.08, left=0.06, right=0.97, top=0.90)
 
     fig1.suptitle(options.title)
-
-    if (tempsAvail):
-
-        # add linear regression plot of ZDR bias vs temp
-        
-        addVertZdrmTempRegrPlot(ax2a,
-                                ntimes, validVertZdrmVtimes,
-                                validVertZdrmVals, tempSite)
-
-        # add linear regression plot of measured noise vs rx temp
-
-        addMeasNoisRxTempRegrPlot(ax3a,
-                                  ntimes, validTempRxNtimes,
-                                  validMeanDbmvcVals, tempRx)
 
     # show
     
@@ -563,6 +581,8 @@ def addVertZdrmTempRegrPlot(ax,
     ax.set_xlim([minTemp - 1, maxTemp + 1])
     title = "ZDRM bias Vs Site temp: " + str(statsStartTime) + " - " + str(statsEndTime)
     ax.set_title(title)
+
+    return (ww[0], ww[1])
 
 ########################################################################
 # add regression plot of measured noise vs rx temp

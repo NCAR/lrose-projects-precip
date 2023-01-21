@@ -1204,10 +1204,10 @@ adjust_dbz_for_measured_xmit_power = FALSE;
 //
 // Option to compute ZDR using SNR instead of power.
 //
-// If true, we compute ZDR as SNRHC/SNRVC. This has the effect of taking 
-//   into account a difference in noise floor in each channel. The ZDR 
-//   correction applied must therefore be computed relatrive to SNR, not 
-//   power.
+// If true, we compute ZDR as SNRHC/SNRVC. This method applies the 
+//   receiver gain, and has the effect of taking into account a difference 
+//   in noise floor in each channel. The ZDR correction applied must 
+//   therefore be computed relative to SNR, not power.
 //
 //
 // Type: boolean
@@ -1830,7 +1830,7 @@ hcr_delta_gain_search_margin_secs = 3600;
 
 ///////////// hcr_v_rx_delta_gain_tag_list ////////////
 //
-// URL for HCR gain correction from SPDB.
+// Tag list for HCR V channel gai correction.
 //
 //
 // Type: string
@@ -1869,6 +1869,94 @@ correct_altitude_for_egm = FALSE;
 //
 
 egm_2008_geoid_file = "./EGM_2008_WGS84_2.5minx2.5min.nc";
+
+//======================================================================
+//
+// CORRECT CALIBRATION RECEIVER GAIN USING MEASURED NOISE VALUES.
+//
+// Noise values are measured using NoiseMon, which computes the noise 
+//   for gates above a designated height, and checks that rays are not 
+//   close to the sun or contain significant reflectivity.
+//
+//======================================================================
+ 
+///////////// noise_mon_correct_cal_rx_gain ///////////
+//
+// Option to correct calibration receiver gains using measured noise 
+//   values.
+//
+// Noise values are measured using NoiseMon.
+//
+//
+// Type: boolean
+//
+
+noise_mon_correct_cal_rx_gain = TRUE;
+
+///////////// noise_mon_spdb_url //////////////////////
+//
+// URL for NoiseMon results in SPDB.
+//
+//
+// Type: string
+//
+
+noise_mon_spdb_url = "$(DATA_DIR)/calibration/spol/noise_mon/sband/spdb";
+
+///////////// noise_mon_search_margin_secs ////////////
+//
+// Search margin when finding NoiseMon data (secs).
+//
+// We search for the value closest in time to the beam time. This is the 
+//   search margin on either side of the search time.
+//
+//
+// Type: int
+//
+
+noise_mon_search_margin_secs = 3600;
+
+///////////// noise_mon_tag_main //////////////////////
+//
+// XML tag for noise monitoring section.
+//
+//
+// Type: string
+//
+
+noise_mon_tag_main = "NoiseMonitoring";
+
+///////////// noise_mon_tag_zdr ///////////////////////
+//
+// Tag for noise ZDR.
+//
+// This tag must exist in the noise monitoring XML.
+//
+//
+// Type: string
+//
+
+noise_mon_tag_zdr = "meanNoiseZdr";
+
+///////////// noise_mon_tag_dbmhc /////////////////////
+//
+// Tag for noise dbm in H co-polar channel.
+//
+//
+// Type: string
+//
+
+noise_mon_tag_dbmhc = "meanDbmhc";
+
+///////////// noise_mon_tag_dbmvc /////////////////////
+//
+// Tag for noise dbm in V co-polar channel.
+//
+//
+// Type: string
+//
+
+noise_mon_tag_dbmvc = "meanDbmvc";
 
 //======================================================================
 //
