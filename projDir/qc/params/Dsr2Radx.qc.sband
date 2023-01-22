@@ -407,7 +407,7 @@ apply_georeference_corrections = FALSE;
 // Type: boolean
 //
 
-apply_censoring = FALSE;
+apply_censoring = TRUE;
 
 ///////////// censoring_fields ////////////////////////
 //
@@ -1628,42 +1628,6 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "VEL_HV",
-    output_name = "VEL_HV",
-    long_name = "doppler_velocity_hv_channels_separately",
-    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
-    output_units = "m/s",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "VEL_HV_F",
-    output_name = "VEL_HV_F",
-    long_name = "doppler_velocity_hv_channels_separately_filtered",
-    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
-    output_units = "m/s",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "VEL_ALT",
-    output_name = "VEL_ALT",
-    long_name = "doppler_velocity_alternating_mode",
-    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
-    output_units = "m/s",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "VEL_ALT_F",
-    output_name = "VEL_ALT_F",
-    long_name = "doppler_velocity_alternating_mode_filtered",
-    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
-    output_units = "m/s",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
     dsr_name = "WIDTH",
     output_name = "WIDTH",
     long_name = "spectrum_width",
@@ -1718,78 +1682,6 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "ZDR_BIAS",
-    output_name = "ZDR_BIAS",
-    long_name = "differential_reflectivity_bias",
-    standard_name = "log_differential_reflectivity_bias",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "ZDR_BIAS_F",
-    output_name = "ZDR_BIAS_F",
-    long_name = "differential_reflectivity_bias_filtered",
-    standard_name = "log_differential_reflectivity_bias",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "LDRH",
-    output_name = "LDRH",
-    long_name = "linear_depolarization_ratio_hc_to_vx",
-    standard_name = "log_linear_depolarization_ratio_h",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "LDRH_F",
-    output_name = "LDRH_F",
-    long_name = "linear_depolarization_ratio_ratio_hv_to_vx_filtered",
-    standard_name = "log_linear_depolarization_ratio_h",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "LDRV",
-    output_name = "LDRV",
-    long_name = "linear_depolarization_ratio_vc_to_hx",
-    standard_name = "log_linear_depolarization_ratio_v",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "LDRV_F",
-    output_name = "LDRV_F",
-    long_name = "linear_depolarization_ratio_vc_to_hx_filtered",
-    standard_name = "log_linear_depolarization_ratio_v",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "LDR_DIFF_F",
-    output_name = "LDR_DIFF_F",
-    long_name = "ldrv_minus_ldrh",
-    standard_name = "log_linear_depolarization_ratio_v",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "LDR_MEAN_F",
-    output_name = "LDR_MEAN_F",
-    long_name = "mean_of_ldrv_and_ldrh",
-    standard_name = "log_linear_depolarization_ratio_h",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
     dsr_name = "RHOHV",
     output_name = "RHOHV",
     long_name = "cross_correlation_ratio",
@@ -1821,33 +1713,6 @@ output_fields = {
     output_name = "RHOHV_NNC_F",
     long_name = "cross_correlation_ratio_no_noise_correction_filtered",
     standard_name = "cross_correlation_ratio_hv",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "RHO_HC_VX",
-    output_name = "RHO_HC_VX",
-    long_name = "cross_correlation_ratio_hc_to_vx",
-    standard_name = "cross_correlation_ratio_hcvx",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "RHO_VC_HX",
-    output_name = "RHO_VC_HX",
-    long_name = "cross_correlation_ratio_vc_to_hx",
-    standard_name = "cross_correlation_ratio_hchx",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "RHO_VX_HX",
-    output_name = "RHO_VX_HX",
-    long_name = "cross_correlation_ratio_vx_to_hx",
-    standard_name = "cross_correlation_ratio_hchx",
     output_units = "none",
     output_encoding = OUTPUT_SHORT
   }
@@ -1943,42 +1808,6 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "DBMHX",
-    output_name = "DBMHX",
-    long_name = "log_power_cross_polar_h",
-    standard_name = "log_power_cross_polar_h",
-    output_units = "dBm",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "DBMHX_F",
-    output_name = "DBMHX_F",
-    long_name = "log_power_cross_polar_h_filtered",
-    standard_name = "log_power_cross_polar_h",
-    output_units = "dBm",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "DBMVX",
-    output_name = "DBMVX",
-    long_name = "log_power_cross_polar_v",
-    standard_name = "log_power_cross_polar_v",
-    output_units = "dBm",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "DBMVX_F",
-    output_name = "DBMVX_F",
-    long_name = "log_power_cross_polar_v_filtered",
-    standard_name = "log_power_cross_polar_v",
-    output_units = "dBm",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
     dsr_name = "SNRHC",
     output_name = "SNRHC",
     long_name = "signal_to_noise_ratio_co_polar_h",
@@ -2010,42 +1839,6 @@ output_fields = {
     output_name = "SNRVC_F",
     long_name = "signal_to_noise_ratio_co_polar_v_filtered",
     standard_name = "signal_to_noise_ratio_co_polar_v",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "SNRHX",
-    output_name = "SNRHX",
-    long_name = "signal_to_noise_ratio_cross_polar_h",
-    standard_name = "signal_to_noise_ratio_cross_polar_h",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "SNRHX_F",
-    output_name = "SNRHX_F",
-    long_name = "signal_to_noise_ratio_cross_polar_h_filtered",
-    standard_name = "signal_to_noise_ratio_cross_polar_h",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "SNRVX",
-    output_name = "SNRVX",
-    long_name = "signal_to_noise_ratio_cross_polar_v",
-    standard_name = "signal_to_noise_ratio_cross_polar_v",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "SNRVX_F",
-    output_name = "SNRVX_F",
-    long_name = "signal_to_noise_ratio_cross_polar_v_filtered",
-    standard_name = "signal_to_noise_ratio_cross_polar_v",
     output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
@@ -2110,15 +1903,6 @@ output_fields = {
     long_name = "clutter_power",
     standard_name = "clutter_power",
     output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "SDEV_VV",
-    output_name = "SDEV_VV",
-    long_name = "standard_deviation_v_power",
-    standard_name = "standard_deviation_v_power",
-    output_units = "dBm",
     output_encoding = OUTPUT_SHORT
   }
   ,
