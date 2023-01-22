@@ -1905,10 +1905,11 @@ noise_mon_spdb_url = "$(DATA_DIR)/calibration/spol/noise_mon/sband/spdb";
 
 ///////////// noise_mon_search_margin_secs ////////////
 //
-// Search margin when finding NoiseMon data (secs).
+// Search margin for finding NoiseMon data (secs).
 //
-// We search for the value closest in time to the beam time. This is the 
-//   search margin on either side of the search time.
+// We search a time period from the radar time minus the margin to the 
+//   radar time plus the margin. We compute the mean value within this 
+//   time range.
 //
 //
 // Type: int
@@ -1926,7 +1927,7 @@ noise_mon_search_margin_secs = 3600;
 
 noise_mon_tag_main = "NoiseMonitoring";
 
-///////////// noise_mon_tag_zdr ///////////////////////
+///////////// noise_mon_tag_list_zdr //////////////////
 //
 // Tag for noise ZDR.
 //
@@ -1936,9 +1937,9 @@ noise_mon_tag_main = "NoiseMonitoring";
 // Type: string
 //
 
-noise_mon_tag_zdr = "meanNoiseZdr";
+noise_mon_tag_list_zdr = "<NoiseMonitoring><meanNoiseZdr>";
 
-///////////// noise_mon_tag_dbmhc /////////////////////
+///////////// noise_mon_tag_list_dbmhc ////////////////
 //
 // Tag for noise dbm in H co-polar channel.
 //
@@ -1946,9 +1947,9 @@ noise_mon_tag_zdr = "meanNoiseZdr";
 // Type: string
 //
 
-noise_mon_tag_dbmhc = "meanDbmhc";
+noise_mon_tag_list_dbmhc = "<NoiseMonitoring><meanDbmhc>";
 
-///////////// noise_mon_tag_dbmvc /////////////////////
+///////////// noise_mon_tag_list_dbmvc ////////////////
 //
 // Tag for noise dbm in V co-polar channel.
 //
@@ -1956,7 +1957,61 @@ noise_mon_tag_dbmhc = "meanDbmhc";
 // Type: string
 //
 
-noise_mon_tag_dbmvc = "meanDbmvc";
+noise_mon_tag_list_dbmvc = "<NoiseMonitoring><meanDbmvc>";
+
+///////////// noise_mon_tag_list_site_temp ////////////
+//
+// Tag for site temperature.
+//
+//
+// Type: string
+//
+
+noise_mon_tag_list_site_temp = "<SpolStatus><WxStation><tempC>";
+
+///////////// noise_mon_zdrm_corr /////////////////////
+//
+// Correction to estimate ZDRM bias from noise ZDR (dB).
+//
+// Separately from this app, we monitor the ZDRM bias, say using 
+//   vertical pointing scans. We compare the mean ZDRM bias with the mean 
+//   ZDR as computed from noise. Applying this correction allows us to 
+//   compute the ZDRM bias to use in the saved calibration.
+//
+//
+// Type: double
+//
+
+noise_mon_zdrm_corr = 0.52;
+
+///////////// noise_mon_mean_site_temp ////////////////
+//
+// Mean site temperature for ZDR analysis (C).
+//
+// Separately from this app, we determine the dependency of ZDR on site 
+//   temperature. This is the mean temperature from that analysis. We use 
+//   this to determine the ZDR bias from temperature.
+//
+//
+// Type: double
+//
+
+noise_mon_mean_site_temp = 27.34;
+
+///////////// noise_mon_zdr_temp_slope ////////////////
+//
+// Slope of ZDR dependency on temperature (dB/C).
+//
+// Separately from this app, we determine the dependency of ZDR on site 
+//   temperature. This is the slope of the ZDR relationship on temperature 
+//   from that analysis. We use this to determine the ZDR bias from 
+//   temperature.
+//
+//
+// Type: double
+//
+
+noise_mon_zdr_temp_slope = 0.01296;
 
 //======================================================================
 //
