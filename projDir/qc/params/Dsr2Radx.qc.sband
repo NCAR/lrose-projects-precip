@@ -1582,8 +1582,8 @@ debug_auto_detection = FALSE;
 //      string output_units;
 //      output_encoding_t output_encoding;
 //        Options:
-//          OUTPUT_FLOAT
 //          OUTPUT_SHORT
+//          OUTPUT_FLOAT
 //          OUTPUT_BYTE
 //   }
 //
