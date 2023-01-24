@@ -499,12 +499,12 @@ Allowable values of the "type" attribute and associated additional attributes:
 <Layer vis="off" type="MDV" name="GFS-PRES" location="mdvp:://front.eol.ucar.edu:8080:precip/mdv/gfs/precip?use_http=true"
        field="Pressure" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/pressure_mb.colors" menuName="GFS-PRES" />
 
-<Layer vis="off" type="MDV" name="SURF Terrain" location="mdvp::static//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true"
+<Layer vis="off" type="MDV" name="SURF Terrain" location="mdvp::static//front.eol.ucar.edu:8080:precip/grids/terrain?use_http=true"
        field="Elevation" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/terrain_precip.colors" menuName="Terrain" />
 
 <!-- MDVTOPO Layers -->
 
-<Layer vis="off" type="MDVTOPO" name="Terrain" location="mdvp::terrain//front.eol.ucar.edu:8080:precip/mdv/terrain?use_http=true"
+<Layer vis="off" type="MDVTOPO" name="Terrain" location="mdvp::terrain//front.eol.ucar.edu:8080:precip/grids/terrain?use_http=true"
        field="Elevation" colorscale="http://front.eol.ucar.edu/color_scales/terrain_precip.colors" menuName="Terrain" />
 
 <!-- MDVWIND Layers -->
@@ -545,7 +545,7 @@ Allowable values of the "type" attribute and associated additional attributes:
 
 <!-- CIDDMAP Layers -->
 
-<Layer vis="on" type="CIDDMAP" name="Countries" location="$http://front.eol.ucar.edu/maps/world_states.map"
+<Layer vis="on" type="CIDDMAP" name="Countries" location="http://front.eol.ucar.edu/maps/world_states.map"
        color="white" width="1" />
 
 <Layer vis="on" type="CIDDMAP" name="ChinaCoast" location="http://front.eol.ucar.edu/maps/taiwan_china_coast.map"
