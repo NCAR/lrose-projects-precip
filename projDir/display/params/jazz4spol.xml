@@ -500,12 +500,12 @@ Allowable values of the "type" attribute and associated additional attributes:
        field="Pressure" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/pressure_mb.colors" menuName="GFS-PRES" />
 
 <Layer vis="off" type="MDV" name="SURF Terrain" location="mdvp::static//front.eol.ucar.edu:8080:precip/grids/terrain?use_http=true"
-       field="Elevation" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/terrain_precip.colors" menuName="Terrain" />
+       field="Elevation" render="fillcontours" colorscale="http://front.eol.ucar.edu/color_scales/terrain_precip.colors" menuName="Terrain" request="closest" margin="1seconds" />
 
 <!-- MDVTOPO Layers -->
 
 <Layer vis="off" type="MDVTOPO" name="Terrain" location="mdvp::terrain//front.eol.ucar.edu:8080:precip/grids/terrain?use_http=true"
-       field="Elevation" colorscale="http://front.eol.ucar.edu/color_scales/terrain_precip.colors" menuName="Terrain" />
+       field="Elevation" colorscale="http://front.eol.ucar.edu/color_scales/terrain_precip.colors" menuName="Terrain" request="closest" margin="1seconds" />
 
 <!-- MDVWIND Layers -->
 
