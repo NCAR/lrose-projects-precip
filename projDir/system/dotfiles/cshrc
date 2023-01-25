@@ -67,7 +67,8 @@ setenv NCARG_ROOT /usr/local/ncarg
 
 # --- JAVA ---
 
-setenv JAVA_HOME /usr/java/latest
+#setenv JAVA_HOME /usr/java/latest
+setenv JAVA_HOME $HOME/java/jdk-18.0.2.1
 setenv ANT_HOME /usr/local/ant
 setenv RAP_JAR_DIR $LROSE_INSTALL_DIR/java/dist/lib
 

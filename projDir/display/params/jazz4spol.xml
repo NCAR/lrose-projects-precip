@@ -650,9 +650,6 @@ Groups
    top      = highest altitude of range, in the same units defined above (if in mb, may be lesser numerically than bottom)
    interval = the interval to use for dividing up the distance between bottom and top
    default  = optional initial altitude, in the same units defined above (defaults to same value as "bottom")
-
-   or
-
    dataDrivenProperties = optional. Overrides other attributes. If true, altitude's range and levels will be
                           dynamically set according to selected/on layer.
    evenTicks = optional. When using dataDrivenProperties, setting to true will render altitude tick marks evenly-spaced, even if the
