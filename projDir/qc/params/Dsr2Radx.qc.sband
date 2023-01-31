@@ -76,7 +76,8 @@ procmap_register_interval = 60;
 // Type: string
 //
 
-input_fmq_url = "/tmp/fmq/moments/sband/shmem_20000";
+// input_fmq_url = "/tmp/fmq/moments/sband/shmem_20000";
+input_fmq_url = "$(MOMENTS_FMQ_PATH)";
 
 ///////////// seek_to_end_of_input ////////////////////
 //

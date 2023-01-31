@@ -8,91 +8,53 @@ source ~/git/lrose-projects-precip/projDir/system/params/project_info.precip_qc
 
 cd $PROJ_DIR/qc/params
 
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220525/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220525
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220526/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220526
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220527/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220527
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220528/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220528
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220529/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220529
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220530/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220530
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220531/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220531
+snuff "Dsr2Radx -params Dsr2Radx.qc.sband"
 
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220601/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220601
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220602/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220602
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220603/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220603
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220604/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220604
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220605/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220605
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220606/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220606
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220607/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220607
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220608/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220608
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220609/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220609
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220610/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220610
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20100
 
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220611/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220611
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220612/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220612
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220613/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220613
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220614/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220614
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220615/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220615
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220616/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220616
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220617/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220617
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220618/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220618
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220619/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220619
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220620/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220620
+Iq2Dsr -instance 20100 -params Iq2Dsr.qc.sband -debug \
+    -start "2022 05 25 00 00 00" -end "2022 06 04 00 00 00" >& \
+    $LOG_DIR/Iq2Dsr.qc.sband.20100.log &
 
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220621/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220621
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220622/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220622
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220623/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220623
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220624/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220624
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220625/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220625
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220626/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220626
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220627/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220627
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220628/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220628
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220629/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220629
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220630/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220630
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20200
 
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220701/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220701
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220702/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220702
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220703/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220703
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220704/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220704
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220705/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220705
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220706/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220706
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220707/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220707
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220708/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220708
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220709/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220709
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220710/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220710
+Iq2Dsr -instance 20200 -params Iq2Dsr.qc.sband -debug \
+    -start "2022 06 04 00 00 00" -end "2022 06 14 00 00 00" >& \
+    $LOG_DIR/Iq2Dsr.qc.sband.20200.log &
 
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220711/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220711
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220712/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220712
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220713/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220713
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220714/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220714
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220715/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220715
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220716/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220716
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220717/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220717
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220718/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220718
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220719/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220719
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220720/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220720
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20300
 
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220721/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220721
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220722/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220722
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220723/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220723
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220724/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220724
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220725/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220725
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220726/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220726
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220727/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220727
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220728/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220728
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220729/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220729
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220730/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220730
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220731/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220731
+Iq2Dsr -instance 20300 -params Iq2Dsr.qc.sband -debug \
+    -start "2022 06 14 00 00 00" -end "2022 06 24 00 00 00" >& \
+    $LOG_DIR/Iq2Dsr.qc.sband.20300.log &
 
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220801/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220801
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220802/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220802
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220803/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220803
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220804/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220804
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220805/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220805
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220806/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220806
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220807/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220807
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220808/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220808
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220809/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220809
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220810/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220810
-Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220811/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz.20220811
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20400
 
-#Iq2Dsr -params Iq2Dsr.qc.sband -debug -f $DATA_DIR/time_series/sband/save/20220601/*iwrf_ts >& $LOG_DIR/Iq2Dsr.qc.100hz
+Iq2Dsr -instance 20400 -params Iq2Dsr.qc.sband -debug \
+    -start "2022 06 24 00 00 00" -end "2022 07 04 00 00 00" >& \
+    $LOG_DIR/Iq2Dsr.qc.sband.20400.log &
+
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20500
+
+Iq2Dsr -instance 20500 -params Iq2Dsr.qc.sband -debug \
+    -start "2022 07 04 00 00 00" -end "2022 07 14 00 00 00" >& \
+    $LOG_DIR/Iq2Dsr.qc.sband.20500.log &
+
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20600
+
+Iq2Dsr -instance 20600 -params Iq2Dsr.qc.sband -debug \
+    -start "2022 07 14 00 00 00" -end "2022 07 24 00 00 00" >& \
+    $LOG_DIR/Iq2Dsr.qc.sband.20600.log &
+
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20700
+
+Iq2Dsr -instance 20700 -params Iq2Dsr.qc.sband -debug \
+    -start "2022 07 24 00 00 00" -end "2022 08 03 00 00 00" >& \
+    $LOG_DIR/Iq2Dsr.qc.sband.20700.log &
+
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20800
+
+Iq2Dsr -instance 20800 -params Iq2Dsr.qc.sband -debug \
+    -start "2022 08 03 00 00 00" -end "2022 08 12 00 00 00" >& \
+    $LOG_DIR/Iq2Dsr.qc.sband.20800.log &
+

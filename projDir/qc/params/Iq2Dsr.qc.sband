@@ -89,7 +89,7 @@ use_multiple_threads = TRUE;
 // Type: int
 //
 
-n_compute_threads = 16;
+n_compute_threads = 8;
 
 //======================================================================
 //
@@ -160,7 +160,7 @@ position_fmq_at_start = FALSE;
 // Type: string
 //
 
-input_dir = "./input";
+input_dir = "$(DATA_DIR)/time_series/sband/save";
 
 ///////////// use_ldata_info_file /////////////////////
 //
@@ -3983,7 +3983,8 @@ rhohv_improvement_factor_threshold = 4;
 // Type: string
 //
 
-output_fmq_url = "/tmp/fmq/moments/sband/shmem_20000";
+// output_fmq_url = "/tmp/fmq/moments/sband/shmem_20000";
+output_fmq_url = "$(MOMENTS_FMQ_PATH)";
 
 ///////////// output_moments_in_radx_format ///////////
 //
