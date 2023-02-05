@@ -1,0 +1,8 @@
+#! /bin/csh
+#
+
+cd $PROJ_DIR/qc/scripts
+
+set VERSION = field
+
+PlotClutMon.spol.qc.py --lenMean 11 --clutFile $DATA_DIR/$project/calibration/spol/clut_mon/$VERSION/sband/tables/clut_mon.sband.txt --zdrMin -2.0 --zdrMax 0.5 --clutMin -13 --clutMax -5 --xmitPwrMin 80 --xmitPwrMax 91

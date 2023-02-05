@@ -1,6 +1,0 @@
-#! /bin/csh
-#
-
-cd $PROJ_DIR/qc/scripts
-
-PlotClutMon.spol.qc.py --lenMean 21 --clutFile /scr/cirrus3/rsfdata/projects/precip/calibration/spol/clut_mon/sband/tables/clut_mon.sband.txt --zdrMin -2.0 --zdrMax 0.5 --clutMin -13 --clutMax -5 --xmitPwrMin 80 --xmitPwrMax 91
