@@ -76,7 +76,7 @@ procmap_register_interval = 60;
 // Type: string
 //
 
-inputPath = "$(DATA_DIR)/relampago/raw/sounding";
+inputPath = "$(DATA_DIR)/$(project)/raw/sounding";
 
 ///////////// use_url /////////////////////////////////
 //

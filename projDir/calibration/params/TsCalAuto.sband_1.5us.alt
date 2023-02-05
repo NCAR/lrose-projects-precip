@@ -708,7 +708,7 @@ snr_for_mds = -6;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/cal/sband_1.5us.alt";
+output_dir = "$(PROJ_DIR)/calibration/results/cal.sband.1.5us.alt";
 
 ///////////// output_file_label ///////////////////////
 //

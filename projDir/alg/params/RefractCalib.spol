@@ -196,34 +196,34 @@ elevation_angle = {
 //
 
 target_id_file_list = {
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/170706.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/171014.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/171347.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/171655.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/172027.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/172335.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/172707.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/173015.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/173347.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/173655.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/174027.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/174335.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/174707.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/175015.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/175347.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/175655.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/180450.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/180956.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/181502.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/182008.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/182514.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/183020.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/183526.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/184032.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/184538.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/185044.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/185550.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/190056.mdv"
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/170706.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/171014.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/171347.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/171655.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/172027.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/172335.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/172707.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/173015.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/173347.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/173655.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/174027.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/174335.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/174707.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/175015.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/175347.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/175655.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/180450.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/180956.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/181502.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/182008.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/182514.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/183020.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/183526.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/184032.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/184538.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/185044.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/185550.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/190056.mdv"
 };
 
 ///////////// calibration_file_list ///////////////////
@@ -234,34 +234,34 @@ target_id_file_list = {
 //
 
 calibration_file_list = {
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/170706.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/171014.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/171347.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/171655.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/172027.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/172335.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/172707.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/173015.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/173347.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/173655.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/174027.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/174335.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/174707.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/175015.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/175347.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/175655.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/180450.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/180956.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/181502.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/182008.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/182514.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/183020.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/183526.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/184032.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/184538.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/185044.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/185550.mdv",
- "$(RAP_DATA_DIR)/front/mdv/refract/spol_cov/20140520/190056.mdv"
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/170706.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/171014.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/171347.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/171655.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/172027.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/172335.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/172707.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/173015.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/173347.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/173655.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/174027.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/174335.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/174707.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/175015.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/175347.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/175655.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/180450.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/180956.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/181502.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/182008.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/182514.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/183020.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/183526.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/184032.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/184538.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/185044.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/185550.mdv",
+ "$(DATA_DIR)/$(project)/mdv/refract/spol_cov/20140520/190056.mdv"
 };
 
 //======================================================================
@@ -279,7 +279,7 @@ calibration_file_list = {
 // Type: string
 //
 
-ref_file_path = "$(DATA_DIR)/front/mdv/refract/calib/Refract_calibration.mdv";
+ref_file_path = "$(DATA_DIR)/$(project)/mdv/refract/calib/Refract_calibration.mdv";
 
 ///////////// num_azim ////////////////////////////////
 //

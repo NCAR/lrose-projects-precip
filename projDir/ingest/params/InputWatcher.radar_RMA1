@@ -544,7 +544,7 @@ without_date_directory = FALSE;
 // Type: string
 //
 
-copy_dir = "$(DATA_DIR)/relampago/raw/radar/RMA1";
+copy_dir = "$(DATA_DIR)/$(project)/raw/radar/RMA1";
 
 ///////////// copy_prefix /////////////////////////////
 //

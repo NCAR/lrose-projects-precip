@@ -72,7 +72,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_url = "$(DATA_DIR)/front/mdv/km_mosaic";
+input_url = "$(DATA_DIR)/$(project)/mdv/km_mosaic";
 
 ///////////// dbz_field_name //////////////////////////
 //
@@ -154,7 +154,7 @@ spatial_filter_wavelength_km = 50;
 // Type: string
 //
 
-output_url = "$(DATA_DIR)/front/mdv/scalesep_dbz";
+output_url = "$(DATA_DIR)/$(project)/mdv/scalesep_dbz";
 
 ///////////// filtered_field_name /////////////////////
 //

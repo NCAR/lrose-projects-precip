@@ -60,7 +60,7 @@ instance = "RMA1";
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/relampago/raw/radar/RMA1";
+input_dir = "$(DATA_DIR)/$(project)/raw/radar/RMA1";
 
 //======================================================================
 //
@@ -1788,7 +1788,7 @@ compression_level = 4;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/relampago/cfradial/RMA1";
+output_dir = "$(DATA_DIR)/$(project)/cfradial/RMA1";
 
 ///////////// output_filename_mode ////////////////////
 //

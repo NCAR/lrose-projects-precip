@@ -281,7 +281,7 @@ max_valid_ratio_db = 6;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/cal/zdr/sim_alt";
+output_dir = "$(DATA_DIR)/$(project)/cal/zdr/sim_alt";
 
 ///////////// write_results ///////////////////////////
 //
@@ -333,7 +333,7 @@ write_mdv_files = TRUE;
 // Type: string
 //
 
-mdv_output_dir = "$(DATA_DIR)/mdv/ZdrCalSimHv";
+mdv_output_dir = "$(DATA_DIR)/$(project)/mdv/ZdrCalSimHv";
 
 //======================================================================
 //

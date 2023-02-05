@@ -387,7 +387,7 @@ compute_median = TRUE;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/spol_kftg_comparison";
+output_dir = "$(DATA_DIR)/$(project)/spol_kftg_comparison";
 
 ///////////// output_file_prefix //////////////////////
 //

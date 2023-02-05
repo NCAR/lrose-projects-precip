@@ -77,7 +77,7 @@ instance = "logs";
 // Type: string
 //
 
-top_dir = "$(DATA_DIR)/logs";
+top_dir = "$(DATA_DIR)/$(project)/logs";
 
 ///////////// once_only ///////////////////////////////
 //

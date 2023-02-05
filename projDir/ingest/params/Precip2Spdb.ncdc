@@ -89,7 +89,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/pecan/precip/ncdc";
+input_dir = "$(DATA_DIR)/$(project)/precip/ncdc";
 
 ///////////// latest_data_info_avail //////////////////
 //

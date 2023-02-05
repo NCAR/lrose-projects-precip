@@ -288,7 +288,7 @@ max_valid_ratio_db = 6;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/cal/zdr/alt";
+output_dir = "$(DATA_DIR)/$(project)/cal/zdr/alt";
 
 ///////////// write_results ///////////////////////////
 //

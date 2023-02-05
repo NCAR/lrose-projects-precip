@@ -101,7 +101,7 @@ input_mode = TS_FILE_INPUT;
 // Type: string
 //
 
-input_fmq_name = "$(DATA_DIR)/fmq/moments/sband/shmem_20000";
+input_fmq_name = "$(DATA_DIR)/$(project)/fmq/moments/sband/shmem_20000";
 
 ///////////// seek_to_start_of_input //////////////////
 //

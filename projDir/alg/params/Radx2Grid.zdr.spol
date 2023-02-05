@@ -85,7 +85,7 @@ n_compute_threads = 8;
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/firestone/cfradial/moments/sband/sur";
+input_dir = "$(DATA_DIR)/$(project)/cfradial/moments/sband/sur";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -1560,7 +1560,7 @@ conv_strat_write_debug_fields = FALSE;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/front/mdv/radarCart/spol";
+output_dir = "$(DATA_DIR)/$(project)/mdv/radarCart/spol";
 
 ///////////// specify_output_filename /////////////////
 //

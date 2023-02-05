@@ -82,7 +82,7 @@ mode = REALTIME;
 // Type: string
 //
 
-input_url = "$(DATA_DIR)/relampago/mdv/radarCart/RMA1/long_range";
+input_url = "$(DATA_DIR)/$(project)/mdv/radarCart/RMA1/long_range";
 
 ///////////// dbz_field_name //////////////////////////
 //
@@ -229,7 +229,7 @@ min_texture_for_convection = 15;
 // Type: string
 //
 
-output_url = "$(DATA_DIR)/relampago/mdv/convStrat/RMA1/long_range";
+output_url = "$(DATA_DIR)/$(project)/mdv/convStrat/RMA1/long_range";
 
 ///////////// write_partition_field ///////////////////
 //

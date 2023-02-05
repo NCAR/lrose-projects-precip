@@ -74,7 +74,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/relampago/cfradial/RMA1/long_range";
+input_dir = "$(DATA_DIR)/$(project)/cfradial/RMA1/long_range";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -154,7 +154,7 @@ end_time = "2010 12 16 00 00 00";
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/relampago/mdv/radarCart/RMA1/long_range";
+output_dir = "$(DATA_DIR)/$(project)/mdv/radarCart/RMA1/long_range";
 
 ///////////// output_format ///////////////////////////
 //

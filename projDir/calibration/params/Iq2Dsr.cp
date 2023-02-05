@@ -103,7 +103,7 @@ mode = FMQ;
 // Type: string
 //
 
-input_fmq = "$(DATA_DIR)/fmq/ts/sband/shmem_10000";
+input_fmq = "$(DATA_DIR)/$(project)/fmq/ts/sband/shmem_10000";
 
 ///////////// position_fmq_at_start ///////////////////
 //
@@ -1641,7 +1641,7 @@ phidp_sdev_interest_weight = 1;
 // Type: string
 //
 
-output_fmq_url = "$(DATA_DIR)/fmq/moments/sband";
+output_fmq_url = "$(DATA_DIR)/$(project)/fmq/moments/sband";
 
 ///////////// output_fmq_size /////////////////////////
 //

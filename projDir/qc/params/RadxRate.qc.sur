@@ -102,7 +102,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_dir = "/scr/cirrus3/rsfdata/projects/precip/spolField/cfradial/moments/merged/sur";
+input_dir = "/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/moments/sband/sur";
 
 ///////////// input_file_search_ext ///////////////////
 //
@@ -766,7 +766,7 @@ PID_write_debug_fields = FALSE;
 // Type: string
 //
 
-output_dir = "/scr/cirrus3/rsfdata/projects/precip/spolField/cfradial/moments/v0.1/sur";
+output_dir = "/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/sband/sur";
 
 ///////////// output_filename_mode ////////////////////
 //

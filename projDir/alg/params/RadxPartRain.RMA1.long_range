@@ -127,7 +127,7 @@ n_compute_threads = 8;
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/relampago/cfradial/RMA1/long_range";
+input_dir = "$(DATA_DIR)/$(project)/cfradial/RMA1/long_range";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -3595,7 +3595,7 @@ write_output_volume = TRUE;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/relampago/cfradial/RMA1_pid";
+output_dir = "$(DATA_DIR)/$(project)/cfradial/RMA1_pid";
 
 ///////////// output_filename_mode ////////////////////
 //

@@ -66,7 +66,7 @@ instance = "csu_chivo";
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/relampago/cfradial/CSU_CHIVO/radar_data/qc_data";
+input_dir = "$(DATA_DIR)/$(project)/cfradial/CSU_CHIVO/radar_data/qc_data";
 
 ///////////// wait_between_checks /////////////////////
 //

@@ -367,7 +367,7 @@ radar_location = { 0, 0, 0 };
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/cal/zdr/stationary";
+output_dir = "$(DATA_DIR)/$(project)/cal/zdr/stationary";
 
 ///////////// write_results ///////////////////////////
 //
@@ -419,7 +419,7 @@ write_mdv_files = FALSE;
 // Type: string
 //
 
-mdv_output_dir = "$(DATA_DIR)/mdv/ZdrCalSimHv";
+mdv_output_dir = "$(DATA_DIR)/$(project)/mdv/ZdrCalSimHv";
 
 //======================================================================
 //

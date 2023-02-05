@@ -510,7 +510,7 @@ max_ht_for_stats = 4.5;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/cal/vert/spoldrx";
+output_dir = "$(DATA_DIR)/$(project)/cal/vert/spoldrx";
 
 ///////////// write_global_stats_to_text_file /////////
 //

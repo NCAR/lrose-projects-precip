@@ -37,7 +37,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "relampago";
+instance = "$(project)";
 
 ///////////// procmap_register_interval ///////////////
 //
@@ -65,7 +65,7 @@ procmap_register_interval = 60;
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/relampago/mdv/gfs/relampago";
+input_dir = "$(DATA_DIR)/$(project)/mdv/gfs/$(project)";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -248,7 +248,7 @@ station_locations = {
 // Type: string
 //
 
-output_url = "spdbp:://localhost:0:relampago/spdb/sounding/gfs";
+output_url = "spdbp:://localhost:0:$(project)/spdb/sounding/gfs";
 
 ///////////// valid_period_secs ///////////////////////
 //

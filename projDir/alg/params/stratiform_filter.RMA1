@@ -96,7 +96,7 @@ mode = REALTIME_MODE;
 // Type: string
 //
 
-input_url = "$(DATA_DIR)/relampago/mdv/radarCart/RMA1/long_range";
+input_url = "$(DATA_DIR)/$(project)/mdv/radarCart/RMA1/long_range";
 
 ///////////// dbz_field_name //////////////////////////
 //
@@ -156,7 +156,7 @@ max_valid_age = 3600;
 // Type: string
 //
 
-output_url = "$(DATA_DIR)/relampago/mdv/ConvStrat/steiner";
+output_url = "$(DATA_DIR)/$(project)/mdv/ConvStrat/steiner";
 
 ///////////// field_name_for_convective_input_data ////
 //

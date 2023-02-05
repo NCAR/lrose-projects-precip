@@ -13,7 +13,7 @@ setenv project "precip"
 
 setenv PROJ_DIR ~/git/lrose-projects-precip/projDir
 
-setenv DATA_DIR /scr/cirrus3/rsfdata/projects/precip/
+setenv DATA_DIR /scr/cirrus3/rsfdata/projects
 setenv LOG_DIR $HOME/logs
 
 setenv QC_VERSION qc1

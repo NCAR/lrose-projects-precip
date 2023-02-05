@@ -54,7 +54,7 @@ instance = "spol";
 // Type: string
 //
 
-input_fmq_url = "$(DATA_DIR)/fmq/moments/sband";
+input_fmq_url = "$(DATA_DIR)/$(project)/fmq/moments/sband";
 
 ///////////// seek_to_end_of_input ////////////////////
 //
@@ -889,7 +889,7 @@ output_cart_files = TRUE;
 //
 
 cart_files = {
-  { 800, 0.5, 20, 2.5, 0.25, TRUE, "$(DATA_DIR)/mdv/radarCart/spol", -1}
+  { 800, 0.5, 20, 2.5, 0.25, TRUE, "$(DATA_DIR)/$(project)/mdv/radarCart/spol", -1}
 };
 
 ///////////// output_ppi_files ////////////////////////

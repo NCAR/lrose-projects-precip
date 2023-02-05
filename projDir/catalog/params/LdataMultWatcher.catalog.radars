@@ -133,7 +133,7 @@ procmap_register_interval = 60;
 
 data_sets = {
   {
-    input_dir = "$(DATA_DIR)/relampago/cfradial/RMA1/long_range",
+    input_dir = "$(DATA_DIR)/$(project)/cfradial/RMA1/long_range",
     call_new_data_script = TRUE,
     new_data_script_name = "$(PROJ_DIR)/catalog/scripts/run_CIDD.catalog.RMA1",
     call_late_data_script = FALSE,
@@ -143,7 +143,7 @@ data_sets = {
   }
   ,
   {
-    input_dir = "$(DATA_DIR)/relampago/cfradial/RMA2/short_range",
+    input_dir = "$(DATA_DIR)/$(project)/cfradial/RMA2/short_range",
     call_new_data_script = TRUE,
     new_data_script_name = "$(PROJ_DIR)/catalog/scripts/run_CIDD.catalog.RMA2",
     call_late_data_script = FALSE,
@@ -153,7 +153,7 @@ data_sets = {
   }
   ,
   {
-    input_dir = "$(DATA_DIR)/relampago/cfradial/ANG",
+    input_dir = "$(DATA_DIR)/$(project)/cfradial/ANG",
     call_new_data_script = TRUE,
     new_data_script_name = "$(PROJ_DIR)/catalog/scripts/run_CIDD.catalog.ANG",
     call_late_data_script = FALSE,
@@ -163,7 +163,7 @@ data_sets = {
   }
   ,
   {
-    input_dir = "$(DATA_DIR)/relampago/cfradial/PAR",
+    input_dir = "$(DATA_DIR)/$(project)/cfradial/PAR",
     call_new_data_script = TRUE,
     new_data_script_name = "$(PROJ_DIR)/catalog/scripts/run_CIDD.catalog.PAR",
     call_late_data_script = FALSE,
@@ -173,7 +173,7 @@ data_sets = {
   }
   ,
   {
-    input_dir = "$(DATA_DIR)/relampago/cfradial/PER",
+    input_dir = "$(DATA_DIR)/$(project)/cfradial/PER",
     call_new_data_script = TRUE,
     new_data_script_name = "$(PROJ_DIR)/catalog/scripts/run_CIDD.catalog.PER",
     call_late_data_script = FALSE,
@@ -183,7 +183,7 @@ data_sets = {
   }
   ,
   {
-    input_dir = "$(DATA_DIR)/relampago/cfradial/csu_chivo/sur",
+    input_dir = "$(DATA_DIR)/$(project)/cfradial/csu_chivo/sur",
     call_new_data_script = TRUE,
     new_data_script_name = "$(PROJ_DIR)/catalog/scripts/create_radar_images.py",
     call_late_data_script = FALSE,

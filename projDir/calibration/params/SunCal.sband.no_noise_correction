@@ -100,7 +100,7 @@ input_mode = TS_REALTIME_DIR_INPUT;
 // Type: string
 //
 
-input_fmq_name = "$(DATA_DIR)/fmq/ts/sband/shmem_10000";
+input_fmq_name = "$(DATA_DIR)/$(project)/fmq/ts/sband/shmem_10000";
 
 ///////////// input_dir ///////////////////////////////
 //
@@ -111,7 +111,7 @@ input_fmq_name = "$(DATA_DIR)/fmq/ts/sband/shmem_10000";
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/time_series/sband/sunscan";
+input_dir = "$(DATA_DIR)/$(project)/time_series/sband/sunscan";
 
 ///////////// archive_start_time //////////////////////
 //
@@ -821,7 +821,7 @@ write_text_files = TRUE;
 // Type: string
 //
 
-text_output_dir = "$(DATA_DIR)/cal/suncal/sband.no_noise_correction";
+text_output_dir = "$(DATA_DIR)/$(project)/cal/suncal/sband.no_noise_correction";
 
 ///////////// append_to_global_results_file ///////////
 //

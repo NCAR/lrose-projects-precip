@@ -82,7 +82,7 @@ mode = REALTIME;
 // Type: string
 //
 
-input_url = "$(DATA_DIR)/relampago/cfradial/csu_raw/rhi";
+input_url = "$(DATA_DIR)/$(project)/cfradial/csu_raw/rhi";
 
 ///////////// max_realtime_data_age_secs //////////////
 //
@@ -112,5 +112,5 @@ max_realtime_data_age_secs = 900;
 // Type: string
 //
 
-output_url = "relampago/spdb/rhi/csu_raw";
+output_url = "$(project)/spdb/rhi/csu_raw";
 

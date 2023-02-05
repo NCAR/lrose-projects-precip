@@ -143,7 +143,7 @@ restart_overlap_period = 3600;
 // Type: string
 //
 
-input_url = "$(DATA_DIR)/front/mdv/km_mosaic";
+input_url = "$(DATA_DIR)/$(project)/mdv/km_mosaic";
 
 ///////////// max_realtime_valid_age //////////////////
 //
@@ -916,7 +916,7 @@ FOKR_cat4_zmax_thresh = 65;
 // Type: string
 //
 
-storm_data_dir = "$(DATA_DIR)/front/titan/storms35";
+storm_data_dir = "$(DATA_DIR)/$(project)/titan/storms35";
 
 ///////////// store_storm_runs ////////////////////////
 //

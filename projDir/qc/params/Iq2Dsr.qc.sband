@@ -160,7 +160,7 @@ position_fmq_at_start = FALSE;
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/time_series/sband/save";
+input_dir = "$(DATA_DIR)/$(project)/time_series/sband/save";
 
 ///////////// use_ldata_info_file /////////////////////
 //
@@ -1901,7 +1901,7 @@ noise_mon_correct_cal_rx_gain = TRUE;
 // Type: string
 //
 
-noise_mon_spdb_url = "$(DATA_DIR)/calibration/spol/noise_mon/sband/spdb";
+noise_mon_spdb_url = "$(DATA_DIR)/$(project)/calibration/spol/noise_mon/sband/spdb";
 
 ///////////// noise_mon_search_margin_secs ////////////
 //

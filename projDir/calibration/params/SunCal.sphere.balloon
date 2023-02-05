@@ -95,7 +95,7 @@ input_fmq_name = "/tmp/fmq/ts";
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/time_series/kband/save";
+input_dir = "$(DATA_DIR)/$(project)/time_series/kband/save";
 
 ///////////// n_samples ///////////////////////////////
 //
@@ -623,7 +623,7 @@ write_text_files = TRUE;
 // Type: string
 //
 
-text_output_dir = "$(DATA_DIR)/cal/sphere/kband";
+text_output_dir = "$(DATA_DIR)/$(project)/cal/sphere/kband";
 
 ///////////// append_to_global_results_file ///////////
 //

@@ -127,7 +127,7 @@ n_compute_threads = 8;
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/relampago/cfradial/csu_raw/sur";
+input_dir = "$(DATA_DIR)/$(project)/cfradial/csu_raw/sur";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -3595,7 +3595,7 @@ write_output_volume = TRUE;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/relampago/cfradial/csu_pid/sur";
+output_dir = "$(DATA_DIR)/$(project)/cfradial/csu_pid/sur";
 
 ///////////// output_filename_mode ////////////////////
 //

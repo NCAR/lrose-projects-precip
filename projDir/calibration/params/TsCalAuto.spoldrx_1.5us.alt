@@ -497,7 +497,7 @@ snr_for_mds = -6;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/cal/spoldrx_1.5us.alt";
+output_dir = "$(PROJ_DIR)/calibration/results/cal.spoldrx.1.5us.alt";
 
 ///////////// plot_script /////////////////////////////
 //

@@ -119,7 +119,7 @@ server_open_timeout_msecs = 10000;
 // Type: string
 //
 
-source_top_dir = "$(DATA_DIR)/pecan";
+source_top_dir = "$(DATA_DIR)/$(project)";
 
 ///////////// tmp_dir /////////////////////////////////
 //

@@ -530,7 +530,7 @@ max_ht_for_stats = 6.1;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/cal/vert/spoldrx";
+output_dir = "$(DATA_DIR)/$(project)/cal/vert/spoldrx";
 
 ///////////// write_global_stats_to_text_file /////////
 //
@@ -593,7 +593,7 @@ write_results_to_spdb = FALSE;
 // Type: string
 //
 
-spdb_output_url = "$(DATA_DIR)/cal/vert/spdb/spoldrx";
+spdb_output_url = "$(DATA_DIR)/$(project)/cal/vert/spdb/spoldrx";
 
 ///////////// radar_name //////////////////////////////
 //

@@ -86,7 +86,7 @@ mode = ARCHIVE_MODE;
 // Type: string
 //
 
-input_url = "$(DATA_DIR)/front/mdv/km_mosaic";
+input_url = "$(DATA_DIR)/$(project)/mdv/km_mosaic";
 
 ///////////// max_valid_age ///////////////////////////
 //
@@ -115,7 +115,7 @@ max_valid_age = 3600;
 // Type: string
 //
 
-output_url = "$(DATA_DIR)/front/mdv/steiner";
+output_url = "$(DATA_DIR)/$(project)/mdv/steiner";
 
 ///////////// field_name_for_convective_input_data ////
 //

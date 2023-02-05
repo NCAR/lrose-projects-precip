@@ -262,7 +262,7 @@ remove_short_range_rays = FALSE;
 // Type: string
 //
 
-output_url = "$(DATA_DIR)/fmq/kftg";
+output_url = "$(DATA_DIR)/$(project)/fmq/kftg";
 
 ///////////// data_mapper_report_interval /////////////
 //

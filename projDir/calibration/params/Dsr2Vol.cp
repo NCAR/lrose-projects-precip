@@ -935,7 +935,7 @@ output_cart_files = FALSE;
 //
 
 cart_files = {
-  { 600, 0.5, 25, 2, 0.5, TRUE, "$(DATA_DIR)/mdv/cart/moments/sband", -1}
+  { 600, 0.5, 25, 2, 0.5, TRUE, "$(DATA_DIR)/$(project)/mdv/cart/moments/sband", -1}
 };
 
 ///////////// output_ppi_files ////////////////////////
@@ -980,7 +980,7 @@ output_ppi_files = FALSE;
 //
 
 ppi_files = {
-  { 400, 1, 0, 90, FALSE, "$(DATA_DIR)/mdv/ppi/moments/sband", 0, 50, -1}
+  { 400, 1, 0, 90, FALSE, "$(DATA_DIR)/$(project)/mdv/ppi/moments/sband", 0, 50, -1}
 };
 
 ///////////// output_polar_files //////////////////////
@@ -1015,7 +1015,7 @@ output_polar_files = TRUE;
 //
 
 polar_files = {
-  { 450, 0, 90, "$(DATA_DIR)/mdv/radial/moments/cp"}
+  { 450, 0, 90, "$(DATA_DIR)/$(project)/mdv/radial/moments/cp"}
 };
 
 ///////////// trim_polar_sectors //////////////////////
@@ -1199,7 +1199,7 @@ output_rhi_files = TRUE;
 //
 
 rhi_files = {
-  { 4, FALSE, "$(DATA_DIR)/mdv/radial/moments/sband/rhi"}
+  { 4, FALSE, "$(DATA_DIR)/$(project)/mdv/radial/moments/sband/rhi"}
 };
 
 ///////////// rhi_az_hist_resolution //////////////////
@@ -1293,7 +1293,7 @@ write_master_ldata_info = FALSE;
 // Type: string
 //
 
-master_ldata_info_url = "$(DATA_DIR)/mdv/radial/moments/sband";
+master_ldata_info_url = "$(DATA_DIR)/$(project)/mdv/radial/moments/sband";
 
 //======================================================================
 //

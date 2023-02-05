@@ -80,7 +80,7 @@ input_mode = TS_FILE_INPUT;
 // Type: string
 //
 
-input_fmq_name = "$(DATA_DIR)/fmq/moments/sband/shmem_20000";
+input_fmq_name = "$(DATA_DIR)/$(project)/fmq/moments/sband/shmem_20000";
 
 ///////////// seek_to_start_of_input //////////////////
 //
@@ -385,7 +385,7 @@ max_ht_for_stats = 10.0;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/cal/vert/sband";
+output_dir = "$(DATA_DIR)/$(project)/cal/vert/sband";
 
 ///////////// nrevs_for_global_stats //////////////////
 //

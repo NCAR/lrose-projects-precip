@@ -127,7 +127,7 @@ input_fmq_name = "/tmp/fmq/ts/spoldrx/shmem_41000";
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/time_series/spoldrx/sunscan";
+input_dir = "$(DATA_DIR)/$(project)/time_series/spoldrx/sunscan";
 
 ///////////// archive_start_time //////////////////////
 //
@@ -1072,7 +1072,7 @@ read_site_temp_from_spdb = TRUE;
 // Type: string
 //
 
-site_temp_spdb_url = "$(DATA_DIR)/spol_temp/spdb";
+site_temp_spdb_url = "$(DATA_DIR)/$(project)/spol_temp/spdb";
 
 ///////////// site_temp_station_name //////////////////
 //
@@ -1216,7 +1216,7 @@ write_text_files = TRUE;
 // Type: string
 //
 
-text_output_dir = "$(DATA_DIR)/cal/suncal/spoldrx";
+text_output_dir = "$(DATA_DIR)/$(project)/cal/suncal/spoldrx";
 
 ///////////// append_to_global_results_file ///////////
 //

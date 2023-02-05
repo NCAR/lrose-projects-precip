@@ -119,7 +119,7 @@ local = { 1200, TRUE, FALSE };
 // Type: string
 //
 
-input_url = "$(DATA_DIR)/front/mdv/nssl_mosaic";
+input_url = "$(DATA_DIR)/$(project)/mdv/nssl_mosaic";
 
 ///////////// writeLdataInfo //////////////////////////
 //
@@ -253,7 +253,7 @@ thresholded_fields = {
 // Type: string
 //
 
-output_url = "$(DATA_DIR)/front/mdv/comp_mosaic";
+output_url = "$(DATA_DIR)/$(project)/mdv/comp_mosaic";
 
 ///////////// output_as_forecast //////////////////////
 //
