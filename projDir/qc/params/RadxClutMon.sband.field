@@ -42,7 +42,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "sband";
+instance = "sband.field";
 
 //======================================================================
 //
@@ -745,5 +745,5 @@ write_results_to_spdb = TRUE;
 // Type: string
 //
 
-spdb_output_url = "$(DATA_DIR)/$(project)/calibration/spol/clut_mon/spol/sur/spdb";
+spdb_output_url = "$(DATA_DIR)/$(project)/calibration/spol/clut_mon_field/spol/sur/spdb";
 
