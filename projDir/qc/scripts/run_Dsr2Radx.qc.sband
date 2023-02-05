@@ -10,27 +10,27 @@ source ~/git/lrose-projects-precip/projDir/system/params/project_info.precip_qc
 
 cd $PROJ_DIR/qc/params
 
-snuff "Dsr2Radx -params Dsr2Radx.qc.sband"
+snuff "Dsr2Radx -instance"
 
-setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20100
+#setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20100
 
-Dsr2Radx -instance 20100 -params Dsr2Radx.qc.sband -debug >& \
-    $LOG_DIR/Dsr2Radx.qc.sband.20100.log &
+#Dsr2Radx -instance 20100 -params Dsr2Radx.qc.sband -debug >& \
+#    $LOG_DIR/Dsr2Radx.qc.sband.20100.log &
 
-setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20200
+#setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20200
 
-Dsr2Radx -instance 20200 -params Dsr2Radx.qc.sband -debug >& \
-    $LOG_DIR/Dsr2Radx.qc.sband.20200.log &
+#Dsr2Radx -instance 20200 -params Dsr2Radx.qc.sband -debug >& \
+#    $LOG_DIR/Dsr2Radx.qc.sband.20200.log &
 
-setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20300
+#setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20300
 
-Dsr2Radx -instance 20300 -params Dsr2Radx.qc.sband -debug >& \
-    $LOG_DIR/Dsr2Radx.qc.sband.20300.log &
+#Dsr2Radx -instance 20300 -params Dsr2Radx.qc.sband -debug >& \
+#    $LOG_DIR/Dsr2Radx.qc.sband.20300.log &
 
-setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20400
+#setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20400
 
-Dsr2Radx -instance 20400 -params Dsr2Radx.qc.sband -debug >& \
-    $LOG_DIR/Dsr2Radx.qc.sband.20400.log &
+#Dsr2Radx -instance 20400 -params Dsr2Radx.qc.sband -debug >& \
+#    $LOG_DIR/Dsr2Radx.qc.sband.20400.log &
 
 setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20500
 
