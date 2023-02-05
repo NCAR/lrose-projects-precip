@@ -412,6 +412,7 @@ def doPlot():
 
     ax1a = fig1.add_subplot(3,1,1,xmargin=0.0)
     ax1b = fig1.add_subplot(3,1,2,xmargin=0.0)
+    ax1br = ax1b.twinx()
     ax1c = fig1.add_subplot(3,1,3,xmargin=0.0)
 
     oneDay = datetime.timedelta(1.0)
@@ -448,6 +449,9 @@ def doPlot():
     ax1b.plot(validMeanDbmvcNtimes, validMeanDbmvcVals, \
               label = 'Dbmvc Corr (dBm)', linewidth=2, color='blue')
 
+    ax1br.plot(validMeanDbzStrongNtimes, validMeanDbzStrongVals, \
+               label = 'Dbz (dBZ)', linewidth=2, color='green')
+
     #ax1b.plot(validMeanDbmhcWeakNtimes, validMeanDbmhcWeakVals, \
     #          label = 'Mean Dbmhc Weak (dBm)', linewidth=1, color='red')
     #ax1b.plot(validMeanDbmvcWeakNtimes, validMeanDbmvcWeakVals, \
@@ -466,6 +470,8 @@ def doPlot():
     #configDateAxis(ax1b, -9999, -9999, "Clut Power (dBm)", 'upper right')
     configDateAxis(ax1b, float(options.clutMin), float(options.clutMax),
                    "Clut Power (dBm)", 'upper right')
+    configDateAxis(ax1br, -9999.0, -9999.0,
+                   "DBZ", 'upper left')
     #configDateAxis(ax1c, -9999, -9999, "Xmit Power (dBm)", 'upper right')
     configDateAxis(ax1c, float(options.xmitPwrMin), float(options.xmitPwrMax),
                    "Xmit Power (dBm)", 'upper right')

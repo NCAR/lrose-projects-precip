@@ -1198,7 +1198,7 @@ discard_non_indexed_beams = FALSE;
 // Type: boolean
 //
 
-adjust_dbz_for_measured_xmit_power = FALSE;
+adjust_dbz_for_measured_xmit_power = TRUE;
 
 ///////////// compute_zdr_using_snr ///////////////////
 //
