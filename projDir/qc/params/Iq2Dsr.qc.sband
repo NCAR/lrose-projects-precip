@@ -89,7 +89,7 @@ use_multiple_threads = TRUE;
 // Type: int
 //
 
-n_compute_threads = 8;
+n_compute_threads = 12;
 
 //======================================================================
 //
@@ -2788,7 +2788,7 @@ noise_method = NOISE_RAY_BY_RAY;
 // Type: int
 //
 
-noise_ngates_for_running_median = 2500;
+noise_ngates_for_running_median = 10000;
 
 ///////////// set_equal_noise_bias_in_all_channels ////
 //
@@ -3062,7 +3062,8 @@ interest_threshold_for_signal = 0.51;
 //     CENSORING_BY_SNR_AND_NCP
 //
 
-censoring_mode = CENSORING_NONE;
+// censoring_mode = CENSORING_BY_NOISE_FLAG;
+censoring_mode = CENSORING_BY_SNR_AND_NCP;
 
 ///////////// censoring_snr_threshold /////////////////
 //
@@ -3075,7 +3076,7 @@ censoring_mode = CENSORING_NONE;
 // Type: double
 //
 
-censoring_snr_threshold = -1;
+censoring_snr_threshold = 0;
 
 ///////////// censoring_ncp_threshold /////////////////
 //
@@ -3088,7 +3089,24 @@ censoring_snr_threshold = -1;
 // Type: double
 //
 
-censoring_ncp_threshold = 0.15;
+censoring_ncp_threshold = 0.2;
+
+///////////// censoring_min_valid_run /////////////////
+//
+// Minimum valid run of non-censored gates.
+//
+// Only active if set to 2 or greater. A check is made to remove short 
+//   runs of noise. Looking along the radial, we compute the number of 
+//   contiguous gates (a 'run') with uncensored data. For the gates in 
+//   this run to be accepted the length of the run must exceed 
+//   censoring_min_valid_run. If the number of gates in a run is less than 
+//   this, then all gates in the run are censored.
+//
+//
+// Type: int
+//
+
+censoring_min_valid_run = 5;
 
 //======================================================================
 //
@@ -3983,7 +4001,6 @@ rhohv_improvement_factor_threshold = 4;
 // Type: string
 //
 
-// output_fmq_url = "/tmp/fmq/moments/sband/shmem_20000";
 output_fmq_url = "$(MOMENTS_FMQ_PATH)";
 
 ///////////// output_moments_in_radx_format ///////////
@@ -4205,7 +4222,9 @@ beam_wait_msecs = 0;
 //          SPECTRAL_NOISE
 //          SPECTRAL_SNR
 //          NOISE_FLAG
+//          NOISE_INTEREST
 //          SIGNAL_FLAG
+//          SIGNAL_INTEREST
 //          AIQ_HC
 //          NIQ_HC
 //          AIQ_VC
@@ -4571,6 +4590,26 @@ output_fields = {
     units = "dBm",
     scale = 0.01,
     bias = -320,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = NOISE_FLAG,
+    name = "NOISE_FLAG",
+    units = "",
+    scale = 1,
+    bias = -100,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = NOISE_INTEREST,
+    name = "NOISE_INTEREST",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
     write_unfiltered = TRUE,
     write_filtered = FALSE
   }

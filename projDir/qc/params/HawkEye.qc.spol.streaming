@@ -110,7 +110,8 @@ input_mode = IWRF_FMQ_INPUT;
 // Type: string
 //
 
-input_fmq_url = "/tmp/fmq/moments/sband/shmem_20000";
+// input_fmq_url = "/tmp/fmq/moments/sband/shmem_20000";
+input_fmq_url = "$(MOMENTS_FMQ_PATH)";
 
 ///////////// seek_to_start_of_fmq ////////////////////
 //
@@ -485,6 +486,24 @@ fields = {
     units = "dB",
     color_map = "noise_bias.colors",
     shortcut = "o"
+  }
+  ,
+  {
+    label = "NOISE_FLAG",
+    raw_name = "NOISE_FLAG",
+    filtered_name = "",
+    units = "",
+    color_map = "noise_flag2.colors",
+    shortcut = "r"
+  }
+  ,
+  {
+    label = "NOISE_INTEREST",
+    raw_name = "NOISE_INTEREST",
+    filtered_name = "",
+    units = "",
+    color_map = "interest.colors",
+    shortcut = "r"
   }
   ,
   {

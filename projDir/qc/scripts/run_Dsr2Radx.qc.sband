@@ -12,45 +12,45 @@ cd $PROJ_DIR/qc/params
 
 snuff "Dsr2Radx -instance"
 
-#setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20100
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20100
 
-#Dsr2Radx -instance 20100 -params Dsr2Radx.qc.sband -debug >& \
-#    $LOG_DIR/Dsr2Radx.qc.sband.20100.log &
+Dsr2Radx -instance 20100 -params Dsr2Radx.qc.sband -debug >& \
+    $LOG_DIR/Dsr2Radx.qc.sband.20100.log &
 
-#setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20200
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20200
 
-#Dsr2Radx -instance 20200 -params Dsr2Radx.qc.sband -debug >& \
-#    $LOG_DIR/Dsr2Radx.qc.sband.20200.log &
+Dsr2Radx -instance 20200 -params Dsr2Radx.qc.sband -debug >& \
+    $LOG_DIR/Dsr2Radx.qc.sband.20200.log &
 
-#setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20300
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20300
 
-#Dsr2Radx -instance 20300 -params Dsr2Radx.qc.sband -debug >& \
-#    $LOG_DIR/Dsr2Radx.qc.sband.20300.log &
+Dsr2Radx -instance 20300 -params Dsr2Radx.qc.sband -debug >& \
+    $LOG_DIR/Dsr2Radx.qc.sband.20300.log &
 
-#setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20400
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20400
 
-#Dsr2Radx -instance 20400 -params Dsr2Radx.qc.sband -debug >& \
-#    $LOG_DIR/Dsr2Radx.qc.sband.20400.log &
+Dsr2Radx -instance 20400 -params Dsr2Radx.qc.sband -debug >& \
+    $LOG_DIR/Dsr2Radx.qc.sband.20400.log &
 
-setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20500
+# setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20500
 
-Dsr2Radx -instance 20500 -params Dsr2Radx.qc.sband -debug >& \
-    $LOG_DIR/Dsr2Radx.qc.sband.20500.log &
+# Dsr2Radx -instance 20500 -params Dsr2Radx.qc.sband -debug >& \
+#     $LOG_DIR/Dsr2Radx.qc.sband.20500.log &
 
-setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20600
+# setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20600
 
-Dsr2Radx -instance 20600 -params Dsr2Radx.qc.sband -debug >& \
-    $LOG_DIR/Dsr2Radx.qc.sband.20600.log &
+# Dsr2Radx -instance 20600 -params Dsr2Radx.qc.sband -debug >& \
+#     $LOG_DIR/Dsr2Radx.qc.sband.20600.log &
 
-setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20700
+# setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20700
 
-Dsr2Radx -instance 20700 -params Dsr2Radx.qc.sband -debug >& \
-    $LOG_DIR/Dsr2Radx.qc.sband.20700.log &
+# Dsr2Radx -instance 20700 -params Dsr2Radx.qc.sband -debug >& \
+#     $LOG_DIR/Dsr2Radx.qc.sband.20700.log &
 
-setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20800
+# setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20800
 
-Dsr2Radx -instance 20800 -params Dsr2Radx.qc.sband -debug >& \
-    $LOG_DIR/Dsr2Radx.qc.sband.20800.log &
+# Dsr2Radx -instance 20800 -params Dsr2Radx.qc.sband -debug >& \
+#     $LOG_DIR/Dsr2Radx.qc.sband.20800.log &
 
 
 
