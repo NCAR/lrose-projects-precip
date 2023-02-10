@@ -320,7 +320,7 @@ file_rename = RENAME_IN_PLACE;
 // Type: boolean
 //
 
-test_only = TRUE;
+test_only = FALSE;
 
 ///////////// copy_dir ////////////////////////////////
 //
