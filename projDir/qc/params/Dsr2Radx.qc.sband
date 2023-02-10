@@ -76,7 +76,6 @@ procmap_register_interval = 60;
 // Type: string
 //
 
-// input_fmq_url = "/tmp/fmq/moments/sband/shmem_20000";
 input_fmq_url = "$(MOMENTS_FMQ_PATH)";
 
 ///////////// seek_to_end_of_input ////////////////////
@@ -353,7 +352,7 @@ override_primary_axis = FALSE;
 
 ///////////// primary_axis ////////////////////////////
 //
-// Platform type.
+// Primary axis.
 //
 // See override_primary_axis.
 //
@@ -1583,8 +1582,8 @@ debug_auto_detection = FALSE;
 //      string output_units;
 //      output_encoding_t output_encoding;
 //        Options:
-//          OUTPUT_SHORT
 //          OUTPUT_FLOAT
+//          OUTPUT_SHORT
 //          OUTPUT_BYTE
 //   }
 //
@@ -1998,7 +1997,7 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc2/moments/sband",
+    output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc1/moments/sband",
     format = OUTPUT_FORMAT_CFRADIAL
   }
 };
@@ -2311,6 +2310,19 @@ include_subsecs_in_file_name = TRUE;
 //
 
 include_scan_type_in_file_name = TRUE;
+
+///////////// include_scan_name_in_file_name //////////
+//
+// Option to include the scan name in the file name.
+//
+// Default is false. Only applies to CfRadial files. If true, the scan 
+//   name will be included in the file name.
+//
+//
+// Type: boolean
+//
+
+include_scan_name_in_file_name = TRUE;
 
 ///////////// include_vol_num_in_file_name ////////////
 //
