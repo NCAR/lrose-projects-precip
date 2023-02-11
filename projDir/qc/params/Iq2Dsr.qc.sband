@@ -1186,20 +1186,6 @@ control_beam_indexing_from_time_series = FALSE;
 
 discard_non_indexed_beams = FALSE;
 
-///////////// adjust_dbz_for_measured_xmit_power //////
-//
-// Option to adjust DBZ based on measured transmitter power.
-//
-// If true, and the measured transmitter power is available, the 
-//   difference between the measured power and calibration power will be 
-//   used to adjust the computed DBZ fields.
-//
-//
-// Type: boolean
-//
-
-adjust_dbz_for_measured_xmit_power = TRUE;
-
 ///////////// compute_zdr_using_snr ///////////////////
 //
 // Option to compute ZDR using SNR instead of power.
@@ -1215,6 +1201,20 @@ adjust_dbz_for_measured_xmit_power = TRUE;
 
 compute_zdr_using_snr = FALSE;
 
+///////////// adjust_dbz_for_measured_xmit_power //////
+//
+// Option to adjust DBZ based on measured transmitter power.
+//
+// If true, and the measured transmitter power is available, the 
+//   difference between the measured power and calibration power will be 
+//   used to adjust the computed DBZ fields.
+//
+//
+// Type: boolean
+//
+
+adjust_dbz_for_measured_xmit_power = TRUE;
+
 ///////////// adjust_zdr_for_measured_xmit_power //////
 //
 // Option to adjust ZDR based on measured transmitter power.
@@ -1228,6 +1228,32 @@ compute_zdr_using_snr = FALSE;
 //
 
 adjust_zdr_for_measured_xmit_power = FALSE;
+
+///////////// min_measured_xmit_power_dbm /////////////
+//
+// Min measured xmit power - dBm.
+//
+// If the measured power is below this limit, the previous measured 
+//   value will be used instead.
+//
+//
+// Type: double
+//
+
+min_measured_xmit_power_dbm = 82.0;
+
+///////////// max_measured_xmit_power_dbm /////////////
+//
+// Max measured xmit power - dBm.
+//
+// If the measured power is above this limit, the previous measured 
+//   value will be used instead.
+//
+//
+// Type: double
+//
+
+max_measured_xmit_power_dbm = 86.0;
 
 ///////////// check_for_missing_pulses ////////////////
 //
@@ -3062,7 +3088,6 @@ interest_threshold_for_signal = 0.51;
 //     CENSORING_BY_SNR_AND_NCP
 //
 
-// censoring_mode = CENSORING_BY_NOISE_FLAG;
 censoring_mode = CENSORING_BY_SNR_AND_NCP;
 
 ///////////// censoring_snr_threshold /////////////////
