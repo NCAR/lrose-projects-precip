@@ -155,36 +155,6 @@ end_time = "2019 12 01 00 00 00";
 
 //======================================================================
 //
-// SET MAX RANGE - OPTIONAL.
-//
-// If set, all rays will be truncated at this range.
-//
-//======================================================================
- 
-///////////// set_max_range ///////////////////////////
-//
-// Option to set the max range for any ray.
-//
-//
-// Type: boolean
-//
-
-set_max_range = FALSE;
-
-///////////// max_range_km ////////////////////////////
-//
-// Specified maximim range - km.
-//
-// Gates beyond this range are removed.
-//
-//
-// Type: double
-//
-
-max_range_km = 237.5;
-
-//======================================================================
-//
 // INPUT FIELD INFORMATION.
 //
 // Names of fields in the input file. The following fields are required: 
@@ -465,7 +435,13 @@ RATE_use_attenuation_corrected_fields = FALSE;
 // 	DBZ_ATTEN_CORRECTION: DBZ attenuation correction (dB)
 // 	ZDR_ATTEN_CORRECTION: ZDR attenuation correction (dB)
 // 	DBZ_ATTEN_CORRECTED: DBZ corrected for attenuation (dBZ)
-// 	ZDR_ATTEN_CORRECTED: ZDR corrected for attenuation (dB).
+// 	ZDR_ATTEN_CORRECTED: ZDR corrected for attenuation (dB)
+//
+// do_write: allows you to turn off writing while leaving the field in 
+//   the list
+//
+// censor_non_weather: use PID field to censor non-weather PID types - 
+//   see non_weather_pid_types[] below.
 //
 //
 // Type: struct
@@ -495,6 +471,7 @@ RATE_use_attenuation_corrected_fields = FALSE;
 //      string standard_name;
 //      string units;
 //      boolean do_write;
+//      boolean censor_non_weather;
 //   }
 //
 // 1D array - variable length.
@@ -507,7 +484,8 @@ output_fields = {
     long_name = "precip_rate_from_z",
     standard_name = "precip_rate_from_z",
     units = "mm/hr",
-    do_write = TRUE
+    do_write = TRUE,
+    censor_non_weather = FALSE
   }
   ,
   {
@@ -516,7 +494,8 @@ output_fields = {
     long_name = "precip_rate_hybrid_of_zh_zzdr_kdp_and_kdpzdr",
     standard_name = "precip_rate_hybrid_of_zh_zzdr_kdp_and_kdpzdr",
     units = "mm/hr",
-    do_write = TRUE
+    do_write = TRUE,
+    censor_non_weather = FALSE
   }
   ,
   {
@@ -525,7 +504,8 @@ output_fields = {
     long_name = "particle_id",
     standard_name = "hydrometeor_type",
     units = "",
-    do_write = TRUE
+    do_write = TRUE,
+    censor_non_weather = FALSE
   }
   ,
   {
@@ -534,7 +514,8 @@ output_fields = {
     long_name = "temperature_for_computing_pid",
     standard_name = "temperature",
     units = "C",
-    do_write = FALSE
+    do_write = FALSE,
+    censor_non_weather = FALSE
   }
 };
 
@@ -577,8 +558,10 @@ copy_selected_input_fields_to_output = TRUE;
 //
 // These fields are copied through unchanged to the output file.
 //
-// You can change the name of the field on output. Optionally you can 
-//   censor the non-weather echoes, based on the PID.
+// You can change the name of the field on output.
+//
+// censor_non_weather: use PID field to censor non-weather PID types - 
+//   see non_weather_pid_types[] below.
 //
 //
 // Type: struct
@@ -629,6 +612,18 @@ copy_fields = {
   }
   ,
   {
+    input_name = "NCP",
+    output_name = "NCP",
+    censor_non_weather = FALSE
+  }
+  ,
+  {
+    input_name = "NCP_F",
+    output_name = "NCP_F",
+    censor_non_weather = FALSE
+  }
+  ,
+  {
     input_name = "ZDR_F",
     output_name = "ZDR_F",
     censor_non_weather = FALSE
@@ -659,38 +654,26 @@ copy_fields = {
   }
   ,
   {
+    input_name = "SNRHC",
+    output_name = "SNRHC",
+    censor_non_weather = FALSE
+  }
+  ,
+  {
     input_name = "SNRHC_F",
     output_name = "SNRHC_F",
     censor_non_weather = FALSE
   }
   ,
   {
+    input_name = "SNRVC",
+    output_name = "SNRVC",
+    censor_non_weather = FALSE
+  }
+  ,
+  {
     input_name = "SNRVC_F",
     output_name = "SNRVC_F",
-    censor_non_weather = FALSE
-  }
-  ,
-  {
-    input_name = "NCP_F",
-    output_name = "NCP_F",
-    censor_non_weather = FALSE
-  }
-  ,
-  {
-    input_name = "CLUT",
-    output_name = "CLUT",
-    censor_non_weather = FALSE
-  }
-  ,
-  {
-    input_name = "CMD",
-    output_name = "CMD",
-    censor_non_weather = FALSE
-  }
-  ,
-  {
-    input_name = "CMD_FLAG",
-    output_name = "CMD_FLAG",
     censor_non_weather = FALSE
   }
   ,
@@ -719,16 +702,62 @@ copy_fields = {
   }
   ,
   {
-    input_name = "AIQ",
-    output_name = "AIQ",
+    input_name = "CMD_FLAG",
+    output_name = "CMD_FLAG",
     censor_non_weather = FALSE
   }
-  ,
-  {
-    input_name = "NIQ",
-    output_name = "NIQ",
-    censor_non_weather = FALSE
-  }
+};
+
+//======================================================================
+//
+// SPECIFY NON-WEATHER TYPES FROM PID.
+//
+// This section allows you to specify the PID particle types to be used 
+//   to censor non-weather echoes.
+//
+//======================================================================
+ 
+///////////// non_weather_pid_types ///////////////////
+//
+// List of non-weather types to be censored.
+//
+// This list applies to the fields for which censor_non_weather is set 
+//   to true. You can consider adding CLOUD to the list if, for example, 
+//   the CLOUD type finds Bragg echo instead of cloud.
+//
+//
+// Type: enum
+// Options:
+//     CLOUD
+//     DRIZZLE
+//     LIGHT_RAIN
+//     MODERATE_RAIN
+//     HEAVY_RAIN
+//     HAIL
+//     RAIN_HAIL_MIXTURE
+//     GRAUPEL_SMALL_HAIL
+//     GRAUPEL_RAIN
+//     DRY_SNOW
+//     WET_SNOW
+//     ICE_CRYSTALS
+//     IRREG_ICE_CRYSTALS
+//     SUPERCOOLED_DROPS
+//     FLYING_INSECTS
+//     SECOND_TRIP
+//     GROUND_CLUTTER
+//     SATURATED_SNR
+//     CHAFF
+//     MISC
+// 1D array - variable length.
+//
+
+non_weather_pid_types = {
+ FLYING_INSECTS,
+ SECOND_TRIP,
+ GROUND_CLUTTER,
+ SATURATED_SNR,
+ CHAFF,
+ MISC
 };
 
 //======================================================================
@@ -778,7 +807,7 @@ PID_write_debug_fields = FALSE;
 // Type: string
 //
 
-output_dir = "/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/sband/sur";
+output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/rate/sband/sur";
 
 ///////////// output_filename_mode ////////////////////
 //
@@ -797,6 +826,178 @@ output_dir = "/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rat
 //
 
 output_filename_mode = START_AND_END_TIMES;
+
+///////////// output_format ///////////////////////////
+//
+// Format for the output files.
+//
+//
+// Type: enum
+// Options:
+//     OUTPUT_FORMAT_CFRADIAL
+//     OUTPUT_FORMAT_DORADE
+//     OUTPUT_FORMAT_UF
+//
+
+output_format = OUTPUT_FORMAT_CFRADIAL;
+
+///////////// output_filename_prefix //////////////////
+//
+// Optional prefix for output filename.
+//
+// If empty, the standard prefix will be used. Only applies to CfRadial 
+//   files. Standard prefix is 'cfrad.'.
+//
+//
+// Type: string
+//
+
+output_filename_prefix = "";
+
+///////////// output_filename_suffix //////////////////
+//
+// Optional suffix for output filename.
+//
+// If not empty, the suffix will be inserted immediately prior to the 
+//   extension.
+//
+//
+// Type: string
+//
+
+output_filename_suffix = "";
+
+///////////// include_instrument_name_in_file_name ////
+//
+// Option to include the instrument name in the file name.
+//
+// Default is true. Only applies to CfRadial files. If true, the 
+//   instrument name will be included just before the volume number in the 
+//   output file name.
+//
+//
+// Type: boolean
+//
+
+include_instrument_name_in_file_name = TRUE;
+
+///////////// include_site_name_in_file_name //////////
+//
+// Option to include the site name in the file name.
+//
+// Only applies to CfRadial files. If true, the site name will be 
+//   included just before the volume number in the output file name.
+//
+//
+// Type: boolean
+//
+
+include_site_name_in_file_name = FALSE;
+
+///////////// include_subsecs_in_file_name ////////////
+//
+// Option to include sub-seconds in date-time part of file name.
+//
+// Default is true. Only applies to CfRadial files. If true, the 
+//   millisecs of the start and end time will be included in the file 
+//   name.
+//
+//
+// Type: boolean
+//
+
+include_subsecs_in_file_name = TRUE;
+
+///////////// include_scan_type_in_file_name //////////
+//
+// Option to include the scan type in the file name.
+//
+// Default is true. Only applies to CfRadial files. If true, the scan 
+//   type (SUR, SEC, RHI, VER etc) will be included in the file name.
+//
+//
+// Type: boolean
+//
+
+include_scan_type_in_file_name = TRUE;
+
+///////////// include_scan_name_in_file_name //////////
+//
+// Option to include the scan name in the file name.
+//
+// Default is false. Only applies to CfRadial files. If true, the scan 
+//   name will be included in the file name.
+//
+//
+// Type: boolean
+//
+
+include_scan_name_in_file_name = TRUE;
+
+///////////// include_scan_id_in_file_name ////////////
+//
+// Option to include the scan Id in the file name.
+//
+// Default is false. Only applies to CfRadial files. If true, the scan 
+//   Id will be included in the file name.
+//
+//
+// Type: boolean
+//
+
+include_scan_id_in_file_name = FALSE;
+
+///////////// include_range_resolution_in_file_name ///
+//
+// Option to include the range resolution in the file name.
+//
+// Default is false. Only applies to CfRadial files. If true, the range 
+//   resolution (50m) will be included in the file name.
+//
+//
+// Type: boolean
+//
+
+include_range_resolution_in_file_name = FALSE;
+
+///////////// include_vol_num_in_file_name ////////////
+//
+// Option to include the volume number in the file name.
+//
+// Default is false. Only applies to CfRadial files. If true, the volume 
+//   number is included in the file name, preceded by '_v'.
+//
+//
+// Type: boolean
+//
+
+include_vol_num_in_file_name = FALSE;
+
+///////////// use_hyphen_in_file_name_datetime_part ///
+//
+// Option to use a hyphen between date and time in filename.
+//
+// Default is false. Only applies to CfRadial files. Normally an 
+//   underscore is used.
+//
+//
+// Type: boolean
+//
+
+use_hyphen_in_file_name_datetime_part = FALSE;
+
+///////////// output_filename /////////////////////////
+//
+// Name of output file.
+//
+// Applies only if output_filename_mode is SPECIFY_FILE_NAME. File of 
+//   this name will be written to output_dir.
+//
+//
+// Type: string
+//
+
+output_filename = "cfradial.test.nc";
 
 ///////////// append_day_dir_to_output_dir ////////////
 //
@@ -822,19 +1023,35 @@ append_day_dir_to_output_dir = TRUE;
 
 append_year_dir_to_output_dir = FALSE;
 
-///////////// output_format ///////////////////////////
+//======================================================================
 //
-// Format for the output files.
+// SET MAX RANGE - OPTIONAL.
+//
+// If set, all rays will be truncated at this range.
+//
+//======================================================================
+ 
+///////////// set_max_range ///////////////////////////
+//
+// Option to set the max range for any ray.
 //
 //
-// Type: enum
-// Options:
-//     OUTPUT_FORMAT_CFRADIAL
-//     OUTPUT_FORMAT_DORADE
-//     OUTPUT_FORMAT_UF
+// Type: boolean
 //
 
-output_format = OUTPUT_FORMAT_CFRADIAL;
+set_max_range = FALSE;
+
+///////////// max_range_km ////////////////////////////
+//
+// Specified maximim range - km.
+//
+// Gates beyond this range are removed.
+//
+//
+// Type: double
+//
+
+max_range_km = 237.5;
 
 //======================================================================
 //
@@ -888,7 +1105,7 @@ pseudo_earth_radius_ratio = 1.33333;
 // Type: string
 //
 
-instance = "spoldrxQC.sur";
+instance = "RadxRate.qc.sur";
 
 ///////////// procmap_register_interval ///////////////
 //
