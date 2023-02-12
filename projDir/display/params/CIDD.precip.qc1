@@ -156,38 +156,106 @@ SPOL_NIQ        SPOL_NIQ        mdvp:://front.eol.ucar.edu:8080:precip/grids/spo
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
-# SPOL MOMENTS - NO TEST PULSE
-
-SPOL_DBZ_F   SPOL_DBZ_F   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-SPOL_DBZ_F_MAX SPOL_DBZ_F_MAX mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial,comp 1 0
-SPOL_DBZ     SPOL_DBZ     mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-SPOL_DBZ_MAX SPOL_DBZ_MAX mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial,comp 1 0
-SPOL_VEL_F   SPOL_VEL_F   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-SPOL_VEL     SPOL_VEL     mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
-SPOL_WIDTH_F SPOL_WIDTH_F mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-SPOL_WIDTH   SPOL_WIDTH   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
-
-SPOL_ZDR_F     SPOL_ZDR_F     mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-SPOL_KDP_F    SPOL_KDP_F    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-SPOL_PHIDP_F SPOL_PHIDP_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-SPOL_RHOHV_F SPOL_RHOHV_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-SPOL_RHOHV_NNC_F SPOL_RHOHV_NNC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&RHOHV_NNC_F rhohv.colors _   -5 80 5 radial 1 0
-SPOL_NCP_F    SPOL_NCP_F    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&NCP_F  ncp.colors  dB   -5   80  5  radial   1 0
-SPOL_NCP      SPOL_NCP      mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
-SPOL_SNRHC_F   SPOL_SNRHC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
-SPOL_SNRHC     SPOL_SNRHC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
-SPOL_SNRVC_F   SPOL_SNRVC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
-SPOL_SNRVC     SPOL_SNRVC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
-SPOL_DBMHC_F  SPOL_DBMHC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
-SPOL_DBMHC    SPOL_DBMHC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
-SPOL_DBMVC_F  SPOL_DBMVC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
-SPOL_DBMVC    SPOL_DBMVC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
+# SPOL MOMENTS - NO TEST PULSE
 
-SPOL_CMD_FLAG SPOL_CMD_FLAG mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-SPOL_PID         SPOL_PID          mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/field/rate/spoldrx/no_test_pulse/sur?use_http=true&PID  pid.colors - -5 80 5 radial 1 0
-SPOL_RATE_HYBRID SPOL_RATE_HYBRID  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/field/rate/spoldrx/no_test_pulse/sur?use_http=true&RATE_HYBRID  precip.colors mm/hr -5 80 5 radial 1 0
+SPOL2_DBZ_F   SPOL2_DBZ_F   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+SPOL2_DBZ_F_MAX SPOL2_DBZ_F_MAX mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial,comp 1 0
+SPOL2_DBZ     SPOL2_DBZ     mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+SPOL2_DBZ_MAX SPOL2_DBZ_MAX mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial,comp 1 0
+SPOL2_VEL_F   SPOL2_VEL_F   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+SPOL2_VEL     SPOL2_VEL     mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
+SPOL2_WIDTH_F SPOL2_WIDTH_F mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+SPOL2_WIDTH   SPOL2_WIDTH   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+
+SPOL2_ZDR_F     SPOL2_ZDR_F     mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+SPOL2_KDP_F    SPOL2_KDP_F    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+SPOL2_PHIDP_F SPOL2_PHIDP_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+SPOL2_RHOHV_F SPOL2_RHOHV_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+SPOL2_RHOHV_NNC_F SPOL2_RHOHV_NNC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&RHOHV_NNC_F rhohv.colors _   -5 80 5 radial 1 0
+SPOL2_NCP_F    SPOL2_NCP_F    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&NCP_F  ncp.colors  dB   -5   80  5  radial   1 0
+SPOL2_NCP      SPOL2_NCP      mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+
+SPOL2_SNRHC_F   SPOL2_SNRHC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
+SPOL2_SNRHC     SPOL2_SNRHC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
+SPOL2_SNRVC_F   SPOL2_SNRVC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
+SPOL2_SNRVC     SPOL2_SNRVC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
+SPOL2_DBMHC_F  SPOL2_DBMHC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+SPOL2_DBMHC    SPOL2_DBMHC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
+SPOL2_DBMVC_F  SPOL2_DBMVC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+SPOL2_DBMVC    SPOL2_DBMVC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
+
+SPOL2_CMD_FLAG SPOL2_CMD_FLAG mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/moments/sband/no_test_pulse/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+SPOL2_PID         SPOL2_PID          mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/field/rate/spoldrx/no_test_pulse/sur?use_http=true&PID  pid.colors - -5 80 5 radial 1 0
+SPOL2_RATE_HYBRID SPOL2_RATE_HYBRID  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/field/rate/spoldrx/no_test_pulse/sur?use_http=true&RATE_HYBRID  precip.colors mm/hr -5 80 5 radial 1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+
+# SPOL MOMENTS - RATE
+
+SPOLR_DBZ_F   SPOLR_DBZ_F   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+SPOLR_DBZ_F_MAX SPOLR_DBZ_F_MAX mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial,comp 1 0
+SPOLR_DBZ     SPOLR_DBZ     mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+SPOLR_DBZ_MAX SPOLR_DBZ_MAX mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial,comp 1 0
+SPOLR_VEL_F   SPOLR_VEL_F   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+SPOLR_VEL     SPOLR_VEL     mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
+SPOLR_WIDTH_F SPOLR_WIDTH_F mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+SPOLR_WIDTH   SPOLR_WIDTH   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+
+SPOLR_ZDR_F     SPOLR_ZDR_F     mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+SPOLR_KDP_F    SPOLR_KDP_F    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&KDP_F  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+SPOLR_PHIDP_F SPOLR_PHIDP_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+SPOLR_RHOHV_F SPOLR_RHOHV_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+SPOLR_RHOHV_NNC_F SPOLR_RHOHV_NNC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&RHOHV_NNC_F rhohv.colors _   -5 80 5 radial 1 0
+SPOLR_NCP_F    SPOLR_NCP_F    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&NCP_F  ncp.colors  dB   -5   80  5  radial   1 0
+SPOLR_NCP      SPOLR_NCP      mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+
+SPOLR_SNRHC_F   SPOLR_SNRHC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&SNRHC_F  snr.colors   dB     -5 80 5 radial 1 0
+SPOLR_SNRHC     SPOLR_SNRHC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&SNRHC    snr.colors   dB     -5 80 5 radial 1 0
+SPOLR_SNRVC_F   SPOLR_SNRVC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&SNRVC_F  snr.colors   dB     -5 80 5 radial 1 0
+SPOLR_SNRVC     SPOLR_SNRVC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&SNRVC    snr.colors   dB     -5 80 5 radial 1 0
+SPOLR_DBMHC_F  SPOLR_DBMHC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&DBMHC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+SPOLR_DBMHC    SPOLR_DBMHC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&DBMHC    dbmlow.colors dBm -5 80 5 radial 1 0
+SPOLR_DBMVC_F  SPOLR_DBMVC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
+SPOLR_DBMVC    SPOLR_DBMVC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
+
+SPOLR_CMD_FLAG SPOLR_CMD_FLAG mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+SPOLR_PID         SPOLR_PID   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&PID  pid.colors - -5 80 5 radial 1 0
+SPOLR_RATE_HYBRID SPOLR_RATE_HYBRID  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&RATE_HYBRID  precip.colors mm/hr -5 80 5 radial 1 0
+SPOLR_TEMP      SPOLR_TEMP   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&TEMP_FOR_PID  temp.colors - -5 80 5 radial 1 0
+SPOLR_KDP2    SPOLR_KDP2    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&KDP2  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+SPOLR_KDP_SC    SPOLR_KDP_SC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&KDP_SC  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0

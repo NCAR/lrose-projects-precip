@@ -283,7 +283,7 @@ LDR_field_name = "LDRH_F";
 // Type: boolean
 //
 
-KDP_available = FALSE;
+KDP_available = TRUE;
 
 ///////////// KDP_field_name //////////////////////////
 //
@@ -325,7 +325,7 @@ KDP_params_file_path = "$(PROJ_DIR)/alg/params/kdp_params.spol";
 // Type: string
 //
 
-PID_params_file_path = "$(PROJ_DIR)/alg/params/pid_params.spol";
+PID_params_file_path = "$(PROJ_DIR)/alg/params/pid_params.nexrad";
 
 ///////////// PID_use_KDP_self_consistency ////////////
 //
@@ -514,9 +514,29 @@ output_fields = {
     long_name = "temperature_for_computing_pid",
     standard_name = "temperature",
     units = "C",
-    do_write = FALSE,
+    do_write = TRUE,
     censor_non_weather = FALSE
   }
+  // ,
+  // {
+  //   id = KDP,
+  //   name = "KDP2",
+  //   long_name = "specific_differential_phase",
+  //   standard_name = "specific_differential_phase",
+  //   units = "deg/km",
+  //   do_write = TRUE,
+  //   censor_non_weather = FALSE
+  // }
+  // ,
+  // {
+  //   id = KDP_SC,
+  //   name = "KDP_SC",
+  //   long_name = "specific_differential_phase_self_consistency",
+  //   standard_name = "specific_differential_phase",
+  //   units = "deg/km",
+  //   do_write = TRUE,
+  //   censor_non_weather = FALSE
+  // }
 };
 
 ///////////// output_encoding /////////////////////////

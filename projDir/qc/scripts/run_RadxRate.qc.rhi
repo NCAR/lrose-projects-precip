@@ -4,12 +4,12 @@
 cd $PROJ_DIR/qc/params
 setenv version qc1
 
-RadxRate -params RadxRate.censor_rings.rhi -debug -start "2022 05 25 00 00 00" -end "2022 06 01 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220525.log &
-RadxRate -params RadxRate.censor_rings.rhi -debug -start "2022 06 01 00 00 00" -end "2022 06 11 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220601.log &
-RadxRate -params RadxRate.censor_rings.rhi -debug -start "2022 06 11 00 00 00" -end "2022 06 21 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220611.log &
-RadxRate -params RadxRate.censor_rings.rhi -debug -start "2022 06 21 00 00 00" -end "2022 07 01 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220621.log &
-RadxRate -params RadxRate.censor_rings.rhi -debug -start "2022 07 01 00 00 00" -end "2022 07 11 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220701.log &
-RadxRate -params RadxRate.censor_rings.rhi -debug -start "2022 07 11 00 00 00" -end "2022 07 21 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220711.log &
-RadxRate -params RadxRate.censor_rings.rhi -debug -start "2022 07 21 00 00 00" -end "2022 08 01 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220721.log &
-RadxRate -params RadxRate.censor_rings.rhi -debug -start "2022 08 01 00 00 00" -end "2022 08 12 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220801.log &
+RadxRate -params RadxRate.qc.rhi -debug -start "2022 05 25 00 00 00" -end "2022 06 01 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220525.log &
+RadxRate -params RadxRate.qc.rhi -debug -start "2022 06 01 00 00 00" -end "2022 06 11 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220601.log &
+RadxRate -params RadxRate.qc.rhi -debug -start "2022 06 11 00 00 00" -end "2022 06 21 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220611.log &
+RadxRate -params RadxRate.qc.rhi -debug -start "2022 06 21 00 00 00" -end "2022 07 01 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220621.log &
+RadxRate -params RadxRate.qc.rhi -debug -start "2022 07 01 00 00 00" -end "2022 07 11 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220701.log &
+RadxRate -params RadxRate.qc.rhi -debug -start "2022 07 11 00 00 00" -end "2022 07 21 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220711.log &
+RadxRate -params RadxRate.qc.rhi -debug -start "2022 07 21 00 00 00" -end "2022 08 01 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220721.log &
+RadxRate -params RadxRate.qc.rhi -debug -start "2022 08 01 00 00 00" -end "2022 08 12 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220801.log &
 
