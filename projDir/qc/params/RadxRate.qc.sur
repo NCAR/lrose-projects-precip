@@ -283,7 +283,7 @@ LDR_field_name = "LDRH_F";
 // Type: boolean
 //
 
-KDP_available = TRUE;
+KDP_available = FALSE;
 
 ///////////// KDP_field_name //////////////////////////
 //
