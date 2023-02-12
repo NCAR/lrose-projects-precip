@@ -102,7 +102,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_dir = "/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/moments/sband/sur";
+input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/moments/sband/no_test_pulse/sur";
 
 ///////////// input_file_search_ext ///////////////////
 //
@@ -169,7 +169,7 @@ end_time = "2019 12 01 00 00 00";
 // Type: boolean
 //
 
-set_max_range = TRUE;
+set_max_range = FALSE;
 
 ///////////// max_range_km ////////////////////////////
 //
@@ -355,7 +355,7 @@ KDP_params_file_path = "$(PROJ_DIR)/alg/params/kdp_params.spol";
 // Type: string
 //
 
-PID_params_file_path = "$(PROJ_DIR)/alg/params/pid_params.nexrad";
+PID_params_file_path = "$(PROJ_DIR)/alg/params/pid_params.spol";
 
 ///////////// PID_use_KDP_self_consistency ////////////
 //
@@ -617,6 +617,12 @@ copy_fields = {
   }
   ,
   {
+    input_name = "WIDTH",
+    output_name = "WIDTH",
+    censor_non_weather = FALSE
+  }
+  ,
+  {
     input_name = "WIDTH_F",
     output_name = "WIDTH_F",
     censor_non_weather = FALSE
@@ -643,6 +649,12 @@ copy_fields = {
   {
     input_name = "RHOHV_F",
     output_name = "RHOHV_F",
+    censor_non_weather = FALSE
+  }
+  ,
+  {
+    input_name = "RHOHV_NNC_F",
+    output_name = "RHOHV_NNC_F",
     censor_non_weather = FALSE
   }
   ,

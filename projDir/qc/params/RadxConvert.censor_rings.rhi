@@ -42,7 +42,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "censor_rings.sur";
+instance = "censor_rings.rhi";
 
 //======================================================================
 //
@@ -60,7 +60,7 @@ instance = "censor_rings.sur";
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/moments/sband/rhi";
+input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/moments/sband/with_test_pulse/rhi";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -2104,7 +2104,7 @@ censoring_min_valid_run = 1;
 // Type: boolean
 //
 
-specify_fields_to_be_censored = FALSE;
+specify_fields_to_be_censored = TRUE;
 
 ///////////// fields_to_be_censored ///////////////////
 //
@@ -2118,7 +2118,28 @@ specify_fields_to_be_censored = FALSE;
 //
 
 fields_to_be_censored = {
- "LDR"
+    "DBZ",
+    "DBZ_F",
+    "VEL",
+    "VEL_F",
+    "WIDTH",
+    "WIDTH_F",
+    "ZDR_F",
+    "RHOHV_F",
+    "RHOHV_NNC_F",
+    "PHIDP_F",
+    "KDP_F",
+    "SNRHC",
+    "SNRHC_F",
+    "SNRVC",
+    "SNRVC_F",
+    "SNRVC",
+    "DBMHC",
+    "DBMHC_F",
+    "DBMVC",
+    "DBMVC_F",
+    "NCP",
+    "NCP_F"
 };
 
 ///////////// censor_test_pulse_ring //////////////////
@@ -2437,8 +2458,7 @@ compression_level = 4;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/moments/sband/rhi_no_test_pulse";
-
+output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/moments/sband/no_test_pulse/rhi";
 
 ///////////// output_filename_mode ////////////////////
 //
