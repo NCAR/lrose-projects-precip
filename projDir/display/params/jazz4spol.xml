@@ -662,9 +662,9 @@ Groups
 
 <!--Altitude units="ft" bottom="0" top="40000" interval="1000" default="6000"/-->
 <!--Altitude units="FL" bottom="0" top="300" interval="10" default="100"/-->
-<Altitude units="km" bottom="0" top="20" interval="0.5" default="1" />
+<!-- <Altitude units="km" bottom="0" top="20" interval="0.5" default="1" /-->
 <!--Altitude units="mb" bottom="1000" top="0" interval="50" default="700" /-->
-<!-- <Altitude dataDrivenProperties="true" /> -->
+<Altitude dataDrivenProperties="true" />
 
 <!--
 ####################################################################################################################################
