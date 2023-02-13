@@ -56,3 +56,6 @@ setenv BRINGI_DBZ_THRESHOLD 40
 setenv BRINGI_KDP_THRESHOLD 0.15
 setenv BRINGI_ZDR_THRESHOLD 0.1
 
+# QC version
+
+setenv version qc1

@@ -241,25 +241,12 @@ SPOLR_DBMHC    SPOLR_DBMHC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/
 SPOLR_DBMVC_F  SPOLR_DBMVC_F  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&DBMVC_F  dbmlow.colors dBm -5 80 5 radial 1 0
 SPOLR_DBMVC    SPOLR_DBMVC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&DBMVC    dbmlow.colors dBm -5 80 5 radial 1 0
 
-SPOLR_CMD_FLAG SPOLR_CMD_FLAG mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
 SPOLR_PID         SPOLR_PID   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&PID  pid.colors - -5 80 5 radial 1 0
 SPOLR_RATE_HYBRID SPOLR_RATE_HYBRID  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&RATE_HYBRID  precip.colors mm/hr -5 80 5 radial 1 0
 SPOLR_TEMP      SPOLR_TEMP   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&TEMP_FOR_PID  temp.colors - -5 80 5 radial 1 0
+SPOLR_CMD_FLAG SPOLR_CMD_FLAG mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
 SPOLR_KDP2    SPOLR_KDP2    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&KDP2  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-SPOLR_KDP_SC    SPOLR_KDP_SC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&KDP_SC  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
-
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
-========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+SPOLR_KDP_SC    SPOLR_KDP_SC    mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/sur?use_http=true&KDP_SC  kdp_sband.colors   deg/km -5 80 5 radial 1 0  ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
 ############################
