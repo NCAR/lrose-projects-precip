@@ -33,7 +33,7 @@ def main():
     parser = OptionParser(usage)
     projDir = os.environ['PROJ_DIR']
     parser.add_option('--debug',
-                      dest='debug', default=False,
+                      dest='debug', default=True,
                       action="store_true",
                       help='Set debugging on')
     parser.add_option('--verbose',
