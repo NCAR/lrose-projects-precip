@@ -108,6 +108,14 @@ def main():
                       dest='xmitPwrMax',
                       default=90.0,
                       help='Max xmit power')
+    parser.add_option('--dbzMin',
+                      dest='dbzMin',
+                      default=47.0,
+                      help='Min clutter dbz')
+    parser.add_option('--dbzMax',
+                      dest='dbzMax',
+                      default=55.0,
+                      help='Max clutter dbz')
 
     (options, args) = parser.parse_args()
     
@@ -292,6 +300,7 @@ def doPlot():
     vtimes = np.array(vertTimes).astype(datetime.datetime)
     
     meanDbzStrong = np.array(clutData["meanDbzStrong"]).astype(np.double)
+    meanDbzStrong[meanDbzStrong > 54] = np.nan;
     meanDbzStrongAv = movingAverage(meanDbzStrong, lenMeanFilter)
     validMeanDbzStrong = np.isfinite(meanDbzStrongAv)
     validMeanDbzStrongNtimes = ntimes[validMeanDbzStrong]
@@ -464,7 +473,7 @@ def doPlot():
     #configDateAxis(ax1b, -9999, -9999, "Clut Power (dBm)", 'upper right')
     configDateAxis(ax1b, float(options.clutMin), float(options.clutMax),
                    "Clut Power (dBm)", 'upper right')
-    configDateAxis(ax1br, -9999.0, -9999.0,
+    configDateAxis(ax1br, float(options.dbzMin), float(options.dbzMax),
                    "DBZ", 'upper left')
     #configDateAxis(ax1c, -9999, -9999, "Xmit Power (dBm)", 'upper right')
     configDateAxis(ax1c, float(options.xmitPwrMin), float(options.xmitPwrMax),

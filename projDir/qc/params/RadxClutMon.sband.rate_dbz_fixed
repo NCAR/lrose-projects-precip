@@ -42,7 +42,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "sband.qc1";
+instance = "sband.rate_dbz_fixed";
 
 //======================================================================
 //
@@ -172,7 +172,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-moments_input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc1/rate/sband/sur";
+moments_input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc1/rate_dbz_fixed/sband/sur";
 
 ///////////// max_realtime_data_age_secs //////////////
 //
@@ -232,7 +232,6 @@ vel_field_name = "VEL";
 // Type: string
 //
 
-// cpa_field_name = "CPA";
 cpa_field_name = "";
 
 ///////////// dbmhc_field_name ////////////////////////
@@ -746,5 +745,5 @@ write_results_to_spdb = TRUE;
 // Type: string
 //
 
-spdb_output_url = "$(DATA_DIR)/$(project)/calibration/spol/clut_mon/$(VERSION)/dbz_orig/sband/spdb";
+spdb_output_url = "$(DATA_DIR)/$(project)/calibration/spol/clut_mon/$(VERSION)/dbz_fixed/sband/spdb";
 
