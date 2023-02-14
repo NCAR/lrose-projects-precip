@@ -300,7 +300,7 @@ def doPlot():
     vtimes = np.array(vertTimes).astype(datetime.datetime)
     
     meanDbzStrong = np.array(clutData["meanDbzStrong"]).astype(np.double)
-    meanDbzStrong[meanDbzStrong > 54] = np.nan;
+    meanDbzStrong[meanDbzStrong > 54] = math.nan;
     meanDbzStrongAv = movingAverage(meanDbzStrong, lenMeanFilter)
     validMeanDbzStrong = np.isfinite(meanDbzStrongAv)
     validMeanDbzStrongNtimes = ntimes[validMeanDbzStrong]
@@ -349,18 +349,21 @@ def doPlot():
     validMeanZdrWeakVals = meanZdrWeakAv[validMeanZdrWeak]
 
     XmitPowerDbmBoth = np.array(clutData["XmitPowerDbmBoth"]).astype(np.double)
+    XmitPowerDbmBoth[XmitPowerDbmBoth < 85] = math.nan;
     XmitPowerDbmBothAv = movingAverage(XmitPowerDbmBoth, lenMeanFilter)
     validXmitPowerDbmBoth = np.isfinite(XmitPowerDbmBothAv)
     validXmitPowerDbmBothNtimes = ntimes[validXmitPowerDbmBoth]
     validXmitPowerDbmBothVals = XmitPowerDbmBothAv[validXmitPowerDbmBoth]
 
     XmitPowerDbmH = np.array(clutData["XmitPowerDbmH"]).astype(np.double)
+    XmitPowerDbmH[XmitPowerDbmH < 82] = math.nan;
     XmitPowerDbmHAv = movingAverage(XmitPowerDbmH, lenMeanFilter)
     validXmitPowerDbmH = np.isfinite(XmitPowerDbmHAv)
     validXmitPowerDbmHNtimes = ntimes[validXmitPowerDbmH]
     validXmitPowerDbmHVals = XmitPowerDbmHAv[validXmitPowerDbmH]
 
     XmitPowerDbmV = np.array(clutData["XmitPowerDbmV"]).astype(np.double)
+    XmitPowerDbmV[XmitPowerDbmV < 82] = math.nan;
     XmitPowerDbmVAv = movingAverage(XmitPowerDbmV, lenMeanFilter)
     validXmitPowerDbmV = np.isfinite(XmitPowerDbmVAv)
     validXmitPowerDbmVNtimes = ntimes[validXmitPowerDbmV]
@@ -392,14 +395,14 @@ def doPlot():
 
     # compute the mean clut dbz for each pulse shaper interval
 
-    meanDbzShaper0 = np.mean(meanDbzStrong[np.logical_and(ntimes >= startTime,
-                                                          ntimes <= pulseShaperChangeTime1)])
-    meanDbzShaper1 = np.mean(meanDbzStrong[np.logical_and(ntimes >= pulseShaperChangeTime1,
-                                                          ntimes <= pulseShaperChangeTime2)])
-    meanDbzShaper2 = np.mean(meanDbzStrong[np.logical_and(ntimes >= pulseShaperChangeTime2,
-                                                          ntimes <= endTime)])
-    meanDbzShaper01 = np.mean(meanDbzStrong[np.logical_and(ntimes >= startTime,
-                                                           ntimes <= pulseShaperChangeTime2)])
+    meanDbzShaper0 = np.nanmean(meanDbzStrong[np.logical_and(ntimes >= startTime,
+                                                             ntimes <= pulseShaperChangeTime1)])
+    meanDbzShaper1 = np.nanmean(meanDbzStrong[np.logical_and(ntimes >= pulseShaperChangeTime1,
+                                                             ntimes <= pulseShaperChangeTime2)])
+    meanDbzShaper2 = np.nanmean(meanDbzStrong[np.logical_and(ntimes >= pulseShaperChangeTime2,
+                                                             ntimes <= endTime)])
+    meanDbzShaper01 = np.nanmean(meanDbzStrong[np.logical_and(ntimes >= startTime,
+                                                              ntimes <= pulseShaperChangeTime2)])
     if (options.debug):
         print("  ==>> meanDbzShaper0: ", meanDbzShaper0, file=sys.stderr)
         print("  ==>> meanDbzShaper1: ", meanDbzShaper1, file=sys.stderr)
@@ -435,7 +438,7 @@ def doPlot():
     ax1c.set_title("Measured XmitPower power (dBm)")
 
     ax1a.plot(validMeanZdrStrongNtimes, validMeanZdrStrongVals, \
-              linewidth=1, label = 'ZDR Strong Clutter (dB)', color='blue')
+              linewidth=1, label = 'ZDR Clutter (dB)', color='blue')
 
     #ax1a.plot(validMeanZdrWeakNtimes, validMeanZdrWeakVals, \
     #          linewidth=1, label = 'ZDR Weak (dB)', color='red')
