@@ -383,19 +383,19 @@ def doPlot():
 
     # compute the mean clut dbz for each pulse shaper interval
 
-    meanDbzPeriod0 = np.mean(meanDbzStrong[np.logical_and(ntimes >= startTime,
+    meanDbzShaper0 = np.mean(meanDbzStrong[np.logical_and(ntimes >= startTime,
                                                           ntimes <= pulseShaperChangeTime1)])
-    meanDbzPeriod1 = np.mean(meanDbzStrong[np.logical_and(ntimes >= pulseShaperChangeTime1,
+    meanDbzShaper1 = np.mean(meanDbzStrong[np.logical_and(ntimes >= pulseShaperChangeTime1,
                                                           ntimes <= pulseShaperChangeTime2)])
-    meanDbzPeriod2 = np.mean(meanDbzStrong[np.logical_and(ntimes >= pulseShaperChangeTime2,
+    meanDbzShaper2 = np.mean(meanDbzStrong[np.logical_and(ntimes >= pulseShaperChangeTime2,
                                                           ntimes <= endTime)])
-    meanDbzPeriod01 = np.mean(meanDbzStrong[np.logical_and(ntimes >= startTime,
+    meanDbzShaper01 = np.mean(meanDbzStrong[np.logical_and(ntimes >= startTime,
                                                            ntimes <= pulseShaperChangeTime2)])
     if (options.debug):
-        print("  ==>> meanDbzPeriod0: ", meanDbzPeriod0, file=sys.stderr)
-        print("  ==>> meanDbzPeriod1: ", meanDbzPeriod1, file=sys.stderr)
-        print("  ==>> meanDbzPeriod2: ", meanDbzPeriod2, file=sys.stderr)
-        print("  ==>> meanDbzPeriod01: ", meanDbzPeriod01, file=sys.stderr)
+        print("  ==>> meanDbzShaper0: ", meanDbzShaper0, file=sys.stderr)
+        print("  ==>> meanDbzShaper1: ", meanDbzShaper1, file=sys.stderr)
+        print("  ==>> meanDbzShaper2: ", meanDbzShaper2, file=sys.stderr)
+        print("  ==>> meanDbzShaper01: ", meanDbzShaper01, file=sys.stderr)
 
     # set up plots
 
@@ -474,11 +474,11 @@ def doPlot():
 
     label1 = "Pulse shaper change 1: " + pulseShaperChangeTime1.strftime('%Y-%m-%d')    
     label2 = "Pulse shaper change 2: " + pulseShaperChangeTime2.strftime('%Y-%m-%d')    
-    label3 = "meanDbzPeriod01: " + ("%.2f" % meanDbzPeriod01)
+    label3 = "meanDbzShaper01: " + ("%.2f" % meanDbzShaper01)
 
-    label4 = "meanDbzPeriod0: " + ("%.2f" % meanDbzPeriod0)
-    label5 = "meanDbzPeriod1: " + ("%.2f" % meanDbzPeriod1)
-    label6 = "meanDbzPeriod2: " + ("%.2f" % meanDbzPeriod2)
+    label4 = "meanDbzShaper0: " + ("%.2f" % meanDbzShaper0)
+    label5 = "meanDbzShaper1: " + ("%.2f" % meanDbzShaper1)
+    label6 = "meanDbzShaper2: " + ("%.2f" % meanDbzShaper2)
     
     plt.figtext(0.06, 0.95, label1)
     plt.figtext(0.06, 0.93, label2)
