@@ -29,8 +29,8 @@ def main():
     global debug
     global startTime
     global endTime
-    global zdrStatsStartTime
-    global zdrStatsEndTime
+    global pulseShaperChangeTime1
+    global pulseShaperChangeTime2
 
 # parse the command line
 
@@ -76,14 +76,14 @@ def main():
                       dest='endTime',
                       default='2022 08 11 00 00 00',
                       help='End time for XY plot')
-    parser.add_option('--zdrStatsStartTime',
-                      dest='zdrStatsStartTime',
-                      default='2022 05 25 03 00 00',
-                      help='Start time for computing ZDR stats')
-    parser.add_option('--zdrStatsEndTime',
-                      dest='zdrStatsEndTime',
-                      default='2022 07 09 00 00 00',
-                      help='End time for computing ZDR stats')
+    parser.add_option('--pulseShaperChangeTime1',
+                      dest='pulseShaperChangeTime1',
+                      default='2022 06 21 04 00 00',
+                      help='First pulse shaper change')
+    parser.add_option('--pulseShaperChangeTime2',
+                      dest='pulseShaperChangeTime2',
+                      default='2022 07 08 04 00 00',
+                      help='Second pulse shaper change')
     parser.add_option('--zdrMin',
                       dest='zdrMin',
                       default=-2.0,
@@ -122,13 +122,13 @@ def main():
     endTime = datetime.datetime(int(year), int(month), int(day),
                                 int(hour), int(minute), int(sec))
 
-    year, month, day, hour, minute, sec = options.zdrStatsStartTime.split()
-    zdrStatsStartTime = datetime.datetime(int(year), int(month), int(day),
-                                          int(hour), int(minute), int(sec))
+    year, month, day, hour, minute, sec = options.pulseShaperChangeTime1.split()
+    pulseShaperChangeTime1 = datetime.datetime(int(year), int(month), int(day),
+                                               int(hour), int(minute), int(sec))
 
-    year, month, day, hour, minute, sec = options.zdrStatsEndTime.split()
-    zdrStatsEndTime = datetime.datetime(int(year), int(month), int(day),
-                                        int(hour), int(minute), int(sec))
+    year, month, day, hour, minute, sec = options.pulseShaperChangeTime2.split()
+    pulseShaperChangeTime2 = datetime.datetime(int(year), int(month), int(day),
+                                               int(hour), int(minute), int(sec))
 
     if (options.debug):
         print("Running %prog", file=sys.stderr)
@@ -136,8 +136,8 @@ def main():
         print("  vertFilePath: ", options.vertFilePath, file=sys.stderr)
         print("  startTime: ", startTime, file=sys.stderr)
         print("  endTime: ", endTime, file=sys.stderr)
-        print("  zdrStatsStartTime: ", zdrStatsStartTime, file=sys.stderr)
-        print("  zdrStatsEndTime: ", zdrStatsEndTime, file=sys.stderr)
+        print("  pulseShaperChangeTime1: ", pulseShaperChangeTime1, file=sys.stderr)
+        print("  pulseShaperChangeTime2: ", pulseShaperChangeTime2, file=sys.stderr)
 
     # read in column headers for clut results
 
@@ -381,27 +381,21 @@ def doPlot():
     validVertZdrmVtimes = vtimes[validVertZdrm]
     validVertZdrmVals = vertZdrmAv[validVertZdrm]
 
-    # compute the mean clut zdr and vert zdr for the stats time period
+    # compute the mean clut dbz for each pulse shaper interval
 
-    # statsClutZdr = meanClutZdr[np.logical_and(ntimes >= zdrStatsStartTime,
-    #                                             ntimes <= zdrStatsEndTime)]
-    # statsVertZdrm = vertZdrm[np.logical_and(vtimes >= zdrStatsStartTime,
-    #                                         vtimes <= zdrStatsEndTime)]
-    # clutZdrStatsMean = np.mean(statsClutZdr)
-    # vertZdrmStatsMean = np.mean(statsVertZdrm)
-    # clutToZdrCorr = vertZdrmStatsMean - clutZdrStatsMean
-    # clutZdrValsCorr = meanClutZdrAv[validMeanClutZdr] + clutToZdrCorr
-    
-    # if (options.debug):
-    #     print("  ==>> clutZdrStatsMean: ", clutZdrStatsMean, file=sys.stderr)
-    #     print("  ==>> vertZdrmStatsMean: ", vertZdrmStatsMean, file=sys.stderr)
-    #     print("  ==>>    clutToZdrCorr: ", clutToZdrCorr, file=sys.stderr)
-
-    # daily values
-    
-    # (dailyTimeMeanClutZdr, dailyValMeanClutZdr) = computeDailyStats(validMeanClutZdrNtimes, validMeanClutZdrVals)
-    # (dailyTimeMeanDbmhc, dailyValMeanDbmhc) = computeDailyStats(validMeanDbmhcNtimes, validMeanDbmhcVals)
-    # (dailyTimeMeanDbmvc, dailyValMeanDbmvc) = computeDailyStats(validMeanDbmvcNtimes, validMeanDbmvcVals)
+    meanDbzPeriod0 = np.mean(meanDbzStrong[np.logical_and(ntimes >= startTime,
+                                                          ntimes <= pulseShaperChangeTime1)])
+    meanDbzPeriod1 = np.mean(meanDbzStrong[np.logical_and(ntimes >= pulseShaperChangeTime1,
+                                                          ntimes <= pulseShaperChangeTime2)])
+    meanDbzPeriod2 = np.mean(meanDbzStrong[np.logical_and(ntimes >= pulseShaperChangeTime2,
+                                                          ntimes <= endTime)])
+    meanDbzPeriod01 = np.mean(meanDbzStrong[np.logical_and(ntimes >= startTime,
+                                                           ntimes <= pulseShaperChangeTime2)])
+    if (options.debug):
+        print("  ==>> meanDbzPeriod0: ", meanDbzPeriod0, file=sys.stderr)
+        print("  ==>> meanDbzPeriod1: ", meanDbzPeriod1, file=sys.stderr)
+        print("  ==>> meanDbzPeriod2: ", meanDbzPeriod2, file=sys.stderr)
+        print("  ==>> meanDbzPeriod01: ", meanDbzPeriod01, file=sys.stderr)
 
     # set up plots
 
@@ -417,12 +411,12 @@ def doPlot():
 
     oneDay = datetime.timedelta(1.0)
 
-#    ax1a.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
-#    ax1a.set_title("ZDR (dB)")
-#    ax1b.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
-#    ax1b.set_title("Clut Power (dBZ)")
-#    ax1c.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
-#    ax1c.set_title("XmitPower Power (dBm)")
+    #    ax1a.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
+    #    ax1a.set_title("ZDR (dB)")
+    #    ax1b.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
+    #    ax1b.set_title("Clut Power (dBZ)")
+    #    ax1c.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
+    #    ax1c.set_title("XmitPower Power (dBm)")
 
     ax1a.set_xlim([startTime - oneDay, endTime + oneDay])
     ax1a.set_title("Received clutter ZDR (dB)")
@@ -478,21 +472,21 @@ def doPlot():
     
     # add text labels
 
-    # label1 = "Stats start: " + zdrStatsStartTime.strftime('%Y-%m-%d')    
-    # label2 = "Stats end: " + zdrStatsEndTime.strftime('%Y-%m-%d')    
-    # label3 = "Ntimes smooth: " + str(options.lenMean)
+    label1 = "Pulse shaper change 1: " + pulseShaperChangeTime1.strftime('%Y-%m-%d')    
+    label2 = "Pulse shaper change 2: " + pulseShaperChangeTime2.strftime('%Y-%m-%d')    
+    label3 = "meanDbzPeriod01: " + ("%.2f" % meanDbzPeriod01)
 
-    # label4 = "clutZdrMean: " + ("%.2f" % clutZdrStatsMean)
-    # label5 = "vertZdrmMean: " + ("%.2f" % vertZdrmStatsMean)
-    # label6 = "clutToZdrCorr: " + ("%.2f" % clutToZdrCorr)
+    label4 = "meanDbzPeriod0: " + ("%.2f" % meanDbzPeriod0)
+    label5 = "meanDbzPeriod1: " + ("%.2f" % meanDbzPeriod1)
+    label6 = "meanDbzPeriod2: " + ("%.2f" % meanDbzPeriod2)
+    
+    plt.figtext(0.06, 0.95, label1)
+    plt.figtext(0.06, 0.93, label2)
+    plt.figtext(0.06, 0.91, label3)
 
-    # plt.figtext(0.06, 0.95, label1)
-    # plt.figtext(0.06, 0.93, label2)
-    # plt.figtext(0.06, 0.91, label3)
-
-    # plt.figtext(0.2, 0.95, label4)
-    # plt.figtext(0.2, 0.93, label5)
-    # plt.figtext(0.2, 0.91, label6)
+    plt.figtext(0.25, 0.95, label4)
+    plt.figtext(0.25, 0.93, label5)
+    plt.figtext(0.25, 0.91, label6)
 
     ax1a.set_facecolor("lightgrey")
     ax1b.set_facecolor("lightgrey")
