@@ -304,7 +304,7 @@ cidd.transparent_images: 0
 
 # Image Generation related resources
 # Set this to a value to get cidd to output imagery in this directory
-cidd.image_dir: $(DATA_DIR)/$(project)/images/spol
+cidd.image_dir: $(DATA_DIR)/$(project)/images/spol/$(DATE_STR)
 # CATALOG NOTE: horiz prefix is used as category in catalog
 cidd.image_horiz_prefix: SUR
 cidd.image_vert_prefix: RHI
@@ -328,7 +328,7 @@ cidd.run_once_and_exit: 1
 # information in it's file name.  See the comment above on the order
 cidd.add_frame_num_to_filename: 0
 cidd.add_frame_time_to_filename: 0
-cidd.add_height_to_filename: 0
+cidd.add_height_to_filename: 1
 
 # When set to 1 forces the output filename to contain the data's generation
 # time in it's file name.  See the comment above on the order
@@ -340,7 +340,7 @@ cidd.add_valid_time_to_filename: 1
 
 # When set to 1 forces the output filename to contain the button_name
 # See the comment above on the order.
-cidd.add_button_name_to_filename: 1
+cidd.add_button_name_to_filename: 0
 
 # Output an imagename.xml file which contains geo referencing information.
 # If use_latlon_in_geo_xml is true, then the georeferencing information
@@ -624,7 +624,7 @@ cidd.time_tick_color6: blue
 
 #Toggle for displaying the height Selector in Right Margin
 # Note Right Margin should be at least 50 pixels wide
-cidd.show_height_sel:      1
+cidd.show_height_sel:      0
 
 # Display data access and rendering messages - This is probably not
 # necessary in situations where all data is small and local.
@@ -699,7 +699,7 @@ cidd.bot_margin_render_style: 1
 # If left unset, legends start relative to the top and left margins.
 #
 cidd.horiz_legends_start_x:  30
-cidd.horiz_legends_start_y:  30
+cidd.horiz_legends_start_y:  10
 cidd.horiz_legends_delta_y:  30
 
 #
@@ -714,7 +714,7 @@ cidd.horiz_default_y_pos:     0
 cidd.horiz_top_margin:        0
 cidd.horiz_bot_margin:        20
 cidd.horiz_left_margin:       20
-cidd.horiz_right_margin:      80
+cidd.horiz_right_margin:      40
 
 cidd.vert_min_height:        120
 cidd.vert_min_width:         120
@@ -729,7 +729,7 @@ cidd.vert_right_margin:      30
 
 # Set range_ring_spacing to a negative value to dynamically determine spacing.
 cidd.range_ring_spacing:     50.0
-cidd.max_ring_range:         250.0
+cidd.max_ring_range:         300.0
 
 #  Render Range rings at the origin of the data, instead of the origin of the display.
 cidd.range_ring_follows_data: 1
