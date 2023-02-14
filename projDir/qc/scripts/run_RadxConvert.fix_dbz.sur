@@ -1,0 +1,12 @@
+#! /bin/csh
+#
+
+cd $PROJ_DIR/qc/params
+setenv version qc1
+
+RadxConvert -params RadxConvert.fix_dbz.sur -debug -start "2022 07 08 04 00 00" -end "2022 07 15 00 00 00" >& /tmp/RadxConvert.sur.20220708.log &
+RadxConvert -params RadxConvert.fix_dbz.sur -debug -start "2022 07 15 00 00 00" -end "2022 07 22 00 00 00" >& /tmp/RadxConvert.sur.20220715.log &
+RadxConvert -params RadxConvert.fix_dbz.sur -debug -start "2022 07 22 00 00 00" -end "2022 07 29 00 00 00" >& /tmp/RadxConvert.sur.20220722.log &
+RadxConvert -params RadxConvert.fix_dbz.sur -debug -start "2022 07 29 00 00 00" -end "2022 08 04 00 00 00" >& /tmp/RadxConvert.sur.20220729.log &
+RadxConvert -params RadxConvert.fix_dbz.sur -debug -start "2022 08 04 00 00 00" -end "2022 08 12 00 00 00" >& /tmp/RadxConvert.sur.20220804.log &
+
