@@ -68,29 +68,34 @@ angMat=repmat(ang_p,size(data.range,1),1);
 XX = (data.range.*cos(angMat));
 YY = (data.range.*sin(angMat));
 
-%% Z
+%% Plot
+
+dateStr=infile(7:21);
+% Z
 close all
 
-figure('Position',[200 500 1800 600],'DefaultAxesFontSize',12);
+figure('Position',[200 500 1400 1200],'DefaultAxesFontSize',12);
 
-s1=subplot(1,3,1);
+s1=subplot(2,2,1);
 h=surf(XX,YY,data.DBZ_F,'edgecolor','none');
 view(2);
 caxis([-5 70])
 colorbar('XTick',-5:3:70)
-title('Zh (dBZ)')
+title('DBZ (dBZ)')
 xlabel('km');
 ylabel('km');
 s1.Colormap=dbz_default2;
 axis equal
 
+grid on
+box on
 
-%% ZDR
+% ZDR
 
-s2=subplot(1,3,2);
+s2=subplot(2,2,2);
 h=surf(XX,YY,data.ZDR_F,'edgecolor','none');
 view(2);
-title('Zdr (dB)')
+title('ZDR (dB)')
 xlabel('km');
 ylabel('km');
 
@@ -98,12 +103,12 @@ cols=zdr_default;
 s2.Colormap=cols(1:17,:);
 caxis([-1.6,1.8]);
 colorbar('XTick',-2:0.2:2)
-%colLims=[-inf,-20,-2,-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.5,2,2.5,3,4,5,6,8,10,15,20,50,99,inf];
-%applyColorScale(h,data.ZDR_F,colM,colLims);
 
 axis equal
+grid on
+box on
 
-%% Scatter plot
+% Scatter plot
 
 % Fit
 nanInd=find(isnan(data.DBZ_F(:)) | isnan(data.ZDR_F(:)));
@@ -113,14 +118,42 @@ dbzNoNan(nanInd)=[];
 zdrNoNan=data.ZDR_F(:);
 zdrNoNan(nanInd)=[];
 
-p=polyfit(dbzNoNan,zdrNoNan,2);
 x1=10:50;
-y1=polyval(p,x1);
+p1=polyfit(dbzNoNan,zdrNoNan,1);
+y1=polyval(p1,x1);
+p2=polyfit(dbzNoNan,zdrNoNan,2);
+y2=polyval(p2,x1);
 
-subplot(1,3,3)
+% Bin average
+binInds=discretize(dbzNoNan,10:2:50);
+binMed=[];
+for ii=1:max(binInds)
+    zdrBin=zdrNoNan(binInds==ii);
+    binMed=[binMed,median(zdrBin)];
+end
+
+% Plot scatter
+subplot(2,2,3)
 hold on
 scatter(data.DBZ_F(:),data.ZDR_F(:))
-plot(x1,y1,'-k','LineWidth',2);
+l1=plot(x1,y1,'-k','LineWidth',2);
+l2=plot(x1,y2,'-c','LineWidth',2);
+l3=plot(11:2:49,binMed,'-r','LineWidth',2);
 ylim([-2,3]);
 
-print([figdir,'DBZ_vs_ZDR.png'],'-dpng','-r0');
+legend([l1,l2,l3],{'Linear fit','Quadratic fit','2 DBZ bin median'},'Location','southeast');
+
+text(15,2.6,['ZDR=',num2str(p1(1),3),'*DBZ+',num2str(p1(2),3)],...
+    'fontweight','bold','FontSize',12,'BackgroundColor','w');
+text(15,2.3,['ZDR=',num2str(p2(1),3),'*DBZ^2+',num2str(p2(2),3),'*DBZ+',num2str(p2(3),3)],...
+    'fontweight','bold','FontSize',12,'BackgroundColor','w');
+
+xlabel('DBZ (dBZ)');
+ylabel('ZDR (dB)');
+
+grid on
+box on
+
+mtit([dateStr,', elev ',num2str(elev),' deg'],'interpreter','none','xoff',0,'yoff',.03);
+
+print([figdir,'DBZ_vs_ZDR_',dateStr,'_elev_',num2str(elev),'deg.png'],'-dpng','-r0');
