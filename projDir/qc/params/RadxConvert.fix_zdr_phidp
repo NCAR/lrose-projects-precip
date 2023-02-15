@@ -60,7 +60,7 @@ instance = "fix_zdr_phidp.$(scan_type)";
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/rate_dbz_fixed/sband/$(scan_type)";
+input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/dbz_fixed/sband/$(scan_type)";
 
 ///////////// mode ////////////////////////////////////
 //
