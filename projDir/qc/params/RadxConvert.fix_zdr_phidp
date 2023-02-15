@@ -42,7 +42,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "fix_zdr.rhi";
+instance = "fix_zdr_phidp.$(scan_type)";
 
 //======================================================================
 //
@@ -60,7 +60,7 @@ instance = "fix_zdr.rhi";
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/rate_dbz_fixed/sband/rhi";
+input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/rate_dbz_fixed/sband/$(scan_type)";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -1285,6 +1285,22 @@ optimize_surveillance_transitions = FALSE;
 
 optimized_transitions_max_elev_error = 0.25;
 
+///////////// combine_rhi /////////////////////////////
+//
+// Option to keep the azimuth constant in RHI scans.
+//
+// Default is false. If true, and the azimuth switches by 180 degree 
+//   when the elevation passes 90 degrees, this option combines the ray 
+//   azimuth into one consistent value. The ray elevation will also 
+//   continue to increase from 90 degrees to 180 degrees. Only one RHI 
+//   scan per file is allowed with this option. .
+//
+//
+// Type: boolean
+//
+
+combine_rhi = FALSE;
+
 ///////////// override_sweep_mode /////////////////////
 //
 // Option to override the sweep modes in the data.
@@ -2118,28 +2134,28 @@ specify_fields_to_be_censored = TRUE;
 //
 
 fields_to_be_censored = {
-    "DBZ",
-    "DBZ_F",
-    "VEL",
-    "VEL_F",
-    "WIDTH",
-    "WIDTH_F",
-    "ZDR_F",
-    "RHOHV_F",
-    "RHOHV_NNC_F",
-    "PHIDP_F",
-    "KDP_F",
-    "SNRHC",
-    "SNRHC_F",
-    "SNRVC",
-    "SNRVC_F",
-    "SNRVC",
-    "DBMHC",
-    "DBMHC_F",
-    "DBMVC",
-    "DBMVC_F",
-    "NCP",
-    "NCP_F"
+ "DBZ",
+ "DBZ_F",
+ "VEL",
+ "VEL_F",
+ "WIDTH",
+ "WIDTH_F",
+ "ZDR_F",
+ "RHOHV_F",
+ "RHOHV_NNC_F",
+ "PHIDP_F",
+ "KDP_F",
+ "SNRHC",
+ "SNRHC_F",
+ "SNRVC",
+ "SNRVC_F",
+ "SNRVC",
+ "DBMHC",
+ "DBMHC_F",
+ "DBMVC",
+ "DBMVC_F",
+ "NCP",
+ "NCP_F"
 };
 
 ///////////// censor_test_pulse_ring //////////////////
@@ -2239,6 +2255,8 @@ apply_linear_transforms = TRUE;
 //      string input_field_name;
 //      double transform_scale;
 //      double transform_offset;
+//      boolean field_folds;
+//      double folding_value;
 //   }
 //
 // 1D array - variable length.
@@ -2248,7 +2266,17 @@ transform_fields = {
   {
     input_field_name = "ZDR_F",
     transform_scale = 1,
-    transform_offset = 0.2
+    transform_offset = 0.2,
+    field_folds = FALSE,
+    folding_value = 0
+  }
+  ,
+  {
+    input_field_name = "PHIDP_F",
+    transform_scale = 1,
+    transform_offset = 40.0,
+    field_folds = TRUE,
+    folding_value = 180
   }
 };
 
@@ -2452,7 +2480,7 @@ compression_level = 4;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/rate_zdr_fixed/sband/rhi";
+output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/zdr_phidp_fixed/sband/$(scan_type)";
 
 ///////////// output_filename_mode ////////////////////
 //

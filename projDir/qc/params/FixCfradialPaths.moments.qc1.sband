@@ -43,7 +43,7 @@ debug = DEBUG_NORM;
 // Type: string
 //
 
-instance = "moments.qc1.sband.rhi";
+instance = "moments.qc1.sband.$(scan_type)";
 
 //======================================================================
 //
@@ -61,7 +61,7 @@ instance = "moments.qc1.sband.rhi";
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc1/moments/sband/rhi";
+input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc1/moments/sband/$(scan_type)";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -113,7 +113,7 @@ max_realtime_data_age_secs = 300;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc1/moments_rename/sband/rhi";
+output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc1/moments_rename/sband/$(scan_type)";
 
 //======================================================================
 //
@@ -332,7 +332,7 @@ test_only = FALSE;
 // Type: string
 //
 
-copy_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc1/moments_copy/sband/rhi";
+copy_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc1/moments_copy/sband/$(scan_type)";
 
 ///////////// link_dir ////////////////////////////////
 //
@@ -344,7 +344,7 @@ copy_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc1/moments_copy/sband/
 // Type: string
 //
 
-link_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc1/moments_links/sband/rhi";
+link_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc1/moments_links/sband/$(scan_type)";
 
 ///////////// append_day_dir_to_output_dir ////////////
 //

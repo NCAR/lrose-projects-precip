@@ -53,7 +53,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-input_url = "$(DATA_DIR)/$(project)/calibration/spol/clut_mon/$(VERSION)/sband/spdb";
+input_url = "$(DATA_DIR)/$(project)/calibration/spol/clut_mon/$(version)/sband/spdb";
 
 ///////////// start_time //////////////////////////////
 //

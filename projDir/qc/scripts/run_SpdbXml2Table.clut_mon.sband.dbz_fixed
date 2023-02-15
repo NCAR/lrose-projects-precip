@@ -1,0 +1,13 @@
+#! /bin/csh
+
+cd $PROJ_DIR/qc/params
+
+setenv version qc1
+
+set TABLE_DIR = $DATA_DIR/$project/calibration/spol/clut_mon/$version/dbz_fixed/sband/tables
+
+mkdir -p $TABLE_DIR
+
+SpdbXml2Table -params SpdbXml2Table.clut_mon.sband.dbz_fixed -start "2022 05 25 00 00 00" -end "2022 08 12 00 00 00" > $TABLE_DIR/clut_mon.sband.txt
+
+
