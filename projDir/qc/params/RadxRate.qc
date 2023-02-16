@@ -102,7 +102,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/moments/sband/no_test_pulse/sur";
+input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/moments/sband/no_test_pulse/$(scan_type)";
 
 ///////////// input_file_search_ext ///////////////////
 //
@@ -827,7 +827,7 @@ PID_write_debug_fields = FALSE;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/rate/sband/sur";
+output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/rate/sband/$(scan_type)";
 
 ///////////// output_filename_mode ////////////////////
 //
@@ -1125,7 +1125,7 @@ pseudo_earth_radius_ratio = 1.33333;
 // Type: string
 //
 
-instance = "RadxRate.qc.sur";
+instance = "RadxRate.qc.$(scan_type)";
 
 ///////////// procmap_register_interval ///////////////
 //
