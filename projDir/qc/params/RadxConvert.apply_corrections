@@ -2264,6 +2264,14 @@ apply_linear_transforms = TRUE;
 
 transform_fields = {
   {
+    input_field_name = "ZDR_F",
+    transform_scale = 1,
+    transform_offset = $(zdr_correction),
+    field_folds = FALSE,
+    folding_value = 0
+  }
+  ,
+  {
     input_field_name = "DBZ",
     transform_scale = 1,
     transform_offset = $(dbz_correction),
@@ -2275,14 +2283,6 @@ transform_fields = {
     input_field_name = "DBZ_F",
     transform_scale = 1,
     transform_offset = $(dbz_correction),
-    field_folds = FALSE,
-    folding_value = 0
-  }
-  ,
-  {
-    input_field_name = "ZDR_F",
-    transform_scale = 1,
-    transform_offset = $(zdr_correction),
     field_folds = FALSE,
     folding_value = 0
   }
