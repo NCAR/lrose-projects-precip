@@ -9,8 +9,8 @@ figdir=['/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/plo
 
 indir='/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/sband/sur/';
 
-startTime=datetime(2022,6,1,0,0,0);
-endTime=datetime(2022,6,2,0,0,0);
+startTime=datetime(2022,5,25,0,0,0);
+endTime=datetime(2022,8,12,0,0,0);
 
 fileList=makeFileList(indir,startTime,endTime,'xxxxxx20YYMMDDxhhmmss',1);
 
@@ -18,7 +18,12 @@ elev=2;
 
 %% Read data
 
+timeAll=[];
+dbzGates=[];
+
 for aa=1:length(fileList)
+
+    disp(fileList{aa});
 
     data=[];
 
@@ -40,6 +45,9 @@ for aa=1:length(fileList)
     %% Censor DBZ
     data.DBZ_F(data.DBZ_F<0)=nan;
 
+    %% Get time and gates with refl
+    timeAll=[timeAll;data.time(1)];
+    dbzGates=[dbzGates;sum(~isnan(data.DBZ_F(:)))];
 end
 
 %% Plot preparation
