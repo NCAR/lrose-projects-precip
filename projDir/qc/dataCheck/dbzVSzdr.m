@@ -3,9 +3,9 @@
 clear all;
 close all;
 
-addpath(genpath('/h/eol/romatsch/gitPriv/utils/'));
+addpath(genpath('~/git/lrose-projects-precip/projDir/qc/dataCheck/utils/'));
 
-figdir=['/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/'];
+figdir=['/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/plots/DBZvsZDR/'];
 
 indir='/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/sband/sur/';
 
