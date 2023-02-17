@@ -232,7 +232,8 @@ vel_field_name = "VEL";
 // Type: string
 //
 
-cpa_field_name = "CPA";
+// cpa_field_name = "CPA";
+cpa_field_name = "";
 
 ///////////// dbmhc_field_name ////////////////////////
 //
@@ -655,7 +656,8 @@ clutter_max_abs_vel = 0.5;
 // Type: double
 //
 
-clutter_min_cpa = 0.9;
+// clutter_min_cpa = 0.9;
+clutter_min_cpa = 0.5;
 
 //======================================================================
 //
