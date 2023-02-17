@@ -232,7 +232,7 @@ vel_field_name = "VEL";
 // Type: string
 //
 
-cpa_field_name = "";
+cpa_field_name = "CPA";
 
 ///////////// dbmhc_field_name ////////////////////////
 //

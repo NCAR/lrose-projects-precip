@@ -5,5 +5,5 @@ cd $PROJ_DIR/qc/scripts
 
 set VERSION = qc1
 
-PlotClutMon.spol.qc.py --lenMean 11 --clutFile $DATA_DIR/$project/calibration/spol/clut_mon/$VERSION/dbz_orig/sband/tables/clut_mon.sband.txt --zdrMin -2.0 --zdrMax 0.5 --clutMin -14 --clutMax -6 --xmitPwrMin 82 --xmitPwrMax 90
+PlotClutMon.spol.qc.py --lenMean 11 --clutFile $DATA_DIR/$project/calibration/spol/clut_mon/$VERSION/uncorrected/sband/tables/clut_mon.sband.txt --zdrMin -2.0 --zdrMax 0.5 --clutMin -14 --clutMax -6 --xmitPwrMin 82 --xmitPwrMax 90 --title "CLUTTER AND TRANSMITTER POWER MONITORING - UNCORRECTED DBZ"
 

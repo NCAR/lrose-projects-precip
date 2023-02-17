@@ -3,11 +3,8 @@
 cd $PROJ_DIR/qc/params
 
 setenv VERSION qc1
-echo "DATA_DIR: $DATA_DIR"
 
-echo "set TABLE_DIR=$DATA_DIR/$project/calibration/spol/clut_mon/$VERSION/corrected/sband/tables"
 set TABLE_DIR=$DATA_DIR/$project/calibration/spol/clut_mon/$VERSION/corrected/sband/tables
-echo "TABLE_DIR: $TABLE_DIR"
 
 mkdir -p $TABLE_DIR
 
