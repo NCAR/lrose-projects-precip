@@ -10,7 +10,7 @@
 source ~/git/lrose-projects-precip/projDir/system/params/project_info.precip_qc
 
 cd $PROJ_DIR/qc/params
-setenv version qc2
+setenv VERSION qc2
 
 snuff "Dsr2Radx -instance"
 

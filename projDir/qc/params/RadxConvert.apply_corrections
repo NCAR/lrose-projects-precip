@@ -60,7 +60,7 @@ instance = "apply_corrections.$(scan_type)";
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/moments/sband/uncorrected/$(scan_type)";
+input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/moments/sband/uncorrected/$(scan_type)";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -2496,7 +2496,7 @@ compression_level = 4;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/moments/sband/corrected/$(scan_type)";
+output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/moments/sband/corrected/$(scan_type)";
 
 ///////////// output_filename_mode ////////////////////
 //

@@ -60,7 +60,7 @@ instance = "censor_rings.$(scan_type)";
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/moments/sband/with_test_pulse/$(scan_type)";
+input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/moments/sband/with_test_pulse/$(scan_type)";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -2480,7 +2480,7 @@ compression_level = 4;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/moments/sband/no_test_pulse/$(scan_type)";
+output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/moments/sband/no_test_pulse/$(scan_type)";
 
 ///////////// output_filename_mode ////////////////////
 //

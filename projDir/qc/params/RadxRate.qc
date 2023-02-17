@@ -102,7 +102,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/moments/sband/corrected/$(scan_type)";
+input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/moments/sband/corrected/$(scan_type)";
 
 ///////////// input_file_search_ext ///////////////////
 //
@@ -827,7 +827,7 @@ PID_write_debug_fields = FALSE;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/rate/sband/$(scan_type)";
+output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/rate/sband/$(scan_type)";
 
 ///////////// output_filename_mode ////////////////////
 //

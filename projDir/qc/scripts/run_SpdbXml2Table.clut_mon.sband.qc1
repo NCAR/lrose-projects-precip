@@ -2,9 +2,9 @@
 
 cd $PROJ_DIR/qc/params
 
-setenv version qc1
+setenv VERSION qc1
 
-set TABLE_DIR = $DATA_DIR/$project/calibration/spol/clut_mon/$version/dbz_orig/sband/tables
+set TABLE_DIR = $DATA_DIR/$project/calibration/spol/clut_mon/$VERSION/dbz_orig/sband/tables
 
 mkdir -p $TABLE_DIR
 

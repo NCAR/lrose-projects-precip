@@ -2,7 +2,7 @@
 #
 
 cd $PROJ_DIR/qc/scripts
-setenv version qc1
+setenv VERSION qc1
 
 snuff Xvfb
 

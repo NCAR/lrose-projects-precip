@@ -60,7 +60,7 @@ instance = "fix_zdr_phidp.$(scan_type)";
 // Type: string
 //
 
-input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/dbz_fixed/sband/$(scan_type)";
+input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/dbz_fixed/sband/$(scan_type)";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -2480,7 +2480,7 @@ compression_level = 4;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(version)/zdr_phidp_fixed/sband/$(scan_type)";
+output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/zdr_phidp_fixed/sband/$(scan_type)";
 
 ///////////// output_filename_mode ////////////////////
 //

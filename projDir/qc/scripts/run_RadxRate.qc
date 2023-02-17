@@ -2,7 +2,7 @@
 #
 
 cd $PROJ_DIR/qc/params
-setenv version qc1
+setenv VERSION qc1
 
 setenv scan_type sur
 
