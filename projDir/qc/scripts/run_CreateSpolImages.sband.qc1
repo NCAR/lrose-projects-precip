@@ -1,0 +1,48 @@
+#! /bin/csh
+#
+
+cd $PROJ_DIR/qc/scripts
+setenv version qc1
+
+snuff Xvfb
+
+set displayNum = 1000
+start_Xvfb.qc ${displayNum}
+setenv DISPLAY :${displayNum}.0
+CreateSpolImages.py --ciddParamsPath $PROJ_DIR/qc/params/CIDD.spol.images --startTime "2022 05 25 02 00 00" --endTime "2022 06 01 00 00 00" >& /tmp/CIDD.images.20220525.log &
+
+set displayNum = 1010
+start_Xvfb.qc ${displayNum}
+setenv DISPLAY :${displayNum}.0
+CreateSpolImages.py --ciddParamsPath $PROJ_DIR/qc/params/CIDD.spol.images --startTime "2022 06 01 00 00 00" --endTime "2022 06 11 00 00 00" >& /tmp/CIDD.images.20220601.log &
+
+set displayNum = 1020
+start_Xvfb.qc ${displayNum}
+setenv DISPLAY :${displayNum}.0
+CreateSpolImages.py --ciddParamsPath $PROJ_DIR/qc/params/CIDD.spol.images --startTime "2022 06 11 00 00 00" --endTime "2022 06 21 00 00 00" >& /tmp/CIDD.images.20220611.log &
+
+set displayNum = 1030
+start_Xvfb.qc ${displayNum}
+setenv DISPLAY :${displayNum}.0
+CreateSpolImages.py --ciddParamsPath $PROJ_DIR/qc/params/CIDD.spol.images --startTime "2022 06 21 00 00 00" --endTime "2022 07 01 00 00 00" >& /tmp/CIDD.images.20220621.log &
+
+set displayNum = 1040
+start_Xvfb.qc ${displayNum}
+setenv DISPLAY :${displayNum}.0
+CreateSpolImages.py --ciddParamsPath $PROJ_DIR/qc/params/CIDD.spol.images --startTime "2022 07 01 00 00 00" --endTime "2022 07 11 00 00 00" >& /tmp/CIDD.images.20220701.log &
+
+set displayNum = 1050
+start_Xvfb.qc ${displayNum}
+setenv DISPLAY :${displayNum}.0
+CreateSpolImages.py --ciddParamsPath $PROJ_DIR/qc/params/CIDD.spol.images --startTime "2022 07 11 00 00 00" --endTime "2022 07 21 00 00 00" >& /tmp/CIDD.images.20220711.log &
+
+set displayNum = 1060
+start_Xvfb.qc ${displayNum}
+setenv DISPLAY :${displayNum}.0
+CreateSpolImages.py --ciddParamsPath $PROJ_DIR/qc/params/CIDD.spol.images --startTime "2022 07 21 00 00 00" --endTime "2022 08 01 00 00 00" >& /tmp/CIDD.images.20220721.log &
+
+set displayNum = 1070
+start_Xvfb.qc ${displayNum}
+setenv DISPLAY :${displayNum}.0
+CreateSpolImages.py --ciddParamsPath $PROJ_DIR/qc/params/CIDD.spol.images --startTime "2022 08 01 00 00 00" --endTime "2022 08 12 00 00 00" >& /tmp/CIDD.images.20220801.log &
+
