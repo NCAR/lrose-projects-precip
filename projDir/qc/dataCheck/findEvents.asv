@@ -59,7 +59,7 @@ subplotNum=4;
 subplotInd=round(length(timeAll)/subplotNum);
 
 startDate=timeAll(1);
-for jj=1:subplotNum-1
+for jj=1:subplotNum
     startInd=subplotInd*jj;
     indTime=timeAll(startInd);
     startDate=[startDate;dateshift(indTime, 'start', 'day')];
@@ -69,11 +69,11 @@ endDate=cat(1,startDate(2:end),timeAll(end));
 
 %% Plot
 
+% Z
 close all
 
 figure('Position',[200 500 1400 1200],'DefaultAxesFontSize',12);
 
-for jj=1:subplotNum
 s1=subplot(2,2,1);
 h=surf(XX,YY,data.DBZ_F,'edgecolor','none');
 view(2);
@@ -87,8 +87,6 @@ axis equal
 
 grid on
 box on
-
-end
 
 % ZDR
 
