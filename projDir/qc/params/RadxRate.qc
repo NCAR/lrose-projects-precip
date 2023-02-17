@@ -306,7 +306,7 @@ KDP_field_name = "KDP_F";
 // Type: string
 //
 
-KDP_params_file_path = "$(PROJ_DIR)/alg/params/kdp_params.spol";
+KDP_params_file_path = "$(PROJ_DIR)/qc/params/kdp_params.spol";
 
 //======================================================================
 //
@@ -325,7 +325,7 @@ KDP_params_file_path = "$(PROJ_DIR)/alg/params/kdp_params.spol";
 // Type: string
 //
 
-PID_params_file_path = "$(PROJ_DIR)/alg/params/pid_params.nexrad";
+PID_params_file_path = "$(PROJ_DIR)/qc/params/pid_params.spol.sim";
 
 ///////////// PID_use_KDP_self_consistency ////////////
 //
@@ -372,7 +372,7 @@ PID_use_attenuation_corrected_fields = FALSE;
 // Type: string
 //
 
-RATE_params_file_path = "$(PROJ_DIR)/alg/params/rate_params.spol";
+RATE_params_file_path = "$(PROJ_DIR)/qc/params/rate_params.spol";
 
 ///////////// RATE_use_KDP_self_consistency ///////////
 //
@@ -827,7 +827,7 @@ PID_write_debug_fields = FALSE;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/rate/sband/$(scan_type)";
+output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/rate/sband/corrected/$(scan_type)";
 
 ///////////// output_filename_mode ////////////////////
 //

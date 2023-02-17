@@ -6,7 +6,7 @@ setenv VERSION qc1
 
 setenv scan_type sur
 
-RadxRate -params RadxRate.qc -debug -start "2022 05 25 00 00 00" -end "2022 06 01 00 00 00" >& $LOG_DIR/RadxRate.sur.20220525.log &
+RadxRate -params RadxRate.qc -debug -start "2022 05 25 02 00 00" -end "2022 06 01 00 00 00" >& $LOG_DIR/RadxRate.sur.20220525.log &
 RadxRate -params RadxRate.qc -debug -start "2022 06 01 00 00 00" -end "2022 06 11 00 00 00" >& $LOG_DIR/RadxRate.sur.20220601.log &
 RadxRate -params RadxRate.qc -debug -start "2022 06 11 00 00 00" -end "2022 06 21 00 00 00" >& $LOG_DIR/RadxRate.sur.20220611.log &
 RadxRate -params RadxRate.qc -debug -start "2022 06 21 00 00 00" -end "2022 07 01 00 00 00" >& $LOG_DIR/RadxRate.sur.20220621.log &
