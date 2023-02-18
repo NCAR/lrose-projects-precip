@@ -1,0 +1,19 @@
+#! /bin/csh
+#
+
+cd $PROJ_DIR/qc/scripts
+setenv VERSION qc1
+
+CreateSpolMovies.py --startTime "2022 05 25 00 00 00" --endTime "2022 08 11 00 00 00" --deltaSecs 86400 --field DBZ_F --debug >& /tmp/CreateSpolMovies.DBZ_F.log &
+
+CreateSpolMovies.py --startTime "2022 05 25 00 00 00" --endTime "2022 08 11 00 00 00" --deltaSecs 86400 --field VEL_F --debug >& /tmp/CreateSpolMovies.VEL_F.log &
+
+CreateSpolMovies.py --startTime "2022 05 25 00 00 00" --endTime "2022 08 11 00 00 00" --deltaSecs 86400 --field WIDTH_F --debug >& /tmp/CreateSpolMovies.WIDTH_F.log &
+
+CreateSpolMovies.py --startTime "2022 05 25 00 00 00" --endTime "2022 08 11 00 00 00" --deltaSecs 86400 --field ZDR_F --debug >& /tmp/CreateSpolMovies.ZDR_F.log &
+
+CreateSpolMovies.py --startTime "2022 05 25 00 00 00" --endTime "2022 08 11 00 00 00" --deltaSecs 86400 --field KDP_F --debug >& /tmp/CreateSpolMovies.KDP_F.log &
+
+CreateSpolMovies.py --startTime "2022 05 25 00 00 00" --endTime "2022 08 11 00 00 00" --deltaSecs 86400 --field PID --debug >& /tmp/CreateSpolMovies.PID.log &
+
+CreateSpolMovies.py --startTime "2022 05 25 00 00 00" --endTime "2022 08 11 00 00 00" --deltaSecs 86400 --field RATE_HYBRID --debug >& /tmp/CreateSpolMovies.RATE_HYBRID.log &
