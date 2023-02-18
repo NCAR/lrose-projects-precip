@@ -1,0 +1,6 @@
+#! /bin/csh
+
+
+cd $HOME/git/lrose-projects-precip/projDir/qc/params
+
+GpmHdf5ToMdv -params GpmHdf5ToMdv.precip.taiwan -debug -f /scr/cirrus3/rsfdata/projects/precip/grids/gpm/taiwan/*HDF5
