@@ -41,6 +41,18 @@ def main():
                       dest='verbose', default=False,
                       action="store_true",
                       help='Set verbose debugging on')
+    parser.add_option('--imagesTopDir',
+                      dest='imagesTopDir',
+                      default=os.path.join(dataDir, "precip/images/spol_moments"),
+                      help='Path to dir containing CIDD images')
+    parser.add_option('--movieDir',
+                      dest='movieDir',
+                      default=os.path.join(dataDir, "precip/images/spol_movies"),
+                      help='Path to dir containing CIDD movies')
+    parser.add_option('--fieldName',
+                      dest='fieldName',
+                      default="DBZ_F",
+                      help='Field name for movie')
     parser.add_option('--startTime',
                       dest='startTime',
                       default='2022 05 25 00 00 00',
@@ -53,14 +65,6 @@ def main():
                       dest='deltaSecs',
                       default=86400,
                       help='Delta time between images')
-    parser.add_option('--imagesTopDir',
-                      dest='imagesTopDir',
-                      default=os.path.join(dataDir, "precip/images/spol"),
-                      help='Path to dir containing CIDD images')
-    parser.add_option('--fieldName',
-                      dest='fieldName',
-                      default="DBZ_F",
-                      help='Field name for movie')
 
     (options, args) = parser.parse_args()
     
@@ -77,75 +81,108 @@ def main():
 
     if (options.debug):
         print("Running %prog", file=sys.stderr)
+        print("  imagesTopDir: ", options.imagesTopDir, file=sys.stderr)
+        print("  fieldName: ", options.fieldName, file=sys.stderr)
         print("  startTime: ", startTime, file=sys.stderr)
         print("  endTime: ", endTime, file=sys.stderr)
         print("  deltaSecs: ", options.deltaSecs, file=sys.stderr)
-        print("  imagesTopDir: ", options.imagesTopDir, file=sys.stderr)
 
-    deltaTime = datetime.timedelta(0, options.deltaSecs)
+    deltaTime = datetime.timedelta(0, int(options.deltaSecs))
 
-    # go to the image top dir, and get the date dir list
+     # ensure movie output dir exists
 
-    os.chdir(options.imagesTopDir)
+    if (os.path.isdir(options.movieDir) == False):
+        os.makedirs(options.movieDir)
 
-    # get listing of dated dirs
+    # loop through movie times, creating movie at each time
     
-    dirList = os.listdir(options.imagesTopDir)
-    dirList.sort()
+    movieStartTime = startTime
+    movieEndTime = movieStartTime + deltaTime
+    while (movieStartTime <= endTime):
+        createMovie(movieStartTime, movieEndTime)
+        movieStartTime = movieEndTime
+        movieEndTime += deltaTime
 
-    # loop through directories
+    sys.exit(0)
+
+########################################################################
+# Create movie
+
+def createMovie(startTime, endTime):
+
+    if (options.debug):
+        print("==>> creating movie, startTime, endTime: ",
+              startTime, ", ", endTime)
+
+    # create the list of images to be in the loop
+
+    imagePathList = []
+
+    # search for files to be in movie
     
-    for dirName in dirList:
-        dirPath = os.path.join(options.imagesTopDir, dirName)
-        if (options.debug):
-            print("  working on dir: ", dirPath)
-        os.chdir(dirPath)
-
+    deltaTimeDay = datetime.timedelta(1)
+    dayTime = startTime
+    while (dayTime <= endTime):
+        
+        dayStr = dayTime.strftime('%Y%m%d')
+        subDirPath = os.path.join(options.imagesTopDir, dayStr)
+        if (options.verbose):
+            print("  adding files from dir: ", subDirPath)
+            
         # get list of image files for the designated field
         
-        fileList = os.listdir(dirPath)
-        imageFileList = []
-        imageFileList += [entry for entry in fileList if entry.endswith('.png')]
-        fieldFileList = []
-        fieldFileList += [entry for entry in imageFileList if (entry.find(options.fieldName) > 0)]
-        fieldFileList.sort()
-        #if (options.debug):
-        #    for fieldFile in fieldFileList:
-        #        print("       file: ", fieldFile)
+        fileList = os.listdir(subDirPath)
+        for entry in fileList:
+            if (entry.endswith('.png') and (entry.find(options.fieldName) > 0)):
+                # get data time from file name
+                fileTimeStr = entry[-18:-4]
+                fileDataTime = datetime.datetime.strptime(fileTimeStr, "%Y%m%d%H%M%S")
+                if (fileDataTime >= startTime and fileDataTime <= endTime):
+                    filePath = os.path.join(subDirPath, entry)
+                    imagePathList.append(filePath)
 
-        # generate command to create animated gif
+        dayTime += deltaTimeDay
 
-        movieFileName = options.fieldName + "_" + dirName + "_loop.gif"
-        moviePath = os.path.join(dirPath, movieFileName)
-
-        cmd = "convert -verbose -delay 50 -loop 0 "
-        for fieldFile in fieldFileList:
-            cmd += fieldFile
-            cmd += " "
-        cmd += moviePath
-        runCommand(cmd)
-        
-
-    sys.exit(0)
-
-    plotTime = startTime
-    while (plotTime <= endTime):
-        print("  plotTime: ", plotTime, file=sys.stderr)
-        plotTime = plotTime + deltaTime
-        ciddTimeStr = plotTime.strftime('%Y%m%d%H%M')
-        dateStr = plotTime.strftime('%Y%m%d')
-        os.environ['DATE_STR'] = dateStr
-        cmd = "CIDD -p " + options.ciddParamsPath + " -t " + ciddTimeStr
-        runCommand(cmd)
-
-    sys.exit(0)
+    # sort the image paths into time order
     
+    imagePathList.sort()
+
+    # generate command to create animated gif
+        
+    startTimeStr = startTime.strftime('%Y%m%d%H%M%S')
+    movieFileName = options.fieldName + "_" + startTimeStr + "_loop.gif"
+    moviePath = os.path.join(options.movieDir, movieFileName)
+
+    if (options.debug):
+        print("==>> creating movie, path: ", moviePath)
+        
+    cmd = "convert -verbose -delay 25 -loop 0 "
+    for fieldFile in imagePathList:
+        cmd += fieldFile
+        cmd += " "
+    cmd += moviePath
+
+    # run the command
+        
+    runCommand(cmd)
+    
+    return
+
+# get list of image files for the designated field
+        
+#fileList = os.listdir(dirPath)
+#imageFileList = []
+#imageFileList += [entry for entry in fileList if entry.endswith('.png')]
+#fieldFileList = []
+#fieldFileList += [entry for entry in imageFileList if (entry.find(options.fieldName) > 0)]
+#fieldFileList.sort()
+
 ########################################################################
 # Run a command in a shell, wait for it to complete
 
 def runCommand(cmd):
 
-    if (options.debug):
+    if (options.verbose):
         print("running cmd:",cmd, file=sys.stderr)
     
     try:

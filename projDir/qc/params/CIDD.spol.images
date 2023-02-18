@@ -304,7 +304,7 @@ cidd.transparent_images: 0
 
 # Image Generation related resources
 # Set this to a value to get cidd to output imagery in this directory
-cidd.image_dir: $(DATA_DIR)/$(project)/images/spol/$(DATE_STR)
+cidd.image_dir: $(DATA_DIR)/$(project)/images/spol_moments/$(DATE_STR)
 # CATALOG NOTE: horiz prefix is used as category in catalog
 cidd.image_horiz_prefix: SUR
 cidd.image_vert_prefix: RHI

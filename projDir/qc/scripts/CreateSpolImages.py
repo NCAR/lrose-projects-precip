@@ -82,12 +82,12 @@ def main():
     plotTime = startTime
     while (plotTime <= endTime):
         print("  plotTime: ", plotTime, file=sys.stderr)
-        plotTime = plotTime + deltaTime
         ciddTimeStr = plotTime.strftime('%Y%m%d%H%M')
         dateStr = plotTime.strftime('%Y%m%d')
         os.environ['DATE_STR'] = dateStr
         cmd = "CIDD -p " + options.ciddParamsPath + " -t " + ciddTimeStr
         runCommand(cmd)
+        plotTime = plotTime + deltaTime
 
     sys.exit(0)
     
