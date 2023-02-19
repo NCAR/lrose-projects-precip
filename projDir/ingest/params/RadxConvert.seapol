@@ -1956,13 +1956,17 @@ transform_fields = {
   {
     input_field_name = "DBZ",
     transform_scale = 1,
-    transform_offset = 0
+    transform_offset = 0,
+    field_folds = FALSE,
+    folding_value = 0
   }
   ,
   {
     input_field_name = "VEL",
     transform_scale = 1,
-    transform_offset = 0
+    transform_offset = 0,
+    field_folds = TRUE,
+    folding_value = 15
   }
 };
 
@@ -2166,7 +2170,7 @@ compression_level = 4;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/cfradial/moments/seapol";
+output_dir = "$(DATA_DIR)/$(project)/grids/seapol/radarPolar/moments";
 
 ///////////// output_filename_mode ////////////////////
 //

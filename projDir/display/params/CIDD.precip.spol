@@ -212,6 +212,30 @@ SPOL_NIQ        SPOL_NIQ        mdvp:://front.eol.ucar.edu:8080:precip/grids/spo
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
+# SEAPOL MOMENTS
+
+===SEAPOL===      ===SEAPOL===       mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&DBZ   dbz.colors   dBZ -5 80 5 radial 1 0
+===SEAPOL===      ===SEAPOL===       mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&DBZ   dbz.colors   dBZ -5 80 5 radial 1 0
+===SEAPOL===      ===SEAPOL===       mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&DBZ   dbz.colors   dBZ -5 80 5 radial 1 0
+===SEAPOL===      ===SEAPOL===       mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&DBZ   dbz.colors   dBZ -5 80 5 radial 1 0
+===SEAPOL===      ===SEAPOL===       mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&DBZ   dbz.colors   dBZ -5 80 5 radial 1 0
+===SEAPOL===      ===SEAPOL===       mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&DBZ   dbz.colors   dBZ -5 80 5 radial 1 0
+===SEAPOL===      ===SEAPOL===       mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&DBZ   dbz.colors   dBZ -5 80 5 radial 1 0
+===SEAPOL===      ===SEAPOL===       mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&DBZ   dbz.colors   dBZ -5 80 5 radial 1 0
+
+SEAPOL_DBZ   SEAPOL_DBZ   mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&DBZ   dbz.colors   dBZ -5 80 5 radial 1 0
+SEAPOL_DBZ_MAX SEAPOL_DBZ_MAX mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&DBZ   dbz.colors   dBZ -5 80 5 radial,comp 1 0
+SEAPOL_VEL     SEAPOL_VEL     mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
+SEAPOL_WIDTH   SEAPOL_WIDTH   mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+SEAPOL_NCP      SEAPOL_NCP      mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+SEAPOL_SNR     SEAPOL_SNR    mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&SNR    snr.colors   dB     -5 80 5 radial 1 0
+
+SEAPOL_ZDR     SEAPOL_ZDR     mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&ZDR zdr.colors   dB  -5 80 5 radial 1 0
+SEAPOL_PHIDP SEAPOL_PHIDP  mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&PHIDP phidp.colors deg -5 80 5 radial 1 0
+SEAPOL_RHOHV SEAPOL_RHOHV  mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&RHOHV rhohv.colors _   -5 80 5 radial 1 0
+SEAPOL_KDP    SEAPOL_KDP    mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&KDP  kdp_sband.colors   deg/km -5 80 5 radial 1 0     
+SEAPOL_KDP_MAX  SEAPOL_KDP_MAX  mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/sur?use_http=true&KDP  kdp_sband.colors   deg/km -5 80 5 radial,comp 1 0     
+
 ############################
 # Mosaic and Ecco
 
