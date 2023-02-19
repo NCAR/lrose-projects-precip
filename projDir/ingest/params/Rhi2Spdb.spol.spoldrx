@@ -32,7 +32,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "spoldrx";
+instance = "spol.spoldrx";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -51,7 +51,7 @@ instance = "spoldrx";
 //     FILELIST
 //
 
-mode = REALTIME;
+mode = ARCHIVE;
 
 ///////////// input_url ///////////////////////////////
 //
@@ -61,7 +61,7 @@ mode = REALTIME;
 // Type: string
 //
 
-input_url = "$(DATA_DIR)/$(project)/cfradial/moments/spoldrx/rhi";
+input_url = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/field/moments/spoldrx/rhi";
 
 ///////////// output_url //////////////////////////////
 //
@@ -71,5 +71,5 @@ input_url = "$(DATA_DIR)/$(project)/cfradial/moments/spoldrx/rhi";
 
 // distribute via DsSpdbServer
 
-output_url = "$(DATA_DIR)/$(project)/spdb/rhi/spoldrx";
+output_url = "$(DATA_DIR)/$(project)/features/spol/rhi/spoldrx";
 

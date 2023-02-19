@@ -1635,6 +1635,19 @@ prod_info = {
   }
   ,
   {
+    menu_label = "RHI-SEAPOL",
+    url = "spdbp:Rhi2Symprod:ticks//front.eol.ucar.edu:8080:precip/features/seapol/rhi?use_http=true",
+    data_type = 0,
+    render_type = RENDER_ALL,
+    on_by_default = FALSE,
+    minutes_allow_before = 20,
+    minutes_allow_after = 10,
+    text_off_threshold = 0.4,
+    request_data_on_zoom = FALSE,
+    request_data_on_vert_change = FALSE
+  }
+  ,
+  {
     menu_label = "SURFACE-simple",
     url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:precip/features/surface?use_http=true",
     data_type = 0,
