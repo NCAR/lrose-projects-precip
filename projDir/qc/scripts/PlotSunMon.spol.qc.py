@@ -382,7 +382,7 @@ def doPlot():
 
     fig1.autofmt_xdate()
     fig1.tight_layout()
-    fig1.subplots_adjust(bottom=0.08, left=0.06, right=0.97, top=0.90)
+    fig1.subplots_adjust(bottom=0.10, left=0.06, right=0.97, top=0.90)
 
     fig1.suptitle(options.title)
     plt.show()
