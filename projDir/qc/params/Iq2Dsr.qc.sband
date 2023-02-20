@@ -1240,7 +1240,7 @@ adjust_zdr_for_measured_xmit_power = FALSE;
 // Type: double
 //
 
-min_measured_xmit_power_dbm = 82.0;
+min_measured_xmit_power_dbm = 82;
 
 ///////////// max_measured_xmit_power_dbm /////////////
 //
@@ -1253,7 +1253,7 @@ min_measured_xmit_power_dbm = 82.0;
 // Type: double
 //
 
-max_measured_xmit_power_dbm = 86.0;
+max_measured_xmit_power_dbm = 86;
 
 ///////////// check_for_missing_pulses ////////////////
 //
