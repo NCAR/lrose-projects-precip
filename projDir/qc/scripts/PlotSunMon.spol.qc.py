@@ -285,9 +285,17 @@ def doPlot():
     
     measuredDbmHc = np.array(sunData["measuredDbmHc"]).astype(np.double)
     measuredDbmHcAv = movingAverage(measuredDbmHc, lenMeanFilter)
+    measuredDbmHcAv[measuredDbmHcAv > -66] = math.nan;
+    measuredDbmHcAv[measuredDbmHcAv < -70] = math.nan;
+    measuredDbmHcAv[:int(lenMeanFilter/2)] = math.nan;
+    measuredDbmHcAv[int(-lenMeanFilter/2):] = math.nan;
 
     measuredDbmVc = np.array(sunData["measuredDbmVc"]).astype(np.double)
     measuredDbmVcAv = movingAverage(measuredDbmVc, lenMeanFilter)
+    measuredDbmVcAv[measuredDbmVcAv > -66] = math.nan;
+    measuredDbmVcAv[measuredDbmVcAv < -70] = math.nan;
+    measuredDbmVcAv[:int(lenMeanFilter/2)] = math.nan;
+    measuredDbmVcAv[int(-lenMeanFilter/2):] = math.nan;
 
     validMeasuredDbm = np.logical_and(np.isfinite(measuredDbmHcAv),
                                       np.isfinite(measuredDbmVcAv))
