@@ -30,8 +30,13 @@ gList=dir([indirGround,'*.nc']);
 gTimes=[];
 for ii=1:length(gList)
     thisName=gList(ii).name;
-    gTimes=datet
+    gTimes=cat(1,gTimes,datetime(str2num(thisName(5:8)),str2num(thisName(9:10)),str2num(thisName(11:12)), ...
+        str2num(thisName(14:15)),str2num(thisName(16:17)),str2num(thisName(18:19))));
 end
+
+timeDiff=etime(datevec(intime),datevec(gTimes));
+timeDiff(timeDiff<0)=nan;
+[~,fileInd]=min(findtimeDiff);
 
 %% Load Data
 

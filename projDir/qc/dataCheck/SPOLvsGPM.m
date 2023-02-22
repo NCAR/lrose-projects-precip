@@ -7,7 +7,6 @@ radar='KAMX'; % KAMX, KBYX, KMLB, KTBW, SPOL
 
 addpath(genpath('~/git/lrose-projects-precip/projDir/qc/dataCheck/utils/'));
 
-infileGround='';
 infileGPM='20220710_194400.mdv.cf.nc';
 
 figdir=['/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/plots/GPM/',radar,'/'];
@@ -34,13 +33,27 @@ for ii=1:length(gList)
         str2num(thisName(14:15)),str2num(thisName(16:17)),str2num(thisName(18:19))));
 end
 
+timeDiff=etime(datevec(gTimes),datevec(intime));
+timeDiff(timeDiff>0)=nan;
+fileInd=max(find(~isnan(timeDiff)));
+
+infileGround=gList(fileInd).name;
+
 %% Load Data
 
+% GPM
 lonGPM=ncread([indirGPM,infileGPM],'x0');
 latGPM=ncread([indirGPM,infileGPM],'y0');
 altGPM=ncread([indirGPM,infileGPM],'z0');
 
 dbzGPM=ncread([indirGPM,infileGPM],'DBZ');
+
+% Ground
+lonGround=ncread([indirGround,infileGround],'x0');
+latGround=ncread([indirGround,infileGround],'y0');
+altGround=ncread([indirGround,infileGround],'z0');
+
+dbzGround=ncread([indirGround,infileGround],'REF');
 
 %% Plot
 
