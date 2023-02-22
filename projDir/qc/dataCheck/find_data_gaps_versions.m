@@ -5,10 +5,11 @@ close all
 
 versionQC='corrected';
 
-startDate=datetime(2022,5,25);
-endDate=datetime(2022,8,11); % This day is included
+startDate=datetime(2022,6,23);
+endDate=datetime(2022,6,24); % This day is included
 
-baseDir='/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/sband/corrected/';
+%baseDir='/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/sband/corrected/';
+baseDir='/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/moments/sband/test/';
 
 figdir='/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/plots/data_gaps/';
 

@@ -43,7 +43,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "pecan";
+instance = "precip";
 
 ///////////// register_with_procmap ///////////////////
 //
@@ -107,7 +107,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_dir = "/scr/cirrus3/rsfdata/projects/precip/grids/gpm/taiwan/hdf5";
+input_dir = "/scr/cirrus3/rsfdata/projects/precip/grids/gpm/florida/hdf5";
 
 ///////////// use_ldata_info_file /////////////////////
 //
@@ -437,9 +437,9 @@ output_fields = {
 //
 
 output_grid = {
-    nLon = 400,
-    nLat = 600,
-    minLon = 115,
+    nLon = 800,
+    nLat = 800,
+    minLon = -90,
     minLat = 15,
     dLon = 0.025,
     dLat = 0.025
@@ -498,7 +498,7 @@ interp_power_parameter = 1;
 // Type: string
 //
 
-output_url = "/scr/cirrus3/rsfdata/projects/precip/grids/gpm/taiwan/netcdf";
+output_url = "/scr/cirrus3/rsfdata/projects/precip/grids/gpm/florida/netcdf";
 
 //======================================================================
 //

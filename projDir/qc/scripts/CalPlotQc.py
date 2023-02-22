@@ -73,11 +73,11 @@ def main():
                       help='Title for plot')
     parser.add_option('--width',
                       dest='figWidthMm',
-                      default=240,
+                      default=150,
                       help='Width of figure in mm')
     parser.add_option('--height',
                       dest='figHeightMm',
-                      default=300,
+                      default=180,
                       help='Height of figure in mm')
     
     (options, args) = parser.parse_args()
@@ -316,6 +316,7 @@ def plotCalResults():
     ax1.set_xlabel("Injected power from siggen (dBm)")
     ax1.set_ylabel("Received power pwrHc, pwrVc (dBm)")
     ax1.grid(True)
+    ax1.set_ylim([-110.0, 15.0])
 
     # received SNR vs siggen
 
@@ -353,7 +354,8 @@ def plotCalResults():
     ax3.set_xlabel("Siggen Power (dBm)")
     ax3.set_ylabel("ZDR (dB)")
     ax3.grid(True)
-    ax3.set_ylim([zdrMean - 0.5, zdrMean + 0.5])
+    #ax3.set_ylim([zdrMean - 0.5, zdrMean + 0.5])
+    ax3.set_ylim([-1.6, 0.8])
 
     return
 

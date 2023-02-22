@@ -1,0 +1,6 @@
+#! /bin/csh
+
+
+cd $HOME/git/lrose-projects-precip/projDir/qc/params
+
+GpmHdf5ToMdv -params GpmHdf5ToMdv.precip.florida -debug -f /scr/cirrus3/rsfdata/projects/precip/grids/gpm/florida/hdf5/*HDF5
