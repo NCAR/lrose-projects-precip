@@ -174,5 +174,5 @@ print_time_gap_table = TRUE;
 // Type: double
 //
 
-max_valid_gap_secs = 900;
+max_valid_gap_secs = 1200;
 
