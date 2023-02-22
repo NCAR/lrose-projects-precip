@@ -7,7 +7,8 @@ addpath(genpath('~/git/lrose-projects-precip/projDir/qc/dataCheck/utils/'));
 
 figdir=['/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/plots/DBZvsZDR/'];
 
-indir='/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/sband/sur/';
+%indir='/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/sband/sur/';
+indir='/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/sband/corrected/sur/';
 
 % Ocean
 %infile='cfrad.20220608_020050.439_to_20220608_020652.355_SPOL_PrecipSur1_SUR.nc';
@@ -19,23 +20,23 @@ indir='/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/sband
 %infile='cfrad.20220614_141250.221_to_20220614_141851.997_SPOL_PrecipSur1_SUR.nc';
 %infile='cfrad.20220614_204850.513_to_20220614_205452.285_SPOL_PrecipSur1_SUR.nc';
 %infile='cfrad.20220615_011250.403_to_20220615_011852.177_SPOL_PrecipSur1_SUR.nc';
-%infile='cfrad.20220615_020050.325_to_20220615_020652.025_SPOL_PrecipSur1_SUR.nc';
+infile='cfrad.20220615_020050.325_to_20220615_020652.025_SPOL_PrecipSur1_SUR.nc';
 
 % Land
 %infile='cfrad.20220610_000050.125_to_20220610_000652.117_SPOL_PrecipSur1_SUR.nc';
 %infile='cfrad.20220615_020050.325_to_20220615_020652.025_SPOL_PrecipSur1_SUR.nc';
 
 % Other
-infile='cfrad.20220802_061250.595_to_20220802_061852.229_SPOL_PrecipSur1_SUR.nc'; % elev 2.0 deg,  az 240 - 350 deg, range 10 - 100 km
+%infile='cfrad.20220802_061250.595_to_20220802_061852.229_SPOL_PrecipSur1_SUR.nc'; % elev 2.0 deg,  az 240 - 350 deg, range 10 - 100 km
 %infile='cfrad.20220803_120050.601_to_20220803_120652.305_SPOL_PrecipSur1_SUR.nc'; % elev 1.0 deg,  az 230 - 270 deg, range 30 - 120 km
 %infile='cfrad.20220804_114850.069_to_20220804_115452.199_SPOL_PrecipSur1_SUR.nc'; % elev 1.0 deg,  az 230 - 270 deg, range 30 - 120 km
 %infile='cfrad.20220721_120918.837_to_20220721_121139.109_SPOL_PrecipSur2_SUR.nc'; % elev 0.5 deg, az 240 - 290 deg, range 50 - 120 km
 %infile='cfrad.20220723_120918.899_to_20220723_121139.321_SPOL_PrecipSur2_SUR.nc'; % elev 0.5 deg, az 250 - 290 deg, range 50 - 120 km
 
 % Ocean
-% elev=1; % Ocean
-% minMaxRange=[0,75]; % Ocean default [0,75]
-% minMaxAz=[240,360];% Ocean
+elev=1; % Ocean
+minMaxRange=[0,75]; % Ocean default [0,75]
+minMaxAz=[240,360];% Ocean
 
 % Land
 % elev=2; % Land
@@ -43,9 +44,9 @@ infile='cfrad.20220802_061250.595_to_20220802_061852.229_SPOL_PrecipSur1_SUR.nc'
 % minMaxAz=[0,90];% Land
 
 % Other
-elev=2;
-minMaxRange=[10,100];
-minMaxAz=[240,350];
+% elev=0.5;
+% minMaxRange=[50,120];
+% minMaxAz=[240,290];
 
 dbzRange=[9,51];
 %% Read data
