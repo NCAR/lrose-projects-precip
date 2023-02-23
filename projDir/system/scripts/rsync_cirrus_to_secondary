@@ -27,4 +27,12 @@ foreach project ( \
   rsync -av $project rsfdata@snow:/export/snow1/rsfdata/projects
 end
 
+cd /export/sleet2/rsfdata/projects
+
+foreach project ( \
+    spicule \
+    otrec)
+  rsync -av --exclude time_series --exclude time_series_netcdf $project rsfdata@cirrus:/export/cirrus2/rsfdata/projects
+end
+
 
