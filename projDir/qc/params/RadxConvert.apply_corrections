@@ -2496,7 +2496,7 @@ compression_level = 4;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/moments/sband/corrected/test/$(scan_type)";
+output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/moments/sband/corrected/$(scan_type)";
 
 ///////////// output_filename_mode ////////////////////
 //

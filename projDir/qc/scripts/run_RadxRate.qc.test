@@ -1,0 +1,26 @@
+#! /bin/csh
+#
+
+cd $PROJ_DIR/qc/params
+setenv VERSION qc1
+
+setenv scan_type sur
+
+RadxRate -params RadxRate.qc.test -debug -start "2022 06 20 00 00 00" -end "2022 06 21 00 00 00" >& $LOG_DIR/RadxRate.sur.20220620.log &
+RadxRate -params RadxRate.qc.test -debug -start "2022 06 21 00 00 00" -end "2022 06 22 00 00 00" >& $LOG_DIR/RadxRate.sur.20220621.log &
+RadxRate -params RadxRate.qc.test -debug -start "2022 06 22 00 00 00" -end "2022 06 23 00 00 00" >& $LOG_DIR/RadxRate.sur.20220622.log &
+RadxRate -params RadxRate.qc.test -debug -start "2022 06 23 00 00 00" -end "2022 06 24 00 00 00" >& $LOG_DIR/RadxRate.sur.20220623.log &
+RadxRate -params RadxRate.qc.test -debug -start "2022 06 24 00 00 00" -end "2022 06 25 00 00 00" >& $LOG_DIR/RadxRate.sur.20220624.log &
+RadxRate -params RadxRate.qc.test -debug -start "2022 06 25 00 00 00" -end "2022 06 26 00 00 00" >& $LOG_DIR/RadxRate.sur.20220625.log &
+
+setenv scan_type rhi
+
+RadxRate -params RadxRate.qc.test -debug -start "2022 06 20 00 00 00" -end "2022 06 21 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220620.log &
+RadxRate -params RadxRate.qc.test -debug -start "2022 06 21 00 00 00" -end "2022 06 22 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220621.log &
+RadxRate -params RadxRate.qc.test -debug -start "2022 06 22 00 00 00" -end "2022 06 23 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220622.log &
+RadxRate -params RadxRate.qc.test -debug -start "2022 06 23 00 00 00" -end "2022 06 24 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220623.log &
+RadxRate -params RadxRate.qc.test -debug -start "2022 06 24 00 00 00" -end "2022 06 25 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220624.log &
+RadxRate -params RadxRate.qc.test -debug -start "2022 06 25 00 00 00" -end "2022 06 26 00 00 00" >& $LOG_DIR/RadxRate.rhi.20220625.log &
+
+
+

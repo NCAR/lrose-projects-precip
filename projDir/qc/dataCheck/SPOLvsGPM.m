@@ -3,11 +3,15 @@
 clear all;
 close all;
 
-radar='KAMX'; % KAMX, KBYX, KMLB, KTBW, SPOL
+radar='KBYX'; % KAMX, KBYX, KMLB, KTBW, SPOL
 
 addpath(genpath('~/git/lrose-projects-precip/projDir/qc/dataCheck/utils/'));
 
-infileGPM='20220710_194400.mdv.cf.nc';
+infileGPM='20220714_035646.mdv.cf.nc';
+
+dbzThresh=35;
+
+plotAlt=3; % Altitude of plot level in km
 
 figdir=['/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/plots/GPM/',radar,'/'];
 
@@ -55,15 +59,45 @@ altGround=ncread([indirGround,infileGround],'z0');
 
 dbzGround=ncread([indirGround,infileGround],'REF');
 
+%% In GPM, go from the top and remove data that is vertically below the first >35 dBZ grid point
+
+maxDBZ=max(dbzGPM,[],3,'omitnan');
+[r,c]=find(maxDBZ>dbzThresh);
+
+dbzCens=dbzGPM;
+
+for ii=1:length(c)
+    vertDBZ=squeeze(dbzGPM(r(ii),c(ii),:));
+    highInd=find(vertDBZ>dbzThresh,1,'last');
+    dbzCens(r(ii),c(ii),1:highInd)=nan;
+end
+
+%% Get overlapping inds and compare
+
+overlap=find(~isnan(dbzCens) & ~isnan(dbzGround));
+
+oGPM=dbzCens(overlap);
+oGr=dbzGround(overlap);
+
+%% Fit
+
+dbzRange=[12,35];
+
+x1=dbzRange(1):0.5:dbzRange(2);
+p1=polyfit(oGr,oGPM,1);
+y1=polyval(p1,x1);
+
 %% Plot
 
-% Z
+[~,altInd]=min(abs(altGPM-plotAlt));
+
+% GPM
 close all
 
 figure('Position',[200 500 1400 1200],'DefaultAxesFontSize',12);
 
 s1=subplot(2,2,1);
-surf(lonGPM,latGPM,dbzGPM(:,:,10),'EdgeColor','none');
+surf(lonGPM,latGPM,dbzGPM(:,:,altInd),'EdgeColor','none');
 view(2);
 caxis([-5 70])
 colorbar('XTick',-5:3:70)
@@ -75,5 +109,31 @@ xlim([min(lonGPM),max(lonGPM)]);
 ylim([min(latGPM),max(latGPM)]);
 axis equal
 
+% Ground
+
+s2=subplot(2,2,2);
+surf(lonGround,latGround,dbzGround(:,:,altInd),'EdgeColor','none');
+view(2);
+caxis([-5 70])
+colorbar('XTick',-5:3:70)
+title('Ground DBZ (dBZ)')
+xlabel('Longitude');
+ylabel('Latitude');
+s2.Colormap=dbz_default2;
+axis equal
+xlim([min(lonGround),max(lonGround)]);
+ylim([min(latGround),max(latGround)]);
+
+s3=subplot(2,2,3);
+hold on
+scatter(oGr,oGPM);
+l1=plot([dbzRange(1),dbzRange(2)],[dbzRange(1),dbzRange(2)],'-k','LineWidth',2);
+l2=plot(x1,y1,'-r','LineWidth',2);
+axis equal
+xlim([dbzRange(1),dbzRange(2)]);
+ylim([dbzRange(1),dbzRange(2)]);
+
+grid on
+box on
 
 % print([figdir,'DBZ_vs_ZDR_',dateStr,'_elev_',num2str(elev),'deg.png'],'-dpng','-r0');
