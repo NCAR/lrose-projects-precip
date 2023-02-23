@@ -32,8 +32,15 @@ def main():
     usage = "usage: %prog [options]"
     parser = OptionParser(usage)
     projDir = os.environ['PROJ_DIR']
+    project = os.environ['project']
     dataDir = os.environ['DATA_DIR']
     qcVersion = os.environ['VERSION']
+    qcSubVersion = os.environ['SUB_VERSION']
+    momentsDir = os.path.join(os.path.join(dataDir, project),
+                              "images/spol_moments/" + qcVersion + "/" + qcSubVersion)
+    moviesDir = os.path.join(os.path.join(dataDir, project),
+                             "images/spol_movies/" + qcVersion + "/" + qcSubVersion)
+
     parser.add_option('--debug',
                       dest='debug', default=True,
                       action="store_true",
@@ -44,14 +51,12 @@ def main():
                       help='Set verbose debugging on')
     parser.add_option('--imagesTopDir',
                       dest='imagesTopDir',
-                      default=os.path.join(dataDir,
-                                           "precip/images/" + qcVersion + "/spol_moments"),
-                      help='Path to dir containing CIDD images')
+                      default=momentsDir,
+                      help='Path to dir containing CIDD images, default: ' + momentsDir)
     parser.add_option('--movieDir',
                       dest='movieDir',
-                      default=os.path.join(dataDir,
-                                           "precip/images/" + qcVersion + "/spol_movies"),
-                      help='Path to dir containing CIDD movies')
+                      default=moviesDir,
+                      help='Path to output dir for movies, default: ' + moviesDir)
     parser.add_option('--fieldName',
                       dest='fieldName',
                       default="DBZ_F",

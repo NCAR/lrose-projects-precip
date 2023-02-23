@@ -827,7 +827,7 @@ PID_write_debug_fields = FALSE;
 // Type: string
 //
 
-output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/rate/sband/corrected/$(scan_type)";
+output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/rate/sband/$(SUB_VERSION)/$(scan_type)";
 
 ///////////// output_filename_mode ////////////////////
 //

@@ -3,6 +3,7 @@
 
 cd $PROJ_DIR/qc/params
 setenv VERSION qc1
+setenv SUB_VERSION v1.0
 
 setenv scan_type sur
 

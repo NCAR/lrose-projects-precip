@@ -3,6 +3,7 @@
 
 cd $PROJ_DIR/qc/scripts
 setenv VERSION qc1
+setenv SUB_VERSION v1.0
 
 snuff Xvfb
 

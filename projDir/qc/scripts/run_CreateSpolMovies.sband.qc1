@@ -3,6 +3,7 @@
 
 cd $PROJ_DIR/qc/scripts
 setenv VERSION qc1
+setenv SUB_VERSION v1.0
 
 CreateSpolMovies.py --startTime "2022 05 25 00 00 00" --endTime "2022 08 11 00 00 00" --deltaSecs 86400 --field DBZ_F --debug >& /tmp/CreateSpolMovies.DBZ_F.log &
 
