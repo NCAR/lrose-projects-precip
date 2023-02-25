@@ -3,12 +3,16 @@
 
 cd $PROJ_DIR/qc/params
 setenv VERSION qc1
+setenv SUB_VERSION v1.0
+
+mkdir -p $PROJ_DIR/qc/tables
 
 setenv scan_type sur
 
-RadxStats -params RadxStats.precip.data_gaps -start "2022 05 25 00 00 00" -end "2022 08 11 00 00 00" > $DATA_DIR/$project/grids/spol/radarPolar/$VERSION/tables/data_gaps.spol.precip.sur.txt &
+RadxStats -params RadxStats.precip.data_gaps -start "2022 05 25 02 00 00" -end "2022 08 11 00 00 00" >& ${PROJ_DIR}/qc/tables/data_gaps.spol.precip.${scan_type}.txt &
 
 setenv scan_type rhi
 
-RadxStats -params RadxStats.precip.data_gaps -start "2022 05 25 00 00 00" -end "2022 08 11 00 00 00" > $DATA_DIR/$project/grids/spol/radarPolar/$VERSION/tables/data_gaps.spol.precip.rhi.txt &
+RadxStats -params RadxStats.precip.data_gaps -start "2022 05 25 02 00 00" -end "2022 08 11 00 00 00" >& ${PROJ_DIR}/qc/tables/data_gaps.spol.precip.${scan_type}.txt &
+
 
