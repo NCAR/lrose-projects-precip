@@ -1,0 +1,8 @@
+#! /bin/csh
+#
+
+cd $PROJ_DIR/qc/scripts
+
+PlotFieldBias.py --lenMean 1 --biasFile /scr/cirrus3/rsfdata/projects/precip/features/qc1/fieldBias/sur/tables/field_diffs.sur.txt --title "FIELD BIASES computed from FixFieldVals app"
+
+
