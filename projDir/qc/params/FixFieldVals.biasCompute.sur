@@ -1054,6 +1054,7 @@ apply_linear_transforms = FALSE;
 //      double transform_offset;
 //      boolean field_folds;
 //      double folding_value;
+//      string bias_field_name;
 //      boolean read_bias_from_spdb;
 //   }
 //
@@ -1067,6 +1068,7 @@ transform_fields = {
     transform_offset = 0,
     field_folds = FALSE,
     folding_value = 0,
+    bias_field_name = "DBZ",
     read_bias_from_spdb = FALSE
   }
   ,
@@ -1076,6 +1078,7 @@ transform_fields = {
     transform_offset = 0,
     field_folds = TRUE,
     folding_value = 25,
+    bias_field_name = "VEL",
     read_bias_from_spdb = FALSE
   }
 };

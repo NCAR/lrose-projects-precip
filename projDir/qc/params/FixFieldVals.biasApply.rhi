@@ -50,7 +50,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "biasCompute.sur";
+instance = "biasApply.rhi";
 
 //======================================================================
 //
@@ -96,7 +96,7 @@ processing_stage = CORRECTION_STAGE;
 // Type: string
 //
 
-correction_input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/field/moments/sband/seapol_rhi";
+correction_input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/field/moments/sband/rhi1";
 
 ///////////// truth_input_dir /////////////////////////
 //
@@ -273,7 +273,7 @@ field_bias_spdb_url = "$(DATA_DIR)/$(project)/features/$(VERSION)/fieldBias/sur"
 // Type: boolean
 //
 
-set_fixed_angle_limits = TRUE;
+set_fixed_angle_limits = FALSE;
 
 ///////////// lower_fixed_angle_limit /////////////////
 //
@@ -696,7 +696,7 @@ user_defined_global_attributes = {
 // Type: boolean
 //
 
-set_output_fields = FALSE;
+set_output_fields = TRUE;
 
 ///////////// output_fields ///////////////////////////
 //
@@ -738,8 +738,20 @@ output_fields = {
   {
     input_field_name = "DBZ",
     output_field_name = "DBZ",
-    long_name = "reflectivity",
-    standard_name = "equivalent_reflectivity_factor",
+    long_name = "",
+    standard_name = "",
+    output_units = "dBZ",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "DBZ_F",
+    output_field_name = "DBZ_F",
+    long_name = "",
+    standard_name = "",
     output_units = "dBZ",
     encoding = OUTPUT_ENCODING_ASIS,
     output_scaling = SCALING_DYNAMIC,
@@ -750,9 +762,237 @@ output_fields = {
   {
     input_field_name = "VEL",
     output_field_name = "VEL",
-    long_name = "radial_velocity",
-    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
+    long_name = "",
+    standard_name = "",
     output_units = "m/s",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "VEL_F",
+    output_field_name = "VEL_F",
+    long_name = "",
+    standard_name = "",
+    output_units = "m/s",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "WIDTH",
+    output_field_name = "WIDTH",
+    long_name = "",
+    standard_name = "",
+    output_units = "m/s",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "WIDTH_F",
+    output_field_name = "WIDTH_F",
+    long_name = "",
+    standard_name = "",
+    output_units = "m/s",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "ZDR_F",
+    output_field_name = "ZDR_F",
+    long_name = "",
+    standard_name = "",
+    output_units = "dB",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "RHOHV_F",
+    output_field_name = "RHOHV_F",
+    long_name = "",
+    standard_name = "",
+    output_units = "",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "RHOHV_NNC_F",
+    output_field_name = "RHOHV_NNC_F",
+    long_name = "",
+    standard_name = "",
+    output_units = "",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "PHIDP_F",
+    output_field_name = "PHIDP_F",
+    long_name = "",
+    standard_name = "",
+    output_units = "deg",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "KDP_F",
+    output_field_name = "KDP_F",
+    long_name = "",
+    standard_name = "",
+    output_units = "deg/km",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "SNRHC",
+    output_field_name = "SNRHC",
+    long_name = "",
+    standard_name = "",
+    output_units = "dB",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "SNRHC_F",
+    output_field_name = "SNRHC_F",
+    long_name = "",
+    standard_name = "",
+    output_units = "dB",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "SNRVC_F",
+    output_field_name = "SNRVC_F",
+    long_name = "",
+    standard_name = "",
+    output_units = "dB",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "SNRVC",
+    output_field_name = "SNRVC",
+    long_name = "",
+    standard_name = "",
+    output_units = "dB",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "DBMHC",
+    output_field_name = "DBMHC",
+    long_name = "",
+    standard_name = "",
+    output_units = "dBm",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "DBMHC_F",
+    output_field_name = "DBMHC_F",
+    long_name = "",
+    standard_name = "",
+    output_units = "dBm",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "DBMVC",
+    output_field_name = "DBMVC",
+    long_name = "",
+    standard_name = "",
+    output_units = "dBm",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "DBMVC_F",
+    output_field_name = "DBMVC_F",
+    long_name = "",
+    standard_name = "",
+    output_units = "dBm",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "NCP",
+    output_field_name = "NCP",
+    long_name = "",
+    standard_name = "",
+    output_units = "",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "NCP_F",
+    output_field_name = "NCP_F",
+    long_name = "",
+    standard_name = "",
+    output_units = "",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "CMD_FLAG",
+    output_field_name = "CMD_FLAG",
+    long_name = "",
+    standard_name = "",
+    output_units = "",
     encoding = OUTPUT_ENCODING_ASIS,
     output_scaling = SCALING_DYNAMIC,
     output_scale = 0.01,
@@ -857,7 +1097,7 @@ output_encoding = OUTPUT_ENCODING_ASIS;
 // Type: boolean
 //
 
-apply_censoring = FALSE;
+apply_censoring = TRUE;
 
 ///////////// censoring_fields ////////////////////////
 //
@@ -896,15 +1136,15 @@ apply_censoring = FALSE;
 
 censoring_fields = {
   {
-    name = "SNR",
+    name = "SNRHC_F",
     min_valid_value = 0,
     max_valid_value = 1000,
     combination_method = LOGICAL_OR
   }
   ,
   {
-    name = "NCP",
-    min_valid_value = 0.15,
+    name = "NCP_F",
+    min_valid_value = 0.2,
     max_valid_value = 1000,
     combination_method = LOGICAL_OR
   }
@@ -925,7 +1165,7 @@ censoring_fields = {
 // Type: int
 //
 
-censoring_min_valid_run = 1;
+censoring_min_valid_run = 5;
 
 ///////////// specify_fields_to_be_censored ///////////
 //
@@ -965,7 +1205,7 @@ fields_to_be_censored = {
 // Type: boolean
 //
 
-censor_test_pulse_ring = FALSE;
+censor_test_pulse_ring = TRUE;
 
 ///////////// test_pulse_min_range_km /////////////////
 //
@@ -1036,7 +1276,7 @@ test_pulse_field_name = "DBZ";
 // Type: boolean
 //
 
-apply_linear_transforms = FALSE;
+apply_linear_transforms = TRUE;
 
 ///////////// transform_fields ////////////////////////
 //
@@ -1054,6 +1294,7 @@ apply_linear_transforms = FALSE;
 //      double transform_offset;
 //      boolean field_folds;
 //      double folding_value;
+//      string bias_field_name;
 //      boolean read_bias_from_spdb;
 //   }
 //
@@ -1067,15 +1308,37 @@ transform_fields = {
     transform_offset = 0,
     field_folds = FALSE,
     folding_value = 0,
-    read_bias_from_spdb = FALSE
+    bias_field_name = "DBZ",
+    read_bias_from_spdb = TRUE
   }
   ,
   {
-    input_field_name = "VEL",
+    input_field_name = "DBZ_F",
     transform_scale = 1,
     transform_offset = 0,
+    field_folds = FALSE,
+    folding_value = 0,
+    bias_field_name = "DBZ",
+    read_bias_from_spdb = TRUE
+  }
+  ,
+  {
+    input_field_name = "ZDR_F",
+    transform_scale = 1,
+    transform_offset = 0,
+    field_folds = FALSE,
+    folding_value = 0,
+    bias_field_name = "ZDR_F",
+    read_bias_from_spdb = TRUE
+  }
+  ,
+  {
+    input_field_name = "PHIDP_F",
+    transform_scale = 1,
+    transform_offset = 40,
     field_folds = TRUE,
-    folding_value = 25,
+    folding_value = 180,
+    bias_field_name = "PHIDP_F",
     read_bias_from_spdb = FALSE
   }
 };
@@ -1128,7 +1391,7 @@ output_force_ngates_vary = FALSE;
 // Type: string
 //
 
-corrected_files_output_dir = "./output";
+corrected_files_output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/moments/sband/corrected/rhi1";
 
 ///////////// output_filename_mode ////////////////////
 //
