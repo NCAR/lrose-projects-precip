@@ -1,0 +1,1501 @@
+/**********************************************************************
+ * TDRP params for FixFieldVals
+ **********************************************************************/
+
+//======================================================================
+//
+// ANALYSIS_STAGE: reads in 2 datasets and computes mean differences 
+//   between specified fields. Biases are stored in Spdb.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// CORRECTION_STAGE: retrieves biases from Spdb, corrects specified 
+//   datasets using those previously-computed biases.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// DEBUGGING.
+//
+//======================================================================
+ 
+///////////// debug ///////////////////////////////////
+//
+// Debug option.
+//
+// If set, debug messages will be printed appropriately.
+//
+//
+// Type: enum
+// Options:
+//     DEBUG_OFF
+//     DEBUG_NORM
+//     DEBUG_VERBOSE
+//     DEBUG_EXTRA
+//
+
+debug = DEBUG_OFF;
+
+///////////// instance ////////////////////////////////
+//
+// Program instance for process registration.
+//
+// This application registers with procmap. This is the instance used 
+//   for registration.
+//
+//
+// Type: string
+//
+
+instance = "computeDiffs.sur";
+
+//======================================================================
+//
+// PROCESSING STAGES.
+//
+//======================================================================
+ 
+///////////// processing_stage ////////////////////////
+//
+// Stage of processing.
+//
+// ANALYSIS_STAGE: reads in 2 datasets and computes mean differences 
+//   between specified fields. Biases are stored in Spdb.
+//
+// CORRECTION_STAGE: retrieves biases from Spdn, corrects specified 
+//   datasets using those previously-computed biases.
+//
+//
+// Type: enum
+// Options:
+//     ANALYSIS_STAGE
+//     CORRECTION_STAGE
+//
+
+processing_stage = ANALYSIS_STAGE;
+
+//======================================================================
+//
+// DATA INPUT.
+//
+//======================================================================
+ 
+///////////// correction_input_dir ////////////////////
+//
+// Input directory for searching for CfRadial files that need 
+//   correction.
+//
+// Applies to both ANALYSIS_STAGE and CORRECTION_STAGE. These will be 
+//   the files to be corrected, or some which the correction will be 
+//   computed when compared to the truth files.
+//
+//
+// Type: string
+//
+
+correction_input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/field/moments/sband/sur";
+
+///////////// truth_input_dir /////////////////////////
+//
+// Input directory for searching for truth CfRadial files.
+//
+// Applies only to ANALYSIS_STAGE.
+//
+//
+// Type: string
+//
+
+truth_input_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/moments/sband/corrected/sur";
+
+///////////// truth_file_time_margin_secs /////////////
+//
+// Search margin in finding truth files (secs).
+//
+// We perform a 'closest' search. This is the margin around the search 
+//   time.
+//
+//
+// Type: double
+//
+
+truth_file_time_margin_secs = 60;
+
+///////////// truth_ray_az_margin_deg /////////////////
+//
+// Azimuth margin in finding truth rays (deg).
+//
+// The truth ray azimuth must be within this tolerance of the correction 
+//   ray.
+//
+//
+// Type: double
+//
+
+truth_ray_az_margin_deg = 0.1;
+
+///////////// truth_ray_el_margin_deg /////////////////
+//
+// Elevation margin in finding truth rays (deg).
+//
+// The truth ray elevation must be within this tolerance of the 
+//   correction ray.
+//
+//
+// Type: double
+//
+
+truth_ray_el_margin_deg = 0.1;
+
+///////////// truth_ray_time_margin_secs //////////////
+//
+// Time margin in finding truth rays (sec).
+//
+// The truth ray time must be within this tolerance of the correction 
+//   ray.
+//
+//
+// Type: double
+//
+
+truth_ray_time_margin_secs = 0.1;
+
+///////////// comparison_fields ///////////////////////
+//
+// Comparison field names for analysis.
+//
+// In the ANALYSIS_STAGE, we need to compare the correction fields to 
+//   the truth fields. We do not assume they have the same name, though 
+//   that is likely.
+//
+//
+// Type: struct
+//   typedef struct {
+//      string correction_field_name;
+//      string truth_field_name;
+//   }
+//
+// 1D array - variable length.
+//
+
+comparison_fields = {
+  {
+    correction_field_name = "DBZ",
+    truth_field_name = "DBZ"
+  }
+  ,
+  {
+    correction_field_name = "ZDR_F",
+    truth_field_name = "ZDR_F"
+  }
+  // ,
+  // {
+  //   correction_field_name = "PHIDP_F",
+  //   truth_field_name = "PHIDP_F"
+  // }
+};
+
+///////////// min_npts_for_valid_diff /////////////////
+//
+// Min number of pts for valid analysis of field diffs.
+//
+// If npts is less than this, the diffs are not written out.
+//
+//
+// Type: double
+//
+
+min_npts_for_valid_diff = 1000;
+
+///////////// mode ////////////////////////////////////
+//
+// Operating mode.
+//
+// In ARCHIVE mode, it moves through the data between the start and end 
+//   times set on the command line. In FILELIST mode, it moves through the 
+//   list of file names specified on the command line. Paths (in ARCHIVE 
+//   mode, at least) MUST contain a day-directory above the data file -- 
+//   ./data_file.ext will not work as a file path, but 
+//   ./yyyymmdd/data_file.ext will.
+//
+//
+// Type: enum
+// Options:
+//     ARCHIVE
+//     FILELIST
+//
+
+mode = ARCHIVE;
+
+///////////// search_ext //////////////////////////////
+//
+// File name extension.
+//
+// If set, only files with this extension will be processed.
+//
+//
+// Type: string
+//
+
+search_ext = "";
+
+//======================================================================
+//
+// SPDB FIELD BIAS DATA.
+//
+// Output in ANALYSIS_STAGE, input in CORRECTION_STAGE.
+//
+//======================================================================
+ 
+///////////// field_bias_spdb_url /////////////////////
+//
+// URL for SPDB XML.
+//
+// For local writes, specify the directory. For remote writes, specify 
+//   the full url: spdbp:://host::dir.
+//
+//
+// Type: string
+//
+
+field_bias_spdb_url = "$(DATA_DIR)/$(project)/features/$(VERSION)/fieldBias/sur";
+
+//======================================================================
+//
+// READ OPTIONS.
+//
+//======================================================================
+ 
+///////////// set_fixed_angle_limits //////////////////
+//
+// Option to set fixed angle limits.
+//
+// Only use sweeps within the specified fixed angle limits.
+//
+//
+// Type: boolean
+//
+
+set_fixed_angle_limits = TRUE;
+
+///////////// lower_fixed_angle_limit /////////////////
+//
+// Lower fixed angle limit - degrees.
+//
+//
+// Type: double
+//
+
+lower_fixed_angle_limit = 0;
+
+///////////// upper_fixed_angle_limit /////////////////
+//
+// Upper fixed angle limit - degrees.
+//
+//
+// Type: double
+//
+
+upper_fixed_angle_limit = 1.7;
+
+///////////// apply_strict_angle_limits ///////////////
+//
+// Option to apply strict checking for angle or sweep number limits on 
+//   read.
+//
+// If true, an error will occur if the fixed angle limits or sweep num 
+//   limits are outside the bounds of the data. If false, a read is 
+//   guaranteed to return at least 1 sweep - if no sweep lies within the 
+//   angle limits set, the nearest sweep will be returned.
+//
+//
+// Type: boolean
+//
+
+apply_strict_angle_limits = TRUE;
+
+///////////// set_max_range ///////////////////////////
+//
+// Option to set the max range for any ray.
+//
+//
+// Type: boolean
+//
+
+set_max_range = FALSE;
+
+///////////// max_range_km ////////////////////////////
+//
+// Specified maximim range - km.
+//
+// Gates beyond this range are removed.
+//
+//
+// Type: double
+//
+
+max_range_km = 9999;
+
+///////////// set_ngates_constant /////////////////////
+//
+// Option to force the number of gates to be constant.
+//
+// If TRUE, the number of gates on all rays will be set to the maximum, 
+//   and gates added to shorter rays will be filled with missing values.
+//
+//
+// Type: boolean
+//
+
+set_ngates_constant = FALSE;
+
+///////////// remap_to_predominant_range_geometry /////
+//
+// Option to remap all rays to the predominant range geometry.
+//
+// If TRUE, all rays will be remapped onto the same range geometry, 
+//   determined as the most common geometry amongst all of the rays read 
+//   in.
+//
+//
+// Type: boolean
+//
+
+remap_to_predominant_range_geometry = FALSE;
+
+///////////// remap_to_finest_range_geometry //////////
+//
+// Option to remap all rays to the finest range geometry.
+//
+// If TRUE, all rays will be remapped onto the same range geometry, 
+//   determined as that with the finest resolution in range - i.e. with 
+//   the minimum gate spacing.
+//
+//
+// Type: boolean
+//
+
+remap_to_finest_range_geometry = FALSE;
+
+///////////// override_beam_width /////////////////////
+//
+// Option to override the beam width.
+//
+//
+// Type: boolean
+//
+
+override_beam_width = FALSE;
+
+///////////// beam_width_deg_h ////////////////////////
+//
+// Beam width in the horizontal plane (deg).
+//
+// See override_beam_width.
+//
+//
+// Type: double
+//
+
+beam_width_deg_h = 1;
+
+///////////// beam_width_deg_v ////////////////////////
+//
+// Beam width in the vertical plane (deg).
+//
+// See override_beam_width.
+//
+//
+// Type: double
+//
+
+beam_width_deg_v = 1;
+
+///////////// override_antenna_gain ///////////////////
+//
+// Option to override the antenna gain.
+//
+//
+// Type: boolean
+//
+
+override_antenna_gain = FALSE;
+
+///////////// antenna_gain_db_h ///////////////////////
+//
+// antenna gain in the horizontal plane (dB).
+//
+// See override_antenna_gain.
+//
+//
+// Type: double
+//
+
+antenna_gain_db_h = 45.1;
+
+///////////// antenna_gain_db_v ///////////////////////
+//
+// antenna gain in the vertical plane (dB).
+//
+// See override_antenna_gain.
+//
+//
+// Type: double
+//
+
+antenna_gain_db_v = 45.1;
+
+//======================================================================
+//
+// OPTION TO SET NYQUIST VELOCITY FOR SPECIFIED FIELDS.
+//
+//======================================================================
+ 
+///////////// set_nyquist_velocity ////////////////////
+//
+// Option to override the nyquist velocity for selected fields.
+//
+// Each ray has a nyquist value that may be set. Plus the folding 
+//   velocity can be set on each of multiple fields. If more than 1 
+//   nyquist is specified - i.e. on different fields - the nyquist from 
+//   the first field will be applied to the ray as a whole. So make sure 
+//   the first field is the primary velocity field.
+//
+//
+// Type: boolean
+//
+
+set_nyquist_velocity = FALSE;
+
+///////////// nyquist_fields //////////////////////////
+//
+// Fields on which nyquist should be set.
+//
+// Set the folding velocity for the specified fields. If more than 1 
+//   field is specified, the first nyquist value in the list will be used 
+//   for the ray as a whole.
+//
+//
+// Type: struct
+//   typedef struct {
+//      string field_name;
+//      double nyquist_mps;
+//   }
+//
+// 1D array - variable length.
+//
+
+nyquist_fields = {
+  {
+    field_name = "VEL",
+    nyquist_mps = 25
+  }
+  ,
+  {
+    field_name = "VEL_F",
+    nyquist_mps = 25
+  }
+};
+
+//======================================================================
+//
+// OPTION TO FORCE RELOAD OF SWEEP AND/OR VOLUME INFO, or RECOMPUTE 
+//   SWEEP FIXED ANGLE.
+//
+//======================================================================
+ 
+//======================================================================
+//
+// OPTION TO OVERRIDE SELECTED GLOBAL ATTRIBUTES.
+//
+//======================================================================
+ 
+///////////// version_override ////////////////////////
+//
+// Option to override the version global attribute.
+//
+// If empty, no effect. If not empty, this string is used to override 
+//   the version attribute.
+//
+//
+// Type: string
+//
+
+version_override = "";
+
+///////////// title_override //////////////////////////
+//
+// Option to override the title global attribute.
+//
+// If empty, no effect. If not empty, this string is used to override 
+//   the title attribute.
+//
+//
+// Type: string
+//
+
+title_override = "";
+
+///////////// institution_override ////////////////////
+//
+// Option to override the institution global attribute.
+//
+// If empty, no effect. If not empty, this string is used to override 
+//   the institution attribute.
+//
+//
+// Type: string
+//
+
+institution_override = "";
+
+///////////// references_override /////////////////////
+//
+// Option to override the references global attribute.
+//
+// If empty, no effect. If not empty, this string is used to override 
+//   the references attribute.
+//
+//
+// Type: string
+//
+
+references_override = "";
+
+///////////// source_override /////////////////////////
+//
+// Option to override the source global attribute.
+//
+// If empty, no effect. If not empty, this string is used to override 
+//   the source attribute.
+//
+//
+// Type: string
+//
+
+source_override = "";
+
+///////////// history_override ////////////////////////
+//
+// Option to override the history global attribute.
+//
+// If empty, no effect. If not empty, this string is used to override 
+//   the history attribute.
+//
+//
+// Type: string
+//
+
+history_override = "";
+
+///////////// comment_override ////////////////////////
+//
+// Option to override the comment global attribute.
+//
+// If empty, no effect. If not empty, this string is used to override 
+//   the comment attribute.
+//
+//
+// Type: string
+//
+
+comment_override = "";
+
+///////////// author_override /////////////////////////
+//
+// Option to override the author global attribute.
+//
+// If empty, no effect. If not empty, this string is used to override 
+//   the author attribute.
+//
+//
+// Type: string
+//
+
+author_override = "";
+
+//======================================================================
+//
+// OPTION TO ADD USER-SPECIFIED GLOBAL ATTRIBUTES to output file.
+//
+// Only applies to CfRadial output format.
+//
+//======================================================================
+ 
+///////////// add_user_specified_global_attributes ////
+//
+// Add user-specified global attributes to output file.
+//
+// Only applies to CfRadial files. See below for details.
+//
+//
+// Type: boolean
+//
+
+add_user_specified_global_attributes = FALSE;
+
+///////////// user_defined_global_attributes //////////
+//
+// User-defined global attributes.
+//
+// Applies if 'add_user_specified_global_attributes' is true. Array 
+//   attributes are comma-delimited.
+//
+//
+// Type: struct
+//   typedef struct {
+//      string name;
+//      attr_type_t attrType;
+//        Options:
+//          ATTR_STRING
+//          ATTR_INT
+//          ATTR_DOUBLE
+//          ATTR_INT_ARRAY
+//          ATTR_DOUBLE_ARRAY
+//      string val;
+//   }
+//
+// 1D array - variable length.
+//
+
+user_defined_global_attributes = {
+  {
+    name = "attr_string",
+    attrType = ATTR_STRING,
+    val = "user-attribute"
+  }
+  ,
+  {
+    name = "attr_int",
+    attrType = ATTR_INT,
+    val = "99"
+  }
+  ,
+  {
+    name = "attr_double",
+    attrType = ATTR_DOUBLE,
+    val = "99.99"
+  }
+  ,
+  {
+    name = "attr_int_array",
+    attrType = ATTR_INT_ARRAY,
+    val = "1,2,3,4,5"
+  }
+  ,
+  {
+    name = "attr_double_array",
+    attrType = ATTR_DOUBLE_ARRAY,
+    val = "1.1,2.2,3.3,4.4,5.5"
+  }
+};
+
+//======================================================================
+//
+// OPTION TO SPECIFY FIELD NAMES AND OUTPUT ENCODING.
+//
+//======================================================================
+ 
+///////////// set_output_fields ///////////////////////
+//
+// Set the field names and output encoding.
+//
+// If false, all fields will be used.
+//
+//
+// Type: boolean
+//
+
+set_output_fields = FALSE;
+
+///////////// output_fields ///////////////////////////
+//
+// Output field details.
+//
+// Set the details for the output fields. The output_field_name is the 
+//   ndtCDF variable name. Set the long name to a more descriptive name. 
+//   Set the standard name to the CF standard name for this field. If the 
+//   long name or standard name are empty, the existing names are used. If 
+//   SCALING_SPECIFIED, then the scale and offset is used.
+//
+//
+// Type: struct
+//   typedef struct {
+//      string input_field_name;
+//      string output_field_name;
+//      string long_name;
+//      string standard_name;
+//      string output_units;
+//      output_encoding_t encoding;
+//        Options:
+//          OUTPUT_ENCODING_ASIS
+//          OUTPUT_ENCODING_FLOAT32
+//          OUTPUT_ENCODING_INT32
+//          OUTPUT_ENCODING_INT16
+//          OUTPUT_ENCODING_INT08
+//      output_scaling_t output_scaling;
+//        Options:
+//          SCALING_DYNAMIC
+//          SCALING_SPECIFIED
+//      double output_scale;
+//      double output_offset;
+//   }
+//
+// 1D array - variable length.
+//
+
+output_fields = {
+  {
+    input_field_name = "DBZ",
+    output_field_name = "DBZ",
+    long_name = "reflectivity",
+    standard_name = "equivalent_reflectivity_factor",
+    output_units = "dBZ",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+  ,
+  {
+    input_field_name = "VEL",
+    output_field_name = "VEL",
+    long_name = "radial_velocity",
+    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
+    output_units = "m/s",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
+};
+
+///////////// write_other_fields_unchanged ////////////
+//
+// Option to write out the unspecified fields as they are.
+//
+// If false, only the fields listed in output_fields will be written. If 
+//   this is true, all other fields will be written unchanged.
+//
+//
+// Type: boolean
+//
+
+write_other_fields_unchanged = FALSE;
+
+///////////// exclude_specified_fields ////////////////
+//
+// Option to exclude fields in the specified list.
+//
+// If true, the specified fields will be excluded. This may be easier 
+//   than specifiying all of the fields to be included, if that list is 
+//   very long.
+//
+//
+// Type: boolean
+//
+
+exclude_specified_fields = FALSE;
+
+///////////// excluded_fields /////////////////////////
+//
+// List of fields to be excluded.
+//
+// List the names to be excluded.
+//
+//
+// Type: string
+// 1D array - variable length.
+//
+
+excluded_fields = {
+ "DBZ",
+ "VEL"
+};
+
+//======================================================================
+//
+// OPTION TO SPECIFY OUTPUT ENCODING FOR ALL FIELDS.
+//
+//======================================================================
+ 
+///////////// set_output_encoding_for_all_fields //////
+//
+// Option to set output encoding for all fields.
+//
+//
+// Type: boolean
+//
+
+set_output_encoding_for_all_fields = FALSE;
+
+///////////// output_encoding /////////////////////////
+//
+// Output encoding for all fields, if requested.
+//
+//
+// Type: enum
+// Options:
+//     OUTPUT_ENCODING_ASIS
+//     OUTPUT_ENCODING_FLOAT32
+//     OUTPUT_ENCODING_INT32
+//     OUTPUT_ENCODING_INT16
+//     OUTPUT_ENCODING_INT08
+//
+
+output_encoding = OUTPUT_ENCODING_ASIS;
+
+//======================================================================
+//
+// CENSORING.
+//
+// You have the option of censoring the data fields - i.e. setting the 
+//   fields to missing values - at gates which meet certain criteria. If 
+//   this is done correctly, it allows you to preserve the valid data and 
+//   discard the noise, thereby improving compression.
+//
+//======================================================================
+ 
+///////////// apply_censoring /////////////////////////
+//
+// Apply censoring based on field values and thresholds.
+//
+// If TRUE, censoring will be performed. See 'censoring_fields' for 
+//   details on how the censoring is applied.
+//
+//
+// Type: boolean
+//
+
+apply_censoring = FALSE;
+
+///////////// censoring_fields ////////////////////////
+//
+// Fields to be used for censoring.
+//
+// Specify the fields to be used to determine whether a gate should be 
+//   censored. The name refers to the input data field names. Valid field 
+//   values lie in the range from min_valid_value to max_valid_value 
+//   inclusive. If the value of a field at a gate lies within this range, 
+//   it is considered valid. Each specified field is examined at each 
+//   gate, and is flagged as valid if its value lies in the valid range. 
+//   These field flags are then combined as follows: first, all of the 
+//   LOGICAL_OR flags are combined, yielding a single combined_or flag 
+//   which is true if any of the LOGICAL_OR fields is true. The 
+//   combined_or flag is then combined with all of the LOGICAL_AND fields, 
+//   yielding a true value only if the combined_or flag and the 
+//   LOGICAL_AND fields are all true. If this final flag is true, then the 
+//   data at the gate is regarded as valid and is retained. If the final 
+//   flag is false, the data at the gate is censored, and all of the 
+//   fields at the gate are set to missing.
+//
+//
+// Type: struct
+//   typedef struct {
+//      string name;
+//      double min_valid_value;
+//      double max_valid_value;
+//      logical_t combination_method;
+//        Options:
+//          LOGICAL_AND
+//          LOGICAL_OR
+//   }
+//
+// 1D array - variable length.
+//
+
+censoring_fields = {
+  {
+    name = "SNR",
+    min_valid_value = 0,
+    max_valid_value = 1000,
+    combination_method = LOGICAL_OR
+  }
+  ,
+  {
+    name = "NCP",
+    min_valid_value = 0.15,
+    max_valid_value = 1000,
+    combination_method = LOGICAL_OR
+  }
+};
+
+///////////// censoring_min_valid_run /////////////////
+//
+// Minimum valid run of non-censored gates.
+//
+// Only active if set to 2 or greater. A check is made to remove short 
+//   runs of noise. Looking along the radial, we compute the number of 
+//   contiguous gates (a 'run') with uncensored data. For the gates in 
+//   this run to be accepted the length of the run must exceed 
+//   censoring_min_valid_run. If the number of gates in a run is less than 
+//   this, then all gates in the run are censored.
+//
+//
+// Type: int
+//
+
+censoring_min_valid_run = 1;
+
+///////////// specify_fields_to_be_censored ///////////
+//
+// Option to specify the fields to be censored.
+//
+// If FALSE, all fields are specified based on the censoring rules.
+//
+//
+// Type: boolean
+//
+
+specify_fields_to_be_censored = FALSE;
+
+///////////// fields_to_be_censored ///////////////////
+//
+// List of fields to be censored.
+//
+// Applies if 'specify_fields_to_be_censored' is TRUE.
+//
+//
+// Type: string
+// 1D array - variable length.
+//
+
+fields_to_be_censored = {
+ "LDR"
+};
+
+///////////// censor_test_pulse_ring //////////////////
+//
+// Censor non-missing data within the test pulse ring.
+//
+// If TRUE, non-missing data within the ring will be censored, provided 
+//   there is no adjacent data in the margins.
+//
+//
+// Type: boolean
+//
+
+censor_test_pulse_ring = FALSE;
+
+///////////// test_pulse_min_range_km /////////////////
+//
+// Minimum range of the test pulse to be censored (km).
+//
+// Only non-missing data within the ring will be censored.
+//
+//
+// Type: double
+//
+
+test_pulse_min_range_km = 238;
+
+///////////// test_pulse_max_range_km /////////////////
+//
+// Minimum range of the test pulse to be censored (km).
+//
+// Only non-missing data within the ring will be censored.
+//
+//
+// Type: double
+//
+
+test_pulse_max_range_km = 239.5;
+
+///////////// test_pulse_margin_km ////////////////////
+//
+// Range margin around test pulse (km).
+//
+// The test pulse is only censored if the margins have only missing data 
+//   values.
+//
+//
+// Type: double
+//
+
+test_pulse_margin_km = 2.5;
+
+///////////// test_pulse_field_name ///////////////////
+//
+// Field used to check for data in or around the test pulse.
+//
+// We use this field to decide if there is non-missing data that needs 
+//   censoring within the test pulse.
+//
+//
+// Type: string
+//
+
+test_pulse_field_name = "DBZ";
+
+//======================================================================
+//
+// OPTION TO APPLY LINEAR TRANSFORM TO SPECIFIED FIELDS.
+//
+// These transforms are fixed. The same transform is applied to all 
+//   files.
+//
+//======================================================================
+ 
+///////////// apply_linear_transforms /////////////////
+//
+// Apply linear transform to specified fields.
+//
+// If true, we will apply a linear transform to selected fields.
+//
+//
+// Type: boolean
+//
+
+apply_linear_transforms = FALSE;
+
+///////////// transform_fields ////////////////////////
+//
+// transform field details.
+//
+// Set the field name, scale and offset to be applied to the selected 
+//   fields. NOTE: the field name is the INPUT field name.
+//
+//
+// Type: struct
+//   typedef struct {
+//      string input_field_name;
+//      double transform_scale;
+//      double transform_offset;
+//      boolean field_folds;
+//      double folding_value;
+//   }
+//
+// 1D array - variable length.
+//
+
+transform_fields = {
+  {
+    input_field_name = "DBZ",
+    transform_scale = 1,
+    transform_offset = 0,
+    field_folds = FALSE,
+    folding_value = 0
+  }
+  ,
+  {
+    input_field_name = "VEL",
+    transform_scale = 1,
+    transform_offset = 0,
+    field_folds = TRUE,
+    folding_value = 25
+  }
+};
+
+//======================================================================
+//
+// OUTPUT OPTIONS FOR CfRadial FILES.
+//
+//======================================================================
+ 
+///////////// output_force_ngates_vary ////////////////
+//
+// Option to force the use of ragged arrays for CfRadial files.
+//
+// Only applies to CfRadial. If true, forces the use of ragged arrays 
+//   even if the number of gates for all rays is constant.
+//
+//
+// Type: boolean
+//
+
+output_force_ngates_vary = FALSE;
+
+//======================================================================
+//
+// OUTPUT DIRECTORY AND FILE NAME.
+//
+//======================================================================
+ 
+///////////// corrected_files_output_dir //////////////
+//
+// Output directory path.
+//
+// Corrected files will be written to this directory.
+//
+//
+// Type: string
+//
+
+corrected_files_output_dir = "./output";
+
+///////////// output_filename_mode ////////////////////
+//
+// Mode for computing output file name.
+//
+// START_AND_END_TIMES: include both start and end times in file name. 
+//   START_TIME_ONLY: include only start time in file name. END_TIME_ONLY: 
+//   include only end time in file name. SPECIFY_FILE_NAME: file of this 
+//   name will be written to output_dir.
+//
+//
+// Type: enum
+// Options:
+//     START_AND_END_TIMES
+//     START_TIME_ONLY
+//     END_TIME_ONLY
+//     SPECIFY_FILE_NAME
+//
+
+output_filename_mode = START_AND_END_TIMES;
+
+///////////// output_filename_prefix //////////////////
+//
+// Optional prefix for output filename.
+//
+// If empty, the standard prefix will be used. Only applies to CfRadial 
+//   files. Standard prefix is 'cfrad.'.
+//
+//
+// Type: string
+//
+
+output_filename_prefix = "";
+
+///////////// output_filename_suffix //////////////////
+//
+// Optional suffix for output filename.
+//
+// If not empty, the suffix will be inserted immediately prior to the 
+//   extension.
+//
+//
+// Type: string
+//
+
+output_filename_suffix = "";
+
+///////////// include_instrument_name_in_file_name ////
+//
+// Option to include the instrument name in the file name.
+//
+// Default is true. Only applies to CfRadial files. If true, the 
+//   instrument name will be included just before the volume number in the 
+//   output file name.
+//
+//
+// Type: boolean
+//
+
+include_instrument_name_in_file_name = TRUE;
+
+///////////// include_site_name_in_file_name //////////
+//
+// Option to include the site name in the file name.
+//
+// Only applies to CfRadial files. If true, the site name will be 
+//   included just before the volume number in the output file name.
+//
+//
+// Type: boolean
+//
+
+include_site_name_in_file_name = FALSE;
+
+///////////// include_subsecs_in_file_name ////////////
+//
+// Option to include sub-seconds in date-time part of file name.
+//
+// Default is true. Only applies to CfRadial files. If true, the 
+//   millisecs of the start and end time will be included in the file 
+//   name.
+//
+//
+// Type: boolean
+//
+
+include_subsecs_in_file_name = TRUE;
+
+///////////// include_scan_type_in_file_name //////////
+//
+// Option to include the scan type in the file name.
+//
+// Default is true. Only applies to CfRadial files. If true, the scan 
+//   type (SUR, SEC, RHI, VER etc) will be included in the file name.
+//
+//
+// Type: boolean
+//
+
+include_scan_type_in_file_name = TRUE;
+
+///////////// include_scan_name_in_file_name //////////
+//
+// Option to include the scan name in the file name.
+//
+// Default is false. Only applies to CfRadial files. If true, the scan 
+//   name will be included in the file name.
+//
+//
+// Type: boolean
+//
+
+include_scan_name_in_file_name = FALSE;
+
+///////////// include_scan_id_in_file_name ////////////
+//
+// Option to include the scan Id in the file name.
+//
+// Default is false. Only applies to CfRadial files. If true, the scan 
+//   Id will be included in the file name.
+//
+//
+// Type: boolean
+//
+
+include_scan_id_in_file_name = FALSE;
+
+///////////// include_range_resolution_in_file_name ///
+//
+// Option to include the range resolution in the file name.
+//
+// Default is false. Only applies to CfRadial files. If true, the range 
+//   resolution (50m) will be included in the file name.
+//
+//
+// Type: boolean
+//
+
+include_range_resolution_in_file_name = FALSE;
+
+///////////// include_vol_num_in_file_name ////////////
+//
+// Option to include the volume number in the file name.
+//
+// Default is false. Only applies to CfRadial files. If true, the volume 
+//   number is included in the file name, preceded by '_v'.
+//
+//
+// Type: boolean
+//
+
+include_vol_num_in_file_name = FALSE;
+
+///////////// use_hyphen_in_file_name_datetime_part ///
+//
+// Option to use a hyphen between date and time in filename.
+//
+// Default is false. Only applies to CfRadial files. Normally an 
+//   underscore is used.
+//
+//
+// Type: boolean
+//
+
+use_hyphen_in_file_name_datetime_part = FALSE;
+
+///////////// output_filename /////////////////////////
+//
+// Name of output file.
+//
+// Applies only if output_filename_mode is SPECIFY_FILE_NAME. File of 
+//   this name will be written to output_dir.
+//
+//
+// Type: string
+//
+
+output_filename = "cfradial.test.nc";
+
+///////////// append_day_dir_to_output_dir ////////////
+//
+// Add the day directory to the output directory.
+//
+// Path will be output_dir/yyyymmdd/filename.
+//
+//
+// Type: boolean
+//
+
+append_day_dir_to_output_dir = TRUE;
+
+///////////// append_year_dir_to_output_dir ///////////
+//
+// Add the year directory to the output directory.
+//
+// Path will be output_dir/yyyy/yyyymmdd/filename.
+//
+//
+// Type: boolean
+//
+
+append_year_dir_to_output_dir = FALSE;
+
+///////////// write_using_proposed_standard_name_attr /
+//
+// Option to write CfRadial files using 'proposed_standard_name' 
+//   attribute.
+//
+// Default is false. Only applies to CfRadial files. Normally we use the 
+//   'standard_name' attribute. However, some organizations reject these 
+//   as valid files since the standard names are not yet accepted. Using 
+//   proposed_standard_name' instead avoids this issue.
+//
+//
+// Type: boolean
+//
+
+write_using_proposed_standard_name_attr = FALSE;
+
+//======================================================================
+//
+// OPTION TO OVERRIDE MISSING VALUES.
+//
+// Missing values are applicable to both metadata and field data. The 
+//   default values should be satisfactory for most purposes. However, you 
+//   can choose to override these if you are careful with the selected 
+//   values.
+//
+// The default values for metadata are:
+// 	missingMetaDouble = -9999.0
+// 	missingMetaFloat = -9999.0
+// 	missingMetaInt = -9999
+// 	missingMetaChar = -128
+//
+// The default values for field data are:
+// 	missingFl64 = -9.0e33
+// 	missingFl32 = -9.0e33
+// 	missingSi32 = -2147483647
+// 	missingSi16 = -32768
+// 	missingSi08 = -128.
+//
+//======================================================================
+ 
+///////////// override_missing_metadata_values ////////
+//
+// Option to override the missing values for meta-data.
+//
+// See following parameter options.
+//
+//
+// Type: boolean
+//
+
+override_missing_metadata_values = FALSE;
+
+///////////// missing_metadata_double /////////////////
+//
+// Missing value for metadata of type double.
+//
+// Only applies if override_missing_metadata_values is TRUE.
+//
+//
+// Type: double
+//
+
+missing_metadata_double = -9999;
+
+///////////// missing_metadata_float //////////////////
+//
+// Missing value for metadata of type float.
+//
+// Only applies if override_missing_metadata_values is TRUE.
+//
+//
+// Type: float
+//
+
+missing_metadata_float = -9999;
+
+///////////// missing_metadata_int ////////////////////
+//
+// Missing value for metadata of type int.
+//
+// Only applies if override_missing_metadata_values is TRUE.
+//
+//
+// Type: int
+//
+
+missing_metadata_int = -9999;
+
+///////////// missing_metadata_char ///////////////////
+//
+// Missing value for metadata of type char.
+//
+// Only applies if override_missing_metadata_values is TRUE.
+//
+//
+// Type: int
+//
+
+missing_metadata_char = -128;
+
+///////////// override_missing_field_values ///////////
+//
+// Option to override the missing values for field data.
+//
+// See following parameter options.
+//
+//
+// Type: boolean
+//
+
+override_missing_field_values = FALSE;
+
+///////////// missing_field_fl64 //////////////////////
+//
+// Missing value for field data of type 64-bit float.
+//
+// Only applies if override_missing_field_values is TRUE.
+//
+//
+// Type: double
+//
+
+missing_field_fl64 = -9e+33;
+
+///////////// missing_field_fl32 //////////////////////
+//
+// Missing value for field data of type 32-bit float.
+//
+// Only applies if override_missing_field_values is TRUE.
+//
+//
+// Type: double
+//
+
+missing_field_fl32 = -9e+33;
+
+///////////// missing_field_si32 //////////////////////
+//
+// Missing value for field data of type 32-bit integer.
+//
+// Only applies if override_missing_field_values is TRUE.
+//
+//
+// Type: int
+//
+
+missing_field_si32 = -2147483647;
+
+///////////// missing_field_si16 //////////////////////
+//
+// Missing value for field data of type 16-bit integer.
+//
+// Only applies if override_missing_field_values is TRUE.
+//
+//
+// Type: int
+//
+
+missing_field_si16 = -232768;
+
+///////////// missing_field_si08 //////////////////////
+//
+// Missing value for field data of type 8-bit integer.
+//
+// Only applies if override_missing_field_values is TRUE.
+//
+//
+// Type: int
+//
+
+missing_field_si08 = -128;
+
