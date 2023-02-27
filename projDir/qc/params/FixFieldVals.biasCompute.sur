@@ -50,7 +50,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "computeDiffs.sur";
+instance = "biasCompute.sur";
 
 //======================================================================
 //

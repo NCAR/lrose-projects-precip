@@ -3,6 +3,6 @@
 
 cd $PROJ_DIR/qc/scripts
 
-PlotFieldBias.py --lenMean 1 --biasFile /scr/cirrus3/rsfdata/projects/precip/features/qc1/fieldBias/sur/tables/field_diffs.sur.txt --title "Field Biases from FixFieldVals app - truth minus orig"
+PlotFieldBias.py --lenMean 1 --biasFile /scr/cirrus3/rsfdata/projects/precip/features/qc1/fieldBias/tables/field_bias.sur.txt --title "Field Biases from FixFieldVals app - truth minus orig"
 
 

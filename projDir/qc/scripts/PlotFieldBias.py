@@ -46,7 +46,7 @@ def main():
                       help='Set verbose debugging on')
     parser.add_option('--biasFile',
                       dest='biasFilePath',
-                      default='/scr/cirrus3/rsfdata/projects/precip/features/qc1/fieldBias/sur/tables/field_diffs.sur.txt',
+                      default='/scr/cirrus3/rsfdata/projects/precip/features/qc1/fieldBias/tables/field_bias.sur.txt',
                       help='File path for field biases')
     parser.add_option('--title',
                       dest='title',
