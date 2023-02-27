@@ -50,7 +50,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "biasApply.rhi";
+instance = "biasApply.rhi1";
 
 //======================================================================
 //
