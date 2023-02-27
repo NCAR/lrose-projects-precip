@@ -50,7 +50,7 @@ def main():
                       help='File path for field biases')
     parser.add_option('--title',
                       dest='title',
-                      default='FIELD BIASES computed from FixFieldVals app',
+                      default='Field Biases from FixFieldVals app - truth minus orig',
                       help='Title for plot')
     parser.add_option('--width',
                       dest='figWidthMm',
