@@ -3,7 +3,7 @@
 clear all;
 close all;
 
-radar='KTBW'; % KAMX, KBYX, KMLB, KTBW, SPOL
+radar='KBYX'; % KAMX, KBYX, KMLB, KTBW, SPOL
 
 addpath(genpath('~/git/lrose-projects-precip/projDir/qc/dataCheck/utils/'));
 

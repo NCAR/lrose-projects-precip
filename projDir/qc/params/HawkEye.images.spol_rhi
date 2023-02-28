@@ -1887,7 +1887,8 @@ images_auto_create = TRUE;
 //     CREATE_IMAGES_ON_ARCHIVE_SCHEDULE
 //
 
-images_creation_mode = CREATE_IMAGES_ON_ARCHIVE_SCHEDULE;
+// images_creation_mode = CREATE_IMAGES_ON_ARCHIVE_SCHEDULE;
+images_creation_mode = CREATE_IMAGES_THEN_EXIT;
 
 ///////////// images_schedule_interval_secs ///////////
 //
@@ -1927,7 +1928,7 @@ images_schedule_delay_secs = 0;
 // Type: string
 //
 
-images_archive_start_time = "2022 05 25 01 00 00";
+images_archive_start_time = "2022 05 25 02 00 00";
 
 ///////////// images_archive_end_time /////////////////
 //
@@ -1940,7 +1941,7 @@ images_archive_start_time = "2022 05 25 01 00 00";
 // Type: string
 //
 
-images_archive_end_time = "2022 05 26 00 00 00";
+images_archive_end_time = "2022 05 25 04 00 00";
 
 ///////////// images_scan_interval_secs ///////////////
 //
