@@ -7,10 +7,10 @@ setenv SUB_VERSION v1.0
 
 setenv scan_type sur
 
-RadxStats -params RadxStats.precip.sweep_angle_tables -start "2022 05 25 00 00 00" -end "2022 08 11 00 00 00" > ${PROJ_DIR}/qc/tables/sweep_angle_table.spol.precip.${scan_type}.txt &
+RadxStats -params RadxStats.precip.sweep_angle_tables -start "2022 05 25 00 00 00" -end "2022 08 11 00 00 00" > ${PROJ_DIR}/qc/tables/sweep_angle_table.spol.precip_${VERSION}_${SUB_VERSION}.${scan_type}.txt &
 
 setenv scan_type rhi
 
-RadxStats -params RadxStats.precip.sweep_angle_tables -start "2022 05 25 00 00 00" -end "2022 08 11 00 00 00" > ${PROJ_DIR}/qc/tables/sweep_angle_table.spol.precip.${scan_type}.txt &
+RadxStats -params RadxStats.precip.sweep_angle_tables -start "2022 05 25 00 00 00" -end "2022 08 11 00 00 00" > ${PROJ_DIR}/qc/tables/sweep_angle_table.spol.precip_${VERSION}_${SUB_VERSION}.${scan_type}.txt &
 
 
