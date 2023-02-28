@@ -1941,7 +1941,7 @@ images_archive_start_time = "2022 05 25 02 00 00";
 // Type: string
 //
 
-images_archive_end_time = "2022 05 25 04 00 00";
+images_archive_end_time = "2022 08 11 00 00 00";
 
 ///////////// images_scan_interval_secs ///////////////
 //
