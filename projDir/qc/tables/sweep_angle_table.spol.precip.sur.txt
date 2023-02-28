@@ -1,4 +1,4 @@
-# volStartTime, scanName, sweepFixedAngles
+# volStartTime, scanName, nSweeps, sweepFixedAngles
 2022-05-25T02:09:10Z, PrecipSur2, 4, 0.5, 1, 1.5, 2
 2022-05-25T02:12:50Z, PrecipSur1, 9, 0.5, 1, 1.5, 2, 3, 4, 5, 7, 9
 2022-05-25T02:21:10Z, PrecipSur2, 4, 0.5, 1, 1.5, 2
