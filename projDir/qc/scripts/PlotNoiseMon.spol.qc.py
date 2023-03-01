@@ -162,6 +162,10 @@ def main():
 
     vertData, vertTimes = readInputData(options.vertFilePath, vertHdrs, vertData)
 
+    # set the calibration receiver gains
+    
+    setCalData()
+    
     # render the plot
     
     doPlot()
@@ -275,6 +279,28 @@ def movingAverage(values, window):
     sma[0:half] = values[0:half]
     sma[-half:] = values[-half:]
     return sma
+
+########################################################################
+# Set calibration gain data
+
+def setCalData():
+
+    global calTimes, calHNoise, calVNoise, calHGain, calVGain
+    
+    calTimes =  [ datetime.datetime(2022, 5, 24,  12, 0, 0), \
+                  datetime.datetime(2022, 6, 1, 12, 0, 0), \
+                  datetime.datetime(2022, 6, 20,  12, 0, 0), \
+                  datetime.datetime(2022, 6, 21,  12, 0, 0), \
+                  datetime.datetime(2022, 6, 23,  12, 0, 0), \
+                  datetime.datetime(2022, 7, 16,  12, 0, 0), \
+                  datetime.datetime(2022, 7, 23,  12, 0, 0), \
+                  datetime.datetime(2022, 8, 3,  12, 0, 0), \
+                  datetime.datetime(2022, 8, 10,  12, 0, 0) ]
+
+    calHNoise = [ -74.89, -74.91, -74.88, -74.88, -74.88, -75.12, -75.32, -75.58, -76.38 ]
+    calVNoise = [ -75.12, -75.14, -75.14, -75.12, -75.08, -75.10, -74.97, -75.18, -75.05 ]
+    calHGain = [ 40.20, 40.16, 40.27, 40.27, 40.10, 39.82, 39.44, 39.17, 38.36 ]
+    calVGain = [ 39.46, 39.48, 39.48, 39.50, 39.49, 39.44, 39.44, 39.23, 39.48 ]
 
 ########################################################################
 # Plot
@@ -416,6 +442,7 @@ def doPlot():
     ax1a.set_title("ZDRm (dB)")
     ax1b.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
     ax1b.set_title("Mean Noise Power (dBm)")
+    ax1br = ax1b.twinx()
 
     if (tempsAvail):
         ax1c.set_xlim([ntimes[0] - oneDay, ntimes[-1] + oneDay])
@@ -451,6 +478,11 @@ def doPlot():
     ax1b.plot(validMeanDbmvcNtimes, validMeanDbmvcVals, \
               label = 'Mean Noise Dbmvc', linewidth=1, color='blue')
     
+    ax1br.plot(calTimes, calHGain, \
+               "^", label = 'Cal H Gain', linewidth=1, color='red', markersize=8)
+    ax1br.plot(calTimes, calVGain, \
+               "^", label = 'Cal V Gain', linewidth=1, color='blue', markersize=8)
+    
     #ax1c.plot(validTempDishNtimes, validTempDishVals, \
     #          label = 'Temp dish (C)', linewidth=1, color='brown')
     #ax1c.plot(validTempTransNtimes, validTempTransVals, \
@@ -476,6 +508,7 @@ def doPlot():
     configDateAxis(ax1b,
                    float(options.noiseMin), float(options.noiseMax),
                    "Noise Power (dBm)", 'upper right')
+    configDateAxis(ax1br, 38.0, 40.5, "Receiver gains", 'upper left')
     if (tempsAvail):
         configDateAxis(ax1c,
                        float(options.tempMin), float(options.tempMax),
@@ -516,7 +549,7 @@ def doPlot():
 
     fig1.autofmt_xdate()
     fig1.tight_layout()
-    fig1.subplots_adjust(bottom=0.08, left=0.06, right=0.97, top=0.90)
+    fig1.subplots_adjust(bottom=0.08, left=0.06, right=0.94, top=0.90)
 
     fig1.suptitle(options.title)
 
