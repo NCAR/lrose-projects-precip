@@ -212,7 +212,7 @@ SPOL_NIQ        SPOL_NIQ        mdvp:://front.eol.ucar.edu:8080:precip/grids/spo
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
-# SEAPOL MOMENTS
+# SEAPOL QC1 MOMENTS
 
 ===SEAPOL===      ===SEAPOL===       mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/qc1/sur?use_http=true&DBZ   dbz.colors   dBZ -5 80 5 radial 1 0
 ====QC1====      ====QC1====       mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/qc1/sur?use_http=true&DBZ   dbz.colors   dBZ -5 80 5 radial 1 0
@@ -241,7 +241,7 @@ SEAPOL_KDP_MAX  SEAPOL_KDP_MAX  mdvp:://front.eol.ucar.edu:8080:precip/grids/sea
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
-# SEAPOL MOMENTS
+# SEAPOL FIELD MOMENTS
 
 ===SEAPOL===      ===SEAPOL===       mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/field/sur?use_http=true&DBZ   dbz.colors   dBZ -5 80 5 radial 1 0
 ===FIELD===      ===FIELD===       mdvp:://front.eol.ucar.edu:8080:precip/grids/seapol/radarPolar/moments/field/sur?use_http=true&DBZ   dbz.colors   dBZ -5 80 5 radial 1 0
@@ -797,7 +797,7 @@ cidd.xsect_start_page:      1
 #
 # The Outer most domain:
 cidd.num_zoom_levels:       8
-cidd.start_zoom_level:      4
+cidd.start_zoom_level:      5
 
 # The number of Cached images for zooms.
 cidd.num_cache_zooms:       0
