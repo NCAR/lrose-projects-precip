@@ -3,16 +3,19 @@
 clear all;
 close all;
 
-radar='KTBW'; % KAMX, KBYX, KMLB, KTBW, SPOL
+radar='RCWF'; % KAMX, KBYX, KMLB, KTBW, SPOL, RCWF
 
 addpath(genpath('~/git/lrose-projects-precip/projDir/qc/dataCheck/utils/'));
 
-dbzRange=[12,35];
+dbzRange=[12,55];
 
 figdir=['/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/plots/GPM/'];
 
 if strcmp(radar,'SPOL')
-    indirGroundBase=test;
+    indirGroundBase='/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarCart/qc1/rate/sband/';
+    indirGPMbase=['/scr/cirrus3/rsfdata/projects/precip/grids/gpm/taiwan/netcdf/'];
+elseif strcmp(radar,'RCWF')
+    indirGroundBase='/scr/cirrus3/rsfdata/projects/precip/grids/cwb/radarCart/rcwf/moments/';
     indirGPMbase=['/scr/cirrus3/rsfdata/projects/precip/grids/gpm/taiwan/netcdf/'];
 else
     indirGroundBase=['/scr/cirrus3/rsfdata/projects/precip/grids/nexrad/gridded/',radar,'/'];
@@ -21,33 +24,16 @@ end
 
 load([figdir,'caseList_',radar,'.mat']);
 
-if strcmp(radar,'KAMX')
-    listGPM={'20220714_035646.mdv.cf.nc';
-        '20220716_173840.mdv.cf.nc';
-        '20220727_002407.mdv.cf.nc'};
-elseif strcmp(radar,'KBYX')
-    listGPM={'20220727_002407.mdv.cf.nc'};
-elseif strcmp(radar,'KMLB')
-    listGPM={'20220714_035646.mdv.cf.nc';
-        '20220716_173840.mdv.cf.nc';
-        '20220717_025356.mdv.cf.nc';
-        '20220727_002407.mdv.cf.nc'};
-elseif strcmp(radar,'KTBW')
-    listGPM={'20220710_194400.mdv.cf.nc';
-        '20220714_035646.mdv.cf.nc';
-        '20220716_173840.mdv.cf.nc';
-        '20220721_162412.mdv.cf.nc';
-        '20220727_002407.mdv.cf.nc'};
-elseif strcmp(radar,'SPOL')
-    listGPM='';
-end
-
 oGrAll=[];
 oGPMall=[];
 
+countEdges=-70:0.5:70;
+countsAllGPM=zeros(35,length(countEdges)-1);
+countsAllGround=zeros(35,length(countEdges)-1);
+
 for aa=1:length(listRadar)
 
-    infileGPM=listGPM{Rad};
+    infileGPM=listRadar{aa};
 
     disp(infileGPM);
 
@@ -69,15 +55,26 @@ for aa=1:length(listRadar)
     gTimes=[];
     for ii=1:length(gList)
         thisName=gList(ii).name;
-        gTimes=cat(1,gTimes,datetime(str2num(thisName(5:8)),str2num(thisName(9:10)),str2num(thisName(11:12)), ...
-            str2num(thisName(14:15)),str2num(thisName(16:17)),str2num(thisName(18:19))));
+        if strcmp(radar,'SPOL') | strcmp(radar,'RCWF')
+            gTimes=cat(1,gTimes,datetime(str2num(thisName(6:9)),str2num(thisName(10:11)),str2num(thisName(12:13)), ...
+                str2num(thisName(15:16)),str2num(thisName(17:18)),str2num(thisName(19:20))));
+        else
+            gTimes=cat(1,gTimes,datetime(str2num(thisName(5:8)),str2num(thisName(9:10)),str2num(thisName(11:12)), ...
+                str2num(thisName(14:15)),str2num(thisName(16:17)),str2num(thisName(18:19))));
+        end
     end
 
     timeDiff=etime(datevec(gTimes),datevec(intime));
-    timeDiff(timeDiff>0)=nan;
-    fileInd=max(find(~isnan(timeDiff)));
-
-    if isempty(fileInd) | abs(timeDiff(fileInd))>300
+    timeDiff(timeDiff<0)=nan;
+    fileInd=min(find(~isnan(timeDiff)));
+    
+    if strcmp(radar,'SPOL')
+        timeDiffComp=900;
+    else
+        timeDiffComp=300;
+    end
+    
+    if isempty(fileInd) | abs(timeDiff(fileInd))>timeDiffComp
         disp('No ground data within 5 minutes.')
         continue
     end
@@ -92,13 +89,46 @@ for aa=1:length(listRadar)
     altGPM=ncread([indirGPM,infileGPM],'z0');
 
     dbzGPM=ncread([indirGPM,infileGPM],'DBZ');
+    dbzGPM=permute(dbzGPM,[2,1,3]);
 
     % Ground
     lonGround=ncread([indirGround,infileGround],'x0');
     latGround=ncread([indirGround,infileGround],'y0');
     altGround=ncread([indirGround,infileGround],'z0');
 
-    dbzGround=ncread([indirGround,infileGround],'REF');
+    if strcmp(radar,'SPOL') | strcmp(radar,'RCWF')
+        if strcmp(radar,'SPOL')
+            dbzGroundIn=ncread([indirGround,infileGround],'DBZ_F');
+        else
+            dbzGroundIn=ncread([indirGround,infileGround],'DBZ');
+        end
+        dbzGroundIn=permute(dbzGroundIn,[2,1,3]);
+        % Move to same grid
+        dbzGround=nan(size(dbzGPM));
+        lonInd=find(lonGPM==lonGround(1));
+        latInd=find(latGPM==latGround(1));
+        dbzGround(latInd:latInd+length(latGround)-1,lonInd:lonInd+length(lonGround)-1,:)=dbzGroundIn;
+        dbzGround=dbzGround(1:size(dbzGPM,1),1:size(dbzGPM,2),:);
+    else
+        dbzGround=ncread([indirGround,infileGround],'REF');
+        dbzGround=permute(dbzGround,[2,1,3]);
+    end
+    
+    %% Counts for cfads
+
+    gpmOL=dbzGPM;
+    groundOL=dbzGround;
+
+    gpmOL(isnan(groundOL))=nan;
+    groundOL(isnan(gpmOL))=nan;
+
+    for jj=1:size(countsAllGPM,1)
+        cGround=histcounts(groundOL(:,:,jj),countEdges);
+        countsAllGround(jj,:)=countsAllGround(jj,:)+cGround;
+        cGpm=histcounts(gpmOL(:,:,jj),countEdges);
+        countsAllGPM(jj,:)=countsAllGPM(jj,:)+cGpm;
+    end
+
 
     %% In Ground, go from the top and remove data that is vertically below the first >35 dBZ grid point
 
@@ -120,7 +150,7 @@ for aa=1:length(listRadar)
     dbzCensGround(~overlap)=nan;
     dbzCensGPM(~overlap)=nan;
 
-    if sum(overlap(:))<5000
+    if sum(overlap(:))<10000
         disp('Not enough overlapping data points.')
         continue
     end
@@ -146,6 +176,7 @@ for aa=1:length(listRadar)
     N=cat(1,N,N(end,:));
     N=cat(2,N,N(:,end));
     N(N==0)=nan;
+
     %% Plot
 
     plotGround=max(dbzCensGround,[],3,'omitnan');
@@ -183,7 +214,7 @@ for aa=1:length(listRadar)
     % Ground
 
     s2=subplot(2,2,2);
-    surf(lonGround,latGround,plotGround,'EdgeColor','none');
+    surf(lonGPM,latGPM,plotGround,'EdgeColor','none');
     view(2);
     caxis([-5 70])
     colorbar('XTick',-5:3:70)
@@ -237,7 +268,7 @@ for aa=1:length(listRadar)
 
     mtit([radar,' vs GPM ',infileGPM(1:15)],'interpreter','none','xoff',0,'yoff',0.03);
 
-    print([figdir,radar,'_GPM_',infileGPM(1:15),'.png'],'-dpng','-r0');
+    print([figdir,radar,'_GPM_',num2str(dbzRange(2)),'dBZ_',infileGPM(1:15),'.png'],'-dpng','-r0');
 end
 
 %% Fit and counts
@@ -301,4 +332,75 @@ box on
 
 mtit([radar,' vs GPM'],'interpreter','none','xoff',0,'yoff',0.01);
 
-print([figdir,radar,'_GPM.png'],'-dpng','-r0');
+print([figdir,radar,'_',num2str(dbzRange(2)),'dBZ_GPM.png'],'-dpng','-r0');
+
+%% CFADS
+
+countsAllGround(countsAllGround==0)=nan;
+countsAllGPM(countsAllGPM==0)=nan;
+
+maxCountGPM=prctile(countsAllGPM(:),99.9);
+maxCountGround=prctile(countsAllGround(:),99.9);
+
+maxAll=max(countsAllGPM,[],2,'omitnan');
+[~,maxInd]=max(maxAll);
+
+figure('Position',[200 500 800 1000],'DefaultAxesFontSize',12);
+
+s1=subplot(5,1,1:2);
+s1.Colormap=jet;
+hold on
+surf(countEdges(1:end-1),altGPM,countsAllGround,'edgecolor','none')
+view(2);
+xlim([0,40]);
+ylim([0,20]);
+caxis([0,maxCountGround]);
+colorbar
+
+ylabel('Altitude (km)');
+title([radar,' (',num2str(sum(countsAllGround(:),'omitnan')),')']);
+
+grid on
+box on
+
+s2=subplot(5,1,3:4);
+s2.Colormap=jet;
+hold on
+surf(countEdges(1:end-1),altGPM,countsAllGPM,'edgecolor','none')
+view(2);
+xlim([0,40]);
+ylim([0,20]);
+caxis([0,maxCountGPM]);
+colorbar
+
+plot([0,11],[altGPM(maxInd),altGPM(maxInd)],'-k','LineWidth',1.5);
+
+xlabel('Reflectivity (dBZ)');
+ylabel('Altitude (km)');
+title(['GPM (',num2str(sum(countsAllGPM(:),'omitnan')),')']);
+
+grid on
+box on
+
+s3=subplot(5,1,5);
+hold on
+plot(countEdges(1:end-1),countsAllGPM(maxInd,:),'-k','LineWidth',1.5);
+plot(countEdges(1:end-1),countsAllGround(maxInd,:),'-b','LineWidth',1.5);
+xlim([0,40]);
+legend('GPM',radar)
+
+xlabel('Reflectivity (dBZ)');
+ylabel('Counts');
+title(['Cross section at ',num2str(altGPM(maxInd)),' km']);
+colorbar
+
+grid on
+box on
+
+drawnow
+
+s3pos=s3.Position;
+s3.Position=[s3pos(1),s3pos(2)-0.05,s3pos(3),s3pos(4)];
+set(colorbar, 'visible', 'off')
+
+print([figdir,radar,'_GPM_CFAD.png'],'-dpng','-r0');

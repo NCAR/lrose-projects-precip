@@ -3,7 +3,7 @@
 clear all;
 close all;
 
-radar='KAMX'; % KAMX, KBYX, KMLB, KTBW, SPOL
+radar='SPOL'; % KAMX, KBYX, KMLB, KTBW, SPOL, RCWF
 
 addpath(genpath('~/git/lrose-projects-precip/projDir/qc/dataCheck/utils/'));
 
@@ -12,7 +12,10 @@ dbzRange=[12,35];
 outdir=['/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/plots/GPM/'];
 
 if strcmp(radar,'SPOL')
-    indirGroundBase=test;
+    indirGroundBase='/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarCart/qc1/rate/sband/';
+    indirGPMbase=['/scr/cirrus3/rsfdata/projects/precip/grids/gpm/taiwan/netcdf/'];
+elseif strcmp(radar,'RCWF')
+    indirGroundBase='/scr/cirrus3/rsfdata/projects/precip/grids/cwb/radarCart/rcwf/moments/';
     indirGPMbase=['/scr/cirrus3/rsfdata/projects/precip/grids/gpm/taiwan/netcdf/'];
 else
     indirGroundBase=['/scr/cirrus3/rsfdata/projects/precip/grids/nexrad/gridded/',radar,'/'];
@@ -47,15 +50,26 @@ for aa=1:length(listGPM)
     gTimes=[];
     for ii=1:length(gList)
         thisName=gList(ii).name;
-        gTimes=cat(1,gTimes,datetime(str2num(thisName(5:8)),str2num(thisName(9:10)),str2num(thisName(11:12)), ...
-            str2num(thisName(14:15)),str2num(thisName(16:17)),str2num(thisName(18:19))));
+        if strcmp(radar,'SPOL') | strcmp(radar,'RCWF')
+            gTimes=cat(1,gTimes,datetime(str2num(thisName(6:9)),str2num(thisName(10:11)),str2num(thisName(12:13)), ...
+                str2num(thisName(15:16)),str2num(thisName(17:18)),str2num(thisName(19:20))));
+        else
+            gTimes=cat(1,gTimes,datetime(str2num(thisName(5:8)),str2num(thisName(9:10)),str2num(thisName(11:12)), ...
+                str2num(thisName(14:15)),str2num(thisName(16:17)),str2num(thisName(18:19))));
+        end
     end
 
     timeDiff=etime(datevec(gTimes),datevec(intime));
-    timeDiff(timeDiff>0)=nan;
-    fileInd=max(find(~isnan(timeDiff)));
+    timeDiff(timeDiff<0)=nan;
+    fileInd=min(find(~isnan(timeDiff)));
 
-    if isempty(fileInd) | abs(timeDiff(fileInd))>300
+    if strcmp(radar,'SPOL')
+        timeDiffComp=900;
+    else
+        timeDiffComp=300;
+    end
+
+    if isempty(fileInd) | abs(timeDiff(fileInd))>timeDiffComp
         disp('No ground data within 5 minutes.')
         continue
     end
@@ -76,9 +90,23 @@ for aa=1:length(listGPM)
     latGround=ncread([indirGround,infileGround],'y0');
     altGround=ncread([indirGround,infileGround],'z0');
 
-    dbzGround=ncread([indirGround,infileGround],'REF');
+    if strcmp(radar,'SPOL') | strcmp(radar,'RCWF')
+        if strcmp(radar,'SPOL')
+            dbzGroundIn=ncread([indirGround,infileGround],'DBZ_F');
+        else
+            dbzGroundIn=ncread([indirGround,infileGround],'DBZ');
+        end
+        % Move to same grid
+        dbzGround=nan(size(dbzGPM));
+        lonInd=find(lonGPM==lonGround(1));
+        latInd=find(latGPM==latGround(1));
+        dbzGround(lonInd:lonInd+length(lonGround)-1,latInd:latInd+length(latGround)-1,:)=dbzGroundIn;
+        dbzGround=dbzGround(1:size(dbzGPM,1),1:size(dbzGPM,2),:);
+    else
+        dbzGround=ncread([indirGround,infileGround],'REF');
+    end
 
-   %% In Ground, go from the top and remove data that is vertically below the first >35 dBZ grid point
+    %% In Ground, go from the top and remove data that is vertically below the first >35 dBZ grid point
 
     maxDBZ=max(dbzGround,[],3,'omitnan');
     [r,c]=find(maxDBZ>dbzRange(2));

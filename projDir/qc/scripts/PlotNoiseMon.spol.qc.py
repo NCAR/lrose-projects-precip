@@ -400,7 +400,7 @@ def doPlot():
     noiseZdrStatsMean = np.mean(statsNoiseZdr)
     vertZdrmStatsMean = np.mean(statsVertZdrm)
     noiseToZdrCorr = vertZdrmStatsMean - noiseZdrStatsMean
-    noiseZdrValsCorr = meanNoiseZdrAv[validMeanNoiseZdr] + noiseToZdrCorr
+    # noiseZdrValsCorr = meanNoiseZdrAv[validMeanNoiseZdr] + noiseToZdrCorr
     
     if (tempsAvail):
         statsTempSite = tempSite[np.logical_and(ntimes >= statsStartTime,
@@ -462,16 +462,16 @@ def doPlot():
         #                          ntimes, validTempRxNtimes,
         #                          validMeanDbmvcVals, tempRx)
 
-        noiseZdrValsCorr2 = noiseZdrValsCorr + (tempSite - tempSiteMean) * zdrmSlope
+        #noiseZdrValsCorr2 = noiseZdrValsCorr + (tempSite - tempSiteMean) * zdrmSlope
 
     ax1a.plot(validVertZdrmVtimes, validVertZdrmVals, \
               ".", label = 'Vert ZDRm', color='green')
     ax1a.plot(validMeanNoiseZdrNtimes, validMeanNoiseZdrVals, \
               label = 'Mean Noise ZDRm', linewidth=1, color='black')
-    ax1a.plot(validMeanNoiseZdrNtimes, noiseZdrValsCorr2, \
-              label = 'ZdrmTempCorr', linewidth=1, color='orange')
-    ax1a.plot(validMeanNoiseZdrNtimes, noiseZdrValsCorr, \
-              label = 'NoiseZdr+noiseToZdrCorr', linewidth=1, color='brown')
+    # ax1a.plot(validMeanNoiseZdrNtimes, noiseZdrValsCorr2, \
+        # label = 'ZdrmTempCorr', linewidth=1, color='orange')
+    #ax1a.plot(validMeanNoiseZdrNtimes, noiseZdrValsCorr, \
+    #          label = 'NoiseZdr+noiseToZdrCorr', linewidth=1, color='brown')
 
     ax1b.plot(validMeanDbmhcNtimes, validMeanDbmhcVals, \
               label = 'Mean Noise Dbmhc', linewidth=1, color='red')
