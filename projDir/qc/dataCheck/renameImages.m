@@ -5,7 +5,7 @@ close all;
 
 addpath(genpath('~/git/lrose-projects-precip/projDir/qc/dataCheck/utils/'));
 
-camera='east';
+camera='west';
 
 shiftHours=8;
 shiftMins=8;

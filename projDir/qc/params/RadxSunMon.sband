@@ -42,7 +42,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "sband.rhi";
+instance = "sband";
 
 //======================================================================
 //
@@ -84,7 +84,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-moments_input_dir = "/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/field/moments/sband/rhi";
+moments_input_dir = "/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/field/moments/sband/$(scan_type)";
 
 ///////////// max_realtime_data_age_secs //////////////
 //
