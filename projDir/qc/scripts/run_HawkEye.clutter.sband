@@ -1,0 +1,8 @@
+#! /bin/csh
+
+cd /home/rsfdata/git/lrose-projects-precip/projDir/qc/params
+
+HawkEye -params HawkEye.clutter.sband -f ~/projDir/data/precip/grids/spol/radarPolar/clutter/sband/sur/20220605/*.nc
+
+
+
