@@ -513,7 +513,7 @@ clutter_frequency_threshold = 0.95;
 // Type: string
 //
 
-clutter_stats_output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/clutter/sband/sur1";
+clutter_stats_output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/clutter/sband/sur";
 
 ///////////// dbz_mean_field_name /////////////////////
 //
