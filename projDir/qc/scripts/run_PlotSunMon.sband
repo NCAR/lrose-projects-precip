@@ -3,6 +3,8 @@
 
 cd $PROJ_DIR/qc/scripts
 
-PlotSunMon.spol.qc.py --lenMean 21 --sunFile /scr/cirrus3/rsfdata/projects/precip/calibration/spol/sun_mon/sband/tables/sun_mon.sband.txt --zdrMin -2.0 --zdrMax 2.0 --sunMin -75 --sunMax -60.0 --title "ZDR BIAS FROM SUN and VERT POINTING - RVP8"
+set TABLE_DIR = $DATA_DIR/$project/calibration/spol/sun_mon/sband/tables
+
+PlotSunMon.spol.qc.py --lenMean 211 --sunFile $TABLE_DIR/sun_mon.sband.txt --zdrMin -2.0 --zdrMax 2.0 --sunMin -75 --sunMax -60.0 --title "ZDR BIAS FROM SUN and VERT POINTING - RVP8"
 
 
