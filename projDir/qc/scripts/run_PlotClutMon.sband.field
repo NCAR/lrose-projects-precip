@@ -7,5 +7,6 @@ set VERSION = field
 
 set TABLE_DIR = $DATA_DIR/$project/calibration/spol/clut_mon/$VERSION/sband/tables
 
-PlotClutMon.spol.qc.py --lenMean 11 --clutFile $TABLE_DIR/clut_mon.sband.txt --zdrMin -2.0 --zdrMax 0.5 --clutMin -13 --clutMax -5 --xmitPwrMin 82 --xmitPwrMax 90
+PlotClutMon.spol.qc.py --lenMean 11 --clutFile $TABLE_DIR/clut_mon.sband.txt --zdrMin -2.0 --zdrMax 0.5 --clutMin -13 --clutMax -5 --xmitPwrMin 82 --xmitPwrMax 90 --title "CLUTTER AND TRANSMITTER POWER MONITORING - field"
+
 
