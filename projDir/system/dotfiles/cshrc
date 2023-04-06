@@ -34,6 +34,9 @@ setenv HOST_OS LINUX_LROSE
 setenv LROSE_CORE_DIR $HOME/git/lrose-core
 setenv LROSE_INSTALL_DIR $HOME/lrose
 
+#setenv LROSE_CORE_DIR $HOME/git/test/lrose-core
+#setenv LROSE_INSTALL_DIR $HOME/test/lrose
+
 setenv RAP_MAKE_INC_DIR $LROSE_CORE_DIR/codebase/make_include
 setenv RAP_MAKE_BIN_DIR $LROSE_CORE_DIR/codebase/make_bin
 
@@ -168,9 +171,6 @@ if ($?prompt) then
 
   setenv EDITOR emacs
   setenv PAGER less
-  setenv LESS "-cMe"
-  setenv LESSOPEN "|lesspipe.sh %s"
-  setenv LESSCHARSET latin1
 
   alias h history
   alias ssh 'ssh -X'
@@ -210,6 +210,7 @@ if ($?prompt) then
   alias gpull 'git pull'
   alias gdiff 'git diff '
   alias gdt 'git difftool -g -y '
+  alias glol 'git log --graph --decorate --pretty=oneline --abbrev-commit --all'
 
   alias relamp 'ssh -XY relamp@relampago'
   alias ops1 'ssh -XY sci@ops1'

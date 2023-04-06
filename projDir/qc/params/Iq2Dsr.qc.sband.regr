@@ -1,5 +1,5 @@
 /**********************************************************************
- * TDRP params for Iq2Dsr
+ * TDRP params for /home/rsfdata/apps/radar/src/Iq2Dsr/Iq2Dsr
  **********************************************************************/
 
 //======================================================================
@@ -803,7 +803,7 @@ scan_mode_for_override = SCAN_MODE_UNKNOWN;
 
 //======================================================================
 //
-// MOMENTS COMPUTATIONS.
+// MOMENTS COMPUTATIONS and BEAM DWELL DEFINITION.
 //
 //======================================================================
  
@@ -886,7 +886,11 @@ scan_mode_for_override = SCAN_MODE_UNKNOWN;
 //   applies to some electronically-steered radars, where the beam is 
 //   steered to a fixed angle for a while, and then jumps to a different 
 //   pointing direction. We use all of the pulses with a constant steering 
-//   angle to form the beam.
+//   angle to form the beam;
+// CONSTANT_PULSE_WIDTH: create beams (dwells) with with constant pulse 
+//   width. If the pulse width changes we move to a new dwell. Also, 
+//   optionally specify the pulase width and ignore pulses with a 
+//   different width.
 //
 //
 // Type: struct
@@ -916,6 +920,7 @@ scan_mode_for_override = SCAN_MODE_UNKNOWN;
 //          BEAM_SPECIFY_N_SAMPLES
 //          BEAM_SPECIFY_ANGLE
 //          BEAM_CONSTANT_STEERING_ANGLE
+//          BEAM_CONSTANT_PULSE_WIDTH
 //      int beam_n_samples;
 //      double beam_angle_deg;
 //      boolean index_the_beams;
@@ -973,7 +978,7 @@ moments_params = {
     index_the_beams = TRUE,
     indexed_resolution = 0.75,
     min_antenna_rate_for_indexing = 0.05,
-    window = WINDOW_VONHANN,
+    window = WINDOW_RECT,
     switching_receiver = TRUE,
     xmit_rcv_mode = DP_ALT_HV_CO_CROSS,
     apply_clutter_filter = TRUE,
@@ -999,7 +1004,7 @@ moments_params = {
     index_the_beams = TRUE,
     indexed_resolution = 0.75,
     min_antenna_rate_for_indexing = 1,
-    window = WINDOW_VONHANN,
+    window = WINDOW_RECT,
     switching_receiver = TRUE,
     xmit_rcv_mode = DP_ALT_HV_CO_CROSS,
     apply_clutter_filter = TRUE,
@@ -1025,7 +1030,7 @@ moments_params = {
     index_the_beams = TRUE,
     indexed_resolution = 0.75,
     min_antenna_rate_for_indexing = 1,
-    window = WINDOW_VONHANN,
+    window = WINDOW_RECT,
     switching_receiver = TRUE,
     xmit_rcv_mode = DP_ALT_HV_CO_CROSS,
     apply_clutter_filter = TRUE,
@@ -1051,7 +1056,7 @@ moments_params = {
     index_the_beams = TRUE,
     indexed_resolution = 0.25,
     min_antenna_rate_for_indexing = -1,
-    window = WINDOW_VONHANN,
+    window = WINDOW_RECT,
     switching_receiver = TRUE,
     xmit_rcv_mode = DP_ALT_HV_CO_CROSS,
     apply_clutter_filter = TRUE,
@@ -1077,7 +1082,7 @@ moments_params = {
     index_the_beams = TRUE,
     indexed_resolution = 0.75,
     min_antenna_rate_for_indexing = 1,
-    window = WINDOW_VONHANN,
+    window = WINDOW_RECT,
     switching_receiver = TRUE,
     xmit_rcv_mode = DP_ALT_HV_CO_CROSS,
     apply_clutter_filter = TRUE,
@@ -1121,35 +1126,33 @@ min_n_samples = 64;
 
 max_n_samples = 256;
 
-///////////// control_n_samples_from_time_series //////
+///////////// specify_pulse_width /////////////////////
 //
-// Option to control n_samples by using the integration_cycle_pulses 
-//   value in the time series.
+// Option to specify the pulse width.
 //
-// If true, the number of samples will be determined by using the value 
-//   of integration_cycle_pulses in the time series. If false, the 
-//   beam_n_samples specified in moments_params will be used.
-//
-//
-// Type: boolean
-//
-
-control_n_samples_from_time_series = FALSE;
-
-///////////// control_xmit_rcv_mode_from_time_series //
-//
-// Option to control the xmit/rcv mode by using the xmit_rcv_mode value 
-//   in the time series.
-//
-// If true, the moments will be computed according to the xmit_rcv_mode 
-//   value in the time series. If false, the xmit_rcv_mode in the 
-//   moments_params will be used.
+// Only applicable if beam_method = BEAM_CONSTANT_PULSE_WIDTH. See 
+//   'fixed_pulse_width_us'. Pulses with different pulse widths are 
+//   discarded.
 //
 //
 // Type: boolean
 //
 
-control_xmit_rcv_mode_from_time_series = TRUE;
+specify_pulse_width = FALSE;
+
+///////////// fixed_pulse_width_us ////////////////////
+//
+// Specified pulse width in microseconds.
+//
+// See 'specify_pulse_width'. Only applicable if beam_method = 
+//   BEAM_CONSTANT_PULSE_WIDTH. Pulses with different pulse widths are 
+//   discarded.
+//
+//
+// Type: double
+//
+
+fixed_pulse_width_us = 1;
 
 ///////////// control_beam_indexing_from_time_series //
 //
@@ -1185,6 +1188,36 @@ control_beam_indexing_from_time_series = FALSE;
 //
 
 discard_non_indexed_beams = FALSE;
+
+///////////// control_n_samples_from_time_series //////
+//
+// Option to control n_samples by using the integration_cycle_pulses 
+//   value in the time series.
+//
+// If true, the number of samples will be determined by using the value 
+//   of integration_cycle_pulses in the time series. If false, the 
+//   beam_n_samples specified in moments_params will be used.
+//
+//
+// Type: boolean
+//
+
+control_n_samples_from_time_series = FALSE;
+
+///////////// control_xmit_rcv_mode_from_time_series //
+//
+// Option to control the xmit/rcv mode by using the xmit_rcv_mode value 
+//   in the time series.
+//
+// If true, the moments will be computed according to the xmit_rcv_mode 
+//   value in the time series. If false, the xmit_rcv_mode in the 
+//   moments_params will be used.
+//
+//
+// Type: boolean
+//
+
+control_xmit_rcv_mode_from_time_series = TRUE;
 
 ///////////// compute_zdr_using_snr ///////////////////
 //
@@ -2191,8 +2224,7 @@ atmos_atten_db_per_km = 0.012;
 //     CLUTTER_FILTER_NONE
 //
 
-clutter_filter_type = CLUTTER_FILTER_ADAPTIVE;
-// clutter_filter_type = CLUTTER_FILTER_REGRESSION;
+clutter_filter_type = CLUTTER_FILTER_REGRESSION;
 
 ///////////// clutter_model_width_in_adaptive_filter //
 //
@@ -2233,7 +2265,7 @@ init_notch_width_in_adaptive_filter = 1.5;
 // Type: boolean
 //
 
-apply_residue_correction_in_adaptive_filter = FALSE;
+apply_residue_correction_in_adaptive_filter = TRUE;
 
 ///////////// min_snr_db_for_residue_correction ///////
 //
@@ -2288,7 +2320,7 @@ regression_filter_specified_polynomial_order = 5;
 // Type: double
 //
 
-regression_filter_clutter_width_factor = 1;
+regression_filter_clutter_width_factor = 1.0;
 
 ///////////// regression_filter_cnr_exponent //////////
 //
