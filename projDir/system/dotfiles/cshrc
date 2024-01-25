@@ -31,6 +31,14 @@ setenv LANG C
 
 setenv HOST_OS LINUX_LROSE
 
+# check if we are using qt5 instead of 6
+# if so set the host OS accordingly
+
+qmake --version | grep "Using Qt version 5" > & /dev/null
+if ($status == 0) then
+  setenv HOST_OS LINUX_QT5
+endif
+
 setenv LROSE_CORE_DIR $HOME/git/lrose-core
 setenv LROSE_INSTALL_DIR $HOME/lrose
 
@@ -136,11 +144,11 @@ set path = ($path ~/lrose/bin)
 set path = ($path ~/cidd/bin)
 
 set path = ($path ~/bin \
-        ~/anaconda3/bin \
 	$JAVA_HOME/bin $ANT_HOME/bin \
 	$NCARG_ROOT/bin \
 	/usr/local/bin /usr/local/sbin /usr/bin/X11 \
-        /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin )
+        /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin \
+        ~/anaconda3/bin )
 
 # -- core files --
 # unlimit coredumpsize
