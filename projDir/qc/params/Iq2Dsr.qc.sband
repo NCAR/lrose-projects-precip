@@ -21,14 +21,12 @@
 //
 // If set, debug messages will be printed appropriately.
 //
-//
 // Type: enum
 // Options:
 //     DEBUG_OFF
 //     DEBUG_NORM
 //     DEBUG_VERBOSE
 //     DEBUG_EXTRA_VERBOSE
-//
 
 debug = DEBUG_OFF;
 
@@ -39,9 +37,7 @@ debug = DEBUG_OFF;
 // We print out beam details in debug mode - this is the number of beams 
 //   between each print.
 //
-//
 // Type: int
-//
 
 beam_count_for_debug_print = 30;
 
@@ -51,9 +47,7 @@ beam_count_for_debug_print = 30;
 //
 // Used for registration with procmap.
 //
-//
 // Type: string
-//
 
 instance = "qc.sband";
 
@@ -71,9 +65,7 @@ instance = "qc.sband";
 //   performance. Also, the compute stage can be split into multiple 
 //   threads, with each thread working on a discrete number of gates.
 //
-//
 // Type: boolean
-//
 
 use_multiple_threads = TRUE;
 
@@ -87,7 +79,6 @@ use_multiple_threads = TRUE;
 // Minimum val: 1
 //
 // Type: int
-//
 
 n_compute_threads = 12;
 
@@ -110,7 +101,6 @@ n_compute_threads = 12;
 //   operational radar. In FMQ mode, the program opens the input_fmq, and 
 //   reads time series data from the queue.
 //
-//
 // Type: enum
 // Options:
 //     FILELIST
@@ -118,7 +108,6 @@ n_compute_threads = 12;
 //     REALTIME
 //     SIMULATE
 //     FMQ
-//
 
 mode = ARCHIVE;
 
@@ -128,9 +117,7 @@ mode = ARCHIVE;
 //
 // This is used in FMQ mode only.
 //
-//
 // Type: string
-//
 
 input_fmq = "/tmp/fmq/ts/sband/shmem_10000";
 
@@ -143,9 +130,7 @@ input_fmq = "/tmp/fmq/ts/sband/shmem_10000";
 //   at the start of the queue, and read all data available in the queue 
 //   before starting to read new data.
 //
-//
 // Type: boolean
-//
 
 position_fmq_at_start = FALSE;
 
@@ -156,9 +141,7 @@ position_fmq_at_start = FALSE;
 // This is used in REALTIME and ARCHIVE modes. In FILELIST and SIMULATE 
 //   modes, the file paths are specified on the command line.
 //
-//
 // Type: string
-//
 
 input_dir = "$(DATA_DIR)/$(project)/time_series/sband/save";
 
@@ -169,9 +152,7 @@ input_dir = "$(DATA_DIR)/$(project)/time_series/sband/save";
 // REALTIME mode only. If true, waits on _latest_data_info file. If 
 //   false, scans the directory for new file.
 //
-//
 // Type: boolean
-//
 
 use_ldata_info_file = FALSE;
 
@@ -185,7 +166,6 @@ use_ldata_info_file = FALSE;
 // Minimum val: 1
 //
 // Type: int
-//
 
 max_realtime_valid_age = 360;
 
@@ -198,9 +178,7 @@ max_realtime_valid_age = 360;
 //   V. This parameter allows you to invert the sense of the flag, so that 
 //   1 is interpreted as V and 0 as H.
 //
-//
 // Type: boolean
-//
 
 invert_hv_flag = FALSE;
 
@@ -213,9 +191,7 @@ invert_hv_flag = FALSE;
 //   TRUE, the channels in the data will be swapped before computing the 
 //   moments.
 //
-//
 // Type: boolean
-//
 
 swap_receiver_channels = FALSE;
 
@@ -228,9 +204,7 @@ swap_receiver_channels = FALSE;
 //   can be done as each pulse is read. Set this to TRUE to cohere to 
 //   burst on read.
 //
-//
 // Type: boolean
-//
 
 cohere_iq_to_burst_phase = FALSE;
 
@@ -243,9 +217,7 @@ cohere_iq_to_burst_phase = FALSE;
 //   PREVIOUS pulse to THIS pulse. If FALSE, the PRT in the header refers 
 //   to the time from THIS pulse to the NEXT pulse.
 //
-//
 // Type: boolean
-//
 
 prt_is_for_previous_interval = TRUE;
 
@@ -257,9 +229,7 @@ prt_is_for_previous_interval = TRUE;
 //   between successive pulses. If FALSE, the prt values in the pulse 
 //   headers will be used.
 //
-//
 // Type: boolean
-//
 
 compute_prt_from_interpulse_periods = FALSE;
 
@@ -272,9 +242,7 @@ compute_prt_from_interpulse_periods = FALSE;
 //   moments_params will be applied, so if both are true they will cancel 
 //   out.
 //
-//
 // Type: boolean
-//
 
 change_velocity_sign_staggered = TRUE;
 
@@ -288,9 +256,7 @@ change_velocity_sign_staggered = TRUE;
 //   option allows you to override the pulse width in the pulse headers by 
 //   copying it over from the ts_processing header.
 //
-//
 // Type: boolean
-//
 
 use_pulse_width_from_ts_proc = FALSE;
 
@@ -301,9 +267,7 @@ use_pulse_width_from_ts_proc = FALSE;
 // If false, we will use the prt in the time series. If true, 
 //   primary_prt_secs will be used instead.
 //
-//
 // Type: boolean
-//
 
 override_primary_prt = FALSE;
 
@@ -313,9 +277,7 @@ override_primary_prt = FALSE;
 //
 // See override_primary_prt.
 //
-//
 // Type: double
-//
 
 primary_prt_secs = 0.001;
 
@@ -330,9 +292,7 @@ primary_prt_secs = 0.001;
 //   georeference is attached to the pulse. If the time difference exceeds 
 //   this margin, no georeference is attached to the pulse.
 //
-//
 // Type: double
-//
 
 georef_time_margin_secs = 1;
 
@@ -344,9 +304,7 @@ georef_time_margin_secs = 1;
 //   radars only have one georeference. For those radars that have 2 
 //   georef devices, set this to true to use the secondary reference.
 //
-//
 // Type: boolean
-//
 
 use_secondary_georeference = FALSE;
 
@@ -361,9 +319,7 @@ use_secondary_georeference = FALSE;
 //   sources is included in a single stream, in which case we need to 
 //   filter it accordingly.
 //
-//
 // Type: boolean
-//
 
 check_radar_id = FALSE;
 
@@ -373,9 +329,7 @@ check_radar_id = FALSE;
 //
 // See 'check_radar_id' above.
 //
-//
 // Type: int
-//
 
 radar_id = 0;
 
@@ -396,9 +350,7 @@ radar_id = 0;
 //   used, then set this to a larger value than the default. A value of 
 //   0.5 is suggested for this case.
 //
-//
 // Type: double
-//
 
 nsecs_for_antenna_rate = 0.2;
 
@@ -418,9 +370,7 @@ nsecs_for_antenna_rate = 0.2;
 //   pulse. In RHI mode the elevation angles are smoothed. In other modes 
 //   the azimuth angles are smoothed.
 //
-//
 // Type: boolean
-//
 
 interpolate_antenna_angles = FALSE;
 
@@ -433,9 +383,7 @@ interpolate_antenna_angles = FALSE;
 //   in angle between 2 pulses exceeds this value, interpolation is not 
 //   performed.
 //
-//
 // Type: double
-//
 
 angle_interp_max_change = 2.5;
 
@@ -446,9 +394,7 @@ angle_interp_max_change = 2.5;
 // If more than this number of pulses have constant angles, 
 //   interpolation will not be done.
 //
-//
 // Type: int
-//
 
 angle_interp_max_queue_size = 200;
 
@@ -460,9 +406,7 @@ angle_interp_max_queue_size = 200;
 //   they lag the real angles. Set this to TRUE to adjust for the latency 
 //   by adjusting the angles for latency multiplied by the angular rate.
 //
-//
 // Type: boolean
-//
 
 angle_interp_adjust_for_latency = FALSE;
 
@@ -472,9 +416,7 @@ angle_interp_adjust_for_latency = FALSE;
 //
 // See 'adjust_angles_for_latency'.
 //
-//
 // Type: double
-//
 
 angle_interp_latency = 0.1;
 
@@ -484,9 +426,7 @@ angle_interp_latency = 0.1;
 //
 // If TRUE, interpolation diagnostics will be printed.
 //
-//
 // Type: boolean
-//
 
 angle_interp_debug = FALSE;
 
@@ -515,7 +455,6 @@ angle_interp_debug = FALSE;
 // 	PLATFORM_SATELLITE_ORBIT - orbiting satellite
 // 	PLATFORM_SATELLITE_GEOSTAT - geostationary satellite.
 //
-//
 // Type: enum
 // Options:
 //     PLATFORM_FIXED
@@ -530,7 +469,6 @@ angle_interp_debug = FALSE;
 //     PLATFORM_AIRCRAFT_NOSE
 //     PLATFORM_SATELLITE_ORBIT
 //     PLATFORM_SATELLITE_GEOSTAT
-//
 
 platform_type = PLATFORM_FIXED;
 
@@ -540,9 +478,7 @@ platform_type = PLATFORM_FIXED;
 //   read in, the primary axis will be changed, and then any post-read 
 //   processing will be performed.
 //
-//
 // Type: boolean
-//
 
 override_primary_axis = FALSE;
 
@@ -557,7 +493,6 @@ override_primary_axis = FALSE;
 // 	PRIMARY_AXIS_Y_PRIME - ELDORA, HRD tail
 // 	PRIMARY_AXIS_X_PRIME - translated lateral.
 //
-//
 // Type: enum
 // Options:
 //     PRIMARY_AXIS_Z
@@ -566,7 +501,6 @@ override_primary_axis = FALSE;
 //     PRIMARY_AXIS_Z_PRIME
 //     PRIMARY_AXIS_Y_PRIME
 //     PRIMARY_AXIS_X_PRIME
-//
 
 primary_axis = PRIMARY_AXIS_Z;
 
@@ -577,9 +511,7 @@ primary_axis = PRIMARY_AXIS_Z;
 // If true, the name in this file will be used. If not, the name in the 
 //   time series data will be used.
 //
-//
 // Type: boolean
-//
 
 override_radar_name = FALSE;
 
@@ -589,9 +521,7 @@ override_radar_name = FALSE;
 //
 // See 'override_radar_name'.
 //
-//
 // Type: string
-//
 
 radar_name = "SPOL";
 
@@ -602,9 +532,7 @@ radar_name = "SPOL";
 // If true, the location in this file will be used. If not, the location 
 //   in the time series data will be used.
 //
-//
 // Type: boolean
-//
 
 override_radar_location = TRUE;
 
@@ -614,9 +542,7 @@ override_radar_location = TRUE;
 //
 // See override_radar_location.
 //
-//
 // Type: double
-//
 
 radar_latitude_deg = $(RADAR_LAT);
 
@@ -626,9 +552,7 @@ radar_latitude_deg = $(RADAR_LAT);
 //
 // See override_radar_location.
 //
-//
 // Type: double
-//
 
 radar_longitude_deg = $(RADAR_LON);
 
@@ -638,9 +562,7 @@ radar_longitude_deg = $(RADAR_LON);
 //
 // See override_radar_location.
 //
-//
 // Type: double
-//
 
 radar_altitude_meters = $(RADAR_ALT_M);
 
@@ -651,9 +573,7 @@ radar_altitude_meters = $(RADAR_ALT_M);
 // If true, the gate_spacing and start_range in the time series data is 
 //   overridden by the parameters in this file.
 //
-//
 // Type: boolean
-//
 
 override_gate_geometry = FALSE;
 
@@ -663,9 +583,7 @@ override_gate_geometry = FALSE;
 //
 // See override_gate_geometry.
 //
-//
 // Type: double
-//
 
 gate_spacing_meters = 150;
 
@@ -675,9 +593,7 @@ gate_spacing_meters = 150;
 //
 // See override_gate_geometry.
 //
-//
 // Type: double
-//
 
 start_range_meters = 150;
 
@@ -688,9 +604,7 @@ start_range_meters = 150;
 // If true, the radar wavelength in this file will be used. If not, the 
 //   wavelength in the time series data will be used if available.
 //
-//
 // Type: boolean
-//
 
 override_radar_wavelength = FALSE;
 
@@ -700,9 +614,7 @@ override_radar_wavelength = FALSE;
 //
 // See override_radar_wavelength.
 //
-//
 // Type: double
-//
 
 radar_wavelength_cm = 10;
 
@@ -718,9 +630,7 @@ radar_wavelength_cm = 10;
 //   will be adjusted by the heading, to give azimuth relative to TRUE 
 //   north.
 //
-//
 // Type: boolean
-//
 
 apply_azimuth_offset = FALSE;
 
@@ -731,9 +641,7 @@ apply_azimuth_offset = FALSE;
 // See 'apply_azimuth_offset'. This value will be ADDED to the measured 
 //   azimuths.
 //
-//
 // Type: double
-//
 
 azimuth_offset = 0;
 
@@ -745,9 +653,7 @@ azimuth_offset = 0;
 //   This is useful to correct for a systematic bias in measured elevation 
 //   angles.
 //
-//
 // Type: boolean
-//
 
 apply_elevation_offset = FALSE;
 
@@ -758,9 +664,7 @@ apply_elevation_offset = FALSE;
 // See 'apply_elevation_offset'. This value will be ADDED to the 
 //   measured elevations.
 //
-//
 // Type: double
-//
 
 elevation_offset = 0;
 
@@ -771,9 +675,7 @@ elevation_offset = 0;
 // Set this to TRUE if the scan_mode is incorrect in the time series, 
 //   and you can override to a constant scan mode.
 //
-//
 // Type: boolean
-//
 
 override_scan_mode = FALSE;
 
@@ -782,7 +684,6 @@ override_scan_mode = FALSE;
 // Select the scan mode for override.
 //
 // See 'override_scan_mode'.
-//
 //
 // Type: enum
 // Options:
@@ -797,13 +698,12 @@ override_scan_mode = FALSE;
 //     SCAN_MODE_POINTING
 //     SCAN_MODE_MANUAL_PPI
 //     SCAN_MODE_MANUAL_RHI
-//
 
 scan_mode_for_override = SCAN_MODE_UNKNOWN;
 
 //======================================================================
 //
-// MOMENTS COMPUTATIONS.
+// MOMENTS COMPUTATIONS and BEAM DWELL DEFINITION.
 //
 //======================================================================
  
@@ -886,8 +786,11 @@ scan_mode_for_override = SCAN_MODE_UNKNOWN;
 //   applies to some electronically-steered radars, where the beam is 
 //   steered to a fixed angle for a while, and then jumps to a different 
 //   pointing direction. We use all of the pulses with a constant steering 
-//   angle to form the beam.
-//
+//   angle to form the beam;
+// CONSTANT_PULSE_WIDTH: create beams (dwells) with with constant pulse 
+//   width. If the pulse width changes we move to a new dwell. Also, 
+//   optionally specify the pulase width and ignore pulses with a 
+//   different width.
 //
 // Type: struct
 //   typedef struct {
@@ -916,6 +819,7 @@ scan_mode_for_override = SCAN_MODE_UNKNOWN;
 //          BEAM_SPECIFY_N_SAMPLES
 //          BEAM_SPECIFY_ANGLE
 //          BEAM_CONSTANT_STEERING_ANGLE
+//          BEAM_CONSTANT_PULSE_WIDTH
 //      int beam_n_samples;
 //      double beam_angle_deg;
 //      boolean index_the_beams;
@@ -955,7 +859,6 @@ scan_mode_for_override = SCAN_MODE_UNKNOWN;
 //   }
 //
 // 1D array - variable length.
-//
 
 moments_params = {
   {
@@ -1099,9 +1002,7 @@ moments_params = {
 //   the antenna moves too fast, the computed n_samples can become small. 
 //   This parameter is the lower limits to n_samples.
 //
-//
 // Type: int
-//
 
 min_n_samples = 64;
 
@@ -1115,41 +1016,33 @@ min_n_samples = 64;
 //   the antenna slows down (say in sector scan) the computed n_samples 
 //   can become large. This parameter is the upper limits to n_samples.
 //
-//
 // Type: int
-//
 
 max_n_samples = 256;
 
-///////////// control_n_samples_from_time_series //////
+///////////// specify_pulse_width /////////////////////
 //
-// Option to control n_samples by using the integration_cycle_pulses 
-//   value in the time series.
+// Option to specify the pulse width.
 //
-// If true, the number of samples will be determined by using the value 
-//   of integration_cycle_pulses in the time series. If false, the 
-//   beam_n_samples specified in moments_params will be used.
-//
+// Only applicable if beam_method = BEAM_CONSTANT_PULSE_WIDTH. See 
+//   'fixed_pulse_width_us'. Pulses with different pulse widths are 
+//   discarded.
 //
 // Type: boolean
-//
 
-control_n_samples_from_time_series = FALSE;
+specify_pulse_width = FALSE;
 
-///////////// control_xmit_rcv_mode_from_time_series //
+///////////// fixed_pulse_width_us ////////////////////
 //
-// Option to control the xmit/rcv mode by using the xmit_rcv_mode value 
-//   in the time series.
+// Specified pulse width in microseconds.
 //
-// If true, the moments will be computed according to the xmit_rcv_mode 
-//   value in the time series. If false, the xmit_rcv_mode in the 
-//   moments_params will be used.
+// See 'specify_pulse_width'. Only applicable if beam_method = 
+//   BEAM_CONSTANT_PULSE_WIDTH. Pulses with different pulse widths are 
+//   discarded.
 //
-//
-// Type: boolean
-//
+// Type: double
 
-control_xmit_rcv_mode_from_time_series = TRUE;
+fixed_pulse_width_us = 1;
 
 ///////////// control_beam_indexing_from_time_series //
 //
@@ -1164,9 +1057,7 @@ control_xmit_rcv_mode_from_time_series = TRUE;
 //   will be used from moments_params: index_the_beams, beam_method, 
 //   beam_angle_deg and indexed_resolition.
 //
-//
 // Type: boolean
-//
 
 control_beam_indexing_from_time_series = FALSE;
 
@@ -1180,11 +1071,35 @@ control_beam_indexing_from_time_series = FALSE;
 //   this parameter is true, we will discard non-indexed beams and only 
 //   include indexed beams in the output data.
 //
-//
 // Type: boolean
-//
 
 discard_non_indexed_beams = FALSE;
+
+///////////// control_n_samples_from_time_series //////
+//
+// Option to control n_samples by using the integration_cycle_pulses 
+//   value in the time series.
+//
+// If true, the number of samples will be determined by using the value 
+//   of integration_cycle_pulses in the time series. If false, the 
+//   beam_n_samples specified in moments_params will be used.
+//
+// Type: boolean
+
+control_n_samples_from_time_series = FALSE;
+
+///////////// control_xmit_rcv_mode_from_time_series //
+//
+// Option to control the xmit/rcv mode by using the xmit_rcv_mode value 
+//   in the time series.
+//
+// If true, the moments will be computed according to the xmit_rcv_mode 
+//   value in the time series. If false, the xmit_rcv_mode in the 
+//   moments_params will be used.
+//
+// Type: boolean
+
+control_xmit_rcv_mode_from_time_series = TRUE;
 
 ///////////// compute_zdr_using_snr ///////////////////
 //
@@ -1195,9 +1110,7 @@ discard_non_indexed_beams = FALSE;
 //   in noise floor in each channel. The ZDR correction applied must 
 //   therefore be computed relative to SNR, not power.
 //
-//
 // Type: boolean
-//
 
 compute_zdr_using_snr = FALSE;
 
@@ -1209,9 +1122,7 @@ compute_zdr_using_snr = FALSE;
 //   difference between the measured power and calibration power will be 
 //   used to adjust the computed DBZ fields.
 //
-//
 // Type: boolean
-//
 
 adjust_dbz_for_measured_xmit_power = TRUE;
 
@@ -1223,9 +1134,7 @@ adjust_dbz_for_measured_xmit_power = TRUE;
 //   difference between the measured power and calibration power will be 
 //   used to adjust the computed ZDR fields.
 //
-//
 // Type: boolean
-//
 
 adjust_zdr_for_measured_xmit_power = FALSE;
 
@@ -1236,9 +1145,7 @@ adjust_zdr_for_measured_xmit_power = FALSE;
 // If the measured power is below this limit, the previous measured 
 //   value will be used instead.
 //
-//
 // Type: double
-//
 
 min_measured_xmit_power_dbm = 82;
 
@@ -1249,9 +1156,7 @@ min_measured_xmit_power_dbm = 82;
 // If the measured power is above this limit, the previous measured 
 //   value will be used instead.
 //
-//
 // Type: double
-//
 
 max_measured_xmit_power_dbm = 86;
 
@@ -1262,9 +1167,7 @@ max_measured_xmit_power_dbm = 86;
 // If missing pulses are found, the beam formed by those pulses will be 
 //   flagged and a message printed.
 //
-//
 // Type: boolean
-//
 
 check_for_missing_pulses = TRUE;
 
@@ -1275,9 +1178,7 @@ check_for_missing_pulses = TRUE;
 // If missing pulses are found, the beam formed by those pulses will be 
 //   discarded.
 //
-//
 // Type: boolean
-//
 
 discard_beams_with_missing_pulses = FALSE;
 
@@ -1292,9 +1193,7 @@ discard_beams_with_missing_pulses = FALSE;
 //   system phidp, set this to false and compute phidp for 
 //   vertically-pointing data.
 //
-//
 // Type: boolean
-//
 
 correct_for_system_phidp = TRUE;
 
@@ -1304,9 +1203,7 @@ correct_for_system_phidp = TRUE;
 //
 // Set to 1 if you do not want a median filter applied.
 //
-//
 // Type: int
-//
 
 zdr_median_filter_len = 1;
 
@@ -1316,9 +1213,7 @@ zdr_median_filter_len = 1;
 //
 // Set to 1 if you do not want a median filter applied.
 //
-//
 // Type: int
-//
 
 rhohv_median_filter_len = 1;
 
@@ -1329,9 +1224,7 @@ rhohv_median_filter_len = 1;
 //
 // If less than 3, no filtering will be performed.
 //
-//
 // Type: int
-//
 
 staggered_prt_median_filter_len = 1;
 
@@ -1345,9 +1238,7 @@ staggered_prt_median_filter_len = 1;
 //   accordingly. We compute the correction first for vertical velocity, 
 //   and then correct for the effects of horizontal veocity.
 //
-//
 // Type: boolean
-//
 
 compute_velocity_corrected_for_platform_motion = FALSE;
 
@@ -1362,9 +1253,7 @@ compute_velocity_corrected_for_platform_motion = FALSE;
 //   the beam width to be used for this correction, since this may differ 
 //   somewhat from the nominal beam width.
 //
-//
 // Type: boolean
-//
 
 compute_width_corrected_for_platform_motion = FALSE;
 
@@ -1374,9 +1263,7 @@ compute_width_corrected_for_platform_motion = FALSE;
 //
 // This may differ from the nominal radar spectrum width.
 //
-//
 // Type: double
-//
 
 width_correction_beamwidth_deg = 0.69;
 
@@ -1388,13 +1275,11 @@ width_correction_beamwidth_deg = 0.69;
 //   Otherwise we use R1R2 if applicable. For staggered, we use the hybrid 
 //   if R0R1 is not selected.
 //
-//
 // Type: enum
 // Options:
 //     WIDTH_METHOD_R0R1
 //     WIDTH_METHOD_R1R2
 //     WIDTH_METHOD_HYBRID
-//
 
 spectrum_width_method = WIDTH_METHOD_R0R1;
 
@@ -1412,9 +1297,7 @@ spectrum_width_method = WIDTH_METHOD_R0R1;
 //   overridden if set_cal_by_pulse_width is true, or if 
 //   use_cal_from_time_series is true.
 //
-//
 // Type: string
-//
 
 startup_cal_file = "$(PROJ_DIR)/qc/calibration/cal.sband.1.0us.sim/TsCalAuto_20220524_053323.xml";
 
@@ -1430,9 +1313,7 @@ startup_cal_file = "$(PROJ_DIR)/qc/calibration/cal.sband.1.0us.sim/TsCalAuto_202
 //   different XMIT_RCV_MODEs. These are the same as those used in 
 //   moments_params above.
 //
-//
 // Type: boolean
-//
 
 set_cal_by_pulse_width = TRUE;
 
@@ -1453,7 +1334,6 @@ set_cal_by_pulse_width = TRUE;
 //   -9999, then the specified zdr_correction_db is applied, and (b) if 
 //   override_cal_system_phidp is true, and system_phidp_deg != -9999, 
 //   then the specified system phidp is used.
-//
 //
 // Type: struct
 //   typedef struct {
@@ -1476,7 +1356,6 @@ set_cal_by_pulse_width = TRUE;
 //   }
 //
 // 1D array - variable length.
-//
 
 pulse_width_cals = {
   {
@@ -1505,9 +1384,7 @@ pulse_width_cals = {
 // The program will scan the calibration directory structure once every 
 //   period, to check for new calibration files.
 //
-//
 // Type: int
-//
 
 cal_recheck_period = 600;
 
@@ -1518,9 +1395,7 @@ cal_recheck_period = 600;
 // If true, the cal information in the time series data will be used, if 
 //   available. If false, the cal info in the param file will be used.
 //
-//
 // Type: boolean
-//
 
 use_cal_from_time_series = FALSE;
 
@@ -1531,9 +1406,7 @@ use_cal_from_time_series = FALSE;
 // If true, we will override the DBZ correction in the calibration 
 //   files. See 'dbz_correction'.
 //
-//
 // Type: boolean
-//
 
 override_cal_dbz_correction = FALSE;
 
@@ -1543,9 +1416,7 @@ override_cal_dbz_correction = FALSE;
 //
 // See 'override_cal_dbz_correction'.
 //
-//
 // Type: double
-//
 
 dbz_correction = 0;
 
@@ -1556,9 +1427,7 @@ dbz_correction = 0;
 // If true, the parameter 'zdr_correction_db' will override the zdr 
 //   correction in the calibration data.
 //
-//
 // Type: boolean
-//
 
 override_cal_zdr_correction = FALSE;
 
@@ -1568,9 +1437,7 @@ override_cal_zdr_correction = FALSE;
 //
 // See 'override_cal_zdr_correction'.
 //
-//
 // Type: double
-//
 
 zdr_correction_db = 0.06;
 
@@ -1581,9 +1448,7 @@ zdr_correction_db = 0.06;
 // If true, we will only compute ZDR if the SNR in both the H and V 
 //   co-polar channels exceeds this value. See 'min_snr_db_for_zdr'.
 //
-//
 // Type: boolean
-//
 
 threshold_zdr_using_snr = FALSE;
 
@@ -1594,9 +1459,7 @@ threshold_zdr_using_snr = FALSE;
 // If the SNR is below this threshold for either the H or V co-polar 
 //   channels, ZDR will be set to missing. See 'threshold_zdr_using_snr'.
 //
-//
 // Type: double
-//
 
 min_snr_db_for_zdr = -7;
 
@@ -1607,9 +1470,7 @@ min_snr_db_for_zdr = -7;
 // If true, the parameters 'ldrh_correction_db' and 'ldrv_correction_db' 
 //   will override the ldr corrections in the calibration data.
 //
-//
 // Type: boolean
-//
 
 override_cal_ldr_corrections = FALSE;
 
@@ -1619,9 +1480,7 @@ override_cal_ldr_corrections = FALSE;
 //
 // See 'override_cal_ldr_corrections'.
 //
-//
 // Type: double
-//
 
 ldr_correction_db_h = 0.3753;
 
@@ -1631,9 +1490,7 @@ ldr_correction_db_h = 0.3753;
 //
 // See 'override_cal_ldr_corrections'.
 //
-//
 // Type: double
-//
 
 ldr_correction_db_v = 0.3945;
 
@@ -1646,9 +1503,7 @@ ldr_correction_db_v = 0.3945;
 //   channel is generally the weaker channel, it is the SNR on the 
 //   cross-polar channel that will be limiting. See 'min_snr_db_for_ldr'.
 //
-//
 // Type: boolean
-//
 
 threshold_ldr_using_snr = FALSE;
 
@@ -1661,9 +1516,7 @@ threshold_ldr_using_snr = FALSE;
 //   the SNR is below this threshold for either the co- or cross-polar 
 //   channels, LDR will be set to missing. See 'threshold_ldr_using_snr'.
 //
-//
 // Type: double
-//
 
 min_snr_db_for_ldr = -7;
 
@@ -1674,9 +1527,7 @@ min_snr_db_for_ldr = -7;
 // If true, the parameter 'system_phidp_deg' will override the system 
 //   phidp in the calibration data.
 //
-//
 // Type: boolean
-//
 
 override_cal_system_phidp = TRUE;
 
@@ -1686,9 +1537,7 @@ override_cal_system_phidp = TRUE;
 //
 // See 'override_cal_system_phidp'.
 //
-//
 // Type: double
-//
 
 system_phidp_deg = 37;
 
@@ -1698,9 +1547,7 @@ system_phidp_deg = 37;
 //
 // This should not be necessary - using for testing.
 //
-//
 // Type: boolean
-//
 
 change_phidp_sign = FALSE;
 
@@ -1721,9 +1568,7 @@ change_phidp_sign = FALSE;
 //   IMPORTANT NOTE: this computes the CORRECTION. The correction is then 
 //   applied to the calibration values read in by Iq2Dsr.
 //
-//
 // Type: boolean
-//
 
 correct_rx_gains_for_temperature = FALSE;
 
@@ -1761,7 +1606,6 @@ correct_rx_gains_for_temperature = FALSE;
 //
 //   <HcrStatus><HcrReceiverStatus><EikTemp>.
 //
-//
 // Type: struct
 //   typedef struct {
 //      rx_channel_t rx_channel;
@@ -1776,7 +1620,6 @@ correct_rx_gains_for_temperature = FALSE;
 //   }
 //
 // 1D array - variable length.
-//
 
 rx_temp_gain_corrections = {
   {
@@ -1825,9 +1668,7 @@ rx_temp_gain_corrections = {
 //   results are stored as XML in SPDB. Here we retrieve the values from 
 //   SPDB and apply them to correct the receiver gain.
 //
-//
 // Type: boolean
-//
 
 correct_hcr_v_rx_gain_for_temperature = FALSE;
 
@@ -1835,9 +1676,7 @@ correct_hcr_v_rx_gain_for_temperature = FALSE;
 //
 // URL for HCR gain correction from SPDB.
 //
-//
 // Type: string
-//
 
 hcr_delta_gain_spdb_url = "/scr/rain1/rsfdata/projects/socrates/hcr/qc/data/socrates/spdb/tempVsGain";
 
@@ -1848,9 +1687,7 @@ hcr_delta_gain_spdb_url = "/scr/rain1/rsfdata/projects/socrates/hcr/qc/data/socr
 // We search for the value closest in time to the beam time. This is the 
 //   search margin on either side of the search time.
 //
-//
 // Type: int
-//
 
 hcr_delta_gain_search_margin_secs = 3600;
 
@@ -1858,9 +1695,7 @@ hcr_delta_gain_search_margin_secs = 3600;
 //
 // Tag list for HCR V channel gai correction.
 //
-//
 // Type: string
-//
 
 hcr_v_rx_delta_gain_tag_list = "<HcrTempGainCorrection><v_delta_gain>";
 
@@ -1875,9 +1710,7 @@ hcr_v_rx_delta_gain_tag_list = "<HcrTempGainCorrection><v_delta_gain>";
 //   https://earth-info.nga.mil/GandG/wgs84/gravitymod/egm2008/egm08_wgs84.
 //   html.
 //
-//
 // Type: boolean
-//
 
 correct_altitude_for_egm = FALSE;
 
@@ -1890,9 +1723,7 @@ correct_altitude_for_egm = FALSE;
 //   the shared drive at HCR->dataProcessing->AltitudeCorrection. The app 
 //   Egm2Mdv will convert the downloadable file to a netCDF format file.
 //
-//
 // Type: string
-//
 
 egm_2008_geoid_file = "./EGM_2008_WGS84_2.5minx2.5min.nc";
 
@@ -1913,9 +1744,7 @@ egm_2008_geoid_file = "./EGM_2008_WGS84_2.5minx2.5min.nc";
 //
 // Noise values are measured using NoiseMon.
 //
-//
 // Type: boolean
-//
 
 noise_mon_correct_cal_rx_gain = TRUE;
 
@@ -1923,9 +1752,7 @@ noise_mon_correct_cal_rx_gain = TRUE;
 //
 // URL for NoiseMon results in SPDB.
 //
-//
 // Type: string
-//
 
 noise_mon_spdb_url = "$(DATA_DIR)/$(project)/calibration/spol/noise_mon/sband/spdb";
 
@@ -1937,9 +1764,7 @@ noise_mon_spdb_url = "$(DATA_DIR)/$(project)/calibration/spol/noise_mon/sband/sp
 //   radar time plus the margin. We compute the mean value within this 
 //   time range.
 //
-//
 // Type: int
-//
 
 noise_mon_search_margin_secs = 3600;
 
@@ -1947,9 +1772,7 @@ noise_mon_search_margin_secs = 3600;
 //
 // XML tag for noise monitoring section.
 //
-//
 // Type: string
-//
 
 noise_mon_tag_main = "NoiseMonitoring";
 
@@ -1959,9 +1782,7 @@ noise_mon_tag_main = "NoiseMonitoring";
 //
 // This tag must exist in the noise monitoring XML.
 //
-//
 // Type: string
-//
 
 noise_mon_tag_list_zdr = "<NoiseMonitoring><meanNoiseZdr>";
 
@@ -1969,9 +1790,7 @@ noise_mon_tag_list_zdr = "<NoiseMonitoring><meanNoiseZdr>";
 //
 // Tag for noise dbm in H co-polar channel.
 //
-//
 // Type: string
-//
 
 noise_mon_tag_list_dbmhc = "<NoiseMonitoring><meanDbmhc>";
 
@@ -1979,9 +1798,7 @@ noise_mon_tag_list_dbmhc = "<NoiseMonitoring><meanDbmhc>";
 //
 // Tag for noise dbm in V co-polar channel.
 //
-//
 // Type: string
-//
 
 noise_mon_tag_list_dbmvc = "<NoiseMonitoring><meanDbmvc>";
 
@@ -1989,9 +1806,7 @@ noise_mon_tag_list_dbmvc = "<NoiseMonitoring><meanDbmvc>";
 //
 // Tag for site temperature.
 //
-//
 // Type: string
-//
 
 noise_mon_tag_list_site_temp = "<SpolStatus><WxStation><tempC>";
 
@@ -2004,9 +1819,7 @@ noise_mon_tag_list_site_temp = "<SpolStatus><WxStation><tempC>";
 //   ZDR as computed from noise. Applying this correction allows us to 
 //   compute the ZDRM bias to use in the saved calibration.
 //
-//
 // Type: double
-//
 
 noise_mon_zdrm_corr = 0.52;
 
@@ -2018,9 +1831,7 @@ noise_mon_zdrm_corr = 0.52;
 //   temperature. This is the mean temperature from that analysis. We use 
 //   this to determine the ZDR bias from temperature.
 //
-//
 // Type: double
-//
 
 noise_mon_mean_site_temp = 27.34;
 
@@ -2033,9 +1844,7 @@ noise_mon_mean_site_temp = 27.34;
 //   from that analysis. We use this to determine the ZDR bias from 
 //   temperature.
 //
-//
 // Type: double
-//
 
 noise_mon_zdr_temp_slope = 0.01296;
 
@@ -2055,9 +1864,7 @@ noise_mon_zdr_temp_slope = 0.01296;
 // 	DBZ_ATTEN_CORRECTED - DBZHC corrected
 // 	ZDR_ATTEN_CORRECTED - ZDR corrected.
 //
-//
 // Type: boolean
-//
 
 apply_precip_attenuation_correction = FALSE;
 
@@ -2068,9 +1875,7 @@ apply_precip_attenuation_correction = FALSE;
 // If false, the default coefficients will be determined for the radar 
 //   wavelength.
 //
-//
 // Type: boolean
-//
 
 specify_coefficients_for_attenuation_correction = FALSE;
 
@@ -2080,9 +1885,7 @@ specify_coefficients_for_attenuation_correction = FALSE;
 //
 // See Bringi and Chandrasekar, Table 7.1, page 494.
 //
-//
 // Type: double
-//
 
 dbz_attenuation_coefficient = 0.017;
 
@@ -2092,9 +1895,7 @@ dbz_attenuation_coefficient = 0.017;
 //
 // See Bringi and Chandrasekar, Table 7.1, page 494.
 //
-//
 // Type: double
-//
 
 dbz_attenuation_exponent = 0.84;
 
@@ -2104,9 +1905,7 @@ dbz_attenuation_exponent = 0.84;
 //
 // See Bringi and Chandrasekar, Table 7.1, page 494.
 //
-//
 // Type: double
-//
 
 zdr_attenuation_coefficient = 0.017;
 
@@ -2116,9 +1915,7 @@ zdr_attenuation_coefficient = 0.017;
 //
 // See Bringi and Chandrasekar, Table 7.1, page 494.
 //
-//
 // Type: double
-//
 
 zdr_attenuation_exponent = 0.84;
 
@@ -2143,13 +1940,11 @@ zdr_attenuation_exponent = 0.84;
 // 		measurements.
 // 		See Doviak and Zrnic, page 44.
 //
-//
 // Type: enum
 // Options:
 //     ATMOS_ATTEN_NONE
 //     ATMOS_ATTEN_CONSTANT
 //     ATMOS_ATTEN_CRPL
-//
 
 atmos_atten_method = ATMOS_ATTEN_CRPL;
 
@@ -2159,9 +1954,7 @@ atmos_atten_method = ATMOS_ATTEN_CRPL;
 //
 // DBZ is corrected for this.
 //
-//
 // Type: double
-//
 
 atmos_atten_db_per_km = 0.012;
 
@@ -2182,17 +1975,14 @@ atmos_atten_db_per_km = 0.012;
 //   polynomial filter with specified interpolation. NOTCH: simple notch 
 //   filter of specified width. NONE: cancels clutter filtering.
 //
-//
 // Type: enum
 // Options:
 //     CLUTTER_FILTER_ADAPTIVE
 //     CLUTTER_FILTER_REGRESSION
 //     CLUTTER_FILTER_NOTCH
 //     CLUTTER_FILTER_NONE
-//
 
 clutter_filter_type = CLUTTER_FILTER_ADAPTIVE;
-// clutter_filter_type = CLUTTER_FILTER_REGRESSION;
 
 ///////////// clutter_model_width_in_adaptive_filter //
 //
@@ -2202,9 +1992,7 @@ clutter_filter_type = CLUTTER_FILTER_ADAPTIVE;
 //   width, and uses that model to determing the width of the initial 
 //   notch.
 //
-//
 // Type: double
-//
 
 clutter_model_width_in_adaptive_filter = 0.75;
 
@@ -2215,9 +2003,7 @@ clutter_model_width_in_adaptive_filter = 0.75;
 // This is the initial notch width used if the clutter model does not 
 //   succeed in providing the notch width.
 //
-//
 // Type: double
-//
 
 init_notch_width_in_adaptive_filter = 1.5;
 
@@ -2229,9 +2015,7 @@ init_notch_width_in_adaptive_filter = 1.5;
 //   correction is applied, the spectral noise floor will be reduced to 
 //   the measured noise value.
 //
-//
 // Type: boolean
-//
 
 apply_residue_correction_in_adaptive_filter = FALSE;
 
@@ -2244,9 +2028,7 @@ apply_residue_correction_in_adaptive_filter = FALSE;
 //   noise. Only apply residue correction if SNR exceeds this value. 
 //   Otherwise, do not apply a correction.
 //
-//
 // Type: double
-//
 
 min_snr_db_for_residue_correction = 75;
 
@@ -2258,9 +2040,7 @@ min_snr_db_for_residue_correction = 75;
 // If TRUE, we compute the CNR from the 3 central spectral points. Then, 
 //   we compute the order using CNR, antenna speed etc.
 //
-//
 // Type: boolean
-//
 
 regression_filter_determine_order_from_cnr = TRUE;
 
@@ -2270,9 +2050,7 @@ regression_filter_determine_order_from_cnr = TRUE;
 //
 // Used if regression_filter_determine_order_from_cnr is false.
 //
-//
 // Type: int
-//
 
 regression_filter_specified_polynomial_order = 5;
 
@@ -2284,9 +2062,7 @@ regression_filter_specified_polynomial_order = 5;
 //   Default is 1. If less than 1, order will decrease. If more than 1, 
 //   order will increase.
 //
-//
 // Type: double
-//
 
 regression_filter_clutter_width_factor = 1;
 
@@ -2298,26 +2074,37 @@ regression_filter_clutter_width_factor = 1;
 //   Default is 2/3. If less than 2/3, order will decrease. If more than 
 //   2/3, order will increase.
 //
-//
 // Type: double
-//
 
 regression_filter_cnr_exponent = 0.666667;
 
 ///////////// regression_filter_min_cnr_db ////////////
 //
-// Min valid CNR - Clutter-to-Signal-Ratio - for applying the filter 
+// Min valid CNR - Clutter-to-Noise-Ratio - for applying the filter 
 //   (dB).
 //
-// As a first step, we compute the CNR the central 3 spectral points. If 
-//   the CNR is below this threshold, we do not apply the filter at all, 
-//   and simply return the unfiltered spectrum.
-//
+// As a first step, we compute the CNR from the central 3 spectral 
+//   points. If the CNR is below this threshold, and the CSR is below 
+//   min_csr (see below) we do not apply the filter at all, and simply 
+//   return the unfiltered spectrum. This test.
 //
 // Type: double
-//
 
 regression_filter_min_cnr_db = -5;
+
+///////////// regression_filter_min_csr_db ////////////
+//
+// Min valid CSR - Clutter-to-Signal-Ratio - for applying the filter 
+//   (dB).
+//
+// As a first step, we compute the CSR from the central 3 spectral 
+//   points. If the CSR is below this threshold, and the CNR is below 
+//   min_cnr (see above) we do not apply the filter at all, and simply 
+//   return the unfiltered spectrum.
+//
+// Type: double
+
+regression_filter_min_csr_db = -15;
 
 ///////////// regression_filter_notch_interp_method ///
 //
@@ -2328,13 +2115,11 @@ regression_filter_min_cnr_db = -5;
 //   interpolation is performed across the notch. If GAUSSIAN, an 
 //   iterative Gaussian interpolation is performed across the notch.
 //
-//
 // Type: enum
 // Options:
 //     INTERP_METHOD_NONE
 //     INTERP_METHOD_LINEAR
 //     INTERP_METHOD_GAUSSIAN
-//
 
 regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN;
 
@@ -2344,9 +2129,7 @@ regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN;
 //
 // See use_simple_notch_clutter_filter.
 //
-//
 // Type: double
-//
 
 simple_notch_filter_width_mps = 3;
 
@@ -2359,9 +2142,7 @@ simple_notch_filter_width_mps = 3;
 //   alternating dual pol mode. If true, the H-only pulses are used to 
 //   compute velocity where CMD flags a gate as clutter.
 //
-//
 // Type: boolean
-//
 
 use_h_only_for_alt_mode_clutter_vel = TRUE;
 
@@ -2374,9 +2155,7 @@ use_h_only_for_alt_mode_clutter_vel = TRUE;
 //   vel_alt_fold_interval, vel_alt_fold_confidence, vel_diff, 
 //   vel_unfold_interval.
 //
-//
 // Type: boolean
-//
 
 write_alt_mode_vel_debug_fields = FALSE;
 
@@ -2395,7 +2174,6 @@ write_alt_mode_vel_debug_fields = FALSE;
 // When computing KDP, an FIR filter is first applied to PHIDP to smooth 
 //   it. This is the length of that filter, in gates.
 //
-//
 // Type: enum
 // Options:
 //     FIR_LEN_125
@@ -2404,7 +2182,6 @@ write_alt_mode_vel_debug_fields = FALSE;
 //     FIR_LEN_30
 //     FIR_LEN_20
 //     FIR_LEN_10
-//
 
 KDP_fir_filter_len = FIR_LEN_10;
 
@@ -2417,9 +2194,7 @@ KDP_fir_filter_len = FIR_LEN_10;
 //   phidp, a number of times, to smooth it. The effect of the filter is a 
 //   combination of the filter length and the number of iterations.
 //
-//
 // Type: int
-//
 
 KDP_n_filt_iterations_unfolded = 2;
 
@@ -2434,9 +2209,7 @@ KDP_n_filt_iterations_unfolded = 2;
 //   The effect of the filter is a combination of the filter length and 
 //   the number of iterations.
 //
-//
 // Type: int
-//
 
 KDP_n_filt_iterations_conditioned = 3;
 
@@ -2444,9 +2217,7 @@ KDP_n_filt_iterations_conditioned = 3;
 //
 // Perform iterative filtering to locate backscatter phase shift.
 //
-//
 // Type: boolean
-//
 
 KDP_use_iterative_filtering = FALSE;
 
@@ -2461,9 +2232,7 @@ KDP_use_iterative_filtering = FALSE;
 //   the difference exceeds this parameter, the new filtered value is 
 //   retained.
 //
-//
 // Type: double
-//
 
 KDP_phidp_difference_threshold = 4;
 
@@ -2477,9 +2246,7 @@ KDP_phidp_difference_threshold = 4;
 //   This parameter is the number of gates over which these statistics are 
 //   computed.
 //
-//
 // Type: int
-//
 
 KDP_ngates_for_stats = 9;
 
@@ -2492,9 +2259,7 @@ KDP_ngates_for_stats = 9;
 //   present. If the sdev is less than this value, it is assumed we are in 
 //   weather. Applies to computation of KDP only.
 //
-//
 // Type: double
-//
 
 KDP_phidp_sdev_max = 25;
 
@@ -2508,9 +2273,7 @@ KDP_phidp_sdev_max = 25;
 //   value, it is assumed we are in weather. Applies to computation of KDP 
 //   only.
 //
-//
 // Type: double
-//
 
 KDP_phidp_jitter_max = 25;
 
@@ -2518,9 +2281,7 @@ KDP_phidp_jitter_max = 25;
 //
 // Check the SNR.
 //
-//
 // Type: boolean
-//
 
 KDP_check_snr = TRUE;
 
@@ -2531,9 +2292,7 @@ KDP_check_snr = TRUE;
 // If the SNR drops below this value, KDP will not be computed at this 
 //   gate.
 //
-//
 // Type: double
-//
 
 KDP_snr_threshold = 0;
 
@@ -2541,9 +2300,7 @@ KDP_snr_threshold = 0;
 //
 // Check the RHOHV.
 //
-//
 // Type: boolean
-//
 
 KDP_check_rhohv = TRUE;
 
@@ -2554,9 +2311,7 @@ KDP_check_rhohv = TRUE;
 // If the RHOHV drops below this value, KDP will not be computed at this 
 //   gate.
 //
-//
 // Type: double
-//
 
 KDP_rhohv_threshold = 0.85;
 
@@ -2564,9 +2319,7 @@ KDP_rhohv_threshold = 0.85;
 //
 // Check the standard deviation of ZDR in range?.
 //
-//
 // Type: boolean
-//
 
 KDP_check_zdr_sdev = TRUE;
 
@@ -2578,9 +2331,7 @@ KDP_check_zdr_sdev = TRUE;
 //   this value, it is assumed we are in weather. Applies to computation 
 //   of KDP only.
 //
-//
 // Type: double
-//
 
 KDP_zdr_sdev_max = 2.5;
 
@@ -2590,9 +2341,7 @@ KDP_zdr_sdev_max = 2.5;
 //
 // Values less than this are set to 0.
 //
-//
 // Type: double
-//
 
 KDP_min_valid_abs_kdp = 0.01;
 
@@ -2600,9 +2349,7 @@ KDP_min_valid_abs_kdp = 0.01;
 //
 // Option to print debug messages in KDP computation.
 //
-//
 // Type: boolean
-//
 
 KDP_debug = FALSE;
 
@@ -2610,9 +2357,7 @@ KDP_debug = FALSE;
 //
 // Option to write ray files to debug KDP computation.
 //
-//
 // Type: boolean
-//
 
 KDP_write_ray_files = FALSE;
 
@@ -2620,9 +2365,7 @@ KDP_write_ray_files = FALSE;
 //
 // Directory for KDP ray files.
 //
-//
 // Type: string
-//
 
 KDP_ray_files_dir = "/tmp/kdp_ray_files";
 
@@ -2640,9 +2383,7 @@ KDP_ray_files_dir = "/tmp/kdp_ray_files";
 //
 // If true, KDP will also be computed using the Hubbert-Bringi method.
 //
-//
 // Type: boolean
-//
 
 KDP_compute_using_hubbert_bringi_method = TRUE;
 
@@ -2653,7 +2394,6 @@ KDP_compute_using_hubbert_bringi_method = TRUE;
 // When computing KDP, an FIR filter is first applied to PHIDP to smooth 
 //   it. This is the length of that filter, in gates.
 //
-//
 // Type: enum
 // Options:
 //     FIR_LEN_125
@@ -2662,7 +2402,6 @@ KDP_compute_using_hubbert_bringi_method = TRUE;
 //     FIR_LEN_30
 //     FIR_LEN_20
 //     FIR_LEN_10
-//
 
 KDP_HB_fir_filter_len = FIR_LEN_20;
 
@@ -2675,9 +2414,7 @@ KDP_HB_fir_filter_len = FIR_LEN_20;
 //   we use the original value instead of the filtered value. Applies to 
 //   computation of KDP only.
 //
-//
 // Type: double
-//
 
 KDP_HB_phidp_difference_threshold = 4;
 
@@ -2689,9 +2426,7 @@ KDP_HB_phidp_difference_threshold = 4;
 //   than this value, it is assumed we are in weather. Applies to 
 //   computation of KDP only.
 //
-//
 // Type: double
-//
 
 KDP_HB_phidp_sdev_threshold = 12;
 
@@ -2703,9 +2438,7 @@ KDP_HB_phidp_sdev_threshold = 12;
 //   this value, it is assumed we are in weather. Applies to computation 
 //   of KDP only.
 //
-//
 // Type: double
-//
 
 KDP_HB_zdr_sdev_threshold = 1.8;
 
@@ -2717,9 +2450,7 @@ KDP_HB_zdr_sdev_threshold = 1.8;
 //   value, it is assumed we are in weather. Applies to computation of KDP 
 //   only.
 //
-//
 // Type: double
-//
 
 KDP_HB_rhohv_threshold = 0.75;
 
@@ -2738,9 +2469,7 @@ KDP_HB_rhohv_threshold = 0.75;
 //   the estimated noise instead of teh calibrated noise to compute the 
 //   noise-subtracted powers.
 //
-//
 // Type: boolean
-//
 
 use_estimated_noise_for_noise_subtraction = FALSE;
 
@@ -2754,9 +2483,7 @@ use_estimated_noise_for_noise_subtraction = FALSE;
 //   spikes generally cause a noise increase of 10 dB or more, depending 
 //   on the wavelength.
 //
-//
 // Type: double
-//
 
 max_valid_noise_bias_db = 20;
 
@@ -2773,9 +2500,7 @@ max_valid_noise_bias_db = 20;
 //   actual accumulated phase change and the linear fit to the phase 
 //   change over the local region. NOTE - this number should be odd.
 //
-//
 // Type: int
-//
 
 noise_ngates_kernel = 9;
 
@@ -2786,9 +2511,7 @@ noise_ngates_kernel = 9;
 // In order to compute median noise for a ray, we require noise to be 
 //   detected at at least this number of gates.
 //
-//
 // Type: int
-//
 
 noise_min_ngates_for_ray_median = 75;
 
@@ -2801,12 +2524,10 @@ noise_min_ngates_for_ray_median = 75;
 //   noise when we have enough data. The noise varies more smoothly than 
 //   in the RAY_BY_RAY method.
 //
-//
 // Type: enum
 // Options:
 //     NOISE_RAY_BY_RAY
 //     NOISE_RUNNING_MEDIAN
-//
 
 noise_method = NOISE_RAY_BY_RAY;
 
@@ -2817,9 +2538,7 @@ noise_method = NOISE_RAY_BY_RAY;
 // When noise is located at a gate, the power values are stored in 
 //   arrays. When we have accumulated enough gates, the mean is computed.
 //
-//
 // Type: int
-//
 
 noise_ngates_for_running_median = 10000;
 
@@ -2831,9 +2550,7 @@ noise_ngates_for_running_median = 10000;
 //   noise bias in all channels is set to that for Hc. If Hc is not 
 //   available, Vc is used.
 //
-//
 // Type: boolean
-//
 
 set_equal_noise_bias_in_all_channels = FALSE;
 
@@ -2853,7 +2570,6 @@ set_equal_noise_bias_in_all_channels = FALSE;
 //
 // Interest mapping for phase change for noise.
 //
-//
 // Type: struct
 //   typedef struct {
 //      double value;
@@ -2861,7 +2577,6 @@ set_equal_noise_bias_in_all_channels = FALSE;
 //   }
 //
 // 1D array - variable length.
-//
 
 phase_change_error_for_noise_interest_map = {
   {
@@ -2881,16 +2596,13 @@ phase_change_error_for_noise_interest_map = {
 //
 // The relative weighting applied when computing the fuzzy sum.
 //
-//
 // Type: double
-//
 
 phase_change_error_for_noise_interest_weight = 1;
 
 ///////////// dbm_sdev_for_noise_interest_map /////////
 //
 // Interest mapping for sdev of dbm for noise.
-//
 //
 // Type: struct
 //   typedef struct {
@@ -2899,7 +2611,6 @@ phase_change_error_for_noise_interest_weight = 1;
 //   }
 //
 // 1D array - variable length.
-//
 
 dbm_sdev_for_noise_interest_map = {
   {
@@ -2919,16 +2630,13 @@ dbm_sdev_for_noise_interest_map = {
 //
 // The relative weighting applied when computing the fuzzy sum.
 //
-//
 // Type: double
-//
 
 dbm_sdev_for_noise_interest_weight = 1;
 
 ///////////// ncp_mean_for_noise_interest_map /////////
 //
 // Interest mapping for mean of ncp for noise.
-//
 //
 // Type: struct
 //   typedef struct {
@@ -2937,7 +2645,6 @@ dbm_sdev_for_noise_interest_weight = 1;
 //   }
 //
 // 1D array - variable length.
-//
 
 ncp_mean_for_noise_interest_map = {
   {
@@ -2957,9 +2664,7 @@ ncp_mean_for_noise_interest_map = {
 //
 // The relative weighting applied when computing the fuzzy sum.
 //
-//
 // Type: double
-//
 
 ncp_mean_for_noise_interest_weight = 1;
 
@@ -2970,16 +2675,13 @@ ncp_mean_for_noise_interest_weight = 1;
 // If the fuzzy interest value exceeds this threshold, noise is assumed 
 //   to exist at that gate.
 //
-//
 // Type: double
-//
 
 interest_threshold_for_noise = 0.51;
 
 ///////////// phase_change_error_for_signal_interest_map 
 //
 // Interest mapping for phase change for signal.
-//
 //
 // Type: struct
 //   typedef struct {
@@ -2988,7 +2690,6 @@ interest_threshold_for_noise = 0.51;
 //   }
 //
 // 1D array - variable length.
-//
 
 phase_change_error_for_signal_interest_map = {
   {
@@ -3008,16 +2709,13 @@ phase_change_error_for_signal_interest_map = {
 //
 // The relative weighting applied when computing the fuzzy sum.
 //
-//
 // Type: double
-//
 
 phase_change_error_for_signal_interest_weight = 1;
 
 ///////////// dbm_sdev_for_signal_interest_map ////////
 //
 // Interest mapping for sdev of dbm for signal.
-//
 //
 // Type: struct
 //   typedef struct {
@@ -3026,7 +2724,6 @@ phase_change_error_for_signal_interest_weight = 1;
 //   }
 //
 // 1D array - variable length.
-//
 
 dbm_sdev_for_signal_interest_map = {
   {
@@ -3046,9 +2743,7 @@ dbm_sdev_for_signal_interest_map = {
 //
 // The relative weighting applied when computing the fuzzy sum.
 //
-//
 // Type: double
-//
 
 dbm_sdev_for_signal_interest_weight = 1;
 
@@ -3059,9 +2754,7 @@ dbm_sdev_for_signal_interest_weight = 1;
 // If the fuzzy interest value exceeds this threshold, signal is assumed 
 //   to exist at that gate.
 //
-//
 // Type: double
-//
 
 interest_threshold_for_signal = 0.51;
 
@@ -3087,13 +2780,11 @@ interest_threshold_for_signal = 0.51;
 // 	CENSORING_BY_SNR_AND_NCP: censoring is performed using thresholds 
 //   applied to SNR and NCP.
 //
-//
 // Type: enum
 // Options:
 //     CENSORING_NONE
 //     CENSORING_BY_NOISE_FLAG
 //     CENSORING_BY_SNR_AND_NCP
-//
 
 censoring_mode = CENSORING_BY_SNR_AND_NCP;
 
@@ -3104,9 +2795,7 @@ censoring_mode = CENSORING_BY_SNR_AND_NCP;
 // Applies to CENSORING_BY_SNR_AND_NCP mode. Censoring is applied if 
 //   both SNR and NCP are below the specified thresholds.
 //
-//
 // Type: double
-//
 
 censoring_snr_threshold = 0;
 
@@ -3117,9 +2806,7 @@ censoring_snr_threshold = 0;
 // Applies to CENSORING_BY_SNR_AND_NCP mode. Censoring is applied if 
 //   both SNR and NCP are below the specified thresholds.
 //
-//
 // Type: double
-//
 
 censoring_ncp_threshold = 0.2;
 
@@ -3134,9 +2821,7 @@ censoring_ncp_threshold = 0.2;
 //   censoring_min_valid_run. If the number of gates in a run is less than 
 //   this, then all gates in the run are censored.
 //
-//
 // Type: int
-//
 
 censoring_min_valid_run = 5;
 
@@ -3153,9 +2838,7 @@ censoring_min_valid_run = 5;
 // This affects refractt variables. Set to true to change the sign of 
 //   the computed AIQ field.
 //
-//
 // Type: boolean
-//
 
 change_aiq_sign = FALSE;
 
@@ -3176,14 +2859,12 @@ change_aiq_sign = FALSE;
 // 	PHASE_DECODE_SZ1: legacy NEXRAD SZ1 phase code processing - only 
 //   handles 2 trips.
 //
-//
 // Type: enum
 // Options:
 //     PHASE_DECODE_NONE
 //     PHASE_DECODE_RANDOM
 //     PHASE_DECODE_SZ
 //     PHASE_DECODE_SZ1
-//
 
 phase_decoding = PHASE_DECODE_NONE;
 
@@ -3193,9 +2874,7 @@ phase_decoding = PHASE_DECODE_NONE;
 //
 // Any returns in these trips will be adjsuted for.
 //
-//
 // Type: int
-//
 
 phase_decoding_ntrips_check = 2;
 
@@ -3206,9 +2885,7 @@ phase_decoding_ntrips_check = 2;
 // Sometimes we choose to discard data from the outer trips, and just 
 //   save the adjusted data in inner trips.
 //
-//
 // Type: int
-//
 
 phase_decoding_ntrips_save = 1;
 
@@ -3219,9 +2896,7 @@ phase_decoding_ntrips_save = 1;
 // If the NCP for a trip exceeds this value it will be considered for 
 //   trip processing.
 //
-//
 // Type: double
-//
 
 phase_decoding_ncp_threshold = 0.3;
 
@@ -3232,9 +2907,7 @@ phase_decoding_ncp_threshold = 0.3;
 // If the SNR is less than the threshold, no phase code processing is 
 //   performed.
 //
-//
 // Type: double
-//
 
 phase_decoding_snr_threshold = 3;
 
@@ -3244,9 +2917,7 @@ phase_decoding_snr_threshold = 3;
 //
 // A notch of this width will be applied in removing trip contamination.
 //
-//
 // Type: double
-//
 
 phase_decoding_notch_width = 0.5;
 
@@ -3257,9 +2928,7 @@ phase_decoding_notch_width = 0.5;
 // In some legacy sz data sets the phase codes are negated. Set this to 
 //   true for such data cases.
 //
-//
 // Type: boolean
-//
 
 sz1_negate_phase_codes = FALSE;
 
@@ -3270,9 +2939,7 @@ sz1_negate_phase_codes = FALSE;
 // SZ1 decoding only. If the strong to weak trip power ratio is greater 
 //   than this, we censor the weak trip.
 //
-//
 // Type: double
-//
 
 sz1_strong_to_weak_power_ratio_threshold = 50;
 
@@ -3287,9 +2954,7 @@ sz1_strong_to_weak_power_ratio_threshold = 50;
 //   assumed that out-of-trip power is present. See 
 //   'sz_out_of_trip_power_n_replicas'.
 //
-//
 // Type: double
-//
 
 sz1_out_of_trip_power_ratio_threshold = 6;
 
@@ -3305,9 +2970,18 @@ sz1_out_of_trip_power_ratio_threshold = 6;
 // Maximum val: 6
 //
 // Type: int
-//
 
 sz1_out_of_trip_power_n_replicas = 3;
+
+///////////// sz1_use_regression_filter ///////////////
+//
+// Option to use regression filter in SZ decoding.
+//
+// If TRUE, a rectangular filter will be applied to SZ decoding.
+//
+// Type: boolean
+
+sz1_use_regression_filter = FALSE;
 
 //======================================================================
 //
@@ -3323,9 +2997,7 @@ sz1_out_of_trip_power_n_replicas = 3;
 //
 // TDBZ is computed over a kernel in range.
 //
-//
 // Type: int
-//
 
 cmd_kernel_ngates_tdbz = 9;
 
@@ -3335,9 +3007,7 @@ cmd_kernel_ngates_tdbz = 9;
 //
 // SPIN is computed over a kernel in range.
 //
-//
 // Type: int
-//
 
 cmd_kernel_ngates_spin = 11;
 
@@ -3347,9 +3017,7 @@ cmd_kernel_ngates_spin = 11;
 //
 // sdev_zdr are computed over a kernel in range.
 //
-//
 // Type: int
-//
 
 cmd_kernel_ngates_zdr_sdev = 7;
 
@@ -3359,9 +3027,7 @@ cmd_kernel_ngates_zdr_sdev = 7;
 //
 // sdev_phidp are computed over a kernel in range.
 //
-//
 // Type: int
-//
 
 cmd_kernel_ngates_phidp_sdev = 7;
 
@@ -3373,9 +3039,7 @@ cmd_kernel_ngates_phidp_sdev = 7;
 //   between adjacent gates. If the difference exceeds this threshold, the 
 //   change counter is incremented.
 //
-//
 // Type: double
-//
 
 cmd_spin_dbz_threshold = 6.5;
 
@@ -3385,9 +3049,7 @@ cmd_spin_dbz_threshold = 6.5;
 //
 // Only gates which exceed this snr will be considered for the CMD flag.
 //
-//
 // Type: double
-//
 
 cmd_snr_threshold = 3;
 
@@ -3397,9 +3059,7 @@ cmd_snr_threshold = 3;
 //
 // Set to 1 if you do not want a median filter applied.
 //
-//
 // Type: int
-//
 
 cpa_median_filter_len = 1;
 
@@ -3414,9 +3074,7 @@ cpa_median_filter_len = 1;
 //   becomes low for a short period, and then returns to high values for 
 //   the rest of the series.
 //
-//
 // Type: boolean
-//
 
 cpa_compute_using_alternative = TRUE;
 
@@ -3427,9 +3085,7 @@ cpa_compute_using_alternative = TRUE;
 // If the CMD value exceeds this threshold, clutter is assumed to exist 
 //   at that point.
 //
-//
 // Type: double
-//
 
 cmd_threshold_for_clutter = 0.5;
 
@@ -3442,9 +3098,7 @@ cmd_threshold_for_clutter = 0.5;
 //   min_snr_for_offzero_weather, cmd_threshold_for_offzero_weather will 
 //   be used instead of cmd_threshold_for_clutter.
 //
-//
 // Type: boolean
-//
 
 cmd_check_for_offzero_weather = FALSE;
 
@@ -3456,9 +3110,7 @@ cmd_check_for_offzero_weather = FALSE;
 // This is applied only of the off-zero SNR exceeds 
 //   min_snr_for_offzero_weather.
 //
-//
 // Type: double
-//
 
 cmd_threshold_for_offzero_weather = 0.2;
 
@@ -3469,9 +3121,7 @@ cmd_threshold_for_offzero_weather = 0.2;
 // This is applied only of the off-zero SNR exceeds 
 //   offzero_snr_threshold.
 //
-//
 // Type: double
-//
 
 min_snr_for_offzero_weather = 3;
 
@@ -3483,9 +3133,7 @@ min_snr_for_offzero_weather = 3;
 //   spectrum. This needs to be wide enough to ensure that no clutter 
 //   power is included in the off-zero SNR.
 //
-//
 // Type: double
-//
 
 notch_width_for_offzero_snr = 4;
 
@@ -3499,9 +3147,7 @@ notch_width_for_offzero_snr = 4;
 //   cmd_threshold_for_windfarm_clutter will be used instead of 
 //   cmd_threshold_for_clutter.
 //
-//
 // Type: boolean
-//
 
 cmd_check_for_windfarm_clutter = FALSE;
 
@@ -3512,9 +3158,7 @@ cmd_check_for_windfarm_clutter = FALSE;
 // See cmd_check_for_windfarm_clutter. If the spectral SNR exceeds this 
 //   value, it is likely that wind farm clutter is present.
 //
-//
 // Type: double
-//
 
 min_spectral_snr_for_windfarm_clutter = 10;
 
@@ -3525,9 +3169,7 @@ min_spectral_snr_for_windfarm_clutter = 10;
 // The windfarm clutter check will only be performed if the SNR for the 
 //   gate exceeds this value. This test is done to reduce CPU usage.
 //
-//
 // Type: double
-//
 
 min_snr_for_windfarm_clutter_check = 10;
 
@@ -3538,9 +3180,7 @@ min_snr_for_windfarm_clutter_check = 10;
 // The windfarm clutter check will only be performed if the CPA for the 
 //   gate exceeds this value. This test is done to reduce CPU usage.
 //
-//
 // Type: double
-//
 
 min_cpa_for_windfarm_clutter_check = 0.25;
 
@@ -3559,9 +3199,7 @@ min_cpa_for_windfarm_clutter_check = 0.25;
 //   db_for_db is removed. For every db of power removed above the 
 //   threshold, and extra 1 db is removed.
 //
-//
 // Type: boolean
-//
 
 apply_db_for_db_correction = TRUE;
 
@@ -3573,9 +3211,7 @@ apply_db_for_db_correction = TRUE;
 // If the clutter power removed is less than db_for_db_threshold, the 
 //   db_for_db_corection is the clutter db multiplied by this ratio.
 //
-//
 // Type: double
-//
 
 db_for_db_ratio = 0.2;
 
@@ -3589,9 +3225,7 @@ db_for_db_ratio = 0.2;
 //   correction is 1 db for every db by which the clutter exceeds the 
 //   threshold.
 //
-//
 // Type: double
-//
 
 db_for_db_threshold = 40;
 
@@ -3610,9 +3244,7 @@ db_for_db_threshold = 40;
 //
 // See cmd_speckle_thresholds.
 //
-//
 // Type: boolean
-//
 
 apply_cmd_speckle_filter = TRUE;
 
@@ -3627,7 +3259,6 @@ apply_cmd_speckle_filter = TRUE;
 //   The filter is run once for each specified length, starting at the 
 //   longest length and moving to the shortest length.
 //
-//
 // Type: struct
 //   typedef struct {
 //      int length;
@@ -3635,7 +3266,6 @@ apply_cmd_speckle_filter = TRUE;
 //   }
 //
 // 1D array - variable length.
-//
 
 cmd_speckle_filter_thresholds = {
   {
@@ -3699,9 +3329,7 @@ cmd_speckle_filter_thresholds = {
 //   then this gate is considered likely to have clutter, and the cmd_flag 
 //   is set.
 //
-//
 // Type: boolean
-//
 
 apply_cmd_gap_filter = TRUE;
 
@@ -3711,9 +3339,7 @@ apply_cmd_gap_filter = TRUE;
 //
 // See apply_cmd_gap_filter.
 //
-//
 // Type: int
-//
 
 cmd_gap_filter_len = 6;
 
@@ -3724,9 +3350,7 @@ cmd_gap_filter_len = 6;
 // If the sum exceeds this value, the gap is filled in. If not, it is 
 //   left open.
 //
-//
 // Type: double
-//
 
 cmd_gap_filter_threshold = 0.35;
 
@@ -3737,9 +3361,7 @@ cmd_gap_filter_threshold = 0.35;
 // If true, the NEXRAD spike filter will be applied to the filtered 
 //   fields.
 //
-//
 // Type: boolean
-//
 
 apply_nexrad_spike_filter_after_cmd = TRUE;
 
@@ -3758,7 +3380,6 @@ apply_nexrad_spike_filter_after_cmd = TRUE;
 //
 // Interest mapping for TDBZ.
 //
-//
 // Type: struct
 //   typedef struct {
 //      double value;
@@ -3766,7 +3387,6 @@ apply_nexrad_spike_filter_after_cmd = TRUE;
 //   }
 //
 // 1D array - variable length.
-//
 
 tdbz_interest_map = {
   {
@@ -3787,16 +3407,13 @@ tdbz_interest_map = {
 // Defaults to 0.0 since we normally use the max interest of TDBZ and 
 //   SPIN instead of TDBZ and SPIN individually.
 //
-//
 // Type: double
-//
 
 tdbz_interest_weight = 0;
 
 ///////////// spin_interest_map ///////////////////////
 //
 // Interest mapping for dBZ spin.
-//
 //
 // Type: struct
 //   typedef struct {
@@ -3805,7 +3422,6 @@ tdbz_interest_weight = 0;
 //   }
 //
 // 1D array - variable length.
-//
 
 spin_interest_map = {
   {
@@ -3826,9 +3442,7 @@ spin_interest_map = {
 // Defaults to 0.0 since we normally use the max interest of TDBZ and 
 //   SPIN instead of TDBZ and SPIN individually.
 //
-//
 // Type: double
-//
 
 spin_interest_weight = 0;
 
@@ -3841,16 +3455,13 @@ spin_interest_weight = 0;
 //   field can then be used as an interest field instead of TDBZ and SPIN 
 //   individually.
 //
-//
 // Type: double
-//
 
 max_of_tdbz_and_spin_interest_weight = 0.75;
 
 ///////////// cpa_interest_map ////////////////////////
 //
 // Interest mapping for clutter phase alignment.
-//
 //
 // Type: struct
 //   typedef struct {
@@ -3859,7 +3470,6 @@ max_of_tdbz_and_spin_interest_weight = 0.75;
 //   }
 //
 // 1D array - variable length.
-//
 
 cpa_interest_map = {
   {
@@ -3877,16 +3487,13 @@ cpa_interest_map = {
 //
 // Weight for clutter phase alignment.
 //
-//
 // Type: double
-//
 
 cpa_interest_weight = 1;
 
 ///////////// zdr_sdev_interest_map ///////////////////
 //
 // Interest mapping for zdr.
-//
 //
 // Type: struct
 //   typedef struct {
@@ -3895,7 +3502,6 @@ cpa_interest_weight = 1;
 //   }
 //
 // 1D array - variable length.
-//
 
 zdr_sdev_interest_map = {
   {
@@ -3913,16 +3519,13 @@ zdr_sdev_interest_map = {
 //
 // Weight for standard deviation of zdr.
 //
-//
 // Type: double
-//
 
 zdr_sdev_interest_weight = 1;
 
 ///////////// phidp_sdev_interest_map /////////////////
 //
 // Interest mapping for standard deviation of phidp.
-//
 //
 // Type: struct
 //   typedef struct {
@@ -3931,7 +3534,6 @@ zdr_sdev_interest_weight = 1;
 //   }
 //
 // 1D array - variable length.
-//
 
 phidp_sdev_interest_map = {
   {
@@ -3949,9 +3551,7 @@ phidp_sdev_interest_map = {
 //
 // Weight for standard deviation of phidp.
 //
-//
 // Type: double
-//
 
 phidp_sdev_interest_weight = 1;
 
@@ -3974,9 +3574,7 @@ phidp_sdev_interest_weight = 1;
 // This allows us to identify areas of weak clutter contamination that 
 //   CMD missed.
 //
-//
 // Type: boolean
-//
 
 apply_rhohv_test_after_cmd = FALSE;
 
@@ -3987,9 +3585,7 @@ apply_rhohv_test_after_cmd = FALSE;
 // If RHOHV is less than this, no weather is likely to be present. 
 //   Therefore do not apply the test to this gate.
 //
-//
 // Type: double
-//
 
 rhohv_test_min_rhohv = 0.5;
 
@@ -4000,9 +3596,7 @@ rhohv_test_min_rhohv = 0.5;
 // If RHOHV is greater than this, the weather return is highly coherent, 
 //   so clutter contamination is unlikely.
 //
-//
 // Type: double
-//
 
 rhohv_test_max_rhohv = 0.98;
 
@@ -4014,11 +3608,301 @@ rhohv_test_max_rhohv = 0.98;
 // The RHOHV test identifies clutter if the improvement factor exceeds 
 //   this value.
 //
-//
 // Type: double
-//
 
 rhohv_improvement_factor_threshold = 4;
+
+//======================================================================
+//
+// SPECTRAL CMD.
+//
+// You have the option of running the spectral version of CMD, to filter 
+//   difficult targets such as wind farms. The moments from this step will 
+//   be stored in variables specifically named for the purpose.
+//
+//======================================================================
+ 
+///////////// run_spectral_cmd ////////////////////////
+//
+// Run the spectral-CMD filtering step.
+//
+// This computes a version of CMD in the FFT space.
+//
+// Type: boolean
+
+run_spectral_cmd = FALSE;
+
+///////////// spec_cmd_clutter_filter_type ////////////
+//
+// Type of clutter filter to use for spectral CMD.
+//
+// ADAPTIVE: spectral filter with gaussian interpolation. REGRESSION: 
+//   polynomial filter with specified interpolation. NOTCH: simple notch 
+//   filter of specified width. NONE: cancels clutter filtering.
+//
+// Type: enum
+// Options:
+//     CLUTTER_FILTER_ADAPTIVE
+//     CLUTTER_FILTER_REGRESSION
+//     CLUTTER_FILTER_NOTCH
+//     CLUTTER_FILTER_NONE
+
+spec_cmd_clutter_filter_type = CLUTTER_FILTER_NONE;
+
+///////////// spec_cmd_window_type ////////////////////
+//
+// Window to use for spectral CMD.
+//
+// VONHANN is recommended.
+//
+// Type: enum
+// Options:
+//     WINDOW_RECT
+//     WINDOW_VONHANN
+//     WINDOW_BLACKMAN
+//     WINDOW_BLACKMAN_NUTTALL
+//     WINDOW_TUKEY_10
+//     WINDOW_TUKEY_20
+//     WINDOW_TUKEY_30
+//     WINDOW_TUKEY_50
+
+spec_cmd_window_type = WINDOW_VONHANN;
+
+///////////// spec_cmd_tdbz_kernel_ngates /////////////
+//
+// Kernel size in range for computing TDBZ.
+//
+// The standard deviation of DBZ-squared is computed over a rectangular 
+//   kernel, and then the square-root is computed. This is the size of 
+//   that kernel in range.
+//
+// Type: int
+
+spec_cmd_tdbz_kernel_ngates = 5;
+
+///////////// spec_cmd_tdbz_kernel_nsamples ///////////
+//
+// Kernel size in samples for computing sdev of TDBZ.
+//
+// The standard deviation of DBZ-squared is computed over a rectangular 
+//   kernel, and then the square-root is computed. This is the number of 
+//   samples in the kernel.
+//
+// Type: int
+
+spec_cmd_tdbz_kernel_nsamples = 3;
+
+///////////// spec_cmd_sdev_zdr_kernel_ngates /////////
+//
+// Kernel size in range for computing sdev of zdr.
+//
+// The standard deviation of ZDR is computed over a rectangular kernel. 
+//   This is the size of that kernel in range.
+//
+// Type: int
+
+spec_cmd_sdev_zdr_kernel_ngates = 5;
+
+///////////// spec_cmd_sdev_zdr_kernel_nsamples ///////
+//
+// Kernel size in samples for computing sdev of zdr.
+//
+// The standard deviation of ZDR is computed over a rectangular kernel. 
+//   This is the number of samples in that kernel.
+//
+// Type: int
+
+spec_cmd_sdev_zdr_kernel_nsamples = 3;
+
+///////////// spec_cmd_sdev_phidp_kernel_ngates ///////
+//
+// Kernel size in range for computing sdev of phidp.
+//
+// The standard deviation of PHIDP is computed over a rectangular 
+//   kernel. This is the size of that kernel in range.
+//
+// Type: int
+
+spec_cmd_sdev_phidp_kernel_ngates = 5;
+
+///////////// spec_cmd_sdev_phidp_kernel_nsamples /////
+//
+// Kernel size in samples for computing sdev of phidp.
+//
+// The standard deviation of PHIDP is computed over a rectangular 
+//   kernel. This is the number of samples in that kernel.
+//
+// Type: int
+
+spec_cmd_sdev_phidp_kernel_nsamples = 3;
+
+//======================================================================
+//
+// SPECTRAL CMD INTEREST MAPS and WEIGHTS.
+//
+// Each map should hold at least 2 points. The points should be 
+//   increasing in value, i.e. the value should increase for each 
+//   subsequent point. The various interest values are combined using the 
+//   specified weights in a weighted mean to produce the final CMD value.
+//
+//======================================================================
+ 
+///////////// spec_cmd_snr_interest_map ///////////////
+//
+// Interest mapping for SNR in spectral CMD..
+//
+// Type: struct
+//   typedef struct {
+//      double value;
+//      double interest;
+//   }
+//
+// 1D array - variable length.
+
+spec_cmd_snr_interest_map = {
+  {
+    value = 0,
+    interest = 0.0001
+  }
+  ,
+  {
+    value = 20,
+    interest = 1
+  }
+};
+
+///////////// spec_cmd_snr_interest_weight ////////////
+//
+// Weight for SNR interest.
+//
+// This weight is used for combining snr interest into the final 
+//   spectral CMD interest.
+//
+// Type: double
+
+spec_cmd_snr_interest_weight = 1.5;
+
+///////////// spec_cmd_tdbz_interest_map //////////////
+//
+// Interest mapping for TDBZ.
+//
+// Type: struct
+//   typedef struct {
+//      double value;
+//      double interest;
+//   }
+//
+// 1D array - variable length.
+
+spec_cmd_tdbz_interest_map = {
+  {
+    value = 30,
+    interest = 0.0001
+  }
+  ,
+  {
+    value = 40,
+    interest = 1
+  }
+};
+
+///////////// spec_cmd_tdbz_interest_weight ///////////
+//
+// Weight for TDBZ interest.
+//
+// This weight is used for combining tdbz interest into the final CMD 
+//   interest.
+//
+// Type: double
+
+spec_cmd_tdbz_interest_weight = 1;
+
+///////////// spec_cmd_zdr_sdev_interest_map //////////
+//
+// Interest mapping for zdr.
+//
+// Type: struct
+//   typedef struct {
+//      double value;
+//      double interest;
+//   }
+//
+// 1D array - variable length.
+
+spec_cmd_zdr_sdev_interest_map = {
+  {
+    value = 3,
+    interest = 0.0001
+  }
+  ,
+  {
+    value = 4,
+    interest = 1
+  }
+};
+
+///////////// spec_cmd_zdr_sdev_interest_weight ///////
+//
+// Weight for standard deviation of zdr.
+//
+// Type: double
+
+spec_cmd_zdr_sdev_interest_weight = 1;
+
+///////////// spec_cmd_phidp_sdev_interest_map ////////
+//
+// Interest mapping for standard deviation of phidp.
+//
+// Type: struct
+//   typedef struct {
+//      double value;
+//      double interest;
+//   }
+//
+// 1D array - variable length.
+
+spec_cmd_phidp_sdev_interest_map = {
+  {
+    value = 28,
+    interest = 0.0001
+  }
+  ,
+  {
+    value = 32,
+    interest = 1
+  }
+};
+
+///////////// spec_cmd_phidp_sdev_interest_weight /////
+//
+// Weight for standard deviation of phidp.
+//
+// Type: double
+
+spec_cmd_phidp_sdev_interest_weight = 1;
+
+///////////// spec_cmd_threshold_for_wtc_detection ////
+//
+// Threshold CMD value for detecting clutter.
+//
+// This is aimed mainly at wind turbine clutter. If the mean spectral 
+//   CMD exceeds this threshold, wind turbine clutter is assumed detected 
+//   at the gate.
+//
+// Type: double
+
+spec_cmd_threshold_for_wtc_detection = 0.8;
+
+///////////// spec_cmd_threshold_for_moments //////////
+//
+// Threshold CMD value for computing moments.
+//
+// Spectral points with CMD in excess of this threshold are set to 0, so 
+//   that they are not used in the moments calculations.
+//
+// Type: double
+
+spec_cmd_threshold_for_moments = 0.7;
 
 //======================================================================
 //
@@ -4030,9 +3914,7 @@ rhohv_improvement_factor_threshold = 4;
 //
 // Output URL for moments data via FMQ.
 //
-//
 // Type: string
-//
 
 output_fmq_url = "$(MOMENTS_FMQ_PATH)";
 
@@ -4043,9 +3925,7 @@ output_fmq_url = "$(MOMENTS_FMQ_PATH)";
 // If TRUE moments are written as Radx messages. If FALSE moments are 
 //   written as DsRadar messages. .
 //
-//
 // Type: boolean
-//
 
 output_moments_in_radx_format = TRUE;
 
@@ -4056,9 +3936,7 @@ output_moments_in_radx_format = TRUE;
 // This is the total size of the output FMQ buffer. Some of this buffer 
 //   will be used for control bytes (12 bytes per message).
 //
-//
 // Type: int
-//
 
 output_fmq_size = 100000000;
 
@@ -4070,9 +3948,7 @@ output_fmq_size = 100000000;
 //   which may be written to the buffer before overwrites occur. However, 
 //   overwrites may occur sooner if the size is not set large enough.
 //
-//
 // Type: int
-//
 
 output_fmq_nslots = 10;
 
@@ -4082,9 +3958,7 @@ output_fmq_nslots = 10;
 //
 // If TRUE FMQ messages are compressed.
 //
-//
 // Type: boolean
-//
 
 output_fmq_compress = FALSE;
 
@@ -4097,9 +3971,7 @@ output_fmq_compress = FALSE;
 //   triggers a change, the params will be sent regardless when this 
 //   number of beams have been written.
 //
-//
 // Type: int
-//
 
 nbeams_for_params_and_calib = 90;
 
@@ -4111,9 +3983,7 @@ nbeams_for_params_and_calib = 90;
 //   becomes full, Test2Dsr will then block until there is space for more 
 //   data.
 //
-//
 // Type: boolean
-//
 
 write_blocking = TRUE;
 
@@ -4123,9 +3993,7 @@ write_blocking = TRUE;
 //
 // FILELIST, ARCHIVE and SIMULATE modes only.
 //
-//
 // Type: int
-//
 
 beam_wait_msecs = 0;
 
@@ -4138,7 +4006,6 @@ beam_wait_msecs = 0;
 //   point value to compute the 16-bit output value for the FMQ. The 
 //   write_filtered and write_unfiltered flags indicate which fields 
 //   should be written.
-//
 //
 // Type: struct
 //   typedef struct {
@@ -4188,6 +4055,14 @@ beam_wait_msecs = 0;
 //          NOISE_BIAS_DB_HX
 //          NOISE_BIAS_DB_VC
 //          NOISE_BIAS_DB_VX
+//          NOISE_FLAG
+//          SIGNAL_FLAG
+//          NOISE_INTEREST
+//          SIGNAL_INTEREST
+//          NOISE_ACCUM_PHASE_CHANGE
+//          NOISE_PHASE_CHANGE_ERROR
+//          NOISE_DBM_SDEV
+//          NOISE_NCP_MEAN
 //          SNR
 //          SNRHC
 //          SNRHX
@@ -4256,10 +4131,6 @@ beam_wait_msecs = 0;
 //          SPECTRAL_SNR
 //          REGR_FILT_POLY_ORDER
 //          REGR_FILT_CNR_DB
-//          NOISE_FLAG
-//          NOISE_INTEREST
-//          SIGNAL_FLAG
-//          SIGNAL_INTEREST
 //          AIQ_HC
 //          NIQ_HC
 //          AIQ_VC
@@ -4342,7 +4213,6 @@ beam_wait_msecs = 0;
 //   }
 //
 // 1D array - variable length.
-//
 
 output_fields = {
   {
@@ -4671,9 +4541,7 @@ output_fields = {
 //
 // If not, we need to guess at the sweep information.
 //
-//
 // Type: boolean
-//
 
 use_sweep_info_from_time_series = TRUE;
 
@@ -4686,9 +4554,7 @@ use_sweep_info_from_time_series = TRUE;
 //   transition, but the start-of-sweep flag is delayed until the 
 //   transition ends.
 //
-//
 // Type: boolean
-//
 
 delay_tilt_start_msg_during_ant_trans = FALSE;
 
@@ -4699,9 +4565,7 @@ delay_tilt_start_msg_during_ant_trans = FALSE;
 // We monitor the antenna movement direction. When this changes, we set 
 //   the end of sweep flag.
 //
-//
 // Type: boolean
-//
 
 set_end_of_sweep_when_antenna_changes_direction = FALSE;
 
@@ -4712,9 +4576,7 @@ set_end_of_sweep_when_antenna_changes_direction = FALSE;
 // We examine the antenna angles for reversal in motion direction. The 
 //   antenna must move by at least this amount for deducing the direction.
 //
-//
 // Type: double
-//
 
 required_delta_angle_for_antenna_direction_change = 0.25;
 
@@ -4726,9 +4588,7 @@ required_delta_angle_for_antenna_direction_change = 0.25;
 // If the number of rays is less than this at the time of a direction 
 //   change, a change in sweep number is not triggered.
 //
-//
 // Type: int
-//
 
 min_rays_in_sweep_for_antenna_direction_change = 45;
 
@@ -4740,9 +4600,7 @@ min_rays_in_sweep_for_antenna_direction_change = 45;
 // Used to trigger end of volume if sweep number gets too high. Only 
 //   applies if set_end_of_sweep_when_antenna_changes_direction is true.
 //
-//
 // Type: int
-//
 
 max_sweeps_in_vol_for_antenna_direction_change = 32;
 
@@ -4763,9 +4621,7 @@ max_sweeps_in_vol_for_antenna_direction_change = 32;
 // If not, we need to deduce the end of volume conditions. The options 
 //   that follow only apply if this parameter is set to false.
 //
-//
 // Type: boolean
-//
 
 use_volume_info_from_time_series = TRUE;
 
@@ -4777,9 +4633,7 @@ use_volume_info_from_time_series = TRUE;
 //   compute the end of volume. Only applies if 
 //   'use_volume_info_from_time_series' is false.
 //
-//
 // Type: boolean
-//
 
 set_end_of_vol_from_elev_angle = FALSE;
 
@@ -4791,9 +4645,7 @@ set_end_of_vol_from_elev_angle = FALSE;
 //   volume, set this to FALSE. Only applies if 
 //   'use_volume_info_from_time_series' is false.
 //
-//
 // Type: boolean
-//
 
 vol_starts_at_bottom = TRUE;
 
@@ -4808,7 +4660,6 @@ vol_starts_at_bottom = TRUE;
 // Minimum val: 0.1
 //
 // Type: double
-//
 
 elev_change_for_end_of_vol = 1.5;
 
@@ -4820,9 +4671,7 @@ elev_change_for_end_of_vol = 1.5;
 //   antenna transition to the start of the next volume. Only used for 
 //   set_end_of_vol_from_elev_angle.
 //
-//
 // Type: int
-//
 
 min_beams_per_vol = 360;
 
@@ -4832,9 +4681,7 @@ min_beams_per_vol = 360;
 //
 // Only applies if 'use_volume_info_from_time_series' is false.
 //
-//
 // Type: boolean
-//
 
 set_end_of_vol_on_prf_change = TRUE;
 
@@ -4844,9 +4691,7 @@ set_end_of_vol_on_prf_change = TRUE;
 //
 // Only applies if 'use_volume_info_from_time_series' is false.
 //
-//
 // Type: boolean
-//
 
 set_end_of_vol_on_pulse_width_change = FALSE;
 
@@ -4878,14 +4723,12 @@ set_end_of_vol_on_pulse_width_change = FALSE;
 //
 //   TRANSITION_FLAG_MISSING: transition flag is not available.
 //
-//
 // Type: enum
 // Options:
 //     TRANSITION_FLAG_AT_CENTER
 //     TRANSITION_FLAG_AT_BOTH_ENDS
 //     TRANSITION_FLAG_AT_EITHER_END
 //     TRANSITION_FLAG_MISSING
-//
 
 transition_method = TRANSITION_FLAG_AT_CENTER;
 
@@ -4897,9 +4740,7 @@ transition_method = TRANSITION_FLAG_AT_CENTER;
 //   the fixed angle for a ray. If the error exceeds the specified limit, 
 //   we set the transition flag on the ray.
 //
-//
 // Type: boolean
-//
 
 check_transition_from_fixed_angle_error = FALSE;
 
@@ -4907,9 +4748,7 @@ check_transition_from_fixed_angle_error = FALSE;
 //
 // Maximum permissable error in the pointing angle in PPI mode (deg).
 //
-//
 // Type: double
-//
 
 max_fixed_angle_error_ppi = 2;
 
@@ -4917,9 +4756,7 @@ max_fixed_angle_error_ppi = 2;
 //
 // Maximum permissable error in the pointing angle in RHI mode (deg).
 //
-//
 // Type: double
-//
 
 max_fixed_angle_error_rhi = 1;
 

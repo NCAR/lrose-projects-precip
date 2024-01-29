@@ -1,0 +1,20 @@
+#! /bin/csh -f
+
+# QC time series processing for sband - group 1
+# 2022/05/25 to 2022/07/04
+#
+# Run Iq2Dsr, writing moments data to fmq
+
+source ~/git/lrose-projects-precip/projDir/system/params/project_info.precip_qc
+
+cd $PROJ_DIR/qc/params
+setenv VERSION qc2
+setenv SUBVERSION v2.0
+
+snuff "Iq2Dsr -instance"
+
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20100
+
+Iq2Dsr -instance 20100 -params Iq2Dsr.qc2.sband -debug \
+    -start "2022 06 08 00 00 48" -end "2022 06 08 00 06 50"
+
