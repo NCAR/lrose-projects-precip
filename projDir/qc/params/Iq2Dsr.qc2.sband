@@ -4487,6 +4487,56 @@ output_fields = {
   }
   ,
   {
+    id = TDBZ_INTEREST,
+    name = "TDBZ_INTEREST",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = SPIN_INTEREST,
+    name = "SPIN_INTEREST",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = CPA_INTEREST,
+    name = "CPA_INTEREST",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = ZDR_SDEV_INTEREST,
+    name = "ZDR_SDEV_INTEREST",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = PHIDP_SDEV_INTEREST,
+    name = "PHIDP_SDEV_INTEREST",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
     id = AIQ_VC,
     name = "AIQ",
     units = "deg",
