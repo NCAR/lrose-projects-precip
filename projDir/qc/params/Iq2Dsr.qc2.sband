@@ -1363,8 +1363,8 @@ pulse_width_cals = {
     cal_dir = "$(PROJ_DIR)/qc/calibration/cal.sband.1.0us.sim",
     check_xmit_rcv_mode = TRUE,
     xmit_rcv_mode = DP_SIM_HV_FIXED_HV,
-    zdr_correction_db = 0,
-    system_phidp_deg = 37
+    zdr_correction_db = 0.2,
+    system_phidp_deg = -3
   }
   ,
   {
@@ -1372,8 +1372,8 @@ pulse_width_cals = {
     cal_dir = "$(PROJ_DIR)/qc/calibration/cal.sband.1.5us.sim",
     check_xmit_rcv_mode = TRUE,
     xmit_rcv_mode = DP_SIM_HV_FIXED_HV,
-    zdr_correction_db = 0,
-    system_phidp_deg = 37
+    zdr_correction_db = 0.2,
+    system_phidp_deg = -3
   }
 };
 
@@ -1429,7 +1429,7 @@ dbz_correction = 0;
 //
 // Type: boolean
 
-override_cal_zdr_correction = FALSE;
+override_cal_zdr_correction = TRUE;
 
 ///////////// zdr_correction_db ///////////////////////
 //
@@ -1439,7 +1439,7 @@ override_cal_zdr_correction = FALSE;
 //
 // Type: double
 
-zdr_correction_db = 0.06;
+zdr_correction_db = 0.2;
 
 ///////////// threshold_zdr_using_snr /////////////////
 //
@@ -1539,7 +1539,7 @@ override_cal_system_phidp = TRUE;
 //
 // Type: double
 
-system_phidp_deg = 37;
+system_phidp_deg = 0;
 
 ///////////// change_phidp_sign ///////////////////////
 //
@@ -1821,7 +1821,8 @@ noise_mon_tag_list_site_temp = "<SpolStatus><WxStation><tempC>";
 //
 // Type: double
 
-noise_mon_zdrm_corr = 0.52;
+// noise_mon_zdrm_corr = 0.52;
+noise_mon_zdrm_corr = 0.32;
 
 ///////////// noise_mon_mean_site_temp ////////////////
 //
