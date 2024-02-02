@@ -327,7 +327,7 @@ plot_unscaled = TRUE;
 
 temperature_label = {
     do_draw = TRUE,
-    color = "red",
+    color = "white",
     background_color = "",
     override_color_from_flight_cat = FALSE,
     font_name = "8x13",
@@ -368,7 +368,7 @@ temperature_label = {
 
 dew_point_label = {
     do_draw = TRUE,
-    color = "blue",
+    color = "cyan",
     background_color = "",
     override_color_from_flight_cat = FALSE,
     font_name = "8x13",
@@ -943,7 +943,7 @@ station_posn_circle_radius = 1;
 // Type: string
 //
 
-wind_barb_color = "seagreen";
+wind_barb_color = "green";
 
 ///////////// override_wind_barb_color_from_flight_cat 
 //
