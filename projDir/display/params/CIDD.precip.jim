@@ -492,7 +492,6 @@ Islands        Islands        taiwan_islands.map           1  0.0 1000000.0  whi
 MPD            MPD            mpd_precip.map               1  0.0 1000000.0  white
 MPD-labels     MPD-labels     mpd_precip_labels.map        0  0.0 1000000.0  white
 
-
 </MAPS>
 
 <WINDS>
@@ -684,7 +683,7 @@ cidd.html_mode: 0
 
 # Image Generation related resources
 # Set this to a value to get cidd to output imagery as XWD in this directory
-cidd.image_dir: $(HOME)/images
+cidd.image_dir: $(HOME)/linestorms/images
 
 # Set to 1 if one wants CIDD to run once through it's HTML output
 # plot list and then exit - Currently all fields at each zoom level
@@ -722,7 +721,7 @@ cidd.print_script: convert_image_print.csh
 # Button, after the last image has output. The arguments will be a list
 # of each output file in the series. CIDD will prepends the cidd.image_dir to each
 # files name which takes the form: cidd_field_name_zoom_name.xwd 
-cidd.series_convert_script: make_anim.csh
+cidd.series_convert_script: ${HOME}/precip/make_anim.csh
 
 # Set to 1 to ask that data be compressed during the MDV Protocol
 # data requests. Default is = 0
@@ -1661,7 +1660,7 @@ prod_info = {
     url = "spdbp:Rhi2Symprod:ticks//front.eol.ucar.edu:8080:precip/features/spol/rhi/spoldrx?use_http=true",
     data_type = 0,
     render_type = RENDER_ALL,
-    on_by_default = TRUE,
+    on_by_default = FALSE,
     minutes_allow_before = 20,
     minutes_allow_after = 10,
     text_off_threshold = 0.4,

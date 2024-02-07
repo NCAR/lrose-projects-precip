@@ -468,8 +468,8 @@ RCCK_RATE     RCCK_RATE     mdvp:://front.eol.ucar.edu:8080:precip/grids/cwb/rad
 Countries      Countries      world_states.map             1  0.0 1000000.0  white
 Taiwan         Taiwan         taiwan_coast.map             1  0.0 1000000.0  white
 Islands        Islands        taiwan_islands.map           1  0.0 1000000.0  white
-Islands        Islands        taiwan_islands.map           0  0.0 1000000.0  white
-
+MPD            MPD            mpd_precip.map               1  0.0 1000000.0  white
+MPD-labels     MPD-labels     mpd_precip_labels.map        0  0.0 1000000.0  white
 
 </MAPS>
 
