@@ -2004,6 +2004,24 @@ output_fields = {
     output_units = "none",
     output_encoding = OUTPUT_SHORT
   }
+  ,
+  {
+    dsr_name = "REGR_FILT_POLY_ORDER",
+    output_name = "REGR_FILT_POLY_ORDER",
+    long_name = "regression_filter_polynomial_order",
+    standard_name = "regression_filter_polynomial_order",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "REGR_FILT_CNR_DB",
+    output_name = "REGR_FILT_CNR_DB",
+    long_name = "regression_filter_clutter_to_noise_ratio",
+    standard_name = "regression_filter_clutter_to_noise_ratio",
+    output_units = "dB",
+    output_encoding = OUTPUT_SHORT
+  }
 };
 
 //======================================================================
