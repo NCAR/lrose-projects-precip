@@ -264,6 +264,42 @@ SPOLQC6_CLUT SPOLQC6_CLUT mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/rada
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
+SPOLQC9_DBZ_F   SPOLQC9_DBZ_F   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+SPOLQC9_DBZ_F_MAX SPOLQC9_DBZ_F_MAX mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial,comp 1 0
+SPOLQC9_DBZ     SPOLQC9_DBZ     mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+SPOLQC9_DBZ_MAX SPOLQC9_DBZ_MAX mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial,comp 1 0
+SPOLQC9_VEL_F   SPOLQC9_VEL_F   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+SPOLQC9_VEL     SPOLQC9_VEL     mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
+SPOLQC9_WIDTH_F SPOLQC9_WIDTH_F mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+SPOLQC9_WIDTH   SPOLQC9_WIDTH   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+
+SPOLQC9_TDBZ_INTEREST SPOLQC9_TDBZ_INTEREST  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&TDBZ_INTEREST  cmd.colors - -5 80 5 radial 1 0
+SPOLQC9_SPIN_INTEREST SPOLQC9_SPIN_INTEREST  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&SPIN_INTEREST  cmd.colors - -5 80 5 radial 1 0
+SPOLQC9_CPA_INTEREST SPOLQC9_CPA_INTEREST  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&CPA_INTEREST  cmd.colors - -5 80 5 radial 1 0
+SPOLQC9_ZDR_SDEV_INTEREST SPOLQC9_ZDR_SDEV_INTEREST  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&ZDR_SDEV_INTEREST  cmd.colors - -5 80 5 radial 1 0
+SPOLQC9_PHIDP_SDEV_INTEREST SPOLQC9_PHIDP_SDEV_INTEREST  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&PHIDP_SDEV_INTEREST  cmd.colors - -5 80 5 radial 1 0
+SPOLQC9_REGR_ORDER REGR_ORDER mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&REGR_FILT_POLY_ORDER  number.colors - -5 80 5 radial 1 0
+SPOLQC9_REGR_CNR SPOLQC9_REGR_CNR mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&REGR_FILT_CNR_DB  snr.colors - -5 80 5 radial 1 0
+SPOLQC9_CLUT SPOLQC9_CLUT mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
+
+RHOHV_TEST_UNFILT RHOHV_TEST_UNFILT mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&RHOHV_TEST_UNFILT rhohv.colors - -5 80 5 radial 1 0
+RHOHV_TEST_FILT RHOHV_TEST_FILT mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&RHOHV_TEST_FILT rhohv.colors - -5 80 5 radial 1 0
+RHOHV_TEST_IMPROV RHOHV_TEST_IMPROV mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc9/moments/sband/uncorrected/sur?use_http=true&RHOHV_TEST_IMPROV rhohv.colors - -5 80 5 radial 1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+
 # SPOL MOMENTS - RATE
 
 SPOLQC1_DBZ_F   SPOLQC1_DBZ_F   mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc1/rate/sband/v1.0/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0

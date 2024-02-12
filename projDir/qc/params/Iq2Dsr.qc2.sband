@@ -1821,7 +1821,6 @@ noise_mon_tag_list_site_temp = "<SpolStatus><WxStation><tempC>";
 //
 // Type: double
 
-// noise_mon_zdrm_corr = 0.52;
 noise_mon_zdrm_corr = 0.32;
 
 ///////////// noise_mon_mean_site_temp ////////////////
@@ -2065,9 +2064,7 @@ regression_filter_specified_polynomial_order = 5;
 //
 // Type: double
 
-// regression_filter_clutter_width_factor = 1;
-// regression_filter_clutter_width_factor = 2;
-regression_filter_clutter_width_factor = 2.5;
+regression_filter_clutter_width_factor = 1.0;
 
 ///////////// regression_filter_cnr_exponent //////////
 //
@@ -2080,8 +2077,6 @@ regression_filter_clutter_width_factor = 2.5;
 // Type: double
 
 regression_filter_cnr_exponent = 0.666667;
-// regression_filter_cnr_exponent = 0.8;
-// regression_filter_cnr_exponent = 1.0;
 
 ///////////// regression_filter_min_cnr_db ////////////
 //
@@ -3572,16 +3567,17 @@ phidp_sdev_interest_weight = 1;
 //
 //======================================================================
  
-///////////// apply_rhohv_test_after_cmd //////////////
+///////////// apply_rhohv_test_in_cmd /////////////////
 //
-// Apply the RHOHV test after filtering based on CMD.
+// Apply the RHOHV test in CMD.
 //
 // This allows us to identify areas of weak clutter contamination that 
-//   CMD missed.
+//   CMD missed. Only applies to dual-pol radars for which RHOHV is 
+//   available.
 //
 // Type: boolean
 
-apply_rhohv_test_after_cmd = FALSE;
+apply_rhohv_test_in_cmd = TRUE;
 
 ///////////// rhohv_test_min_rhohv ////////////////////
 //
@@ -3616,6 +3612,38 @@ rhohv_test_max_rhohv = 0.98;
 // Type: double
 
 rhohv_improvement_factor_threshold = 4;
+
+///////////// rhohv_test_interest_map /////////////////
+//
+// Interest mapping for the rhohv test.
+//
+// Type: struct
+//   typedef struct {
+//      double value;
+//      double interest;
+//   }
+//
+// 1D array - variable length.
+
+rhohv_test_interest_map = {
+  {
+    value = 3.5,
+    interest = 0
+  }
+  ,
+  {
+    value = 4.5,
+    interest = 1
+  }
+};
+
+///////////// rhohv_test_interest_weight //////////////
+//
+// Weight for standard deviation of phidp.
+//
+// Type: double
+
+rhohv_test_interest_weight = 1;
 
 //======================================================================
 //
@@ -4125,6 +4153,9 @@ beam_wait_msecs = 0;
 //          DBZ_SPIN_CHANGE
 //          CMD
 //          CMD_FLAG
+//          RHOHV_TEST_UNFILT
+//          RHOHV_TEST_FILT
+//          RHOHV_TEST_IMPROV
 //          TDBZ_INTEREST
 //          SPIN_INTEREST
 //          CPA_INTEREST
@@ -4491,6 +4522,36 @@ output_fields = {
   }
   ,
   {
+    id = RHOHV_TEST_UNFILT,
+    name = "RHOHV_TEST_UNFILT",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = RHOHV_TEST_FILT,
+    name = "RHOHV_TEST_FILT",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = RHOHV_TEST_IMPROV,
+    name = "RHOHV_TEST_IMPROV",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
     id = TDBZ_INTEREST,
     name = "TDBZ_INTEREST",
     units = "",
@@ -4585,7 +4646,7 @@ output_fields = {
     name = "REGR_FILT_POLY_ORDER",
     units = "",
     scale = 0.01,
-    bias = -320.0,
+    bias = -320,
     write_unfiltered = TRUE,
     write_filtered = FALSE
   }
@@ -4595,7 +4656,7 @@ output_fields = {
     name = "REGR_FILT_CNR_DB",
     units = "",
     scale = 0.01,
-    bias = -320.0,
+    bias = -320,
     write_unfiltered = TRUE,
     write_filtered = FALSE
   }

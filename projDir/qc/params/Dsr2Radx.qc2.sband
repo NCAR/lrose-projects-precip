@@ -1925,6 +1925,33 @@ output_fields = {
   }
   ,
   {
+    dsr_name = "RHOHV_TEST_UNFILT",
+    output_name = "RHOHV_TEST_UNFILT",
+    long_name = "rhohv_test_unfiltered_rhohv",
+    standard_name = "rhohv_test_unfiltered_rhohv",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "RHOHV_TEST_FILT",
+    output_name = "RHOHV_TEST_FILT",
+    long_name = "rhohv_test_filtered_rhohv",
+    standard_name = "rhohv_test_filtered_rhohv",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "RHOHV_TEST_IMPROV",
+    output_name = "RHOHV_TEST_IMPROV",
+    long_name = "rhohv_test_improvement_statistic",
+    standard_name = "rhohv_test_improvement_statistic",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
     dsr_name = "TDBZ",
     output_name = "TDBZ",
     long_name = "texture_of_reflectivity",
@@ -2060,7 +2087,8 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/moments/sband/uncorrected",
+   //     output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/moments/sband/uncorrected",
+    output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc9/moments/sband/uncorrected",
     format = OUTPUT_FORMAT_CFRADIAL
   }
 };
