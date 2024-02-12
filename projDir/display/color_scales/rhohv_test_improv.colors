@@ -1,0 +1,21 @@
+# NAME rhohv_test_improv.colors
+
+-100    -5      dodgerblue3
+-5      -2      royalblue3
+-2      -1      blue
+-1.0   -0.5     mediumblue
+-0.5    0.0     navyblue
+0.0     0.5     midnightblue
+0.5     1.0     seagreen
+1.0	2  	dimgray
+2	3 	slategray
+3 	4 	gold
+4       5       tomato
+5       6       firebrick1
+6 	8	OrangeRed
+8 	10 	Red
+10 	15 	DeepPink
+15	20	Maroon1
+20      50      HotPink
+50	99	Pink
+

@@ -3588,7 +3588,7 @@ apply_rhohv_test_in_cmd = TRUE;
 //
 // Type: double
 
-rhohv_test_min_rhohv = 0.5;
+rhohv_test_min_rhohv = 0.0;
 
 ///////////// rhohv_test_max_rhohv ////////////////////
 //
@@ -3599,7 +3599,7 @@ rhohv_test_min_rhohv = 0.5;
 //
 // Type: double
 
-rhohv_test_max_rhohv = 0.98;
+rhohv_test_max_rhohv = 2.0;
 
 ///////////// rhohv_improvement_factor_threshold //////
 //
