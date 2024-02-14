@@ -44,7 +44,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "qc.sband";
+instance = "qc.sband.regr";
 
 ///////////// procmap_register_interval ///////////////
 //
@@ -1988,6 +1988,51 @@ output_fields = {
   }
   ,
   {
+    dsr_name = "TDBZ_INTEREST",
+    output_name = "TDBZ_INTEREST",
+    long_name = "cmd_interest_for_TDBZ",
+    standard_name = "cmd_interest_for_TDBZ",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "SPIN_INTEREST",
+    output_name = "SPIN_INTEREST",
+    long_name = "cmd_interest_for_SPIN",
+    standard_name = "cmd_interest_for_SPIN",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "CPA_INTEREST",
+    output_name = "CPA_INTEREST",
+    long_name = "cmd_interest_for_CPA",
+    standard_name = "cmd_interest_for_CPA",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "ZDR_SDEV_INTEREST",
+    output_name = "ZDR_SDEV_INTEREST",
+    long_name = "cmd_interest_for_ZDR_SDEV",
+    standard_name = "cmd_interest_for_ZDR_SDEV",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "PHIDP_SDEV_INTEREST",
+    output_name = "PHIDP_SDEV_INTEREST",
+    long_name = "cmd_interest_for_PHIDP_SDEV",
+    standard_name = "cmd_interest_for_PHIDP_SDEV",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
     dsr_name = "REGR_FILT_POLY_ORDER",
     output_name = "REGR_FILT_POLY_ORDER",
     long_name = "regression_filter_polynomial_order",
@@ -2042,8 +2087,8 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/moments/sband/uncorrected",
-    format = OUTPUT_FORMAT_CFRADIAL
+   output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc_regr/moments/sband/uncorrected",
+   format = OUTPUT_FORMAT_CFRADIAL
   }
 };
 

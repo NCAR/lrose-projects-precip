@@ -49,7 +49,7 @@ beam_count_for_debug_print = 30;
 //
 // Type: string
 
-instance = "qc.sband";
+instance = "qc.sband.regr";
 
 //======================================================================
 //
@@ -119,7 +119,7 @@ mode = ARCHIVE;
 //
 // Type: string
 
-input_fmq = "/tmp/fmq/ts/sband/shmem_10000";
+input_fmq = "/tmp/fmq/ts/sband/shmem_11000";
 
 ///////////// position_fmq_at_start ///////////////////
 //
