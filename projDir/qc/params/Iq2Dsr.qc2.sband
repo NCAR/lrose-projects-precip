@@ -3589,7 +3589,7 @@ apply_rhohv_test_in_cmd = TRUE;
 //
 // Type: double
 
-rhohv_improvement_factor_threshold = 1;
+rhohv_improvement_factor_threshold = 1.5;
 
 //======================================================================
 //
