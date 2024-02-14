@@ -1994,7 +1994,8 @@ clutter_filter_type = CLUTTER_FILTER_ADAPTIVE;
 //
 // Type: double
 
-clutter_model_width_in_adaptive_filter = 0.75;
+// clutter_model_width_in_adaptive_filter = 0.75;
+clutter_model_width_in_adaptive_filter = 1.0;
 
 ///////////// init_notch_width_in_adaptive_filter /////
 //
@@ -2005,7 +2006,8 @@ clutter_model_width_in_adaptive_filter = 0.75;
 //
 // Type: double
 
-init_notch_width_in_adaptive_filter = 1.5;
+// init_notch_width_in_adaptive_filter = 1.5;
+init_notch_width_in_adaptive_filter = 2.0;
 
 ///////////// apply_residue_correction_in_adaptive_filter 
 //
@@ -2017,7 +2019,7 @@ init_notch_width_in_adaptive_filter = 1.5;
 //
 // Type: boolean
 
-apply_residue_correction_in_adaptive_filter = FALSE;
+apply_residue_correction_in_adaptive_filter = TRUE;
 
 ///////////// min_snr_db_for_residue_correction ///////
 //
@@ -3589,7 +3591,7 @@ apply_rhohv_test_in_cmd = TRUE;
 //
 // Type: double
 
-rhohv_improvement_factor_threshold = 1;
+rhohv_improvement_factor_threshold = 1.5;
 
 //======================================================================
 //
