@@ -2064,7 +2064,8 @@ regression_filter_specified_polynomial_order = 5;
 //
 // Type: double
 
-regression_filter_clutter_width_factor = 1;
+// regression_filter_clutter_width_factor = 1;
+regression_filter_clutter_width_factor = 1.2;
 
 ///////////// regression_filter_cnr_exponent //////////
 //
@@ -2076,7 +2077,8 @@ regression_filter_clutter_width_factor = 1;
 //
 // Type: double
 
-regression_filter_cnr_exponent = 0.666667;
+// regression_filter_cnr_exponent = 0.666667;
+regression_filter_cnr_exponent = 0.8;
 
 ///////////// regression_filter_min_cnr_db ////////////
 //

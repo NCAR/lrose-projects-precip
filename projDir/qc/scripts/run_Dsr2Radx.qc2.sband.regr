@@ -1,0 +1,23 @@
+#! /bin/csh -f
+
+# SPOL QC processing for PRECIP group 1
+# 2022/05/25 to 2022/07/04
+#
+# Run Dsr2Radx
+# Reads FMQ from Iq2Dsr.qc.sband
+# Writes sband CfRadial data
+
+source ~/git/lrose-projects-precip/projDir/system/params/project_info.precip_qc
+
+cd $PROJ_DIR/qc/params
+setenv VERSION qcr
+
+snuff "Dsr2Radx -instance"
+
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20200
+
+Dsr2Radx -instance 20100 -params Dsr2Radx.qc2.sband.regr -debug
+
+
+
+
