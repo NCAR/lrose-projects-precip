@@ -49,7 +49,7 @@ beam_count_for_debug_print = 30;
 //
 // Type: string
 
-instance = "qc.sband";
+instance = "qc2.sband.adapt";
 
 //======================================================================
 //
@@ -876,7 +876,7 @@ moments_params = {
     index_the_beams = TRUE,
     indexed_resolution = 0.75,
     min_antenna_rate_for_indexing = 0.05,
-    window = WINDOW_RECT,
+    window = WINDOW_VONHANN,
     switching_receiver = TRUE,
     xmit_rcv_mode = DP_ALT_HV_CO_CROSS,
     apply_clutter_filter = TRUE,
@@ -902,7 +902,7 @@ moments_params = {
     index_the_beams = TRUE,
     indexed_resolution = 0.75,
     min_antenna_rate_for_indexing = 1,
-    window = WINDOW_RECT,
+    window = WINDOW_VONHANN,
     switching_receiver = TRUE,
     xmit_rcv_mode = DP_ALT_HV_CO_CROSS,
     apply_clutter_filter = TRUE,
@@ -928,7 +928,7 @@ moments_params = {
     index_the_beams = TRUE,
     indexed_resolution = 0.75,
     min_antenna_rate_for_indexing = 1,
-    window = WINDOW_RECT,
+    window = WINDOW_VONHANN,
     switching_receiver = TRUE,
     xmit_rcv_mode = DP_ALT_HV_CO_CROSS,
     apply_clutter_filter = TRUE,
@@ -954,7 +954,7 @@ moments_params = {
     index_the_beams = TRUE,
     indexed_resolution = 0.25,
     min_antenna_rate_for_indexing = -1,
-    window = WINDOW_RECT,
+    window = WINDOW_VONHANN,
     switching_receiver = TRUE,
     xmit_rcv_mode = DP_ALT_HV_CO_CROSS,
     apply_clutter_filter = TRUE,
@@ -980,7 +980,7 @@ moments_params = {
     index_the_beams = TRUE,
     indexed_resolution = 0.75,
     min_antenna_rate_for_indexing = 1,
-    window = WINDOW_RECT,
+    window = WINDOW_VONHANN,
     switching_receiver = TRUE,
     xmit_rcv_mode = DP_ALT_HV_CO_CROSS,
     apply_clutter_filter = TRUE,
@@ -1982,7 +1982,7 @@ atmos_atten_db_per_km = 0.012;
 //     CLUTTER_FILTER_NOTCH
 //     CLUTTER_FILTER_NONE
 
-clutter_filter_type = CLUTTER_FILTER_REGRESSION;
+clutter_filter_type = CLUTTER_FILTER_ADAPTIVE;
 
 ///////////// clutter_model_width_in_adaptive_filter //
 //

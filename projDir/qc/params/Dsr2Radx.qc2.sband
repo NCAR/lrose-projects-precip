@@ -2088,8 +2088,10 @@ output_fields = {
 output_data_set = {
   {
    //     output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/$(VERSION)/moments/sband/uncorrected",
-    output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc9/moments/sband/uncorrected",
-    format = OUTPUT_FORMAT_CFRADIAL
+   // output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc9/moments/sband/uncorrected",
+   // output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qc2/moments/sband/uncorrected",
+   output_dir = "$(DATA_DIR)/$(project)/grids/spol/radarPolar/qca/moments/sband/uncorrected",
+   format = OUTPUT_FORMAT_CFRADIAL
   }
 };
 
