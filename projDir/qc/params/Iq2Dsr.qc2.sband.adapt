@@ -1539,7 +1539,7 @@ override_cal_system_phidp = TRUE;
 //
 // Type: double
 
-system_phidp_deg = 0;
+system_phidp_deg = -3;
 
 ///////////// change_phidp_sign ///////////////////////
 //
