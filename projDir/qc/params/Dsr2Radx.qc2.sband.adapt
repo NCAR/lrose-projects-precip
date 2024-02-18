@@ -1952,6 +1952,15 @@ output_fields = {
   }
   ,
   {
+    dsr_name = "RHOHV_TEST_FLAG",
+    output_name = "RHOHV_TEST_FLAG",
+    long_name = "rhohv_test_flag",
+    standard_name = "rhohv_test_flag",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
     dsr_name = "TDBZ",
     output_name = "TDBZ",
     long_name = "texture_of_reflectivity",

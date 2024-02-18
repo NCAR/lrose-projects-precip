@@ -16,8 +16,8 @@ setenv PROJ_DIR ~/git/lrose-projects-precip/projDir
 setenv DATA_DIR /scr/cirrus3/rsfdata/projects
 setenv LOG_DIR $HOME/logs
 
-setenv QC_VERSION qc2
-setenv QC_SUB_VERSION v2.0
+setenv VERSION qc2
+setenv SUB_VERSION v2.0
 
 # make sure the output dirs exist
 

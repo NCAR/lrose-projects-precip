@@ -1994,8 +1994,7 @@ clutter_filter_type = CLUTTER_FILTER_ADAPTIVE;
 //
 // Type: double
 
-// clutter_model_width_in_adaptive_filter = 0.75;
-clutter_model_width_in_adaptive_filter = 1.0;
+clutter_model_width_in_adaptive_filter = 1;
 
 ///////////// init_notch_width_in_adaptive_filter /////
 //
@@ -2006,8 +2005,7 @@ clutter_model_width_in_adaptive_filter = 1.0;
 //
 // Type: double
 
-// init_notch_width_in_adaptive_filter = 1.5;
-init_notch_width_in_adaptive_filter = 2.0;
+init_notch_width_in_adaptive_filter = 2;
 
 ///////////// apply_residue_correction_in_adaptive_filter 
 //
@@ -3561,11 +3559,11 @@ phidp_sdev_interest_weight = 1;
 //
 // RHOHV TEST to AUGMENT CMD.
 //
-// If clutter is present the RHOHV value should increase after 
-//   application of the clutter filter. We can use a RHOHV test to locate 
-//   gates at which CMD fails to identify weak clutter. This allows us to 
-//   improve clutter identification in cases with low clutter-to-noise 
-//   ratio.
+// If clutter is present along with weather, RHOHV should increase after 
+//   application of the clutter filter. The RHOHV improvment factor is a 
+//   measure of the change in RHOHV towards 1.0. We use different 
+//   improvement thresholds to decide whether the filtered spectrum should 
+//   be used for power or phase related fields.
 //
 //======================================================================
  
@@ -3573,25 +3571,56 @@ phidp_sdev_interest_weight = 1;
 //
 // Apply the RHOHV test in CMD.
 //
-// This allows us to identify areas of weak clutter contamination that 
-//   CMD missed. Only applies to dual-pol radars for which RHOHV is 
-//   available.
+// This allows us to identify areas of clutter contamination that CMD 
+//   missed. Only applies to dual-pol radars for which RHOHV is available.
 //
 // Type: boolean
 
 apply_rhohv_test_in_cmd = TRUE;
 
-///////////// rhohv_improvement_factor_threshold //////
+///////////// rhohv_improv_thresh_for_power ///////////
 //
-// The RHOHV improvment factor is a measure of the change in RHOHV 
-//   towards 1.0.
+// RHOHV improvment factor threshold for power-based fields.
 //
-// The RHOHV test identifies clutter if the improvement factor exceeds 
-//   this value.
+// If the improvement exceeds this threshold, we use the filtered 
+//   spectrum for power-based fields.
 //
 // Type: double
 
-rhohv_improvement_factor_threshold = 1.5;
+rhohv_improv_thresh_for_power = 8;
+
+///////////// rhohv_improv_thresh_for_vel /////////////
+//
+// RHOHV improvment factor threshold for velocity fields.
+//
+// If the improvement exceeds this threshold, we use the filtered 
+//   spectrum for velocity-related fields.
+//
+// Type: double
+
+rhohv_improv_thresh_for_vel = 1.5;
+
+///////////// rhohv_improv_thresh_for_phase ///////////
+//
+// RHOHV improvment factor threshold for phase-related fields.
+//
+// If the improvement exceeds this threshold, we use the filtered 
+//   spectrum for phase-related fields, e.g. phidp.
+//
+// Type: double
+
+rhohv_improv_thresh_for_phase = 1;
+
+///////////// rhohv_improv_thresh_for_rho /////////////
+//
+// RHOHV improvment factor threshold for correlation-related fields.
+//
+// If the improvement exceeds this threshold, we use the filtered 
+//   spectrum for correlation-related fields, e.g. rhohv.
+//
+// Type: double
+
+rhohv_improv_thresh_for_rho = 1;
 
 //======================================================================
 //
@@ -4104,6 +4133,7 @@ beam_wait_msecs = 0;
 //          RHOHV_TEST_UNFILT
 //          RHOHV_TEST_FILT
 //          RHOHV_TEST_IMPROV
+//          RHOHV_TEST_FLAG
 //          TDBZ_INTEREST
 //          SPIN_INTEREST
 //          CPA_INTEREST
@@ -4495,6 +4525,16 @@ output_fields = {
     units = "",
     scale = 0.001,
     bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = RHOHV_TEST_FLAG,
+    name = "RHOHV_TEST_FLAG",
+    units = "",
+    scale = 1,
+    bias = -100,
     write_unfiltered = TRUE,
     write_filtered = FALSE
   }

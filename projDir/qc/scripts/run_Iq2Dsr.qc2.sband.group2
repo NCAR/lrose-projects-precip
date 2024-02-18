@@ -1,0 +1,39 @@
+#! /bin/csh -f
+
+# QC time series processing for sband - group 2
+# 2022/07/04 to 2022/08/11
+#
+# QC time series processing for sband
+#
+# Run Iq2Dsr, writing moments data to fmq
+
+source ~/git/lrose-projects-precip/projDir/system/params/project_info.precip_qc
+
+cd $PROJ_DIR/qc/params
+
+snuff "Iq2Dsr -instance"
+
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20500
+
+Iq2Dsr -instance 20500 -params Iq2Dsr.qc2.sband.adapt -debug \
+    -start "2022 07 04 00 00 00" -end "2022 07 14 00 00 00" >& \
+    $LOG_DIR/Iq2Dsr.qc2.sband.adapt.20500.log &
+
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20600
+
+Iq2Dsr -instance 20600 -params Iq2Dsr.qc2.sband.adapt -debug \
+    -start "2022 07 14 00 00 00" -end "2022 07 24 00 00 00" >& \
+    $LOG_DIR/Iq2Dsr.qc2.sband.adapt.20600.log &
+
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20700
+
+Iq2Dsr -instance 20700 -params Iq2Dsr.qc2.sband.adapt -debug \
+    -start "2022 07 24 00 00 00" -end "2022 08 03 00 00 00" >& \
+    $LOG_DIR/Iq2Dsr.qc2.sband.adapt.20700.log &
+
+setenv MOMENTS_FMQ_PATH /tmp/fmq/moments/sband/shmem_20800
+
+Iq2Dsr -instance 20800 -params Iq2Dsr.qc2.sband.adapt -debug \
+    -start "2022 08 03 00 00 00" -end "2022 08 12 00 00 00" >& \
+    $LOG_DIR/Iq2Dsr.qc2.sband.adapt.20800.log &
+
