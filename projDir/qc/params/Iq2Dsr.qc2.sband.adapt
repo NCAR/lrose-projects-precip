@@ -3609,7 +3609,7 @@ rhohv_improv_thresh_for_vel = 1.5;
 //
 // Type: double
 
-rhohv_improv_thresh_for_phase = 1;
+rhohv_improv_thresh_for_phase = 1.25;
 
 ///////////// rhohv_improv_thresh_for_rho /////////////
 //
@@ -3620,7 +3620,7 @@ rhohv_improv_thresh_for_phase = 1;
 //
 // Type: double
 
-rhohv_improv_thresh_for_rho = 1;
+rhohv_improv_thresh_for_rho = 1.25;
 
 //======================================================================
 //
