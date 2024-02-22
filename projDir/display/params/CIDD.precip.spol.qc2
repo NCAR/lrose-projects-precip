@@ -142,8 +142,8 @@ RHOHV_TEST_UNFILT RHOHV_TEST_UNFILT mdvp:://front.eol.ucar.edu:8080:precip/grids
 RHOHV_TEST_FILT RHOHV_TEST_FILT mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc2/moments/sband/uncorrected/sur?use_http=true&RHOHV_TEST_FILT rhohv.colors - -5 80 5 radial 1 0
 RHOHV_TEST_IMPROV RHOHV_TEST_IMPROV mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc2/moments/sband/uncorrected/sur?use_http=true&RHOHV_TEST_IMPROV rhohv_test_improv.colors - -5 80 5 radial 1 0
 RHOHV_TEST_FLAG RHOHV_TEST_FLAG mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc2/moments/sband/uncorrected/sur?use_http=true&RHOHV_TEST_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-UNCORR_QC2_REGR_ORDER REGR_ORDER mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc2/moments/sband/uncorrected/sur?use_http=true&REGR_FILT_POLY_ORDER  number.colors - -5 80 5 radial 1 0
-UNCORR_QC2_REGR_CNR UNCORR_QC2_REGR_CNR mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc2/moments/sband/uncorrected/sur?use_http=true&REGR_FILT_CNR_DB  snr.colors dB -5 80 5 radial 1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
@@ -198,8 +198,8 @@ RHOHV_TEST_UNFILT RHOHV_TEST_UNFILT mdvp:://front.eol.ucar.edu:8080:precip/grids
 RHOHV_TEST_FILT RHOHV_TEST_FILT mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc2/moments/sband/corrected/sur?use_http=true&RHOHV_TEST_FILT rhohv.colors - -5 80 5 radial 1 0
 RHOHV_TEST_IMPROV RHOHV_TEST_IMPROV mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc2/moments/sband/corrected/sur?use_http=true&RHOHV_TEST_IMPROV rhohv_test_improv.colors - -5 80 5 radial 1 0
 RHOHV_TEST_FLAG RHOHV_TEST_FLAG mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc2/moments/sband/corrected/sur?use_http=true&RHOHV_TEST_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-CORR_QC2_REGR_ORDER REGR_ORDER mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc2/moments/sband/corrected/sur?use_http=true&REGR_FILT_POLY_ORDER  number.colors - -5 80 5 radial 1 0
-CORR_QC2_REGR_CNR CORR_QC2_REGR_CNR mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qc2/moments/sband/corrected/sur?use_http=true&REGR_FILT_CNR_DB  snr.colors dB -5 80 5 radial 1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
+========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
@@ -253,8 +253,8 @@ SPOLQCR_CLUT SPOLQCR_CLUT mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/rada
 RHOHV_TEST_UNFILT RHOHV_TEST_UNFILT mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qcr/moments/sband/uncorrected/sur?use_http=true&RHOHV_TEST_UNFILT rhohv.colors - -5 80 5 radial 1 0
 RHOHV_TEST_FILT RHOHV_TEST_FILT mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qcr/moments/sband/uncorrected/sur?use_http=true&RHOHV_TEST_FILT rhohv.colors - -5 80 5 radial 1 0
 RHOHV_TEST_IMPROV RHOHV_TEST_IMPROV mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qcr/moments/sband/uncorrected/sur?use_http=true&RHOHV_TEST_IMPROV rhohv_test_improv.colors - -5 80 5 radial 1 0
-SPOLQCR_REGR_ORDER REGR_ORDER mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qcr/moments/sband/uncorrected/sur?use_http=true&REGR_FILT_POLY_ORDER  number.colors - -5 80 5 radial 1 0
-SPOLQCR_REGR_CNR SPOLQCR_REGR_CNR mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qcr/moments/sband/uncorrected/sur?use_http=true&REGR_FILT_CNR_DB  snr.colors dB -5 80 5 radial 1 0
+REGR_ORDER  REGR_ORDER        mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qcr/moments/sband/uncorrected/sur?use_http=true&REGR_FILT_POLY_ORDER  number.colors - -5 80 5 radial 1 0
+REGR_CNR    SPOLQCR_REGR_CNR  mdvp:://front.eol.ucar.edu:8080:precip/grids/spol/radarPolar/qcr/moments/sband/uncorrected/sur?use_http=true&REGR_FILT_CNR_DB      snr.colors dB -5 80 5 radial 1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ========       ========       mdvp::static//front.eol.ucar.edu:8080:/spacer?use_http=true&Elevation  none.colors   m   -5   80  5  dcont   1 0
