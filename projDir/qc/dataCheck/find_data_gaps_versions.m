@@ -3,14 +3,14 @@
 clear all
 close all
 
-versionQC='v1.0';
+versionQC='v2.0';
 
 startDate=datetime(2022,5,25);
 endDate=datetime(2022,8,12); % This day is included
 
-baseDir='/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/sband/v1.0/';
+baseDir=['/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc2/rate/sband/',versionQC,'/'];
 
-figdir='/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc1/rate/plots/data_gaps/';
+figdir=['/scr/cirrus3/rsfdata/projects/precip/grids/spol/radarPolar/qc2/rate/plots/data_gaps/'];
 
 %% Process day by day
 dayList=startDate:days(1):endDate;
